@@ -1,92 +1,219 @@
 # TODO
 
-## Active
+## Current status
 
-- Full design agreement with the owner, tracked in
-  `docs/plan/design-baseline.md`. Begin with the complete business function
-  catalog; the current normalized report baseline is not yet a complete
-  detailed implementation specification.
+- Complete design baseline Accepted03/10/2026: E04-v1 ADR-160 first,then
+  E05-v1 ADR-161. E01–E05 done;75ownerrows/73accepted,only D12/D13 deferred.
+- Actual E04 package/exact technical refinements and E05 cross-check accepted;
+  no further baseline approval pending,no new product question. RF/FE/operator
+  decisions preserved. Source Word/report/sequence sidework unchanged.
 
 ## Next
 
-- Complete functions, actor permissions, inputs/outputs and validations from
-  the official report, excluding illustrative forms.
-- Review `docs/design/FUNCTION_CATALOG.md` (39 source references, NV10/NV11
-  removed). Resume using `docs/plan/HANDOFF.md` and the owner's single approval
-  file `docs/plan/OWNER_REVIEW.md`: 50 design choices and 5 gated output reviews,
-  all initially unchecked. Read owner marks/alternatives and record only accepted
-  choices; no more sequential five-question batches. A01–A05 hold the previous
-  Q-011 proposals; the table also covers catalogue/workflow/database/architecture
-  gaps. Complete actual outputs before requesting E01–E05 acceptance.
-  Remaining-field policies are accepted
-  ADR-078–ADR-082; profile validation accepted
-  ADR-073–ADR-077; required/editable fields remain ADR-019. Report defaults/filters/Director
-  group-only detail/Accountant all-filtered-results CSV are accepted ADR-068–072;
-  metric bases/current-state scope ADR-063–067 stay fixed. Then remaining field/
-  Q-011 operational details; stage 1 is not yet complete.
-  Audit coverage/security events/Admin filters/safe details/no audit export are
-  accepted ADR-058–ADR-062, not storage/failure/retention or code approval.
-  Password policy/
-  temporary 24-hour expiry/normal 2-hour or 30-minute-idle expiry/concurrent devices/
-  current-session logout are accepted ADR-053–ADR-057; do not re-ask.
-  Delivery/mandatory change/revocation/reactivation/email/throttling are accepted
-  (ADR-048–ADR-052), no code. Money/deadline/business
-  timezone rules are accepted (ADR-043–ADR-047), not schema/code approval.
-  Course immutability/current-profile display/no transfers/Student browser
-  Invoice printing/Accountant metadata-only Payment correction are accepted
-  (ADR-038–ADR-042); do not re-ask. Extra
-  LESSONs beyond the program count are excluded (ADR-037). Pre-start move/post-start linked
-  replacement and completion/counting policy are accepted (ADR-036), leaving
-  storage/history/audit design. ADR-035 resolves scope within NV19/F21, no
-  holiday module/automation/individual makeup. Mandatory whole-class grade submission/
-  resubmission, return and finalization are accepted (ADR-034).
-  Attendance entry/correction opens at LESSON start
-  and closes before Class COMPLETED, no fixed per-lesson deadline
-  (ADR-033). Expected lesson counts/full schedules and
-  date/time/room edit cutoffs are accepted (ADR-032); then remaining action/report
-  refinements. Entry-score correction and ties are accepted (ADR-029;
-  Q-006 business policies resolved). Configuration freezes and
-  precision/rounding are accepted (ADR-028). Test absence attribution
-  and center cancellation/rescheduling are accepted (ADR-027). Class
-  cancellation is accepted (ADR-026); dependent-booking cancellation/ended
-  history rules are accepted (ADR-031). Q-007 retains data/audit representation.
-  Class opening/start/completion are accepted (ADR-025); Q-008
-  retains actual-session occurrence representation. Grade submission/
-  finalization, edit permissions and passing are accepted (ADR-024, Q-009 resolved).
-  Placement/teacher changes
-  are accepted (ADR-023).
-  Enrollment cancellation/completion are
-  accepted (ADR-022); Q-005 retains database enforcement. Test-booking rules
-  are accepted (ADR-021); session opening/closure and grader replacement are
-  accepted (ADR-030). Q-004 retains history/audit representation and effective-
-  closure persistence. Detailed security storage/enforcement still remains open.
-  Q-005/Q-007/Q-011/Q-012 track remaining lifecycle/cancellation/detail gaps;
-  the draft does not mark stage 1 complete.
-- Agree on workflows, state transitions, failure/cancellation cases and the
-  business questions in `docs/plan/questions.md`.
-- Finalize the database data dictionary, relationships, constraints and
-  history rules against the agreed workflows.
-- Finalize system architecture, module boundaries, security, interface
-  conventions and runtime/deployment assumptions.
-- Cross-check the complete design and obtain owner acceptance; only then
-  discuss implementation phases, slices, Git setup and scaffolding.
-- As each additional skill or coding-agent integration is supplied, review it
-  and record its scope, ownership boundary, handoff, and verification method.
-- Set up/verify a skill connection only when its workflow is invoked; local
-  `codex-with-chatgpt` discovery is already confirmed.
+- Discuss proposed M0–M4 implementation milestones in
+  `docs/plan/implementation-plan.md`; gather deadline/weekly availability, then
+  refine dependencies, slice sizes and M0 contract with owner. Planning only;
+  no code/SQL/Git/scaffold/packages/deployment/runtime operations started.
+- Update affected source/trace/ADRs if owner asks for a later design change.
 
-## Blocked
+## Deferred / evidence boundary
 
-- Architecture and implementation progress cannot be documented beyond target
-  constraints because no source code exists.
-- The four-phase implementation breakdown cannot be recorded because it is
-  mentioned but not defined in the available instructions.
-- Q-004–Q-010 identify undefined product details; do not implement their answers
-  as assumed rules. Independent design analysis may continue, but the complete
-  baseline cannot be accepted while in-scope business rules remain unresolved.
+- D12/D13 performance/deployment values keep original deferral/notes.
+- DF01–05 environment/evidence prerequisites remain: backupmedia/access/key/
+  isolatedrestore,compatiblepatch/blocklistpins/profilecompatibility/config,
+  future SQL/API/EF/grants/race/browser/CSV/load/recovery evidence.
+- No installed values or execution results. Four-phase/Slice0/integration work
+  is now open for owner-requested planning; phase/Slice0 proposals are not accepted.
+  Integrations remain on-demand and inactive.
 
 ## Completed
 
+- 2026-10-03: Actual E04-v1 accepted ADR-160,then E05-v1/full baseline ADR-161;checked2owner gates/stages4–5done,D12/D13notes kept,no implementation/planning/tests.
+
+- 2026-10-03: Completed E04-v1 review-ready package/final contract and prepared E05-v1 cross-check; clarified E03/Teacher-history wording, preserved approvals and deferred choices. No runtime evidence/implementation.
+
+- 2026-10-03: Owner approved RF01/02/04; ADR-157/158/159 and canonical
+  requirements/NV/W/E04/memory synchronized. No full E04/E05 acceptance/
+  code/SQL/runtime tests; D12/D13 and owner stage gates preserved.
+
+
+- 2026-10-03 (SC02–04-v1): Added55actions/C1bytes+refs/replay/SP-FN/EF/grants/
+  locks/audit/runtime-slot appendices and SC01 consolidated parity review.
+  Synced design/memory;RF01/02/04 pending,RF03 Accepted156;no code/SQL/tests.
+
+
+- 2026-10-03 (D10): Added5 Reports/CSV schemas,154/154 domain DTO coverage.
+  Role-scoped snapshot/filter/time/totals/decimal38/distinct/LESSON/FINALIZED
+  no-data and fresh all-results bounded CSV documented, with2 JSON/1 CSV
+  illustrations. New wire details draft; SC-01 parity/SC-02–04/E04–E05 open.
+  Sources/ADR-156/owner marks/side work preserved; no code/SQL/runtime tests.
+
+- 2026-10-03 (D9): Added10 whole-Class grades/review/Student-own FINALIZED
+  schemas,149 total/5 remaining. Full-cohort guards/finalize Registrations,
+  scoped preview/review/publication/history/unfinished TX/decimal results
+  and examples documented. Sources/ADR-156/owner marks/side work preserved;
+  RF01/02 still proposed/E04/E05 open. Static checks only, no code/SQL/tests.
+
+- 2026-10-03 (D8): Added9 Attendance/Teacher gradebook/detail/selector/draft-save
+  schemas,139 total/15 remaining. Full cohort/delta/absence guards, current
+  Teacher/Academic read-only projections, per-Student score-comment TX/report
+  version touch, full required-component totals/missing semantics and examples.
+  Sources/ADR-156/review marks/earlier side work preserved; RF01/02 still
+  proposed/E04/E05 open. Static checks only, no code/SQL/runtime tests.
+
+- 2026-10-03: RF03 approved and recorded ADR-156; synced root/weekly/move-target
+  future cutoff/no backfill/live-clock/whole-batch checks to requirements,
+  dated NV19/W16 addenda and E04/memory.130/154 DTO drafts unchanged;
+  RF01/02/E04/E05 still open, owner marks/E03 physical model preserved.
+  No code/SQL/runtime tests; next Attendance/per-Student draft API-131–139.
+
+- 2026-10-03 (D7): Added17 Schedule/scoped-calendar drafts,130 total
+  API-001–130/24 remaining. Whole concrete weekly plan, resource/cohort/full
+  obligation contexts, move/replacement atomicity, manual HELD/role-safe
+  chains and JSON examples written. RF03 clock cutoff proposed, RF01/02 open.
+  Accepted sources/owner marks preserved; catalog/memory synced, no code/SQL/
+  runtime tests or E acceptance. Full-set/plan pagination clarified.
+
+- 2026-10-03 (D6): Added23 Class/placement/Teacher-Student DTO drafts,
+  113 total API-001–113/41 remaining. Full cohort/Schedule/Attendance guards,
+  explicit lifecycle/Teacher change, atomic placement/internal DRAFT privacy,
+  three role projections and examples/recovery documented. Accepted sources/
+  owner marks/earlier report-sequence artifacts preserved; RF01/02 proposed.
+  Catalog/memory synced; static checks only, no code/SQL/runtime tests.
+
+- 2026-10-02 (D5): Added17 Course/Band/Program/shared-result DTO drafts,
+  90 total API-001–090/64 remaining. Exact source/target component sets,
+  selected-relation versions, activation weights/exam checks, used freeze,
+  rename/lifecycle separation and lookup role/action pairs/examples written.
+  Protected sources/review marks unchanged; E04-RF01/02 not accepted.
+  Catalog/memory synced, static checks only; no code/SQL/runtime tests.
+
+- 2026-10-02 (D4): Added20 Session/Teacher DTO drafts,73 total API-001–073/
+  81 remaining. Task scopes/full sets/ABSENT vs score/original provenance/recovery
+  and safe examples written. E04-RF01/02 proposed and catalog/memory synced;
+  protected sources/review marks, no Accepted ADR/code/SQL/runtime tests.
+
+- 2026-10-02 (D3): Added16 DTO drafts Admissions/Student Invoice/Accountant
+  Invoice-Payment,53 total API-001–053/101 remaining. Role allowlists/absence/
+  immutable money-time/fresh print/lookup role pairs and safe examples written.
+  Catalog/memory synced; accepted sources/review marks protected, no runtime tests.
+
+- 2026-10-02 (D2): Added27 proposed DTO entries to E04_DTO_SPEC,37 total
+  API-001–037/117 remaining. Admin/audit/home/Registration/booking/confirmation
+  schemas/guards/full sets and safe examples written; catalog/memory synced.
+  Protected accepted source/review marks; no ADR acceptance/code/SQL/runtime tests.
+
+- 2026-10-02: Created E04-C1 registry/route manifest/W→API→E03→case trace
+  and E04-D1's10 schema drafts. Checked document inventory (154 paths/55 UUID/
+  6 lookups/32 F/21 W/37 NV), explicit SC gaps; no implementation/tests or E acceptance.
+
+- 2026-10-01: Recorded all23 checked E04-R1 rows plus explicit all-approval
+  as ADR-150–155; synchronized displayed contracts and preserved notes. Restored
+  stale OWNER_REVIEW E01–E03 acceptance metadata/checks; E04/E05 still unchecked,
+  D12/D13 deferred, E03 unchanged. No code, SQL, provisioning or executed tests.
+
+- 2026-10-01: Recorded presented Gói4e acceptance as ADR-149; created
+  E04_REMAINING_REVIEW E04-R1 (6 packages/23 unchecked owner-review rows).
+  Preserved OWNER_REVIEW gates/notes and E03; no code/SQL/tests.
+
+- 2026-10-01: Recorded presented E04 Schedule/scoped calendar4d acceptance
+  as ADR-148; prepared Attendance/per-Student draft4e proposal.
+  E04/E05 unchecked; no code/SQL/tests.
+
+- 2026-10-01: Recorded presented E04 Class/placement/scoped reads4c acceptance
+  as ADR-147; prepared Schedule/weekly generation/move/replacement/HELD/scoped
+  calendar4d proposal. E04/E05 unchecked; no code/SQL/tests.
+
+- 2026-10-01: Recorded presented E04 Course/program/configuration4b acceptance
+  as ADR-146; prepared Class/placement/scoped reads4c proposal.
+  E04/E05 unchecked; no code/SQL/tests.
+
+- 2026-10-01: Recorded presented E04 Entry sessions/Teacher grading4a acceptance
+  as ADR-145; prepared Course/program/configuration4b proposal.
+  E04/E05 unchecked; no code/SQL/tests.
+
+- 2026-10-01: Recorded presented E04 Admissions/Finance3c acceptance as ADR-144;
+  prepared Entry sessions/Teacher grading4a proposal. E04/E05 unchecked; no code/SQL/tests.
+
+- 2026-10-01: Recorded presented E04 Student Admissions3b acceptance as ADR-143;
+  prepared Admissions/Finance3c proposal. E04/E05 unchecked; no code/SQL/tests.
+
+- 2026-10-01: Recorded presented E04 Students3a acceptance as ADR-142;
+  prepared Student Admissions3b proposal. E04/E05 unchecked; no code/SQL/tests.
+
+- 2026-10-01: Recorded presented E04 Administration2b acceptance as ADR-141;
+  prepared Students3a proposal. E04/E05 unchecked; no code/SQL/tests.
+
+- 2026-10-01: Recorded presented E04 Auth/session2a acceptance as ADR-140;
+  prepared Administration2b proposal. E04/E05 unchecked; no code/SQL/tests.
+
+- 2026-10-01: Recorded presented E04 package1 acceptance as ADR-139 and
+  prepared Auth/session2a proposal. E04/E05 unchecked; old choices preserved.
+  No application/SQL/migration, provisioning, packages or executed tests.
+
+- 2026-10-01: Recorded actual consolidated E03-v1 acceptance; checked only E03,
+  marked stage3 done and stage4 doing. Prepared E04 opening draft only.
+  No new ADR/code/SQL/migration or runtime tests.
+
+- 2026-09-30: Recorded the owner's explicit full-artifact E02-v1 acceptance;
+  checked only E02, marked workflow stage done and E03 database stage doing.
+  No new ADR, code, runtime tests or implementation authorization.
+
+- 2026-09-30: Prepared E02-v1 WORKFLOW_SPEC from owner-confirmed sections;
+  verified21 W flows and trace coverage of37 retained NV/32 F, linked unchecked
+  E02 row and marked stage 2 review. No app tests, code, new ADR or E02 approval.
+
+- 2026-09-30: Recorded the owner's explicit E01-v1 acceptance; checked E01,
+  marked business functions done and workflows doing. No E02 acceptance,
+  new ADR, code, runtime tests or implementation authorization.
+
+- 2026-09-29: Prepared E01-v1 FUNCTION_SPEC with37 detailed retained functions,
+  shared actions, validation/actor matrices and32-screen trace; verified structural
+  coverage against39 source NV with NV10/NV11 and F15 excluded. Updated catalog,
+  review link/stage1 review and handoff. No E approval/new ADR/code/runtime tests.
+
+- 2026-09-29: Recorded explicit whole-Gói 3 approval as ADR-121–ADR-129,
+  checked FE11–FE19 and synced affected specification/target/catalogue/plan
+  memory. Preserved 66 previous rows/notes and ADR-001–ADR-120 unchanged;
+  68/75 accepted, D12/D13 deferred and E01–E05 pending. No code/operations.
+
+- 2026-09-29: Prepared one bundled Gói 3 review with nine unchecked FE11–FE19
+  rows, context/trade-offs/risks in OWNER_REVIEW. Preserved 66 previous rows/
+  notes; total 75 (59 accepted/16 open). Updated review handoff, no new product
+  approval/ADR, code, operations or E acceptance.
+
+- 2026-09-29: Recorded six newly checked D choices as ADR-114–ADR-119 and
+  explicit D17 default owner-operator confirmation as ADR-120. Preserved owner
+  notes/other table rows and D12/D13 deferral; synced affected memory.
+  59/66 accepted rows, seven open; Gói 3/E still unaccepted. No code/operations.
+
+- 2026-09-29: Recorded complete Gói 2 approval; added eight FE03–FE10 rows
+  and ADR-106–ADR-113. Synced accepted frontend contracts/affected memory;
+  preserved old approvals and all open D/E. No code/packages/deployment.
+
+- 2026-09-29: Created owner-requested SELF_HOSTED_DEMO.md with local/LAN/
+  Internet-tunnel flow, operating cycle, safety and demo fallback. Linked memory;
+  no code, installation, public access or D/E acceptance.
+
+- 2026-09-29: Saved FE02 page/navigation as ADR-105 and synced affected memory.
+  Hosting question remains advisory; no deployment approval/code/cloud resources.
+
+- 2026-09-29: Saved FE01b menus/landing as ADR-104, synced screen mapping and
+  prepared unchecked FE02 page/navigation proposal. No code or E acceptance.
+
+- 2026-09-29: Saved FE01a approval as ADR-103, synced responsive shell and
+  prepared unchecked FE01b role menu proposal. No code/stage-output acceptance.
+
+- 2026-09-29: Saved eight Gói 1 D approvals as ADR-095–ADR-102, including
+  revised D15 responsive priorities. Synced affected memory/contracts and
+  prepared FE01a for Gói 2 discussion one part at a time. No code/E acceptance.
+
+- 2026-09-29: Updated next-chat handoff for frontend discussion, preserving all
+  accepted A–C decisions and open D–E choices; added an opening prompt and
+  grouped-review guidance. No new layout/library/design approval or code.
+- 2026-09-28: Persisted 33 approved A–C items as ADR-083–ADR-094 and synced
+  requirements/catalogue/22-entity target/affected memory and owner-review metadata.
+  Preserved owner checks and all D/E rows; no code/schema or E/stage acceptance.
 - 2026-09-28: Consolidated known remaining design decisions into the owner's
   four-column `docs/plan/OWNER_REVIEW.md` (55 unchecked items), with gated final
   document acceptance and no re-asking ADR-001–ADR-082. Linked affected memory/

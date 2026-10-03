@@ -233,6 +233,75 @@ không cắt ngắn dữ liệu. Đây là giới hạn project chủ dự án c
 biểu mẫu hoặc chuẩn kỹ thuật. Word không đổi; kiểm tra/lưu còn thiết kế dữ liệu/
 kiến trúc, chưa code/schema hoặc chấp nhận toàn baseline.
 
+## Truy vết bổ sung: owner duyệt A–C — ADR-083–ADR-094
+
+Ngày 28/09/2026 owner tích [x] đủ A01–A10/B01–B07/C01–C16 trong
+`../plan/OWNER_REVIEW.md` và xác nhận chỉ A–C đã duyệt, D/E còn lại.
+Đã ghi nhận 33 lựa chọn vào requirements/ADRs/catalogue/target model: quyền
+xem/menu/lịch sử, catalogue/class/score workflows, HELD/NOT_HELD/FINAL_EXAM,
+lịch và các hợp đồng dữ liệu/transaction/phiên/báo cáo. EntryTestBooking và
+AuthSession mở rộng mô hình báo cáo 20 entity thành 22 target entities;
+replay-result store/dictionary đầy đủ chưa nghiệm thu. Đây là quyết định bổ
+sung của owner, không khẳng định toàn bộ có trong Word hoặc code đã triển khai.
+D01–D17/E01–E05 chưa duyệt. Không sửa báo cáo nguồn hoặc biểu mẫu minh họa.
+
+## Truy vết bổ sung: owner duyệt Gói 1 frontend — ADR-095–ADR-102
+
+Ngày 29/09/2026 owner đồng ý Gói 1: D01–D04/D06–D07/D10/D15. D15 dùng
+ưu tiên Học viên 375 px/nhân sự 1280 px, tất cả kiểm tra ba kích thước.
+Ghi nhận module/server ownership, API/errors/pagination, interactive idle/
+tab chung, restricted session 10 phút, same-origin JWT cookie/CSRF, login
+privacy/IP 100 request/phút, CSV 10.000 dòng/5 MB/format/formula safeguards
+và phạm vi kiểm chứng tương lai. Đây là lựa chọn bổ sung của owner, không
+suy từ Word hoặc chứng cứ triển khai. Gói 2 bàn từng phần; FE01a/FE01b/FE02
+đã duyệt riêng ADR-103–ADR-105 từ trao đổi với owner ngày 29/09/2026:
+khung responsive/menu theo vai trò và cấu trúc trang/đường đi, không thêm
+chức năng hoặc quyền. Tại thời điểm đó các phần còn lại/Gói 3 chưa duyệt. Còn
+D05/D08/D09/D11–D14/D16/D17 và E; câu hỏi hosting không là phê duyệt vận hành.
+
+## Truy vết bổ sung: owner duyệt toàn bộ Gói 2 — ADR-106–ADR-113
+
+Ngày 29/09/2026 owner xác nhận đồng ý hoàn toàn Gói 2 đã đề xuất trong chat.
+Đối chiếu đề xuất gốc: FE01–FE10 khung giao diện chung, không là tài liệu tự
+host hoặc Gói 3. Giữ FE01a/FE01b/FE02 đã chốt, bổ sung FE03–FE10 thành tám
+dòng OWNER_REVIEW và ADR-106–ADR-113: responsive lists, quyền/điều kiện,
+form/validation, loading/errors, confirmation, component cục bộ, định dạng
+Việt Nam và hướng hình ảnh. Không suy các lựa chọn này từ Word/mockup.
+Tại thời điểm đó Gói 3 FE11–FE19, chín D và E chưa duyệt; không đổi source report, không
+code/packages/hosting hoặc khai báo kiểm chứng đã chạy.
+
+## Truy vết bổ sung: owner cập nhật bảng D và chốt người vận hành — ADR-114–ADR-120
+
+Ngày 29/09/2026 owner báo cập nhật OWNER_REVIEW; đối chiếu thấy D05/D08/D09/
+D11/D14/D16 đã tích, giữ đề xuất gốc và không ghi phương án thay thế. Lưu
+ADR-114–ADR-119: hash/generator/blocklist offline; mandatory audit rollback/
+pure security events best-effort; mandatory history/pure logs-IP 90 ngày;
+phạm vi một trung tâm/10.000 học viên/50 đồng thời; backup mã hóa hằng ngày/
+7 ngày-4 tuần/restore tháng/RPO24h-RTO2h mục tiêu; .NET10/EF10/SQL2022 Developer
+non-production. Không suy từ báo cáo hoặc từ câu hỏi hosting.
+
+D17 ban đầu chưa tích và yêu cầu hỏi-chốt người phụ trách một lần rồi mặc
+định. Owner trả lời đồng ý tự phụ trách toàn bộ release/secret/backup-restore/
+bảo trì; lưu ADR-120, cập nhật ô D17, giữ ghi chú gốc. Chỉ hỏi lại khi owner
+yêu cầu đổi người; không thêm quyền Admin/DBA trong ứng dụng. D12/D13 giữ
+chưa tích/ghi chú hoãn đến khi chốt nơi chạy web/phần mềm. Tổng 59/66 dòng
+đã duyệt, 2 D và 5 E còn mở; Gói 3 chưa duyệt. Không sửa Word, không code,
+cài đặt/triển khai/backup/test hoặc nghiệm thu E.
+
+## Truy vết bổ sung: owner duyệt Gói 3 — ADR-121–ADR-129
+
+Ngày 29/09/2026 owner yêu cầu trình một lượt FE11–FE19, sau đó xác nhận ghi
+nhận toàn bộ Gói 3, không nêu ngoại lệ. Lời duyệt trực tiếp là nguồn cập nhật
+chín ô OWNER_REVIEW và ADR-121–ADR-129, không suy từ ô trống hoặc Gói 2.
+Giữ nguyên 66 dòng trước đó/ghi chú owner và ADR-001–ADR-120; đồng bộ
+requirements mục 4.8, target architecture, catalog và kế hoạch/handoff.
+
+Chốt mẫu trang chủ Student, lịch/preview tuần, điểm danh theo LESSON và nháp
+điểm theo học viên, thao tác bảng điểm cả lớp, báo cáo, in Invoice của mình,
+bàn giao mật khẩu tạm một lần và chi tiết audit. Không thêm quyền, module,
+NV/F, entity hoặc package. Có 68/75 dòng duyệt; D12/D13 vẫn hoãn và E01–E05
+chờ đầu ra thật. Không sửa Word, không code, vận hành hoặc tuyên bố test pass.
+
 ## Tiến độ có thể kết luận
 
 Tài liệu có phân tích nghiệp vụ, thiết kế dữ liệu và mockup. Không đủ bằng

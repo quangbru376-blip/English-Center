@@ -1,9 +1,12 @@
 # Project Planning
 
 This file indexes the current planning stage and later implementation work.
-The active stage is full design agreement in `design-baseline.md`. Agree on
-business functions, workflows, database and system architecture before
-discussing implementation planning. No application slice is active or authorized.
+Complete design agreement in `design-baseline.md` is done: E01–E05 accepted,
+actual E04-v1 ADR-160 then E05-v1/full baseline ADR-161 on2026-10-03.
+Owner requested coding-plan discussion on2026-10-03. Planning is now active
+in [implementation-plan.md](implementation-plan.md), with proposed M0–M4
+milestones pending discussion. No application slice/code/SQL/Git/scaffold/
+deployment is active or authorized by the planning request.
 
 ## Preparation
 
@@ -11,27 +14,26 @@ discussing implementation planning. No application slice is active or authorized
 |---|---|---|
 | Project Memory bootstrap | done | Repository-level memory created. |
 | Official report adoption and six resolutions | done | Canonical `docs/requirements.md`; Word unchanged. |
-| Complete detailed report transfer and business agreement | doing | See `design-baseline.md`; the saved baseline is not yet a complete detailed specification. |
-| Agree on workflows, database and architecture | todo | Resolve in-scope open business rules before baseline acceptance. |
-| Cross-check and accept the complete design | todo | Owner acceptance precedes implementation planning. |
-| Confirm repository and initialize Git | deferred | Only during authorized implementation; workspace is not a Git repository. |
+| Complete detailed report transfer and business agreement | done | E01/requirements/source provenance accepted; Word unchanged. |
+| Agree on workflows, database and architecture | done | E02/E03/E04-v1 accepted; actual E04 ADR-160, environment/evidence prerequisites retained. |
+| Cross-check and accept the complete design | done | Actual E05-v1/full baseline accepted ADR-161 after E04,03/10/2026. |
+| Confirm repository and initialize Git | deferred | Only with separate owner-authorized scope; no Git action from design acceptance. |
 | Scaffold backend and frontend | deferred | Only during authorized implementation. |
-| Resolve Slice 0 scope | deferred | Discuss after complete design acceptance; see `questions.md`. |
+| Resolve Slice 0 scope | doing | M0 identity pilot proposed; refine during owner-requested planning, no code. |
 | Register agent integration contracts | todo | Add each contract when its skill is supplied. |
 
 ## Phase 1–4
 
 The older instruction kit proposes four phases for 33 screens but does not
-define their boundaries. Phase grouping and slice plans are deferred until
-the owner accepts the complete design and moves to implementation planning.
-Do not invent or activate phases during the current design discussion.
+define their boundaries. Owner has now accepted the complete design and requested implementation
+planning. M1–M4 boundaries and an M0 pilot are explicitly proposed in the
+new discussion draft; they are not accepted merely because the kit says four phases.
 
 Product plans must now use `docs/requirements.md`, the normalized target model
 in `docs/ARCHITECTURE.md`, and accepted ADRs. Old instruction-kit requirements
-or Word diagrams must not reinstate removed or superseded behavior. Independent
-design work may continue while questions are open, but the complete baseline
-requires agreement on all in-scope product rules. No implementation slice,
-scaffolding or application coding is authorized during this stage.
+or Word diagrams must not reinstate removed or superseded behavior. The complete design baseline is accepted. The current stage is planning
+discussion; no implementation slice, scaffolding or application coding has
+been activated by this request.
 
 ## Slice status vocabulary
 

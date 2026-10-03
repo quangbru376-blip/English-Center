@@ -1764,3 +1764,2451 @@ Keep one Payment per Invoice, full-payment equality, confirmation time and
 reasoned metadata-only corrections/audits. The reference alone is neither a new
 deduplication key nor proof of receipt; no bank integration/identity field or
 override. Exact storage/validation remains technical design, not code authority.
+
+## ADR-083: Define operational detail visibility
+
+Status: Accepted — 2026-09-28
+
+Context:
+The owner checked A01, A02, A03, A06 in `docs/plan/OWNER_REVIEW.md` and explicitly
+confirmed approval of A–C, excluding D/E. No alternative was entered.
+
+Decision:
+- A01: Tra cứu mọi trạng thái hồ sơ, kể cả đã kết thúc/CANCELLED/REJECTED. Chi tiết: tên/email/SĐT hiện tại, khóa, kết quả đầu vào/Band, xác nhận/duyệt/trạng thái, số tiền và trạng thái hóa đơn, lớp đã xếp. Không xem phương thức/mã giao dịch Payment, điểm danh/bảng điểm đào tạo, ngày sinh/địa chỉ hoặc danh sách hồ sơ cá nhân toàn hệ thống; không thêm quyền sửa/đăng ký thay/xuất.
+- A02: Xem tên/email/SĐT hiện tại, khóa/kết quả đầu vào/Band phục vụ ca thi, xếp và quản lý lớp. Hóa đơn chỉ hiển thị trạng thái, không số tiền/Payment. Xem lịch/điểm danh và bảng điểm SUBMITTED/RETURNED/FINALIZED, không giá trị nháp DRAFT của giáo viên. Không thêm quyền nhập/sửa điểm, sửa hồ sơ hoặc tài chính.
+- A03: Tra mọi trạng thái gồm CANCELLED; lọc số hóa đơn/khóa/tên-email-SĐT học viên/trạng thái/khoảng ngày phát hành tùy chọn/chỉ quá hạn. Chi tiết hóa đơn, Payment và người/thời điểm xác nhận cùng thông tin liên hệ cần thiết; không điểm/điểm danh. Tách tra cứu nghiệp vụ này khỏi kỳ báo cáo và quyền CSV; không thêm xuất riêng hồ sơ/hóa đơn, in hoặc sửa ngoài quyền đã chốt.
+- A06: Trong ca/lớp đang được phân công, xem mã học viên nội bộ, tên/email/SĐT hiện tại và dữ liệu thi/điểm danh/điểm thuộc nhiệm vụ của mình; không ngày sinh/địa chỉ/hóa đơn/Payment hoặc danh sách học viên toàn trung tâm. Không còn được phân công thì mất quyền xem theo nhiệm vụ đó, không thêm quyền sửa hồ sơ.
+
+Reason and alternatives:
+Adopt the owner's approved recommendation; unselected alternatives are not
+requirements. Preserve the previous accepted business boundaries.
+
+Consequences:
+Limits personal/financial disclosure to the role's current task; no additional edit/export rights. Related: ADR-016/019/029/071.
+Acceptance is of design choices only, not E01–E05 outputs, implementation,
+new packages, Git initialization or scaffolding.
+
+## ADR-084: Place account actions and Student schedule history in existing UI
+
+Status: Accepted — 2026-09-28
+
+Context:
+The owner checked A04, A05 in `docs/plan/OWNER_REVIEW.md` and explicitly
+confirmed approval of A–C, excluding D/E. No alternative was entered.
+
+Decision:
+- A04: Có hai phần Hiện tại/Lịch sử, chọn lớp của chính mình khi học nhiều khóa hoặc học lại. Lớp hoàn thành chỉ xem; buổi không tổ chức ghi rõ và liên kết buổi thay thế, không hiện như lịch sắp tới hoặc hai buổi đã dạy. Không xem lớp người khác/điểm chưa FINALIZED; không ngầm chốt enum lưu lịch.
+- A05: Dùng menu tài khoản chung trên giao diện hiện có: mọi vai trò tự đổi mật khẩu; chỉ Học viên sửa hồ sơ cá nhân theo các trường đã chốt. Không thêm mã F hoặc quyền sửa thông tin nhân sự. Giữ kiểm tra mật khẩu hiện tại, email bất biến, hủy phiên và bắt đổi mật khẩu tạm.
+
+Reason and alternatives:
+Adopt the owner's approved recommendation; unselected alternatives are not
+requirements. Preserve the previous accepted business boundaries.
+
+Consequences:
+Refines existing screens without adding F codes, staff profile editing or unpublished grades. Related: ADR-019/020/039/049.
+Acceptance is of design choices only, not E01–E05 outputs, implementation,
+new packages, Git initialization or scaffolding.
+
+## ADR-085: Define catalogue lifecycle and immutable class-program links
+
+Status: Accepted — 2026-09-28
+
+Context:
+The owner checked A07, A08, A09 in `docs/plan/OWNER_REVIEW.md` and explicitly
+confirmed approval of A–C, excluding D/E. No alternative was entered.
+
+Decision:
+- A07: Giáo vụ sửa tên/giá cơ sở; giá mới chỉ áp dụng hóa đơn phát hành sau đó, không sửa snapshot tiền đã phát hành. Course INACTIVE chặn đăng ký mới; các hồ sơ đã tồn tại tiếp tục quy trình hợp lệ, không tự hủy hồ sơ/lớp/chương trình. Cho khôi phục ACTIVE trên cùng khóa; mã khóa vẫn bất biến.
+- A08: Trước lớp đầu tiên: cấu hình ở DRAFT; chuyển ACTIVE khi Band/khóa hợp lệ, số LESSON dương, thành phần hợp lệ và tổng trọng số 100. Muốn sửa cấu hình ACTIVE chưa dùng thì đưa về DRAFT và kiểm tra lại. INACTIVE chặn tạo/mở lớp mới, không dừng lớp đã dạy/chấm; khôi phục ACTIVE không xóa khóa cấu hình đã sử dụng. Không tạo chương trình trùng khóa/Band hoặc version để né khóa.
+- A09: Không đổi TrainingProgram của Class sau khi tạo; chọn sai thì xử lý hủy lớp hợp lệ/tạo lớp mới, không chuyển học viên. Giáo vụ sửa sức chứa chỉ trước ONGOING, trong 1–15 và không dưới sĩ số đã xếp. Giữ nguyên giới hạn đổi giáo viên, mã lớp và điều kiện hủy đã chốt.
+
+Reason and alternatives:
+Adopt the owner's approved recommendation; unselected alternatives are not
+requirements. Preserve the previous accepted business boundaries.
+
+Consequences:
+Preserves issued money snapshots and first-use freezes; inactive configuration does not cancel existing work. Related: ADR-023/026/028/032/040/079.
+Acceptance is of design choices only, not E01–E05 outputs, implementation,
+new packages, Git initialization or scaffolding.
+
+## ADR-086: Gate initial entry grading at test end and enforce effective closure
+
+Status: Accepted — 2026-09-28
+
+Context:
+The owner checked A10, B04 in `docs/plan/OWNER_REVIEW.md` and explicitly
+confirmed approval of A–C, excluding D/E. No alternative was entered.
+
+Decision:
+- A10: Chỉ cho giáo viên được phân công nhập điểm đầu vào lần đầu từ khi ca kết thúc; không áp hạn 24/48 giờ, nhưng phải còn hồ sơ hợp lệ trước xác nhận và ca không CANCELLED. Không nới cửa sổ sửa điểm ADR-029; ABSENT vẫn chỉ sau ca kết thúc và không suy từ thiếu điểm. Điểm đào tạo giữ cửa sổ lớp ONGOING/COMPLETED và DRAFT/RETURNED đã chốt.
+- B04: API luôn tính trạng thái hiệu lực: ca chưa hủy và đã đến giờ bắt đầu là CLOSED dù dữ liệu cũ còn OPEN. Ghi CLOSED cùng thao tác ghi hợp lệ kế tiếp; truy vấn chỉ đọc không âm thầm sửa dữ liệu. Không cần cron mới để quyền đóng ca đúng giờ; tất cả thao tác kiểm tra giờ server trong transaction, không mở lại ca đã bắt đầu.
+
+Reason and alternatives:
+Adopt the owner's approved recommendation; unselected alternatives are not
+requirements. Preserve the previous accepted business boundaries.
+
+Consequences:
+Adds an initial-entry cutoff, not a new correction right. Closure does not need a scheduler or writes on reads. Related: ADR-027/029/030/031.
+Acceptance is of design choices only, not E01–E05 outputs, implementation,
+new packages, Git initialization or scaffolding.
+
+## ADR-087: Confirm actual occurrence and model linked lessons and final exams
+
+Status: Accepted — 2026-09-28
+
+Context:
+The owner checked B01, B02, C02, C03 in `docs/plan/OWNER_REVIEW.md` and explicitly
+confirmed approval of A–C, excluding D/E. No alternative was entered.
+
+Decision:
+- B01: Giáo vụ xác nhận riêng từng LESSON/FINAL_EXAM sau giờ kết thúc dự kiến và khi lớp ONGOING; lưu người/thời điểm. Không tự suy từ thời gian hoặc điểm danh. Không có nút đảo HELD về chưa diễn ra; lịch chưa được xác nhận tiếp tục chặn hoàn thành. Không thay cửa sổ nhập điểm danh đã duyệt.
+- B02: Mỗi lớp có một nghĩa vụ FINAL_EXAM, riêng số LESSON, sau LESSON cuối theo lịch hiện hành; cấu hình có một thành phần điểm loại FINAL_EXAM. Nếu thi cả lớp không tổ chức, mở rộng quy trình thay thế có lý do/liên kết sang FINAL_EXAM, chỉ khi chưa điểm phụ thuộc và lớp chưa kết thúc; giữ buổi cũ, một nghĩa vụ, không thi lại cá nhân. Đây là bổ sung đã duyệt cho FINAL_EXAM ngoài LESSON của ADR-036.
+- C02: Schedule có occurrence_state PLANNED/HELD/NOT_HELD, người/thời điểm xác nhận và lý do/người/thời điểm không tổ chức; có mã nghĩa vụ và replaces_schedule_id cùng lớp/loại. Một lịch hiện hành cho mỗi nghĩa vụ; chuỗi thay thế giữ lịch sử nhưng không tăng số buổi. Lịch lớp CANCELLED bị loại bằng trạng thái lớp, không suy HELD từ điểm danh hoặc đồng hồ.
+- C03: ScoreComponentConfig có kind GENERAL/LESSON/FINAL_EXAM; loại này cũng khóa từ lớp đầu tiên. Score có schedule_id bắt buộc với LESSON/FINAL_EXAM, cùng lớp/loại và buổi hiện hành; GENERAL để NULL. Vẫn một Score/học viên/thành phần, không biến thành điểm mỗi buổi vô hạn. Điểm gắn buổi chỉ nhập sau khi buổi đã bắt đầu; không nhập cho buổi NOT_HELD. Phối hợp B02 đã duyệt.
+
+Reason and alternatives:
+Adopt the owner's approved recommendation; unselected alternatives are not
+requirements. Preserve the previous accepted business boundaries.
+
+Consequences:
+Extends linked replacement to the single FINAL_EXAM obligation; preserves no individual retakes/extra lessons. Adds occurrence and score dependencies to the target model. Related: ADR-025/032/033/035/036/037/066.
+Acceptance is of design choices only, not E01–E05 outputs, implementation,
+new packages, Git initialization or scaffolding.
+
+## ADR-088: Use minute-precision same-day intervals and atomic timetable generation
+
+Status: Accepted — 2026-09-28
+
+Context:
+The owner checked B03, B05 in `docs/plan/OWNER_REVIEW.md` and explicitly
+confirmed approval of A–C, excluding D/E. No alternative was entered.
+
+Decision:
+- B03: Mỗi ca/buổi bắt đầu-kết thúc trong cùng ngày Việt Nam, bắt đầu trước kết thúc, độ chính xác phút; khoảng thời gian dạng [bắt đầu, kết thúc) nên được học/thi nối tiếp đúng giờ. Ngoài xung đột phòng/giáo viên đã chốt, chặn đặt ca/xếp lớp làm học viên trùng ca hoặc lịch lớp còn hiệu lực; không tự chuyển lớp/ca để xử lý.
+- B05: Nhập khoảng ngày/thứ/giờ/phòng, xem trước các buổi cụ thể, số nghĩa vụ còn thiếu và mọi xung đột; không tự bỏ ngày nghỉ. Chỉ lưu toàn bộ nếu tất cả hợp lệ và không vượt số LESSON; nếu lỗi không lưu phần nào. Không tự sinh lịch sau này và không tạo entity quy tắc lặp; thêm từng buổi vẫn được phép.
+
+Reason and alternatives:
+Adopt the owner's approved recommendation; unselected alternatives are not
+requirements. Preserve the previous accepted business boundaries.
+
+Consequences:
+Back-to-back sessions are valid, student overlaps are blocked alongside resource conflicts; weekly batches are all-or-none. Related: ADR-014/023/032/037.
+Acceptance is of design choices only, not E01–E05 outputs, implementation,
+new packages, Git initialization or scaffolding.
+
+## ADR-089: Preserve blocked assignments and require sensitive-action conflict previews
+
+Status: Accepted — 2026-09-28
+
+Context:
+The owner checked B06, B07 in `docs/plan/OWNER_REVIEW.md` and explicitly
+confirmed approval of A–C, excluding D/E. No alternative was entered.
+
+Decision:
+- B06: Không tự đổi người phụ trách, hủy lớp/ca/hồ sơ hoặc xóa dữ liệu. Người bị chặn không thực hiện nghiệp vụ; giao diện báo rõ tài khoản phụ trách không khả dụng. Đổi người chỉ trong cửa sổ đã chốt; ngoài cửa sổ thì chờ Admin mở/khôi phục tài khoản hợp lệ, không thêm quyền đổi giáo viên giữa khóa hoặc sửa điểm ngoại lệ.
+- B07: Trước thanh toán/chốt hoặc trả bảng điểm cả lớp/hủy/reset/khóa-ngừng tài khoản, hiển thị đối tượng và ảnh hưởng; lý do chỉ ở nơi đã bắt buộc. Khi dữ liệu thay đổi sau khi mở form, báo xung đột và yêu cầu tải lại/kiểm tra, không ghi đè tự động. Không thêm người phê duyệt thứ hai; preview hủy hồ sơ ADR-031 vẫn giữ.
+
+Reason and alternatives:
+Adopt the owner's approved recommendation; unselected alternatives are not
+requirements. Preserve the previous accepted business boundaries.
+
+Consequences:
+Account restoration remains distinct from reassignment; no post-start teacher replacement, second approver or silent overwrite. Related: ADR-023/029/031/049/050.
+Acceptance is of design choices only, not E01–E05 outputs, implementation,
+new packages, Git initialization or scaffolding.
+
+## ADR-090: Separate test bookings and enforce relational lifecycle integrity
+
+Status: Accepted — 2026-09-28
+
+Context:
+The owner checked C01, C04, C06, C10, C15, C16 in `docs/plan/OWNER_REVIEW.md` and explicitly
+confirmed approval of A–C, excluding D/E. No alternative was entered.
+
+Decision:
+- C01: Thêm EntryTestBooking liên kết EntryTestAttempt và EntryTestSession; mỗi lần đặt/hủy/vắng có bản ghi riêng, không ghi đè lịch sử. Attempt duy nhất theo hồ sơ/số lượt 1–2; một booking SCHEDULED hiện tại/lượt chưa hoàn thành, kết quả trỏ booking đã hoàn thành. API suy diễn trạng thái lượt từ kết quả/booking hiện tại; vắng/đặt lại không tăng lượt, không tạo lượt ba.
+- C04: Lưu Registration.is_unfinished do server quản lý; unique có điều kiện trên student_id/course_id khi true. Cập nhật cờ cùng transaction hủy/từ chối hoặc khi Class COMPLETED và GradeReport FINALIZED; kiểm tra cả dữ liệu gốc khi ghi để tránh cờ lệch. Không thêm Registration COMPLETED, không yêu cầu đạt môn.
+- C06: Dùng int IDENTITY cho các bảng nghiệp vụ; khóa kỹ thuật phiên/operation là định danh ngẫu nhiên. FK hạn chế xóa dữ liệu lịch sử, không cascade xóa hồ sơ/điểm/Invoice/Payment/audit. Mã học viên hiển thị là ID nội bộ, không tạo mã tự nhập mới; Course/Class code vẫn tách khỏi PK. Chỉ bỏ cấu hình nháp chưa dùng khi không có phụ thuộc và quyền hiện có cho phép.
+- C10: Đặt unique cho email chuẩn hóa/SĐT có giá trị, code khóa-lớp, cặp khóa-Band, tên thành phần trong chương trình, hồ sơ-số lượt, assignment/hồ sơ, điểm/học viên-thành phần, điểm danh/học viên-buổi, Invoice/hồ sơ và Payment/Invoice. Tên thành phần so không phân biệt hoa-thường nhưng có phân biệt dấu; không unique Payment reference. Index FK/cột lọc trạng thái-ngày/Teacher/phòng và phân trang; kiểm tra đúng vai trò/cùng lớp-chương trình bằng server trong transaction, không chỉ FK tồn tại.
+- C15: Khi tạo Class, khóa kiểm tra/cấu hình TrainingProgram cùng transaction và từ đó suy khóa bất biến bằng sự tồn tại của bất kỳ Class, kể cả CANCELLED. Bộ Band bị khóa khi có bất kỳ kết quả đầu vào COMPLETED; tuần tự hóa thao tác cấu hình và chấm đầu tiên. Không nút mở khóa/xóa lịch sử để né freeze, không thêm bảng version hoặc snapshot hồ sơ cá nhân.
+- C16: Số hóa đơn server cấp HD-YYYY-NNNNNNNN, năm theo ngày phát hành Việt Nam, bộ đếm DB tăng an toàn; không yêu cầu liên tục không khoảng trống/không tái dùng. Quan hệ một hồ sơ tối đa một Invoice, một Invoice tối đa một Payment, một assignment tối đa một GradeReport; các FK nghiệp vụ bắt buộc NOT NULL khi đối tượng đó tồn tại, actor có thể NULL chỉ với sự kiện chưa xác thực. Score chưa nhập là thiếu bản ghi, không 0; finalized_score/Band/Payment chỉ có khi đạt điều kiện tương ứng. Dictionary cuối sẽ ghi rõ từng trường, không mặc định tất cả nullable.
+
+Reason and alternatives:
+Adopt the owner's approved recommendation; unselected alternatives are not
+requirements. Preserve the previous accepted business boundaries.
+
+Consequences:
+Adds EntryTestBooking and the unfinished flag; identity/FK/unique/freeze and invoice-number contracts are accepted, but the complete dictionary/ERD is not yet accepted. Related: ADR-015/017/021/022/028/031/032/079/082.
+Acceptance is of design choices only, not E01–E05 outputs, implementation,
+new packages, Git initialization or scaffolding.
+
+## ADR-091: Specify exact numeric, time and normalized text representations
+
+Status: Accepted — 2026-09-28
+
+Context:
+The owner checked C07, C08, C09 in `docs/plan/OWNER_REVIEW.md` and explicitly
+confirmed approval of A–C, excluding D/E. No alternative was entered.
+
+Decision:
+- C07: Tiền đơn decimal(18,0), dương và không vượt 999.999.999.999.999.999 VND; tổng báo cáo decimal(38,0), API tiền dạng chuỗi số để frontend không mất chính xác. Điểm/trọng số decimal(5,2): điểm 0–100, trọng số >0 đến 100/tổng đúng 100; số LESSON int dương. Tính tổng điểm bằng decimal trung gian rồi half-up một lần như ADR-028; từ chối vượt range, không tự cắt/làm tròn đầu vào.
+- C08: Các thời điểm sự kiện lưu UTC datetime2(3), API ISO-8601 có Z. Ngày sinh/hạn thu dùng date; lịch dùng ngày Việt Nam và time(0), ràng buộc phút/same-day B03, chuyển UTC khi so thời điểm sự kiện. Backend áp Asia/Ho_Chi_Minh cho ranh giới ngày/kỳ; không phụ thuộc timezone máy học viên hoặc server.
+- C09: Đếm ký tự theo Unicode code point, không byte/UTF-16 unit; từ chối surrogate không hợp lệ, chuẩn hóa NFC văn bản không phải mật khẩu, cấp nvarchar đủ dung lượng tương ứng. Mật khẩu giữ nguyên, không trim/NFC/đổi hoa-thường. Email nhận một địa chỉ ASCII dạng local@domain, không tên hiển thị/khoảng trắng/ký tự điều khiển; trim/so trùng không phân biệt hoa-thường nhưng không bỏ dấu/chấm/+tag. SĐT chuẩn 0xxxxxxxxx từ quy tắc đã duyệt; chuỗi tùy chọn trim rỗng thành NULL, trường bắt buộc rỗng báo lỗi.
+
+Reason and alternatives:
+Adopt the owner's approved recommendation; unselected alternatives are not
+requirements. Preserve the previous accepted business boundaries.
+
+Consequences:
+Money strings prevent frontend precision loss; Unicode code points require sufficient SQL storage. Passwords remain unnormalized. These are project design contracts, not implemented validators. Related: ADR-028/043/044/047/053/073–082.
+Acceptance is of design choices only, not E01–E05 outputs, implementation,
+new packages, Git initialization or scaffolding.
+
+## ADR-092: Persist revocable authentication sessions and independent login timers
+
+Status: Accepted — 2026-09-28
+
+Context:
+The owner checked C11, C12 in `docs/plan/OWNER_REVIEW.md` and explicitly
+confirmed approval of A–C, excluding D/E. No alternative was entered.
+
+Decision:
+- C11: Thêm AuthSession với sid ngẫu nhiên, account_id, issued/expires/last_activity/revoked_at và phiên hạn chế nếu có; Account có security_version. JWT mang sid/version, mọi yêu cầu kiểm tra DB/status/hạn phiên; reset/đổi mật khẩu/khóa/ngừng tăng version và hủy phiên theo ADR-049. Không chỉ đợi JWT hết hạn, không Redis hoặc module quản lý thiết bị.
+- C12: Lưu failed_login_count, failure_window_started_at và login_throttled_until độc lập status tài khoản; tính UTC/cập nhật nguyên tử. Lưu must_change_password/temp_issued_at/temp_expires_at, chỉ hash mật khẩu; không lưu bản rõ để Admin xem lại. Throttle/expiry không tự unlock/enable; giữ nguyên 5 lần/15 phút và mật khẩu tạm 24 giờ đã duyệt.
+
+Reason and alternatives:
+Adopt the owner's approved recommendation; unselected alternatives are not
+requirements. Preserve the previous accepted business boundaries.
+
+Consequences:
+Adds AuthSession/account security version and UTC timers; does not accept cookie transport, idle-activity definition or restricted-session lifetime from D03/D04/D06. Related: ADR-048–ADR-057.
+Acceptance is of design choices only, not E01–E05 outputs, implementation,
+new packages, Git initialization or scaffolding.
+
+## ADR-093: Group audit history and serialize critical writes with replay protection
+
+Status: Accepted — 2026-09-28
+
+Context:
+The owner checked C05, C13 in `docs/plan/OWNER_REVIEW.md` and explicitly
+confirmed approval of A–C, excluding D/E. No alternative was entered.
+
+Decision:
+- C05: Lưu actor/time/reason/prior-state ở đối tượng khi cần, AuditLog giữ trường cũ/mới theo allowlist. Dùng operation_id chung cho thao tác mẹ và thay đổi phụ thuộc, gồm mọi GradeReport trong gửi/gửi lại/trả/chốt cả lớp. Giữ lịch sử lần gửi/trả/chốt, không chỉ timestamp cuối; không thêm workflow lịch sử đổi giáo viên lớp hoặc nút sửa/xóa log.
+- C13: Transaction ngắn; rowversion phát hiện form cũ, đồng thời khóa tuần tự tài nguyên/capacity/đối tượng để xử lý đặt ca-xếp lớp-thanh toán-hủy-chấm/xác nhận/đổi cấu hình và thu hồi phiên. Không coi rowversion một mình chống được trùng lịch. Thao tác nghiệp vụ quan trọng có request_id theo actor/action, lưu dấu kết quả cùng transaction tối thiểu 24 giờ: gửi lại cùng nội dung không tạo tác động mới, khác nội dung báo 409; kiểm tra quyền hiện tại khi nhận lại kết quả. Không lưu/phát lại mật khẩu tạm. Cơ sở kỹ thuật: [EF Core concurrency](https://learn.microsoft.com/en-us/ef/core/saving/concurrency).
+
+Reason and alternatives:
+Adopt the owner's approved recommendation; unselected alternatives are not
+requirements. Preserve the previous accepted business boundaries.
+
+Consequences:
+History/operation IDs and short transactions preserve all-or-none behavior. Rowversion alone is insufficient for aggregate/range guards. Audit-failure/retention policies D08/D09 remain unaccepted. Related: ADR-029/030/031/034/042/049/058–062.
+Acceptance is of design choices only, not E01–E05 outputs, implementation,
+new packages, Git initialization or scaffolding.
+
+## ADR-094: Read consistent report snapshots and display two-decimal rates
+
+Status: Accepted — 2026-09-28
+
+Context:
+The owner checked C14 in `docs/plan/OWNER_REVIEW.md` and explicitly
+confirmed approval of A–C, excluding D/E. No alternative was entered.
+
+Decision:
+- C14: Mỗi lượt báo cáo/export đọc một snapshot DB nhất quán, trả queried_at; CSV chạy một truy vấn mới theo cùng bộ lọc/cột, không hứa giữ nguyên ảnh chụp trang xem trước. Tỷ lệ đạt/tiến độ hiển thị 2 chữ số lẻ half-up, không làm tròn các thành phần đếm; mẫu số rỗng giữ “Chưa có dữ liệu”. Giữ nguyên nhóm thời gian/trạng thái hiện tại và tổng distinct đã duyệt.
+
+Reason and alternatives:
+Adopt the owner's approved recommendation; unselected alternatives are not
+requirements. Preserve the previous accepted business boundaries.
+
+Consequences:
+Each export is a fresh consistent query, not a frozen prior page or historical as-of report. CSV format/limits/security D10 remain unaccepted. Related: ADR-063–ADR-072.
+Acceptance is of design choices only, not E01–E05 outputs, implementation,
+new packages, Git initialization or scaffolding.
+
+## ADR-095: Define module ownership and server authority
+
+Status: Accepted — 2026-09-29
+
+Context:
+The owner approved frontend discussion Gói 1, specifically D01, and
+asked to review Gói 2 one part at a time. The approved choice is recorded in
+`docs/plan/OWNER_REVIEW.md`.
+
+Decision:
+Một backend modular monolith dùng stack và tên module mục tiêu hiện có: Students quản lý hồ sơ riêng; Admissions xử lý đăng ký/thi đầu vào; Academics quản lý cấu hình/lớp/lịch/điểm; Finance quản lý hóa đơn/thanh toán; Reports đọc báo cáo; Administration quản lý tài khoản/phiên/audit. API DTO → application workflow/transaction → EF Core/SQL Server; quy tắc/quyền/tiền/tổng điểm do server quyết định, frontend chỉ nhập/hiển thị. React tổ chức theo chức năng, không microservice/event bus/framework kiến trúc mới; liên module cùng DB để giữ all-or-none.
+
+Reason and alternatives:
+Keep ownership clear and critical cross-module operations atomic on the accepted stack. Avoid adding distributed coordination to the university project.
+The owner chose the proposed recommendation; no alternative was requested.
+
+Consequences:
+Related: ADR-001/011/093. This is an accepted design contract, not implemented
+behavior, permission to add packages/code or E01–E05 output acceptance.
+Remaining choices D05/D08/D09/D11–D14/D16/D17 are not accepted by this item.
+
+## ADR-096: Use versioned DTO APIs with structured errors and stable pagination
+
+Status: Accepted — 2026-09-29
+
+Context:
+The owner approved frontend discussion Gói 1, specifically D02, and
+asked to review Gói 2 one part at a time. The approved choice is recorded in
+`docs/plan/OWNER_REVIEW.md`.
+
+Decision:
+API /api/v1; DTO riêng, lỗi code/message/fieldErrors/traceId, không stack trace/SQL/payload bí mật. 400 dữ liệu sai, 401 chưa/hết xác thực, 403 sai vai trò, 404 bản ghi không thuộc phạm vi được xem, 409 trạng thái/cạnh tranh; danh sách mặc định 20, tối đa 100/trang, sort ổn định có ID phụ. Server kiểm tra role và ownership ở mọi endpoint, không chỉ ẩn nút.
+
+Reason and alternatives:
+Give clients a consistent contract for field errors, authorization and concurrent edits while limiting list payloads. Full endpoint/DTO designs remain E04 work.
+The owner chose the proposed recommendation; no alternative was requested.
+
+Consequences:
+Related: ADR-083/089/091/093. This is an accepted design contract, not implemented
+behavior, permission to add packages/code or E01–E05 output acceptance.
+Remaining choices D05/D08/D09/D11–D14/D16/D17 are not accepted by this item.
+
+## ADR-097: Count interactive requests as idle activity and share sessions across browser tabs
+
+Status: Accepted — 2026-09-29
+
+Context:
+The owner approved frontend discussion Gói 1, specifically D03, and
+asked to review Gói 2 one part at a time. The approved choice is recorded in
+`docs/plan/OWNER_REVIEW.md`.
+
+Decision:
+Chỉ request nghiệp vụ được xác thực do người dùng thao tác mới cập nhật last_activity; không background polling/healthcheck/timer giữ phiên. Các tab cùng browser profile chia cookie/phiên, đăng xuất ở một tab hủy phiên chung; thiết bị/profile khác có phiên riêng. Giữ 2 giờ tuyệt đối/30 phút idle, không refresh; không tạo heartbeat chỉ từ di chuột/gõ phím.
+
+Reason and alternatives:
+Prevent background traffic from silently extending sessions and make same-browser logout behavior predictable. Typing without a submitted business request does not extend idle time.
+The owner chose the proposed recommendation; no alternative was requested.
+
+Consequences:
+Related: ADR-049/055/056/057/092. This is an accepted design contract, not implemented
+behavior, permission to add packages/code or E01–E05 output acceptance.
+Remaining choices D05/D08/D09/D11–D14/D16/D17 are not accepted by this item.
+
+## ADR-098: Limit temporary-password authentication to a ten-minute restricted session
+
+Status: Accepted — 2026-09-29
+
+Context:
+The owner approved frontend discussion Gói 1, specifically D04, and
+asked to review Gói 2 one part at a time. The approved choice is recorded in
+`docs/plan/OWNER_REVIEW.md`.
+
+Decision:
+Đăng nhập bằng mật khẩu tạm còn hạn chỉ cấp phiên hạn chế tối đa 10 phút, không vượt hạn 24 giờ của mật khẩu; chỉ được đổi mật khẩu tạm/đăng xuất, không nghiệp vụ. Sau đổi, hủy mọi phiên rồi về đăng nhập bình thường; không tự nâng phiên hạn chế thành phiên thường. Reset/hết hạn vẫn do Admin, không email khôi phục.
+
+Reason and alternatives:
+Keep temporary access limited to the password-change gate. The user must log in again after changing the temporary password; the restricted deadline can be earlier than ten minutes.
+The owner chose the proposed recommendation; no alternative was requested.
+
+Consequences:
+Related: ADR-048/049/054/092. This is an accepted design contract, not implemented
+behavior, permission to add packages/code or E01–E05 output acceptance.
+Remaining choices D05/D08/D09/D11–D14/D16/D17 are not accepted by this item.
+
+## ADR-099: Use same-origin secure JWT cookies with CSRF protection
+
+Status: Accepted — 2026-09-29
+
+Context:
+The owner approved frontend discussion Gói 1, specifically D06, and
+asked to review Gói 2 one part at a time. The approved choice is recorded in
+`docs/plan/OWNER_REVIEW.md`.
+
+Decision:
+JWT ký/kiểm issuer-audience-exp/sid-version, đặt cookie host-only HttpOnly/Secure/SameSite=Strict, không localStorage/sessionStorage. Frontend/API cùng origin; yêu cầu đổi dữ liệu và login có CSRF token/kiểm Origin, không thao tác nghiệp vụ qua GET. HTTPS, escape văn bản thuần, truy vấn tham số hóa, secret ngoài mã nguồn, không lưu hồ sơ/điểm/tokens bền trong browser cache hoặc log đầy đủ. Nguồn: [OWASP Session](https://cheatsheetseries.owasp.org/cheatsheets/Session_Management_Cheat_Sheet.html), [OWASP CSRF](https://cheatsheetseries.owasp.org/cheatsheets/Cross-Site_Request_Forgery_Prevention_Cheat_Sheet.html).
+
+Reason and alternatives:
+Keep browser tokens inaccessible to ordinary JavaScript and define explicit protection for cookie-authenticated writes. Same-origin deployment must support the accepted contract.
+The owner chose the proposed recommendation; no alternative was requested.
+
+Consequences:
+Related: ADR-049/092/095. This is an accepted design contract, not implemented
+behavior, permission to add packages/code or E01–E05 output acceptance.
+Remaining choices D05/D08/D09/D11–D14/D16/D17 are not accepted by this item.
+
+## ADR-100: Keep login errors private and rate-limit login requests by IP
+
+Status: Accepted — 2026-09-29
+
+Context:
+The owner approved frontend discussion Gói 1, specifically D07, and
+asked to review Gói 2 one part at a time. The approved choice is recorded in
+`docs/plan/OWNER_REVIEW.md`.
+
+Decision:
+Thông báo đăng nhập chung, không tiết lộ email có tồn tại hoặc trạng thái trước xác thực. Bổ sung giới hạn request login theo IP: 100/phút, vượt trả 429/Retry-After; đây là ngưỡng hạ tầng đề xuất, tách khỏi throttle tài khoản 5 lần/15 phút đã duyệt và không hủy phiên. IP chỉ tin từ proxy được cấu hình; không CAPTCHA/OTP/module cảnh báo mới.
+
+Reason and alternatives:
+Avoid revealing account existence/status before authentication and bound login traffic separately from account-scoped password throttling. The IP threshold is a project choice, not a measured capacity.
+The owner chose the proposed recommendation; no alternative was requested.
+
+Consequences:
+Related: ADR-052/059/060/092. This is an accepted design contract, not implemented
+behavior, permission to add packages/code or E01–E05 output acceptance.
+Remaining choices D05/D08/D09/D11–D14/D16/D17 are not accepted by this item.
+
+## ADR-101: Specify bounded UTF-8 financial CSV exports and formula safeguards
+
+Status: Accepted — 2026-09-29
+
+Context:
+The owner approved frontend discussion Gói 1, specifically D10, and
+asked to review Gói 2 one part at a time. The approved choice is recorded in
+`docs/plan/OWNER_REVIEW.md`.
+
+Decision:
+CSV UTF-8 BOM, dấu phẩy, CRLF, quote/escape đúng ô; cùng bộ lọc/cột và toàn bộ kết quả theo ADR-072. Giới hạn 10.000 dòng dữ liệu hoặc 5 MB: vượt thì từ chối toàn file và đề nghị thu hẹp lọc, không xuất âm thầm một phần. Ô văn bản nguy hiểm công thức kể cả ký tự full-width được thêm dấu nháy đơn bên trong ô đã quote; giữ dữ liệu DB gốc, kiểm thử trên Excel/LibreOffice mục tiêu và cảnh báo không bảo đảm an toàn sau chỉnh/lưu/mở lại ở mọi phần mềm. Không XLSX/PDF/quyền xuất mới. Nguồn: [OWASP CSV Injection](https://community.owasp.org/attacks/CSV_Injection).
+
+Reason and alternatives:
+Bound export size and provide a consistent spreadsheet-oriented format. Formula mitigation is limited to the tested target software; DB text remains unchanged and large exports require narrower filters.
+The owner chose the proposed recommendation; no alternative was requested.
+
+Consequences:
+Related: ADR-013/063–072/091/094. This is an accepted design contract, not implemented
+behavior, permission to add packages/code or E01–E05 output acceptance.
+Remaining choices D05/D08/D09/D11–D14/D16/D17 are not accepted by this item.
+
+## ADR-102: Define role-sensitive responsive priorities and the verification scope
+
+Status: Accepted — 2026-09-29
+
+Context:
+The owner approved frontend discussion Gói 1, specifically D15, and
+asked to review Gói 2 one part at a time. The approval includes the revised
+responsive wording presented in Gói 1.
+
+Decision:
+Thiết kế bộ kiểm chứng xUnit nghiệp vụ/API, integration trên SQL Server test riêng cho ràng buộc/transaction/races; kiểm tra thủ công 7 vai trò và luồng đầu-cuối/boundary thời gian/số tiền/CSV. UI tiếng Việt; luồng Học viên ưu tiên 375 px, màn hình nghiệp vụ dày của nhân sự ưu tiên 1280 px; tất cả dùng được và kiểm tra ở 375/768/1280 px, nhãn/lỗi rõ, tab bằng bàn phím, không chỉ dựa màu; kiểm thử Chrome/Edge bản ổn định hiện hành. Không thêm test framework, test code hoặc tuyên bố kiểm thử đã chạy.
+
+Reason and alternatives:
+Match Student mobile use and dense staff workflows while keeping every in-scope flow usable at all three accepted sizes. This defines future verification, not an executed test result.
+The owner chose the proposed recommendation; no alternative was requested.
+
+Consequences:
+Related: ADR-001/011/047/091. This is an accepted design contract, not implemented
+behavior, permission to add packages/code or E01–E05 output acceptance.
+Shell/navigation, colors, fonts and component-library proposals in Gói 2
+remain subject to their own review.
+
+## ADR-103: Use a shared responsive application shell for seven roles
+
+Status: Accepted — 2026-09-29
+
+Context:
+The owner approved FE01a after requesting that frontend Gói 2 be reviewed
+one part at a time. The approved presentation includes moving the account
+name/role into the account menu on mobile. OWNER_REVIEW is the approval source.
+
+Decision:
+- 1280 px: left sidebar about 240 px, showing icons and menu labels; header
+  above the content area.
+- 768 px: left navigation about 72 px with expansion to view labels;
+  icon labels available on hover/focus.
+- 375 px: compact header with a menu button and a drawer from the left
+  over the content; single-column page content.
+- Header shows the screen name and account area. Mobile account name/role
+  appears inside the account menu; preserve ADR-084 account actions.
+- Content holds page title, primary action and screen data. Clearly mark
+  the selected menu and focus; close the drawer on selection, backdrop or
+  Escape and return focus to its opener.
+- Seven roles share the shell structure with their authorized menus.
+  Role-specific menu grouping and labels are reviewed separately as FE01b.
+
+Reason and alternatives:
+The owner chose the proposed shell without an alternative. Desktop navigation
+supports switching staff tasks; the mobile drawer preserves screen space.
+Tablet expansion keeps the compact icon navigation understandable.
+
+Consequences:
+Related: ADR-083/084/102. FE01a is accepted design, not implementation or
+E acceptance. FE01b, page/form/state choices, colors/fonts/packages and Gói 3
+remain subject to review; fixed roles and business rights are unchanged.
+
+## ADR-104: Group existing screens into role-specific menus and define login landing
+
+Status: Accepted — 2026-09-29
+
+Context:
+The owner approved FE01b after agreeing FE01a (ADR-103), while reviewing
+frontend Gói 2 one part at a time. OWNER_REVIEW maps menus to existing F codes.
+
+Decision:
+Học viên: Trang chủ (F03), Khóa học & hồ sơ (F04–F05), Thi đầu vào (F06–F09), Hóa đơn (F10), Lớp & lịch (F11), Bảng điểm (F12). Tuyển sinh: Hồ sơ tuyển sinh (F13–F14). Giáo vụ: Ca thi đầu vào (F16–F17), Khóa & chương trình (F18, gồm Band/trọng số), Lớp học (F19–F20), Lịch học & thi (F21), Xếp lớp (F22), Duyệt bảng điểm (F23). Giáo viên: Lớp & lịch dạy (F24), Thi đầu vào (F25), Điểm danh (F26), Sổ điểm (F27). Kế toán: Hóa đơn & thanh toán (F28–F29), Báo cáo học phí (F30). Giám đốc: Báo cáo tổng hợp (F31). Admin: Tài khoản (F32), Nhật ký (F33). Menu theo đúng một vai trò, các hành động tạo/sửa/duyệt nằm trong màn hình tương ứng; đăng nhập mới vào mục đầu của vai trò. F01/F02 là màn hình xác thực trước đăng nhập, menu tài khoản ADR-084 giữ riêng. Nhóm menu không tạo mã F hoặc dashboard mới cho nhân sự.
+
+Học viên Thi đầu vào groups booking, test schedule, results/Band and admission
+confirmation. Giáo vụ Khóa & chương trình includes Band and weight configuration.
+Giám đốc Báo cáo tổng hợp contains admissions, training and finance sections.
+
+Reason and alternatives:
+The owner selected the proposed grouping and labels without an alternative.
+Grouping related screens keeps navigation concise while retaining all current
+screen references and business functions.
+
+Consequences:
+Related: ADR-012/083/084/103. Initial fresh login goes to the first listed menu
+for that fixed role; no new staff dashboard or role-switch capability is created.
+Business actions stay in the relevant screen with existing guards. FE02 page/
+navigation behavior, other Gói 2 choices, Gói 3 and E outputs remain unapproved.
+This records accepted design, not application implementation or package approval.
+
+## ADR-105: Use addressable pages and preserve list navigation context
+
+Status: Accepted — 2026-09-29
+
+Context:
+The owner approved FE02 while reviewing frontend Gói 2 one part at a time.
+OWNER_REVIEW records the accepted proposal; the accompanying hosting question
+does not approve deployment or maintenance choices.
+
+Decision:
+- Lists, details and complex forms have separate URLs for direct access,
+  reload and browser Back/Forward; no routing library is selected here.
+- Details show an object/state summary and authorized sections or tabs.
+  Complex program/class/schedule/gradebook forms use dedicated pages.
+  Modals serve confirmations, reasons or short forms; mobile may use almost
+  the full screen.
+- Returning to a list preserves filters, page and sort. Non-identifying
+  course/Band/state/date-period filters and page/sort may appear in URLs.
+  Name/email/phone searches stay only in working memory, never in URLs,
+  localStorage or sessionStorage.
+- Lists and details have clear breadcrumbs and a return path. Every route
+  retains D02 authorization, ownership and error contracts; no permissions
+  or business workflow change.
+
+Reason and alternatives:
+The owner accepted the proposed split without an alternative. Addressable
+pages support navigation and complex work; short modal interactions keep
+local context. Volatile personal search filters reduce durable disclosure.
+
+Consequences:
+Related: ADR-084/096/099/103/104. Reload can restore URL-safe list context,
+but must not persist personal search terms. Later responsive-list/form/state/
+style choices, packages, Gói 3 and E outputs remain unapproved. Hosting
+D11–D14/D16/D17 remains under discussion. No application implementation.
+
+## ADR-106: Use responsive lists and a per-student mobile gradebook
+
+Status: Accepted — 2026-09-29
+
+Context:
+After separately approving FE01a/FE01b/FE02, the owner approved the entire
+original frontend Gói 2 FE01–FE10 in this chat. OWNER_REVIEW records FE03;
+the later detailed shell/menu/navigation decisions retain precedence.
+
+Decision:
+Use authorized full tables at 1280 px, reduced-column tables with separate
+details at 768 px, and labelled cards/lists avoiding horizontal tables at
+375 px. Gradebooks use a desktop matrix with a fixed Student column and a
+per-Student mobile view. Lists use pagination, not infinite scroll; preserve
+ADR-105 navigation context and volatile personal searches. The original FE01
+shell uses no bottom navigation or real role switcher; ADR-103/104 remains.
+
+Reason and alternatives:
+Adopt the owner's proposal approval without a requested alternative. Dense
+tables support staff work; labelled mobile lists avoid squeezing every column.
+Different presentations require equivalent data/action verification by size.
+
+Consequences:
+Related: ADR-083/091/096/102–105. No new read/edit rights, F codes or library.
+This does not approve FE14 attendance/grade draft save granularity. Gói 3,
+nine remaining D choices and E01–E05 stay open. No code or tests executed.
+
+## ADR-107: Separate absent permissions from temporarily unavailable actions
+
+Status: Accepted — 2026-09-29
+
+Context:
+The owner approved Gói 2 FE04; OWNER_REVIEW is the approval source. Existing
+role, ownership, lifecycle and blocked-assignment rules remain authoritative.
+
+Decision:
+Hide actions entirely outside the user's permissions. For an authorized role
+whose current prerequisites are unmet, show a disabled action with a specific
+reason. Show explicit “Chỉ xem” content rather than a disabled edit form for
+read-only data. Warn when the responsible account is LOCKED/DISABLED without
+suggesting replacement outside the accepted window. Server checks remain.
+
+Reason and alternatives:
+The owner chose the existing proposal without an alternative. Explanations
+make unmet prerequisites understandable; the UI is not an authorization layer.
+
+Consequences:
+Related: ADR-023/029/030/049/050/083/089/096. Disabled reasons must not reveal
+data outside the permitted scope. No override/reassignment or extra rights.
+Accepted design only; D/E and Gói 3 are not approved by this item.
+
+## ADR-108: Save forms explicitly and preserve server-authoritative validation
+
+Status: Accepted — 2026-09-29
+
+Context:
+The owner approved Gói 2 FE05 in OWNER_REVIEW, preserving ADR-105 personal
+data restrictions and the previously accepted field/concurrency contracts.
+
+Decision:
+No autosave; provide an explicit save button. Validate early on the client,
+but server validation decides. Show field errors below fields and form-wide
+errors at the top. Warn before leaving unsaved changes. Uppercase permitted
+Course/Class/room inputs on blur; do not truncate/round invalid over-limit
+data or normalize passwords. Display the canonical phone after successful
+save. Do not automatically merge or overwrite stale forms, or persist
+sensitive drafts in localStorage/sessionStorage.
+
+Reason and alternatives:
+The owner accepted the proposal without an alternative. Explicit saves expose
+the transaction boundary; warnings help avoid losing in-memory edits but do
+not guarantee recovery on shutdown/session expiry. There is no autosave recovery.
+
+Consequences:
+Related: ADR-028/073–082/089/091/093/096/099/105. Fixed codes remain immutable
+after creation. FE14 batch save granularity is not accepted here. No new form
+library, validation rules, code or E acceptance.
+
+## ADR-109: Define visible loading, submission and API error states
+
+Status: Accepted — 2026-09-29
+
+Context:
+The owner approved Gói 2 FE06; D02 errors and C13 replay safety were already
+accepted, not replaced by frontend feedback.
+
+Decision:
+Use structure-matching skeletons for initial loading; distinguish no data
+from no filter matches. Disable submission and show progress while pending.
+For 409 explain the state/concurrency conflict and require reload/rechecking,
+never silent overwrite. Authenticated 401/expiry returns to login with a clear
+reason; 403 shows insufficient rights; 404 shares missing/out-of-scope wording.
+Keep generic pre-authentication login errors. Success uses short feedback;
+important errors remain visible, not solely transient toasts. Use D02
+fieldErrors/traceId without sensitive payload/stack disclosure.
+
+Reason and alternatives:
+The owner selected the proposal without an alternative. Visible state explains
+what the user can do next; disabling a button alone cannot prevent duplicate
+effects after network failure or another tab.
+
+Consequences:
+Related: ADR-055/057/089/093/096–100. Preserve request_id safeguards and inspect
+current state after an uncertain write outcome. Do not persist sensitive
+forms to survive login or extend idle through background activity. No code,
+test results or Gói 3/D/E approval.
+
+## ADR-110: Use one explicit sensitive-action confirmation pattern
+
+Status: Accepted — 2026-09-29
+
+Context:
+The owner approved Gói 2 FE07. ADR-089 already requires sensitive-action
+previews; the one-time temporary-password delivery pattern FE18 is Gói 3.
+
+Decision:
+Use a shared confirmation pattern showing target/current state, direct
+effects and dependent data. Require reasons only where already mandatory.
+Name the actual action on the button, such as payment confirmation, record
+cancellation or whole-class finalization. No two-layer confirmation for
+ordinary actions. One-time temporary-password display is a separate exception;
+its exact delivery/copy/close acknowledgment FE18 remains unapproved.
+
+Reason and alternatives:
+The owner accepted the proposal without an alternative. Clear impact/action
+labels keep confirmation meaningful without adding repetitive ordinary prompts.
+
+Consequences:
+Related: ADR-031/034/042/048/054/081/089/093/105. No second approver, new reason
+requirement, operation permission or FE18 approval. Recheck state/rights at
+commit; preview is not a reservation or guarantee. Design only, no code/E.
+
+## ADR-111: Prefer accessible local Tailwind components without new UI libraries
+
+Status: Accepted — 2026-09-29
+
+Context:
+The owner approved Gói 2 FE08. The fixed stack requires explicit permission
+before adding frameworks/packages; no implementation exists yet.
+
+Decision:
+Use Tailwind with accessible project-local components. Do not add UI, form,
+table, calendar or chart libraries in the baseline. Request a package only
+for a concrete need that cannot reasonably be met with the accepted stack.
+
+Reason and alternatives:
+The owner accepted the original proposal without an alternative. This reduces
+dependency scope but puts keyboard/focus/semantics verification on the local
+component implementation; using Tailwind does not prove accessibility.
+
+Consequences:
+Related: ADR-001/011/099/102/103. Not an instruction to build components now,
+nor a change to pre-existing stack dependencies. No new package authorized.
+Gói 3/D/E stay open.
+
+## ADR-112: Present Vietnamese labels and exact localized business values
+
+Status: Accepted — 2026-09-29
+
+Context:
+The owner approved Gói 2 FE09. Numeric/time/text storage and API contracts
+ADR-091 remain distinct from presentation.
+
+Decision:
+Use Vietnamese status labels and internal English enums. Display dates as
+dd/MM/yyyy, 24-hour times as HH:mm, and “Giờ Việt Nam” where ambiguity matters.
+Use vi-VN display, for example 1.234.567 ₫ and 75,50/100. Money remains decimal
+digit strings over the API and must not pass through a lossy numeric type.
+Do not change existing precision/range/rounding, timezone or validation.
+
+Reason and alternatives:
+The owner selected the proposal without an alternative. Localized display
+is readable while exact transport avoids changing large monetary values.
+Formatting must not become another calculation or mutate stored data.
+
+Consequences:
+Related: ADR-028/043/044/047/091/094/102. Device locale/timezone cannot override
+Vietnam business boundaries. No new enum/state/currency/library, or code/E.
+
+## ADR-113: Use a light administrative visual direction with accessible cues
+
+Status: Accepted — 2026-09-29
+
+Context:
+The owner approved Gói 2 FE10 after reviewing the entire common frontend
+proposal. OWNER_REVIEW records the approved direction, not a rendered mockup.
+
+Decision:
+Use a light, compact administrative/academic UI with system fonts, white/gray
+surfaces and blue as the primary color. Red/yellow/green statuses include
+text or icons, focus is clear, touch targets are at least approximately 44 px,
+and reduced motion is supported. This is not a new brand identity.
+
+Reason and alternatives:
+The owner accepted the proposal without an alternative. System fonts avoid a
+new font dependency; compact staff layouts still require legible spacing,
+usable touch targets and verification of actual color contrast/keyboard use.
+
+Consequences:
+Related: ADR-001/102/103/111/112. Exact tokens/assets and implementation checks
+remain design-detail/verification work, not an accessibility pass. Gói 2
+FE01–FE10 is now accepted; Gói 3 FE11–FE19, nine D choices and E01–E05 remain
+unapproved. No code, package installation, deployment or public tunnel.
+
+## ADR-114: Hash passwords locally and use a pinned offline blocklist — D05
+
+Status: Accepted — 2026-09-29
+
+Context:
+The owner checked D05 in OWNER_REVIEW. ADR-048/053–056/091/098 already fix
+password semantics, one-time delivery, expiry and restricted sessions.
+
+Decision:
+Use ASP.NET Core PasswordHasher with parameters appropriate to the selected
+runtime, documented when implementation dependencies are locked. Generate
+32-character temporary passwords using a cryptographically secure generator;
+show Admin once, never persist/log plaintext. Merge the offline SecLists
+10k-most-common and probable-v2_top-12000 breached/common-password lists.
+Pin their revision, preserve licensing when integrating and review updates
+quarterly. Never send entered passwords to an external checking service.
+
+Reason and alternatives:
+The owner accepted the proposal without an alternative. Local hashing and
+offline checks avoid external password disclosure. A finite list cannot detect
+every previously exposed password; it does not replace hashing or throttling.
+Sources: [SecLists lists](https://github.com/danielmiessler/SecLists/tree/master/Passwords/Common-Credentials),
+[license](https://github.com/danielmiessler/SecLists/blob/master/LICENSE).
+
+Consequences:
+Related: ADR-053/054/091/098/119. No concrete hash parameters, list revision or
+packages installed yet. Existing exact Unicode/space/length/password rules
+remain unchanged; frontend secret-delivery interaction FE18 is still open.
+
+## ADR-115: Roll back mandatory audited mutations; keep security-event logging best-effort — D08
+
+Status: Accepted — 2026-09-29
+
+Context:
+The owner checked D08. ADR-058–062/093 require business/account histories and
+secret-free security events but had not settled failure handling.
+
+Decision:
+Mandatory business/account-change audit writes share the mutation transaction.
+If they fail, roll back the whole operation, including related status,
+credential and session-revocation changes. Authentication/logout/access-denial
+events use best-effort logging with bounded, secret-free operational fallback.
+Logging failure must not bypass security checks or restore an already revoked
+logout session. Record the logging incident for the operator; do not add user
+notifications or a new notification subsystem.
+
+Reason and alternatives:
+The owner accepted the proposal without an alternative. Committing mandatory
+mutations without their history would violate traceability; making pure security
+event logs transactional with access checks could obstruct safe logout.
+The distinction must be explicit in every workflow.
+
+Consequences:
+Related: ADR-048/057/058/059/061/092/093/120. Mandatory account changes remain
+atomic even when they include revocation; pure logout must not be undone for
+an event-log failure. No secrets/full payloads in fallback, no code/tests yet.
+
+## ADR-116: Preserve mandatory histories and expire security-only logs/IP after 90 days — D09
+
+Status: Accepted — 2026-09-29
+
+Context:
+The owner checked D09. Mandatory business/account audit differs from pure
+authentication/access telemetry; app users have no audit deletion/export rights.
+
+Decision:
+Keep mandatory business/account audit with project history, with no in-app
+delete button. Operationally clean up pure authentication/access logs and IP
+after 90 days, never applying this limit to delete mandatory history. Store IP
+only where needed for security; remove expired IP while retaining mandatory
+audit fields. Record every event actually processed. Rate-limited requests may
+be aggregated by count/IP/minute window, but throttle counters must not be lost.
+Unauthenticated actor is NULL, not the email supplied in a login attempt.
+
+Reason and alternatives:
+The owner accepted the proposal without an alternative. Bounded telemetry/IP
+reduces retention and flooding while retaining required accountability.
+This is the accepted project policy, not a claim of legal compliance.
+
+Consequences:
+Related: ADR-058–062/093/100/115/120. Operators must distinguish event categories
+and redact expired IP without deleting mandatory audit. No app purge/export,
+secret retention or assumption that cleanup has already run.
+
+## ADR-117: Validate one-center scope against 10,000 students and 50 concurrent users — D11
+
+Status: Accepted — 2026-09-29
+
+Context:
+The owner checked D11. The target is a student project used on demand, with
+historical courses/registrations preserved and no deployed load measurements.
+
+Decision:
+Use one center, up to 10,000 students and 50 concurrent users as the expected
+validation envelope. Preserve historical courses/registrations. Do not add
+multi-branch, multi-tenant or distributed architecture.
+
+Reason and alternatives:
+The owner accepted the proposal without an alternative. A bounded reference
+scope fits the accepted modular monolith and makes future validation concrete;
+it is not evidence that these users already exist or performance is proven.
+
+Consequences:
+Related: ADR-095/102. Do not implement a business rejection for student 10,001.
+D12 performance/availability remains deferred; actual environment and measured
+results are still required before claiming a capacity or service guarantee.
+
+## ADR-118: Adopt encrypted daily SQL backups and reference recovery targets — D14
+
+Status: Accepted — 2026-09-29
+
+Context:
+The owner checked D14. Actual hosting/performance choices D12/D13 are deferred;
+no system/data backup exists at this design stage.
+
+Decision:
+Once the system exists, back up SQL daily, encrypted and stored separately
+from the primary data drive. Retain seven daily and four weekly copies; test
+restore monthly. Reference targets: RPO at most 24 hours and RTO at most
+two hours. The owner must designate storage and operational access before
+actual operation; owner responsibility is now settled by ADR-120.
+
+Reason and alternatives:
+The owner accepted the proposal without an alternative. Separate encrypted
+copies and restore trials address data loss, but targets are not demonstrated
+guarantees. On-demand laptop shutdown can interrupt daily automation; the
+operating procedure must account for missed runs without silently reducing
+the accepted cadence or claiming an unverified RPO/RTO.
+
+Consequences:
+Related: ADR-093/120. Destination, credentials/key handling, automation and
+reference restore environment still need concrete configuration. No backup,
+data copy or restore executed now; D12/D13 deferral and E acceptance unchanged.
+
+## ADR-119: Select .NET 10/EF Core 10 and SQL Server 2022 Developer for non-production — D16
+
+Status: Accepted — 2026-09-29
+
+Context:
+The owner checked D16. The accepted ASP.NET Core/React stack stays unchanged;
+the intended use is development, testing and internal project demonstration.
+
+Decision:
+Select .NET 10 LTS/EF Core 10 and SQL Server 2022 Developer for non-production
+dev/test/internal demos, not production data/operation. Keep React/Vite/
+TypeScript/Tailwind/xUnit. After full baseline acceptance, choose compatible
+supported patch releases and lock dependencies in the implementation contract;
+do not request approval for each compatible patch. Production requires its own
+edition/license choice before operation.
+
+Reason and alternatives:
+The owner accepted the proposal without an alternative. Supported LTS runtime
+and a development/test SQL edition fit the intended scope; Developer does not
+authorize production. Sources: [Microsoft .NET support policy](https://dotnet.microsoft.com/en-us/platform/support/policy/dotnet-core),
+[SQL Server 2022 editions](https://learn.microsoft.com/en-us/sql/sql-server/editions-and-components-of-sql-server-2022?view=sql-server-ver16).
+
+Consequences:
+Related: ADR-001/011/114/118. No installed-version/machine-compatibility claim,
+patch lock, new package, setup or deployment. This does not accept D13 hosting,
+public exposure, E artifacts or production licensing.
+
+## ADR-120: Assign the project owner as the default sole operator — D17
+
+Status: Accepted — 2026-09-29
+
+Context:
+In OWNER_REVIEW the owner requested a single explicit choice of operator and
+a default thereafter. Asked once, the owner confirmed responsibility for all
+release, secrets, backup/restore and project maintenance.
+
+Decision:
+The project owner is the default person responsible for all those operations.
+Ask again only if the owner requests a change of responsible person. App Admin
+continues only account/audit administration within existing rights; this
+assignment creates no app Admin/DBA privilege or automatic infrastructure access.
+Handoff documentation must cover setup/configuration, the rights matrix,
+password reset/session revocation, recovery/error handling and requirement →
+workflow → data/API/test traceability. Review dependencies, secrets and blocklist
+periodically before release, including the quarterly blocklist cadence ADR-114.
+Do not activate integrations/coding agents or transmit project data externally.
+
+Reason and alternatives:
+The owner expressly selected the proposed default, not another operator.
+A persistent assignment avoids repeated ownership questions while keeping
+operational responsibility distinct from application permissions.
+
+Consequences:
+Related: ADR-011/048/057/060/114/118/119. Preserve the owner's original D17 note
+and record the resolved checkbox. Storage/access setup still needs configuration
+before operation. This approval authorizes no installation, release, tunnel,
+backup execution, delegation, code or E acceptance.
+
+## ADR-121: Use per-registration Student home cards — FE11
+
+Status: Accepted — 2026-09-29
+
+Context:
+Ngày 29/09/2026 owner yêu cầu ghi nhận Gói 3 sau lượt trình toàn bộ FE11–FE19
+và đối chiếu OWNER_REVIEW. Đây là phê duyệt trực tiếp trong chat, không suy
+đồng ý từ ô trống hoặc từ Gói 2; không có ngoại lệ được nêu. Ô FE11 được
+cập nhật từ xác nhận này; đề xuất/ghi chú đã có được giữ nguyên.
+
+Decision:
+Dùng các thẻ theo từng hồ sơ/khóa của chính học viên: bước hiện tại, việc có thể làm tiếp, ca thi/buổi học gần nhất, hóa đơn chưa thanh toán/quá hạn và liên kết kết quả đã FINALIZED. Mỗi hồ sơ có nút dẫn tới thao tác hợp lệ hoặc lời giải thích đang chờ chấm/duyệt/thanh toán/xếp lớp; không ép một tiến trình chung khi học nhiều khóa. Tiến trình chỉ là cách trình bày dữ liệu hiện có, không enum/điểm tiến độ mới; không hiện điểm DRAFT/SUBMITTED/RETURNED cho học viên. Chưa có hồ sơ thì dẫn tới chọn khóa. Không thêm dashboard nhân sự, hộp thư hoặc thông báo tự động.
+
+Reason and alternatives:
+Thẻ riêng từng hồ sơ giữ đúng ngữ cảnh khi học nhiều khóa; không chọn một tiến trình chung dễ lẫn trạng thái.
+
+Consequences:
+Trang chủ là dữ liệu suy diễn đúng scope, không module thông báo hoặc trạng thái lưu mới.
+Related: ADR-083/084/104. Quyền, cửa sổ nghiệp vụ, kiểu dữ liệu và stack đã chốt
+không đổi. Đây là hợp đồng thiết kế, chưa là code/test pass hoặc nghiệm thu
+E01–E05. D12/D13 vẫn hoãn; không cho phép cài đặt, Git/scaffold, migration,
+triển khai/tunnel hoặc tự kích hoạt integration.
+
+## ADR-122: Use scoped local calendars with week and agenda views — FE12
+
+Status: Accepted — 2026-09-29
+
+Context:
+Ngày 29/09/2026 owner yêu cầu ghi nhận Gói 3 sau lượt trình toàn bộ FE11–FE19
+và đối chiếu OWNER_REVIEW. Đây là phê duyệt trực tiếp trong chat, không suy
+đồng ý từ ô trống hoặc từ Gói 2; không có ngoại lệ được nêu. Ô FE12 được
+cập nhật từ xác nhận này; đề xuất/ghi chú đã có được giữ nguyên.
+
+Decision:
+Dùng component lịch cục bộ tái sử dụng trong F07/F11/F21/F24, chỉ dữ liệu đúng scope từng màn hình. Desktop có lịch tuần và danh sách theo ngày; 375/768 px ưu tiên danh sách theo ngày, nút Hôm nay/chọn ngày và lọc lớp của mình hoặc lớp được phép quản lý. Click buổi mở chi tiết và hành động hợp lệ; không kéo-thả/resize để đổi lịch, không thêm calendar library. Phân biệt LESSON/FINAL_EXAM/ca đầu vào bằng chữ kèm màu. Lịch Học viên giữ Hiện tại/Lịch sử đã chốt; lịch bị hủy/NOT_HELD nằm ở lịch sử, liên kết buổi thay thế và không tính đôi. Chọn ngày không tự suy buổi đã HELD; không đổi quyền đặt ca CLOSED hoặc cửa sổ sửa lịch.
+
+Reason and alternatives:
+Lịch tuần hỗ trợ nhìn tổng quan desktop, agenda phù hợp mobile. Chỉ agenda ít công hơn nhưng kém tổng quan; không chọn kéo-thả để tránh lẫn quyền dời lịch.
+
+Consequences:
+Hai cách xem phải tương đương về dữ liệu/quyền; không suy HELD từ thời gian, không cấp quyền sửa lịch mới.
+Related: ADR-026/030/032/036/084/087/103/111. Quyền, cửa sổ nghiệp vụ, kiểu dữ liệu và stack đã chốt
+không đổi. Đây là hợp đồng thiết kế, chưa là code/test pass hoặc nghiệm thu
+E01–E05. D12/D13 vẫn hoãn; không cho phép cài đặt, Git/scaffold, migration,
+triển khai/tunnel hoặc tự kích hoạt integration.
+
+## ADR-123: Invalidate weekly schedule previews and commit complete valid batches — FE13
+
+Status: Accepted — 2026-09-29
+
+Context:
+Ngày 29/09/2026 owner yêu cầu ghi nhận Gói 3 sau lượt trình toàn bộ FE11–FE19
+và đối chiếu OWNER_REVIEW. Đây là phê duyệt trực tiếp trong chat, không suy
+đồng ý từ ô trống hoặc từ Gói 2; không có ngoại lệ được nêu. Ô FE13 được
+cập nhật từ xác nhận này; đề xuất/ghi chú đã có được giữ nguyên.
+
+Decision:
+Hai bước Nhập quy tắc → Xem trước: khoảng ngày/thứ/giờ/phòng cho LESSON, danh sách ngày cụ thể, số nghĩa vụ đã có/còn thiếu/sắp tạo và xung đột phòng/giáo viên/lớp/học viên trong phạm vi được xem. Nút Tạo toàn bộ lịch chỉ khả dụng khi batch hợp lệ; sửa đầu vào làm mất hiệu lực preview. Có lỗi thì quay lại sửa/tạo lại preview hoặc dùng luồng thêm buổi riêng, không tự bỏ dòng lỗi/ngày nghỉ hoặc lưu phần hợp lệ. Server kiểm tra lại lúc commit; preview không giữ chỗ tài nguyên. 409 yêu cầu xem trước lại, không ghi đè. FINAL_EXAM quản lý riêng, không tự sinh kèm LESSON; không thêm quy tắc lặp lưu DB/automation.
+
+Reason and alternatives:
+Preview giúp đối chiếu các ngày cụ thể; giữ all-or-none thay vì tự bỏ ngày lỗi hoặc lưu một phần, vì các lựa chọn đó làm thay đổi nghĩa vụ lịch đã duyệt.
+
+Consequences:
+Preview không đặt giữ chỗ. Server phải kiểm tra lại tài nguyên, số nghĩa vụ, quyền và trạng thái tại commit.
+Related: ADR-032/037/088/093/096/108. Quyền, cửa sổ nghiệp vụ, kiểu dữ liệu và stack đã chốt
+không đổi. Đây là hợp đồng thiết kế, chưa là code/test pass hoặc nghiệm thu
+E01–E05. D12/D13 vẫn hoãn; không cho phép cài đặt, Git/scaffold, migration,
+triển khai/tunnel hoặc tự kích hoạt integration.
+
+## ADR-124: Save attendance per lesson and draft grades per student — FE14
+
+Status: Accepted — 2026-09-29
+
+Context:
+Ngày 29/09/2026 owner yêu cầu ghi nhận Gói 3 sau lượt trình toàn bộ FE11–FE19
+và đối chiếu OWNER_REVIEW. Đây là phê duyệt trực tiếp trong chat, không suy
+đồng ý từ ô trống hoặc từ Gói 2; không có ngoại lệ được nêu. Ô FE14 được
+cập nhật từ xác nhận này; đề xuất/ghi chú đã có được giữ nguyên.
+
+Decision:
+Điểm danh: nút Lưu điểm danh buổi gửi các giá trị đã đánh dấu/thay đổi của một LESSON trong một batch all-or-none; có lỗi thì không lưu phần nào. Ban đầu Chưa ghi, giáo viên chọn Có mặt/Vắng; không mặc định cả lớp có mặt/vắng, không biến chưa ghi thành dữ liệu. Có thể lưu khi còn người chưa ghi, vẫn chặn hoàn thành lớp đến khi đầy đủ; Chưa ghi không là enum Attendance mới. Điểm nháp: Lưu học viên lưu các điểm thành phần đã nhập/thay đổi và nhận xét của một học viên cùng nhau, all-or-none cho lần lưu đó; desktop nút từng hàng, mobile cùng đơn vị trong trang học viên. Cho thiếu thành phần khi lưu nháp; ô chưa có điểm không thành 0, bỏ trống không tự xóa điểm đã lưu. Tổng từ server, thiếu điểm ghi Chưa đủ điểm. Hiện Chưa lưu/Đã lưu, cảnh báo rời khi còn sửa; không autosave/import Excel/lưu browser bền/merge form cũ. Gửi bảng điểm toàn lớp là thao tác riêng FE15, không đổi cửa sổ/quyền hay thêm quyền xóa điểm.
+
+Reason and alternatives:
+Đơn vị lưu theo buổi/học viên làm phạm vi thành công-thất bại rõ trên cả desktop/mobile. Lưu toàn lớp điểm nháp khiến một lỗi chặn mọi sửa; lưu từng ô thủ công tăng request và dễ sót.
+
+Consequences:
+FE14 chốt đơn vị lưu nháp, không thay đơn vị gửi/trả/chốt toàn lớp. Thiếu bản ghi không là Có mặt/Vắng/0; không thêm quyền xóa điểm.
+Related: ADR-024/028/033/034/087/093/106/108. Quyền, cửa sổ nghiệp vụ, kiểu dữ liệu và stack đã chốt
+không đổi. Đây là hợp đồng thiết kế, chưa là code/test pass hoặc nghiệm thu
+E01–E05. D12/D13 vẫn hoãn; không cho phép cài đặt, Git/scaffold, migration,
+triển khai/tunnel hoặc tự kích hoạt integration.
+
+## ADR-125: Separate draft saves from whole-class grade workflow actions — FE15
+
+Status: Accepted — 2026-09-29
+
+Context:
+Ngày 29/09/2026 owner yêu cầu ghi nhận Gói 3 sau lượt trình toàn bộ FE11–FE19
+và đối chiếu OWNER_REVIEW. Đây là phê duyệt trực tiếp trong chat, không suy
+đồng ý từ ô trống hoặc từ Gói 2; không có ngoại lệ được nêu. Ô FE15 được
+cập nhật từ xác nhận này; đề xuất/ghi chú đã có được giữ nguyên.
+
+Decision:
+Tách rõ Lưu nháp và Gửi/Gửi lại bảng điểm cả lớp. Giáo viên xem trạng thái lưu/thiếu thành phần theo từng học viên; chặn gửi khi còn sửa chưa lưu, lớp chưa COMPLETED, điểm thiếu hoặc trạng thái chưa hợp lệ. Giáo vụ xem bảng SUBMITTED/RETURNED/FINALIZED theo quyền, không giá trị DRAFT. Gửi/trả/chốt dùng một confirmation có mã lớp, số học viên, trạng thái và ảnh hưởng; trả lại bắt buộc lý do và giữ điểm/nhận xét. Không checkbox chọn riêng người gửi/trả/chốt, không duyệt hai tầng. Server kiểm tra mọi học viên và chuyển toàn lớp hoặc không ai; 409 tải lại/rà lại, không tự ghi đè. Student chỉ thấy FINALIZED; chốt bất biến, không thêm mở khóa/đảo trạng thái.
+
+Reason and alternatives:
+Hiển thị rõ lưu nháp khác gửi cả lớp giúp tránh gửi khi còn dữ liệu chưa lưu. Không chọn chuyển trạng thái từng học viên hoặc thêm tầng duyệt, vì trái phạm vi đã chốt.
+
+Consequences:
+Chuyển trạng thái cả lớp vẫn all-or-none và kiểm tra tại server; Student chỉ thấy FINALIZED, không mở khóa bảng điểm.
+Related: ADR-024/028/034/067/083/089/093/110/124. Quyền, cửa sổ nghiệp vụ, kiểu dữ liệu và stack đã chốt
+không đổi. Đây là hợp đồng thiết kế, chưa là code/test pass hoặc nghiệm thu
+E01–E05. D12/D13 vẫn hoãn; không cho phép cài đặt, Git/scaffold, migration,
+triển khai/tunnel hoặc tự kích hoạt integration.
+
+## ADR-126: Apply report filters explicitly and show authorized cards and tables — FE16
+
+Status: Accepted — 2026-09-29
+
+Context:
+Ngày 29/09/2026 owner yêu cầu ghi nhận Gói 3 sau lượt trình toàn bộ FE11–FE19
+và đối chiếu OWNER_REVIEW. Đây là phê duyệt trực tiếp trong chat, không suy
+đồng ý từ ô trống hoặc từ Gói 2; không có ngoại lệ được nêu. Ô FE16 được
+cập nhật từ xác nhận này; đề xuất/ghi chú đã có được giữ nguyên.
+
+Decision:
+Ưu tiên thẻ chỉ số và bảng chi tiết nhóm, chưa cần biểu đồ hoặc chart library. F31 có Tuyển sinh/Đào tạo/Tài chính; F30 chỉ tài chính theo quyền. Nút Áp dụng bộ lọc chạy query mới; khi đang sửa lọc, kết quả cũ ghi rõ bộ lọc đang áp dụng và queried_at, không trộn hai lần query. Tách doanh thu/tổng phải thu trong kỳ, công nợ hiện tại không kỳ ngày, tiến độ LESSON/FINAL_EXAM và kỳ kết quả chốt. Mẫu số rỗng là Chưa có dữ liệu, không 0%; tổng từ toàn tập lọc, không cộng trang/nhóm distinct. Director chỉ drill-down nhóm không định danh, không export. Accountant CSV theo bộ lọc đã áp dụng/toàn tập/cột đã chốt, query mới có thể khác trang trước, giữ giới hạn/an toàn D10. Không thêm metric, profile dump, xuất XLSX/PDF, lưu report-as-of hoặc quyền báo cáo mới.
+
+Reason and alternatives:
+Thẻ/bảng thuận tiện đối chiếu số và không thêm thư viện. Biểu đồ trực quan hơn nhưng tăng phần phải duy trì; không chọn trộn dữ liệu cũ với bộ lọc đang sửa.
+
+Consequences:
+Tách query cũ/bộ lọc nháp/queried_at, giữ cohort, distinct và giới hạn CSV. Không thêm metric, dữ liệu định danh cho Director hoặc quyền xuất.
+Related: ADR-063–072/091/094/101/111. Quyền, cửa sổ nghiệp vụ, kiểu dữ liệu và stack đã chốt
+không đổi. Đây là hợp đồng thiết kế, chưa là code/test pass hoặc nghiệm thu
+E01–E05. D12/D13 vẫn hoãn; không cho phép cài đặt, Git/scaffold, migration,
+triển khai/tunnel hoặc tự kích hoạt integration.
+
+## ADR-127: Refresh authorized Student invoice data before browser printing — FE17
+
+Status: Accepted — 2026-09-29
+
+Context:
+Ngày 29/09/2026 owner yêu cầu ghi nhận Gói 3 sau lượt trình toàn bộ FE11–FE19
+và đối chiếu OWNER_REVIEW. Đây là phê duyệt trực tiếp trong chat, không suy
+đồng ý từ ô trống hoặc từ Gói 2; không có ngoại lệ được nêu. Ô FE17 được
+cập nhật từ xác nhận này; đề xuất/ghi chú đã có được giữ nguyên.
+
+Decision:
+Nút In hóa đơn chỉ cho học viên sở hữu; lấy lại dữ liệu hợp lệ trước khi mở bản in, lỗi/không còn quyền thì không in bản cũ như dữ liệu mới. Bố cục A4 dọc gọn/đen-trắng rõ, ẩn menu/nút; chỉ số hóa đơn, tên hiện tại của chủ hồ sơ, khóa, tiền snapshot, ngày phát hành/hạn và trạng thái được phép xem. UNPAID ghi Chưa thanh toán — không phải xác nhận đã thu tiền; CANCELLED ghi Đã hủy; PAID ghi Đã thanh toán đúng dữ liệu. Cảnh báo quá hạn theo quy tắc hiện có, không tự đánh PAID khi bấm in. Không thêm mẫu biên lai, chữ ký/đóng dấu giả, trường Payment ngoài scope, API/file PDF hoặc quyền in cho nhân sự; dùng chức năng in của trình duyệt.
+
+Reason and alternatives:
+Lấy lại dữ liệu và ghi rõ trạng thái tránh trình bày bản cũ như mới hoặc UNPAID như chứng từ thu tiền. Không chọn API PDF/biên lai vì ngoài phạm vi.
+
+Consequences:
+Chỉ Student sở hữu in qua browser; bản in không tạo Payment, quyền nhân sự, chữ ký hoặc dấu xác nhận mới.
+Related: ADR-039/041/043–047/083/091/112. Quyền, cửa sổ nghiệp vụ, kiểu dữ liệu và stack đã chốt
+không đổi. Đây là hợp đồng thiết kế, chưa là code/test pass hoặc nghiệm thu
+E01–E05. D12/D13 vẫn hoãn; không cho phép cài đặt, Git/scaffold, migration,
+triển khai/tunnel hoặc tự kích hoạt integration.
+
+## ADR-128: Use a one-time credential result block with explicit optional copying — FE18
+
+Status: Accepted — 2026-09-29
+
+Context:
+Ngày 29/09/2026 owner yêu cầu ghi nhận Gói 3 sau lượt trình toàn bộ FE11–FE19
+và đối chiếu OWNER_REVIEW. Đây là phê duyệt trực tiếp trong chat, không suy
+đồng ý từ ô trống hoặc từ Gói 2; không có ngoại lệ được nêu. Ô FE18 được
+cập nhật từ xác nhận này; đề xuất/ghi chú đã có được giữ nguyên.
+
+Decision:
+Sau cấp/reset thành công, hiển thị khối kết quả riêng trong F32 có email/vai trò, mật khẩu tạm và hạn 24 giờ từ server, cảnh báo không thể xem lại. Nút Sao chép chỉ ghi clipboard khi Admin chủ động bấm và trình duyệt cho phép; nếu bị chặn thì chọn chữ/sao chép thủ công. Không tự copy/đọc clipboard/gửi email/in hoặc tải file secret; cảnh báo clipboard có thể còn giữ mật khẩu sau đóng, không hứa tự xóa clipboard. Có checkbox Tôi hiểu sau khi đóng sẽ không xem lại được và nút Đã ghi nhận — Đóng; không coi tick là bằng chứng người dùng đã nhận mật khẩu. Đóng/rời màn hình/đăng xuất/hết phiên xóa plaintext khỏi state, không URL/storage/cache/log/replay secret; refresh/tắt tab có thể làm mất và không cam kết ngăn được. Mất phản hồi cấp/reset: kiểm tra trạng thái trước, không tự lặp để lấy secret; nếu không nhận được mật khẩu thì Admin xác nhận reset mới có chủ đích. Không tự mở khóa tài khoản; không đổi chính sách generator/expiry/quyền đã chốt.
+
+Reason and alternatives:
+Khối kết quả/cảnh báo/ghi nhận hỗ trợ tránh đóng nhầm. Chỉ sao chép thủ công ít rủi ro clipboard hơn nhưng bất tiện với mật khẩu 32 ký tự; copy tùy chọn không chứng minh bàn giao thành công.
+
+Consequences:
+Không hứa xóa clipboard hoặc chống mọi refresh/tắt tab. Mất phản hồi cần kiểm tra trạng thái, không tự retry/reset để lấy secret; reset mới cần chủ đích Admin.
+Related: ADR-048/049/054/091/093/098/099/109/110/114. Quyền, cửa sổ nghiệp vụ, kiểu dữ liệu và stack đã chốt
+không đổi. Đây là hợp đồng thiết kế, chưa là code/test pass hoặc nghiệm thu
+E01–E05. D12/D13 vẫn hoãn; không cho phép cài đặt, Git/scaffold, migration,
+triển khai/tunnel hoặc tự kích hoạt integration.
+
+## ADR-129: Show paginated audit event details and operation links — FE19
+
+Status: Accepted — 2026-09-29
+
+Context:
+Ngày 29/09/2026 owner yêu cầu ghi nhận Gói 3 sau lượt trình toàn bộ FE11–FE19
+và đối chiếu OWNER_REVIEW. Đây là phê duyệt trực tiếp trong chat, không suy
+đồng ý từ ô trống hoặc từ Gói 2; không có ngoại lệ được nêu. Ô FE19 được
+cập nhật từ xác nhận này; đề xuất/ghi chú đã có được giữ nguyên.
+
+Decision:
+Giữ danh sách từng sự kiện mới nhất trước/phân trang và bộ lọc đã chốt; chi tiết mở riêng với thời gian/người/hành động/đối tượng/kết quả/lý do, trường cũ → mới theo allowlist. Sự kiện chưa xác thực ghi Chưa xác thực, không gán email nhập làm actor. Chi tiết có liên kết xem các sự kiện cùng operation_id để hiểu thao tác cả lớp/hủy phụ thuộc, vẫn phân trang/đúng quyền và không đổi đơn vị trang thành nhóm tùy ý. Không raw request-response/secret/full payload, không sửa/xóa/khôi phục dữ liệu hoặc xuất file. IP chỉ khi được lưu hợp lệ và chưa hết hạn; đã dọn thì ghi Không còn lưu, không dựng lại IP. Bản ghi gộp rate-limit nếu có ghi số lần/cửa sổ, không giả thành từng actor đã xác thực.
+
+Reason and alternatives:
+Giữ từng sự kiện phân trang, liên kết operation_id giúp hiểu thay đổi cả lớp/phụ thuộc mà không đổi đơn vị trang. Raw payload hoặc xuất file không được chọn vì vượt scope/quy tắc giữ log.
+
+Consequences:
+Chi tiết chỉ allowlist/cũ-mới, actor chưa xác thực không gán email. Không tái dựng IP đã dọn, không sửa/xóa/undo/export.
+Related: ADR-058–062/093/096/115/116. Quyền, cửa sổ nghiệp vụ, kiểu dữ liệu và stack đã chốt
+không đổi. Đây là hợp đồng thiết kế, chưa là code/test pass hoặc nghiệm thu
+E01–E05. D12/D13 vẫn hoãn; không cho phép cài đặt, Git/scaffold, migration,
+triển khai/tunnel hoặc tự kích hoạt integration.
+
+## ADR-130: Apply the DBMS330284 database rubric to E03–E04
+
+Status: Accepted — 2026-09-30
+
+Context:
+Owner supplied `instructions/HuongDan_Project_Rubric_DBMS330284.docx (1).pdf`
+as the source of database requirements and explicitly accepted applying its
+database technical and application-integration criteria to E03–E04. The PDF
+is for a separate DBMS course; the existing English Center product baseline
+and accepted ADRs remain authoritative for business behavior.
+
+Decision:
+E03 must design an ERD and relational schema of at least eight related 3NF
+tables, with at least five meaningful CHECK/UNIQUE/DEFAULT constraints, five
+triggers, five views, five indexes (at least one non-PK), five stored procedures,
+five scalar/table-valued functions, five transaction scenarios, a concurrency
+or recovery case, and at least four distinct SQL Server Role/Login permissions.
+Procedures use TRY...CATCH. E04 must specify how the application invokes
+procedures/functions and uses database permissions; implementation/demo must
+later prove these objects work and explain index benefit. The seven application
+roles are not silently equated with SQL Server principals. Trigger choices
+must preserve application-layer mandatory AuditLog writes and established
+transaction/authorization rules. No new product feature or blanket delete
+permission is inferred from the rubric's generic CRUD examples.
+
+Reason and alternatives:
+The rubric's measurable criteria matter for the owner's assessment. Ignoring
+them risks an otherwise valid domain model missing required database work;
+adopting the whole DBMS course's report/submission format would silently
+change this project's scope. Apply the technical and integration requirements
+only, and retain the accepted business contracts.
+
+Consequences:
+Track proposed SQL objects and their real workflow uses in E03/E04, then
+verify quantities, behavior, concurrency, permissions, index effects and
+application calls during implementation. This acceptance is not E03/E04
+sign-off and authorizes no SQL scripts, migration, scaffolding or app code now.
+
+## ADR-131: Accept E03 package A's overall data model and consistency conventions
+
+Status: Accepted — 2026-10-01
+
+Context:
+Owner explicitly replied đồng ý to the presented E03 package A after selecting
+the domain-grouped approach. DATABASE_SPEC E03-v0.1 is the review artifact;
+this approval covers the overall model and the four presented conventions,
+not unseen domain-field or SQL-object details in packages B–G.
+
+Decision:
+Keep the 22 target entities and add ReplayOperation and InvoiceNumberCounter
+as technical persistence tables: 24 tables in the E03 overall model.
+ReplayOperation records operation results for at least24 hours without secret
+responses; InvoiceNumberCounter supports safe Vietnam-year invoice numbering.
+Use FK/unique constraints for relations, current personal profiles and issued
+Invoice tuition snapshots. Schedule replacements retain obligation identity
+and predecessor links; use a server-owned is_current projection for at most
+one current Schedule per obligation. Mutable edit paths use rowversion;
+component changes also touch TrainingProgram version and Score/comment saves
+touch GradeReport version, so parent tokens observe child changes. Accepted
+money/score/time/Unicode contracts remain the foundation.
+
+Reason and alternatives:
+Separate technical stores make replay and numbering explicit in the dictionary.
+A current Schedule projection supports a filtered unique constraint over
+replacement history. Parent-version updates detect stale aggregate edits where
+child-only rowversion would leave the parent token unchanged. Detailed storage
+and enforcement alternatives remain reviewable in the corresponding packages.
+
+Consequences:
+Sync package A acceptance and target-table count; next review B (Role, Account,
+StudentProfile, AuthSession). Individual fields/constraints, SQL objects and
+locking protocol in B–G remain proposals until reviewed. E03 stays unchecked
+and stage3 doing until the owner accepts the consolidated artifact; no SQL,
+migration, application code or execution is authorized by this approval.
+
+## ADR-132: Accept E03 package B's account, profile and session persistence design
+
+Status: Accepted — 2026-10-01
+
+Context:
+Owner explicitly accepted the presented package B following ADR-131. Its
+scope is Role, Account, StudentProfile and AuthSession persistence, using
+existing identity, role and session policies as inputs rather than reopening them.
+
+Decision:
+Keep seven fixed Role rows with unique codes and one required Role FK per
+Account; do not rely on fixed numeric role IDs. Account stores normalized
+unique email, unique phone when present (required for Student), name, hash
+and security state. Separate login-failure counters/throttle from manual
+LOCKED/DISABLED status. Temporary-credential issue/expiry form a consistent
+bundle. StudentProfile is one per Student Account and stores DOB/address;
+name/phone remain in Account. Profile edits check both rowversions and save
+all requested changes atomically.
+Use email varchar(254), phone varchar(10), name nvarchar(200), address
+nvarchar(510) and hash varchar(512); hash capacity must be checked against
+the selected runtime, not silently truncated. AuthSession uses a random
+256-bit binary key, Account FK, UTC issue/expiry/activity/revocation,
+security-version snapshot and session scope. DB validation follows accepted
+session policy; activity updates are monotonic and never undo revocation.
+Student registration creates Account/Profile/mandatory audit together;
+security mutations and related revocation share their mandatory transaction.
+
+Reason and alternatives:
+Splitting identity/contact from Student-only fields avoids repeated profile
+data and imposing Student fields on staff. Separate throttle state avoids
+conflating a temporary login delay with administrative account blocking.
+Checking both profile tokens detects stale edits across the two-row aggregate;
+checking only one could overwrite changes made to the other row. This costs
+an additional concurrency check and can require users to reload after a conflict.
+
+Consequences:
+Record the presented B design in DATABASE_SPEC and affected memory. Additional
+unpresented constraint/index/enforcement details remain subject to review;
+this is not blanket acceptance of every SQL detail or consolidated E03.
+Next review C's configuration and entry-test persistence, including the proposed
+PENDING-to-TESTING transition. E03 stays unchecked; no code or SQL execution.
+
+## ADR-133: Accept E03 package C's configuration and entry-test persistence design
+
+Status: Accepted — 2026-10-01
+
+Context:
+Owner explicitly accepted the presented package C: Course/Band, TrainingProgram/
+ScoreComponentConfig, Registration, EntryTestSession/Attempt/Booking and
+BandAssignment. The existing PENDING enum lacked an explicit path in E02's
+transition matrix; the proposed refinement was presented with this package.
+
+Decision:
+Keep separate Course/Band tables with unique codes/thresholds and program
+uniqueness per Course/Band. Program owns component configuration; use
+nvarchar(300) for Course/program names, nvarchar(200) for component names,
+decimal(18,0) money and decimal(5,2) scores/thresholds/weights. Activation checks
+weight total100 and exactly one FINAL_EXAM component. Detect configuration
+freeze from retained use history rather than a duplicated frozen flag;
+price edits do not rewrite issued Invoice snapshots.
+Registration uniqueness applies only while is_unfinished; retain cancellation/
+rejection actor/time/reason. Creation starts PENDING, first booking changes it
+to TESTING, and first result changes it to BAND_ASSIGNED. Attempt-two booking
+keeps BAND_ASSIGNED and pending-result confirmation guards; cancellation/absence
+does not roll it back or erase Band. This refines an existing enum, not a new
+state, permission or retake policy.
+Separate sessions, logical attempts and historical bookings; changing a booking
+creates a new appointment row. Unique constraints protect one current booking
+per attempt; composite FK identifies the result's booking in that same attempt.
+Effective closure follows time checks, without an additional stored state or
+cached occupancy count. One current BandAssignment per Registration references
+its best attempt without copying best_score. Grading/correction, best/Band and
+mandatory audit commit together; absence/ungraded does not imply score zero.
+
+Reason and alternatives:
+Normalized configuration and booking history preserve existing business locks
+and avoid overwriting appointments. Deriving freeze/closure/occupancy avoids
+duplicated flags and counts that can drift, at the cost of guarded reads and
+transactions. A retained current Band projection speeds operational reads but
+requires atomic recalculation. Explicit PENDING transitions fill E02's omitted
+creation/first-booking edge without reopening the accepted admission workflow.
+
+Consequences:
+Sync the approved transition in requirements and W05/W07/W08/matrix of E02-v1
+with a dated refinement note; E01/E02 remain accepted. C approval covers the
+presented design, not unseen column/CHECK/index/locking or SQL-object details.
+Next review D's Class/assignment/Schedule persistence. E03 remains unchecked;
+no SQL, migration, application code, deployment or executed tests are authorized.
+
+## ADR-134: Accept E03 package D's Class, placement and Schedule persistence design
+
+Status: Accepted — 2026-10-01
+
+Context:
+Owner explicitly accepted the presented package D after ADR-133. Existing
+Class lifecycle, placement rights, occurrence/replacement and conflict rules
+remain inputs; this records the storage and transaction design presented.
+
+Decision:
+Class stores program/Teacher, unique class code, initial PLANNED status,
+capacity, rowversion and cancellation actor/time/reason. Derive size from
+StudentClassAssignment rather than a second mutable counter.
+Each Registration has at most one assignment; retain assigning actor/time
+and reference Class/Registration without duplicating student_id. Create its
+GradeReport DRAFT in the same placement/mandatory-audit transaction. Do not
+prepopulate Score or Attendance; this creates no DRAFT viewing rights.
+Schedule stores Vietnam date/minute times, room/type, obligation identifier,
+predecessor, current projection and occurrence/history bundles. Enforce one
+current occurrence per already-scheduled obligation and at most one current
+FINAL_EXAM per Class. An allowed pre-start move updates the existing row with
+old/new audit; a non-held replacement retains NOT_HELD history and creates a
+future occurrence with the same Class/type/obligation, counted once. HELD
+retains its authorized confirming actor/time. Cancelled Class schedules remain
+historical but do not occupy resources.
+Placement, weekly batches, moves and replacements recheck prerequisites and
+conflicts at commit and persist mandatory audit atomically; previews reserve
+no resources. Existing completion/Teacher/capacity/time restrictions remain.
+
+Reason and alternatives:
+Derived size avoids an additional counter that can drift. Explicit assignment
+provenance and early DRAFT creation give each enrolled learner a stable report
+aggregate, at the cost of storing reports before any score. Obligation and
+predecessor links retain replacement history without counting extra lessons;
+overwriting the old occurrence would lose it. Current projection requires
+transactional maintenance and a service check for exactly one current row.
+
+Consequences:
+Sync D's presented design, initial report creation in W15 and target memory;
+additional unpresented column/CHECK/index/SQL locking details remain reviewable.
+Next review E's Attendance/Score/GradeReport persistence. E03 stays unchecked,
+stage3 doing; no SQL, migration, application code or executed tests.
+
+## ADR-135: Accept E03 package E's Attendance, Score and GradeReport persistence design
+
+Status: Accepted — 2026-10-01
+
+Context:
+Owner explicitly accepted the presented package E after ADR-134. Attendance
+windows, per-LESSON/per-Student saves, whole-Class review, publication and
+FINALIZED locks remain the accepted inputs; this records their persistence.
+
+Decision:
+Attendance is unique per Class assignment/LESSON, with required present and
+no default. Unrecorded attendance has no row. Score is unique per assignment/
+component, decimal(5,2), without default/empty rows; zero is valid but absent
+Score is not zero. Both retain the last recording actor/time and rowversion.
+GENERAL Score has no Schedule; LESSON/FINAL_EXAM must reference a current
+occurrence of that same Class/type, retaining the accepted entry windows.
+GradeReport is unique per assignment and initially DRAFT (ADR-134). Store
+final_score only at FINALIZED; compute draft/submitted totals from current
+scores, showing incomplete components explicitly. Comments/reasons use
+nvarchar(2000) with the accepted1000-code-point limit and required/optional
+semantics. Score/comment saves touch the parent report version; stale edits
+conflict, not silently overwrite. Save granularity remains ADR-124.
+Latest submit/review fields support queries; each send/resend/return/finalize
+is retained in mandatory AuditLog grouped by the whole-Class operation.
+Do not add GradeHistory or a stored passing flag. Finalization calculates and
+rounds once, publishes and updates Registration's unfinished predicate in one
+transaction. Existing Student-own/AcademicAffairs visibility and FINALIZED
+immutability remain unchanged.
+
+Reason and alternatives:
+No default rows distinguish missing attendance/scores from deliberately entered
+values. Finalized-only final_score avoids a stored draft total going stale
+after edits, at the cost of computing interim totals. Latest metadata plus
+mandatory immutable audit preserve all review cycles without another history
+table. Parent concurrency tokens protect the aggregate even for child-only edits.
+
+Consequences:
+Sync the presented E design and finalized-only storage in requirements/E02.
+Additional unpresented CHECK/index/SQL enforcement remains reviewable; next
+review F's Invoice/Payment/AuditLog/ReplayOperation/InvoiceNumberCounter.
+E03 stays unchecked and stage3 doing; no SQL, migration, code or executed tests.
+
+## ADR-136: Accept E03 package F's financial, audit and technical-store persistence design
+
+Status: Accepted — 2026-10-01
+
+Context:
+Owner explicitly accepted the presented package F after ADR-135: Invoice,
+Payment, AuditLog, ReplayOperation and InvoiceNumberCounter. Existing financial,
+audit, replay and numbering policies remain inputs, not reopened decisions.
+
+Decision:
+Invoice is unique per Registration and by invoice number; amount is the issuance
+snapshot, issued_at is UTC and due_date is a Vietnam date. Store UNPAID/PAID/
+CANCELLED, derive overdue and retain cancellation provenance. Do not store a
+personal-profile snapshot. Payment is at most one per Invoice for its full
+amount; Payment, PAID and mandatory audit commit together. Transfer reference
+is required, not globally unique, stored as nvarchar(200) with the accepted
+100-code-point limit. Allowed method/reference corrections retain latest actor/
+time/reason plus each event's audit; money, link and confirmation remain immutable.
+AuditLog is application-written with allowlisted JSON, not an audit trigger.
+Separate MANDATORY from SECURITY with expiry metadata for the accepted90-day
+security/IP retention; preserve mandatory history. No edit/purge/export API,
+secrets or raw payloads. Maintenance permissions remain subject to G/E04 review.
+ReplayOperation is unique by verified actor/action/request_id; keep a content
+digest and safe result references for at least24h. Same key/content has no new
+effect; different content conflicts409. Recheck rights before returning results.
+Temporary-password issue/reset keeps only a completed marker, never the secret
+or a replayable plaintext response. Mutations/audit/replay share their transaction.
+InvoiceNumberCounter is one row per Vietnam issuance year and allocates
+HD-YYYY-NNNNNNNN within approval's transaction. Never reuse issued numbers;
+eight-digit exhaustion fails and rolls back, without resetting the counter.
+
+Reason and alternatives:
+Snapshots preserve issued amounts while derived overdue avoids a second state
+that can drift. Atomic collection avoids paid status without its Payment/audit.
+Safe references and marker-only credential results support duplicate-request
+handling without durable secret/PII responses; a lost credential response still
+requires an intentional new reset. A yearly counter keeps numbering coupled to
+approval rather than a separately committed allocator, at the cost of contention
+within that year. Exact locking and verification remain the next review topic.
+
+Consequences:
+Record the presented F acceptance and affected target memory. Unpresented SQL
+field/CHECK/index/hash serialization/cleanup permissions/locking details remain
+reviewable; this is not blanket approval of the dictionary or consolidated E03.
+Next present G1 SQL-object roles and application paths, then G2 SQL permissions,
+transactions/concurrency/snapshot/indexes and rubric verification. Both are still
+proposals. E03 stays unchecked and stage3 doing; no SQL, migration, application
+code, deployment or executed tests are authorized by this approval.
+
+## ADR-137: Accept E03 package G1's SQL-object purposes, counts and application paths
+
+Status: Accepted — 2026-10-01
+
+Context:
+Owner explicitly accepted the presented G1 after ADR-136. ADR-130 adopts the
+DBMS technical/application-integration rubric; G1 proposes meaningful SQL
+objects while keeping accepted application ownership and product rules.
+
+Decision:
+Use five triggers to protect used Program/component/Band configuration and
+Attendance/Score relationships and state locks. Keep six views for admissions,
+test bookings, current timetable, Class/progress, FINALIZED grades and finance
+facts with explicit one-object grains and no multiplied aggregates.
+Use six read-only functions for effective session state, Band selection,
+unfinished Registration, Class obligations, grade totals and overdue warnings.
+Missing scores are not zero; functions introduce no mutation, state or penalty.
+Use seven procedures for admissions search, test roster, grade review, three
+management reports and invoice-number allocation. The allocator participates
+in approval's caller transaction, not separate approval or commit.
+Services keep authorization/ownership/workflow and application-written audit;
+views/procedures grant no new product visibility. Procedures use parameterized
+inputs/allowlisted sort and TRY...CATCH error handling. Repositories must actually
+call the mapped procedures/functions, not merely create them for a count.
+
+Reason and alternatives:
+Meaningful reusable queries/calculations satisfy the adopted rubric while
+retaining clear service-owned workflows. Only LINQ/inline queries would not
+demonstrate actual application SP/UDF calls. Moving all workflows into procedures
+would scatter authorization/audit/replay. The chosen balance costs SQL lifecycle,
+mapping and service/function parity checks, including trigger-compatible EF writes.
+
+Consequences:
+Record the presented purposes/counts/application paths in DATABASE_SPEC and
+affected memory. G1 approval is not blanket acceptance of names/signatures,
+every SQL detail, grants or race-safety. Next review G2 SQL permissions,
+transaction/locking/snapshot/indexes and rubric verification; then consolidate
+the actual E03 artifact. E04 still specifies DTOs/signatures/mapping and callers.
+E03 stays unchecked and stage3 doing. No SQL, migration, application code,
+deployment or executed tests are authorized by this design approval.
+
+## ADR-138: Accept E03 package G2's SQL permissions, consistency and verification strategy
+
+Status: Accepted — 2026-10-01
+
+Context:
+Owner explicitly accepted the presented G2 after ADR-137. The adopted DBMS
+rubric requires real SQL permissions, transactions/concurrency and query/index
+evidence. Existing seven web roles, save units, audit/replay, reference scale
+and on-demand laptop operation remain settled inputs.
+
+Decision:
+Use four distinct SQL permission groups: least-privilege application runtime;
+finance reporting on its finance view/procedure; academics reporting on its
+timetable/Class views and training procedure; Director reporting via the three
+aggregate report procedures only, without identifying fact/base-table access.
+Reporting principals cannot collect payment, enter/finalize grades or mutate
+business data. These are separate from the seven web roles. Demonstration
+principals use a test database with synthetic data and add no app permissions.
+Keep schema/backup/cleanup operational principal separate from runtime; never
+put that credential in browser/source or grant runtime db_owner/sysadmin.
+EF writes, invoice allocator, mandatory audit and replay share connection and
+transaction; failure rolls back the entire accepted save unit. Recheck rights,
+session/state and concurrency guards before committing. Use transaction-owned
+sp_getapplock request/object gates together with rowversion and DB constraints.
+Start with one common timetable gate for occupancy mutations; unrelated
+timetable operations may wait, requiring measurement at the accepted50-user
+reference scope, not an unverified performance guarantee.
+Use one SNAPSHOT transaction per report/export for consistent totals/details;
+export remains a fresh query. Choose indexes for real queries, not duplicate
+PK/UQ or create every candidate merely for rubric counts. Demonstrate at least
+five before/after queries and five rollback cases: booking, approval/Invoice,
+collection, timetable batch/replacement, whole-Class grade finalization. Verify
+GRANT/REVOKE/DENY, two-connection races and actual application SP/UDF calls.
+
+Reason and alternatives:
+Object permissions plus server authorization preserve scope without a SQL login
+for every web user/role. A separate operator principal reduces runtime power.
+Common timetable locking is easier to reason about than immediate resource/day
+partitioning, at the cost of concurrency. Rowversion/unique alone do not prove
+cross-record conflict/capacity safety. Transaction snapshots cost version-store
+resources, and useful indexes cost writes/storage; actual measurement remains
+required. Changing lock partitioning after measurement requires a design review.
+
+Consequences:
+Record the presented G2 mechanisms and verification objectives, and present
+DATABASE_SPEC E03-v1 (Review), including the remaining physical-detail scope
+and E04 handoff limits, for actual artifact acceptance. Exact SQL signatures,
+grant lists, timeout/runtime settings and implementation proofs remain review/
+E04 or later work, not inferred from this package approval. Preserve old ADRs,
+E03 unchecked and stage3 doing until the owner accepts the consolidated artifact.
+No SQL, migration, application code, provisioning or tests are authorized here.
+
+## ADR-139: Accept E04 package1's shared API version, replay-key and private-search transport
+
+Status: Accepted — 2026-10-01
+
+Context:
+Owner explicitly accepted the presented E04 Gói1 after whole-artifact E03-v1
+acceptance. Established ownership, save units, concurrency/replay/privacy and
+error contracts remain unchanged. This approval concerns the presented shared
+wire-format choices, not unseen details or the complete E04 architecture.
+
+Decision:
+Represent mutable aggregate versions in DTOs as opaque Base64 strings.
+Mutations carry expectedVersions; profile edits carry both Account and
+StudentProfile versions. A stale version returns409 without overwriting.
+Use a UUID in the Idempotency-Key header for commands with the accepted replay
+contract. Retry of the same intent retains key and content; a changed/new
+intent gets a new key. Never replay temporary plaintext credentials.
+Personal search filters such as name/email/phone go in a POST body, not URL
+path/query. Non-identifying filters may use GET. Keep sensitive payloads out
+of search logs and durable browser storage, and retain server authorization.
+
+Reason and alternatives:
+DTO version maps accommodate multi-aggregate forms better than introducing a
+parallel ETag/If-Match mechanism. A header separates replay metadata from each
+business DTO; a body request_id is possible but repetitive. GET for personal
+search would expose PII in URL history/logging; POST for all lists is possible
+but unnecessary. The choices require token validation, intent/key management
+and privacy-safe logging; POST itself does not secure a payload.
+
+Consequences:
+Record exactly this presented scope in SYSTEM_ARCHITECTURE_SPEC and affected
+memory. Further mapper/key-list/encoding validation/canonical digest/replay
+pipeline details remain to be reviewed in the actual E04 artifact; do not
+infer blanket acceptance from this package. Next propose Auth/session API
+mechanics, then Administration and the remaining module/frontend/SQL/runtime
+contracts. E04/E05 remain unchecked; D12/D13 deferred. No application code,
+SQL/migration, provisioning, packages or executed tests are authorized.
+
+## ADR-140: Accept E04 package2a's Auth endpoints, minimal context and CSRF exchange
+
+Status: Accepted — 2026-10-01
+
+Context:
+Owner explicitly accepted the presented Gói2a after ADR-139. Existing account,
+password, cookie/JWT, restricted-session, idle, revocation and privacy policies
+remain inputs. This records the presented API mechanics, not whole E04
+acceptance or unseen pipeline/runtime details.
+
+Decision:
+Use five routes under /api/v1: GET /auth/csrf for request-token bootstrap;
+POST /auth/login for credential verification, JWT cookie and minimal context;
+GET /auth/me for current authorized context without extending idle;
+POST /auth/change-password with current/new password and Account version,
+followed by fresh login on success; POST /auth/logout for current-session
+server revocation and cookie removal.
+Context carries account identity/contact/role/scope, Account version and
+server time/deadlines, not JWT, raw session IDs or hashes.
+Use ASP.NET Core's antiforgery mechanism. Keep the request token only in RAM,
+send X-CSRF-TOKEN and obtain it again after login/logout. Keep the previously
+accepted same-origin secure cookies and token/Origin checks.
+Invalid CSRF returns403/CSRF_INVALID; obtain fresh context/token but require
+deliberate user resubmission, never automatic mutation retry. Invalid sessions
+still return401. Do not put passwords into replay storage or retain them for
+retry after an unknown password-change response.
+
+Reason and alternatives:
+Framework antiforgery avoids designing a custom token protocol. Request-token
+JSON/RAM and a header fit the accepted browser-storage constraints, compared
+with a JavaScript-readable token cookie. A minimal context supports role/scope
+routing and password changes without exposing bearer credentials. Bootstrap
+and identity changes cost additional requests and cross-tab stale-token handling.
+
+Consequences:
+Record the presented scope in SYSTEM_ARCHITECTURE_SPEC and affected memory;
+unpresented projection/cache/status/pipeline particulars remain subject to the
+actual consolidated E04 review. Next propose Administration2b endpoints for
+staff creation, state/reset, safe unknown results and audit reading. Preserve
+accepted policies and old ADRs; E04/E05 unchecked, D12/D13 deferred. No code,
+SQL/migration, provisioning, packages or executed tests are authorized.
+
+## ADR-141: Accept E04 package2b's Administration command, result and audit API groups
+
+Status: Accepted — 2026-10-01
+
+Context:
+Owner explicitly accepted the presented Gói2b after ADR-140. Account roles,
+staff creation/Student self-registration, reset/state guards, one-time
+credentials, audit visibility and retention remain settled requirements.
+This records the presented API groups and mechanics, not whole E04 acceptance.
+
+Decision:
+Under /api/v1/admin, use POST /accounts/search for personal filters and
+GET /accounts/{id} for versioned administrative information, not learning or
+finance profiles. Use POST /staff-accounts with name/email/one existing staff
+role/optional phone; do not create Student on behalf of another person.
+Use POST /accounts/{id}/reset-password and separate /lock, /unlock, /disable,
+/restore commands rather than arbitrary field/status editing.
+Staff-create/reset/four state commands use Idempotency-Key; reset/state
+commands also send Account version. Effects, mandatory audit and replay
+completion must remain transactionally consistent.
+First successful reset/create response alone may show the temporary password.
+Replay confirms completion without regenerating or returning a password.
+GET /command-results/{requestId}?action=... reads only the calling Admin's
+safe outcome; no result is not proof of failure. Inspect authorized Account/
+audit before deliberately initiating a new reset.
+Provide paginated audit list/detail/related-operation APIs with existing
+filters/scopes. No role/email editing, Account deletion, audit export or
+extra business access for Admin.
+
+Reason and alternatives:
+Separate command routes make input/effects/authorization clearer than a
+generic mutable Account API, at the cost of more endpoints. A secret-free
+outcome read supports lost-response handling better than guessing from a
+mutable Account alone; absence must not be treated as failure. Full response
+replay is rejected because credentials and personal snapshots cannot be cached.
+
+Consequences:
+Record precisely the presented groups in SYSTEM_ARCHITECTURE_SPEC and affected
+memory. Unpresented exact DTO fields/statuses/action codes/transitions/query
+signatures remain for actual consolidated E04 review, not blanket acceptance.
+Next propose Students3a registration/profile/home/catalogue API contracts;
+then complete Admissions/Finance/Academics/reports/frontend/SQL/runtime and
+verification. E04/E05 unchecked, D12/D13 deferred; old ADRs unchanged. No code,
+SQL/migration, provisioning, packages or executed tests are authorized.
+
+## ADR-142: Accept E04 package3a's Student registration, profile, home and catalogue API
+
+Status: Accepted — 2026-10-01
+
+Context:
+Owner explicitly accepted the presented Gói3a after ADR-141. Existing Student
+self-registration/contact edit, home-card, Course visibility and privacy
+policies remain settled. The approval concerns the presented six endpoints
+and save/unknown-result mechanics, not the complete E04 artifact.
+
+Decision:
+Use POST /api/v1/auth/register for self-registration, atomically creating
+Student Account/Profile and then returning to login without auto-created session.
+Use GET/PUT /api/v1/students/me/profile for own profile: email is read-only,
+and saving full name/DOB/phone/address sends both Account/Profile versions.
+Stale returns409 without overwriting.
+Use GET /api/v1/students/me/home for per-Registration current step/next action,
+nearest events, own invoices and FINALIZED grade links.
+Use GET /api/v1/students/me/courses and /courses/{id} for ACTIVE selection
+catalogue with pagination/exact tuition strings; referenced old Course
+information remains in own history.
+Resolve /me ownership from verified session, not another Student ID. Private
+endpoints require Student NORMAL. Registration/profile saves do not use
+Idempotency-Key: registration uniqueness/transaction and two profile versions
+are their guards, with no password/full-form replay cache.
+Never auto retry an unknown result. Deliberate login may check uncertain
+signup; reread profile before deciding on another save. Home links do not
+replace backend authorization/state checks.
+
+Reason and alternatives:
+Per-screen DTOs and /me routes separate personal and business scopes better
+than a broad /students/{id} entity response, at the cost of separate navigation
+requests. Atomic creation and two-version contact saves preserve consistency.
+No auto-login keeps authentication explicit. Replay caching of sensitive forms
+or credentials is unnecessary and incompatible with the accepted privacy scope.
+
+Consequences:
+Record exactly the presented scope in SYSTEM_ARCHITECTURE_SPEC and affected
+memory. Unpresented exact DTO/cache/error/sort/query particulars remain for
+consolidated E04 review. Next propose Student Admissions3b Registration/test/
+confirmation contracts; then remaining staff/Finance/Academics/report/frontend/
+SQL/runtime/verification. E04/E05 unchecked, D12/D13 deferred, old ADRs unchanged.
+No code, SQL/migration, provisioning, packages or executed tests are authorized.
+
+## ADR-143: Accept E04 package3b's Student Admissions API groups and preview/replay mechanics
+
+Status: Accepted — 2026-10-01
+
+Context:
+Owner explicitly accepted the presented Gói3b after ADR-142. Registration,
+entry-test attempts/bookings, confirmation, ownership and concurrency rules
+remain accepted requirements. This approval concerns the presented API groups
+and mechanics, not every detailed guard token or the complete E04 artifact.
+
+Decision:
+Under /api/v1/students/me provide own Registration list/detail/create,
+separate cancellation-preview/cancel, entry-test-options/bookings, separate
+Booking cancel/reschedule, own test calendar/results, separate confirmation-
+preview/confirm and caller-scoped command-results.
+Creating/cancelling Registration, booking/cancelling/rescheduling a test and
+confirming admission are six Idempotency-Key commands. Effects, mandatory
+audit and replay completion share a transaction.
+Rescheduling cancels the old Booking and creates the new Booking in one
+transaction, not independent UI cancel-then-create requests.
+Forms/previews carry versions of related records and the attempt/booking set
+seen by the user, not just the Registration token. Preview does not reserve
+a slot. Server rechecks authorization/state/time/capacity/overlap at commit;
+conflicts return409 for deliberate reload, not automatic reselection/retry.
+Confirmation does not approve admission or create an Invoice. Outcome reads
+are caller-only; no result does not prove failure. Existing business rules,
+roles and visibility remain unchanged.
+
+Reason and alternatives:
+Explicit commands and read-only previews expose effects clearly and protect
+cross-record consistency better than generic Registration/Booking PATCH.
+Atomic rescheduling avoids partial cancellation if the destination cannot be
+booked. The cost is more preview requests and related tokens/set validation;
+a server-side preview reservation/state store is unnecessary for this scope.
+
+Consequences:
+Record exactly the presented groups/mechanics in SYSTEM_ARCHITECTURE_SPEC
+and affected memory. Unpresented endpoint/DTO/status/guard-key/digest/UDF
+signatures remain for consolidated E04 review, not blanket acceptance.
+Next propose Admissions/Finance3c approval/Invoice/collection/correction
+contracts, then complete remaining Academics/reports/frontend/SQL/runtime/
+verification. E04/E05 unchecked, D12/D13 deferred, old ADRs unchanged. No code,
+SQL/migration, provisioning, packages or executed tests are authorized.
+
+## ADR-144: Accept E04 package3c's Admissions/Finance API groups and atomic financial mechanics
+
+Status: Accepted — 2026-10-01
+
+Context:
+Owner explicitly accepted the presented Gói3c after ADR-143. Admission,
+Invoice snapshots, external collection, metadata corrections, role scopes and
+Student printing retain the already accepted E01/E02/E03 business rules.
+Approval covers the presented groups/mechanics, not every detailed route,
+DTO, SQL signature or the full E04 artifact.
+
+Decision:
+Provide Admissions search/detail with role-limited data; separate approval
+preview/approve, rejection and cancellation-preview/cancel commands.
+Approval commits Registration ADMITTED and Invoice UNPAID together; server
+owns Invoice number, amount and dates. Rejection/cancellation require the
+existing reasons; cancellation effects commit together under accepted guards.
+Student reads only own Invoice list/detail and fetches fresh authorized
+data before browser printing; no dedicated PDF API.
+Accountant has Invoice search/detail, collection-preview and collect for
+money reconciled outside the application. Payment and Invoice PAID commit
+together. Metadata-only correction has reason and old/new history, without
+changing amount/time or creating a second Payment.
+These five mutation commands use Idempotency-Key and related-record versions.
+Business effects, mandatory audit and completion results share one transaction.
+Unknown responses use caller-scoped result lookup; absence of a result is
+not proof of failure. Financial detail/compound preview reads use one consistent
+snapshot. Role-specific responses do not give Admissions/Student Accountant
+Payment information. Reports/CSV remain a separate later package.
+
+Reason and alternatives:
+Explicit commands and role-specific DTOs protect workflow boundaries and
+visibility better than generic CRUD/shared entity responses. One approval
+transaction avoids an admitted record without an Invoice; one collection
+transaction avoids divergent Invoice/Payment state. Fresh own-Invoice fetch
+avoids printing stale data as current. Costs are additional preview requests,
+DTOs and consistency tests; financial snapshot/version-store overhead needs
+environment validation, not an assumed performance result.
+
+Consequences:
+Mark only presented Gói3c groups/mechanics accepted in the E04 draft and
+affected memory. Exact endpoint/DTO/status/guard-key/digest/SQL/settings
+refinements not separately presented remain for consolidated artifact review.
+Next propose Gói4a EntryTestSession/grader/roster and Teacher score/absence/
+correction contracts, then remaining Academics/reports/frontend/integration/
+runtime/verification. E04/E05 unchecked, D12/D13 deferred, old ADRs unchanged.
+No code, SQL/migration, provisioning, packages or executed tests are authorized.
+
+## ADR-145: Accept E04 package4a's entry-session management and Teacher grading API groups
+
+Status: Accepted — 2026-10-01
+
+Context:
+Owner explicitly accepted the presented Gói4a after ADR-144, then requested
+continuation after an interrupted documentation turn. Existing W06/W08 rights,
+time cutoffs, attempts, score/Band and history rules remain accepted inputs.
+No ADR was written by the interrupted turn. This records only the presented
+groups/mechanics, not all detailed routes or the entire E04 artifact.
+
+Decision:
+AcademicAffairs receives session list/detail/create, permitted schedule edits,
+separate open/close commands, cancellation-preview/cancel, and grader options/
+change preview/reasoned change. Session cancellation commits the session,
+affected bookings and required history together; no automatic rebooking.
+Roster DTOs differ for AcademicAffairs and Teacher. Teacher can read only
+currently assigned sessions/tasks, with no financial or out-of-task profile data.
+Initial scoring and absence are separate per-student commands. Scoring updates
+the result and Band in one transaction; absence is not score zero.
+Score correction is a separate reasoned command, retaining original/current
+grader constraints and atomically updating best result/Band and old-new history.
+Nine mutation commands use Idempotency-Key and related versions/record sets:
+create session, edit schedule, open, close, cancel, change grader, initial
+score, absence and score correction. Effects, mandatory audit and completion
+share a transaction. Server rechecks rights/time/capacity/conflicts; previews
+do not reserve. Unknown responses use caller-scoped result lookup, with no
+automatic rescoring/absence. Use adopted roster/effective-state/Band SQL
+objects through real application paths; services keep authorization/workflows.
+
+Reason and alternatives:
+Task-specific DTOs and explicit commands make session management, grading and
+absence boundaries clearer than generic status/score CRUD or one shared staff
+roster. One-person scoring avoids accidental batch grading/absence; atomic
+session cancellation avoids missing dependent bookings. Costs are additional
+DTOs, preview requests, related-context checks and tests.
+
+Consequences:
+Mark presented Gói4a groups/mechanics accepted in the E04 draft and affected
+memory. Exact endpoint/status/DTO/guard-key/SQL signatures, read-isolation and
+runtime refinements not separately presented still require consolidated review.
+Next propose Gói4b Course/TrainingProgram/components/Band-read API, then Class/
+placement/Schedule/Attendance/grades/reports/frontend/integration/runtime/
+verification. E04/E05 unchecked; D12/D13 deferred; old ADRs unchanged. No code,
+SQL/migration, provisioning, packages or executed tests are authorized.
+
+## ADR-146: Accept E04 package4b's catalogue/configuration API groups and whole-configuration saves
+
+Status: Accepted — 2026-10-01
+
+Context:
+Owner explicitly accepted presented Gói4b after ADR-145. Course/program
+lifecycle, first-use freezes, money, components and seed Band thresholds remain
+accepted E01/E02/E03 inputs. This approval is of presented API groups/mechanics,
+not all exact DTOs/routes/SQL signatures or complete E04 acceptance.
+
+Decision:
+Provide Course list/detail/create and a name-price save that cannot edit code
+or status. Deactivation/restoration are separate commands with explicit effects,
+without cascading cancellation of existing records/classes.
+Create TrainingProgram DRAFT and save its configuration and entire component
+set in one transaction. Use activation-preview of saved configuration before
+the separate activation command; return-to-draft/deactivation follow existing
+guards. Provide a separate Program name command that remains usable when
+configuration is frozen, without opening protected fields.
+Band API reads the accepted threshold set and derived freeze state from DB;
+no new seed editor or unlock command.
+Ten write commands use Idempotency-Key; effects, mandatory audit and completion
+share a transaction. Configuration forms carry Program versions and the full
+component set. One invalid/stale component aborts the entire save unit.
+Server rechecks guards; conflicts require deliberate reload, not overwrite.
+Unknown results use caller-scoped lookup, not automatic reactivation.
+
+Reason and alternatives:
+Whole-configuration saves fit the complex form and avoid partial program
+updates compared with separate component CRUD calls. Explicit lifecycle/name
+commands preserve freeze boundaries while retaining allowed metadata edits.
+Costs are larger configuration payloads, related-set validation and tests.
+
+Consequences:
+Mark presented Gói4b accepted in the draft and affected memory; unpresented
+endpoint/DTO/status/guard-key/SQL/runtime refinements remain for consolidated
+review. Next propose Gói4c Class management/placement/scoped reads, then
+Schedule/Attendance/grades/reports/frontend/integration/runtime/verification.
+E04/E05 unchecked, D12/D13 deferred and old ADRs unchanged. No code, SQL/
+migration, provisioning, packages or executed tests are authorized.
+
+## ADR-147: Accept E04 package4c's Class/placement/scoped-read groups and explicit commands
+
+Status: Accepted — 2026-10-01
+
+Context:
+Owner accepted the presented Gói4c following ADR-146. E01/E02/E03 Class,
+placement, timetable and lifecycle guards remain accepted inputs. This records
+the presented API groups/mechanics, not every detailed route/DTO/guard key or
+whole E04 acceptance.
+
+Decision:
+Provide Class list/detail/create PLANNED and capacity saves within accepted
+windows, without generic code/program/state edits. Teacher options and change
+preview precede an explicit change command; recheck current Teacher validity,
+every affected schedule and existing no-teaching/no-dependent-data guards.
+Open/start/complete/cancel are four explicit commands with prerequisite/effect
+previews. Cancellation requires its accepted reason; completion never submits
+or finalizes grades automatically.
+Provide eligible Registration search and suitable Class options. Empty options
+mean waiting for a class, not automatic creation, placement or Band changes.
+Preview and place one Registration at a time. Assignment, initial DRAFT
+GradeReport, mandatory audit and completion commit together; no default Score
+or Attendance rows and no leakage of the internal DRAFT.
+AcademicAffairs management reads, Teacher currently assigned Class reads and
+Student own-Class reads use separate scopes; Student receives no peer roster.
+Eight write commands use Idempotency-Key and related versions/record sets:
+create Class, capacity, change Teacher, open, start, complete, cancel and place.
+Server rechecks live state/capacity/payment/conflicts; previews reserve nothing.
+Stale conflicts require deliberate reload. Unknown results use caller-scoped
+lookup, not automatic repeated placement. No transfer/removal/reopen/refund.
+
+Reason and alternatives:
+Explicit lifecycle commands and single-Registration placement keep effects and
+scope visible, compared with generic Class CRUD or automatic bulk placement.
+Atomic placement prevents assignments without initial reports. Costs are more
+preview requests, related-context checks and role-specific projections.
+
+Consequences:
+Mark presented Gói4c accepted in the draft and affected memory. Unpresented
+endpoint/DTO/status/guard-key/SQL/read-isolation refinements still require
+consolidated review. Next propose Gói4d Schedule/weekly generation/move/
+replacement/HELD/scoped calendar reads, then Attendance/grades/reports/
+frontend/integration/runtime/verification. E04/E05 unchecked, D12/D13 deferred
+and old ADRs unchanged. No code, SQL/migration, packages, provisioning or
+executed tests are authorized.
+
+## ADR-148: Accept E04 package4d's Schedule/calendar groups and explicit occurrence commands
+
+Status: Accepted — 2026-10-01
+
+Context:
+Owner accepted the presented Gói4d following ADR-147. Existing E01/E02/E03
+scheduling windows, obligations, replacement history and HELD rules remain
+accepted inputs. Approval covers presented groups/mechanics, not every detailed
+route/DTO/guard key/SQL refinement or complete E04 acceptance.
+
+Decision:
+Provide AcademicAffairs management calendars, Teacher calendars for currently
+assigned Classes and Student own-Class calendars, with current/history separated.
+Individual LESSON and FINAL_EXAM creation use concrete date/time/room and
+conflict previews; an exam is separate, never automatically generated with lessons.
+Weekly creation previews every concrete LESSON and saves the whole valid batch
+or none. Do not silently skip errors/holidays or preserve a recurring rule/job.
+Pre-start date/time/room moves use previews and retain the same occurrence,
+only inside accepted windows and without dependent data.
+Non-held replacement requires a reason, preserves the old occurrence/history
+and creates a valid future replacement in one transaction. Both belong to the
+same obligation; replacement never increases the LESSON requirement/count.
+AcademicAffairs confirms HELD one occurrence at a time after scheduled end
+while Class ONGOING. Do not infer occurrence from clock/Attendance, undo HELD
+or complete Class automatically.
+Five write commands use Idempotency-Key and related versions: create-one,
+create-weekly, move, replace and confirm-held. Server rechecks at commit;
+preview reserves nothing. Conflict requires re-preview; unknown responses
+require caller-scoped result lookup before a deliberate retry. No partial saves,
+automatic retries or side effects beyond the chosen command.
+
+Reason and alternatives:
+Concrete previews and explicit commands expose effects and preserve history,
+compared with generic Schedule CRUD/state setters or automatic partial saving.
+An atomic batch/replacement avoids mismatches between the displayed plan and
+the saved timetable. Costs are additional preview calls and related-context
+validation; background recurrence/holiday handling is outside accepted scope.
+
+Consequences:
+Mark presented Gói4d accepted in the draft and affected memory. Unpresented
+endpoint/DTO/status/guard-manifest/SQL/read-isolation/runtime refinements still
+require consolidated review. Next propose Gói4e Attendance and per-Student
+draft Score/comment saves, then whole-Class submit/review/publication, reports,
+frontend/integration/runtime/verification. E04/E05 unchecked, D12/D13 deferred
+and old ADRs unchanged. No code, SQL/migration, packages, provisioning or
+executed tests are authorized.
+
+## ADR-149: Accept E04 package4e's scoped Attendance and per-Student draft-save groups
+
+Status: Accepted — 2026-10-01
+
+Context:
+Owner accepted the presented Gói4e after ADR-148 and asked for the remaining
+packages in a Markdown review file editable like OWNER_REVIEW. Existing entry
+windows, missing-value semantics and save granularity remain accepted inputs.
+Approval covers the presented groups/mechanics, not all detailed routes/DTO/
+guard-key/SQL refinements or complete E04 acceptance.
+
+Decision:
+Teacher reads Attendance only for currently assigned Classes; AcademicAffairs
+reads it for management/completeness without entering it on Teacher's behalf.
+Save only deliberately chosen/changed Attendance values of one LESSON in an
+all-or-none batch. One invalid value aborts that save; unrecorded Students stay
+unrecorded, not present/absent by default.
+Teacher reads the assigned Class gradebook, configured components/weights,
+scores/comments and applicable return reason. No new AcademicAffairs or
+Student visibility into Teacher DRAFT values.
+Save changed component scores and comment of one Student together. Desktop
+uses per-row save, mobile the same unit in a Student page. Missing scores show
+incomplete; blank is not zero or deletion of a stored score. Server calculates
+totals; draft saves do not submit or publish grades.
+Two write commands use Idempotency-Key and related versions, including the
+parent GradeReport version when scores/comments change. Server rechecks current
+rights, schedule and state at commit. Retain accepted windows, no autosave,
+default-all or silent overwrite. Unknown results use caller-scoped lookup
+before a deliberate retry. Whole-Class sending/review remains a separate package.
+
+Reason and alternatives:
+Explicit one-LESSON and one-Student saves expose the saved unit and its status,
+compared with per-cell autosave or full-Class draft replacement. All-or-none
+saves avoid partial scores/comment updates; missing data stays distinguishable
+from deliberate absence/zero. Costs are explicit save clicks, delta/context
+tracking and unknown-result handling.
+
+Consequences:
+Mark presented Gói4e accepted and synchronize affected memory. Unpresented
+endpoint/DTO/status/guard-manifest/SQL/integration refinements still require
+consolidated review. At the owner's request, create E04_REMAINING_REVIEW.md for
+remaining package proposals and owner marks; OWNER_REVIEW retains stage-level
+E04/E05 acceptance, and no package tick accepts unseen future artifacts.
+E04/E05 unchecked, D12/D13 deferred and old ADRs unchanged. No code, SQL/
+migration, packages, provisioning, tests or external integration are authorized.
+
+## ADR-150: Accept E04 package4f's whole-Class grade submission, review and Student publication
+
+Status: Accepted — 2026-10-01
+
+Context:
+Owner explicitly accepted all23 displayed rows of E04_REMAINING_REVIEW E04-R1
+in chat and saved all23 checked, with no alternative notes. This ADR records
+package4f (4F01–4F04) as displayed in that file, including its explanatory
+contracts and limits; E01/E02/E03 and older accepted decisions stay unchanged.
+
+Decision:
+- 4F01 — Teacher gửi/gửi lại: Read-only preview toàn Class trả mã lớp/cohort/state/missing components/versions; hai command riêng Gửi và Gửi lại, không Student selection. Frontend xử lý mọi local unsaved edit trước preview; Class COMPLETED, đủ mọi học viên/component, current Teacher, đúng report states mới ghi. Không tự gửi khi đủ điểm, không auto resubmit, không thêm lý do Teacher khi chưa có policy.
+- 4F02 — Giáo vụ review: Danh sách lớp và chi tiết review đúng quyền qua SP03; không DRAFT values. Preview action RETURN hoặc FINALIZE, rồi command riêng. RETURN bắt buộc lý do/giữ scores-comment; FINALIZE chốt/công bố cả cohort cùng lúc. Một confirmation có Class/count/state/effects; không checkbox chọn vài học viên/duyệt hai tầng/reopen/override.
+- 4F03 — Student xem kết quả: Hai reads own FINALIZED list/detail, chọn đúng lượt học khi học nhiều khóa/học lại. Server trả component/weights/scores/comment/final_score/pass đúng scope; không classmates, DRAFT/SUBMITTED/RETURNED values hoặc export/PDF mới. Trước công bố chỉ hiển thị thông báo chưa có kết quả được công bố khi cần, không gọi total nháp là điểm chính thức.
+- 4F04 — Cohort/TX/replay: Cả4 commands submit/resubmit/return/finalize dùng UUID Idempotency-Key và full Class–Assignment–GradeReport context, không page subset. TX12 all-or-none statuses/history/audit/completion; finalize tính decimal/half-up một lần, lưu final_score và cập nhật Registration.is_unfinished cùng TX. Giữ mỗi lần workflow theo operation_id; 409 rà lại, unknown tra caller result, no automatic effects.
+
+The accepted source contract and illustrations are retained in
+[the owner review](plan/E04_REMAINING_REVIEW.md) section4 and consolidated
+into [SYSTEM_ARCHITECTURE_SPEC](design/SYSTEM_ARCHITECTURE_SPEC.md) section14.
+Exact DTO/guard/signature/read-isolation/runtime refinements not already displayed
+must still be written and reviewed in the actual consolidated E04 artifact.
+
+Reason and alternatives:
+Separate whole-Class previews and explicit commands preserve cohort atomicity and published-grade boundaries. Compared with per-Student submission or automatic publication, this needs full-set/version validation and an additional preview but avoids partial lifecycle effects.
+
+Consequences:
+Record these presented rows as accepted and synchronize affected Project Memory.
+This accepts the displayed design/process only, not an unseen complete artifact
+or successful runtime/SQL/browser/load/recovery tests. OWNER_REVIEW retains
+separate unchecked E04/E05 gates; D12/D13 remain deferred with original notes.
+No code, SQL/migration, Git/scaffold, packages, provisioning, backup/restore,
+public exposure or external integration is authorized.
+
+## ADR-151: Accept E04 package5's role-scoped reports and fresh all-results financial CSV
+
+Status: Accepted — 2026-10-01
+
+Context:
+Owner explicitly accepted all23 displayed rows of E04_REMAINING_REVIEW E04-R1
+in chat and saved all23 checked, with no alternative notes. This ADR records
+package5 (501–503) as displayed in that file, including its explanatory
+contracts and limits; E01/E02/E03 and older accepted decisions stay unchanged.
+
+Decision:
+- 501 — Báo cáo tài chính: API role-specific Accountant/Director cùng metric đã chốt: revenue theo paid_at, billed theo issued_at của non-CANCELLED Invoice, current UNPAID debt/overdue riêng không period. Response applied filters/queried_at/whole-set totals/group page; exact money strings. Accountant vẫn dùng Invoice nghiệp vụ qua Gói3c, report không biến thành profile/Invoice dump; Director chỉ nhóm không định danh.
+- 502 — Tuyển sinh/đào tạo Director: Hai API riêng Admissions và Training. Admissions Registration count và distinct Student count theo cùng cohort; overall distinct tính riêng, không sum nhóm. Training trả inventory/current obligations tách finalized-results period; HELD LESSON/expected và FINAL_EXAM riêng, replacement không count đôi. No-data khác0%; defaults/history Course theo ADR đã chốt; không hidden Student detail/export.
+- 503 — CSV Accountant: Một read-only export endpoint chạy fresh SNAPSHOT theo applied financial filters/cột report/toàn kết quả, không UUID mutation marker/job/export store. Kiểm quyền mới, max10.000 dòng hoặc5MB; vượt reject toàn file, không stream phần hợp lệ trước rồi báo thành công. UTF8BOM/comma/CRLF/quote/formula safeguards đúng ADR-101; không DB text rewrite, XLSX/PDF hoặc Director export.
+
+The accepted source contract and illustrations are retained in
+[the owner review](plan/E04_REMAINING_REVIEW.md) section5 and consolidated
+into [SYSTEM_ARCHITECTURE_SPEC](design/SYSTEM_ARCHITECTURE_SPEC.md) section15.
+Exact DTO/guard/signature/read-isolation/runtime refinements not already displayed
+must still be written and reviewed in the actual consolidated E04 artifact.
+
+Reason and alternatives:
+Separate role projections and metric-specific periods preserve the accepted aggregate and current-state semantics. A fresh whole-result export avoids stale/page-only downloads; snapshot queries and size preflight cost additional server work. Individual Director data, historical as-of reporting and export jobs are not selected.
+
+Consequences:
+Record these presented rows as accepted and synchronize affected Project Memory.
+This accepts the displayed design/process only, not an unseen complete artifact
+or successful runtime/SQL/browser/load/recovery tests. OWNER_REVIEW retains
+separate unchecked E04/E05 gates; D12/D13 remain deferred with original notes.
+No code, SQL/migration, Git/scaffold, packages, provisioning, backup/restore,
+public exposure or external integration is authorized.
+
+## ADR-152: Accept E04 package6's frontend route, state, form and authentication boundaries
+
+Status: Accepted — 2026-10-01
+
+Context:
+Owner explicitly accepted all23 displayed rows of E04_REMAINING_REVIEW E04-R1
+in chat and saved all23 checked, with no alternative notes. This ADR records
+package6 (601–604) as displayed in that file, including its explanatory
+contracts and limits; E01/E02/E03 and older accepted decisions stay unchanged.
+
+Decision:
+- 601 — Route/feature contract: Một route manifest cho F01–F33 trừ F15, paths theo feature/role, list-detail-complex-form URLs hỗ trợ direct link/Back/Forward. Auth context tối thiểu dùng chung shell; menu guards chỉ UX, API vẫn auth. Ghi route→F→role→API→loading/error/empty contract; không staff dashboard mới hoặc thư viện router/cache/form tự thêm.
+- 602 — Request/server-state: Một typed API client chung cho cookie/CSRF/envelope/traceId; trạng thái idle/loading/success/empty/error/unknown tách rõ. Key dữ liệu gồm caller scope/filter/page; discard response cũ khi request mới hoặc phiên đổi. Sau write cập nhật/refetch projections liên quan có quyền, không optimistic update trạng thái quan trọng, background polling giữ phiên hay automatic mutation retry. RAM không là durable storage.
+- 603 — Form/preview/intent: Form giữ draft trong RAM, explicit save; expectedVersions/context cùng dữ liệu đã load. Sửa input invalidate preview. Disable double-click khi pending, UUID một intent; unknown giữ intent/content để tra kết quả, sửa payload là intent mới sau xử lý kết quả cũ. 400 chỉ lỗi trường,409 deliberate reload/review, no merge/overwrite. Unsaved edits warn khi rời; blank không tự0/delete/absent.
+- 604 — Phiên/CSRF/secret UX: 401 xóa auth/sensitive RAM/preview/secret và về login;403 phân biệt CSRF_INVALID với role denial, lấy CSRF/context mới theo Auth contract nhưng không tự phát lại write. Logout/session changes giữa tab chỉ signal không secret, dữ liệu scope cũ bị vô hiệu; quyền cuối cùng server kiểm. Temporary password chỉ first response/one-time RAM/explicit copy/clear khi rời đúng FE18; không replay/login credential cache.
+
+The accepted source contract and illustrations are retained in
+[the owner review](plan/E04_REMAINING_REVIEW.md) section6 and consolidated
+into [SYSTEM_ARCHITECTURE_SPEC](design/SYSTEM_ARCHITECTURE_SPEC.md) section16.
+Exact DTO/guard/signature/read-isolation/runtime refinements not already displayed
+must still be written and reviewed in the actual consolidated E04 artifact.
+
+Reason and alternatives:
+A shared typed client and explicit draft/preview/command states keep stale-session and unknown-result handling consistent. Compared with optimistic critical writes, autosave, persistent sensitive caches or automatic write retries, this requires more state transitions and deliberate user actions without changing accepted UX scope.
+
+Consequences:
+Record these presented rows as accepted and synchronize affected Project Memory.
+This accepts the displayed design/process only, not an unseen complete artifact
+or successful runtime/SQL/browser/load/recovery tests. OWNER_REVIEW retains
+separate unchecked E04/E05 gates; D12/D13 remain deferred with original notes.
+No code, SQL/migration, Git/scaffold, packages, provisioning, backup/restore,
+public exposure or external integration is authorized.
+
+## ADR-153: Accept E04 package7's backend/SQL, canonical replay, audit and least-privilege integration
+
+Status: Accepted — 2026-10-01
+
+Context:
+Owner explicitly accepted all23 displayed rows of E04_REMAINING_REVIEW E04-R1
+in chat and saved all23 checked, with no alternative notes. This ADR records
+package7 (701–705) as displayed in that file, including its explanatory
+contracts and limits; E01/E02/E03 and older accepted decisions stay unchanged.
+
+Decision:
+- 701 — DTO/contract manifest: Hoàn thiện từng endpoint: role/ownership, request-response/error fields, source row/aggregate tokens, full-set/expected-absence semantics, UUID bắt buộc/không dùng, audit và TX. Base64/version không cấp quyền; field chỉ xuất theo role, stable page/sort. Ghi rõ các chi tiết Gói1–4e chưa trình, không suy toàn draft đã duyệt.
+- 702 — Canonical replay digest: Giữ input_digest binary(32)/SHA-256 đã duyệt ở E03 T23, không đổi hash hoặc thêm trường DB. Đề xuất canonical serialization theo DTO đã validate/normalize/allowlist, bao gồm target/expected versions/set/intent content; actor/action từ verified session. Order cố định; set chỉ sort khi semantics không phụ thuộc thứ tự. Không hash raw HTTP JSON hoặc chứa CSRF/JWT/password/temp secret. Marker vẫn completion/ref/mode đúng T23, không response PII snapshot. Exact UTF8 byte representation/contract compatibility trong cửa sổ replay phải trình ở E04.
+- 703 — SQL callers/query mapping: Repository gọi thật SP01–06 đúng paths Admissions/roster/review/reports; SP07 allocator trong approval TX. FN01–06 có callers/parity đã định, không tồn tại chỉ để đủ rubric. Keyless read DTO mappings/parameterization/sort allowlist; actor_id từ verified session, không client tự khai. Trigger tables dùng EF write mapping tương thích; phải có integration evidence sau triển khai, không giả SaveChanges mặc định đã đủ.
+- 704 — TX/locks/read consistency: Command matrix nối mỗi write với TX01–13 và request/aggregate/TIMETABLE gates theo E03§9.1, shared connection/TX cho effects/mandatory audit/replay. Reload/recheck rights/session/time/relationships sau locks; resource set đổi thì rollback/reprepare theo cùng order. Child insert/absence/full cohort không giả Class RV tự thay. Report SNAPSHOT đã chốt; compound preview/detail cần coherent read snapshot ngắn, không giữ qua user confirmation.
+- 705 — Audit/DB privilege contract: Matrix event/allowlisted old-new/reason/operation_id; mandatory fail rollback, pure-security best-effort và retention/IP90 ngày đúng policy. Runtime chỉ grants cần cho real paths, schema/operator riêng;4 SQL demo roles không là7 web roles và không cấp db_owner/sysadmin. Admin audit reads không mở nghiệp vụ khác. Unknown/replay kiểm current rights; không log secret/full payload hoặc app purge/export audit.
+
+The accepted source contract and illustrations are retained in
+[the owner review](plan/E04_REMAINING_REVIEW.md) section7 and consolidated
+into [SYSTEM_ARCHITECTURE_SPEC](design/SYSTEM_ARCHITECTURE_SPEC.md) section17.
+Exact DTO/guard/signature/read-isolation/runtime refinements not already displayed
+must still be written and reviewed in the actual consolidated E04 artifact.
+
+Reason and alternatives:
+Explicit DTO/command/caller matrices expose transaction ownership and real rubric integration. Canonical normalized intent is preferable to raw JSON hashing; fixed semantics require compatibility fixtures. Shared caller transactions and scoped grants avoid independently committed effects and broad DB privileges, at the cost of mapping and integration verification.
+
+Consequences:
+Record these presented rows as accepted and synchronize affected Project Memory.
+This accepts the displayed design/process only, not an unseen complete artifact
+or successful runtime/SQL/browser/load/recovery tests. OWNER_REVIEW retains
+separate unchecked E04/E05 gates; D12/D13 remain deferred with original notes.
+No code, SQL/migration, Git/scaffold, packages, provisioning, backup/restore,
+public exposure or external integration is authorized.
+
+## ADR-154: Accept E04 package8's laptop operation and secure configuration design boundaries
+
+Status: Accepted — 2026-10-01
+
+Context:
+Owner explicitly accepted all23 displayed rows of E04_REMAINING_REVIEW E04-R1
+in chat and saved all23 checked, with no alternative notes. This ADR records
+package8 (801–804) as displayed in that file, including its explanatory
+contracts and limits; E01/E02/E03 and older accepted decisions stay unchanged.
+
+Decision:
+- 801 — Mô hình cùng origin: Soạn hồ sơ dev/demo khác nhau: dev vẫn frontend/API cùng origin qua cấu hình phù hợp; demo đề xuất ASP.NET phục vụ SPA build và /api/v1, frontend gọi đường dẫn tương đối. Chỉ web được đưa qua cổng truy cập đã được phép, SQL không public. LAN/tunnel là profile thiết kế chờ D13, không tự bật. Link thay đổi thì dùng phiên/login mới, không tắt Secure/CSRF để chữa lỗi.
+- 802 — Config/proxy/timeout/health: Config typed và validate khi startup: timezone VN, trusted origin/proxy, JWT/CSRF/DB/crypto keys ngoài repo, exact target runtime theo ADR-119. Fail closed thiếu config; readiness không leak DB/secrets hoặc cập nhật idle. Khóa/query/request có deadline hữu hạn, cancel/timeout→unknown/lookup khi cần; không giữ transaction chờ user. Số timeout/ports/proxy addresses và benchmark cần hồ sơ môi trường trước khi chốt, không tự điền ngưỡng/SLO D12.
+- 803 — Backup/recovery hồ sơ: Giữ daily encrypted SQL backup/7 ngày4 tuần/monthly restore/RPO24h-RTO2h là targets đã chốt. Soạn nơi lưu riêng khỏi ổ primary, quyền operator/key tách backup và checklist restore DB test độc lập. Laptop tắt: ghi nhận missed run, kiểm/catch-up khi bật; không gọi backup cũ là fresh hoặc bảo đảm RPO khi đã lỡ. Đường dẫn/dung lượng/media/access chưa có phải owner xác định trước chạy thật; không backup/restore ở lượt thiết kế.
+- 804 — Runbook demo/bảo trì: Một checklist trước-trong-sau buổi: kiểm bản build/data giả/config/DB/web/readiness/login7roles trên thiết bị khách; chỉ bật tunnel sau được phép; mất mạng/write unknown tra kết quả; tắt đường public sau demo, theo dõi backup/session/secret. Bạn vận hành theo ADR-120; không role Admin/DBA mới. Dependency/security/blocklist review theo chính sách; rollout/rollback chi tiết chỉ lập sau full baseline và yêu cầu triển khai.
+
+The accepted source contract and illustrations are retained in
+[the owner review](plan/E04_REMAINING_REVIEW.md) section8 and consolidated
+into [SYSTEM_ARCHITECTURE_SPEC](design/SYSTEM_ARCHITECTURE_SPEC.md) section18.
+Exact DTO/guard/signature/read-isolation/runtime refinements not already displayed
+must still be written and reviewed in the actual consolidated E04 artifact.
+
+Reason and alternatives:
+Same-origin demo design and operator runbooks fit on-demand laptop use. They require valid configuration, separate recovery media and honest missed-backup handling. Always-on/cloud hosting, a concrete tunnel/provider/domain/port/proxy setup and numerical performance guarantees are not selected by these rows; D12/D13 stay deferred.
+
+Consequences:
+Record these presented rows as accepted and synchronize affected Project Memory.
+This accepts the displayed design/process only, not an unseen complete artifact
+or successful runtime/SQL/browser/load/recovery tests. OWNER_REVIEW retains
+separate unchecked E04/E05 gates; D12/D13 remain deferred with original notes.
+No code, SQL/migration, Git/scaffold, packages, provisioning, backup/restore,
+public exposure or external integration is authorized.
+
+## ADR-155: Accept E04 package9's traceability, risk-based verification and separate E04/E05 acceptance
+
+Status: Accepted — 2026-10-01
+
+Context:
+Owner explicitly accepted all23 displayed rows of E04_REMAINING_REVIEW E04-R1
+in chat and saved all23 checked, with no alternative notes. This ADR records
+package9 (901–903) as displayed in that file, including its explanatory
+contracts and limits; E01/E02/E03 and older accepted decisions stay unchanged.
+
+Decision:
+- 901 — Trace hoàn chỉnh: Một matrix37 NV/32 F/21 W→actor/endpoint/DTO→Service/TX→24 tables/SQL objects→UI/errors→verification case. Chỉ rõ removed NV10/11/F15, deferred/out-of-scope và E04 refinements chưa rà. Mỗi source obligation có path thật dự kiến, không ép một SP/NV hoặc đếm file thay độ phủ. E05 sẽ rà matrix thực tế; hiện chưa tạo complete trace mới.
+- 902 — Bộ ca kiểm chứng: Thiết kế xUnit nghiệp vụ/API, SQL Server test riêng/race hai connection/forced failure/audit-replay/trigger-EF/grants-SP-UDF/index before-after theo rubric. All7 roles/ownership/list-detail-preview-replay-export, clocks/decimals/missing/whole-Class/cohort/no partial/secret retention; browser375/768/1280 và Chrome/Edge khi triển khai. Data giả tách DB chính; không framework mới/code tests hoặc claim pass.
+- 903 — Quy trình đóng draft: Sau ghi nhận các dòng được duyệt, tổng hợp E04 đủ endpoint/DTO/mapping/frontend/runtime/verification, đối chiếu những chi tiết cũ chưa trình. Mọi gap/mâu thuẫn liệt kê để xử lý hoặc owner loại/hoãn rõ; trình bản E04 thực tế để nghiệm thu riêng trong OWNER_REVIEW. Sau E04 mới rà toàn baseline/E05 thực tế; không tick E04/E05 từ23 dòng này và không nhảy sang implementation plan.
+
+The accepted source contract and illustrations are retained in
+[the owner review](plan/E04_REMAINING_REVIEW.md) section9 and consolidated
+into [SYSTEM_ARCHITECTURE_SPEC](design/SYSTEM_ARCHITECTURE_SPEC.md) section19.
+Exact DTO/guard/signature/read-isolation/runtime refinements not already displayed
+must still be written and reviewed in the actual consolidated E04 artifact.
+
+Reason and alternatives:
+One end-to-end trace and risk-based cases provide reviewable coverage rather than file counts or happy-path-only checks. Completing the actual artifact before its separate acceptance prevents package marks from approving unseen refinements. Verification breadth costs later test effort; there is no running application or execution evidence now.
+
+Consequences:
+Record these presented rows as accepted and synchronize affected Project Memory.
+This accepts the displayed design/process only, not an unseen complete artifact
+or successful runtime/SQL/browser/load/recovery tests. OWNER_REVIEW retains
+separate unchecked E04/E05 gates; D12/D13 remain deferred with original notes.
+No code, SQL/migration, Git/scaffold, packages, provisioning, backup/restore,
+public exposure or external integration is authorized.
+
+## ADR-156: Require future start for new Schedule roots and move destinations (E04-RF03)
+
+Status: Accepted — 2026-10-03
+
+Context:
+E01 NV19/E02 W16 and ADR-032/036/148 already define the old-slot pre-start
+move window, future linked replacements and after-end HELD. Root creation/
+weekly creation and the destination of a pre-start move had no explicit
+future cutoff. E04-D7 presented E04-RF03 separately as a proposal; the owner
+replied with agreement after the RF03 summary on2026-10-03.
+
+Decision:
+- A new root Schedule (LESSON or FINAL_EXAM), every concrete LESSON in a
+  weekly batch, and a move destination must have startAt>serverNow when the
+  service validates the saving transaction. Equality or a passed start after
+  valid-shaped input is409; malformed date/time remains400.
+- The service checks the authoritative clock again at saving, independent
+  of RowVersion and preview time. A preview does not reserve time/resources
+  or grant an exception; the client cannot supply an authoritative asOfUtc.
+- If any weekly candidate fails this cutoff, save none: all-or-none,
+  rollback/no skip/trim/automatic date movement. The owner edits the input
+  and previews again; no backfill workflow for old lessons/Attendance/Score/
+  HELD is added.
+- Keep existing old-slot move, replacement-future/old-start and HELD-after-end/
+  ONGOING windows, dependencies, obligation count, conflicts and role rights.
+  This also applies when moving a current replacement occurrence; origin
+  history does not exempt its new destination from the future cutoff.
+
+Reason and alternatives:
+A future-only scheduling flow keeps intended scheduling separate from entering
+past events, with one server-clock boundary for individual/weekly creation
+and moves. Allowing past roots/destinations would require a separately designed
+backfill/provenance workflow; that option was not selected. The tradeoff is
+that a valid preview can become blocked while the owner is preparing to save.
+
+Consequences:
+Synchronize requirements and NV19/W16/Schedule API notes as a dated addendum,
+without changing earlier accepted ADRs or E03 physical schema/SQL objects.
+Only RF03 is resolved by this reply: RF01 (EntryTestSession creation) and RF02
+(entry grader/score no-op outcome) remain proposed. Other D7 wire schemas and
+the whole E04/E05 artifacts are not accepted by inference. No implementation,
+SQL, provisioning or runtime-test evidence is authorized or claimed.
+
+Related:
+ADR-032/036/088/148; [RF03 resolution](plan/questions.md).
+
+## ADR-157: Require future start when creating EntryTestSession (E04-RF01)
+
+Status: Accepted — 2026-10-03
+
+Context:
+Entry-session opening/edit/cancellation/grader windows were already accepted,
+but initial creation had no explicit clock cutoff. The owner approved the
+three-item RF01/RF02/RF04 review on 2026-10-03. This records RF01 only.
+
+Decision:
+- AcademicAffairs creates EntryTestSession only when startAt>serverNow during
+  saving-transaction validation, independent of preview time and rowversions.
+  Equality or a passed start with otherwise valid input returns409; malformed
+  dates/times remain400. No past-session backfill path is added.
+- A new session remains CLOSED; same-day/minute/capacity/ACTIVE Teacher and
+  room/Teacher conflict guards, existing booking/grading windows and roles stay.
+  Failure leaves no session/audit/completion partial effects.
+
+Reason and alternatives:
+A future-only creation flow keeps scheduling separate from entering past
+activity. Allowing backfill would require a separately defined provenance and
+workflow; that option was not selected. A valid form can become blocked by
+elapsed time before saving and must be revised deliberately.
+
+Consequences:
+Synchronize canonical requirements and dated NV14/W06/API-055 addenda.
+RF03 remains ADR-156; no E03 physical/schema/SQL changes. This does not accept
+all E04 refinements, E04/E05, D12/D13 or authorize implementation/planning.
+
+Related:
+ADR-030/145/156; [RF01 resolution](plan/questions.md).
+
+## ADR-158: Reject unchanged entry grader and corrected score intents (E04-RF02)
+
+Status: Accepted — 2026-10-03
+
+Context:
+Reasoned grader replacement and original-grader score correction were already
+accepted, while their equal-value command outcome was unresolved. The owner
+approved RF02 with RF01/RF04 on 2026-10-03.
+
+Decision:
+- For a new intent, after identity/task authorization and valid current-context
+  checks, selecting the existing grader or correcting to the same parsed score
+  returns400 with the relevant graderId/score field error.
+- No business mutation, changed provenance, mandatory mutation audit or new
+  ReplayOperation completion is created for that unchanged request. A reason
+  alone does not make a score/grader change.
+- Stale versions/membership/state/time context still returns409; equality does
+  not suppress an invalid context. Current/original-grader and correction reason
+  requirements, pre-confirmation/ended-record restrictions remain unchanged.
+- An already completed same-key intent follows authorized replay before new
+  mutation guards, with no repeated effects. It is not a new no-change request.
+
+Reason and alternatives:
+Rejecting an unchanged intent avoids fictitious correction/reassignment history.
+A200 no-change success would require distinct result semantics and could imply
+an action occurred; that alternative was not selected. UI separates no-change
+input errors from stale-context conflicts and actual success.
+
+Consequences:
+Synchronize requirements, NV14/NV22/W06/W08 and API-064/072/no-op registry.
+Exact wire code strings/envelopes, preview shapes and canonical digest codec
+remain E04 refinements for artifact review. No privileged correction override,
+T23 fields/modes, implementation or E04/E05 acceptance follows this approval.
+
+Related:
+ADR-029/030/145; [RF02 resolution](plan/questions.md).
+
+## ADR-159: Reject unchanged value edits and preserve delta provenance (E04-RF04)
+
+Status: Accepted — 2026-10-03
+
+Context:
+SC02/SC01 review grouped unresolved no-change outcomes for other value edits
+and Attendance/grade-draft delta saves. The owner approved RF04 alongside
+RF01/RF02; save units and current authorization/state/history remain inputs.
+
+Decision:
+- Other value edits that leave all business values unchanged after field
+  normalization and valid current-context checks return400, without mutation,
+  provenance touch, mandatory mutation audit or new completion marker.
+  This covers Booking reschedule, Payment metadata, EntrySession schedule,
+  Course details, Program configuration/name, Class capacity/Teacher and
+  Schedule move; reason-only edits are not business changes.
+- For Attendance and per-Student grade-draft delta batches, validate the entire
+  supplied request, including every item/version/expected absence/full cohort/
+  relationship/state/clock guard, before evaluating equality. In a mixed batch,
+  save actual changes atomically in the existing save unit; unchanged rows keep
+  enteredBy/enteredAt and existing history. Any invalid/stale item aborts the
+  whole save even when its value appears equal. An entirely equal batch returns
+  400 with no new marker. A missing row newly recorded as0 is an actual change.
+- Omitted teacherComment preserves the current value; explicit NULL/normalized
+  blank clears it. Clearing an alreadyNULL value is unchanged. Real score/comment
+  mutations still touch the parent report version within TX11; unchanged values
+  alone do not touch it or create correction history.
+- A new-key state-transition command must satisfy its source state; wrong-source
+  requests return409 rather than claim another intent's completion. Creates do
+  not treat existing domain rows as successful creation. A deliberate Admin
+  reset still issues a new temporary credential and revokes sessions under
+  existing rules; completed same-key replay never resets/issues a secret again.
+- Required audit and full rollback semantics for actual changes remain intact;
+  these rules do not allow partial validation, silent merge, delete or bypass.
+
+Reason and alternatives:
+Rejecting all-equal saves and retaining unchanged-row provenance keeps history
+accurate. A200 no-change completion alternative was not selected; it would
+need new success/replay semantics. Mixed batches remain useful without a fake
+write of every supplied row; the cost is explicit UI no-change handling.
+
+Consequences:
+Synchronize canonical requirements, affected NV/W contracts, DTOs and SC02.
+The no-change400/wrong-source409 behavior is accepted; exact NO_CHANGE/
+STATE_CONFLICT spellings and remaining response/codec/SP/EF details still
+belong to actual E04 review. No T23 fields/result modes, web rights, schema,
+code/SQL/deployment/planning or whole E04/E05 acceptance is authorized.
+
+Related:
+ADR-042/093/139/149/157/158; [RF04 resolution](plan/questions.md).
+## ADR-160: Accept actual consolidated E04-v1 architecture and technical contracts
+
+Status: Accepted — 2026-10-03
+
+Context:
+The owner was presented the actual E04-v1 package/final contract and E05-v1
+cross-check, with explicit E04-before-E05 acceptance and preserved D12/D13
+DF01–05 boundaries. The owner confirmed both outputs in that order. This
+records actual E04 acceptance, not an inference from earlier package/RF votes.
+
+Decision:
+Accept SYSTEM_ARCHITECTURE_SPEC E04-v1 and its actual catalog/154-domain-DTO/
+SC01-parity/SC02-replay/SC03-SQL-integration/SC04-runtime/FINAL_CONTRACT package.
+This includes154 method/path/55 UUID commands/6 caller-result paths/32F/21W,
+strict UUID/8byte RowVersion/scalars/C1 normalized full-intent bytes/SHA256,
+error precedence/current read authorization and completion unions, exact24h
+replay retention/expired retained-key409/compatibility,7SP/6FN result mapping,
+5trigger EF write strategy/24-table grants/locks/audit classifications,
+frontend states and fresh financial CSV6columns/footer/10000datarecords
+including footer/5000000encodedbytes. Runtime typed slots/fail-closed/readiness/
+cancellation/operator/recovery prerequisites and verification obligations
+are accepted design. Preserve all prior policy/source-state/save-unit/role/
+privacy invariants and physical E03 schema, including RF156–159.
+
+Reason:
+The complete contracts and parity findings are now reviewable actual artifacts,
+with source obligations/scoped projections/transaction/replay/SQL/UI boundaries
+and explicit environment/evidence deferrals. This closes design gaps without
+pretending there is an implementation or successful runtime verification.
+
+Consequences:
+Mark only OWNER_REVIEW E04 accepted first and stage4 done. D12/D13 remain
+deferred with original notes; DF01–05 remain environment/evidence prerequisites,
+not configured provider/port/deadline/storage/package values or waived invariants.
+Earlier proposed/draft labels in dated checkpoints describe pre-acceptance
+status; exact presented contracts are accepted through this actual artifact.
+No app code/SQL/migration/Git/scaffold/packages/deployment/exposure/backup-
+restore/integration or implementation planning is authorized by acceptance.
+
+Related:
+[Actual E04-v1](design/SYSTEM_ARCHITECTURE_SPEC.md),
+[final contract and DF01–05](design/E04_FINAL_CONTRACT.md),
+[owner gate](plan/OWNER_REVIEW.md); ADR-139–159.
+
+## ADR-161: Accept E05-v1 consistency review and complete design baseline
+
+Status: Accepted — 2026-10-03
+
+Context:
+After the explicit E04-first proposal, the owner confirmed E04-v1 then the
+actual E05-v1 cross-check. E04 is accepted above without artifact amendments;
+the prepared E05 therefore remains the exact baseline that was reviewed.
+
+Decision:
+Accept E05_BASELINE_REVIEW E05-v1 and complete E01–E04 design baseline:
+37retained NV individually traced through32F/21W/API-DTO/service/TX/data/UI/
+verification obligations, state/data/API/UI parity,24cross-contract cases,
+10resolved-document findings, excluded scope, DB rubric/evidence boundaries
+and DF01–05. NV10/NV11/F15 remain removed, RF01–04 settled, prior ADR statuses
+remain unchanged. No additional unresolved in-scope product decision was
+identified in the review. D12/D13 remain expressly owner-deferred.
+
+Reason:
+The owner accepted concrete outputs and their limitations after source/contract
+cross-check, rather than accepting unseen future artifacts or count-based
+implementation claims. Future changes must update the affected baseline trace.
+
+Consequences:
+Mark OWNER_REVIEW E05 accepted after E04, stage5 done and design-baseline done.
+75owner rows now73accepted/2deferred (D12/D13), preserving all owner notes.
+This is design agreement, not evidence of implemented APIs/SQL/EF/grants/CSV/
+browser/race/load/recovery. Await separate owner direction before discussing
+implementation planning or performing code/SQL/Git/scaffold/deployment.
+
+Related:
+[E05-v1 cross-check](design/E05_BASELINE_REVIEW.md),
+[design agreement](plan/design-baseline.md), [owner gate](plan/OWNER_REVIEW.md);
+ADR-011/130/155/160.

@@ -141,12 +141,18 @@ Adding or replacing a framework/package requires owner approval.
   whichever first, without refresh/remember-me (ADR-055). Concurrent device
   sessions are allowed (ADR-056); logout revokes only the current session
   server-side, no logout-all button (ADR-057). ADR-049 still revokes all on its
-  events. Activity/restricted-session definitions and enforcement await design.
+  events. Persistence/revocation/timers are accepted ADR-092; activity/restricted-
+  tab/idle activity, restricted authentication and cookie/CSRF transport are
+  accepted separately in ADR-097–ADR-099 (D03/D04/D06).
 - Audit keeps mandatory business history and adds configuration/class-lifecycle/
   schedule changes plus authentication/account/denied-access events (ADR-058/059).
   Admin has structured filters/newest-first pagination (ADR-060), relevant event
   details without credentials/full payloads (ADR-061), in-app viewing only/no
-  audit CSV/PDF export (ADR-062). Storage/failure/retention remain later design.
+  audit CSV/PDF export (ADR-062). Operation grouping and history are accepted
+  in ADR-093; D08/D09 separately accepted ADR-115/116: mandatory mutation
+  audit atomic/rollback, pure security events best-effort/secret-free fallback,
+  mandatory history retained and pure security logs/IP expire operationally
+  after 90 days. No app purge/export or unauthenticated actor from email.
 - Reports evaluate current states, not past-date reconstructions (ADR-063).
   Period billing sums non-CANCELLED Invoices by issue date; current UNPAID debt
   stays separate (ADR-064). Count distinct students within Course groups and
@@ -159,20 +165,53 @@ Adding or replacing a framework/package requires owner approval.
   date-free current inventory/debt, training/current Teacher and financial Course/
   overdue filters. Director only applicable non-identifying group aggregates/no
   export; Accountant CSV all filtered report results/columns, no hidden/profile
-  fields or separate record dumps. Query/export mechanisms remain later design;
-  no implementation authority or additional staff report rights.
+  fields or separate record dumps. Query/snapshot/rate display are accepted
+  ADR-094; D10 file mechanisms are accepted in ADR-101: UTF-8 BOM CSV,
+  comma/CRLF, 10,000-row or 5 MB cap and formula safeguards. No additional
+  staff report rights or implementation authority.
 - Profile validation ADR-073–ADR-077: trimmed Unicode name 1–100, real/nonfuture
   Student DOB without age limits, creation email <=254/account-wide case-insensitive
   uniqueness/no provider rewriting, Vietnamese-mobile phone format with equivalent
   0/+84 normalization and uniqueness, optional free-text address <=255. No email
-  verification/OTP or new staff required fields; exact validators/storage remain
-  technical design. Other field and operational-view details still need review.
+  verification/OTP or new staff required fields; exact Unicode/ASCII email/phone/
+  NULL/storage contracts are accepted ADR-091. Other detailed outputs still need review.
 - Remaining-field policies ADR-078–ADR-082: trimmed catalogue names 150/component
   names 100; immutable manual Course/Class codes and consistent room codes using
   uppercase 1–30 A–Z/digits/_/-; plain-text reasons/optional comments <=1000;
   Payment references <=100 with no global uniqueness. Existing configuration/
   result locks and one Payment per Invoice stay intact; no room module. Q-011
-  operational viewing/UI/history and catalogue lifecycle remain to review.
+  operational viewing/UI/history/catalogue lifecycle are accepted ADR-083–ADR-089.
+- Owner approved all 33 A–C items in `docs/plan/OWNER_REVIEW.md`, recorded
+  ADR-083–ADR-094: scoped read/UI/catalogue workflow, occurrence/final-exam/
+  scheduling and data contracts. Target includes EntryTestBooking/AuthSession;
+  Owner subsequently approved Gói 1 D01–D04/D06–D07/D10/D15, recorded
+  ADR-095–ADR-102 on 29/09/2026: module/server ownership, API/errors/pagination,
+  idle/shared-tab and restricted sessions, cookies/CSRF, login privacy/rate limit,
+  CSV and future verification with Student-mobile/staff-desktop priorities.
+  On 29/09/2026 updated owner checks accepted D05/D08/D09/D11/D14/D16 as
+  ADR-114–ADR-119; one explicit reply accepted D17 as ADR-120. Password hashing/
+  offline blocklist, audit failures/retention, one-center 10,000-student/50-user
+  reference scope, encrypted daily backup (7 daily/4 weekly/monthly restore,
+  RPO24h/RTO2h targets), .NET10/EF10/SQL2022 Developer non-production and
+  owner as sole default operator are accepted, not implemented/verified.
+  D12/D13 are deferred until hosting/software is settled; E01-v1 and E02-v1
+  were accepted on 2026-09-30. E03-v1 was accepted on 2026-10-01; E04/E05
+  are now accepted as actual E04-v1/E05-v1 (ADR-160/161).
+  Gói 2 was
+  initially reviewed one part at a time: FE01a shell, FE01b menus/landing and
+  FE02 navigation accepted ADR-103–ADR-105. Owner then approved all original
+  Gói 2 FE01–FE10; FE03–FE10 are ADR-106–ADR-113: responsive lists, permission
+  cues, explicit forms, request states, confirmations, local components,
+  Vietnamese formats and visual direction. Preserve prior PII/navigation
+  details. Owner explicitly approved Gói 3 FE11–FE19 on 29/09/2026, recorded
+  ADR-121–ADR-129: Student home, scoped calendars/weekly preview, per-lesson
+  attendance and per-Student draft saves, whole-class grade actions, reports,
+  own-Invoice printing, one-time credential handoff and audit details.
+  These are accepted design, not E acceptance or implemented behavior.
+  On-demand laptop test/demo and
+  other-device access is known (SELF_HOSTED_DEMO.md); concrete deployment/
+  backup destination/access remains unresolved. Do not re-ask the D17 operator
+  unless owner requests a change. No full-baseline, new-package or code approval.
 - Accepted rules are in `docs/requirements.md` and `docs/DECISIONS.md`.
   Outstanding proposals remain questions, not implementation authority.
 - Missing or contradictory business rules must be recorded in
@@ -193,10 +232,30 @@ Adding or replacing a framework/package requires owner approval.
 
 ## Canonical memory and input references
 
-- Product rules and screen catalog: `docs/requirements.md`.
-- Detailed business-function review: `docs/design/FUNCTION_CATALOG.md`;
-  outstanding refinements are proposals, not automatically accepted rules.
-- Accepted technical/product decisions: `docs/DECISIONS.md`.
+Current actual acceptance03/10/2026: owner accepted E04-v1 (ADR-160) first,
+then E05-v1 and complete E01–E04 baseline (ADR-161),without amendments.
+E01–E05/stages1–5done;OWNER_REVIEW75rows/73accepted,onlyD12/D13deferred,
+notes preserved. Exact presented E04 refinements are accepted design contracts,
+not implementation/runtime evidence. DF01–05 remain environment/evidence
+prerequisites;no code/SQL/Git/scaffold/deployment/implementationplan authority.
+Owner requested implementation-plan discussion03/10/2026; draft at
+`docs/plan/implementation-plan.md`, proposed M0–M4 pending discussion.
+No execution started;do not re-ask approved policy/outputs.
+
+- Product rules/screen catalog: `docs/requirements.md`.
+- Accepted decisions including actual E04/E05: `docs/DECISIONS.md` ADR001–161,
+  preserve each existing Accepted/Superseded status.
+- E01: `docs/design/FUNCTION_SPEC.md`/`FUNCTION_CATALOG.md`,37NV/32F.
+- E02: `docs/design/WORKFLOW_SPEC.md`,21W;Accepted30/09/2026.
+- E03: `docs/design/DATABASE_SPEC.md`,24tables/230fields/5TG/6VW/6FN/7SP/
+  13TX/4roles;Accepted01/10/2026,not deployed schema.
+- E04-v1 Accepted03/10/2026: `docs/design/SYSTEM_ARCHITECTURE_SPEC.md`,
+  `E04_FINAL_CONTRACT.md`,`E04_CONTRACT_CATALOG.md`,`E04_DTO_SPEC.md`,
+  `E04_REPLAY_SPEC.md`,`E04_SQL_INTEGRATION_SPEC.md`,`E04_RUNTIME_PROFILE.md`,
+  `E04_PARITY_REVIEW.md`;154API/154DTO/55UUID/6lookups/SC01–04 contracts.
+- E05-v1 Accepted03/10/2026: `docs/design/E05_BASELINE_REVIEW.md`,37NV
+  individualtrace/stateparity/24cases/findings/exclusions/DF01–05/rubric.
+  Source Word/E01/E02/E03/priorADRs/sidework unchanged;no new runtime evidence.
 - Official report source and normalized corrections:
   `docs/reference/REPORT_BASELINE.md`.
 - Project-local skill store: `.agents/skills/`; currently contains
@@ -204,6 +263,11 @@ Adding or replacing a framework/package requires owner approval.
 - The older kit under `instructions/english-center-agent-kit/` supplies stack,
   code style, structure, and planning templates where compatible with memory.
   Its requirements and role assignments must not override newer decisions.
+- Owner-designated DBMS330284 rubric at
+  `instructions/HuongDan_Project_Rubric_DBMS330284.docx (1).pdf` supplies
+  database technical and application-integration acceptance criteria for
+  E03–E04 (ADR-130). Its separate course-report/submission rules do not
+  replace this project's product requirements or accepted business grading.
 
 The owner designated the Word report as the official project foundation and
 authorized preserving its normalized content in memory on 27/09/2026. The Word

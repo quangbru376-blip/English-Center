@@ -1,216 +1,144 @@
 # Full Design Agreement
 
-Status: doing
+Status: done
 Owner direction: 2026-09-27
+Updated: 2026-10-03
 
 ## Objective and boundary
 
-Agree on the entire software design before discussing the implementation plan:
-business functions → workflows → database → system architecture → consistency
-review and owner acceptance. This is a design plan, not authorization to code.
+2026-10-02 owner-requested side review: textual report business/function
+table rewritten in [BUSINESS_FUNCTION_TABLE](../design/BUSINESS_FUNCTION_TABLE.md)
+with37 retained functions and the original five-column structure/source STT;
+no new policy decisions. The textual
+comparison is in [BUSINESS_FUNCTION_COMPARISON](../reference/BUSINESS_FUNCTION_COMPARISON.md).
+It covers39 source NV/37 retained/32 F/21 W and21 report-alignment items;
+source Word remains unchanged. This does not complete or accept E05, and
+did not advance E04 D5 at its date or authorize implementation/report-scope
+additions. Current contracts checkpoint below advances independently.
 
-Use the official report through its normalized memory and provenance in
-`../reference/REPORT_BASELINE.md`. Preserve the six accepted resolutions and
-the accepted stack. Do not edit Word or treat illustrative forms as requirements.
-Do not initialize Git, scaffold applications, write migrations, implement APIs,
-activate slices or invoke external coding-agent connections during this stage.
+Agree on business functions → workflows → database → system architecture →
+consistency/owner acceptance before implementation planning (ADR-011).
+Source rules: `../requirements.md`, decisions: `../DECISIONS.md`, provenance:
+`../reference/REPORT_BASELINE.md`. Leave Word unchanged; illustrative forms/
+older kits do not supersede accepted memory. No Git/scaffold/Slice 0/migration/
+application code, external coding connections or new packages in this stage.
 
 ## Stages and acceptance outputs
 
+These statuses describe completion of reviewable stage outputs, not how many
+individual choices are accepted. A–C approval does not by itself finish E.
+
 | Stage | Status | Output to agree with the owner |
 |---|---|---|
-| 1. Business functions | doing | Complete module/function catalog, actor permissions, inputs/outputs, validations, scope and correspondence with the report/screens. |
-| 2. Workflows | todo | Normal and exception paths; permitted state transitions, actors, prerequisites, effects and transaction boundaries. |
-| 3. Database | todo | Data dictionary: types, lengths/precision, nullability, PK/FK, relationships, unique/check constraints, indexes and historical-data rules. |
-| 4. System architecture | todo | Backend/frontend boundaries, module responsibilities, interfaces, security, errors, logging and runtime/deployment assumptions. |
-| 5. Consistency and acceptance | todo | Trace functions through workflows, data and architecture; resolve contradictions and obtain owner acceptance of the complete baseline. |
+| 1. Business functions | done | Owner accepted E01-v1 on 2026-09-30: [FUNCTION_SPEC](../design/FUNCTION_SPEC.md) + [FUNCTION_CATALOG](../design/FUNCTION_CATALOG.md); actor/module/input-output/rights/validation/effects and39 NV→37 retained/32 F trace. |
+| 2. Workflows | done | Owner accepted [WORKFLOW_SPEC E02-v1](../design/WORKFLOW_SPEC.md) on 2026-09-30: 21 lifecycle/cross-cutting flows, state transitions, actor/guards/effects/audits/transactions, concurrency/unknown-response and37 NV/32 F trace. |
+| 3. Database | done | Owner accepted actual [DATABASE_SPEC E03-v1](../design/DATABASE_SPEC.md) on2026-10-01:24 tables/230 fields, ERD/keys/constraints/history/projections,5 TG/6 VW/6 FN/7 SP/13 TX/4 SQL roles/index candidates/rubric/18 DC/21 W trace and E04 handoff. E03 checked; no executed SQL/tests or implementation approval. |
+| 4. System architecture | done | Owner accepted actual [E04-v1](../design/SYSTEM_ARCHITECTURE_SPEC.md) +[final contract](../design/E04_FINAL_CONTRACT.md)/catalog/DTO/SC01–04 on2026-10-03,ADR-160. Full presented technical contracts accepted,DF01–05/D12/D13 environment/evidence deferred;no implementation/tests. |
+| 5. Consistency and acceptance | done | Owner accepted [E05-v1](../design/E05_BASELINE_REVIEW.md) after E04 on2026-10-03,ADR-161:37NV/32F/21W trace/state parity/24cases/findings/excluded/deferred/rubric and complete E01–E04 design baseline. No implementation authority or runtime proof. |
 
-Each stage's proposals remain proposals until accepted by the owner. Mark a
-stage done only when its output is agreed and recorded. Later discoveries may
-require revisiting an earlier stage; record the affected decision explicitly.
+## Approved current choices
 
-## Current baseline and gaps
+Owner approved all 33 A01–A10/B01–B07/C01–C16 [x], with no alternatives, and
+confirmed D/E remain open. Recorded ADR-083–ADR-094; synced requirements,
+FUNCTION_CATALOG, target model, current state/TODO/handoff/provenance.
 
-- `../requirements.md` records substantial normalized business rules, roles,
-  states, screens and the six accepted resolutions. It is not yet a complete
-  transfer of every functional detail or database field constraint.
-- `../ARCHITECTURE.md` contains the target architecture and 20-entity model;
-  neither constitutes implemented behavior or a fully finalized schema.
-- Q-004–Q-010 in `questions.md` require business/design agreement. Add further
-  verified gaps as they arise rather than silently supplying defaults.
-- Q-001/Q-002 concern later implementation phases/pilot scope and are deferred.
-- Agent integration contracts are required before their workflows are used;
-  installing a skill does not start an integration.
+- A: operational viewing/account menu/Student history and catalogue/class
+  lifecycle/initial entry-score timing.
+- B: explicit actual occurrence, final-exam replacement, time/Student conflicts,
+  effective closure, weekly all-or-none, blocked assignments/action previews.
+- C: logical-attempt/booking history, Schedule occurrence/obligations and Score
+  dependencies, unfinished flag/relations/freeze/IDs/invoice number, types/
+  normalization/time, auth state, atomic/replay/audit contracts and reporting.
+- Target model now includes 22 entities (EntryTestBooking/AuthSession added),
+  not deployed schema or accepted complete dictionary/ERD. C13 replay-result
+  physical store mapping still belongs in the full dictionary.
+- Prior accepted policies remain; no scholarships,/10, post-confirmation retake,
+  on-behalf booking, extra LESSONs, transfers/refunds or automated debt penalties.
 
-## Working method and durable outputs
+## Complete design baseline Accepted — 03/10/2026
 
-Owner preference updated 2026-09-28: consolidate all known remaining choices
-in `OWNER_REVIEW.md`, with four columns (issue, recommendation, owner agreement,
-owner alternative). This replaces sequential chat batches. The file contains
-50 unaccepted design choices and 5 gated output-acceptance items; all were
-initially unchecked. Do not approve unseen documents, infer agreement from blank
-cells or re-ask accepted decisions. Present the report baseline,
-any conflict or gap, and clearly labelled recommendations for the owner to decide. Keep
-accepted content in `../requirements.md`, architecture/schema design in
-`../ARCHITECTURE.md`, significant decisions in `../DECISIONS.md`, and remaining
-questions in `questions.md`. Link focused design documents if detail outgrows
-these files; avoid competing sources of truth.
+Owner confirmed actual E04-v1 first (ADR-160),then actual E05-v1/full baseline
+(ADR-161),without amendments. Stages1–5 done;OWNER_REVIEW73/75accepted,
+only D12/D13 deferred with original notes. RF156–159/prior Accepted policies
+preserved. SC01–04/exact technical refinements are accepted design contracts,
+not runtime evidence;DF01–05 operational/evidence prerequisites remain.
 
-Cross-check that every in-scope function has an actor, workflow, data support
-and architectural owner, and that all state changes preserve the agreed rules.
-Define expected acceptance behavior during design; executable code/tests belong
-to later implementation. Any unresolved in-scope business rule prevents final
-baseline acceptance unless the owner explicitly excludes or defers its feature.
+No further design-approval question pending in this baseline. Await separate
+owner direction for next work;do not start implementationplanning/code/SQL/
+Git/scaffold/deployment/packages/integration or operational execution merely
+because baseline accepted. Historical acceptance checkpoints below retained.
 
-## Next action and handoff
+## E01-v1 accepted — 2026-09-30
 
-The review draft is `../design/FUNCTION_CATALOG.md`: all 39 source references in
-report section III, with NV10/NV11 removed by ADR-012. F15 is also removed;
-remaining codes are not renumbered. Q-011/Q-012 track functional/report gaps.
-Stage 1 remains doing; a catalog is not yet an agreed detailed specification.
+FUNCTION_SPEC details37 retained functions with7 consistent components each,
+shared actions/validation matrix, source ADRs and32 individual F mappings.
+Catalog retains39 NV source rows; NV10/NV11/F15 excluded explicitly. Document
+structure/coverage verified, not application behavior or tests. Accepted requirement
+rules/ADRs are unchanged; requirements section7 records E01 status. Owner
+explicitly accepted E01-v1 in chat on 2026-09-30; this is stage-output
+acceptance, not implementation evidence. E02–E05 and D12/D13 are not accepted
+by E01.
 
-Walk-in registration scope, CSV exports and weekly/individual schedule entry
-are accepted (ADR-012–ADR-014). Enrollment uniqueness/repeat-course rules,
-student-owned profile editing/confirmed course lock and reasoned rejection
-are accepted (ADR-015–ADR-017). Core report scope/count/date bases are accepted
-(ADR-018); Q-012 retains only report refinements. Student required/editable fields
-and email/password login are accepted (ADR-019). Own-password change, Admin
-protection and account-state meanings are accepted (ADR-020). Test rebooking,
-absence and pending-retake confirmation rules are accepted (ADR-021); Q-004
-retains history/audit representation and effective-closure persistence after
-ADR-027/ADR-030's accepted session operational policies.
-Enrollment cancellation/unpaid-invoice coupling and finished-record criteria
-are accepted (ADR-022): Class COMPLETED and student's GradeReport FINALIZED,
-regardless of passing; CANCELLED/REJECTED also permit a new record with history
-preserved. Q-005 retains database encoding; Q-007 retains cancellation/history/
-audit representation after ADR-026/031. Placement/teacher changes are accepted (ADR-023):
-OPEN-only placement, retained ADMITTED/derived placement display, teacher changes
-only before teaching/attendance/grades with all schedule conflicts checked.
-Grade submission/finalization, edit locks and finalized >= 50/100 passing are
-accepted (ADR-024, Q-009 resolved); rounding is resolved by ADR-028 and mandatory
-whole-class operation scope by ADR-034. Pass-rate cohort follows ADR-067;
-Q-012 retains query/export-mechanism and display refinements after ADR-068–072.
-Class opening/start/completion prerequisites
-are accepted (ADR-025): explicit AcademicAffairs actions, no automatic date-based
-transition or finalized-grade prerequisite. Q-008 retains actual-session
-occurrence representation; full-schedule rules are ADR-032. Class cancellation
-is accepted (ADR-026): empty PLANNED/OPEN only, AcademicAffairs/reason, history
-preserved and cancelled schedules excluded from operational resource reservation.
-Q-007 retains attribution/history representation. Test absence attribution
-and center cancellation/rescheduling are accepted (ADR-027); source provenance
-records report state rules versus owner-approved workflow additions. Program
-configuration freezes after first Class use, Band thresholds freeze after first
-completed entry test, and two-decimal inputs/half-up final rounding are accepted
-(ADR-028). Audited entry-score correction by original/current grader only in
-TESTING/BAND_ASSIGNED, post-confirmation/ended-record locks, no privileged
-override and ties favoring attempt one are accepted (ADR-029; Q-006 business
-policies resolved). Session creation as CLOSED, pre-start guarded opening/
-reopening, CLOSED student-booking locks, effective closure at start and reasoned/
-audited pre-start/pre-result grader replacement are accepted (ADR-030).
-Registration cancellation atomically cancels active future bookings (including
-pre-start CLOSED) and any issued UNPAID Invoice; preserve started/result/Band
-history, stop result mutations on cancelled records, audit/guard the operation,
-and start testing anew on repeat enrollment (ADR-031; Q-007 business policies
-resolved). Program-level positive LESSON count/first-use freeze, full LESSON
-schedule before teaching start (not opening), and pre-start/no-dependent-data
-session date/time/room edit cutoffs are accepted (ADR-032).
-Attendance entry/correction opens at LESSON start and closes before Class
-COMPLETED, with no fixed
-24/48-hour per-lesson limit; attendance becomes read-only regardless of grade
-state (ADR-033). The complete-attendance prerequisite remains ADR-025.
-Whole-class submission/resubmission, reasoned return and finalization are accepted
-(ADR-034); all-or-none transitions, required scores for every student and existing
-edit locks. Individual draft/correction entry and resubmission remain allowed.
-Non-held class-wide lessons stay within NV19/F21, with no separate holiday module,
-center-wide calendar/automatic holiday skipping or makeup scheduling/individual
-makeup lessons; non-held is not delivered or all-student absence (ADR-035).
-Future LESSON moves remain ADR-032; after scheduled start, non-held LESSONs are
-preserved with reason/actor/time and replaced through a linked same-class lesson
-by AcademicAffairs, no dependent data/non-ended class/current teacher/conflict
-checks/consistent writes. One LESSON obligation, replacement occurrence/attendance
-required for completion instead of the old historical lesson (ADR-036).
-Extra LESSONs beyond the fixed program count are excluded; weekly/individual
-creation fills required obligations, linked replacements do not add obligations
-and historical row count is not the limit; FINAL_EXAM separate (ADR-037).
-Accepted five-decision batch ADR-038–ADR-042: no direct Course changes on existing
-registrations, no personal snapshots/current-profile historical display, no class
-transfers, Student-owned Invoice browser printing only, and audited Accountant
-Payment method/reference corrections only. Existing financial snapshots and
-immutable money/Invoice/confirmation time remain; no cancel/delete/refund.
-Accepted money/time batch ADR-043–ADR-047: positive tuition/no free-course path,
-VND whole dong, due date local issue date +7 calendar days including holidays,
-confirmation time only/no separate receipt time, UTC+7 business dates/schedules/
-report filters. Numeric types/ranges and time storage/serialization remain later
-database/architecture design; no code/schema approval.
-Accepted account/security batch ADR-048–ADR-052: temporary password shown once
-for manual delivery/forced change before business access, all-session revocation
-on lock/disable/reset/password change, Admin same-account DISABLED reactivation,
-immutable login email and login-only 5-failure/15-minute-window/15-minute throttle.
-Manual LOCKED/DISABLED stay distinct; no schema/code approval.
-Accepted password/session batch ADR-053–ADR-057: passwords 15–128 characters,
-Unicode/spaces/no mandatory composition/common-compromised rejection/no routine
-rotation; temporary expiry 24 hours; normal absolute two-hour/idle thirty-minute
-expiry without refresh/remember-me; concurrent devices; server-side current-session
-logout without logout-all. ADR-049 all-session revocation remains. Activity,
-restricted-session definitions and enforcement remain database/architecture work.
-Accepted audit batch ADR-058–ADR-062: mandatory business audits plus configuration/
-class-lifecycle/schedule changes; authentication/account/denied-access events;
-structured Admin filters/newest-first pagination; relevant details without secrets/
-full payloads; no audit CSV/PDF export. Event storage, anti-flooding/failure and
-retention/disposal/backup remain database/architecture design.
-Accepted report-metric batch ADR-063–ADR-067: current-state/no past-date reporting;
-issuance-period non-CANCELLED billing/current debt separate; distinct students
-per Course and overall; LESSON-only confirmed-held obligations with exams separate;
-pass rate from FINALIZED enrollment results by finalization date/empty cohort no
-data. Query consistency/occurrence representation/rate display remain design.
-Accepted report-filter/detail/export batch ADR-068–ADR-072: current-month periods,
-all-state defaults, inactive historical course choices, training current Teacher/
-Band/Class/state filters with a separate result period, financial Course/overdue
-filters with date-free current debt, Director non-identifying group-only detail
-and Accountant all-filtered-results/report-columns CSV. Query/export mechanisms
-remain later design; no additional staff report rights.
-Accepted profile-validation batch ADR-073–ADR-077: trimmed Unicode name 1–100,
-real/nonfuture Student DOB/no age restriction, email <=254/account-wide
-case-insensitive uniqueness/no provider rewriting, Vietnamese-mobile phone scope
-with equivalent 0/+84 normalization, optional free-text address <=255. No email
-verification/OTP or new staff required fields; exact validation/storage remains
-technical design.
-Accepted remaining-field batch ADR-078–ADR-082: catalogue name limits, immutable
-manual Course/Class codes, normalized room codes across all schedules, plain-text
-reasons/optional comments and bounded Payment references without global uniqueness.
-Existing result/configuration freezes and one Payment per Invoice stay intact.
-Next-chat handoff: `HANDOFF.md`. Active owner review: `OWNER_REVIEW.md`, A01–A05
-for the previous five unaccepted Q-011 operational-view/UI/history proposals,
-then the remaining catalogue/workflow/database/architecture choices in the same
-file. Read owner checks/alternatives and sync only accepted content into canonical
-memory. Compile complete stage outputs in order; E01–E05 must wait for the actual
-documents and review. Do not re-ask ADR-001–ADR-082 or mark stage 1 done early.
-Actual-session occurrence
-representation remains Q-008; detailed security mechanisms remain later design.
-Do not treat rejection as cancellation or ADMITTED as course completion.
-Preserve the six resolutions and exclude illustrative forms. Then work through
-the remaining stages in order. After the owner accepts the whole baseline,
-ask to move to implementation planning and update `plan.md`.
+## E02-v1 accepted — 2026-09-30
 
-## Remaining discussion estimate — provisional, 2026-09-28
+WORKFLOW_SPEC was consolidated from the owner-confirmed E02 sections and
+accepted E01/ADR contracts. It contains 21 flow IDs W01–W21, a state-transition
+matrix, shared error/replay/audit rules, design verification cases and trace to
+all37 retained NV and32 in-scope F codes; NV10/NV11/F15 remain excluded.
+Structural document coverage was checked, not application behavior, SQL,
+browser, CSV or automated tests. Owner explicitly accepted the full E02-v1
+artifact in chat on 2026-09-30, after section-level review; E02 is checked
+and stage 2 done. E03–E05 and D12/D13 remain open.
 
-Historical agent estimate after ADR-077, not an owner-approved schedule or
-acceptance. The later owner request replaced chat rounds with `OWNER_REVIEW.md`;
-its 55 rows are the current inventory, not a guarantee against new genuine gaps.
-Retain the earlier estimate below for context, not as the next-action protocol:
+## E03-v1 accepted — 2026-10-01
 
-| Remaining output | Estimated discussion rounds | Focus |
-|---|---|---|
-| Business-function closure | 2–3 | Remaining field constraints, operational read scope/UI/history, complete function output review. |
-| Workflow output | 1–2 | Consolidate accepted transitions/normal-exception paths and resolve genuine gaps, not re-ask policies. |
-| Database output | 2–3 | Booking versus attempt history; actual occurrence/replacement/history; dictionary/relationships/constraints/concurrency/security-state support. |
-| Architecture output | 2–3 | Interfaces/errors/report export/security mechanisms; scale/performance/privacy/reliability/maintenance and deployment assumptions. |
-| Cross-check and whole-baseline acceptance | 1 | Trace functions/workflows/data/architecture and resolve any contradictions. |
+Owner explicitly accepted the actual consolidated DATABASE_SPEC E03-v1,
+including section14 physical details/handoff, after A–G2 review (ADR-131–138).
+Checked only E03; stage3 done and stage4 doing. Document coverage is24 tables/
+230 fields/21 W/37 NV/32 F, with SQL/rubric/permission/transaction verification
+objectives, not executable evidence. No new product ADR or implementation approval.
+At that E03 acceptance checkpoint E04-v0.1 was incomplete; presented package1 accepted ADR-139,
+presented Auth/session2a through Attendance/per-Student draft4e accepted ADR-140–149;
+owner-requested E04_REMAINING_REVIEW E04-R1's all23 displayed rows are now
+accepted as ADR-150–155; this still does not accept unseen refinements/E04/E05.
+E04/E05 and D12/D13 remain open.
 
-Total estimate: 8–12 rounds including review/acceptance, roughly 30–50 decision/
-proposal items, not 30–50 new business rules. Cohesive technical proposals should
-be reviewed as blocks, not individual questions for every SQL column. These are
-planning estimates based on known gaps; new conflicts or revised owner choices
-can change them. No stage is complete merely because its estimated rounds end;
-accepted design outputs still determine completion. No implementation planning
-or code is authorized by this estimate.
+## Working method and durable updates
+
+Owner-requested side work 2026-10-02: business sequence planning is in
+`docs/design/SEQUENCE_PLAN.md` (25 proposed SQ items traced to accepted
+E01/E02's 21 W and 37 retained NV). Owner draws in Enterprise Architect;
+agent supplies information/answers only, no generated diagrams. The division
+is proposed, not a new product decision or E04/E05 acceptance. That side work
+did not advance D5 at its date; current E04 checkpoint and review status above
+take precedence. Owner resumed remaining E04 here on2026-10-03.
+
+SQ01, SQ03, SQ04, SQ05, SQ07, SQ11, SQ13, SQ15 and SQ23 now have
+owner-requested Markdown drawing guides linked
+from SEQUENCE_PLAN; actor/boundary/control, messages/guards/notes and text
+sketches only. SQ03 distinguishes login/logout from SQ04's mandatory-audit
+password change and revocation of all sessions; no product policy changes.
+
+Requirements own accepted product rules; ARCHITECTURE owns target data/system
+contracts; ADRs own significant decision context/source/consequences. Focused
+documents may hold full workflows/dictionary/API design with links from memory.
+Separate accepted choices, unapproved proposals and implemented evidence.
+
+Cross-check every retained NV/F function against actors/data/guards/architectural
+ownership. Stage 1 still has 39 source NV references (NV10/NV11 removed →37
+retained) and 32 F screens (F15 removed, no renumbering). Expected verification
+cases are design statements now, not executable test results.
+
+After full baseline E05 acceptance, obtain owner direction before moving to
+implementation planning/update plan.md. No stage is complete merely because a
+discussion estimate has elapsed; the older 8–12-round estimate is superseded by
+the consolidated review workflow, not a completion guarantee.
+
+## Handoff
+
+Resume from `HANDOFF.md`, current OWNER_REVIEW, owner-requested
+E04_REMAINING_REVIEW and Project Memory. The new file reviews remaining
+packages only; OWNER_REVIEW keeps sole E04/E05 gates. Do not ask
+the owner to retell accepted choices or ADR-001–ADR-149. Do not re-ask the
+D17 operator unless owner requests change. E01-v1/E02-v1/E03-v1 are accepted;
+E04/E05 are not.

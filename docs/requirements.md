@@ -1,6 +1,6 @@
 # Yêu cầu nghiệp vụ chính thức — Quản lý trung tâm Anh ngữ
 
-Cập nhật: 28/09/2026. Đây là nguồn yêu cầu dùng để lập kế hoạch và triển khai.
+Cập nhật: 03/10/2026. Đây là nguồn yêu cầu dùng để lập kế hoạch và triển khai.
 Nội dung được chuẩn hóa từ báo cáo `Nhom18_ThietKeGiaoDien.docx`, các quyết
 định của chủ dự án và những yêu cầu trước đó không bị thay thế.
 
@@ -73,6 +73,10 @@ tuyển sinh. Giám đốc xem báo cáo; Admin quản trị tài khoản và nh
 
 ### Tuyển sinh và thi đầu vào
 
+- ADR-133: hồ sơ mới tạo PENDING; đặt ca đầu tiên chuyển TESTING; có kết quả
+  điểm đầu tiên chuyển BAND_ASSIGNED. Đặt lượt hai giữ BAND_ASSIGNED và vẫn
+  chặn xác nhận khi còn lượt chờ kết quả. Hủy đặt chỗ/ghi vắng không kéo lùi
+  trạng thái hoặc xóa Band; hủy cả hồ sơ vẫn theo đường CANCELLED đã chốt.
 - Học viên tự tạo tài khoản, đăng ký khóa và ca thi. Nhân viên tư vấn/hướng dẫn
   tại quầy không là nghiệp vụ đăng ký riêng; vẫn dùng luồng và quyền Học viên.
   Không có luồng/API/menu tuyển sinh ghi danh hoặc đăng ký thi thay học viên.
@@ -81,7 +85,7 @@ tuyển sinh. Giám đốc xem báo cáo; Admin quản trị tài khoản và nh
   hoàn thành khi lớp được xếp COMPLETED và bảng điểm của học viên FINALIZED,
   không phụ thuộc đạt môn. CANCELLED/REJECTED cũng là hồ sơ đã kết thúc để
   được tạo hồ sơ mới; giữ nguyên hồ sơ và lịch sử cũ. ADMITTED chưa phải hoàn
-  thành. Cách biểu diễn/ràng buộc database còn Q-005, không tự thêm trạng thái.
+  thành. Biểu diễn is_unfinished/filtered unique đã chốt ADR-090, không thêm trạng thái.
 - Học viên được sửa thông tin cá nhân của chính mình; tuyển sinh chỉ kiểm tra,
   không sửa thay. Sau xác nhận nhập học không được đổi khóa đã chọn trên hồ sơ.
   Học viên được sửa họ tên, ngày sinh, số điện thoại và địa chỉ; không tự đổi
@@ -206,6 +210,10 @@ tuyển sinh. Giám đốc xem báo cáo; Admin quản trị tài khoản và nh
 
 ### Đào tạo và điểm
 
+- ADR-135: final_score chỉ lưu khi GradeReport FINALIZED; tổng nháp/SUBMITTED
+  tính từ các điểm đã lưu, thiếu thành phần hiển thị Chưa đủ điểm. Không có
+  Score row không là điểm0; không lưu cờ đạt trùng kết quả. Giữ làm tròn,
+  quyền xem, đơn vị lưu và khóa đã chốt.
 - Tên khóa/chương trình bỏ khoảng trắng đầu/cuối, 1–150 ký tự Unicode; tên
   thành phần điểm 1–100. Không ép tên khóa/chương trình duy nhất toàn hệ thống;
   giữ tên thành phần duy nhất trong một chương trình/khóa cấu hình đã chốt
@@ -244,9 +252,10 @@ tuyển sinh. Giám đốc xem báo cáo; Admin quản trị tài khoản và nh
   lớp/hoàn tiền qua thao tác hủy; hồ sơ đã trả tiền đang chờ xếp không bị tác động.
 - Giữ lịch sử lớp và lịch của lớp CANCELLED; lịch này không giữ chỗ phòng/
   giáo viên, không xuất hiện trong lịch dạy sắp tới và không tính là buổi hoàn
-  thành (ADR-026). Cách biểu diễn dữ liệu/trạng thái lịch sẽ chốt khi thiết kế.
-- Một lớp có đúng một giáo viên, sức chứa 1–15. Không lưu lịch sử đổi giáo viên
-  trong phạm vi đã định. ADR-023: giáo vụ chỉ đổi giáo viên trước ONGOING và
+  thành (ADR-026). Occurrence/link nghĩa vụ đã chốt ADR-087; dictionary E03-v1 đã nghiệm thu01/10/2026, chưa có schema chạy.
+- Một lớp có đúng một giáo viên, sức chứa 1–15. Không thêm bảng/workflow/UI
+  lịch sử đổi giáo viên riêng (ADR-023/058); mandatory mutation audit của E02
+  W14 đã nghiệm thu vẫn giữ. ADR-023: giáo vụ chỉ đổi giáo viên trước ONGOING và
   trước khi có điểm danh/điểm; phải kiểm tra toàn bộ lịch lớp với lịch lớp/ca
   thi của giáo viên mới. Không đổi người phụ trách khi đã bắt đầu giảng dạy.
 - Chỉ xếp học viên vào lớp OPEN, đúng khóa/Band và còn chỗ; hồ sơ ADMITTED,
@@ -263,10 +272,20 @@ tuyển sinh. Giám đốc xem báo cáo; Admin quản trị tài khoản và nh
   ADR-032: giáo vụ chỉ sửa ngày/giờ/phòng buổi chưa bắt đầu, chưa có điểm danh
   hoặc điểm liên quan, khi lớp chưa COMPLETED/CANCELLED. Buổi đã bắt đầu hoặc
   có dữ liệu phụ thuộc giữ nguyên để bảo toàn lịch sử; vẫn kiểm tra xung đột.
+- ADR-156 / E04-RF03, duyệt03/10/2026: mỗi Schedule root mới (LESSON hoặc
+  FINAL_EXAM), mọi LESSON cụ thể trong lịch tuần và thời điểm đích khi dời
+  phải có startAt>giờ server tại lúc kiểm tra lưu trong transaction. Tới đúng/
+  qua giờ bắt đầu sau input hợp lệ thì409; sai cấu trúc ngày/giờ thì400.
+  Preview không giữ chỗ/thời gian; server kiểm lại clock độc lập RowVersion.
+  Một buổi trong batch không đạt thì không lưu buổi nào, không bỏ/cắt/dời ngày
+  tự động. Không mở luồng nhập lịch quá khứ để nhập bù Attendance/Score/HELD.
+  Guard buổi cũ trước start, replacement future và HELD sau end/ONGOING giữ
+  nguyên; chỉ RF03 được chốt, RF01/RF02 không được duyệt từ quyết định này.
 - Số buổi dự kiến thuộc TrainingProgram theo khóa/Band, là số nguyên dương,
   chỉ tính LESSON, không tính FINAL_EXAM. Khóa cấu hình số buổi khi lớp đầu tiên
-  sử dụng chương trình, kể cả lớp sau đó bị hủy (ADR-032). Chi tiết trường dữ
-  liệu sẽ chốt ở thiết kế database, không tự thêm schema/version.
+  sử dụng chương trình, kể cả lớp sau đó bị hủy (ADR-032/090). Số buổi là
+  số nguyên dương, khóa cấu hình theo ADR-090/091; dictionary E03-v1 đã nghiệm thu,
+  chưa tạo schema/migration hoặc version chương trình.
 - ADR-035: buổi cả lớp không tổ chức không tính là đã dạy; không ghi tất cả
   học viên vắng để coi buổi đã diễn ra. Xử lý trong quản lý lịch hiện có, giữ
   số LESSON chương trình, giới hạn sửa lịch ADR-032 và điều kiện hoàn thành
@@ -281,8 +300,9 @@ tuyển sinh. Giám đốc xem báo cáo; Admin quản trị tài khoản và nh
   kiểm tra trùng lớp/phòng/giáo viên với lịch lớp/ca thi. Ghi nhận không tổ chức
   và tạo buổi thay thế phải nhất quán/toàn bộ hoặc không phần nào, chống thao
   tác lặp và cập nhật đồng thời. Buổi thay thế thực hiện nghĩa vụ của buổi cũ,
-  không cộng thành hai LESSON; không thay đổi số buổi chương trình. Biểu diễn
-  dữ liệu/lịch sử/audit còn bước database; không tự thêm enum/schema.
+  không cộng thành hai LESSON; không thay đổi số buổi chương trình. Trạng thái
+  buổi, khóa nghĩa vụ, chuỗi thay thế và lịch sử/audit đã chốt ADR-087/093;
+  dictionary E03-v1 đã nghiệm thu01/10/2026, chưa tạo schema/migration.
 - ADR-037: tạo lịch tuần/thêm từng LESSON chỉ để đủ số buổi chương trình,
   không vượt số nghĩa vụ LESSON đã cấu hình; trước bắt đầu dạy phải đủ số
   theo ADR-032. Không có buổi bổ sung/ôn tập/tự chọn ngoài số này, không sửa
@@ -335,7 +355,7 @@ tuyển sinh. Giám đốc xem báo cáo; Admin quản trị tài khoản và nh
   thành lớp. Không thêm quyền mở lại/sửa ngoại lệ. Chặn điểm danh trước thời
   điểm bắt đầu buổi theo lịch hiện hành; không cần chờ buổi kết thúc mới nhập.
   Điểm danh từ lúc bắt đầu không tự xác nhận buổi đã diễn ra đầy đủ hoặc hoàn
-  thành lớp; biểu diễn buổi thực tế vẫn thuộc Q-008.
+  thành lớp; giáo vụ xác nhận buổi thực tế HELD sau khi kết thúc theo ADR-087.
 
 ### Học phí, tài khoản và nhật ký
 
@@ -351,7 +371,7 @@ tuyển sinh. Giám đốc xem báo cáo; Admin quản trị tài khoản và nh
   hoặc luồng tự bỏ qua thanh toán (ADR-043).
 - Học phí, hóa đơn, thanh toán và tổng tài chính dùng VND nguyên đồng; không
   nhận phần lẻ của đồng, không tự làm tròn tiền nhập (ADR-044). Không đổi độ
-  chính xác điểm/trọng số ADR-028; kiểu/range database còn bước thiết kế dữ liệu.
+  chính xác điểm/trọng số ADR-028; kiểu/range/API đã chốt ADR-091; chưa có schema chạy thực tế.
 - Hạn thu = ngày phát hành hóa đơn theo giờ Việt Nam +7 ngày lịch, kể cả cuối
   tuần/ngày nghỉ (ADR-045). Không thêm thao tác gia hạn/sửa hạn; đến hết ngày
   hạn chưa quá hạn, từ ngày kế tiếp nếu UNPAID mới cảnh báo quá hạn.
@@ -401,7 +421,7 @@ tuyển sinh. Giám đốc xem báo cáo; Admin quản trị tài khoản và nh
 - Email khi tạo tài khoản bỏ khoảng trắng đầu/cuối, đúng định dạng và tối đa
   254 ký tự; so trùng không phân biệt hoa/thường trên toàn tài khoản (ADR-075).
   Không gộp dấu chấm hoặc +tag theo nhà cung cấp, không xác minh email/khôi phục
-  qua email. Bộ kiểm tra chính xác/cách đếm ký tự/lưu chuẩn hóa còn kỹ thuật.
+  qua email. Bộ kiểm tra/đếm Unicode/lưu chuẩn hóa đã chốt ADR-091.
 - Email đăng nhập không được sửa trên tài khoản hiện có, kể cả bởi Admin và
   đối với nhân sự (ADR-051). Không dùng xóa/tạo lại tài khoản để né giới hạn.
 - Sai mật khẩu 5 lần liên tiếp trong 15 phút thì chặn đăng nhập mới 15 phút;
@@ -411,15 +431,16 @@ tuyển sinh. Giám đốc xem báo cáo; Admin quản trị tài khoản và nh
 - Mật khẩu 15–128 ký tự, cho phép Unicode/khoảng trắng, không bắt buộc phối hợp
   chữ hoa/số/ký tự đặc biệt; chặn mật khẩu phổ biến/đã lộ, không ép đổi định kỳ
   khi chưa có sự cố (ADR-053). Không cắt ngắn mật khẩu; yêu cầu đổi mật khẩu tạm
-  trước nghiệp vụ vẫn giữ. Cách đếm ký tự/nguồn danh sách chặn còn thiết kế kỹ thuật,
-  không tự thêm dịch vụ kiểm tra mật khẩu bên ngoài.
+  trước nghiệp vụ vẫn giữ. Cách đếm đã chốt ADR-091; hash/generator và danh sách
+  chặn offline đã duyệt ADR-114 (mục 4.7), không gửi mật khẩu ra dịch vụ ngoài.
+  Danh sách hữu hạn không phát hiện mọi mật khẩu từng lộ.
 - Mật khẩu tạm hết hạn sau 24 giờ tính từ lúc cấp/reset; hết hạn cần Admin reset
   lại, không dùng mật khẩu hết hạn để đăng nhập/đổi qua cửa bắt buộc đổi (ADR-054).
   Không tự đổi trạng thái tài khoản, mở khóa/khôi phục hoặc gửi lại qua email.
 - Phiên đăng nhập thông thường hết sau 2 giờ từ đăng nhập hoặc 30 phút không
   hoạt động, mốc nào đến trước; hoạt động không kéo dài hạn tuyệt đối (ADR-055).
   Thực thi tại server, phải đăng nhập lại, không refresh/tự gia hạn/ghi nhớ đăng
-  nhập. Định nghĩa hoạt động và phiên hạn chế để đổi mật khẩu tạm còn bước kiến trúc.
+  nhập. Hoạt động/shared-tab đã chốt ADR-097; phiên đổi mật khẩu tạm ADR-098.
 - Cho phép nhiều thiết bị đăng nhập đồng thời; đăng nhập mới không đẩy phiên
   khác ra (ADR-056). Không thêm màn hình quản lý thiết bị/danh sách phiên.
 - Đăng xuất chỉ hủy phiên hiện tại tại server, kể cả token chưa hết hạn; phiên
@@ -434,7 +455,8 @@ tuyển sinh. Giám đốc xem báo cáo; Admin quản trị tài khoản và nh
 - Ghi sự kiện đăng nhập thành công/thất bại, kích hoạt chặn tạm, đăng xuất,
   tự đổi mật khẩu, cấp nhân sự/reset và thao tác trạng thái tài khoản, truy cập
   bị từ chối (ADR-059). Không coi email nhập khi chưa xác thực là người thao
-  tác đã được xác minh; cách biểu diễn/chống ngập log/lỗi ghi còn thiết kế kỹ thuật.
+  tác đã được xác minh; actor chưa xác thực là NULL. Nhóm thao tác/lịch sử
+  đã chốt ADR-093; lỗi ghi/lưu giữ/IP/chống ngập đã duyệt ADR-115/116 (mục 4.7).
 - Chỉ Admin tra cứu nhật ký; lọc theo khoảng ngày nghiệp vụ, người thao tác,
   hành động, loại/mã đối tượng và kết quả, phân trang mới nhất trước (ADR-060).
   Không thêm tìm kiếm tự do toàn payload; ngày theo ADR-047.
@@ -444,8 +466,10 @@ tuyển sinh. Giám đốc xem báo cáo; Admin quản trị tài khoản và nh
   vào log; hạn chế dữ liệu cá nhân. Hash mật khẩu chỉ ở nơi lưu thông tin xác
   thực, không ở log. Không bỏ lịch sử bắt buộc hoặc thêm snapshot cá nhân ADR-039.
 - Admin chỉ xem/tra cứu nhật ký trong ứng dụng, không xuất CSV/PDF (ADR-062).
-  Không sửa/xóa log qua nghiệp vụ thông thường. Thời hạn lưu/xử lý hết hạn và
-  backup vận hành còn bước kiến trúc, chưa chốt thời hạn hoặc chức năng dọn log.
+  Không sửa/xóa log qua nghiệp vụ thông thường. Audit bắt buộc giữ cùng lịch
+  sử dự án; log bảo mật thuần túy/IP dọn bằng vận hành sau 90 ngày (ADR-116),
+  không xóa audit bắt buộc theo hạn này. Backup vận hành đã duyệt ADR-118,
+  chưa chọn nơi lưu hoặc thực hiện backup/restore.
 - Không xóa vật lý dữ liệu có nghiệp vụ phụ thuộc; dùng trạng thái ngừng sử dụng.
 
 ### Báo cáo
@@ -473,13 +497,13 @@ tuyển sinh. Giám đốc xem báo cáo; Admin quản trị tài khoản và nh
 - Tiến độ LESSON = nghĩa vụ LESSON đã xác nhận thực tế diễn ra / số LESSON
   chương trình (ADR-066). Không tính buổi cũ không tổ chức; thay thế tính một
   lần cho cùng nghĩa vụ. FINAL_EXAM hiển thị riêng, không trong tử/mẫu LESSON.
-  Giờ đã qua/điểm danh không tự chứng minh đã diễn ra; biểu diễn còn Q-008.
+  Giờ đã qua/điểm danh không tự chứng minh đã diễn ra; xác nhận/biểu diễn ADR-087.
   Lớp CANCELLED vẫn có trong số lớp theo trạng thái, không tính buổi đã dạy.
 - Tỷ lệ đạt = GradeReport FINALIZED đạt / tổng GradeReport FINALIZED trong kỳ
   chốt điểm, trong bộ lọc khóa/lớp đã chọn (ADR-067). Mỗi kết quả lượt học tính
   riêng, không đếm người duy nhất qua học lại. Loại chưa chốt; không có kết quả
   FINALIZED hiển thị "Chưa có dữ liệu", không 0%. Có kết quả nhưng không ai đạt
-  mới là 0%; độ chính xác hiển thị tỷ lệ còn thiết kế UI/số.
+  mới là 0%; tỷ lệ hiển thị 2 số lẻ half-up (ADR-094).
 - Báo cáo tuyển sinh lọc khóa/ngày đăng ký/trạng thái; mặc định tháng Việt Nam
   hiện tại và mọi trạng thái, kể cả CANCELLED/REJECTED. Bộ chọn khóa giữ khóa
   INACTIVE để xem lịch sử (ADR-068); không thêm quyền báo cáo cho Tuyển sinh.
@@ -497,8 +521,422 @@ tuyển sinh. Giám đốc xem báo cáo; Admin quản trị tài khoản và nh
 - CSV báo cáo tài chính của Kế toán xuất toàn kết quả theo bộ lọc và cột báo
   cáo, không chỉ trang đang xem/không thêm trường ẩn hoặc dữ liệu hồ sơ cá nhân.
   Không xuất riêng danh sách hồ sơ/hóa đơn/học viên dưới quyền này (ADR-072).
-- **Chưa chốt:** cơ chế truy vấn/xuất nhất quán, cấu trúc/giới hạn/mã hóa và an
-  toàn CSV, biểu diễn thực tế và hiển thị tỷ lệ; không là quyền triển khai.
+- Truy vấn/xuất nhất quán/tỷ lệ đã chốt ADR-094, biểu diễn thực tế ADR-087.
+  Cấu trúc/giới hạn/mã hóa/an toàn CSV D10 đã duyệt ADR-101; chưa triển khai.
+
+## 4.1. Bổ sung A–C đã được duyệt — 28/09/2026
+
+Owner đã tích [x] cả 33 mục A01–A10/B01–B07/C01–C16 và xác nhận bằng lời;
+không có phương án thay thế. Các quy tắc dưới đây đã có hiệu lực, ghi ADR-083–
+ADR-094; nhãn A/B/C truy vết tới file OWNER_REVIEW, không còn là câu hỏi.
+Tại thời điểm duyệt A–C, D/E chưa duyệt. Gói 1 D01–D04/D06–D07/D10/D15
+được duyệt riêng ngày 29/09/2026 (mục 4.2); E01-v1 được owner duyệt
+ngày30/09/2026; E02-v1 được owner duyệt cùng ngày, E03-v1 được nghiệm thu
+ngày01/10/2026. E04-v1/E05-v1 đã nghiệm thu03/10/2026 (ADR-160/161).
+Chi tiết mô hình mục tiêu tương ứng được đồng bộ tại ARCHITECTURE.md.
+
+### ADR-083 — Define operational detail visibility
+
+- A01: Tra cứu mọi trạng thái hồ sơ, kể cả đã kết thúc/CANCELLED/REJECTED. Chi tiết: tên/email/SĐT hiện tại, khóa, kết quả đầu vào/Band, xác nhận/duyệt/trạng thái, số tiền và trạng thái hóa đơn, lớp đã xếp. Không xem phương thức/mã giao dịch Payment, điểm danh/bảng điểm đào tạo, ngày sinh/địa chỉ hoặc danh sách hồ sơ cá nhân toàn hệ thống; không thêm quyền sửa/đăng ký thay/xuất.
+- A02: Xem tên/email/SĐT hiện tại, khóa/kết quả đầu vào/Band phục vụ ca thi, xếp và quản lý lớp. Hóa đơn chỉ hiển thị trạng thái, không số tiền/Payment. Xem lịch/điểm danh và bảng điểm SUBMITTED/RETURNED/FINALIZED, không giá trị nháp DRAFT của giáo viên. Không thêm quyền nhập/sửa điểm, sửa hồ sơ hoặc tài chính.
+- A03: Tra mọi trạng thái gồm CANCELLED; lọc số hóa đơn/khóa/tên-email-SĐT học viên/trạng thái/khoảng ngày phát hành tùy chọn/chỉ quá hạn. Chi tiết hóa đơn, Payment và người/thời điểm xác nhận cùng thông tin liên hệ cần thiết; không điểm/điểm danh. Tách tra cứu nghiệp vụ này khỏi kỳ báo cáo và quyền CSV; không thêm xuất riêng hồ sơ/hóa đơn, in hoặc sửa ngoài quyền đã chốt.
+- A06: Trong ca/lớp đang được phân công, xem mã học viên nội bộ, tên/email/SĐT hiện tại và dữ liệu thi/điểm danh/điểm thuộc nhiệm vụ của mình; không ngày sinh/địa chỉ/hóa đơn/Payment hoặc danh sách học viên toàn trung tâm. Không còn được phân công thì mất quyền xem theo nhiệm vụ đó, không thêm quyền sửa hồ sơ.
+
+### ADR-084 — Place account actions and Student schedule history in existing UI
+
+- A04: Có hai phần Hiện tại/Lịch sử, chọn lớp của chính mình khi học nhiều khóa hoặc học lại. Lớp hoàn thành chỉ xem; buổi không tổ chức ghi rõ và liên kết buổi thay thế, không hiện như lịch sắp tới hoặc hai buổi đã dạy. Không xem lớp người khác/điểm chưa FINALIZED; không ngầm chốt enum lưu lịch.
+- A05: Dùng menu tài khoản chung trên giao diện hiện có: mọi vai trò tự đổi mật khẩu; chỉ Học viên sửa hồ sơ cá nhân theo các trường đã chốt. Không thêm mã F hoặc quyền sửa thông tin nhân sự. Giữ kiểm tra mật khẩu hiện tại, email bất biến, hủy phiên và bắt đổi mật khẩu tạm.
+
+### ADR-085 — Define catalogue lifecycle and immutable class-program links
+
+- A07: Giáo vụ sửa tên/giá cơ sở; giá mới chỉ áp dụng hóa đơn phát hành sau đó, không sửa snapshot tiền đã phát hành. Course INACTIVE chặn đăng ký mới; các hồ sơ đã tồn tại tiếp tục quy trình hợp lệ, không tự hủy hồ sơ/lớp/chương trình. Cho khôi phục ACTIVE trên cùng khóa; mã khóa vẫn bất biến.
+- A08: Trước lớp đầu tiên: cấu hình ở DRAFT; chuyển ACTIVE khi Band/khóa hợp lệ, số LESSON dương, thành phần hợp lệ và tổng trọng số 100. Muốn sửa cấu hình ACTIVE chưa dùng thì đưa về DRAFT và kiểm tra lại. INACTIVE chặn tạo/mở lớp mới, không dừng lớp đã dạy/chấm; khôi phục ACTIVE không xóa khóa cấu hình đã sử dụng. Không tạo chương trình trùng khóa/Band hoặc version để né khóa.
+- A09: Không đổi TrainingProgram của Class sau khi tạo; chọn sai thì xử lý hủy lớp hợp lệ/tạo lớp mới, không chuyển học viên. Giáo vụ sửa sức chứa chỉ trước ONGOING, trong 1–15 và không dưới sĩ số đã xếp. Giữ nguyên giới hạn đổi giáo viên, mã lớp và điều kiện hủy đã chốt.
+
+### ADR-086 — Gate initial entry grading at test end and enforce effective closure
+
+- A10: Chỉ cho giáo viên được phân công nhập điểm đầu vào lần đầu từ khi ca kết thúc; không áp hạn 24/48 giờ, nhưng phải còn hồ sơ hợp lệ trước xác nhận và ca không CANCELLED. Không nới cửa sổ sửa điểm ADR-029; ABSENT vẫn chỉ sau ca kết thúc và không suy từ thiếu điểm. Điểm đào tạo giữ cửa sổ lớp ONGOING/COMPLETED và DRAFT/RETURNED đã chốt.
+- B04: API luôn tính trạng thái hiệu lực: ca chưa hủy và đã đến giờ bắt đầu là CLOSED dù dữ liệu cũ còn OPEN. Ghi CLOSED cùng thao tác ghi hợp lệ kế tiếp; truy vấn chỉ đọc không âm thầm sửa dữ liệu. Không cần cron mới để quyền đóng ca đúng giờ; tất cả thao tác kiểm tra giờ server trong transaction, không mở lại ca đã bắt đầu.
+
+### ADR-087 — Confirm actual occurrence and model linked lessons and final exams
+
+- B01: Giáo vụ xác nhận riêng từng LESSON/FINAL_EXAM sau giờ kết thúc dự kiến và khi lớp ONGOING; lưu người/thời điểm. Không tự suy từ thời gian hoặc điểm danh. Không có nút đảo HELD về chưa diễn ra; lịch chưa được xác nhận tiếp tục chặn hoàn thành. Không thay cửa sổ nhập điểm danh đã duyệt.
+- B02: Mỗi lớp có một nghĩa vụ FINAL_EXAM, riêng số LESSON, sau LESSON cuối theo lịch hiện hành; cấu hình có một thành phần điểm loại FINAL_EXAM. Nếu thi cả lớp không tổ chức, mở rộng quy trình thay thế có lý do/liên kết sang FINAL_EXAM, chỉ khi chưa điểm phụ thuộc và lớp chưa kết thúc; giữ buổi cũ, một nghĩa vụ, không thi lại cá nhân. Bổ sung đã duyệt cho FINAL_EXAM ngoài LESSON của ADR-036.
+- C02: Schedule có occurrence_state PLANNED/HELD/NOT_HELD, người/thời điểm xác nhận và lý do/người/thời điểm không tổ chức; có mã nghĩa vụ và replaces_schedule_id cùng lớp/loại. Một lịch hiện hành cho mỗi nghĩa vụ; chuỗi thay thế giữ lịch sử nhưng không tăng số buổi. Lịch lớp CANCELLED bị loại bằng trạng thái lớp, không suy HELD từ điểm danh hoặc đồng hồ.
+- C03: ScoreComponentConfig có kind GENERAL/LESSON/FINAL_EXAM; loại này cũng khóa từ lớp đầu tiên. Score có schedule_id bắt buộc với LESSON/FINAL_EXAM, cùng lớp/loại và buổi hiện hành; GENERAL để NULL. Vẫn một Score/học viên/thành phần, không biến thành điểm mỗi buổi vô hạn. Điểm gắn buổi chỉ nhập sau khi buổi đã bắt đầu; không nhập cho buổi NOT_HELD. Phối hợp B02 đã duyệt.
+
+### ADR-088 — Use minute-precision same-day intervals and atomic timetable generation
+
+- B03: Mỗi ca/buổi bắt đầu-kết thúc trong cùng ngày Việt Nam, bắt đầu trước kết thúc, độ chính xác phút; khoảng thời gian dạng [bắt đầu, kết thúc) nên được học/thi nối tiếp đúng giờ. Ngoài xung đột phòng/giáo viên đã chốt, chặn đặt ca/xếp lớp làm học viên trùng ca hoặc lịch lớp còn hiệu lực; không tự chuyển lớp/ca để xử lý.
+- B05: Nhập khoảng ngày/thứ/giờ/phòng, xem trước các buổi cụ thể, số nghĩa vụ còn thiếu và mọi xung đột; không tự bỏ ngày nghỉ. Chỉ lưu toàn bộ nếu tất cả hợp lệ và không vượt số LESSON; nếu lỗi không lưu phần nào. Không tự sinh lịch sau này và không tạo entity quy tắc lặp; thêm từng buổi vẫn được phép.
+
+### ADR-089 — Preserve blocked assignments and require sensitive-action conflict previews
+
+- B06: Không tự đổi người phụ trách, hủy lớp/ca/hồ sơ hoặc xóa dữ liệu. Người bị chặn không thực hiện nghiệp vụ; giao diện báo rõ tài khoản phụ trách không khả dụng. Đổi người chỉ trong cửa sổ đã chốt; ngoài cửa sổ thì chờ Admin mở/khôi phục tài khoản hợp lệ, không thêm quyền đổi giáo viên giữa khóa hoặc sửa điểm ngoại lệ.
+- B07: Trước thanh toán/chốt hoặc trả bảng điểm cả lớp/hủy/reset/khóa-ngừng tài khoản, hiển thị đối tượng và ảnh hưởng; lý do chỉ ở nơi đã bắt buộc. Khi dữ liệu thay đổi sau khi mở form, báo xung đột và yêu cầu tải lại/kiểm tra, không ghi đè tự động. Không thêm người phê duyệt thứ hai; preview hủy hồ sơ ADR-031 vẫn giữ.
+
+### ADR-090 — Separate test bookings and enforce relational lifecycle integrity
+
+- C01: Thêm EntryTestBooking liên kết EntryTestAttempt và EntryTestSession; mỗi lần đặt/hủy/vắng có bản ghi riêng, không ghi đè lịch sử. Attempt duy nhất theo hồ sơ/số lượt 1–2; một booking SCHEDULED hiện tại/lượt chưa hoàn thành, kết quả trỏ booking đã hoàn thành. API suy diễn trạng thái lượt từ kết quả/booking hiện tại; vắng/đặt lại không tăng lượt, không tạo lượt ba.
+- C04: Lưu Registration.is_unfinished do server quản lý; unique có điều kiện trên student_id/course_id khi true. Cập nhật cờ cùng transaction hủy/từ chối hoặc khi Class COMPLETED và GradeReport FINALIZED; kiểm tra cả dữ liệu gốc khi ghi để tránh cờ lệch. Không thêm Registration COMPLETED, không yêu cầu đạt môn.
+- C06: Dùng int IDENTITY cho các bảng nghiệp vụ; khóa kỹ thuật phiên/operation là định danh ngẫu nhiên. FK hạn chế xóa dữ liệu lịch sử, không cascade xóa hồ sơ/điểm/Invoice/Payment/audit. Mã học viên hiển thị là ID nội bộ, không tạo mã tự nhập mới; Course/Class code vẫn tách khỏi PK. Chỉ bỏ cấu hình nháp chưa dùng khi không có phụ thuộc và quyền hiện có cho phép.
+- C10: Đặt unique cho email chuẩn hóa/SĐT có giá trị, code khóa-lớp, cặp khóa-Band, tên thành phần trong chương trình, hồ sơ-số lượt, assignment/hồ sơ, điểm/học viên-thành phần, điểm danh/học viên-buổi, Invoice/hồ sơ và Payment/Invoice. Tên thành phần so không phân biệt hoa-thường nhưng có phân biệt dấu; không unique Payment reference. Index FK/cột lọc trạng thái-ngày/Teacher/phòng và phân trang; kiểm tra đúng vai trò/cùng lớp-chương trình bằng server trong transaction, không chỉ FK tồn tại.
+- C15: Khi tạo Class, khóa kiểm tra/cấu hình TrainingProgram cùng transaction và từ đó suy khóa bất biến bằng sự tồn tại của bất kỳ Class, kể cả CANCELLED. Bộ Band bị khóa khi có bất kỳ kết quả đầu vào COMPLETED; tuần tự hóa thao tác cấu hình và chấm đầu tiên. Không nút mở khóa/xóa lịch sử để né freeze, không thêm bảng version hoặc snapshot hồ sơ cá nhân.
+- C16: Số hóa đơn server cấp HD-YYYY-NNNNNNNN, năm theo ngày phát hành Việt Nam, bộ đếm DB tăng an toàn; không yêu cầu liên tục không khoảng trống/không tái dùng. Quan hệ một hồ sơ tối đa một Invoice, một Invoice tối đa một Payment, một assignment tối đa một GradeReport; các FK nghiệp vụ bắt buộc NOT NULL khi đối tượng đó tồn tại, actor có thể NULL chỉ với sự kiện chưa xác thực. Score chưa nhập là thiếu bản ghi, không 0; finalized_score/Band/Payment chỉ có khi đạt điều kiện tương ứng. Dictionary cuối sẽ ghi rõ từng trường, không mặc định tất cả nullable.
+
+### ADR-091 — Specify exact numeric, time and normalized text representations
+
+- C07: Tiền đơn decimal(18,0), dương và không vượt 999.999.999.999.999.999 VND; tổng báo cáo decimal(38,0), API tiền dạng chuỗi số để frontend không mất chính xác. Điểm/trọng số decimal(5,2): điểm 0–100, trọng số >0 đến 100/tổng đúng 100; số LESSON int dương. Tính tổng điểm bằng decimal trung gian rồi half-up một lần như ADR-028; từ chối vượt range, không tự cắt/làm tròn đầu vào.
+- C08: Các thời điểm sự kiện lưu UTC datetime2(3), API ISO-8601 có Z. Ngày sinh/hạn thu dùng date; lịch dùng ngày Việt Nam và time(0), ràng buộc phút/same-day B03, chuyển UTC khi so thời điểm sự kiện. Backend áp Asia/Ho_Chi_Minh cho ranh giới ngày/kỳ; không phụ thuộc timezone máy học viên hoặc server.
+- C09: Đếm ký tự theo Unicode code point, không byte/UTF-16 unit; từ chối surrogate không hợp lệ, chuẩn hóa NFC văn bản không phải mật khẩu, cấp nvarchar đủ dung lượng tương ứng. Mật khẩu giữ nguyên, không trim/NFC/đổi hoa-thường. Email nhận một địa chỉ ASCII dạng local@domain, không tên hiển thị/khoảng trắng/ký tự điều khiển; trim/so trùng không phân biệt hoa-thường nhưng không bỏ dấu/chấm/+tag. SĐT chuẩn 0xxxxxxxxx từ quy tắc đã duyệt; chuỗi tùy chọn trim rỗng thành NULL, trường bắt buộc rỗng báo lỗi.
+
+### ADR-092 — Persist revocable authentication sessions and independent login timers
+
+- C11: Thêm AuthSession với sid ngẫu nhiên, account_id, issued/expires/last_activity/revoked_at và phiên hạn chế nếu có; Account có security_version. JWT mang sid/version, mọi yêu cầu kiểm tra DB/status/hạn phiên; reset/đổi mật khẩu/khóa/ngừng tăng version và hủy phiên theo ADR-049. Không chỉ đợi JWT hết hạn, không Redis hoặc module quản lý thiết bị.
+- C12: Lưu failed_login_count, failure_window_started_at và login_throttled_until độc lập status tài khoản; tính UTC/cập nhật nguyên tử. Lưu must_change_password/temp_issued_at/temp_expires_at, chỉ hash mật khẩu; không lưu bản rõ để Admin xem lại. Throttle/expiry không tự unlock/enable; giữ nguyên 5 lần/15 phút và mật khẩu tạm 24 giờ đã duyệt.
+
+### ADR-093 — Group audit history and serialize critical writes with replay protection
+
+- C05: Lưu actor/time/reason/prior-state ở đối tượng khi cần, AuditLog giữ trường cũ/mới theo allowlist. Dùng operation_id chung cho thao tác mẹ và thay đổi phụ thuộc, gồm mọi GradeReport trong gửi/gửi lại/trả/chốt cả lớp. Giữ lịch sử lần gửi/trả/chốt, không chỉ timestamp cuối; không thêm workflow lịch sử đổi giáo viên lớp hoặc nút sửa/xóa log.
+- C13: Transaction ngắn; rowversion phát hiện form cũ, đồng thời khóa tuần tự tài nguyên/capacity/đối tượng để xử lý đặt ca-xếp lớp-thanh toán-hủy-chấm/xác nhận/đổi cấu hình và thu hồi phiên. Không coi rowversion một mình chống được trùng lịch. Thao tác nghiệp vụ quan trọng có request_id theo actor/action, lưu dấu kết quả cùng transaction tối thiểu 24 giờ: gửi lại cùng nội dung không tạo tác động mới, khác nội dung báo 409; kiểm tra quyền hiện tại khi nhận lại kết quả. Không lưu/phát lại mật khẩu tạm. Cơ sở kỹ thuật: [EF Core concurrency](https://learn.microsoft.com/en-us/ef/core/saving/concurrency).
+
+### ADR-094 — Read consistent report snapshots and display two-decimal rates
+
+- C14: Mỗi lượt báo cáo/export đọc một snapshot DB nhất quán, trả queried_at; CSV chạy một truy vấn mới theo cùng bộ lọc/cột, không hứa giữ nguyên ảnh chụp trang xem trước. Tỷ lệ đạt/tiến độ hiển thị 2 chữ số lẻ half-up, không làm tròn các thành phần đếm; mẫu số rỗng giữ “Chưa có dữ liệu”. Giữ nguyên nhóm thời gian/trạng thái hiện tại và tổng distinct đã duyệt.
+
+## 4.2. Gói 1 frontend được duyệt — 29/09/2026
+
+Owner duyệt các đề xuất Gói 1, gồm sửa cách diễn đạt D15. Gói 2 ban đầu được
+bàn từng phần: FE01a/FE01b/FE02 duyệt ADR-103–ADR-105 (mục 4.3–4.5).
+Owner sau đó đồng ý hoàn toàn Gói 2 FE01–FE10, ghi thêm ADR-106–ADR-113
+(mục 4.6); chi tiết đã chốt về shell/menu/PII giữ nguyên. Gói 3 đã duyệt ở mục 4.8.
+Các lựa chọn sau là contract thiết kế, chưa có code hoặc test đã chạy.
+
+### ADR-95 / D01 — Module và trách nhiệm server
+
+Một backend modular monolith dùng stack và tên module mục tiêu hiện có: Students quản lý hồ sơ riêng; Admissions xử lý đăng ký/thi đầu vào; Academics quản lý cấu hình/lớp/lịch/điểm; Finance quản lý hóa đơn/thanh toán; Reports đọc báo cáo; Administration quản lý tài khoản/phiên/audit. API DTO → application workflow/transaction → EF Core/SQL Server; quy tắc/quyền/tiền/tổng điểm do server quyết định, frontend chỉ nhập/hiển thị. React tổ chức theo chức năng, không microservice/event bus/framework kiến trúc mới; liên module cùng DB để giữ all-or-none.
+
+### ADR-96 / D02 — API, lỗi, phân trang và ownership
+
+API /api/v1; DTO riêng, lỗi code/message/fieldErrors/traceId, không stack trace/SQL/payload bí mật. 400 dữ liệu sai, 401 chưa/hết xác thực, 403 sai vai trò, 404 bản ghi không thuộc phạm vi được xem, 409 trạng thái/cạnh tranh; danh sách mặc định 20, tối đa 100/trang, sort ổn định có ID phụ. Server kiểm tra role và ownership ở mọi endpoint, không chỉ ẩn nút.
+
+### ADR-97 / D03 — Hoạt động idle và phiên chung giữa tab
+
+Chỉ request nghiệp vụ được xác thực do người dùng thao tác mới cập nhật last_activity; không background polling/healthcheck/timer giữ phiên. Các tab cùng browser profile chia cookie/phiên, đăng xuất ở một tab hủy phiên chung; thiết bị/profile khác có phiên riêng. Giữ 2 giờ tuyệt đối/30 phút idle, không refresh; không tạo heartbeat chỉ từ di chuột/gõ phím.
+
+### ADR-98 / D04 — Phiên hạn chế đổi mật khẩu tạm
+
+Đăng nhập bằng mật khẩu tạm còn hạn chỉ cấp phiên hạn chế tối đa 10 phút, không vượt hạn 24 giờ của mật khẩu; chỉ được đổi mật khẩu tạm/đăng xuất, không nghiệp vụ. Sau đổi, hủy mọi phiên rồi về đăng nhập bình thường; không tự nâng phiên hạn chế thành phiên thường. Reset/hết hạn vẫn do Admin, không email khôi phục.
+
+### ADR-99 / D06 — Cookie JWT, HTTPS, CSRF và dữ liệu cá nhân
+
+JWT ký/kiểm issuer-audience-exp/sid-version, đặt cookie host-only HttpOnly/Secure/SameSite=Strict, không localStorage/sessionStorage. Frontend/API cùng origin; yêu cầu đổi dữ liệu và login có CSRF token/kiểm Origin, không thao tác nghiệp vụ qua GET. HTTPS, escape văn bản thuần, truy vấn tham số hóa, secret ngoài mã nguồn, không lưu hồ sơ/điểm/tokens bền trong browser cache hoặc log đầy đủ. Nguồn: [OWASP Session](https://cheatsheetseries.owasp.org/cheatsheets/Session_Management_Cheat_Sheet.html), [OWASP CSRF](https://cheatsheetseries.owasp.org/cheatsheets/Cross-Site_Request_Forgery_Prevention_Cheat_Sheet.html).
+
+### ADR-100 / D07 — Lỗi đăng nhập và giới hạn IP
+
+Thông báo đăng nhập chung, không tiết lộ email có tồn tại hoặc trạng thái trước xác thực. Bổ sung giới hạn request login theo IP: 100/phút, vượt trả 429/Retry-After; đây là ngưỡng hạ tầng đề xuất, tách khỏi throttle tài khoản 5 lần/15 phút đã duyệt và không hủy phiên. IP chỉ tin từ proxy được cấu hình; không CAPTCHA/OTP/module cảnh báo mới.
+
+### ADR-101 / D10 — CSV tài chính và giới hạn/an toàn ô
+
+CSV UTF-8 BOM, dấu phẩy, CRLF, quote/escape đúng ô; cùng bộ lọc/cột và toàn bộ kết quả theo ADR-072. Giới hạn 10.000 dòng dữ liệu hoặc 5 MB: vượt thì từ chối toàn file và đề nghị thu hẹp lọc, không xuất âm thầm một phần. Ô văn bản nguy hiểm công thức kể cả ký tự full-width được thêm dấu nháy đơn bên trong ô đã quote; giữ dữ liệu DB gốc, kiểm thử trên Excel/LibreOffice mục tiêu và cảnh báo không bảo đảm an toàn sau chỉnh/lưu/mở lại ở mọi phần mềm. Không XLSX/PDF/quyền xuất mới. Nguồn: [OWASP CSV Injection](https://community.owasp.org/attacks/CSV_Injection).
+
+### ADR-102 / D15 — Responsive theo vai trò và phạm vi kiểm chứng
+
+Thiết kế bộ kiểm chứng xUnit nghiệp vụ/API, integration trên SQL Server test riêng cho ràng buộc/transaction/races; kiểm tra thủ công 7 vai trò và luồng đầu-cuối/boundary thời gian/số tiền/CSV. UI tiếng Việt; luồng Học viên ưu tiên 375 px, màn hình nghiệp vụ dày của nhân sự ưu tiên 1280 px; tất cả dùng được và kiểm tra ở 375/768/1280 px, nhãn/lỗi rõ, tab bằng bàn phím, không chỉ dựa màu; kiểm thử Chrome/Edge bản ổn định hiện hành. Không thêm test framework, test code hoặc tuyên bố kiểm thử đã chạy.
+
+## 4.3. Khung giao diện chung FE01a được duyệt — 29/09/2026
+
+ADR-103: dùng chung một khung cho 7 vai trò, hiển thị menu đúng quyền.
+1280 px: sidebar trái khoảng 240 px, icon/tên mục và header trên nội dung.
+768 px: menu trái thu gọn khoảng 72 px, có nhãn khi hover/focus và nút mở rộng.
+375 px: header gọn/nút menu/drawer trượt từ trái phủ nội dung, trang một cột.
+Header hiển thị tên màn hình/khu vực tài khoản; mobile đưa tên/vai trò vào
+menu tài khoản ADR-084. Nội dung gồm tiêu đề, hành động chính và dữ liệu.
+Menu đang chọn/focus rõ; drawer đóng khi chọn mục/chạm nền/Escape và trả
+focus về nút mở. FE01b nhóm/tên menu theo vai trò đã duyệt ADR-104.
+
+## 4.4. Menu theo vai trò FE01b được duyệt — 29/09/2026
+
+ADR-104: thứ tự sau cũng là thứ tự menu; đăng nhập mới mở mục đầu của vai trò.
+
+| Vai trò | Nhóm menu và màn hình |
+| --- | --- |
+| Học viên | Trang chủ F03; Khóa học & hồ sơ F04–F05; Thi đầu vào F06–F09; Hóa đơn F10; Lớp & lịch F11; Bảng điểm F12. |
+| Tuyển sinh | Hồ sơ tuyển sinh F13–F14. |
+| Giáo vụ | Ca thi đầu vào F16–F17; Khóa & chương trình F18; Lớp học F19–F20; Lịch học & thi F21; Xếp lớp F22; Duyệt bảng điểm F23. |
+| Giáo viên | Lớp & lịch dạy F24; Thi đầu vào F25; Điểm danh F26; Sổ điểm F27. |
+| Kế toán | Hóa đơn & thanh toán F28–F29; Báo cáo học phí F30. |
+| Giám đốc | Báo cáo tổng hợp F31. |
+| Admin | Tài khoản F32; Nhật ký F33. |
+
+Thi đầu vào của Học viên chứa đặt ca/lịch/kết quả-Band/xác nhận nhập học.
+Khóa & chương trình của Giáo vụ gồm Band/trọng số; Báo cáo tổng hợp chứa
+tuyển sinh/đào tạo/tài chính. Các hành động tạo/sửa/duyệt/thanh toán nằm
+trong màn hình tương ứng. F01/F02 là xác thực trước đăng nhập; menu tài
+khoản ADR-084 nằm riêng ở header. Không tạo mã F/dashboard nhân sự mới;
+quyền và guard đã chốt giữ nguyên. FE02 cấu trúc trang/đường đi ở mục 4.5.
+
+## 4.5. Cấu trúc trang và đường đi FE02 được duyệt — 29/09/2026
+
+ADR-105: danh sách, chi tiết và form phức tạp có URL riêng, hỗ trợ mở trực
+tiếp, tải lại và Back/Forward; chưa chọn thêm thư viện. Chi tiết có khối
+tóm tắt đối tượng/trạng thái và các phần hoặc tab dữ liệu đúng quyền.
+Form nhiều trường như chương trình/lớp/lịch/sổ điểm dùng trang riêng;
+modal dành cho xác nhận, lý do hoặc form ngắn, mobile có thể gần toàn màn hình.
+Quay lại danh sách giữ bộ lọc/trang/sắp xếp. Bộ lọc không định danh
+(khóa/Band/trạng thái/kỳ ngày), page/sort có thể ở URL; tên/email/SĐT chỉ
+giữ trong bộ nhớ khi sử dụng, không đưa vào URL/localStorage/sessionStorage.
+Danh sách/chi tiết có breadcrumb và đường quay lại rõ. Mọi URL giữ quyền,
+ownership và hợp đồng lỗi D02; không thay đổi quyền hoặc workflow nghiệp vụ.
+
+## 4.6. Toàn bộ Gói 2 FE01–FE10 được duyệt — 29/09/2026
+
+Owner xác nhận đồng ý toàn bộ đề xuất Gói 2 gốc trong cùng chat. Bổ sung
+FE03–FE10 ở OWNER_REVIEW và ADR-106–ADR-113; không suy từ file tự host.
+Giữ FE01a/FE01b/FE02 đã chốt, không bottom navigation/role switcher thật,
+không infinite scroll. Gói 3 FE11–FE19 duyệt riêng ADR-121–ADR-129 (mục 4.8);
+không nghiệm thu E hoặc code.
+
+### FE03 / ADR-106 — Danh sách responsive
+
+1280 px dùng bảng đầy đủ đúng quyền; 768 px rút gọn cột và mở chi tiết riêng;
+375 px dùng card/list có nhãn trường, tránh bảng ngang. Sổ điểm desktop dùng
+ma trận với cột học viên cố định, mobile chuyển sang từng học viên. Phân trang
+theo D02, giữ context/PII ADR-105. Đơn vị lưu điểm/điểm danh chốt riêng FE14,
+ADR-124 (mục 4.8), không suy từ FE03.
+
+### FE04 / ADR-107 — Quyền, điều kiện và chỉ xem
+
+Ẩn hành động hoàn toàn ngoài quyền. Hành động đúng vai trò nhưng chưa đủ
+điều kiện thì disabled và giải thích cụ thể. Dữ liệu chỉ xem ghi “Chỉ xem”,
+không giả dạng form bị khóa. Cảnh báo tài khoản phụ trách LOCKED/DISABLED,
+không đề xuất đổi người ngoài cửa sổ đã chốt. Server vẫn kiểm tra mọi guard;
+lý do không tiết lộ dữ liệu ngoài quyền.
+
+### FE05 / ADR-108 — Form và validation
+
+Không autosave; nút lưu rõ. Client kiểm tra sớm nhưng server kết luận; lỗi
+trường dưới trường và lỗi toàn form ở đầu. Cảnh báo rời trang còn thay đổi
+chưa lưu, không hứa phục hồi sau tắt máy/hết phiên. Chuyển hoa mã khóa/lớp/
+phòng khi rời trường trong phạm vi được phép; mã đã tạo vẫn bất biến.
+Không tự cắt/làm tròn giá trị vượt giới hạn hoặc chuẩn hóa mật khẩu. SĐT
+nhập dạng hợp lệ, lưu xong hiển thị chuẩn. Không tự merge/ghi đè form cũ hoặc
+lưu nháp nhạy cảm bền trong browser. Đơn vị lưu batch FE14 chốt riêng ADR-124.
+
+### FE06 / ADR-109 — Loading, empty, error, submitting
+
+Tải lần đầu dùng skeleton theo cấu trúc; tách chưa có dữ liệu và không có
+kết quả theo bộ lọc. Submit khóa nút/hiện tiến trình, không nhấn lặp; vẫn giữ
+chống ghi lặp server ADR-093 và kiểm tra trạng thái sau mất phản hồi ghi.
+409 giải thích xung đột dữ liệu/trạng thái, yêu cầu tải lại/kiểm tra, không
+ghi đè. 401/hết phiên xác thực về đăng nhập với lý do rõ; 403 không đủ quyền;
+404 chung không tồn tại/ngoài phạm vi. Lỗi đăng nhập trước xác thực vẫn chung
+theo D07. Thành công thông báo ngắn; lỗi quan trọng không chỉ toast dễ mất.
+Giữ fieldErrors/traceId D02, không lộ bí mật/payload/stack.
+
+### FE07 / ADR-110 — Xác nhận nhạy cảm
+
+Một mẫu chung có đối tượng/trạng thái hiện tại, ảnh hưởng trực tiếp và dữ
+liệu phụ thuộc. Lý do chỉ nơi đã bắt buộc, nút dùng đúng động từ nghiệp vụ
+thay “OK”. Không hai lớp xác nhận cho thao tác thông thường; mật khẩu tạm
+hiển thị một lần là ngoại lệ riêng; thiết kế bàn giao/copy/đóng FE18 đã duyệt
+riêng ADR-128 (mục 4.8). Không thêm người duyệt thứ hai, lý do/quyền mới;
+commit vẫn kiểm tra lại.
+
+### FE08 / ADR-111 — Component cục bộ
+
+Tailwind và component cục bộ có khả năng truy cập; chưa thêm UI/form/table/
+calendar/chart library. Chỉ xin package mới khi nhu cầu cụ thể không thể đáp
+ứng hợp lý. Không đổi dependency đã thuộc stack; chưa tạo component/code.
+
+### FE09 / ADR-112 — Ngôn ngữ và định dạng
+
+Nhãn trạng thái tiếng Việt, enum tiếng Anh nội bộ. Ngày dd/MM/yyyy, giờ 24 giờ
+HH:mm; ghi “Giờ Việt Nam” nơi dễ nhầm. Hiển thị vi-VN như 1.234.567 ₫ và
+75,50/100; tiền API vẫn chuỗi chữ số, không qua kiểu số làm mất chính xác.
+Không đổi range/precision/rounding/validation/timezone; định dạng không tự tính
+lại hoặc thay dữ liệu lưu.
+
+### FE10 / ADR-113 — Phong cách
+
+Giao diện hành chính–học vụ sáng, gọn; font hệ thống, nền trắng/xám và màu
+chính xanh. Trạng thái đỏ/vàng/xanh có chữ hoặc icon; focus rõ, vùng chạm
+tối thiểu khoảng 44 px, hỗ trợ giảm chuyển động. Không là bộ nhận diện mới
+hoặc bằng chứng accessibility đã đạt; contrast/keyboard vẫn phải kiểm chứng.
+
+## 4.7. Bảo mật và vận hành bổ sung — ADR-114–ADR-120
+
+Ngày 29/09/2026 owner tích D05/D08/D09/D11/D14/D16 trong OWNER_REVIEW,
+sau đó trả lời đồng ý phụ trách toàn bộ D17. Đây là lựa chọn thiết kế được
+duyệt, không là bằng chứng đã cài đặt, chạy kiểm chứng hoặc nghiệm thu E.
+D12/D13 giữ chưa duyệt, hoãn đến khi chốt nơi chạy web/phần mềm.
+
+### D05 / ADR-114 — Hash, mật khẩu tạm và blocklist
+
+Dùng PasswordHasher của ASP.NET Core với tham số theo runtime được chọn,
+ghi rõ khi khóa dependency triển khai. Mật khẩu tạm 32 ký tự sinh bằng bộ
+ngẫu nhiên mật mã, hiển thị Admin một lần, không lưu/log plaintext. Blocklist
+offline hợp nhất SecLists 10k-most-common và probable-v2_top-12000; pin revision,
+giữ giấy phép khi tích hợp, rà cập nhật mỗi quý. Không gửi mật khẩu ra dịch vụ
+ngoài; danh sách hữu hạn không phát hiện mọi mật khẩu từng lộ. Không đổi cách
+đếm/Unicode/khoảng trắng/expiry/quy tắc mật khẩu; bàn giao UI FE18 đã duyệt
+riêng ADR-128 (mục 4.8).
+
+### D08 / ADR-115 — Lỗi ghi audit
+
+Audit nghiệp vụ/thay đổi tài khoản bắt buộc cùng transaction với thao tác;
+lỗi ghi rollback toàn bộ, gồm trạng thái/credential/thu hồi phiên liên quan.
+Sự kiện đăng nhập/đăng xuất/từ chối quyền ghi best-effort với fallback vận
+hành có giới hạn/không bí mật. Không bỏ kiểm tra bảo mật hoặc khôi phục phiên
+logout đã hủy vì log lỗi. Ghi nhận sự cố để người vận hành xử lý, không thêm
+hệ thống thông báo cho người dùng.
+
+### D09 / ADR-116 — Lưu giữ, IP và chống ngập log
+
+Audit nghiệp vụ/thay đổi tài khoản giữ cùng lịch sử dự án, không nút xóa trong
+app. Log xác thực/quyền thuần túy và IP giữ 90 ngày rồi dọn bằng vận hành;
+không xóa audit bắt buộc để áp hạn này. Chỉ lưu IP cho sự kiện bảo mật cần
+thiết; bỏ IP hết hạn nhưng giữ phần audit bắt buộc. Ghi mọi sự kiện thực sự
+xử lý; request đã bị rate-limit có thể gộp số lần/IP/cửa sổ phút, không bỏ
+bộ đếm throttle. Actor chưa xác thực là NULL, không email nhập. Đây là chính
+sách dự án được duyệt, không kết luận tuân thủ pháp lý.
+
+### D11 / ADR-117 — Phạm vi kiểm chứng tải
+
+Giả định một trung tâm, tối đa 10.000 học viên và 50 người dùng đồng thời;
+giữ lịch sử nhiều khóa/lượt. Không multi-branch, đa tenant hoặc kiến trúc
+phân tán. Đây là phạm vi kiểm chứng dự kiến, không số người dùng thực tế,
+kết quả đo hoặc ràng buộc chặn học viên thứ 10.001; D12 vẫn hoãn.
+
+### D14 / ADR-118 — Backup và phục hồi
+
+Khi đã có hệ thống, backup SQL hằng ngày, mã hóa và giữ bản riêng khỏi ổ dữ
+liệu chính; giữ 7 bản ngày/4 bản tuần, thử restore mỗi tháng. Mục tiêu trên
+môi trường tham chiếu: RPO tối đa 24 giờ, RTO tối đa 2 giờ, chưa là bảo đảm
+đã đo. Owner chỉ định nơi lưu/quyền vận hành trước khi chạy thật; người phụ
+trách mặc định đã chốt D17. Quy trình phải xử lý lịch backup khi laptop tắt/
+bỏ lỡ lần chạy, không tự hạ tần suất hoặc tuyên bố đạt mục tiêu. Chưa backup,
+sao chép dữ liệu hoặc restore ở giai đoạn thiết kế này.
+
+### D16 / ADR-119 — Phiên bản và phạm vi cấp phép
+
+Chọn .NET 10 LTS/EF Core 10 và SQL Server 2022 Developer cho dev/test/demo
+nội bộ không dùng dữ liệu/vận hành production. Giữ React/Vite/TypeScript/
+Tailwind/xUnit. Sau nghiệm thu toàn bộ baseline, chốt patch tương thích
+được hỗ trợ và lock dependency trong hợp đồng triển khai; không hỏi riêng
+mỗi patch. Production phải chọn edition/license riêng trước khi vận hành.
+Chưa cài đặt, pin patch hoặc xác minh tương thích máy.
+
+### D17 / ADR-120 — Người vận hành mặc định
+
+Chủ dự án phụ trách toàn bộ release, secret, backup/restore và bảo trì đồ án.
+Đã hỏi và chốt một lần; chỉ hỏi lại người phụ trách khi owner yêu cầu thay
+đổi. Đây là trách nhiệm vận hành, không thêm quyền Admin ứng dụng hoặc DBA.
+Bàn giao tài liệu setup/cấu hình, ma trận quyền, reset/thu hồi phiên, phục hồi/
+xử lý lỗi và truy vết yêu cầu → workflow → data/API/test. Rà dependency/
+secret/blocklist định kỳ trước release, giữ nhịp rà blocklist mỗi quý D05.
+Không tự kích hoạt integration/coding agent hoặc gửi dữ liệu dự án ra ngoài.
+
+
+## 4.8. Gói 3 FE11–FE19 đã được duyệt — 29/09/2026
+
+Owner xác nhận trực tiếp ghi nhận toàn bộ Gói 3, không nêu ngoại lệ. Cập nhật
+chín ô FE11–FE19 trong OWNER_REVIEW và lưu ADR-121–ADR-129; không suy từ
+ô trống hoặc từ Gói 2. Các quy tắc dưới đây đã được duyệt, chưa triển khai.
+Giữ 7 vai trò/32 mã F, không thêm module, quyền, dependency hoặc nghiệm thu E.
+
+### FE11 / ADR-121 — Trang chủ Học viên F03.
+
+Dùng các thẻ theo từng hồ sơ/khóa của chính học viên: bước hiện tại, việc có thể làm tiếp, ca thi/buổi học gần nhất, hóa đơn chưa thanh toán/quá hạn và liên kết kết quả đã FINALIZED. Mỗi hồ sơ có nút dẫn tới thao tác hợp lệ hoặc lời giải thích đang chờ chấm/duyệt/thanh toán/xếp lớp; không ép một tiến trình chung khi học nhiều khóa. Tiến trình chỉ là cách trình bày dữ liệu hiện có, không enum/điểm tiến độ mới; không hiện điểm DRAFT/SUBMITTED/RETURNED cho học viên. Chưa có hồ sơ thì dẫn tới chọn khóa. Không thêm dashboard nhân sự, hộp thư hoặc thông báo tự động.
+
+### FE12 / ADR-122 — Lịch thi/học/dạy/quản lý.
+
+Dùng component lịch cục bộ tái sử dụng trong F07/F11/F21/F24, chỉ dữ liệu đúng scope từng màn hình. Desktop có lịch tuần và danh sách theo ngày; 375/768 px ưu tiên danh sách theo ngày, nút Hôm nay/chọn ngày và lọc lớp của mình hoặc lớp được phép quản lý. Click buổi mở chi tiết và hành động hợp lệ; không kéo-thả/resize để đổi lịch, không thêm calendar library. Phân biệt LESSON/FINAL_EXAM/ca đầu vào bằng chữ kèm màu. Lịch Học viên giữ Hiện tại/Lịch sử đã chốt; lịch bị hủy/NOT_HELD nằm ở lịch sử, liên kết buổi thay thế và không tính đôi. Chọn ngày không tự suy buổi đã HELD; không đổi quyền đặt ca CLOSED hoặc cửa sổ sửa lịch.
+
+### FE13 / ADR-123 — Xem trước tạo lịch tuần F21.
+
+Hai bước Nhập quy tắc → Xem trước: khoảng ngày/thứ/giờ/phòng cho LESSON, danh sách ngày cụ thể, số nghĩa vụ đã có/còn thiếu/sắp tạo và xung đột phòng/giáo viên/lớp/học viên trong phạm vi được xem. Nút Tạo toàn bộ lịch chỉ khả dụng khi batch hợp lệ; sửa đầu vào làm mất hiệu lực preview. Có lỗi thì quay lại sửa/tạo lại preview hoặc dùng luồng thêm buổi riêng, không tự bỏ dòng lỗi/ngày nghỉ hoặc lưu phần hợp lệ. Server kiểm tra lại lúc commit; preview không giữ chỗ tài nguyên. 409 yêu cầu xem trước lại, không ghi đè. FINAL_EXAM quản lý riêng, không tự sinh kèm LESSON; không thêm quy tắc lặp lưu DB/automation.
+
+### FE14 / ADR-124 — Đơn vị lưu điểm danh và điểm nháp F26/F27.
+
+Điểm danh: nút Lưu điểm danh buổi gửi các giá trị đã đánh dấu/thay đổi của một LESSON trong một batch all-or-none; có lỗi thì không lưu phần nào. Ban đầu Chưa ghi, giáo viên chọn Có mặt/Vắng; không mặc định cả lớp có mặt/vắng, không biến chưa ghi thành dữ liệu. Có thể lưu khi còn người chưa ghi, vẫn chặn hoàn thành lớp đến khi đầy đủ; Chưa ghi không là enum Attendance mới. Điểm nháp: Lưu học viên lưu các điểm thành phần đã nhập/thay đổi và nhận xét của một học viên cùng nhau, all-or-none cho lần lưu đó; desktop nút từng hàng, mobile cùng đơn vị trong trang học viên. Cho thiếu thành phần khi lưu nháp; ô chưa có điểm không thành 0, bỏ trống không tự xóa điểm đã lưu. Tổng từ server, thiếu điểm ghi Chưa đủ điểm. Hiện Chưa lưu/Đã lưu, cảnh báo rời khi còn sửa; không autosave/import Excel/lưu browser bền/merge form cũ. Gửi bảng điểm toàn lớp là thao tác riêng FE15, không đổi cửa sổ/quyền hay thêm quyền xóa điểm.
+
+### FE15 / ADR-125 — Gửi, trả lại và chốt bảng điểm cả lớp F27/F23.
+
+Tách rõ Lưu nháp và Gửi/Gửi lại bảng điểm cả lớp. Giáo viên xem trạng thái lưu/thiếu thành phần theo từng học viên; chặn gửi khi còn sửa chưa lưu, lớp chưa COMPLETED, điểm thiếu hoặc trạng thái chưa hợp lệ. Giáo vụ xem bảng SUBMITTED/RETURNED/FINALIZED theo quyền, không giá trị DRAFT. Gửi/trả/chốt dùng một confirmation có mã lớp, số học viên, trạng thái và ảnh hưởng; trả lại bắt buộc lý do và giữ điểm/nhận xét. Không checkbox chọn riêng người gửi/trả/chốt, không duyệt hai tầng. Server kiểm tra mọi học viên và chuyển toàn lớp hoặc không ai; 409 tải lại/rà lại, không tự ghi đè. Student chỉ thấy FINALIZED; chốt bất biến, không thêm mở khóa/đảo trạng thái.
+
+### FE16 / ADR-126 — Trình bày báo cáo F30/F31.
+
+Ưu tiên thẻ chỉ số và bảng chi tiết nhóm, chưa cần biểu đồ hoặc chart library. F31 có Tuyển sinh/Đào tạo/Tài chính; F30 chỉ tài chính theo quyền. Nút Áp dụng bộ lọc chạy query mới; khi đang sửa lọc, kết quả cũ ghi rõ bộ lọc đang áp dụng và queried_at, không trộn hai lần query. Tách doanh thu/tổng phải thu trong kỳ, công nợ hiện tại không kỳ ngày, tiến độ LESSON/FINAL_EXAM và kỳ kết quả chốt. Mẫu số rỗng là Chưa có dữ liệu, không 0%; tổng từ toàn tập lọc, không cộng trang/nhóm distinct. Director chỉ drill-down nhóm không định danh, không export. Accountant CSV theo bộ lọc đã áp dụng/toàn tập/cột đã chốt, query mới có thể khác trang trước, giữ giới hạn/an toàn D10. Không thêm metric, profile dump, xuất XLSX/PDF, lưu report-as-of hoặc quyền báo cáo mới.
+
+### FE17 / ADR-127 — In hóa đơn của Học viên F10.
+
+Nút In hóa đơn chỉ cho học viên sở hữu; lấy lại dữ liệu hợp lệ trước khi mở bản in, lỗi/không còn quyền thì không in bản cũ như dữ liệu mới. Bố cục A4 dọc gọn/đen-trắng rõ, ẩn menu/nút; chỉ số hóa đơn, tên hiện tại của chủ hồ sơ, khóa, tiền snapshot, ngày phát hành/hạn và trạng thái được phép xem. UNPAID ghi Chưa thanh toán — không phải xác nhận đã thu tiền; CANCELLED ghi Đã hủy; PAID ghi Đã thanh toán đúng dữ liệu. Cảnh báo quá hạn theo quy tắc hiện có, không tự đánh PAID khi bấm in. Không thêm mẫu biên lai, chữ ký/đóng dấu giả, trường Payment ngoài scope, API/file PDF hoặc quyền in cho nhân sự; dùng chức năng in của trình duyệt.
+
+### FE18 / ADR-128 — Bàn giao mật khẩu tạm một lần F32.
+
+Sau cấp/reset thành công, hiển thị khối kết quả riêng trong F32 có email/vai trò, mật khẩu tạm và hạn 24 giờ từ server, cảnh báo không thể xem lại. Nút Sao chép chỉ ghi clipboard khi Admin chủ động bấm và trình duyệt cho phép; nếu bị chặn thì chọn chữ/sao chép thủ công. Không tự copy/đọc clipboard/gửi email/in hoặc tải file secret; cảnh báo clipboard có thể còn giữ mật khẩu sau đóng, không hứa tự xóa clipboard. Có checkbox Tôi hiểu sau khi đóng sẽ không xem lại được và nút Đã ghi nhận — Đóng; không coi tick là bằng chứng người dùng đã nhận mật khẩu. Đóng/rời màn hình/đăng xuất/hết phiên xóa plaintext khỏi state, không URL/storage/cache/log/replay secret; refresh/tắt tab có thể làm mất và không cam kết ngăn được. Mất phản hồi cấp/reset: kiểm tra trạng thái trước, không tự lặp để lấy secret; nếu không nhận được mật khẩu thì Admin xác nhận reset mới có chủ đích. Không tự mở khóa tài khoản; không đổi chính sách generator/expiry/quyền đã chốt.
+
+### FE19 / ADR-129 — Chi tiết nhật ký Admin F33.
+
+Giữ danh sách từng sự kiện mới nhất trước/phân trang và bộ lọc đã chốt; chi tiết mở riêng với thời gian/người/hành động/đối tượng/kết quả/lý do, trường cũ → mới theo allowlist. Sự kiện chưa xác thực ghi Chưa xác thực, không gán email nhập làm actor. Chi tiết có liên kết xem các sự kiện cùng operation_id để hiểu thao tác cả lớp/hủy phụ thuộc, vẫn phân trang/đúng quyền và không đổi đơn vị trang thành nhóm tùy ý. Không raw request-response/secret/full payload, không sửa/xóa/khôi phục dữ liệu hoặc xuất file. IP chỉ khi được lưu hợp lệ và chưa hết hạn; đã dọn thì ghi Không còn lưu, không dựng lại IP. Bản ghi gộp rate-limit nếu có ghi số lần/cửa sổ, không giả thành từng actor đã xác thực.
+
+## 4.9. RF01/RF02/RF04 đã được duyệt — 03/10/2026
+
+Owner duyệt ba mục riêng, ghi ADR-157/158/159. RF03 giữ ADR-156.
+Đây là quyết định cutoff/no-change, không nghiệm thu toàn E04/E05 hoặc chốt
+codec/actions/signatures/shape mới chưa rà. Không sửa schema E03 hoặc Word.
+
+- RF01 / ADR-157: AcademicAffairs chỉ tạo EntryTestSession khi startAt>serverNow
+  tại kiểm tra lưu trong transaction; equality/passed409, malformed date/time400.
+  Không backfill ca cũ; mới CLOSED, capacity/resources/current Teacher và mọi
+  booking/grading windows giữ nguyên. Preview/RV không đóng băng clock.
+- RF02 / ADR-158: new intent đổi sang grader hiện tại hoặc correction bằng
+  cùng parsed score trả400 với field error graderId/score sau auth/task/valid
+  current-context checks; không mutation/provenance/audit/completion mới.
+  Stale/state/time/membership409 vẫn ưu tiên, reason/original-current-grader/
+  pre-confirmation locks giữ nguyên. Completed same-key replay là nhánh riêng.
+- RF04 / ADR-159: các value edits còn lại bằng toàn bộ business values trả400
+  không effects/marker mới. Với Attendance/grade-draft deltas, kiểm **toàn bộ**
+  request/items/versions/absence/cohort/relationships/state/clock trước equality;
+  mixed batch lưu actual changes cùng save unit, unchanged giữ provenance,
+  invalid/stale một item rollback tất cả. All-equal400, no marker; new row0
+  vẫn actual change. TeacherComment omitted giữ khác clearNULL; clear đangNULL
+  là unchanged. Parent report RV chỉ touch cho actual score/comment mutation.
+  Wrong-source state transitions bằng key mới409, không fake completion.
+  Create không coi row tồn tại là create success; Admin reset chủ đích vẫn
+  cấp credential mới/revoke theo policy, completed replay không reset.
+
+RF04 value-edit scope: Booking reschedule, Payment metadata, Session schedule,
+Course details, Program config/name, Class capacity/Teacher, Schedule move.
+Reason một mình không tạo thay đổi. Không thêm quyền/tables/fields/SQL objects/
+result modes hoặc history bypass; real mutations vẫn audit/rollback đã chốt.
+Wire literals NO_CHANGE/STATE_CONFLICT và actual E04 refinements nay Accepted
+ADR-160; behavior400/409 vẫn ADR-158/159,không hỏi lại RF01/02/04.
+
+## 4.10. Nghiệm thu actual E04-v1 và complete baseline — 03/10/2026
+
+Owner nghiệm thu [E04-v1 actual package](design/SYSTEM_ARCHITECTURE_SPEC.md)
++[final contract](design/E04_FINAL_CONTRACT.md) trước, sau đó
+[E05-v1 cross-check](design/E05_BASELINE_REVIEW.md) và complete design baseline,
+Accepted ADR-160/161. E01–E05 done;OWNER_REVIEW73/75accepted,còn D12/D13 hoãn.
+
+Actual E04 contract gồm catalog154/DTO154/SC01–04:55canonicalactions/6lookups,
+strictUUID-D/8byteBase64RV/scalars,EC-C1 normalized full-intent UTF8/SHA256,
+exact24h retention/expired retained-key409/no overwrite,first/replay completion
+unions/current authorization/error precedence,7SP/6FN/EF-trigger mappings/
+24tablegrants/locks/audit/frontend/runtime/verification contracts. Fresh CSV
+fixed6reportcolumns/footer;10000datarecords tính footer không header,
+5000000encodedUTF8bodybytes gồmBOM/header/footer/quotes/escapes/CRLF;vượt một
+cap rejectwhole409 trướcCSV200. Không đổi rights/saveunits/E03schema/rubric/
+RF156–159;exact technical contract authoritative tại accepted E04 package.
+
+D12/D13 và DF01–05 vẫn owner-deferred/environment/evidence prerequisites:
+không numericalSLO/provider/origin/port/proxy/backupdestination/patchpin/config
+values đã chọn hoặc test/race/load/restore pass. Missing required activeprofile
+failclosed;operational values/authority phải có trước chạy thật. Chấp nhận
+thiết kế không tự cấp quyền implementationplanning/code/SQL/Git/scaffold/
+packages/deploy/exposure/backuprestore/integration. Chờ owner direction riêng.
 
 ## 5. Trạng thái từ thiết kế báo cáo
 
@@ -509,7 +947,9 @@ tuyển sinh. Giám đốc xem báo cáo; Admin quản trị tài khoản và nh
 | TrainingProgram | DRAFT, ACTIVE, INACTIVE |
 | Registration | PENDING, TESTING, BAND_ASSIGNED, CONFIRMED, ADMITTED, REJECTED, CANCELLED |
 | EntryTestSession | OPEN, CLOSED, CANCELLED |
-| EntryTestAttempt | SCHEDULED, COMPLETED, ABSENT, CANCELLED |
+| EntryTestAttempt (hiển thị suy diễn) | SCHEDULED, COMPLETED, ABSENT, CANCELLED; từ kết quả/booking hiện tại (ADR-090) |
+| EntryTestBooking | SCHEDULED, COMPLETED, ABSENT, CANCELLED |
+| Schedule.occurrence_state | PLANNED, HELD, NOT_HELD (ADR-087) |
 | Class | PLANNED, OPEN, ONGOING, COMPLETED, CANCELLED |
 | GradeReport | DRAFT, SUBMITTED, RETURNED, FINALIZED |
 | Invoice | UNPAID, PAID, CANCELLED |
@@ -542,61 +982,36 @@ Không tạo trạng thái OVERDUE hoặc APPROVED/REJECTED cho bảng điểm.
 UI tiếng Việt, responsive 375/768/1280 px; ngày dd/MM/yyyy; tiền VND nguyên đồng.
 Múi giờ nghiệp vụ thống nhất Asia/Ho_Chi_Minh (UTC+7) cho lịch học/thi, ngày
 phát hành/hạn thu/quá hạn và lọc báo cáo theo ngày (ADR-047). Múi giờ thiết bị
-không làm đổi ranh giới ngày nghiệp vụ; lưu/serialize thời gian còn bước kiến trúc.
-Đổi mật khẩu là thao tác chung cho người dùng đã đăng nhập; vị trí giao diện
-sẽ chốt khi thiết kế UI, chưa tự thêm mã màn hình mới.
+không làm đổi ranh giới ngày nghiệp vụ; lưu/serialize đã chốt ADR-091.
+Menu tài khoản chung chứa đổi mật khẩu mọi vai trò/sửa cá nhân chỉ Student
+(ADR-084), không thêm mã F. Khung chung FE01a/menu FE01b/cấu trúc trang FE02
+đã duyệt ADR-103–ADR-105; FE03–FE10 duyệt ADR-106–ADR-113 (mục 4.6).
+Mẫu tương tác theo nghiệp vụ Gói 3 FE11–FE19 đã duyệt ADR-121–ADR-129
+(mục 4.8), chưa triển khai hoặc nghiệm thu E.
 Loading, empty, error và submitting phải được xử lý. Role switcher trong
 mockup là công cụ preview, không là cơ chế đổi vai trò của tài khoản thật.
 Mockup và biểu mẫu không chứng minh chức năng đã code hoặc kết nối database.
 
-## 7. Các điểm chưa chốt
+## 7. Baseline đã chốt và những phần giữ hoãn
 
-Chi tiết và câu hỏi nằm tại `docs/plan/questions.md` (Q-004–Q-010):
+E01/E02 Accepted30/09/2026,E03 Accepted01/10/2026. Owner đã nghiệm thu
+actual [E04-v1](design/SYSTEM_ARCHITECTURE_SPEC.md)/[final contract](design/E04_FINAL_CONTRACT.md)
+trước (ADR-160),rồi [E05-v1](design/E05_BASELINE_REVIEW.md)/complete baseline
+(ADR-161)03/10/2026,trên đúng các outputs đã trình,không sửa phương án.
+[OWNER_REVIEW](plan/OWNER_REVIEW.md)73/75accepted,còn D12/D13 hoãn.
+Không còn yêu cầu duyệt lại policy/RF/FE/operator hoặc actual E04/E05.
 
-- Biểu diễn lịch sử đặt ca/lượt thi và audit đổi giáo viên, cơ chế lưu đóng ca
-  theo giờ bắt đầu; nghiệp vụ đóng/mở ca và đổi giáo viên đã chốt ADR-030.
-  Học viên hủy/đổi/vắng theo ADR-021/030, người ghi vắng và trung tâm hủy/đổi ca
-  đã chốt ADR-027; hủy hồ sơ tác động đặt ca đã chốt ADR-031.
-- Cách biểu diễn hồ sơ đã kết thúc để thực thi quy tắc một hồ sơ đang hoạt
-  động/khóa trong database; tiêu chí hoàn thành và đăng ký lại sau hủy/từ chối
-  đã chốt ADR-022.
-- Q-006 đã chốt nghiệp vụ bằng ADR-028/ADR-029: khóa cấu hình/ngưỡng, làm tròn,
-  sửa điểm đầu vào có audit và chọn lượt khi đồng điểm. Cách lưu lịch sử audit,
-  kiểu số/ràng buộc đồng thời sẽ hoàn thiện ở thiết kế database.
-- Q-007 đã chốt nghiệp vụ bằng ADR-022/026/031; còn biểu diễn lịch sử và
-  liên kết audit/người/thời điểm/trạng thái trước hủy ở bước database. Không thêm luồng
-  hủy sau thanh toán/hoàn tiền hoặc chuyển học viên qua thao tác hủy lớp.
-- Chuyển lớp đã loại khỏi phạm vi (ADR-040); cách ghi nhận buổi thực tế còn Q-008.
-  Số buổi/lịch đủ
-  trước bắt đầu và giới hạn sửa ngày/giờ/phòng đã chốt ADR-032. Hạn đóng nhập/sửa
-  điểm danh là trước COMPLETED; mở nhập từ lúc LESSON bắt đầu (ADR-033).
-  Phạm vi ngày nghỉ đã chốt ADR-035: trong NV19/F21, không module/automation/
-  học bù cá nhân. Dời/thay LESSON không tổ chức và cách đếm đã chốt ADR-036;
-  còn biểu diễn lịch sử/liên kết/audit. Buổi thêm vượt số LESSON chương trình
-  đã bị loại khỏi phạm vi ADR-037, không hỏi lại.
-  Mở/bắt đầu/kết thúc lớp theo ADR-025/032/036, xếp lớp/đổi giáo viên theo ADR-023.
-- Gửi/gửi lại/trả lại/chốt toàn lớp đã chốt ADR-034; biểu diễn thao tác nhóm
-  và kiểm soát đồng thời sẽ hoàn thiện ở thiết kế database/kiến trúc.
-- Họ tên/ngày sinh/email/SĐT/địa chỉ đã chốt ADR-073–ADR-077; không hỏi lại.
-  Tên danh mục/mã khóa-lớp/phòng/lý do-chú thích/mã giao dịch đã chốt ADR-078–
-  ADR-082; còn chi tiết kiểm tra/lưu dữ liệu kỹ thuật và Q-011 mức chi tiết
-  tra cứu/vị trí thao tác/lịch sử lớp-lịch/cấu hình danh mục. Phạm vi nghiệp vụ/sự kiện bảo mật,
-  bộ lọc/chi tiết an toàn và không xuất nhật ký đã chốt ADR-058–ADR-062; biểu
-  diễn sự kiện/chống ngập/lỗi ghi/lưu giữ còn database/kiến trúc, không hỏi lại phạm vi.
-  Mật khẩu tạm/bắt buộc đổi/hủy phiên/khôi phục DISABLED/email bất biến/chặn
-  đăng nhập 5 lần sai đã chốt ADR-048–ADR-052. Độ mạnh mật khẩu/hạn tạm 24 giờ/
-  phiên thường 2 giờ hoặc nhàn rỗi 30 phút/nhiều thiết bị/đăng xuất chỉ phiên
-  hiện tại đã chốt ADR-053–ADR-057, không hỏi lại; cơ chế lưu/thực thi/định nghĩa
-  hoạt động/phiên hạn chế còn database/kiến trúc.
-  Trường bắt buộc/được sửa của học viên đã chốt tại ADR-019. Học phí dương/VND nguyên
-  đồng/hạn thu +7 ngày lịch/không ngày thu riêng/múi giờ Việt Nam đã chốt
-  ADR-043–ADR-047, không hỏi lại; kiểu/range/lưu thời gian còn database/kiến trúc.
+DF01–05 tại E04 final contract giữ environment/evidence prerequisites: numerical
+performance/deploymentvalues,backupmedia/access/key/isolatedrestore,compatible
+patch/blocklistpins/profilecompatibility/config và future SQL/API/EF/grants/
+race/browser/CSV/load/recovery evidence. Không xem các slots chưa chọn là
+installedvalues hoặc waivedguards;D12/D13 giữ originalnotes,không hỏi lại lúc này.
 
-Không biến các đề xuất của lần review thành quyết định đã chốt. Có thể tiếp tục
-phân tích các phần thiết kế độc lập, nhưng phải thống nhất toàn bộ chức năng,
-workflow, database và kiến trúc trước khi bàn kế hoạch triển khai. Không bắt đầu
-scaffold hoặc viết code trong giai đoạn này. Kế hoạch chốt thiết kế nằm tại
-`docs/plan/design-baseline.md`.
+Q001/002 implementationphases/Slice0 vẫn chỉ khi có owner request riêng;
+Q003integration chỉ khi owner invokesworkflow. Baseline acceptance không tự
+cấp quyền implementationplan/code/SQL/Git/scaffold/packages/deploy/exposure/
+backuprestore. Chờ owner instruction;[design-baseline](plan/design-baseline.md)
+done,chưa implementation/runtime tests. Side report/sequence/Word unchanged.
 
 ## 8. Kiểm chứng cần có khi triển khai
 
@@ -621,7 +1036,7 @@ scaffold hoặc viết code trong giai đoạn này. Kế hoạch chốt thiết
 - Báo cáo phân biệt số hồ sơ/số học viên; doanh thu theo thanh toán đã xác nhận
   và ngày xác nhận, công nợ chỉ Invoice UNPAID, quá hạn là tập con công nợ.
 - Báo cáo học tập chỉ dùng kết quả FINALIZED; không suy ra buổi đã hoàn thành
-  chỉ vì giờ dự kiến đã qua khi quy tắc ghi nhận chưa được chốt.
+  chỉ vì giờ dự kiến đã qua; dùng buổi HELD và nghĩa vụ/thay thế theo ADR-087.
 - Đăng nhập bằng email/mật khẩu, không nhận số điện thoại thay email.
 - Chặn hồ sơ học viên thiếu họ tên/ngày sinh/email/SĐT; địa chỉ được để trống.
   Chỉ cho học viên sửa các trường được phép của mình; chặn tự đổi email và
@@ -763,7 +1178,7 @@ scaffold hoặc viết code trong giai đoạn này. Kế hoạch chốt thiết
   tự LOCKED/DISABLED/mở khóa/khôi phục, giữ cửa đổi trước nghiệp vụ (ADR-054).
 - Phiên thường bị từ chối tại hạn đăng nhập +2 giờ hoặc nhàn rỗi 30 phút,
   dù JWT chưa hết hạn; hoạt động không vượt hạn tuyệt đối, không refresh/ghi nhớ
-  đăng nhập (ADR-055). Định nghĩa hoạt động cần chốt trước kiểm thử thực thi.
+  đăng nhập (ADR-055). Hoạt động theo ADR-097; typing chưa gửi request không gia hạn idle.
 - Đăng nhập thiết bị mới không hủy phiên cũ; đăng xuất chỉ làm phiên hiện tại
   không dùng lại được tại server. Phiên khác vẫn dùng được nếu chưa hết hạn/
   bị hủy; ADR-049 vẫn hủy mọi phiên khi khóa/reset/đổi mật khẩu (ADR-056/057).
@@ -815,3 +1230,92 @@ scaffold hoặc viết code trong giai đoạn này. Kế hoạch chốt thiết
 - Mã chuyển khoản không trống/quá 100, giữ nội dung sau trim; không chặn chỉ
   vì trùng mã giữa các hóa đơn. Vẫn chặn Payment thứ hai cùng Invoice và giữ
   đối chiếu thực tế/giới hạn sửa/audit (ADR-082).
+
+### Kiểm chứng bổ sung A–C (thiết kế, chưa chạy test)
+
+- Ma trận quyền ADR-083/084: chỉ trường đúng phạm vi; lịch sử riêng, không
+  DRAFT tới Giáo vụ/Student hoặc finance tới Teacher; menu không quyền mới.
+- Catalogue trạng thái/giá không sửa Invoice lịch sử/tự hủy nghiệp vụ; Program
+  freeze/Class.program_id và code bất biến; max_size không dưới số đã xếp.
+- Điểm đầu vào từ end_at; HELD chỉ Giáo vụ sau end/ONGOING, không tự từ điểm danh;
+  một FINAL_EXAM/nghĩa vụ, thay thế không dữ liệu phụ thuộc/không điểm giả.
+- [start,end) nối tiếp hợp lệ; trùng học viên/phòng/Teacher bị chặn khi đặt/xếp
+  và khi tạo/dời/thay lịch có học viên; weekly batch lỗi không lưu một phần.
+- Rebooking/vắng không thêm lượt; is_unfinished chống tạo đồng thời; replacement
+  không hai lịch hiện hành/nghĩa vụ hoặc vòng lặp/xóa lịch sử.
+- Tiền chuỗi qua API giữ chính xác; UTC/ngày Việt Nam/Unicode code point/NFC và
+  NULL/ASCII email/SĐT canonical đúng, không đổi mật khẩu hoặc cắt ngắn đầu vào.
+- Revocation/session version và timer không đổi status do throttle; transaction/
+  locks/rowversion chống đua; request_id không lặp side effects/hiện lại mật khẩu.
+- operation_id nối audit hủy phụ thuộc/toàn lớp; giữ mọi lần gửi/trả/chốt/cũ-mới.
+- Snapshot query/queried_at/tỷ lệ hai số lẻ/no-data; D10 đã duyệt ADR-101,
+  chưa được coi đã triển khai/kiểm chứng.
+
+### Kiểm chứng bổ sung Gói 1 (thiết kế, chưa chạy test)
+
+- DTO/errors/status/fieldErrors/traceId và phân trang 20/100 ổn định; server
+  role/ownership/tiền/tổng điểm và transaction đúng module.
+- Request người dùng mới gia hạn idle; polling/timer/typing không; tab chung
+  logout chung, device/profile riêng; hạn tuyệt đối 2 giờ vẫn giữ.
+- Phiên hạn chế hết tại mốc sớm hơn login +10 phút hoặc temp expiry; chỉ
+  đổi mật khẩu/logout, đổi xong hủy mọi phiên và đăng nhập lại.
+- Cookie JWT đúng flags và claims; CSRF/Origin ở login/write, không GET
+  mutation; không lưu token/profile/grade bền hoặc log payload nhạy cảm.
+- Login response không lộ account trước xác thực; IP 100/phút trả 429/
+  Retry-After, tách timer account; proxy không tin tùy ý.
+- CSV UTF-8 BOM/comma/CRLF/escape, toàn tập/cột hợp lệ; giới hạn 10.000 dòng/
+  5 MB lỗi toàn file; ô công thức/full-width theo ADR-101, không sửa DB.
+- Bộ kiểm chứng ADR-102: Student ưu tiên mobile/staff desktop, đủ 375/768/1280;
+  keyboard/labels/non-color và Chrome/Edge, manual 7 role/E2E, SQL test riêng.
+
+### Kiểm chứng bổ sung Gói 2 (thiết kế, chưa chạy test)
+
+- Bảng/card/list và sổ điểm từng học viên cho cùng dữ liệu/quyền ở ba kích
+  thước; phân trang/back context đúng, không PII trong URL/storage.
+- Không quyền thì ẩn; thiếu điều kiện thì disabled/lý do; chỉ xem/cảnh báo
+  phụ trách bị chặn rõ mà không tiết lộ dữ liệu hoặc thêm quyền đổi người.
+- Lưu rõ/không autosave; warning chưa lưu, lỗi trường/toàn form, mã/SĐT
+  chuẩn đúng; không cắt/round/merge/overwrite hoặc lưu nháp nhạy cảm bền.
+- Loading/no-data/no-match/submitting và 401/403/404/409 đúng; thông báo
+  quan trọng bền đủ để xử lý, không lặp tác động khi mất phản hồi.
+- Xác nhận thể hiện đối tượng/ảnh hưởng/động từ/lý do đúng phạm vi; không
+  xác nhận hai lớp thông thường; ngoại lệ bàn giao mật khẩu tạm FE18 theo ADR-128.
+- Component cục bộ, font hệ thống/vi-VN/tiền chính xác/giờ Việt Nam; focus,
+  non-color cues, touch target khoảng 44 px và reduced motion cần kiểm chứng.
+- Kiểm chứng PasswordHasher/tham số runtime, generator 32 ký tự/ngẫu nhiên mật
+  mã/hiển thị một lần và blocklist offline/pin/license; không lộ plaintext,
+  không đổi ngữ nghĩa mật khẩu hoặc gửi dịch vụ ngoài (ADR-114).
+- Giả lập lỗi audit bắt buộc: rollback nghiệp vụ/tài khoản/thu hồi liên quan;
+  lỗi security-event log không bỏ quyền hoặc phục hồi phiên logout. Fallback
+  giới hạn/không bí mật; không sinh thông báo người dùng mới (ADR-115).
+- Dọn log bảo mật thuần túy/IP sau 90 ngày vẫn giữ audit bắt buộc; actor NULL,
+  gộp rate-limit không mất bộ đếm, không mở quyền xóa/xuất app (ADR-116).
+- Kiểm chứng tải 10.000 học viên/50 đồng thời với lịch sử, không áp trần nghiệp
+  vụ; ghi môi trường/kết quả đo sau khi chốt D12/D13, chưa test pass (ADR-117).
+- Kiểm chứng mã hóa/bản riêng/7 ngày-4 tuần/restore tháng và RPO 24 giờ/RTO
+  2 giờ, kể cả lần backup bị lỡ khi laptop tắt; chốt nơi lưu/quyền trước vận
+  hành. Chưa bảo đảm hoặc chạy backup/restore (ADR-118).
+- Kiểm tra patch tương thích/lock và SQL Developer chỉ non-production; owner
+  là người vận hành mặc định, không thêm quyền ứng dụng (ADR-119/120).
+
+### Kiểm chứng bổ sung Gói 3 (thiết kế, chưa chạy test)
+
+- Trang chủ/lịch đúng ownership, nhiều hồ sơ không lẫn ngữ cảnh; không dữ liệu
+  chưa FINALIZED tới Student, HELD tự suy hoặc lịch thay thế đếm đôi.
+- Preview lịch mất hiệu lực khi sửa đầu vào; commit kiểm tra lại, lỗi batch
+  không lưu một phần và không tự bỏ ngày lỗi/ngày nghỉ.
+- FE14: chưa ghi không thành Có mặt/Vắng/0; lưu một LESSON hoặc một học viên
+  all-or-none cho dữ liệu đã nhập/thay đổi, không blank→xóa điểm. Không autosave.
+- FE15: sửa chưa lưu chặn gửi; kiểm tra đủ điểm và chuyển toàn lớp hoặc không ai,
+  giữ RETURNED có lý do và FINALIZED bất biến, 409 không ghi đè.
+- Báo cáo phân biệt bộ lọc nháp/đã áp dụng/queried_at; tổng toàn tập lọc,
+  Director không định danh/export, Accountant CSV vẫn theo D10 và query mới.
+- In hóa đơn lấy lại dữ liệu có quyền; UNPAID không là xác nhận thu tiền,
+  lỗi lấy mới không in cũ như mới; không API PDF/quyền in nhân sự.
+- FE18: copy chủ động/bị chặn→thủ công, ack không chứng minh giao thành công;
+  đóng/rời/logout/expiry xóa state secret nhưng không hứa xóa clipboard.
+  Mất phản hồi kiểm tra trạng thái, không tự retry/reset hoặc replay secret.
+- Nhật ký từng sự kiện phân trang/liên kết operation_id đúng scope, allowlist,
+  actor NULL/retention-IP đúng; không secrets/full payload/edit/delete/undo/export.
+- Kiểm tra tương đương dữ liệu/hành động, keyboard/focus và nhãn ở 375/768/1280;
+  không tuyên bố kiểm chứng đã chạy chỉ từ hợp đồng thiết kế này.
