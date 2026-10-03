@@ -4,6 +4,13 @@ Last updated: 2026-10-03
 
 ## Current task
 
+2026-10-03 worker readiness: owner requested preserving/cleaning the current
+repo and checking antigravity-worker before coding. Baseline committed d6724a6;
+runner syntax/6tests/preflight pass. Authenticated document-reading dispatch
+was rejected by automatic approval review; explicit sharing consent requested.
+See docs/plan/antigravity-worker-readiness.md. No worker success or code claimed.
+
+
 2026-10-03: Owner explicitly accepted the two actual outputs in order:
 E04-v1 complete architecture/contracts (ADR-160),then E05-v1 consistency review
 and complete E01–E04 design baseline (ADR-161),without amendments.

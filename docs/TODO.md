@@ -10,6 +10,10 @@
 
 ## Next
 
+- Complete antigravity-worker authenticated smoke test after pending document
+  sharing consent; see docs/plan/antigravity-worker-readiness.md. Runner/preflight
+  checks passed; external dispatch was rejected before execution. Keep repo clean.
+
 - Discuss proposed M0–M4 implementation milestones in
   `docs/plan/implementation-plan.md`; gather deadline/weekly availability, then
   refine dependencies, slice sizes and M0 contract with owner. Planning only;
