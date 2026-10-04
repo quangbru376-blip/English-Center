@@ -76,5 +76,29 @@ blocklist before host build and registers singleton policy/hasher/generator.
 No credential network/logging and no business routes. Existing startup tests
 exercise actual eager load; direct loader tests establish missing/corrupt fail.
 skill_verification: pending worker audit, Codex build/tests/review/main recheck.
-Status: source integrated with exact-byte .gitattributes, output/publish copying; P07 main357PASS. P08 code in progress.
+Status: complete; Codex review PASS applied/reverified main390tests PASS.
+
+## Verified checkpoint2026-10-04
+
+A run2a69170d-de6 SUCCESS/exit0/2files201runner lines/zero violations;
+10tools8reads2writes, complete explicit context including backend/routing.
+Codex added19tests and eager startup/DI, removed unnecessary policy exposure.
+Reviewed4b0e331/mainf80a5d2, build0warnings0errors/376PASS on both trees.
+B run10284b5e-2a7 SUCCESS/exit0/2files188lines/zero violations;
+13tools11reads2writes, complete authorized contexts. Codex narrowed malformed
+hash catch to FormatException and lets unexpected crypto failures fail safely
+through global500, registered hasher/generator, added14tests. Reviewedd00018d/
+main2d3c9c8, locked restore/build0warnings0errors/390PASS/0fail/0skip.
+Tests inspect binary IdentityV3 header and84character storage capacity, raw
+case/spaces/NFC distinctions,128supplementary codepoints, exact Base64 unused
+bits, old lower-factor rehash, malformed/expensive headers,100generator samples.
+Published Release build validated: missing shipped corpus aborts startup before
+listening (exit-532462766/fixed failure). Five warmed hash samples220k measured
+mean113.4ms/max117.6ms on this machine; not50-user load/throttle evidence.
+Exact upstream hashes/license retained via .gitattributes -text; source corpus
+has one15+character record in10k list and none in12k; fixture corrected accordingly.
+No external password check/log/plaintext persistence/network/auth endpoints.
+Once-only Admin display, password expiry/credential TX/revocation remain A tasks.
+skill_verification: Codex actual source/tool audit/build/tests/publish PASS;
+successful original detached trees retained, no SQL operations/deployment.
 

@@ -22,11 +22,21 @@ ASP.NET10.0.4/.NET10, from nuget.org official registry. No Tools/Design/InMemory
 SQLite/lazy loading packages. Lock full graph/content hashes, check licenses and
 known vulnerabilities before use; no automatic retry execution strategy.
 Source https://www.nuget.org/packages/Microsoft.EntityFrameworkCore.SqlServer/10.0.4.
+Verified prerequisite8510b82: API26packages, full graph74unique packages
+(MIT64/Apache2.0 nine/SqlClient SNI6.0.2 Microsoft license one). Complete SNI
+license read and retained in D01-evidence; dev/test permitted, distribution
+terms belong to future release review. Lock/assets/cache normalized hashes agree;
+signed archive hashes are distinct by design. NuGet known vulnerabilities0 for
+both projects. Locked restore/build0warnings0errors/376PASS before mappings.
 Schema dbo, default Latin1_General_100_CI_AS_SC, email case-insensitive explicitly.
 SQL constraints below use bracket identifiers and BIN2 phone-digit check so
 non-ASCII numerals cannot satisfy ranges. No generated DDL is executed.
 
-## Part A — Entities/context/Role mapping,7files/330lines
+## Part A — Entities/context/Role mapping,6production files/330lines
+
+Codex writes RoleMappingTests.cs independently (1file/150lines).
+Enum-literal CHECK comparisons use BIN2 to enforce exact accepted role/status/
+scope spellings while email unique comparison remains CI.
 
 Domain/Identity/{Role,Account,StudentProfile,AuthSession}.cs,
 Infrastructure/EnglishCenterDbContext.cs, Infrastructure/Configurations/RoleConfiguration.cs,
@@ -49,7 +59,9 @@ Admissions,AcademicAffairs,Teacher,Accountant,Director,Admin. No role seeds unti
 Test real SqlServer provider compatibility160, disconnected inert test connection
 string; inspect model/DDL and no generated Account/Profile/Session yet. No DB IO.
 
-## Part B — Three mappings/context/tests,5files/500lines
+## Part B — Three mappings/context,4production files/350lines
+
+Codex writes IdentityMappingTests.cs independently (1file/350lines).
 
 Infrastructure/Configurations/{Account,StudentProfile,AuthSession}Configuration.cs,
 existing DbContext and tests Infrastructure/IdentityMappingTests.cs. Read Part A
@@ -91,4 +103,4 @@ all4tables; RV generation/concurrency flags, DateOnly SQL date, SQL provider DDL
 noncascade relationships, Sid32 fixed length; no modelHasData, no extra table or
 token fields. Tests do not claim real SQL constraint/locking/RV behavior.
 skill_verification: pending provenance/audit/restore/build/tests/review/main check.
-Status: planned in authorized batch; no mapping PASS yet.
+Status: P07/P08 PASS applied; D01 active third group, no mapping PASS yet.
