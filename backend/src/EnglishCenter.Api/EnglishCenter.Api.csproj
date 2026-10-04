@@ -10,6 +10,7 @@
     <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
   </PropertyGroup>
 
-<ItemGroup><Content Include="Resources/PasswordBlocklist/**" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest" /></ItemGroup>
+<ItemGroup><Content Remove="Resources/PasswordBlocklist/**" /><None Remove="Resources/PasswordBlocklist/**" /><Content Include="Resources/PasswordBlocklist/**" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest" /></ItemGroup>
 </Project>
+
 
