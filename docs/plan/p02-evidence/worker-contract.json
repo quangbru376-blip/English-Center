@@ -1,0 +1,48 @@
+{
+  "mode": "edit",
+  "objective": "Implement only P02, the empty .NET 10 API and real-entry-point xUnit startup skeleton, according to docs/plan/P02_TASK_CARD.md and M0_LOCAL_PROFILE.md. The clean dispatch base is 72696e5cba4670344434a98e3cd1562ddeeded20. Read each of the six context files completely, including backend-clean-code and SKILL_ROUTING before editing. Codex has loaded Project Memory and canonical sources; this narrow owner-authorized worker context overrides linked-file exploration and broader loading for this task. The explicit READ allowlist is exactly context_files plus the eight allowed_paths if they exist. Never read links or other memory/source files, search directories, or use shell, browser/network/MCP/subagent tools. Do not run validation or package commands. Use only the manifest pins. Preserve the full accepted E03/E04 contracts: cookie/session/CSRF rather than bearer/browser tokens; actual SQL Server for future SQL evidence, never SQLite; exact money/full-set save units. None of those business mechanisms is implemented here. Do not claim health/readiness, add API routes or write lockfiles. Stop and explain any blocker without broadening scope.",
+  "allowed_paths": [
+    ".gitignore",
+    "backend/global.json",
+    "backend/NuGet.Config",
+    "backend/EnglishCenter.sln",
+    "backend/src/EnglishCenter.Api/EnglishCenter.Api.csproj",
+    "backend/src/EnglishCenter.Api/Program.cs",
+    "backend/tests/EnglishCenter.Tests/EnglishCenter.Tests.csproj",
+    "backend/tests/EnglishCenter.Tests/Infrastructure/StartupTests.cs"
+  ],
+  "forbidden_paths": [
+    "docs/**",
+    "instructions/**",
+    ".agents/**",
+    ".codex/**",
+    "frontend/**",
+    "**/Migrations/**",
+    "**/appsettings*.json",
+    "**/launchSettings.json",
+    "**/packages.lock.json"
+  ],
+  "acceptance_criteria": [
+    "Exactly the eight allowed files at most, <=320 total diff lines; do not change the primary checkout or run any command.",
+    "Read complete implementation skill/policy and apply their canonical overrides; read only the six context files and existing exact implementation paths, never linked files or broad directory searches.",
+    "Both projects target net10.0 with nullable, implicit usings, SDK analyzers and TreatWarningsAsErrors. Classic solution includes both projects. backend/global.json pins SDK 10.0.200 with rollForward disable and test.runner VSTest.",
+    "NuGet.Config clears inherited sources and specifies only nuget.org v3. Both project manifests enable RestorePackagesWithLockFile. Do not fabricate lockfiles.",
+    "API uses Microsoft.NET.Sdk.Web with no package references and a minimal real CreateBuilder/Build/Run entry point plus public partial Program, no business routes or health/readiness success, middleware/auth/EF/entities/UI.",
+    "Test executable references the actual API project and exactly Microsoft.AspNetCore.Mvc.Testing 10.0.4, Microsoft.NET.Test.Sdk 18.10.1, xunit.v3 4.0.1, xunit.runner.visualstudio 4.0.0. Set IsTestProject true and private test assets.",
+    "StartupTests uses WebApplicationFactory<Program> and in-process HTTP requests with no external listener/SQL/secrets; unimplemented root/auth/health probe paths return404 and empty body in both Development and Production. Tests must exercise the real entry point rather than recreate or mock the host, and avoid trivial assertions.",
+    "Gitignore covers build/test output and local secrets without ignoring lockfiles/source. No marker folders, unused abstractions or docs edits.",
+    "Report changed files, assumptions and suggested manager commands only; Codex performs restore/build/discovery/tests/dependency audit and review."
+  ],
+  "context_files": [
+    "docs/plan/P02_TASK_CARD.md",
+    "docs/plan/M0_LOCAL_PROFILE.md",
+    ".agents/skills/backend-clean-code/SKILL.md",
+    "docs/plan/SKILL_ROUTING.md",
+    "docs/plan/FIRST_CODE_HANDOFF.md",
+    "AGENTS.md"
+  ],
+  "max_changed_files": 8,
+  "max_diff_lines": 320,
+  "model": "",
+  "timeout": "15m"
+}

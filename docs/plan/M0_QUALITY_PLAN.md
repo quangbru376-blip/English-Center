@@ -1,11 +1,14 @@
 # M0 — kế hoạch task theo chất lượng
 
-Cập nhật: 04/10/2026. Status: doing (lập kế hoạch).
+Cập nhật: 04/10/2026. Status: P01 prerequisites cho P02 hoàn tất; P02 reviewed detached PASS, chờ owner apply.
 
 Nguyên tắc chia theo chất lượng đã được owner yêu cầu. Danh sách task/phạm vi
 bên dưới là task families để materialize từng contract. Owner04/10/2026 yêu
 cầu chat kế tiếp viết code đầu tiên: P01 prerequisite → P02 backend/test
-skeleton, theo [FIRST_CODE_HANDOFF](FIRST_CODE_HANDOFF.md). Chưa code/dispatch.
+skeleton, theo [FIRST_CODE_HANDOFF](FIRST_CODE_HANDOFF.md). Đã hoàn thành scope
+đầu trong detached worktree; [task card](P02_TASK_CARD.md) ghi contract/receipt/
+manager fixes và kiểm chứng thật. Build sạch, discovery10/tests10pass;
+commit d9eb194, primary chưa có source. M0/V01 chưa hoàn tất.
 P03/rest M0/SQL changes/runtime installs/deployment ngoài scope đầu; main apply
 worker changes vẫn cần owner permission. M0–M4 là nhóm phạm vi, không lịch làm việc.
 
@@ -30,8 +33,9 @@ triển khai không được trả success giả. Canonical registry55actions v�
 
 ## 2. Điều đã kiểm tra và prerequisite
 
-- Git clean tại e6f402a trước khi lập bản này; chưa ứng dụng/scaffold.
-- .NET SDK10.0.200, Node24.16.0, npm11.13.0 hiện có; chưa kiểm tương thích package.
+- Snapshot docs1054888; clean dispatch base72696e5; P02 code chỉ ở detached d9eb194.
+- .NET SDK10.0.200, Node24.16.0, npm11.13.0 hiện có. P02 SDK/package/test-host
+  compatibility đã kiểm chứng; [manifest](M0_LOCAL_PROFILE.md) có pins/locks/audit.
 - Local SQL `.\SQLEXPRESS`: ProductVersion17.0.1000.7, Express Edition64-bit,
   đọc bằng Windows authentication ngày04/10/2026; không đổi DB/config.
 - SQL2025 Express hiện có được giữ theo ADR-162 sau
@@ -43,7 +47,7 @@ triển khai không được trả success giả. Canonical registry55actions v�
   Mọi thiếu sót vẫn fail closed; không âm thầm tắt Secure/CSRF/readiness để demo.
   Không hỏi lại D12/D13; prerequisite local execution sẽ được xử lý riêng khi
   owner cho phép phạm vi tương ứng. Không từ planning mở LAN/Internet.
-- Analyze AGY đã kiểm chứng; edit chưa chạy. Contract quyền đọc phải rõ, vì lần
+- Analyze AGY và bounded P02 edit đã kiểm chứng. Contract quyền đọc phải rõ, vì lần
   smoke đầu đọc extra file đã bị loại. Codex giữ bootstrap/secrets/config đặc quyền.
 
 ## 3. Cách chia và chọn task kế tiếp

@@ -2,10 +2,14 @@
 
 ## Current implemented architecture
 
-No application architecture is implemented yet. As of 2026-09-28, this
-workspace contains requirements, agent instructions, and Project Memory only.
-There is no backend, frontend, database migration, test project, or runnable
-application to inspect.
+Primary checkout still contains no application source. On 2026-10-04 P02 was
+implemented and reviewed in a retained detached worktree only; see
+[P02 task card](plan/P02_TASK_CARD.md), commit d9eb194. Its net10.0 API has only
+CreateBuilder/Build/Run plus public partial Program; no application endpoints.
+The xUnit executable references the real API and uses WebApplicationFactory's
+in-process TestServer for ten verified missing-route cases in two environments.
+There is no frontend, EF model, migration, auth, SQL connection or ready profile.
+Main application of this skeleton still requires separate owner authorization.
 
 `instructions/` is a directive/reference inbox and is not part of the planned
 runtime architecture.

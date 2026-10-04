@@ -1,7 +1,7 @@
 # P01 — local bootstrap profile
 
 Updated: 2026-10-04. P02 SDK/package/test-host prerequisites resolved;
-restore/build compatibility is still to be verified in the detached P02 tree.
+restore/build/discovery and ten real host tests verified in the detached P02 tree.
 This is a nonsecret inventory and manifest, not a configured business profile.
 
 ## Verified inventory and choices
@@ -28,17 +28,28 @@ This is a nonsecret inventory and manifest, not a configured business profile.
 | --- | --- | --- | --- |
 | Microsoft.AspNetCore.Mvc.Testing | 10.0.4 | MIT | Real entry-point TestServer, matches installed ASP.NET patch; [NuGet](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.Testing/10.0.4). |
 | Microsoft.NET.Test.Sdk | 18.10.1 | MIT | VSTest discovery/execution; [NuGet](https://www.nuget.org/packages/Microsoft.NET.Test.Sdk/18.10.1). |
-| xunit.v3 | 4.0.1 | Apache-2.0 | Accepted xUnit framework, net8+ including net10; [NuGet](https://www.nuget.org/packages/xunit.v3/4.0.1). |
+| xunit.v3.mtp-off | 4.0.1 | Apache-2.0 | Accepted xUnit framework, explicit VSTest variant for .NET10; [NuGet](https://www.nuget.org/packages/xunit.v3.mtp-off/4.0.1). |
 | xunit.runner.visualstudio | 4.0.0 | Apache-2.0 | VSTest adapter; PrivateAssets=all; [NuGet](https://www.nuget.org/packages/xunit.runner.visualstudio/4.0.0). |
 
 Registry and official documentation checked 2026-10-04. Versions are exact
 bootstrap selections, not a claim the installed runtime is the latest patch.
-Transitive resolution/content hashes/license and vulnerability findings must be
-reviewed after restore. Do not introduce coverlet, other test frameworks or tools.
+Final graph reviewed after restore: 47 packages (four direct/43 transitive),
+MIT38/Apache-2.0 nine; normalized content hashes consistent across lock/assets/
+cache metadata. NuGet reports no known vulnerable packages on 2026-10-04.
+See [P02 task card](P02_TASK_CARD.md) for evidence and exact detached commit.
+Do not introduce coverlet, other test frameworks or tools.
 [xUnit setup](https://xunit.net/docs/getting-started/v3/getting-started) documents
 v3 executable projects and the VSTest adapter/SDK dependencies.
 [Microsoft integration testing](https://learn.microsoft.com/en-us/aspnet/core/test/integration-tests?view=aspnetcore-10.0)
 documents WebApplicationFactory and the public partial Program entry point.
+
+Manager compatibility correction: initial xunit.v3 4.0.1 restore/build succeeded,
+but discovery/execution failed because its default MTP v2 integration rejects
+VSTest on SDK10. Keep the chosen VSTest runner and use official same-version
+xunit.v3.mtp-off; no new framework or additional direct dependency.
+[xUnit 4.0 release notes](https://xunit.net/releases/v3/4.0.0) document this
+variant for VSTest on .NET10+. Exact registry metadata checked before restore:
+listed, Apache-2.0, net8+, no deprecation/direct vulnerability entries.
 
 ## Isolation and unresolved runtime slots
 

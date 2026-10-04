@@ -112,6 +112,16 @@ English objective/acceptance criteria, actual base commit, selected skills/
 overrides, line/file caps phù hợp scope và commands Codex sẽ chạy. Nếu cần
 chia skeleton/test infrastructure thành hai task nhỏ thì ghi phụ thuộc rõ.
 
+## Execution checkpoint — 2026-10-04
+
+Handoff này đã được thực hiện cho đúng P01 prerequisites → P02. Xem
+[P02 task card](P02_TASK_CARD.md) và [P01 manifest](M0_LOCAL_PROFILE.md).
+AGY SUCCESS/exit0/scope pass; Codex sửa hai điểm trong paths hiện có, kiểm
+build sạch và discovery10/tests10pass, audit locks/licenses/hashes/NuGet.
+Final PASS tại detached d9eb194, chưa apply vào primary. Không mở P03/SQL/M0.
+Các bước workflow bên dưới được giữ làm protocol; mốc edit chưa chạy là trạng
+thái lúc handoff được soạn, hiện bounded P02 edit đã kiểm chứng.
+
 ## 7. Worker protocol — Codex manager, AGY worker
 
 Dùng skill `C:/Users/asus/.codex/skills/antigravity-worker/SKILL.md`; đọc cả

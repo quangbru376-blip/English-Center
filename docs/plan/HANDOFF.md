@@ -2,7 +2,17 @@
 
 Cập nhật04/10/2026. Workspace:C:\Study\SOEN\main_workplace.
 
-## Tiếp nhận ở chat mới — bắt đầu code P01 → P02
+## Checkpoint code đầu — P02 reviewed detached, chờ owner apply
+
+P01 prerequisites cho P02 đã hoàn tất; P02 **PASS** sau hai manager fixes,
+detached commit d9eb194a7d53c321cbfad691abba730388588385. Xem
+[task card/receipt/worktree/verification](P02_TASK_CARD.md) và
+[manifest](M0_LOCAL_PROFILE.md). Build0warning/0error, discovery10/tests10pass,
+lock/license/hash/NuGet audit đã kiểm. Primary chỉ cập nhật docs/evidence;
+chưa apply source/merge/push. Tiếp theo owner review và quyền main apply riêng;
+không tự chạy task mới. Full LOCAL_DEV/DB/readiness và M0/V01 vẫn chưa hoàn tất.
+
+### Handoff đã thực hiện
 
 Owner ngày04/10/2026 yêu cầu handoff để chat kế tiếp viết giai đoạn code đầu:
 đọc [FIRST_CODE_HANDOFF](FIRST_CODE_HANDOFF.md), hoàn thiện P01 rồi viết/review
@@ -14,7 +24,8 @@ thứ tự/mốc thực thi. Owner chọn04/10/2026 chia task theo chất lượ
 tạp/giới hạn output; không cần hạn nộp hoặc giờ mỗi tuần để chia việc.
 Phân biệt nhóm M0–M4, slice tích hợp và từng task sinh code; Codex kiểm chứng
 trước task phụ thuộc, không giảm guard/test để nhét trong một lần sinh.
-Planning được yêu cầu riêng; chưa code/SQL/Git/scaffold/cài package/triển khai.
+Planning được yêu cầu riêng; P02 code/package verification hiện chỉ ở worktree,
+không SQL changes/runtime install/deployment.
 
 Owner đã nghiệm thu actual E04-v1 trước (ADR-160),rồi E05-v1/complete baseline
 (ADR-161),không sửa outputs đã trình. Không bắt đầu lại D10/SC01–04 hoặc xin
@@ -37,7 +48,8 @@ retained by ADR-162; see [assessment](SQL_INSTANCE_ASSESSMENT.md).
 Read-only inventory/type/decimal/JSON/SHA and system-DB snapshot read succeeded;
 no app DB creation/config changes. Current RTM lacks newer patches; patch review
 before real data/exposure and encrypted-archive backup prerequisites remain.
-Next chat starts P01 package/LOCAL_DEV profile, then P02; order unchanged.
+P01 package compatibility và P02 đã reviewed detached; còn full runtime slots
+trong M0_LOCAL_PROFILE. Các preparation checkpoints phía dưới có trước execution.
 
 - M0 order synchronized04/10/2026: docs/plan/M0_QUALITY_PLAN.md section11 holds
   proposed39family default order and Mermaid; dependencies in sections4–7.

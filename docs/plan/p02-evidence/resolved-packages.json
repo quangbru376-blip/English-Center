@@ -1,0 +1,331 @@
+[
+  {
+    "package": "Microsoft.AspNetCore.Mvc.Testing",
+    "version": "10.0.4",
+    "type": "Direct",
+    "license": "MIT",
+    "contentHash": "ZkgmjUX4Q1ffkpomVKFZWvBXiJsLWvEETme+QDJme7NST7dc3DaVEdgL6xs5QfglDke9tX5kLrs253ZFMMGB3g=="
+  },
+  {
+    "package": "Microsoft.AspNetCore.TestHost",
+    "version": "10.0.4",
+    "type": "Transitive",
+    "license": "MIT",
+    "contentHash": "+kBqWRfgforSlqlW+s8VotYy1OxdCbg20ZUVHcxjRcMHEtoMq7IJMbtc7jtacgWSMy+Ct154SLOYHCp7Azpp+w=="
+  },
+  {
+    "package": "Microsoft.Bcl.AsyncInterfaces",
+    "version": "6.0.0",
+    "type": "Transitive",
+    "license": "MIT",
+    "contentHash": "UcSjPsst+DfAdJGVDsu346FX0ci0ah+lw3WRtn18NUwEqRt70HaOQ7lI72vy3+1LxtqI3T5GWwV39rQSrCzAeg=="
+  },
+  {
+    "package": "Microsoft.CodeCoverage",
+    "version": "18.10.1",
+    "type": "Transitive",
+    "license": "MIT",
+    "contentHash": "tV7tCyp/t+DuwQugLkCeUN7NBFFB4fEGRPr0gkMQ2nQgAvQQjmGlZZi1dsLzbyoe/A0mbnKybmkIh8qhT9p4Zw=="
+  },
+  {
+    "package": "Microsoft.Extensions.Configuration",
+    "version": "10.0.4",
+    "type": "Transitive",
+    "license": "MIT",
+    "contentHash": "601B3ha6XvOsOcu9GVd2dVd1KEDuqr49r46GUWhNJkeZDhZ/NI9EYTyoeQjZQEi8ZUvnrv++FbTfGmC8F0vgtg=="
+  },
+  {
+    "package": "Microsoft.Extensions.Configuration.Abstractions",
+    "version": "10.0.4",
+    "type": "Transitive",
+    "license": "MIT",
+    "contentHash": "3x9X9SMAMdAoEwWxHfsT2a9dTBqEtfYfbEOFw+UPtBshEH2gHWJeazxrZ1FK1O18MoCbe1NxINg5qciB01pEcg=="
+  },
+  {
+    "package": "Microsoft.Extensions.Configuration.Binder",
+    "version": "10.0.4",
+    "type": "Transitive",
+    "license": "MIT",
+    "contentHash": "ilnL/kQn62Gx3OZCVT7SJrBNi0CRIhS8VEunmE6i/a9lp9l/eos+hpxMvCW4iX2aVc/NWeDhxuQusZL7zvmKIg=="
+  },
+  {
+    "package": "Microsoft.Extensions.Configuration.CommandLine",
+    "version": "10.0.4",
+    "type": "Transitive",
+    "license": "MIT",
+    "contentHash": "DPl2tZZGtqxrkOq/Exo43hRuTA8KI7UXWnf6y0SkRBbqSkqFR1a+7rIZPFMP1KLE2UYiIvfbVR7ynRPJ/HeMDw=="
+  },
+  {
+    "package": "Microsoft.Extensions.Configuration.EnvironmentVariables",
+    "version": "10.0.4",
+    "type": "Transitive",
+    "license": "MIT",
+    "contentHash": "iapetemB9HxFe5YzEOD1faKC3pYKKaK0CUi85e5iZU5s541x1UVloswQB5zaN1TZg8t/7ONWaf8RYKuTDjveOw=="
+  },
+  {
+    "package": "Microsoft.Extensions.Configuration.FileExtensions",
+    "version": "10.0.4",
+    "type": "Transitive",
+    "license": "MIT",
+    "contentHash": "LD4T4s2uW2kZUkwGc4A9KK5o3wfkgySHKEiYqV0NXeNdeLN563NgNqDpi3DNXAdrt2TwU0rK7QMPdWLLIaMipA=="
+  },
+  {
+    "package": "Microsoft.Extensions.Configuration.Json",
+    "version": "10.0.4",
+    "type": "Transitive",
+    "license": "MIT",
+    "contentHash": "gn2Rf0dvIa6Sz/WJ5cNHhG/oUOT1yrHXd7Q0vCpXDlLsMuRqv9G5NBXFJbSh/ZRzSbvbOQWMV0amQS/3N0Fzzg=="
+  },
+  {
+    "package": "Microsoft.Extensions.Configuration.UserSecrets",
+    "version": "10.0.4",
+    "type": "Transitive",
+    "license": "MIT",
+    "contentHash": "+lRKEecmj+pSZh3we5sxiVS90YmfdJye4qps6vF9GFRbdm563kU0YyFnwCsm2PDTqQbOe3M8kE2vaV4zleeE7Q=="
+  },
+  {
+    "package": "Microsoft.Extensions.DependencyInjection",
+    "version": "10.0.4",
+    "type": "Transitive",
+    "license": "MIT",
+    "contentHash": "NkvJ8aSr3AG30yabjv7ZWwTG/wq5OElNTlNq39Ok2HSEF3TIwAc1f1xnTJlR/GuoJmEgkfT7WBO9YbSXRk41+g=="
+  },
+  {
+    "package": "Microsoft.Extensions.DependencyInjection.Abstractions",
+    "version": "10.0.4",
+    "type": "Transitive",
+    "license": "MIT",
+    "contentHash": "SIe9zlVQJecnk/DTmevIcl6+aEDYhoVLc2eG2AKwVeNEC8CSyxHAbh4lf0xtHq9JUum0vVTEByGNTK+b6oihTQ=="
+  },
+  {
+    "package": "Microsoft.Extensions.DependencyModel",
+    "version": "10.0.4",
+    "type": "Transitive",
+    "license": "MIT",
+    "contentHash": "LiJXylfk8pk+2zsUsITkou3QTFMJ8RNJ0oKKY0Oyjt6HJctGJwPw//ZgoNO4J29zKaT+dR4/PI2jW/znRcspLg=="
+  },
+  {
+    "package": "Microsoft.Extensions.Diagnostics",
+    "version": "10.0.4",
+    "type": "Transitive",
+    "license": "MIT",
+    "contentHash": "R9W7AttMedwOwJ7wRqTGBoVbX2JmlyWA+LJQUhizmS7Be9f6EJUn/+lvaIYDrOYtA1UzAfrwU871hpvZSPyIkg=="
+  },
+  {
+    "package": "Microsoft.Extensions.Diagnostics.Abstractions",
+    "version": "10.0.4",
+    "type": "Transitive",
+    "license": "MIT",
+    "contentHash": "JH2RyevIwJ1E9mBsZRXR+12TnUauptKgzCdOghhk3sE+dqcxB16GoE7x+0IuqTbaixM1ESXTNoqEw/IBnhM7LQ=="
+  },
+  {
+    "package": "Microsoft.Extensions.FileProviders.Abstractions",
+    "version": "10.0.4",
+    "type": "Transitive",
+    "license": "MIT",
+    "contentHash": "3hLXFZ1E/Kj3obIcb9iMCC95MpW2e8EkWxpXKgUfgGBfm+yn507pHAjPaHoi2U3GlSHIm/21DPCDLumwlMowjw=="
+  },
+  {
+    "package": "Microsoft.Extensions.FileProviders.Physical",
+    "version": "10.0.4",
+    "type": "Transitive",
+    "license": "MIT",
+    "contentHash": "gVVHdOFwlnXmTtx41e2aGfcFXX+8+9DPkOzEqQuHN8rOv+6RQWs/wfeQLaosOt3CQLKNoCaFmHopTtGB9PB5fg=="
+  },
+  {
+    "package": "Microsoft.Extensions.FileSystemGlobbing",
+    "version": "10.0.4",
+    "type": "Transitive",
+    "license": "MIT",
+    "contentHash": "eCEFVuuZL++SqMcdB5i4KA16GvcxCzdKKK+clapXYyGMkhd4BxwZi2/vGzo8s7a8Vi0BA78p5u/NScgOP1pzTg=="
+  },
+  {
+    "package": "Microsoft.Extensions.Hosting",
+    "version": "10.0.4",
+    "type": "Transitive",
+    "license": "MIT",
+    "contentHash": "DqWjjar9YgGXswSmp81jW6kSsOXVqsBkJS9nRI0HEi7NK9c7uSjCfZ0pXLEYlKP3+t3uLWrDdyLIlkKQYxUwmA=="
+  },
+  {
+    "package": "Microsoft.Extensions.Hosting.Abstractions",
+    "version": "10.0.4",
+    "type": "Transitive",
+    "license": "MIT",
+    "contentHash": "+5mQrqlBhqNUaPyDmFSNM/qiWStvE9LMxZW1MRF0NhEbO781xNeKryXNR9gGDJ0PmYFDAVoMT9ffX+I15LPFTw=="
+  },
+  {
+    "package": "Microsoft.Extensions.Logging",
+    "version": "10.0.4",
+    "type": "Transitive",
+    "license": "MIT",
+    "contentHash": "S8+6fCuMOhJZGk8sGFtOy3VsF9mk9x4UOL59GM91REiA/fmCDjunKKIw4RmStG87qyXPfxelDJf2pXIbTuaBdw=="
+  },
+  {
+    "package": "Microsoft.Extensions.Logging.Abstractions",
+    "version": "10.0.4",
+    "type": "Transitive",
+    "license": "MIT",
+    "contentHash": "PDMMt7fvBatv6hcxxyJtXIzSwn7Dy00W6I2vDAOTYrQqNM2dF5A2L9n0uMzdPz2IPoNZWkAmYjoOCEdDLq0i4w=="
+  },
+  {
+    "package": "Microsoft.Extensions.Logging.Configuration",
+    "version": "10.0.4",
+    "type": "Transitive",
+    "license": "MIT",
+    "contentHash": "XPXoOpUnWEh0pV7Vl2DK2wj47y73Krhrve5OkPrvGIWdZ4U2r47WO8hEdv+wKn65Kh4pmDdiWm7Ibo5pZX+vig=="
+  },
+  {
+    "package": "Microsoft.Extensions.Logging.Console",
+    "version": "10.0.4",
+    "type": "Transitive",
+    "license": "MIT",
+    "contentHash": "70fnP/xbQmH3cRtj4jjXOuqRWrYIMRz897KngW5Egu6to60pikT/09Y9ZxCljT/PWQDZ+qLqyeaAwNJe/L6FbA=="
+  },
+  {
+    "package": "Microsoft.Extensions.Logging.Debug",
+    "version": "10.0.4",
+    "type": "Transitive",
+    "license": "MIT",
+    "contentHash": "vd1bEO+hoJsQZ+cyhtLT7l5/5rtCgc4G5wJdPlYtWSSXe4hv00CDYTATbpyPjCehZL3pNv+aC1RwRlU5oWA6xQ=="
+  },
+  {
+    "package": "Microsoft.Extensions.Logging.EventLog",
+    "version": "10.0.4",
+    "type": "Transitive",
+    "license": "MIT",
+    "contentHash": "P/iPKwMNvtcfX5tb48KbcAs8ZMfv5tfDUilFNtTW9hwiWrLDFBJ7WE1QZuVMb8Ro1MvXHaqmc+p2rRPVEqZ2SA=="
+  },
+  {
+    "package": "Microsoft.Extensions.Logging.EventSource",
+    "version": "10.0.4",
+    "type": "Transitive",
+    "license": "MIT",
+    "contentHash": "se693u6nFSHxBaAL6CVshlPhrWiGi6NjgkbmTxACLmuJfcldaGsDdzc0e8Izcz+OFMr6hOtNKMBTbv4U8XaFxw=="
+  },
+  {
+    "package": "Microsoft.Extensions.Options",
+    "version": "10.0.4",
+    "type": "Transitive",
+    "license": "MIT",
+    "contentHash": "kRxa2Zjzhg/ohh7EklpqQpBIcyQnC3meWxCcpZBn+0QWy/fY1DmDd45JiW8Vyrpj2J1RDtau5yRHiLZS/AoxUw=="
+  },
+  {
+    "package": "Microsoft.Extensions.Options.ConfigurationExtensions",
+    "version": "10.0.4",
+    "type": "Transitive",
+    "license": "MIT",
+    "contentHash": "amQUITwSnkbMPxh/ngneNykz4UtytEOXo0M/pbwdBiQU57EAVvBV5PFI8r/dRastUj0yxHVwrH64N9ACR5SdGQ=="
+  },
+  {
+    "package": "Microsoft.Extensions.Primitives",
+    "version": "10.0.4",
+    "type": "Transitive",
+    "license": "MIT",
+    "contentHash": "lABYqiRH9HgYJsjzO3W7+cucUwWXhEkiyrRylANdIubnzcESlkIsLowXpQ4E+sc7kjMLbk1hk5oxw4qTKowTEg=="
+  },
+  {
+    "package": "Microsoft.NET.Test.Sdk",
+    "version": "18.10.1",
+    "type": "Direct",
+    "license": "MIT",
+    "contentHash": "SxCFvJE/2ltUQgCgv6+Ixagohw4sZc9hM7Wid2foaNM7paBscktoHLoRDz91fW8wbHG87Rg9Ku59/8PXumqUrA=="
+  },
+  {
+    "package": "Microsoft.TestPlatform.ObjectModel",
+    "version": "18.10.1",
+    "type": "Transitive",
+    "license": "MIT",
+    "contentHash": "o+PuLDRVp1iwiVAPBADZItXgm9Ck23XtPhE4kZtZVi0uYnMiiz1Dx9Cjh75kJ+ijfqnORL3VOTOaQVKi0f/ixg=="
+  },
+  {
+    "package": "Microsoft.TestPlatform.TestHost",
+    "version": "18.10.1",
+    "type": "Transitive",
+    "license": "MIT",
+    "contentHash": "KYz2omqkoz9E2mWa4fdgT+Ycie1wi5968EmyJlusjlp87RxxtA2FvDm8tcBEYIDzLnkWGnsKjE4d13Z7/rxkQA=="
+  },
+  {
+    "package": "Microsoft.Win32.Registry",
+    "version": "5.0.0",
+    "type": "Transitive",
+    "license": "MIT",
+    "contentHash": "dDoKi0PnDz31yAyETfRntsLArTlVAVzUzCIvvEDsDsucrl33Dl8pIJG06ePTJTI3tGpeyHS9Cq7Foc/s4EeKcg=="
+  },
+  {
+    "package": "System.Diagnostics.EventLog",
+    "version": "10.0.4",
+    "type": "Transitive",
+    "license": "MIT",
+    "contentHash": "xXo5NcIPeMUMfpo9Efl/3Rgomjb/Jfa3Aa0BgSfqYctN4YpwjPzvIrnD9JTwoKqe3pFtLF9vmtMl892+wwZ6EA=="
+  },
+  {
+    "package": "System.Security.AccessControl",
+    "version": "6.0.1",
+    "type": "Transitive",
+    "license": "MIT",
+    "contentHash": "IQ4NXP/B3Ayzvw0rDQzVTYsCKyy0Jp9KI6aYcK7UnGVlR9+Awz++TIPCQtPYfLJfOpm8ajowMR09V7quD3sEHw=="
+  },
+  {
+    "package": "xunit.analyzers",
+    "version": "2.1.0",
+    "type": "Transitive",
+    "license": "Apache-2.0",
+    "contentHash": "X7QXEcZQGz0G/HL4HUyK+aAvNa/IMGbOCnFIq4jD/Evktq12xANKwzOUr7b08vCmC1LXu/47qHWOdjm3KfaJ0A=="
+  },
+  {
+    "package": "xunit.runner.visualstudio",
+    "version": "4.0.0",
+    "type": "Direct",
+    "license": "Apache-2.0",
+    "contentHash": "kzLFyBYUnoidpGOXvpNOfIo8C92gVgVR6X8ncHwhcrDYugiOut5rrhDkr0L3cWHd7J2pKXf6LgaeXoBBDlx1ag=="
+  },
+  {
+    "package": "xunit.v3.assert",
+    "version": "4.0.1",
+    "type": "Transitive",
+    "license": "Apache-2.0",
+    "contentHash": "nC7d3cY06Oo7hkdwWPZkBR0Ud75xNhgx0P7i0GmMMZC3puCGlc4szFiT30biH03IN/eDnr8h+nv3A1UD17bk/A=="
+  },
+  {
+    "package": "xunit.v3.common",
+    "version": "4.0.1",
+    "type": "Transitive",
+    "license": "Apache-2.0",
+    "contentHash": "Qf25TVdadDQYf9zVxSd7L9RNQhuP0jCUHmo96XTmIKLxGefylIEV63jRbXBPFzdXmV09TCdcurk+AQ9LiWS2Hg=="
+  },
+  {
+    "package": "xunit.v3.core.mtp-off",
+    "version": "4.0.1",
+    "type": "Transitive",
+    "license": "Apache-2.0",
+    "contentHash": "pPKhAFeXpN95l8sBBRQ4YrqhFDoTDj/QVgc//oSPlBXjrW7YLUBN/eDqvWSWVle1ITvNbYHGLmy3LZSPC6gGJQ=="
+  },
+  {
+    "package": "xunit.v3.extensibility.core",
+    "version": "4.0.1",
+    "type": "Transitive",
+    "license": "Apache-2.0",
+    "contentHash": "J0d5OfFcp920nZxCRIvU14+TZhiSPQR0wvqEMZ3MRiJLPu1VmYlcRNkmcSW0i1DwkB81gAHc+fHUQf/cU64MYg=="
+  },
+  {
+    "package": "xunit.v3.mtp-off",
+    "version": "4.0.1",
+    "type": "Direct",
+    "license": "Apache-2.0",
+    "contentHash": "miSoh5QghDDdVN95dJEl+XrfCjdYy70IWumadlxHMhHie1ym+qG8UPIHRZOepBu2MbGs6nRB0pr4cd1fw/Gfvw=="
+  },
+  {
+    "package": "xunit.v3.runner.common",
+    "version": "4.0.1",
+    "type": "Transitive",
+    "license": "Apache-2.0",
+    "contentHash": "p9AyfBpj2e5Iws8B57SbLiSngg7mEdvegHInKR4T2cjt2mis9h8htVgCnmu//agZO4zri6p6VQOj5EkHHTy3gA=="
+  },
+  {
+    "package": "xunit.v3.runner.inproc.console",
+    "version": "4.0.1",
+    "type": "Transitive",
+    "license": "Apache-2.0",
+    "contentHash": "Hqwfd6ehMIhPmVWUQ2dgmknzuLFTWeyp8ES1q3D4YR5bQVyiXDcaIoaFwqAz2zgLr49WaW4Mz7VVncP7u/Q8/Q=="
+  }
+]

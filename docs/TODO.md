@@ -10,17 +10,19 @@
 
 ## Next
 
-- Execute next-chat [FIRST_CODE_HANDOFF](plan/FIRST_CODE_HANDOFF.md): preserve
-  pending reviewed documentation baseline; P01 SDK/package/test-host preflight
-  then bounded P02 backend/test skeleton, manager verification and owner review
-  before main apply. P03/rest M0/SQL changes/runtime installs/deploy outside scope.
+- Owner review of [P02 task card](plan/P02_TASK_CARD.md): P01 P02 prerequisites
+  complete; detached P02 PASS after two manager fixes, commit d9eb194.
+  Build0warnings/0errors, discovery10/tests10pass, locks/license/hash/NuGet audit
+  verified. Separate owner authorization required before main apply and later
+  direction; do not start P03/rest M0/SQL/runtime install/deployment.
 
 SQL assessment04/10/2026 completed: installed SQL2025 Express17.0.1000.7
 retained by ADR-162; see [assessment](plan/SQL_INSTANCE_ASSESSMENT.md).
 Read-only inventory/type/decimal/JSON/SHA and system-DB snapshot read succeeded;
 no app DB creation/config changes. Current RTM lacks newer patches; patch review
 before real data/exposure and encrypted-archive backup prerequisites remain.
-Next chat starts P01 package/LOCAL_DEV profile, then P02; order unchanged.
+P01 P02 package compatibility verified; full LOCAL_DEV slots remain unresolved
+in M0_LOCAL_PROFILE. Planning checkpoints below predate detached P02 execution.
 
 - M0 order synchronized04/10/2026: docs/plan/M0_QUALITY_PLAN.md section11 holds
   proposed39family default order and Mermaid; dependencies in sections4–7.
@@ -41,15 +43,15 @@ Next chat starts P01 package/LOCAL_DEV profile, then P02; order unchanged.
   P01 still needs package/profile checks; full DB readiness retained. No app code,
   installation, migration or dispatch performed.
 
-- Analyze smoke test complete04/10/2026: SUCCESS/exit0,manager event/diff review
-  and6runner tests pass. Edit mode untested; future tasks need bounded contracts,
+- Analyze smoke and bounded P02 edit complete04/10/2026: SUCCESS/exit0,
+  manager event/diff review and independent verification. Future tasks need bounded contracts,
   detached worktrees and owner permission before applying worker changes.
 - Discuss proposed M0–M4 implementation milestones in
   `docs/plan/implementation-plan.md`; refine M0 dependencies and small generation
   contracts by complexity/output capacity and quality gates, not calendar speed.
   Owner chose quality-first decomposition04/10/2026; later first-code handoff
   authorizes only P01→P02, see FIRST_CODE_HANDOFF. Wider milestones stay proposals;
-  no code/SQL/Git/scaffold/packages/deployment/runtime operations started.
+  P02 code/packages verified detached only; no SQL/deployment/runtime install.
 - Update affected source/trace/ADRs if owner asks for a later design change.
 
 ## Deferred / evidence boundary
@@ -58,7 +60,7 @@ Next chat starts P01 package/LOCAL_DEV profile, then P02; order unchanged.
 - DF01–05 environment/evidence prerequisites remain: backupmedia/access/key/
   isolatedrestore,compatiblepatch/blocklistpins/profilecompatibility/config,
   future SQL/API/EF/grants/race/browser/CSV/load/recovery evidence.
-- No installed values or execution results. Four-phase/Slice0/integration work
+- No business/runtime/SQL evidence from P02 startup tests. Four-phase/Slice0/integration work
   is now open for owner-requested planning; phase/Slice0 proposals are not accepted.
   Integrations remain on-demand and inactive.
 

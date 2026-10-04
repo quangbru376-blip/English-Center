@@ -1,6 +1,6 @@
 # P02 — backend and test skeleton
 
-Date: 2026-10-04. Status: prepared; worker not dispatched.
+Date: 2026-10-04. Status: reviewed PASS after manager fixes; detached, pending owner apply.
 Manager: Codex. Implementer: Antigravity via antigravity-worker.
 Authority: current owner request and FIRST_CODE_HANDOFF, P01 prerequisites →
 P02 only. Applying code to primary is separately prohibited until owner approval.
@@ -11,9 +11,10 @@ Implement one conventional net10.0 backend/test skeleton that builds and whose
 xUnit tests start the real API entry point using WebApplicationFactory.
 The empty host must not expose business routes or claim readiness.
 P01 manifest: M0_LOCAL_PROFILE.md. SDK 10.0.200/runtime10.0.4/AGY1.2.16 verified;
-both solution formats supported, explicit .sln selected. Exact four direct
-test dependencies and nuget.org source resolved; actual restore compatibility
-is a manager verification gate. No EF or new framework selection.
+both solution formats supported, explicit .sln selected. Final four direct
+test dependencies and nuget.org source verified by restore/build/discovery/tests.
+Manager selected xunit.v3.mtp-off 4.0.1 after actual compatibility failure of
+the initial xunit.v3 4.0.1 variant. No EF or new framework selection.
 
 Reviewed prior documentation snapshot: 1054888. The actual clean dispatch HEAD
 is captured in the English contract objective and runner preflight evidence
@@ -58,8 +59,9 @@ loading for the worker: Codex has read canonical memory/accepted sources and
 provides the relevant P02 constraints here. Links grant no extra read scope.
 No discovery/search/directory scans, browser/network/MCP/subagent tools or shell.
 Manager must verify actual tools/events, not just a claimed receipt.
-Sharing these six context files is pending explicit scoped consent; the old
-analyze smoke consent is not reused as blanket consent.
+Owner explicitly approved sharing exactly these six context files and existing
+eight implementation paths after contract validation, before dispatch.
+The old analyze smoke consent was not reused as blanket consent.
 
 ## Acceptance criteria
 
@@ -112,7 +114,8 @@ package graph/lock hashes/licenses/vulnerability report and git diff --check.
 Check detached HEAD equals dispatch HEAD and primary has no backend code.
 Review verdict must be PASS/PASS WITH FIXES/FAIL with unresolved evidence.
 No SQL/grant/race/security/business readiness claim from startup tests.
-skill_verification: pending actual worker events, diff, compiler and tests.
+skill_verification: complete. Codex reviewed all actual tool calls, all source,
+the final lock graph, compiler/analyzer output and ten real host tests.
 
 ## Owner walkthrough (skeleton only)
 
@@ -124,6 +127,89 @@ skill_verification: pending actual worker events, diff, compiler and tests.
 
 ## Execution record
 
-Pending: scoped consent, validated English contract, detached worker run,
-manager build/discovery/tests/audit/review. P01 only resolved P02 prerequisites;
-full LOCAL_DEV remains unconfigured. P03/SQL/rest M0 are outside current scope.
+### Identity and isolation
+
+- Prior pending documentation reviewed/preserved: 1054888.
+- Clean validated dispatch base and initial detached HEAD independently checked:
+  72696e5cba4670344434a98e3cd1562ddeeded20.
+- Run 11968703-a8c; conversation 716c7731-129a-4e30-98cc-7b8e3a02af3f;
+  AGY SUCCESS/exit0, runner review_required, zero write-policy violations.
+- [Original English contract](p02-evidence/worker-contract.json) and
+  [original receipt](p02-evidence/worker-receipt.json) are immutable run evidence;
+  initial dependency wording reflects the original dispatch, not the manager fix.
+- Detached worktree:
+  C:/Users/asus/AppData/Local/Temp/codex-antigravity-worker/worktrees/main_workplace-11968703-a8c.
+- Final reviewed detached commit: d9eb194a7d53c321cbfad691abba730388588385.
+  Diff against dispatch base: ten files, 576 Git insertions, zero deletions;
+  eight skeleton files 141 lines plus two manager lockfiles 435 lines.
+  Runner counted 149 worker lines (includes trailing split lines), within 320.
+- Primary received documentation/evidence only; no backend/.gitignore source,
+  merge/cherry-pick/apply/push. Worktree retained; owner application still pending.
+
+### Actual worker behavior and manager corrections
+
+Codex inspected every tool event: 24 tool invocations, only view_file (16) and
+write_to_file (8). Six complete context reads, two allowed missing-file probes,
+then eight final-file reads; no extra paths, commands, browser/network/MCP or
+subagent calls. Worker read the complete backend skill and routing policy before
+editing. All eight actual writes matched the exact allowlist.
+
+Original worker code did not pass the manager gates unchanged. Codex made two
+small corrections within existing detached paths, with backend-clean-code and
+canonical overrides retained:
+
+1. StartupTests.cs: supply TestContext.Current.CancellationToken to GetAsync
+   and ReadAsStringAsync; resolves two xUnit1051 errors without suppressions.
+2. Test csproj: replace xunit.v3 with official xunit.v3.mtp-off at the same
+   4.0.1 pin. Default package MTP v2 rejected VSTest on SDK10 during actual
+   discovery/test. Final variant keeps accepted xUnit/VSTest and four direct
+   dependencies; verified official registry metadata before corrected restore.
+
+Manager generated/reviewed exactly two packages.lock.json files. No other code
+edits, runtime install, SQL connection/configuration, endpoint or framework.
+
+### Independent verification (final source)
+
+Commands are the exact M0_LOCAL_PROFILE commands, from detached backend:
+
+| Gate | Actual result |
+| --- | --- |
+| Restore via NuGet.Config | Exit0; API package-free, test graph resolved. |
+| Locked restore | Exit0; final manifests/lockfiles consistent. |
+| Build --no-restore -warnaserror | Exit0; 0 warnings, 0 errors. |
+| Test --list-tests | Exit0; ten distinct discovered theory cases. |
+| Test --no-build --no-restore | Exit0; passed10, failed0, skipped0 (626ms reported test duration). |
+| Vulnerable --include-transitive | Exit0; no known vulnerable packages reported for either project from nuget.org on 2026-10-04. |
+| Graph/license/content hashes | 47 packages: four direct/43 transitive; MIT38/Apache-2.0 nine; every package version/contentHash matches lock/assets/NuGet cache metadata. |
+| Scope/source/diff | Exact ten final files; git diff --cached --check passed; no business routes/EF/auth/SQL/secrets/trivial assertion/analyzer suppression. |
+
+Real test name:
+EnglishCenter.Tests.Infrastructure.StartupTests.UnimplementedPath_ReturnsNotFoundWithEmptyBody_InGivenEnvironment.
+Cases: Development and Production × /, /auth, /api/auth/login, /health,
+/health/ready; each actually hosts API Program through WebApplicationFactory
+and verifies 404 plus empty body. Probe names are absent paths, not adopted API
+contracts. TestServer is in-process; no API network listener or business profile.
+
+Final [resolved package/license/hash inventory](p02-evidence/resolved-packages.json).
+API lock SHA256 A4364D81A6DE2707D66FBCED18FBBC926C882AB96E1D1AEBBB17E871285B9D75;
+test lock SHA256 15D9472972F2CA4414557E0410944F088F1583C68A5899DFD465929D11B8BC8A.
+Contract SHA256 7B9B91891DE33D0BA97CB3FC6AB3CB894846761A621DA583551D477189A5AB4C;
+receipt SHA256 45223BDFC243EA575CD98A1DE5FA4F0970B0D1D8C4ED5567C054D2456AF4ED65.
+Raw events retained only in the local runner run directory (not Project Memory);
+events SHA256 13C09F5EB73090AEDF685BF2BB39949BD082BDBEC61E47D372AEBB8B6DF2E003.
+NuGet normalized contentHash is distinct from a signed archive's raw SHA512;
+audit compares normalized lock/assets/cache metadata, not unlike hash formats.
+
+### Review verdict and remaining boundary
+
+**PASS for final detached P02 after both manager fixes.** No unresolved P02
+must-fix findings. Backend skill/review checks for DTO/auth/errors/migrations,
+frontend/API docs/business tests are N/A because no such implementation exists;
+owner walkthrough above explains every runtime component. Dependency audit is
+the current NuGet known-vulnerability report, not a full security certification.
+
+P01 P02 prerequisites complete. Full LOCAL_DEV/profile/DB/readiness/security/
+patch/blocklist/backup/SQL/API/browser/race/load/recovery evidence remains
+unconfigured or unverified as listed in M0_LOCAL_PROFILE. M0/V01 not done.
+Next action: owner reviews this result and separately authorizes main apply and
+later direction. P03/SQL/rest M0 remain outside scope; do not auto-dispatch.
