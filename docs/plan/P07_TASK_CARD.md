@@ -21,7 +21,7 @@ MCP/browser/subagents. Only listed output files may be written in detached tree.
 Allowed five files: Common/Errors/ApiErrorException.cs and ApiErrorMiddleware.cs
 under backend/src/EnglishCenter.Api; existing Program.cs; corresponding
 ApiErrorTests.cs and ApiErrorHostingTests.cs under backend/tests/EnglishCenter.Tests/Common/Errors.
-Cap5files/550lines. .NET10 built-in APIs only, no packages/config/lockfiles.
+Initial5file/550line run7e67640c-145 rejected:677lines exceeded cap; no changes applied. Fresh retry writes only3production files/300lines; Codex writes2test files independently under450lines. .NET10 built-in APIs only, no packages/config/lockfiles.
 
 Registry exact HTTP/code pairs:400 VALIDATION_ERROR,NO_CHANGE;401
 AUTHENTICATION_FAILED,AUTHENTICATION_REQUIRED;403 FORBIDDEN,CSRF_INVALID;404
@@ -56,3 +56,4 @@ body inspection and generic safe response. No SQL/state/live guards implemented.
 skill_verification: selected skills read in full by Codex; worker read/tool scope,
 source review, locked restore/build/tests and main recheck pending.
 Status: in progress; no PASS/application claim yet.
+
