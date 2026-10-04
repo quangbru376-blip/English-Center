@@ -2,14 +2,15 @@
 
 ## Current implemented architecture
 
-Primary checkout still contains no application source. On 2026-10-04 P02 was
-implemented and reviewed in a retained detached worktree only; see
-[P02 task card](plan/P02_TASK_CARD.md), commit d9eb194. Its net10.0 API has only
+On 2026-10-04 P02 was implemented/reviewed in detached commit d9eb194, then
+applied to main as df7cd9a with explicit owner authorization and reverified;
+see [P02 task card](plan/P02_TASK_CARD.md). Its net10.0 API has only
 CreateBuilder/Build/Run plus public partial Program; no application endpoints.
 The xUnit executable references the real API and uses WebApplicationFactory's
 in-process TestServer for ten verified missing-route cases in two environments.
 There is no frontend, EF model, migration, auth, SQL connection or ready profile.
-Main application of this skeleton still requires separate owner authorization.
+Locked restore/build and all ten startup tests pass on main. The detached tree
+is retained as original review evidence; later tasks require owner direction.
 
 `instructions/` is a directive/reference inbox and is not part of the planned
 runtime architecture.

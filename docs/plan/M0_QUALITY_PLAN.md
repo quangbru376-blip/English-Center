@@ -1,6 +1,6 @@
 # M0 — kế hoạch task theo chất lượng
 
-Cập nhật: 04/10/2026. Status: P01 prerequisites cho P02 hoàn tất; P02 reviewed detached PASS, chờ owner apply.
+Cập nhật: 04/10/2026. Status: P01 prerequisites cho P02 hoàn tất; P02 applied/reverified PASS trên main.
 
 Nguyên tắc chia theo chất lượng đã được owner yêu cầu. Danh sách task/phạm vi
 bên dưới là task families để materialize từng contract. Owner04/10/2026 yêu
@@ -8,9 +8,10 @@ cầu chat kế tiếp viết code đầu tiên: P01 prerequisite → P02 backen
 skeleton, theo [FIRST_CODE_HANDOFF](FIRST_CODE_HANDOFF.md). Đã hoàn thành scope
 đầu trong detached worktree; [task card](P02_TASK_CARD.md) ghi contract/receipt/
 manager fixes và kiểm chứng thật. Build sạch, discovery10/tests10pass;
-commit d9eb194, primary chưa có source. M0/V01 chưa hoàn tất.
-P03/rest M0/SQL changes/runtime installs/deployment ngoài scope đầu; main apply
-worker changes vẫn cần owner permission. M0–M4 là nhóm phạm vi, không lịch làm việc.
+review commit d9eb194 đã apply vào main df7cd9a sau owner xác nhận; main
+locked restore/build/discovery10/tests10pass đã kiểm lại. M0/V01 chưa hoàn tất.
+P03/rest M0/SQL changes/runtime installs/deployment ngoài scope đầu; owner chỉ
+xác nhận main apply cho P02. M0–M4 là nhóm phạm vi, không lịch làm việc.
 
 ## 1. Đầu ra M0 và nguồn hợp đồng
 
@@ -33,7 +34,7 @@ triển khai không được trả success giả. Canonical registry55actions v�
 
 ## 2. Điều đã kiểm tra và prerequisite
 
-- Snapshot docs1054888; clean dispatch base72696e5; P02 code chỉ ở detached d9eb194.
+- Snapshot docs1054888; clean dispatch base72696e5; P02 review d9eb194 → main df7cd9a.
 - .NET SDK10.0.200, Node24.16.0, npm11.13.0 hiện có. P02 SDK/package/test-host
   compatibility đã kiểm chứng; [manifest](M0_LOCAL_PROFILE.md) có pins/locks/audit.
 - Local SQL `.\SQLEXPRESS`: ProductVersion17.0.1000.7, Express Edition64-bit,

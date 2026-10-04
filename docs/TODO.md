@@ -10,11 +10,11 @@
 
 ## Next
 
-- Owner review of [P02 task card](plan/P02_TASK_CARD.md): P01 P02 prerequisites
-  complete; detached P02 PASS after two manager fixes, commit d9eb194.
-  Build0warnings/0errors, discovery10/tests10pass, locks/license/hash/NuGet audit
-  verified. Separate owner authorization required before main apply and later
-  direction; do not start P03/rest M0/SQL/runtime install/deployment.
+- Await owner direction for a new bounded task. [P02 task card](plan/P02_TASK_CARD.md):
+  P01 P02 prerequisites complete; reviewed d9eb194 applied to main as df7cd9a
+  with explicit owner consent. Main locked restore/build0warnings/0errors,
+  discovery10/tests10pass; source and lock hashes unchanged. Do not start
+  P03/rest M0/SQL/runtime install/deployment from this application permission.
 
 SQL assessment04/10/2026 completed: installed SQL2025 Express17.0.1000.7
 retained by ADR-162; see [assessment](plan/SQL_INSTANCE_ASSESSMENT.md).
@@ -51,7 +51,7 @@ in M0_LOCAL_PROFILE. Planning checkpoints below predate detached P02 execution.
   contracts by complexity/output capacity and quality gates, not calendar speed.
   Owner chose quality-first decomposition04/10/2026; later first-code handoff
   authorizes only P01→P02, see FIRST_CODE_HANDOFF. Wider milestones stay proposals;
-  P02 code/packages verified detached only; no SQL/deployment/runtime install.
+  P02 code/packages applied and reverified on main; no SQL/deployment/runtime install.
 - Update affected source/trace/ADRs if owner asks for a later design change.
 
 ## Deferred / evidence boundary

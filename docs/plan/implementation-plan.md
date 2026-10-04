@@ -1,6 +1,6 @@
 # Implementation planning — discussion draft
 
-Updated: 2026-10-04. Status: P01 P02 prerequisites complete; P02 reviewed detached PASS, awaiting owner apply.
+Updated: 2026-10-04. Status: P01 P02 prerequisites complete; P02 applied/reverified PASS on main.
 
 ## Authority and baseline
 
@@ -8,11 +8,12 @@ Owner explicitly requested discussing the coding plan after E01–E05 acceptance
 The wider milestone proposal remains a planning baseline. Owner04/10/2026
 separately requests next-chat first coding stage: P01 prerequisites then P02
 backend/test skeleton under [FIRST_CODE_HANDOFF](FIRST_CODE_HANDOFF.md).
-Initial scope implemented/reviewed in detached commit d9eb194 only; see
+Initial scope implemented/reviewed in detached commit d9eb194; see
 [P02 task card](P02_TASK_CARD.md) and [P01 manifest](M0_LOCAL_PROFILE.md).
-Build clean, ten real startup tests pass. Primary has no application source;
+Owner separately confirmed main application as df7cd9a; locked restore/build
+clean and ten real startup tests reverified on main. Original tree retained;
 later tasks/SQL/runtime installs/deployment remain outside initial scope,
-and worker changes need owner approval before main apply. M0/V01 incomplete.
+this application permission grants no later task scope. M0/V01 incomplete.
 Accepted requirements, E03 database and E04 contracts remain the source of truth;
 ADR-160/161 do not need another design vote. Preserve owner D12/D13 deferral.
 

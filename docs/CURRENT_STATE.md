@@ -5,7 +5,9 @@ Last updated: 2026-10-04
 ## Current task
 
 P01 prerequisites needed by P02 complete; P02 reviewed **PASS** after two
-manager fixes, retained detached at d9eb194a7d53c321cbfad691abba730388588385.
+manager fixes. Owner explicitly confirmed main application on 2026-10-04;
+applied as df7cd9ac3b7f8b54e6b2814255ca5c424d768b99, reverified PASS on main.
+Original detached evidence retained at d9eb194a7d53c321cbfad691abba730388588385.
 See [task card/evidence/worktree](plan/P02_TASK_CARD.md) and
 [local manifest](plan/M0_LOCAL_PROFILE.md). AGY run11968703-a8c SUCCESS/exit0,
 exact8files/149runner lines, zero scope violations; Codex verified tool events,
@@ -13,11 +15,12 @@ source, lock graph/licenses/hashes and final build0warnings/0errors,
 discovery10/tests10pass/0fail/0skip, no known NuGet package vulnerabilities.
 Manager fixes: xUnit cancellation tokens and same-version mtp-off package for
 VSTest/SDK10 compatibility. Prior docs preserved1054888; dispatch base72696e5.
-Primary contains documentation only, no source apply/merge/push. Next: owner
-reviews detached result, then separately authorizes main apply/later direction.
+Main source exactly matches reviewed detached source; lock hashes unchanged.
+Main locked restore/build0warnings/0errors/discovery10/tests10pass/0fail/0skip
+verified after apply. No push/deployment. Next: owner direction for a new bounded task.
 P03/rest M0/SQL changes/installs/deployment remain outside scope. Full LOCAL_DEV
 and DB/readiness unconfigured; M0/V01 not done. Historical preparation below
-describes state before this execution; edit mode is now verified for P02.
+describes state before this execution; edit and main application verified for P02.
 
 SQL assessment04/10/2026 completed: installed SQL2025 Express17.0.1000.7
 retained by ADR-162; see [assessment](plan/SQL_INSTANCE_ASSESSMENT.md).
@@ -78,7 +81,7 @@ tasks based on complexity/output limits, not calendar deadlines or weekly hours.
 Plan defines group/slice/task distinctions and manager verification gates.
 That planning request did not authorize execution. The later owner handoff
 request04/10 authorizes only P01→P02 as documented above; P02 is now reviewed
-detached only, and broad SQL/deployment/runtime-install scope remains closed.
+and applied with separate owner consent; broad SQL/deployment/runtime-install scope remains closed.
 Do not reopen approved contracts.
 Report/sequence/C2C work remains on-demand;skill installation is not integration.
 Historical checkpoints below describe their original dates,not current status.

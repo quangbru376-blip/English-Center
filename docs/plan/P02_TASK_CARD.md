@@ -1,9 +1,10 @@
 # P02 — backend and test skeleton
 
-Date: 2026-10-04. Status: reviewed PASS after manager fixes; detached, pending owner apply.
+Date: 2026-10-04. Status: reviewed PASS after manager fixes; owner-authorized main apply complete and reverified PASS.
 Manager: Codex. Implementer: Antigravity via antigravity-worker.
 Authority: current owner request and FIRST_CODE_HANDOFF, P01 prerequisites →
-P02 only. Applying code to primary is separately prohibited until owner approval.
+P02 only. Owner separately confirmed application of this exact reviewed result
+to main on 2026-10-04. This grants no later task/push/deployment authority.
 
 ## Objective and dependency evidence
 
@@ -123,7 +124,7 @@ the final lock graph, compiler/analyzer output and ten real host tests.
 2. The test project references that real entry point and hosts it in memory.
 3. Requests demonstrate that missing functionality/profile cannot report success.
 4. Solution/SDK/dependency pins make builds reproducible; locks follow restore.
-5. All source remains in a detached worktree until owner approves application.
+5. Owner approved main application; the original detached review tree is retained.
 
 ## Execution record
 
@@ -211,5 +212,25 @@ the current NuGet known-vulnerability report, not a full security certification.
 P01 P02 prerequisites complete. Full LOCAL_DEV/profile/DB/readiness/security/
 patch/blocklist/backup/SQL/API/browser/race/load/recovery evidence remains
 unconfigured or unverified as listed in M0_LOCAL_PROFILE. M0/V01 not done.
-Next action: owner reviews this result and separately authorizes main apply and
-later direction. P03/SQL/rest M0 remain outside scope; do not auto-dispatch.
+Next action: owner direction for a new bounded task. P03/SQL/rest M0 remain
+outside scope; do not auto-dispatch.
+
+### Owner-authorized main application — 2026-10-04
+
+Owner explicitly confirmed the proposal to apply code and lockfiles from
+d9eb194 to main. Clean primary pre-apply HEAD a6b4fa4f1c00cf6af7ff199221e83bc7f4295be9;
+cherry-pick succeeded without conflicts, producing
+df7cd9ac3b7f8b54e6b2814255ca5c424d768b99. Exactly the ten reviewed files applied;
+no new source edits or dependencies, no push/deployment. Earlier detached-only
+statements in the execution record describe the worker/review stage.
+
+Codex used the same backend-clean-code/code-review sources and routing overrides
+listed above; no new worker dispatch or sharing needed. Independently reran from
+primary backend: locked restore, build --no-restore -warnaserror, test discovery
+and test --no-build --no-restore. All exit0; build0warnings/0errors, discovery10,
+tests10pass/0fail/0skip (447ms reported test duration). Source diff between
+reviewed detached commit and main for .gitignore/backend is empty; both lock
+SHA256 values above unchanged. git diff --check passed. **PASS on main.**
+No need to repeat unchanged package audit; original graph/provenance/license/
+vulnerability evidence above remains applicable. Full LOCAL_DEV/DB/business
+readiness and M0/V01 remain incomplete. Original detached tree retained.

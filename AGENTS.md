@@ -23,8 +23,9 @@ planning in `docs/plan/implementation-plan.md` and `docs/plan/M0_QUALITY_PLAN.md
 On 2026-10-04 the owner requested a handoff for the next chat to begin the
 first coding stage: complete P01 prerequisites then implement/review P02
 backend/test skeleton under docs/plan/FIRST_CODE_HANDOFF.md. P01 P02 prerequisites
-and reviewed P02 PASS are now recorded in docs/plan/P02_TASK_CARD.md; source is
-retained in a detached worktree only, not this primary checkout.
+and reviewed P02 PASS are now recorded in docs/plan/P02_TASK_CARD.md. The owner
+separately confirmed main application; P02 is applied and reverified on main
+at df7cd9a, with the original detached worktree retained for evidence.
 Other tasks, SQL changes, runtime installation and deployment
 are outside that initial scope. Worker code stays detached until owner authorizes
 primary-checkout application. Do not infer broader permission from design acceptance.

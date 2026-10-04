@@ -1,7 +1,8 @@
 # P01 — local bootstrap profile
 
 Updated: 2026-10-04. P02 SDK/package/test-host prerequisites resolved;
-restore/build/discovery and ten real host tests verified in the detached P02 tree.
+restore/build/discovery and ten real host tests verified in detached P02, then
+reverified on main after explicit owner-authorized application (df7cd9a).
 This is a nonsecret inventory and manifest, not a configured business profile.
 
 ## Verified inventory and choices
@@ -74,7 +75,7 @@ Missing profile/schema never means business ready. No health surface is required
 in P02; future readiness must implement E04_RUNTIME_PROFILE completely.
 D12/D13 remain owner-deferred; no need to re-ask them for this empty skeleton.
 
-## Manager commands (from detached worktree)
+## Manager commands (detached review and applied main)
 
 Run dotnet commands from backend so the SDK pin applies:
 

@@ -44,7 +44,9 @@ Adding or replacing a framework/package requires owner approval.
 
 - Agree on the complete business/workflow/database/architecture baseline
   before discussing implementation planning. The active design plan is
-  `docs/plan/design-baseline.md`; application implementation has not started.
+  `docs/plan/design-baseline.md`; accepted E01–E05 now precede bounded coding.
+  P02 empty backend/test skeleton is applied and verified on main; business
+  implementation remains pending. See `docs/plan/P02_TASK_CARD.md`.
 - Correct business rules and complete end-to-end flows take priority over
   polish.
 - Payments happen outside the application and are recorded manually.

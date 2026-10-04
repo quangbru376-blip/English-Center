@@ -118,7 +118,9 @@ Handoff này đã được thực hiện cho đúng P01 prerequisites → P02. X
 [P02 task card](P02_TASK_CARD.md) và [P01 manifest](M0_LOCAL_PROFILE.md).
 AGY SUCCESS/exit0/scope pass; Codex sửa hai điểm trong paths hiện có, kiểm
 build sạch và discovery10/tests10pass, audit locks/licenses/hashes/NuGet.
-Final PASS tại detached d9eb194, chưa apply vào primary. Không mở P03/SQL/M0.
+Final PASS tại detached d9eb194; owner sau đó xác nhận apply vào primary,
+main df7cd9a reverified locked restore/build sạch/discovery10/tests10pass.
+Không mở P03/SQL/M0; original detached tree được giữ làm evidence.
 Các bước workflow bên dưới được giữ làm protocol; mốc edit chưa chạy là trạng
 thái lúc handoff được soạn, hiện bounded P02 edit đã kiểm chứng.
 
@@ -161,6 +163,6 @@ CURRENT_STATE/TODO/active plan; ARCHITECTURE chỉ khi implementation đã đư�
 verified (nêu rõ nếu chỉ worktree, primary chưa có source). Không mark M0/V01
 done từ skeleton. Pending apply vẫn là pending, không fake integrated baseline.
 
-Sau P02 reviewed chờ owner apply và direction cho task tiếp. Chưa tự dispatch
+P02 đã reviewed và apply theo owner xác nhận; chờ direction cho task tiếp. Chưa tự dispatch
 P03 hoặc cả M0. Chỉ hỏi quyết định mới cần thiết; không mở lại approved design/
 SQL/operator, không yêu cầu deadline hoặc tuần làm việc.
