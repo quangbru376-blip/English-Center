@@ -1,0 +1,15 @@
+[Bb]in/
+[Oo]bj/
+TestResults/
+.vs/
+.idea/
+.vscode/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+.env
+.env.*
+*.pem
+*.key
+*credentials*
