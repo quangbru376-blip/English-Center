@@ -27,6 +27,12 @@ schedules and inclusive date filters as half-open UTC bounds, rejecting
 unrepresentable/invalid/ambiguous conversions. No host timezone/clock fallback.
 No DI/endpoint consumer yet; those integrate the primitives in future tasks.
 No new packages. Original detached P02/P03/P05 trees retained for evidence.
+P04 applied/reverified on main d9840bd (reviewed6a5269c); see
+[task card](plan/P04_TASK_CARD.md). Common/Validation adds NonsecretText
+(UTF16 validation, trim/NFC/codepoint length), ContactNormalizer (ASCII CI email,
+canonical0 phone) and StudentBirthDateValidator using P05 Vietnam clock.
+Helpers do not process passwords, perform uniqueness queries or expose routes.
+No new dependencies.79P04 tests bring main total to120pass/0fail/0skip.
 `instructions/` is a directive/reference inbox and is not part of the planned
 runtime architecture.
 

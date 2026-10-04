@@ -4,21 +4,20 @@ Last updated: 2026-10-04
 
 ## Current task
 
-P03 and P05 reviewed PASS, applied and reverified on main on 2026-10-04.
-P03 main6cb2590 (reviewed c5e4eac): npm ci/lint/typecheck/build PASS, audit0;
-three-width browser evidence in [P03 card](plan/P03_TASK_CARD.md).
-P05 main8784686 (reviewed 6e5abe5): controlled TimeProvider clock, UTC
-millisecond formatting, explicit Vietnam conversion and inclusive date ranges.
-[Task card/evidence](plan/P05_TASK_CARD.md): AGY59975c99-865 SUCCESS/exit0,
-exact4files/494workerlines/zero scope violations; Codex full event/source review,
-manager overflow/portability corrections, final4files/522lines. Detached and
-main locked restore/build0warnings/0errors/41tests pass (31time+10startup),
-0fail/0skip. Source matches reviewed tree; package locks unchanged.
-Standing owner authorization (ADR-163): apply each reviewed PASS authorized
-stage to main without asking again; report issues requiring owner action.
-No active blocker. P05 complete; P04 is next proposed task, not started.
-SQL/migrations/install/deployment and rest M0 remain outside this request.
-No push. Full LOCAL_DEV/readiness and M0/V01 incomplete.
+P04 reviewed PASS and applied/reverified on main d9840bd on2026-10-04;
+[task card/evidence](plan/P04_TASK_CARD.md), detached6a5269c retained.
+AGY81794616-978 SUCCESS/exit0/exact6files613workerlines/zero scope violations.
+Codex inspected all19tool calls and full sources; corrected NFC/surrogate
+fixtures and email parser gaps. Final6files627lines; no packages/locks/P05/
+Program/frontend/SQL changes. Main matches reviewed source, locked restore/
+build0warnings/0errors/full120tests pass (79P04+31P05+10startup),0fail/0skip.
+Pure normalization/DOB primitives; no API/DB uniqueness integration yet.
+P03 main6cb2590 and P05 main8784686 remain applied PASS.
+Standing owner authority ADR-163: auto-apply reviewed PASS authorized stages,
+request owner action only for unresolved issues. No blocker. P04 complete;
+next proposed P06 strict scalar/version/numeric parsers is not started.
+SQL/migrations/install/push/deployment/rest M0 outside this request; no push.
+Full LOCAL_DEV/readiness and M0/V01 incomplete.
 ### Applied P02 checkpoint
 
 P01 prerequisites needed by P02 complete; P02 reviewed **PASS** after two

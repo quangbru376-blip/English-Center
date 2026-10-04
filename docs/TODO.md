@@ -10,10 +10,10 @@
 
 ## Next
 
-- P03 applied PASS (6cb2590); [P05](plan/P05_TASK_CARD.md) applied PASS
-  (8784686), main41tests pass. Next proposed P04 needs bounded task scope;
-  no active implementation task. Auto-apply reviewed PASS authorized stages
-  under ADR-163; no repeat main-apply approval.
+- [P04](plan/P04_TASK_CARD.md) applied/reverified PASS (d9840bd), main120tests
+  pass. P03/P05 remain applied PASS. Next proposed P06 strict scalar/version/
+  numeric parsing needs a bounded contract, split if large; not started.
+  Auto-apply reviewed PASS authorized stages under ADR-163.
 - [P02 task card](plan/P02_TASK_CARD.md):
   P01 P02 prerequisites complete; reviewed d9eb194 applied to main as df7cd9a
   with explicit owner consent. Main locked restore/build0warnings/0errors,

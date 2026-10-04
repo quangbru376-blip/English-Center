@@ -87,3 +87,52 @@ Vietnam midnight/year/leap rollover and null clock. No real clock assertions.
 Codex audits all tool events/receipt/diff, builds warnings as errors with locked
 restore and runs all P02/P05/P04 tests. PASS -> exact snapshot apply + main checks.
 skill_verification: pending actual implementation and checks.
+
+## Execution, review and main application — 2026-10-04
+
+Dispatch base4bb7b7a. AGY run81794616-978, conversation
+4c80dede-0d7b-41ba-bb70-24a83a4a2cc5; SUCCESS/exit0/exact6files/
+613runnerlines/zero violations. Codex inspected all19tool calls:13view_file
+(6complete context reads,1missing allowed-file probe,6final reads) and6writes.
+No scans/linked reads/commands/network/browser/MCP/subagents observed.
+[Contract](p04-evidence/worker-contract.json),
+[receipt](p04-evidence/worker-receipt.json),
+[hashes](p04-evidence/verification-hashes.json). Raw events remain local only.
+
+Independent initial locked restore and build0warnings/0errors succeeded;
+initial tests106pass/5fail: wrong NFC fixture codepoint and malformed UTF16
+InlineData serialized into replacement characters before validation. Manager
+corrected Vietnamese fixture and constructs raw surrogate strings inside test
+using integer scenario attributes, preserving six distinct invalid UTF16 cases.
+Added NFC-after-normalization length and optional address boundary assertions.
+
+Manager also closed observed MailAddress parser leniency for unquoted local
+trailing dots and empty/edge-hyphen domain labels, without dot/tag rewriting,
+DNS/TLD/verification/prefix/age rules. Added exact-address comment/list/control
+regressions and zero-prefix phone case proving no carrier catalogue constraint.
+This is the bounded ASCII/exact-address BCL profile, not a claim of full RFC or
+mail deliverability verification; no email local64 restriction was added beyond
+accepted total254. Exceptions never echo supplied data.
+
+Final code6files/627insertions within650cap; complete source/scope and staged
+whitespace review PASS. No project/package/lock/Program/P05/frontend changes.
+Skill behavior verified by context events, actual normalization/cutoff source,
+negative tests and independent validation. skill_verification: **PASS**.
+Codex code-review verdict: **PASS after manager corrections**, no unresolved
+P04 must-fix. Endpoints/auth/DTO binding/SQL/migrations/UI N/A; actual global
+uniqueness enforcement and exception-to-public-error mapping remain future
+service/DB/P07 work. No claim of whole slice/M0 readiness.
+
+Detached final6a5269c45ac450b119ff4d076e9801de854fe259 retained at
+C:\Users\asus\AppData\Local\Temp\codex-antigravity-worker\worktrees\main_workplace-81794616-978.
+Applied under ADR-163 as main d9840bdaa885dab951d2c90f70fe1f46aa5e6ff6.
+Exact backend source equality verified. Detached and main locked restore,
+warning-as-error build0warnings/0errors and120tests pass/0fail/0skip verified
+(79P04 +31P05 +10P02). [Main test counts](p04-evidence/main-test-counts.json).
+No push/deployment or installation. P04 complete; next proposed task is P06
+strict scalar/version/numeric parsing, not started in this bounded request.
+
+Code flow: callers choose required/optional nonsecret text and field limit;
+helper validates UTF16 then trims/NFC/counts scalars. Contacts return comparable
+canonical email/phone values for later uniqueness checks. Student DOB validator
+uses injected Vietnam BusinessClock; API parsing and public errors come later.
