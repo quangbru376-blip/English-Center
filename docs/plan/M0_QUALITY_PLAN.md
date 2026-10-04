@@ -1,26 +1,14 @@
 # M0 — kế hoạch task theo chất lượng
 
-Latest 2026-10-04: P03 applied/reverified PASS at 6cb2590; bounded P05 active.
-Owner now authorizes automatic main application after review PASS; no repeat
-approval required. Older pending-apply restrictions below are superseded.
-No authority to start unrelated stages, SQL/migrations/install/deployment.
-See P05_TASK_CARD.md.
-
-Cập nhật: 04/10/2026. Status: P02 applied PASS; P03 reviewed detached PASS, chờ owner apply.
-
-Nguyên tắc chia theo chất lượng đã được owner yêu cầu. Danh sách task/phạm vi
-bên dưới là task families để materialize từng contract. Owner04/10/2026 yêu
-cầu chat kế tiếp viết code đầu tiên: P01 prerequisite → P02 backend/test
-skeleton, theo [FIRST_CODE_HANDOFF](FIRST_CODE_HANDOFF.md). Đã hoàn thành scope
-đầu trong detached worktree; [task card](P02_TASK_CARD.md) ghi contract/receipt/
-manager fixes và kiểm chứng thật. Build sạch, discovery10/tests10pass;
-review commit d9eb194 đã apply vào main df7cd9a sau owner xác nhận; main
-locked restore/build/discovery10/tests10pass đã kiểm lại. M0/V01 chưa hoàn tất.
-Owner sau đó mở riêng P03; [task card](P03_TASK_CARD.md) ghi verified detached
-c5e4eac, typecheck/lint/build/audit0 và browser375/768/1280 pass. Chưa apply P03;
-rest M0/SQL changes/runtime installs/deployment chưa được mở. M0–M4 là nhóm
-phạm vi, không lịch làm việc.
-
+Updated 2026-10-04: P02/P03/P05 applied and reverified PASS on main.
+P03:6cb2590 (reviewed c5e4eac), npm scripts/audit and browser evidence in
+[P03 card](P03_TASK_CARD.md). P05:8784686 (reviewed 6e5abe5), controlled clock
+and Vietnam conversions; locked restore/build0warnings/0errors and41tests
+pass, see [P05 card](P05_TASK_CARD.md). Original detached trees retained.
+Owner standing authorization ADR-163 permits automatic main application of
+reviewed PASS stages authorized for implementation; no repeat approval needed.
+P05 complete; next proposed P04 is not started. Rest M0/SQL/migrations/runtime
+install/push/deployment remain outside this request. M0/V01 incomplete.
 ## 1. Đầu ra M0 và nguồn hợp đồng
 
 M0 cung cấp nền database/runtime đúng baseline và một luồng tài khoản thật:

@@ -69,4 +69,53 @@ authorization, followed by main verification. Retain detached evidence.
 
 ## Execution
 
-Prepared; dispatch/review/evidence to be recorded after actual verification.
+## Verified execution — 2026-10-04
+
+implementation_skills: backend-clean-code; review_skills: code-review;
+integration: antigravity-worker (Codex manager). skill_sources and
+applicable_overrides/read_context are recorded above; skill_verification PASS.
+Context sharing for this bounded P05 continuation follows the owner's explicit
+P05 instruction in the established AGY workflow; no wider source/secret access.
+
+Dispatch base 6237ec4; AGY run59975c99-865, conversation
+ a026e033-24d7-48f9-8093-6c48011b56b9. SUCCESS/exit0;
+receipt exactly4files/494runnerlines/zero violations. All13tool calls audited:
+9view_file (4complete contexts,1missing allowed-file probe,4final sources) and
+4write_to_file; no scans, commands, network, browser, MCP or subagents.
+[Contract](p05-evidence/worker-contract.json),
+[receipt](p05-evidence/worker-receipt.json),
+[hashes](p05-evidence/verification-hashes.json).
+Raw events retained only in local runner directory; no transcript in memory.
+
+Initial worker build0warnings/0errors/tests39pass. Codex found and corrected
+ToDate upper overflow: TimeZoneInfo.ConvertTime can silently saturate; explicit
+local-tick bound now throws instead. Reject invalid/ambiguous zone times rather
+than guessing. Replaced year1 fixed-offset test with representable round-trip,
+since historical zone data can vary by OS. Added overflow/non-Gregorian culture
+regressions and strengthened submillisecond cutoff test with fractional cutoff.
+Final exact4files/522insertions, under600cap; staged diff --check PASS.
+No package/project/lock/Program/frontend changes. Historical timezone transition
+rules and alternate OS runtimes not executed; modern UTC+7 mapping verified on
+this installed Windows/.NET10 runtime. No claim of Linux/historical parity.
+
+Codex verdict: **PASS after manager corrections**, no unresolved P05 must-fix.
+Locked restore, warning-as-error build0warnings/0errors, full41tests
+(31time +10startup) pass/0fail/0skip in detached worktree. Exact dates/offsets,
+millisecond truncation, moving/single-sample clock, equality and fractional
+cutoff, minute guard, date ranges/overflow and invariant formatting verified.
+Auth/DB/DTO/API/UI/SQL/migration checks N/A: this task adds pure time primitives.
+Exception-to-400 mapping and DI integration belong to their future consumers.
+
+Final detached 6e5abe576f90292ab0bf1290885a5448e2eb6b99 at
+C:\Users\asus\AppData\Local\Temp\codex-antigravity-worker\worktrees\main_workplace-59975c99-865.
+Applied automatically under owner authorization as main
+87846864655158d2ae7bff6b311932f59284dffd. Main source equals reviewed detached;
+main locked restore/build0warnings/0errors/full41pass/0fail/0skip reverified.
+[Test counts](p05-evidence/main-test-counts.json). Both original P03/P05 trees
+retained; no push/deployment. P05 complete; next proposed dependency task P04
+requires a bounded scope, and is not started by this request.
+
+Code flow: consumers inject TimeProvider into BusinessClock to control now;
+VietnamTime converts instants/local minutes and inclusive dates using explicit
+Vietnam zone; only formatting/storage clock output truncates precision; cutoff
+comparison preserves actual instant. No API consumer exists yet.

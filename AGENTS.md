@@ -26,13 +26,12 @@ backend/test skeleton under docs/plan/FIRST_CODE_HANDOFF.md. P01 P02 prerequisit
 and reviewed P02 PASS are now recorded in docs/plan/P02_TASK_CARD.md. The owner
 separately confirmed main application; P02 is applied and reverified on main
 at df7cd9a, with the original detached worktree retained for evidence.
-Owner authorized P03 application and bounded P05 on 2026-10-04. P03 applied
-as 6cb2590862cac2469e4dce76b704f72cbdd254a0, main npm ci/lint/typecheck/build
-PASS; source matches reviewed c5e4eac. P05 is active under
-docs/plan/P05_TASK_CARD.md, AGY worker with Codex manager.
-Standing owner authorization: apply each reviewed PASS stage to main without
-asking again; report issues requiring owner action. This does not authorize
-starting unrelated stages, SQL/migrations, installation or deployment.
+P03 is applied/reverified PASS at 6cb2590; P05 at 8784686, with31time
+plus10startup tests passing; see docs/plan/P03_TASK_CARD.md and P05_TASK_CARD.md.
+Standing owner authorization (ADR-163): apply reviewed PASS stages already
+authorized for implementation to main without asking again. Report issues
+requiring owner action. P05 is complete; P04 is not started. This permission
+does not open unrelated tasks, SQL/migrations, installs, push or deployment.
 
 Project-local skills live in `.agents/skills/`. Read the selected skill's
 complete `SKILL.md` before using it. Installing a skill does not automatically

@@ -4,13 +4,21 @@ Last updated: 2026-10-04
 
 ## Current task
 
-Owner authorized P03 application and bounded P05 on 2026-10-04. P03 applied
-as 6cb2590862cac2469e4dce76b704f72cbdd254a0, main npm ci/lint/typecheck/build
-PASS; source matches reviewed c5e4eac. P05 is active under
-[task card](plan/P05_TASK_CARD.md), AGY worker with Codex manager.
-Standing owner authorization: apply each reviewed PASS stage to main without
-asking again; report issues requiring owner action. This does not authorize
-starting unrelated stages, SQL/migrations, installation or deployment.
+P03 and P05 reviewed PASS, applied and reverified on main on 2026-10-04.
+P03 main6cb2590 (reviewed c5e4eac): npm ci/lint/typecheck/build PASS, audit0;
+three-width browser evidence in [P03 card](plan/P03_TASK_CARD.md).
+P05 main8784686 (reviewed 6e5abe5): controlled TimeProvider clock, UTC
+millisecond formatting, explicit Vietnam conversion and inclusive date ranges.
+[Task card/evidence](plan/P05_TASK_CARD.md): AGY59975c99-865 SUCCESS/exit0,
+exact4files/494workerlines/zero scope violations; Codex full event/source review,
+manager overflow/portability corrections, final4files/522lines. Detached and
+main locked restore/build0warnings/0errors/41tests pass (31time+10startup),
+0fail/0skip. Source matches reviewed tree; package locks unchanged.
+Standing owner authorization (ADR-163): apply each reviewed PASS authorized
+stage to main without asking again; report issues requiring owner action.
+No active blocker. P05 complete; P04 is next proposed task, not started.
+SQL/migrations/install/deployment and rest M0 remain outside this request.
+No push. Full LOCAL_DEV/readiness and M0/V01 incomplete.
 ### Applied P02 checkpoint
 
 P01 prerequisites needed by P02 complete; P02 reviewed **PASS** after two

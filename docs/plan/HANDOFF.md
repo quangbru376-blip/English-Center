@@ -1,21 +1,16 @@
 # Handoff — E01–E05 và complete design baseline đã Accepted
 
-Latest 2026-10-04: P03 applied/reverified PASS at 6cb2590; bounded P05 active.
-Owner now authorizes automatic main application after review PASS; no repeat
-approval required. Older pending-apply restrictions below are superseded.
-No authority to start unrelated stages, SQL/migrations/install/deployment.
-See P05_TASK_CARD.md.
+## Latest checkpoint — P03/P05 applied PASS
 
-Cập nhật04/10/2026. Workspace:C:\Study\SOEN\main_workplace.
-
-## Checkpoint mới nhất — P03 reviewed detached PASS
-
-Owner mở riêng P03 sau P02; [task card/receipt/browser evidence](P03_TASK_CARD.md)
-ghi final detached c5e4eac, manager typecheck/lint/build pass, npm audit0,
-browser375/768/1280/contrast/absence of API traffic đã kiểm; preview đã dừng.
-Chưa apply frontend vào main. Tiếp theo owner review/quyền apply P03 riêng;
-không tự P05/SQL/rest M0. P02 checkpoint applied phía dưới vẫn đúng.
-
+Updated 2026-10-04: P02/P03/P05 applied and reverified PASS on main.
+P03:6cb2590 (reviewed c5e4eac), npm scripts/audit and browser evidence in
+[P03 card](P03_TASK_CARD.md). P05:8784686 (reviewed 6e5abe5), controlled clock
+and Vietnam conversions; locked restore/build0warnings/0errors and41tests
+pass, see [P05 card](P05_TASK_CARD.md). Original detached trees retained.
+Owner standing authorization ADR-163 permits automatic main application of
+reviewed PASS stages authorized for implementation; no repeat approval needed.
+P05 complete; next proposed P04 is not started. Rest M0/SQL/migrations/runtime
+install/push/deployment remain outside this request. M0/V01 incomplete.
 ## Checkpoint code đầu — P02 applied/reverified PASS trên main
 
 P01 prerequisites cho P02 đã hoàn tất; P02 **PASS** sau hai manager fixes,

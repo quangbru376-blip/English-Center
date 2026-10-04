@@ -8,16 +8,25 @@ see [P02 task card](plan/P02_TASK_CARD.md). Its net10.0 API has only
 CreateBuilder/Build/Run plus public partial Program; no application endpoints.
 The xUnit executable references the real API and uses WebApplicationFactory's
 in-process TestServer for ten verified missing-route cases in two environments.
-Primary has no frontend, EF model, migration, auth, SQL connection or ready profile.
-Locked restore/build and all ten startup tests pass on main. The detached tree
-is retained as original review evidence; later tasks require owner direction.
+Primary has no EF model, migration, auth, SQL connection or ready profile.
+P02 startup tests remain unchanged; P05 adds31time tests (41total main PASS).
 
-P03 frontend is reviewed PASS in retained detached commit c5e4eac only; see
+P03 frontend applied/reverified on main6cb2590 (reviewed c5e4eac); see
 [task card](plan/P03_TASK_CARD.md). React19.3/Vite8.3/TypeScript6/Tailwind4
 entry renders one semantic noninteractive Vietnamese unavailable-functionality
-page; no router/API/auth/storage/business UI. npm lock/typecheck/lint/build and
-three-width built-page checks verified; source not applied to main.
+page; no router/API/auth/storage/business UI. npm lock/typecheck/lint/build,
+audit0 and three-width built-page checks verified.
 
+P05 applied/reverified on main8784686 (reviewed 6e5abe5); see
+[task card](plan/P05_TASK_CARD.md). Common/Time has a concrete BusinessClock
+injected with built-in TimeProvider and static VietnamTime conversion helper.
+Clock formatting/storage outputs UTC millisecond precision by truncation;
+cutoff comparison preserves raw instant, equality expired. Explicit
+Asia/Ho_Chi_Minh (Windows mapping fallback) handles Vietnam dates, minute
+schedules and inclusive date filters as half-open UTC bounds, rejecting
+unrepresentable/invalid/ambiguous conversions. No host timezone/clock fallback.
+No DI/endpoint consumer yet; those integrate the primitives in future tasks.
+No new packages. Original detached P02/P03/P05 trees retained for evidence.
 `instructions/` is a directive/reference inbox and is not part of the planned
 runtime architecture.
 

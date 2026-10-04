@@ -4258,3 +4258,18 @@ quality/skill gates unchanged; D12/D13 owner decisions remain deferred. Other ch
 starts with P01 then P02 subject to its explicit execution authorization. No app
 code/DDL/DML, database creation, existing DB/config changes, installation, worker
 dispatch, merge/push or deployment in this assessment.
+
+## ADR-163: Apply authorized implementation stages automatically after review PASS
+
+Status: Accepted — 2026-10-04
+
+Owner explicitly requested applying P03 and continuing P05, and from now on
+applying each reviewed PASS stage to main, notifying only when an issue needs
+attention. Codex remains manager; bounded AGY contracts remain detached until
+independent review, scope checks and required validation produce PASS.
+Codex may then apply the exact reviewed snapshot and reverify main without a
+new approval question. Problems keep the stage incomplete until resolved;
+request owner action only when needed. This grants application authority for
+stages authorized for implementation, not permission to start all M0 tasks,
+change SQL/migrations, install runtimes, push or deploy. P03/P05 applied and
+reverified; their task cards hold actual commit/evidence details.

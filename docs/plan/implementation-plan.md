@@ -1,18 +1,15 @@
 # Implementation planning — discussion draft
 
-Latest 2026-10-04: P03 applied/reverified PASS at 6cb2590; bounded P05 active.
-Owner now authorizes automatic main application after review PASS; no repeat
-approval required. Older pending-apply restrictions below are superseded.
-No authority to start unrelated stages, SQL/migrations/install/deployment.
-See P05_TASK_CARD.md.
-
-Updated: 2026-10-04. Status: P02 applied PASS; separately authorized P03 reviewed detached PASS, pending owner application.
-
+Updated 2026-10-04: P02/P03/P05 applied and reverified PASS on main.
+P03:6cb2590 (reviewed c5e4eac), npm scripts/audit and browser evidence in
+[P03 card](P03_TASK_CARD.md). P05:8784686 (reviewed 6e5abe5), controlled clock
+and Vietnam conversions; locked restore/build0warnings/0errors and41tests
+pass, see [P05 card](P05_TASK_CARD.md). Original detached trees retained.
+Owner standing authorization ADR-163 permits automatic main application of
+reviewed PASS stages authorized for implementation; no repeat approval needed.
+P05 complete; next proposed P04 is not started. Rest M0/SQL/migrations/runtime
+install/push/deployment remain outside this request. M0/V01 incomplete.
 ## Authority and baseline
-
-Owner subsequently authorized only bounded P03. [Task card](P03_TASK_CARD.md)
-records reviewed c5e4eac and real npm/script/browser verification. P03 source
-remains detached pending separate owner apply; later M0/SQL/deployment unopened.
 
 Owner explicitly requested discussing the coding plan after E01–E05 acceptance.
 The wider milestone proposal remains a planning baseline. Owner04/10/2026
