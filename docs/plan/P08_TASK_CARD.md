@@ -29,7 +29,7 @@ license under Resources/PasswordBlocklist. Review2026-10-04; next2027-01-04.
 Finite corpus is not exhaustive breach detection. Case-sensitive full-string
 Ordinal lookup preserves accepted raw semantics; no substring/fuzzy transforms.
 
-## Part A — Loader and policy,4files/350lines
+## Part A — Loader and policy,2production files/250lines
 
 Common/Security/OfflinePasswordBlocklist.cs and PasswordPolicy.cs plus matching
 tests under backend/tests/EnglishCenter.Tests/Common/Security. Loader static
@@ -48,9 +48,9 @@ reject exact blocklist match. Test actual listed15+character password privately
 from corpus without printing it, Unicode supplementary boundaries, spaces/raw
 normalization distinction, invalid UTF16 created inside tests rather than attrs.
 
-## Part B — Hashing/generator,3files/300lines
+## Part B — Hashing/generator,2production files/220lines
 
-CredentialHasher.cs, TemporaryPasswordGenerator.cs, CredentialTests.cs.
+CredentialHasher.cs, TemporaryPasswordGenerator.cs; Codex writes CredentialTests.cs (1file/250lines).
 Hash(string password) uses injected PasswordPolicy then ASP.NET Core built-in
 PasswordHasher<object> IdentityV3 explicitly220000 PBKDF2-HMAC-SHA512 iterations,
 128bit random salt/256bit subkey. No custom crypto/no package. Verify(string?
@@ -76,4 +76,5 @@ blocklist before host build and registers singleton policy/hasher/generator.
 No credential network/logging and no business routes. Existing startup tests
 exercise actual eager load; direct loader tests establish missing/corrupt fail.
 skill_verification: pending worker audit, Codex build/tests/review/main recheck.
-Status: prerequisite source verified; code not yet started.
+Status: source integrated with exact-byte .gitattributes, output/publish copying; P07 main357PASS. P08 code in progress.
+

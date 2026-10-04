@@ -84,5 +84,25 @@ request gate/state precedence are integration gates when routes/profile exist.
 
 skill_verification: selected skills read in full by Codex; worker read/tool scope,
 source review, locked restore/build/tests and main recheck pending.
-Status: in progress; no PASS/application claim yet.
+Status: complete within primitive scope, Codex review PASS applied/reverified main.
+
+## Verified checkpoint2026-10-04
+
+A SUCCESS run341d74e7-a7e3files265runner lines/zero scope violations. Initial
+run7e67640c-145 rejected677>550, never applied. Manager removed redundant enum/
+method aliases, sealed typed exception, made fieldErrors snapshots independent,
+cleared unstarted response and added no-store.34new independent tests; reviewed
+effc28e/main653e1cc, locked restore/build0warnings0errors/321PASS.
+B SUCCESS21cd1e2d-8771file196lines/zero violations. Manager fixed strict UTF8
+encoding and escaped-surrogate decoding so malformed input is400 not500;36new
+tests include test-only guard precedence and real P04/P06 adapters. Reviewed
+8ddfb37/main5a49afa. Main5f266a9 rechecked locked restore/build0warnings0errors/
+357PASS/0fail/0skip after fixing duplicate SDK Content in P08 prerequisite.
+No business/test endpoints in production, no dependencies/DB/auth implementation.
+Test guards establish ordering only; full transport/auth/CSRF/live SQL/replay
+precedence remains a later integration gate, explicitly not claimed implemented.
+skill_verification: complete backend skill/routing reads in successful runs;
+Codex audited file-only tools, caps and source behavior, ran checks independently.
+AGENTS was inherited context in A(no explicit view event); B explicitly read it.
+Worktrees retained. Source/diff and every tool path reviewed; no worker commands.
 
