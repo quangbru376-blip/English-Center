@@ -13,3 +13,8 @@ TestResults/
 *.pem
 *.key
 *credentials*
+
+# Frontend generated output and logs
+node_modules/
+dist/
+npm-debug.log*
