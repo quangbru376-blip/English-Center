@@ -53,6 +53,35 @@ null, strict parser adapters for P04–P06. No implicit JSON coercion. Validator
 run only after caller auth/CSRF guards; test host proves failing guard prevents
 body inspection and generic safe response. No SQL/state/live guards implemented.
 
+Part B production only: Common/Serialization/StrictJsonObject.cs (1file/220lines).
+Codex independently writes StrictJsonObjectTests.cs and BindingPrecedenceTests.cs
+(2files/350lines). Read context includes reviewed ApiErrorException.cs and
+StrictScalars.cs only in addition to mandatory files. Sealed StrictJsonObject
+Parse(string? json,IReadOnlyCollection<string> allowed,IReadOnlyCollection<string>
+required) returns detached cloned JsonElements in private dictionary, Ordinal
+names, reject unknown/duplicate root properties and duplicates recursively at
+every depth including escaped equivalent names. Object root only, no comments/
+trailing commas, maxdepth64. Missing required property400; explicit null presence
+kept for caller optional semantics. Unknown/untrusted names never echoed in
+fieldErrors; root/malformed/duplicate errors use Validation() empty fields.
+Validate caller schema required subset allowed and distinct nonempty names before
+parsing as programmer ArgumentException, not client400. Only declared simple
+ASCII camelCase field names allowed. Contains(field) preserves presence.
+ReadString(field) requires present string (including empty as raw value), no
+coercion/trim/normalization; ReadNullableString(field) absent/null→null but wrong
+type400. ReadBoolean(field) exact JSON true/false; ReadInt32(field,min,max) delegates
+StrictScalars with range config checked before binding. ReadParsed<T>(field,
+Func<string?,T> parser) uses raw required string then P04/P06 parser; catch only
+parser ArgumentException/FormatException/OverflowException into Validation(field),
+no raw value echoed. Null parser and invalid schema/config remain programmer500.
+Tests malformed/type/unknown/case/duplicate nested/escaped names, absent/null,
+integer lexemes and P04/P06 adapters including exact money/report38/RV/time,
+guard-before-binding test middleware with failing auth/CSRF/precondition and
+malformed JSON proves401/403 before400; authorized malformed gets400. This is
+ordering evidence for primitives/test hosts, not an authentication implementation.
+Transport/body-size/content-type/deadline profile enforcement and real auth/CSRF/
+request gate/state precedence are integration gates when routes/profile exist.
+
 skill_verification: selected skills read in full by Codex; worker read/tool scope,
 source review, locked restore/build/tests and main recheck pending.
 Status: in progress; no PASS/application claim yet.
