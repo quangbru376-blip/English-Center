@@ -117,3 +117,5 @@ same4file scope and concise objective, not continuation of failed output.
 [Rejected receipt](p06-evidence/part-b-rejected-receipt.json). Raw events local.
 
 Part B retry fd0266d7-7d9 also rejected for AGY output token limit (ERROR, CLIexit0/runnerexit1,4files493lines/zero violations); never applied. Recovery splits Part B into B1 ExactNumbers+tests (2files/350lines) and B2 ReportAmountCodec+tests (2files/180lines). Existing exact API/grammar/gates remain; no broadening. New workers read same4contexts and only their own2output paths. Generate independently, no failed-output access.
+
+B1 fccbc3ad-28c rejected again (AGY output-limit ERROR,2files310lines/zero scope violations); rejected code not applied. Codex manager now independently implements only the authorized ExactNumbers+tests in a fresh detached worktree, same public API/350line cap, following backend skill and independent review. Successful AGY A/B2 remain applied; this is bounded recovery, not extra task scope.
