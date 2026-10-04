@@ -1,0 +1,25 @@
+{
+  "license": "MIT",
+  "revision": "56da8d991239cc52b0da594db53457504a757670",
+  "source": "SecLists",
+  "mergedCount": 15310,
+  "files": [
+    {
+      "sha256": "68782D6A4A19A4768D5F15DD66BD534E7A33055CC755411E33F16D18C50FDCCE",
+      "path": "10k-most-common.txt",
+      "records": 10001
+    },
+    {
+      "sha256": "EA4C906EBB0B26790C549A047962573F72CCC26F42212B83D70165D9C03FB72B",
+      "path": "probable-v2_top-12000.txt",
+      "records": 12645
+    },
+    {
+      "sha256": "3DBDC93D5F8829DE0941744841730A09C106D0732E5AE0E98CA1D77BE7DED66C",
+      "path": "LICENSE"
+    }
+  ],
+  "nextReviewDate": "2027-01-04",
+  "comparison": "Ordinal exact full string; no transforms",
+  "reviewDate": "2026-10-04"
+}
