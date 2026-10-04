@@ -91,3 +91,27 @@ MCP/subagents; only4files of current part, no other part/P04/P05 modifications.
 Codex audits all events/receipt/full source/scope; locked restore, warning-as-error
 build, full tests. Each PASS exact snapshot auto-applied and main reverified.
 skill_verification pending actual checks; no worker validation claims accepted.
+
+## Part A verified checkpoint
+
+AGY21576734-7ba SUCCESS/exit0/exact4files452runnerlines/zero violations;
+conversation da985627-7db8-45a0-b5fc-99c07ba03e37, base6549f5c.
+Complete contexts and all tools inspected; only scoped file reads/writes.
+Initial locked restore/build0warnings0errors/full206tests pass. Manager added
+literal known-byte Base64 expectation, canonical-length URL-safe rejection,
+URN/Unicode UUID, year1/year9999/year0 and Int32 min/max tests. Final4files457
+insertions under500cap; full214tests pass/0fail/0skip, staged diff check PASS.
+Code-review **PASS**, skill behavior verified; no must-fix. No routes/auth/DB/
+packages/binder integration, those checklist items N/A.
+Detached d950e6b4ba7da2262fdb2687cf04cf7736906e6e retained at
+C:\Users\asus\AppData\Local\Temp\codex-antigravity-worker\worktrees\main_workplace-21576734-7ba.
+Applied main94dd8325056ff6f19ab5ddd95251edaef1692a5d; exact4source equality,
+main build0warnings0errors/214tests PASS. No changes to locks/dependencies.
+[Contract](p06-evidence/part-a-contract.json),
+[receipt](p06-evidence/part-a-receipt.json).
+
+Part B initial run d8fd04f3-805 rejected: AGY statusERROR (output token limit),
+runner exit1 although CLIexit0,4files423lines/zero scope violations. Original
+output remains detached and was never applied. Fresh independent retry uses
+same4file scope and concise objective, not continuation of failed output.
+[Rejected receipt](p06-evidence/part-b-rejected-receipt.json). Raw events local.
