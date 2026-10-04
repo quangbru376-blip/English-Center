@@ -1,10 +1,14 @@
 # Handoff — E01–E05 và complete design baseline đã Accepted
 
-Cập nhật03/10/2026. Workspace:C:\Study\SOEN\main_workplace.
+Cập nhật04/10/2026. Workspace:C:\Study\SOEN\main_workplace.
 
-## Tiếp nhận ở chat mới — baseline Accepted, đang bàn kế hoạch viết code
+## Tiếp nhận ở chat mới — bắt đầu code P01 → P02
 
-Owner yêu cầu bàn kế hoạch viết code sau nghiệm thu. Đã mở bản thảo
+Owner ngày04/10/2026 yêu cầu handoff để chat kế tiếp viết giai đoạn code đầu:
+đọc [FIRST_CODE_HANDOFF](FIRST_CODE_HANDOFF.md), hoàn thiện P01 rồi viết/review
+P02 backend/test skeleton bằng workflow Codex manager/AGY worker. Không tự
+apply vào main, mở P03/toàn M0, SQL changes hoặc deployment.
+Owner trước đó yêu cầu bàn kế hoạch viết code sau nghiệm thu. Đã mở bản thảo
 [implementation-plan.md](implementation-plan.md), đề xuất M0–M4; chưa duyệt
 thứ tự/mốc thực thi. Owner chọn04/10/2026 chia task theo chất lượng/độ phức
 tạp/giới hạn output; không cần hạn nộp hoặc giờ mỗi tuần để chia việc.
@@ -28,11 +32,18 @@ nghiệm thu lại E04/E05. Nghiệm thu này chỉ chốt thiết kế,chưa im
 
 ### Checkpoint hiện tại
 
+SQL assessment04/10/2026 completed: installed SQL2025 Express17.0.1000.7
+retained by ADR-162; see [assessment](SQL_INSTANCE_ASSESSMENT.md).
+Read-only inventory/type/decimal/JSON/SHA and system-DB snapshot read succeeded;
+no app DB creation/config changes. Current RTM lacks newer patches; patch review
+before real data/exposure and encrypted-archive backup prerequisites remain.
+Next chat starts P01 package/LOCAL_DEV profile, then P02; order unchanged.
+
 - M0 order synchronized04/10/2026: docs/plan/M0_QUALITY_PLAN.md section11 holds
   proposed39family default order and Mermaid; dependencies in sections4–7.
   Start=P01 planning/profile. P05beforeP04, A04beforeA03, D07beforeSQLaudit/replay
-  evidence explicit; full readiness/skill gates retained. SQL edition comparison
-  verified from Microsoft, target2022Developer unchanged; no install/code/dispatch.
+  evidence explicit; full readiness/skill gates retained.
+  SQL target updated to installed SQL2025 Express by ADR-162; no install/code/dispatch.
 
 - Skill audit04/10/2026: AGENTS and docs/plan/SKILL_ROUTING.md now require
   scope-appropriate backend/frontend skills and Codex code-review for code tasks.
@@ -42,15 +53,17 @@ nghiệm thu lại E04/E05. Nghiệm thu này chỉ chốt thiết kế,chưa im
 - M0 detailed planning04/10/2026: docs/plan/M0_QUALITY_PLAN.md records task families,
   dependencies, evidence gates and first3proposed scopes. Local SDK10.0.200/
   Node24.16.0/npm11.13.0 checked; SQL .\SQLEXPRESS version17.0.1000.7 Express
-  is not accepted SQL2022 Developer. Prepare compatible local profile before
-  execution; full DB readiness retained. No code/installs/migrations/dispatch.
+  is now the accepted SQL2025 Express local target (ADR-162), assessed in
+  docs/plan/SQL_INSTANCE_ASSESSMENT.md. Keep this instance; no Developer install.
+  P01 still needs package/profile checks; full DB readiness retained. No app code,
+  installation, migration or dispatch performed.
 
 - Worker readiness04/10/2026: owner approved named context sharing; first run
   stopped/rejected for extra read; narrowed analyze SUCCESS/exit0,2allowedreads,
   zerochanges. Codex events/diffs/detachedHEADs/6runner tests verified.
   [Readiness](antigravity-worker-readiness.md) has durable contract/receipt.
   Actual edit mode untested; no worker changes applied/code/push/deploy.
-- All5designstages done;E01–E05 actual outputs Accepted. ADRrecords001–161
+- All5designstages done;E01–E05 actual outputs Accepted. ADRrecords001–162
   giữ trạng thái riêng;RF03=156,RF01/02/04=157–159,actualE04=160,baselineE05=161.
 - OWNER_REVIEW75rows/73accepted;chỉ D12/D13 unchecked/hoãn,originalnotes kept.
   Owner confirmation authorized only2newEchecks;mọi priorchoices/notes giữ.
@@ -70,7 +83,13 @@ nghiệm thu lại E04/E05. Nghiệm thu này chỉ chốt thiết kế,chưa im
 
 ### Việc tiếp theo và giới hạn
 
-Tiếp tục bàn bản thảo implementation-plan theo yêu cầu mới của owner.
+SQL đã đánh giá tại chat này; owner dự kiến chat khác bắt đầu code bước đầu.
+Chat đó đọc ADR-162/SQL_INSTANCE_ASSESSMENT rồi xử lý P01 trước P02 theo
+M0_QUALITY_PLAN section11, giữ skill/quality/worker apply gates. Không xem
+assessment là P01 hoàn tất hoặc cấp quyền tạo/migrate DB.
+Quyền thực thi giới hạn P01→P02 đã được owner cấp qua yêu cầu handoff04/10;
+không hỏi lại có được bắt đầu P02 khi prerequisites đủ. Chi tiết boundaries/
+worker consent và apply gate tại FIRST_CODE_HANDOFF.md.
 Không suy ra quyền code/SQL/Git/scaffold/Slice0/packages/deploy/tunnel/
 backuprestore/config/integration từ yêu cầu thảo luận kế hoạch. Khi owner yêu cầu thay design,update
 source/trace/affectedADRs;không hỏi lại quyết định/output đã Accepted.
@@ -192,7 +211,7 @@ design/FUNCTION_CATALOG.md. Tra reference/REPORT_BASELINE.md khi cần nguồn.
   - D14 / ADR-118: backup SQL hằng ngày/mã hóa/riêng ổ chính, 7 ngày/4 tuần,
     restore thử mỗi tháng; RPO24h/RTO2h mục tiêu tham chiếu, chưa đạt bằng chứng.
     Nơi lưu/quyền phải chốt trước chạy; xử lý bỏ lỡ backup khi laptop tắt.
-  - D16 / ADR-119: .NET10 LTS/EF10/SQL2022 Developer chỉ dev-test-demo nội bộ
+  - D16 / ADR-119 (lịch sử): .NET10 LTS/EF10/SQL2022 Developer chỉ dev-test-demo nội bộ; SQL choice được thay bởi ADR-162 ngày04/10/2026
     non-production, giữ stack; patch tương thích/lock sau baseline, production
     cần edition/license riêng. Chưa cài đặt hoặc chốt patch.
   - D17 / ADR-120: owner phụ trách toàn bộ release/secret/backup-restore/bảo trì

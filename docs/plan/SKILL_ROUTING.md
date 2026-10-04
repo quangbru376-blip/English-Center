@@ -34,7 +34,7 @@ thật sự cần; không tự lấy một checklist cũ làm quyền đảo ADR
 | --- | --- |
 | JWT bearer/token handling | JWT qua HttpOnly/Secure cookie với server session/revocation, same-origin/framework CSRF/Origin. Browser không giữ/đọc JWT; auth state và CSRF request token chỉ RAM, restricted scope/current rights bắt buộc. ADR099/140/160. |
 | PasswordHasher hoặc BCrypt | Dùng ASP.NET Core PasswordHasher ADR114, không tự thêm BCrypt/package hoặc sửa quy tắc password. |
-| SQLite in-memory service tests | Pure unit tests có thể không dùng DB; SQL-specific evidence dùng SQL2022 Developer thật. SQLite không chứng minh SQL locks/RV/constraints/trigger/SP/grants/snapshot. |
+| SQLite in-memory service tests | Pure unit tests có thể không dùng DB; SQL-specific evidence dùng SQL Server2025 Express thật theo ADR-162; DB/test profile theo SQL_INSTANCE_ASSESSMENT.md. SQLite không chứng minh SQL locks/RV/constraints/trigger/SP/grants/snapshot. |
 | Every list paged | Các list/search được phân trang theo contract; full guard/cohort/component sets và preview/save units phải đủ theo exact DTO. Không ép page vào whole-set context. |
 | Plural REST/DataAnnotations generic rules | Routes và method/DTO đã chốt là exact source; không đổi tên endpoint để hợp guideline. Edge validators phải giữ strict scalar/presence/NULL/parser/error precedence; DataAnnotations không thay thế E04 validation. |
 | LINQ-only/UTC/money18 guidance | Parameterized EF/raw-SQL/SP/UDF/views/triggers theo E03/E04 được dùng đúng caller/TX. UTC cho event, date/time Việt Nam giữ accepted shapes; tiền đơn18,0/tổng38,0/API digit strings; không ép tổng vào .NET decimal. |

@@ -1434,7 +1434,7 @@ không dùng dòng801 để lách hai mục đó.
 | Phần đã duyệt | Contract đã trình |
 | --- | --- |
 | 801 — Mô hình cùng origin | Soạn hồ sơ dev/demo khác nhau: dev vẫn frontend/API cùng origin qua cấu hình phù hợp; demo đề xuất ASP.NET phục vụ SPA build và /api/v1, frontend gọi đường dẫn tương đối. Chỉ web được đưa qua cổng truy cập đã được phép, SQL không public. LAN/tunnel là profile thiết kế chờ D13, không tự bật. Link thay đổi thì dùng phiên/login mới, không tắt Secure/CSRF để chữa lỗi. |
-| 802 — Config/proxy/timeout/health | Config typed và validate khi startup: timezone VN, trusted origin/proxy, JWT/CSRF/DB/crypto keys ngoài repo, exact target runtime theo ADR-119. Fail closed thiếu config; readiness không leak DB/secrets hoặc cập nhật idle. Khóa/query/request có deadline hữu hạn, cancel/timeout→unknown/lookup khi cần; không giữ transaction chờ user. Số timeout/ports/proxy addresses và benchmark cần hồ sơ môi trường trước khi chốt, không tự điền ngưỡng/SLO D12. |
+| 802 — Config/proxy/timeout/health | Config typed và validate khi startup: timezone VN, trusted origin/proxy, JWT/CSRF/DB/crypto keys ngoài repo, exact target runtime theo ADR-119/162. Fail closed thiếu config; readiness không leak DB/secrets hoặc cập nhật idle. Khóa/query/request có deadline hữu hạn, cancel/timeout→unknown/lookup khi cần; không giữ transaction chờ user. Số timeout/ports/proxy addresses và benchmark cần hồ sơ môi trường trước khi chốt, không tự điền ngưỡng/SLO D12. |
 | 803 — Backup/recovery hồ sơ | Giữ daily encrypted SQL backup/7 ngày4 tuần/monthly restore/RPO24h-RTO2h là targets đã chốt. Soạn nơi lưu riêng khỏi ổ primary, quyền operator/key tách backup và checklist restore DB test độc lập. Laptop tắt: ghi nhận missed run, kiểm/catch-up khi bật; không gọi backup cũ là fresh hoặc bảo đảm RPO khi đã lỡ. Đường dẫn/dung lượng/media/access chưa có phải owner xác định trước chạy thật; không backup/restore ở lượt thiết kế. |
 | 804 — Runbook demo/bảo trì | Một checklist trước-trong-sau buổi: kiểm bản build/data giả/config/DB/web/readiness/login7roles trên thiết bị khách; chỉ bật tunnel sau được phép; mất mạng/write unknown tra kết quả; tắt đường public sau demo, theo dõi backup/session/secret. Bạn vận hành theo ADR-120; không role Admin/DBA mới. Dependency/security/blocklist review theo chính sách; rollout/rollback chi tiết chỉ lập sau full baseline và yêu cầu triển khai. |
 
@@ -1573,3 +1573,13 @@ provenance retained,mixed actual changes atomic,all-equal400,no new marker;
 completed same-key replay remains riêng. Full canonical/SP-FN/EF/grants/ref
 unions/CSV/runtime draft refinements/E04/E05 chưa nghiệm thu. D12/D13 deferred,
 no implementation planning/code/SQL/tests. Không mở lại ba RF đã duyệt.
+
+## Cập nhật SQL target sau nghiệm thu — 04/10/2026
+
+ADR-162 thay riêng SQL choice ADR-119 bằng SQL2025 Express đang có sau
+[assessment](../plan/SQL_INSTANCE_ASSESSMENT.md). Giữ .NET10/EF10 và toàn bộ
+E03/E04 object/DTO/TX/grants/readiness contracts; DB/EF targetcompatibility160
+chưa cấu hình. Encrypted backup dùng scheduler/archive encryption ngoài engine,
+không suy Express có SQL Agent/native encryption; ADR-118 và DF03 giữ nguyên.
+Đây là amendment môi trường đã được owner cho phép, không mở lại E01–E05
+hoặc thay counts/trace cases; EF/race/load/recovery vẫn chưa được kiểm chứng.

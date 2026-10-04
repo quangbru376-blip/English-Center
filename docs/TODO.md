@@ -10,11 +10,23 @@
 
 ## Next
 
+- Execute next-chat [FIRST_CODE_HANDOFF](plan/FIRST_CODE_HANDOFF.md): preserve
+  pending reviewed documentation baseline; P01 SDK/package/test-host preflight
+  then bounded P02 backend/test skeleton, manager verification and owner review
+  before main apply. P03/rest M0/SQL changes/runtime installs/deploy outside scope.
+
+SQL assessment04/10/2026 completed: installed SQL2025 Express17.0.1000.7
+retained by ADR-162; see [assessment](plan/SQL_INSTANCE_ASSESSMENT.md).
+Read-only inventory/type/decimal/JSON/SHA and system-DB snapshot read succeeded;
+no app DB creation/config changes. Current RTM lacks newer patches; patch review
+before real data/exposure and encrypted-archive backup prerequisites remain.
+Next chat starts P01 package/LOCAL_DEV profile, then P02; order unchanged.
+
 - M0 order synchronized04/10/2026: docs/plan/M0_QUALITY_PLAN.md section11 holds
   proposed39family default order and Mermaid; dependencies in sections4–7.
   Start=P01 planning/profile. P05beforeP04, A04beforeA03, D07beforeSQLaudit/replay
-  evidence explicit; full readiness/skill gates retained. SQL edition comparison
-  verified from Microsoft, target2022Developer unchanged; no install/code/dispatch.
+  evidence explicit; full readiness/skill gates retained.
+  SQL target updated to installed SQL2025 Express by ADR-162; no install/code/dispatch.
 
 - Skill audit04/10/2026: AGENTS and docs/plan/SKILL_ROUTING.md now require
   scope-appropriate backend/frontend skills and Codex code-review for code tasks.
@@ -24,8 +36,10 @@
 - M0 detailed planning04/10/2026: docs/plan/M0_QUALITY_PLAN.md records task families,
   dependencies, evidence gates and first3proposed scopes. Local SDK10.0.200/
   Node24.16.0/npm11.13.0 checked; SQL .\SQLEXPRESS version17.0.1000.7 Express
-  is not accepted SQL2022 Developer. Prepare compatible local profile before
-  execution; full DB readiness retained. No code/installs/migrations/dispatch.
+  is now the accepted SQL2025 Express local target (ADR-162), assessed in
+  docs/plan/SQL_INSTANCE_ASSESSMENT.md. Keep this instance; no Developer install.
+  P01 still needs package/profile checks; full DB readiness retained. No app code,
+  installation, migration or dispatch performed.
 
 - Analyze smoke test complete04/10/2026: SUCCESS/exit0,manager event/diff review
   and6runner tests pass. Edit mode untested; future tasks need bounded contracts,
@@ -33,7 +47,8 @@
 - Discuss proposed M0–M4 implementation milestones in
   `docs/plan/implementation-plan.md`; refine M0 dependencies and small generation
   contracts by complexity/output capacity and quality gates, not calendar speed.
-  Owner chose quality-first decomposition04/10/2026. Planning only;
+  Owner chose quality-first decomposition04/10/2026; later first-code handoff
+  authorizes only P01→P02, see FIRST_CODE_HANDOFF. Wider milestones stay proposals;
   no code/SQL/Git/scaffold/packages/deployment/runtime operations started.
 - Update affected source/trace/ADRs if owner asks for a later design change.
 

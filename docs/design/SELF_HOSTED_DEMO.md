@@ -220,9 +220,9 @@ Các chính sách đã được owner duyệt riêng trong OWNER_REVIEW và xác
   ngày/4 bản tuần, thử restore tháng; RPO24h/RTO2h là mục tiêu tham chiếu,
   chưa bảo đảm. Laptop tắt có thể làm lỡ backup; quy trình phải xử lý để đáp
   ứng chính sách, không tự giảm tần suất hoặc tuyên bố đạt mục tiêu.
-- D16 / ADR-119: .NET10 LTS/EF10/SQL2022 Developer chỉ dev-test-demo nội bộ
+- D16 / ADR-119/162: .NET10 LTS/EF10/SQL2025 Express đang có cho dev-test-demo nội bộ
   non-production; giữ stack, chốt patch tương thích/lock sau baseline.
-  Production cần edition/license riêng, chưa cài runtime/SQL.
+  Production cần lựa chọn riêng; SQL hiện có đã được kiểm tra, chưa cài mới/cấu hình DB.
 - D17 / ADR-120: chủ dự án phụ trách toàn bộ release/secret/backup-restore/
   bảo trì mặc định. Chỉ hỏi lại người khi owner yêu cầu đổi; không thêm Admin/DBA.
 - D05/D08/D09 / ADR-114–ADR-116: hash/generator/blocklist và audit failure/
@@ -263,3 +263,8 @@ cần trình duyệt, đăng nhập theo vai trò và dùng chung database. Hệ
 hoạt động trong thời gian laptop, ứng dụng và tunnel đang chạy; không phải
 một dịch vụ vận hành liên tục 24/7. Khi kết thúc buổi demo, đường truy cập
 Internet được đóng, dữ liệu đã lưu vẫn ở laptop.”
+
+SQL target hiện hành: [assessment](../plan/SQL_INSTANCE_ASSESSMENT.md), ADR-162.
+Express dùng external scheduling/encrypted archive; staging plaintext được
+bảo vệ/cleanup, keys tách media/repo và phải decrypt/restore thật trước recovery
+claim. Không cài/chạy backup jobs hoặc mở network trong assessment này.

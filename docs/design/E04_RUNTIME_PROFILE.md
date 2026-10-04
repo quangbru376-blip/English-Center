@@ -32,10 +32,11 @@ name/error class/traceId secret-free. Profile type không là web role/new packa
 | Config group / fields | Type / validation / nguồn |
 | --- | --- |
 | Profile.kind | enum LOCAL_DEV/LOCAL_DEMO/LAN_DEMO/INTERNET_DEMO, explicit N; chọn environment chưa làm D13 accepted. Không auto tunnel from profile. |
-| Runtime.target | fixed .NET10/EF10/SQL2022 Developer non-production ADR-119; compatible patch/lock manifest slot sau baseline, không tự pin latest/cài package. |
+| Runtime.target | fixed .NET10/EF10/SQL2025 Express local non-production ADR-119/162; compatible patch/lock manifest slot sau baseline, không tự pin latest/cài package. |
 | Business.timeZone | fixed Asia/Ho_Chi_Minh; OS resolver mapping tương đương UTC+7 phải verify, không silently host timezone. Event clock UTC milliseconds, local schedules minute. |
 | Database.connection | secret reference N, catalog/server/auth configured slot; runtime principal ec_app_runtime only. No browser SQL/sa/db_owner, separate schema/maintenance principal. |
 | Database.schemaCompatibility | expected E03/migration/object signature identity N slot khi có implementation; check24 tables/5TG/6VW/6FN/7SP/RV shapes, not count alone. Missing drift not auto migration/startup repair. |
+| Database.compatibility | local SQL2025 Express profile: explicit DB160 and EF provider160 (ADR-162), preserve exact E03 column types; do not infer from model170 or silently introduce native JSON mappings. No DB ALTER performed. |
 | Database.snapshotRequired | fixed true for compound snapshots/report contracts; readiness checks prerequisite ALLOW_SNAPSHOT_ISOLATION, RCSI alone insufficient. Không tự ALTER DB. |
 | Web.origin,listenEndpoint | URI/address+port N slot D13; same UI/API origin and relative /api/v1. No wildcard public bind or default arbitrary port. |
 | Proxy.forwardingEnabled,knownProxies,knownNetworks | explicit bool +validated IP/CIDR sets slots D13; forwarded identity only from trusted hop. Empty set when direct profile, never trust all to repair HTTPS/IP. |
@@ -50,7 +51,7 @@ name/error class/traceId secret-free. Profile type không là web role/new packa
 | Deadlines.lockMs,sqlSeconds,requestMs,csvMs | positive bounded integers N slots D12/D13 profile; no zero/infinite defaults. lock budget<remaining SQL/request budget, CSV budget fits request; fail invalid ordering/overflow. Chưa số/thông lượng/SLO. |
 | Limits.requestBodyBytes,responseBufferBytes,weeklyPreviewBudget | positive integers N environment slots; validation error semantics Accepted413/503 sanitized, no hidden business lesson/date cap. Concrete normal-use envelope phải owner rà nếu chặn accepted workflow. |
 | Backup.destination,accessIdentity,encryptionKeyReference | non-primary storage URI/path+principal+secret ref slots before backup/recovery; key separate from backup bytes/repo. No guessed drive/provider/public bucket. |
-| Backup.policy | fixed daily encrypted SQL,7daily/4weekly/monthly test restore; RPO24h/RTO2h targets ADR-118. Schedule time/media/capacity/missed-run slot; laptop off not promise SLA. |
+| Backup.policy | Express: external scheduler + encrypted backup archive outside engine, not SQL Agent/native backup encryption; protected temporary plaintext, separate key, checked encryption/copy/restore and missed-run handling required before operation. Fixed daily encrypted SQL,7daily/4weekly/monthly test restore; RPO24h/RTO2h targets ADR-118. Schedule time/media/capacity/missed-run slot; laptop off not promise SLA. |
 
 Startup validation chỉ dependency/profile/secret/config, không check password
 của7 test accounts hoặc seed real students. Secrets cần sử dụng có thể loaded

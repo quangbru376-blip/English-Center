@@ -815,17 +815,26 @@ liệu chính; giữ 7 bản ngày/4 bản tuần, thử restore mỗi tháng. M
 môi trường tham chiếu: RPO tối đa 24 giờ, RTO tối đa 2 giờ, chưa là bảo đảm
 đã đo. Owner chỉ định nơi lưu/quyền vận hành trước khi chạy thật; người phụ
 trách mặc định đã chốt D17. Quy trình phải xử lý lịch backup khi laptop tắt/
-bỏ lỡ lần chạy, không tự hạ tần suất hoặc tuyên bố đạt mục tiêu. Chưa backup,
-sao chép dữ liệu hoặc restore ở giai đoạn thiết kế này.
+bỏ lỡ lần chạy, không tự hạ tần suất hoặc tuyên bố đạt mục tiêu.
+Express2025 không có SQL Agent/native backup encryption: dùng scheduler ngoài
+SQL và mã hóa archive ngoài engine; phải bảo vệ/xóa staging plaintext, tách key,
+kiểm lỗi và thử giải mã/restore. Không coi file .bak plaintext là bản backup đã
+đạt chính sách. Công cụ/key/media vẫn là prerequisite, không tự thêm package.
+Chưa backup, sao chép dữ liệu hoặc restore ở giai đoạn thiết kế này.
 
-### D16 / ADR-119 — Phiên bản và phạm vi cấp phép
+### D16 / ADR-119/162 — Phiên bản và phạm vi sử dụng
 
-Chọn .NET 10 LTS/EF Core 10 và SQL Server 2022 Developer cho dev/test/demo
+Chọn .NET 10 LTS/EF Core 10 và SQL Server 2025 Express đang có cho dev/test/demo
 nội bộ không dùng dữ liệu/vận hành production. Giữ React/Vite/TypeScript/
 Tailwind/xUnit. Sau nghiệm thu toàn bộ baseline, chốt patch tương thích
 được hỗ trợ và lock dependency trong hợp đồng triển khai; không hỏi riêng
 mỗi patch. Production phải chọn edition/license riêng trước khi vận hành.
-Chưa cài đặt, pin patch hoặc xác minh tương thích máy.
+ADR-162 thay riêng lựa chọn SQL của ADR-119 theo yêu cầu owner ngày04/10/2026.
+Đã xác minh instance .\SQLEXPRESS, build17.0.1000.7 RTM bằng kiểm tra chỉ đọc;
+không cần cài Developer. DB/EF compatibility160 giữ mapping E03; chưa tạo DB/
+pin packages hoặc chạy EF integration. Build hiện có chưa được cập nhật bản vá;
+review/pin patch cùng dòng17.x trước sử dụng dữ liệu thật/công khai. Xem
+[SQL assessment](plan/SQL_INSTANCE_ASSESSMENT.md), không tự cài/update.
 
 ### D17 / ADR-120 — Người vận hành mặc định
 
@@ -1295,7 +1304,8 @@ done,chưa implementation/runtime tests. Side report/sequence/Word unchanged.
 - Kiểm chứng mã hóa/bản riêng/7 ngày-4 tuần/restore tháng và RPO 24 giờ/RTO
   2 giờ, kể cả lần backup bị lỡ khi laptop tắt; chốt nơi lưu/quyền trước vận
   hành. Chưa bảo đảm hoặc chạy backup/restore (ADR-118).
-- Kiểm tra patch tương thích/lock và SQL Developer chỉ non-production; owner
+- Kiểm tra patch tương thích/lock và profile SQL2025 Express ADR-162; phạm vi
+  hiện tại vẫn dev/test/demo, chưa cấp quyền production; owner
   là người vận hành mặc định, không thêm quyền ứng dụng (ADR-119/120).
 
 ### Kiểm chứng bổ sung Gói 3 (thiết kế, chưa chạy test)

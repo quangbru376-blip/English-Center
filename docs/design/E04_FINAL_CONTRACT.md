@@ -232,3 +232,13 @@ Accepted ADR-160,giữ deferred register DF01–05. E05-v1 và complete baseline
 là accepted design,không runtime/production-ready attestation. Thay đổi thiết
 kế sau này phải cập nhật nguồn/trace/ADRs affected và xin quyết định khi cần.
 Không implementation planning/code/SQL/Git/scaffold/deploy từ nghiệm thu này.
+
+## Cập nhật SQL target sau nghiệm thu — 04/10/2026
+
+ADR-162 thay riêng SQL choice ADR-119 bằng SQL2025 Express đang có sau
+[assessment](../plan/SQL_INSTANCE_ASSESSMENT.md). Giữ .NET10/EF10 và toàn bộ
+E03/E04 object/DTO/TX/grants/readiness contracts; DB/EF targetcompatibility160
+chưa cấu hình. Encrypted backup dùng scheduler/archive encryption ngoài engine,
+không suy Express có SQL Agent/native encryption; ADR-118 và DF03 giữ nguyên.
+Đây là amendment môi trường đã được owner cho phép, không mở lại E01–E05
+hoặc thay counts/trace cases; EF/race/load/recovery vẫn chưa được kiểm chứng.

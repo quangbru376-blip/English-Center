@@ -2631,7 +2631,8 @@ data copy or restore executed now; D12/D13 deferral and E acceptance unchanged.
 
 ## ADR-119: Select .NET 10/EF Core 10 and SQL Server 2022 Developer for non-production — D16
 
-Status: Accepted — 2026-09-29
+Status: Accepted — 2026-09-29; SQL selection superseded by ADR-162 on 2026-10-04.
+.NET/EF/stack and compatible-patch policy retained.
 
 Context:
 The owner checked D16. The accepted ASP.NET Core/React stack stays unchanged;
@@ -4212,3 +4213,48 @@ Related:
 [E05-v1 cross-check](design/E05_BASELINE_REVIEW.md),
 [design agreement](plan/design-baseline.md), [owner gate](plan/OWNER_REVIEW.md);
 ADR-011/130/155/160.
+
+## ADR-162: Retain installed SQL Server 2025 Express after capability assessment
+
+Status: Accepted — 2026-10-04
+
+Context:
+The owner explicitly authorized retaining the installed SQL version if suitable
+and synchronizing all affected Project Memory instead of installing another
+version. Read-only inspection verified SQL2025 Express64-bit17.0.1000.7 RTM,
+Windows-authenticated access and a running SQLEXPRESS instance. E03/E04 need
+core relational/programmability/transaction features, not Enterprise-only ones.
+
+Decision:
+Replace only ADR-119's SQL2022 Developer choice with installed SQL2025 Express
+for local non-production dev/test/internal demo; keep .NET10/EF10 and remaining
+stack. Keep the existing instance; no edition/major replacement prerequisite.
+Use explicit compatibility160 in future isolated project/test databases and EF
+provider configuration to preserve E03 SQL/types without automatic native JSON
+mapping changes. This is a target, not an ALTER executed against existing DBs.
+
+Keep ADR-118 encryption/separate media/retention/restore targets. Express lacks
+SQL Agent/native backup encryption: external scheduling and encryption of backup
+archives must cover protected temporary plaintext, independent keys, checked
+errors and decrypt/restore evidence before operation. No backup tool/package/key/
+destination is selected or installed here. Do not count plaintext .bak as policy
+compliant or native encryption/Agent as available.
+
+Observed RTM is not a current patch pin; review compatible supported17.x updates
+before real data/public exposure, preserving ADR-119's patch policy. No update
+performed or latest-build readiness claim. Edition suitability permits proceeding
+with P01 package/local-profile work; it does not complete P01 or SQL/EF readiness.
+
+Reason and evidence:
+[SQL instance assessment](plan/SQL_INSTANCE_ASSESSMENT.md) records live checks,
+Microsoft references, resource limits and unverified paths. Core features fit
+accepted design; Express capacity is a constraint to measure, not proof of
+10,000-student/50-concurrent performance. No business cap added.
+
+Consequences:
+Synchronize current contracts/memory and mark historical SQL choice superseded,
+without rewriting source report or altering approval/notes. M0 task order and
+quality/skill gates unchanged; D12/D13 owner decisions remain deferred. Other chat
+starts with P01 then P02 subject to its explicit execution authorization. No app
+code/DDL/DML, database creation, existing DB/config changes, installation, worker
+dispatch, merge/push or deployment in this assessment.

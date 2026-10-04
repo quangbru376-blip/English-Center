@@ -192,7 +192,8 @@ Adding or replacing a framework/package requires owner approval.
   ADR-114–ADR-119; one explicit reply accepted D17 as ADR-120. Password hashing/
   offline blocklist, audit failures/retention, one-center 10,000-student/50-user
   reference scope, encrypted daily backup (7 daily/4 weekly/monthly restore,
-  RPO24h/RTO2h targets), .NET10/EF10/SQL2022 Developer non-production and
+  RPO24h/RTO2h targets), .NET10/EF10/SQL2022 Developer non-production
+  (SQL choice subsequently superseded by SQL2025 Express ADR-162) and
   owner as sole default operator are accepted, not implemented/verified.
   D12/D13 are deferred until hosting/software is settled; E01-v1 and E02-v1
   were accepted on 2026-09-30. E03-v1 was accepted on 2026-10-01; E04/E05
@@ -243,11 +244,19 @@ Owner requested implementation-plan discussion03/10/2026; draft at
 Detailed proposed M0 working order and diagram are stored in
 `docs/plan/M0_QUALITY_PLAN.md` section11; first task=P01 profile/preflight.
 Task quality/skill gates apply; no execution started. Do not re-ask approved
-policy/outputs. SQL2025Express locally verified differs from accepted
-SQL2022Developer; edition explanation is an environment note, no ADR change.
+policy/outputs. Owner authorized retaining installed SQL if suitable; local
+SQL2025 Express17.0.1000.7 is retained by ADR-162 after assessment in
+`docs/plan/SQL_INSTANCE_ASSESSMENT.md`. No Developer install prerequisite;
+P01 packages/profile, patch review and real integration/recovery evidence remain.
+Owner04/10/2026 now requests next-chat handoff to implement first code stage:
+P01 prerequisites then P02 backend/test skeleton, scoped in
+`docs/plan/FIRST_CODE_HANDOFF.md`. No code started. Worker primary apply remains
+owner-gated; later tasks/SQL changes/runtime installs/deployment not authorized.
+Earlier planning-only statements describe the preceding stage, not a blocker
+to the separately authorized P01→P02 work.
 
 - Product rules/screen catalog: `docs/requirements.md`.
-- Accepted decisions including actual E04/E05: `docs/DECISIONS.md` ADR001–161,
+- Accepted decisions including actual E04/E05: `docs/DECISIONS.md` ADR001–162,
   preserve each existing Accepted/Superseded status.
 - E01: `docs/design/FUNCTION_SPEC.md`/`FUNCTION_CATALOG.md`,37NV/32F.
 - E02: `docs/design/WORKFLOW_SPEC.md`,21W;Accepted30/09/2026.

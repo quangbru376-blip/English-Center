@@ -278,7 +278,9 @@ ADR-114–ADR-119: hash/generator/blocklist offline; mandatory audit rollback/
 pure security events best-effort; mandatory history/pure logs-IP 90 ngày;
 phạm vi một trung tâm/10.000 học viên/50 đồng thời; backup mã hóa hằng ngày/
 7 ngày-4 tuần/restore tháng/RPO24h-RTO2h mục tiêu; .NET10/EF10/SQL2022 Developer
-non-production. Không suy từ báo cáo hoặc từ câu hỏi hosting.
+non-production. Đây là quyết định lịch sử29/09; lựa chọn SQL được owner cho
+phép đổi sang bản đang có SQL2025 Express ngày04/10/2026 (ADR-162), không
+sửa báo cáo Word hoặc nguồn ban đầu. Không suy từ báo cáo hoặc câu hỏi hosting.
 
 D17 ban đầu chưa tích và yêu cầu hỏi-chốt người phụ trách một lần rồi mặc
 định. Owner trả lời đồng ý tự phụ trách toàn bộ release/secret/backup-restore/

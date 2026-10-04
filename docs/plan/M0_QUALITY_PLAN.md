@@ -3,8 +3,11 @@
 Cập nhật: 04/10/2026. Status: doing (lập kế hoạch).
 
 Nguyên tắc chia theo chất lượng đã được owner yêu cầu. Danh sách task/phạm vi
-bên dưới là bản thảo cụ thể để rà; chưa cấp quyền sinh code, scaffold, cài đặt,
-chạy migration hoặc dispatch worker. M0–M4 là nhóm phạm vi, không lịch làm việc.
+bên dưới là task families để materialize từng contract. Owner04/10/2026 yêu
+cầu chat kế tiếp viết code đầu tiên: P01 prerequisite → P02 backend/test
+skeleton, theo [FIRST_CODE_HANDOFF](FIRST_CODE_HANDOFF.md). Chưa code/dispatch.
+P03/rest M0/SQL changes/runtime installs/deployment ngoài scope đầu; main apply
+worker changes vẫn cần owner permission. M0–M4 là nhóm phạm vi, không lịch làm việc.
 
 ## 1. Đầu ra M0 và nguồn hợp đồng
 
@@ -20,7 +23,7 @@ Nguồn: [requirements](../requirements.md), [E03](../design/DATABASE_SPEC.md),
 [DTO](../design/E04_DTO_SPEC.md), [C1/replay](../design/E04_REPLAY_SPEC.md),
 [SQL/locks/grants](../design/E04_SQL_INTEGRATION_SPEC.md),
 [runtime/readiness](../design/E04_RUNTIME_PROFILE.md),
-[final contract](../design/E04_FINAL_CONTRACT.md), ADR119/140/141/142/160.
+[final contract](../design/E04_FINAL_CONTRACT.md), ADR119/140/141/142/160/162.
 W01/W02/W03 là trace chính; API007 chỉ Admin NORMAL, lock010 TX13 không đổi
 quyền hoặc thêm API pilot. Lookup014 đúng action đã triển khai; các action chưa
 triển khai không được trả success giả. Canonical registry55actions vẫn theo E04.
@@ -31,9 +34,11 @@ triển khai không được trả success giả. Canonical registry55actions v�
 - .NET SDK10.0.200, Node24.16.0, npm11.13.0 hiện có; chưa kiểm tương thích package.
 - Local SQL `.\SQLEXPRESS`: ProductVersion17.0.1000.7, Express Edition64-bit,
   đọc bằng Windows authentication ngày04/10/2026; không đổi DB/config.
-- Express instance này không chứng minh target SQL2022 Developer ADR119 đã có.
-  Lập profile Developer2022 riêng theo baseline, không tự thay edition/version
-  hoặc dùng Express thay bằng chứng. Chưa cài đặt hoặc chọn tên instance mới.
+- SQL2025 Express hiện có được giữ theo ADR-162 sau
+  [assessment](SQL_INSTANCE_ASSESSMENT.md); bỏ prerequisite cài Developer2022.
+  Observed build17.0.1000.7 RTM không là latest patch pin. Target DB/EF160,
+  snapshot ON và least-privileged runtime cần explicit profile khi tạo DB riêng.
+  Không cấu hình lại17DB có sẵn; không cài mới/update hoặc claim EF/grants pass.
 - LOCAL_DEV cần concrete origin/HTTPS/secret refs/finite budgets và test isolation.
   Mọi thiếu sót vẫn fail closed; không âm thầm tắt Secure/CSRF/readiness để demo.
   Không hỏi lại D12/D13; prerequisite local execution sẽ được xử lý riêng khi
@@ -85,7 +90,7 @@ composite relationships, filtered unique, checks/defaults/RV và index candidate
 | D04 | T14–T16 Class/Assignment/Schedule | D01–D03; obligation/replacement/current schedule relations; split if diff too large. |
 | D05 | T17–T19 Attendance/Score/GradeReport | D02,D04; missing versus0, required schedule linkage, finalized-only stored score. |
 | D06 | T20–T24 Invoice/Payment/AuditLog/ReplayOperation/InvoiceNumberCounter | D01,D03; split financial/counter and audit/replay tasks; exact digest/retention/secret-free constraints. |
-| D07 | Model assembly and reviewed migration chain | D01–D06; FK creation order and indexes reviewed; apply to isolated fresh SQL2022 Developer only when authorized; inspect schema, no runtime auto-migration. |
+| D07 | Model assembly and reviewed migration chain | D01–D06; FK creation order and indexes reviewed; apply to isolated fresh SQL2025 Express only when authorized; inspect schema, no runtime auto-migration. |
 | D08 | Five accepted triggers, each one bounded task | D07; multi-row semantics and negative tests; exact E03 purpose, no audit trigger. |
 | D09 | Six accepted UDFs, each one bounded task | D07; pure/read semantics, precision/missing behavior, exact signature. |
 | D10 | Six accepted views, each one bounded task | D07 and referenced objects; correct projection/aggregation; no added web rights. |
@@ -121,7 +126,7 @@ count-only/stub objects to pass. Full24table/5TG/6VW/6FN/7SP target retained.
 | R02 | Completion storage/TX protocol and scoped lookup primitives | D06,D07,A01,A06,R01 | Caller/action/key uniqueness;24h expiry; retained expired409/lookup404; current rights/order; no response/secret snapshots. |
 | R03 | API007 Admin detail, API010 lock and API014 lock-result lookup | A06,A01,R02,D12 | Split detail and atomic lock/lookup integration if needed; self/last-active concurrency, current rights, revoke races, lost-response/different-intent/stale409. |
 
-Backend integration tests require actual SQL2022 Developer for locks/RV/audit/
+Backend integration tests require actual SQL2025 Express for locks/RV/audit/
 replay/constraints. Tests that use a pure codec/clock do not require SQL; SQLite
 cannot substitute for SQL Server-specific evidence. Do not implement other Admin
 commands or return fake successful effects. Partial routes stay unexposed until
@@ -150,7 +155,8 @@ P01 manager-owned planning/preflight: update only this plan and a future
 `docs/plan/M0_LOCAL_PROFILE.md`/compatibility manifest when concrete values are
 resolved. Inventory is read-only. Forbid source changes, installs, DB DML/DDL,
 secret files and public exposure. Do not put credentials/connection strings/keys
-in documents. Current SDK/SQL mismatch is a verified prerequisite, not code task.
+in documents. SQL edition prerequisite is resolved by ADR-162; package pins/concrete LOCAL_DEV
+profile remain prerequisites, not a completed code task.
 
 P02 backend skeleton proposed scope:
 `backend/EnglishCenter.sln`, `backend/src/EnglishCenter.Api/EnglishCenter.Api.csproj`,
@@ -246,19 +252,16 @@ Khi phải đổi thứ tự hoặc chia ID thành task con: update bảng/depen
 thứ tự/sơ đồ tại đây và current memory trước bước tiếp theo, ghi lý do. Mọi
 skill gate và owner permission trước apply worker changes tiếp tục giữ nguyên.
 
-## 12. Express và Developer — ghi chú environment, không đổi ADR
+## 12. SQL target đang dùng — ADR-162 thay SQL choice của ADR-119
 
-Đã đọc Microsoft Learn04/10/2026:
-[SQL2022 editions](https://learn.microsoft.com/en-us/sql/sql-server/editions-and-components-of-sql-server-2022?view=sql-server-ver16),
-[SQL2025 editions](https://learn.microsoft.com/en-us/sql/sql-server/editions-and-components-of-sql-server-2025?view=sql-server-ver17).
-Express là edition miễn phí cho ứng dụng nhỏ, có giới hạn capacity; SQL2022
-Express10GB/database, SQL2025 Express50GB/database, buffer pool1410MB và
-compute lesser1socket/4cores. Express không có SQL Server Agent hoặc native
-backup encryption. Developer2022 có Enterprise features, licensed dev/test
-non-production; phù hợp accepted project target, không production license.
+Giữ SQL Server2025 Express64-bit instance `.\SQLEXPRESS`, observed17.0.1000.7
+RTM; không cài Developer2022 hoặc đổi edition/major. Đánh giá khả năng đáp ứng
+E03/E04 và giới hạn kiểm chứng ở [SQL_INSTANCE_ASSESSMENT](SQL_INSTANCE_ASSESSMENT.md).
+DB mới và EF provider dùng compatibility160 để giữ E03 types/SQL semantics;
+chưa cấu hình DB, EF integration và migration phải kiểm ở D07/D13.
 
-Máy đã kiểm có version17.0.1000.7 Express, thuộc major SQL2025 theo Microsoft;
-khác target2022Developer ở cả version và edition. Không kết luận mọi chức năng
-đồ án không chạy trên Express; thiếu target-compatible evidence là prerequisite.
-Giữ ADR119, chưa install/upgrade/remove hoặc thay config. Backup policy/job
-chưa implemented và việc chọn Developer không tự chứng minh recovery đạt.
+Express giới hạn50GB/database, buffer pool1410MB, lesser1socket/4cores; không
+SQL Agent/native backup encryption. Backup cần scheduler ngoài engine và archive
+mã hóa giữ nguyên ADR-118; media/key/tool/restore còn DF03. Build RTM không mới
+nhất: review compatible17.x patch trước dữ liệu thật/exposure; không tự cài.
+Thứ tự39families, skill/quality gates, D12/D13 owner-deferred không đổi.

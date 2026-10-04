@@ -7,8 +7,10 @@ Owner requested coding-plan discussion on2026-10-03. Planning is now active
 in [implementation-plan.md](implementation-plan.md), with proposed M0–M4
 groups pending discussion. Owner chose quality-bounded generation tasks on
 2026-10-04, sized by complexity/output and verification, not calendar throughput.
-No application slice/code/SQL/Git/scaffold/
-deployment is active or authorized by the planning request.
+The planning request did not authorize execution. Owner04/10/2026 now asks
+for next-chat first code: [FIRST_CODE_HANDOFF](FIRST_CODE_HANDOFF.md), P01
+necessary prerequisites → P02 backend/test skeleton only. No code yet;
+primary apply/later tasks/SQL/runtime installation/deployment remain gated.
 
 ## Preparation
 
@@ -20,7 +22,7 @@ deployment is active or authorized by the planning request.
 | Agree on workflows, database and architecture | done | E02/E03/E04-v1 accepted; actual E04 ADR-160, environment/evidence prerequisites retained. |
 | Cross-check and accept the complete design | done | Actual E05-v1/full baseline accepted ADR-161 after E04,03/10/2026. |
 | Confirm repository and preserve baseline in Git | done | Owner requested cleanup; accepted docs/local skills/planning preserved in local commits, checkout clean; no push. |
-| Scaffold backend and frontend | deferred | Only during authorized implementation. |
+| Scaffold backend and frontend | next (backend only) | P01→P02 authorized for next chat; P03/frontend and remaining tasks outside initial scope. |
 | Resolve Slice 0 scope | doing | M0 identity pilot proposed; refine during owner-requested planning, no code. |
 | Register agent integration contracts | doing | AGY analyze smoke contract/receipt verified; edit untested. Skill routing required; C2C inactive. |
 

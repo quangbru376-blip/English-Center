@@ -36,7 +36,10 @@ E03-v1 thực tế, gồm mục14.2. E03 Accepted/stage3 done; SQL signatures/ma
 grants/runtime và bằng chứng chạy vẫn thuộc E04/later.
 
 Một trung tâm, phạm vi kiểm chứng 10.000 học viên/50 người đồng thời (ADR-117),
-SQL Server 2022 Developer cho dev/test/demo (ADR-119). Hiệu năng chưa được đo.
+SQL Server 2025 Express đang có cho dev/test/demo (ADR-162 thay SQL choice
+của ADR-119); xem [assessment](../plan/SQL_INSTANCE_ASSESSMENT.md). Target DB/
+EF compatibility160, không đổi các kiểu/constraints E03; chưa cấu hình DB.
+Hiệu năng chưa được đo.
 Quyền/ownership, bảo vệ credential và audit theo ADR-092/099/115/116; phiên
 thường 2 giờ/idle 30 phút, phiên hạn chế tối đa 10 phút. Laptop chạy theo buổi;
 backup và owner vận hành theo ADR-118/120, D12/D13 giữ hoãn. Không phát sinh

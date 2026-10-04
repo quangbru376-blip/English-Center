@@ -1,12 +1,15 @@
 # Implementation planning — discussion draft
 
-Updated: 2026-10-04. Status: doing (planning only).
+Updated: 2026-10-04. Status: first-code handoff prepared (P01→P02 only).
 
 ## Authority and baseline
 
 Owner explicitly requested discussing the coding plan after E01–E05 acceptance.
-This authorizes planning; the milestone proposal below is not yet accepted and
-no code/SQL/Git/scaffold/package installation or deployment has begun.
+The wider milestone proposal remains a planning baseline. Owner04/10/2026
+separately requests next-chat first coding stage: P01 prerequisites then P02
+backend/test skeleton under [FIRST_CODE_HANDOFF](FIRST_CODE_HANDOFF.md).
+No implementation started here; later tasks/SQL/runtime installs/deployment
+are outside initial scope, and worker changes need owner approval before main apply.
 Accepted requirements, E03 database and E04 contracts remain the source of truth;
 ADR-160/161 do not need another design vote. Preserve owner D12/D13 deferral.
 
@@ -163,8 +166,9 @@ Detailed quality-based [M0 task plan](M0_QUALITY_PLAN.md) now lists prerequisite
 source trace, small task families/dependencies, verification and proposed scopes
 for the first three tasks. Review ordering and materialize each English contract
 only after actual prerequisites and file targets are known. Full schema/object
-readiness is not replaced by partial-table checks. Existing local SQL Express
-is a verified mismatch with the accepted SQL2022 Developer target.
+readiness is not replaced by partial-table checks. Existing local SQL2025 Express
+is retained by ADR-162 after [local assessment](SQL_INSTANCE_ASSESSMENT.md).
+No Developer installation prerequisite; P01 package/profile gates remain.
 No deadline input required; no source generation/installation/worker dispatch
 from this planning output. M0–M4 and detailed task ordering remain proposals.
 

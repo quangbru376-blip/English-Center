@@ -4,11 +4,26 @@ Last updated: 2026-10-04
 
 ## Current task
 
+Owner04/10/2026 requested next-chat handoff and first coding stage:
+[implementation handoff](plan/FIRST_CODE_HANDOFF.md). Next chat completes
+P01 necessary SDK/package scope then implements/reviews P02 backend/test
+skeleton in a detached worker worktree. Main apply still needs owner permission;
+P03/rest M0/SQL changes/installs/deployment not authorized by this scope.
+No app code generated in this handoff turn. Pending documentation changes
+include SQL assessment/ADR162 and handoff; preserve before clean edit preflight.
+
+SQL assessment04/10/2026 completed: installed SQL2025 Express17.0.1000.7
+retained by ADR-162; see [assessment](plan/SQL_INSTANCE_ASSESSMENT.md).
+Read-only inventory/type/decimal/JSON/SHA and system-DB snapshot read succeeded;
+no app DB creation/config changes. Current RTM lacks newer patches; patch review
+before real data/exposure and encrypted-archive backup prerequisites remain.
+Next chat starts P01 package/LOCAL_DEV profile, then P02; order unchanged.
+
 M0 order synchronized04/10/2026: docs/plan/M0_QUALITY_PLAN.md section11 holds
 proposed39family default order and Mermaid; dependencies in sections4–7.
 Start=P01 planning/profile. P05beforeP04, A04beforeA03, D07beforeSQLaudit/replay
-evidence explicit; full readiness/skill gates retained. SQL edition comparison
-verified from Microsoft, target2022Developer unchanged; no install/code/dispatch.
+evidence explicit; full readiness/skill gates retained.
+SQL target updated to installed SQL2025 Express by ADR-162; no install/code/dispatch.
 
 Skill audit04/10/2026: AGENTS and docs/plan/SKILL_ROUTING.md now require
 scope-appropriate backend/frontend skills and Codex code-review for code tasks.
@@ -18,8 +33,10 @@ verification.4local skills audited; C2C inactive, no dispatch/code/skill install
 M0 detailed planning04/10/2026: docs/plan/M0_QUALITY_PLAN.md records task families,
 dependencies, evidence gates and first3proposed scopes. Local SDK10.0.200/
 Node24.16.0/npm11.13.0 checked; SQL .\SQLEXPRESS version17.0.1000.7 Express
-is not accepted SQL2022 Developer. Prepare compatible local profile before
-execution; full DB readiness retained. No code/installs/migrations/dispatch.
+is now the accepted SQL2025 Express local target (ADR-162), assessed in
+docs/plan/SQL_INSTANCE_ASSESSMENT.md. Keep this instance; no Developer install.
+P01 still needs package/profile checks; full DB readiness retained. No app code,
+installation, migration or dispatch performed.
 
 2026-10-04 worker readiness completed for analyze mode: owner approved sharing
 named context files; first authenticated run rejected/stopped for extra read,
@@ -51,7 +68,9 @@ Planning is active in docs/plan/implementation-plan.md; M0–M4 are proposals,
 not accepted execution milestones. Owner now requires quality-bounded generation
 tasks based on complexity/output limits, not calendar deadlines or weekly hours.
 Plan defines group/slice/task distinctions and manager verification gates.
-No code/SQL/Git/scaffold/packages/deployment begun or authorized by this request.
+That planning request did not authorize execution. The later owner handoff
+request04/10 authorizes only P01→P02 as documented above; implementation has
+not started, and broad SQL/deployment/runtime-install scope remains closed.
 Do not reopen approved contracts.
 Report/sequence/C2C work remains on-demand;skill installation is not integration.
 Historical checkpoints below describe their original dates,not current status.

@@ -20,8 +20,12 @@ is in `docs/reference/REPORT_BASELINE.md`. Do not modify the source Word report.
 The full design baseline E01–E05 is Accepted (ADR-160/161), tracked in
 `docs/plan/design-baseline.md`. The current stage is quality-based implementation
 planning in `docs/plan/implementation-plan.md` and `docs/plan/M0_QUALITY_PLAN.md`.
-Planning is authorized; application coding/scaffolding/installations/deployment
-have not started. Do not infer execution permission from design acceptance.
+On 2026-10-04 the owner requested a handoff for the next chat to begin the
+first coding stage: complete P01 prerequisites then implement/review P02
+backend/test skeleton under docs/plan/FIRST_CODE_HANDOFF.md. No code has started
+in this checkout. Other tasks, SQL changes, runtime installation and deployment
+are outside that initial scope. Worker code stays detached until owner authorizes
+primary-checkout application. Do not infer broader permission from design acceptance.
 
 Project-local skills live in `.agents/skills/`. Read the selected skill's
 complete `SKILL.md` before using it. Installing a skill does not automatically
