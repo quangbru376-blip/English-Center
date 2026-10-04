@@ -1,0 +1,528 @@
+{
+  "provider": "Microsoft.EntityFrameworkCore.SqlServer10.0.4",
+  "apiPackages": 26,
+  "normalizedHashAgreement": true,
+  "uniquePackages": 74,
+  "packages": [
+    {
+      "license": "MIT",
+      "source": "https://api.nuget.org/v3/index.json",
+      "name": "Azure.Core",
+      "version": "1.47.1",
+      "contentHash": "oPcncSsDHuxB8SC522z47xbp2+ttkcKv2YZ90KXhRKN0YQd2+7l1UURT9EBzUNEXtkLZUOAB5xbByMTrYRh3yA=="
+    },
+    {
+      "license": "MIT",
+      "source": "https://api.nuget.org/v3/index.json",
+      "name": "Azure.Identity",
+      "version": "1.14.2",
+      "contentHash": "YhNMwOTwT+I2wIcJKSdP0ADyB2aK+JaYWZxO8LSRDm5w77LFr0ykR9xmt2ZV5T1gaI7xU6iNFIh/yW1dAlpddQ=="
+    },
+    {
+      "license": "MIT",
+      "source": "https://api.nuget.org/v3/index.json",
+      "name": "Microsoft.AspNetCore.Mvc.Testing",
+      "version": "10.0.4",
+      "contentHash": "ZkgmjUX4Q1ffkpomVKFZWvBXiJsLWvEETme+QDJme7NST7dc3DaVEdgL6xs5QfglDke9tX5kLrs253ZFMMGB3g=="
+    },
+    {
+      "license": "MIT",
+      "source": "https://api.nuget.org/v3/index.json",
+      "name": "Microsoft.AspNetCore.TestHost",
+      "version": "10.0.4",
+      "contentHash": "+kBqWRfgforSlqlW+s8VotYy1OxdCbg20ZUVHcxjRcMHEtoMq7IJMbtc7jtacgWSMy+Ct154SLOYHCp7Azpp+w=="
+    },
+    {
+      "license": "MIT",
+      "source": "https://api.nuget.org/v3/index.json",
+      "name": "Microsoft.Bcl.AsyncInterfaces",
+      "version": "8.0.0",
+      "contentHash": "3WA9q9yVqJp222P3x1wYIGDAkpjAku0TMUaaQV22g6L67AI0LdOIrVS7Ht2vJfLHGSPVuqN94vIr15qn+HEkHw=="
+    },
+    {
+      "license": "MIT",
+      "source": "https://api.nuget.org/v3/index.json",
+      "name": "Microsoft.Bcl.Cryptography",
+      "version": "9.0.4",
+      "contentHash": "YgZYAWzyNuPVtPq6WNm0bqOWNjYaWgl5mBWTGZyNoXitYBUYSp6iUB9AwK0V1mo793qRJUXz2t6UZrWITZSvuQ=="
+    },
+    {
+      "license": "MIT",
+      "source": "https://api.nuget.org/v3/index.json",
+      "name": "Microsoft.CodeCoverage",
+      "version": "18.10.1",
+      "contentHash": "tV7tCyp/t+DuwQugLkCeUN7NBFFB4fEGRPr0gkMQ2nQgAvQQjmGlZZi1dsLzbyoe/A0mbnKybmkIh8qhT9p4Zw=="
+    },
+    {
+      "license": "MIT",
+      "source": "https://api.nuget.org/v3/index.json",
+      "name": "Microsoft.Data.SqlClient",
+      "version": "6.1.1",
+      "contentHash": "syGQmIUPAYYHAHyTD8FCkTNThpQWvoA7crnIQRMfp8dyB5A2cWU3fQexlRTFkVmV7S0TjVmthi0LJEFVjHo8AQ=="
+    },
+    {
+      "license": "Microsoft SqlClient SNI software license terms (LICENSE.txt)",
+      "source": "https://api.nuget.org/v3/index.json",
+      "name": "Microsoft.Data.SqlClient.SNI.runtime",
+      "version": "6.0.2",
+      "contentHash": "f+pRODTWX7Y67jXO3T5S2dIPZ9qMJNySjlZT/TKmWVNWe19N8jcWmHaqHnnchaq3gxEKv1SWVY5EFzOD06l41w=="
+    },
+    {
+      "license": "MIT",
+      "source": "https://api.nuget.org/v3/index.json",
+      "name": "Microsoft.EntityFrameworkCore",
+      "version": "10.0.4",
+      "contentHash": "kzTsfFK2GCytp6DDTfQOmxPU4gbGdrIlP7PxrxF3ESNLtfXrC8BoUVZENBN2WORlZPAD7CVX6AYIglgkpXQooA=="
+    },
+    {
+      "license": "MIT",
+      "source": "https://api.nuget.org/v3/index.json",
+      "name": "Microsoft.EntityFrameworkCore.Abstractions",
+      "version": "10.0.4",
+      "contentHash": "qDcJqCfN1XYyX0ID/Hd9/kQTRvlia8S+Yuwyl9uFhBIKnOCbl9WMdGQCzbZUKbkpkfvf3P9CDdXsnxHyE3O0Aw=="
+    },
+    {
+      "license": "MIT",
+      "source": "https://api.nuget.org/v3/index.json",
+      "name": "Microsoft.EntityFrameworkCore.Analyzers",
+      "version": "10.0.4",
+      "contentHash": "pQeMHCyD3yTtCEGnHV4VsgKUvrESo3MR5mnh8sgQ1hWYmI1YFsUutDowBIxkobeWRtaRmBqQAtF7XQFW6FWuNA=="
+    },
+    {
+      "license": "MIT",
+      "source": "https://api.nuget.org/v3/index.json",
+      "name": "Microsoft.EntityFrameworkCore.Relational",
+      "version": "10.0.4",
+      "contentHash": "DOTjTHy93W3TwpMLM4SCm0n57Sc0Jj3+m2S6LSTstKyBB34eT1UouaMS19mpWwvtj42+sRiEjA3+rOTNoNzXFQ=="
+    },
+    {
+      "license": "MIT",
+      "source": "https://api.nuget.org/v3/index.json",
+      "name": "Microsoft.EntityFrameworkCore.SqlServer",
+      "version": "10.0.4",
+      "contentHash": "10wyoIwxDfF/6AkExeACfIZseTk4hJknBzlzPMCGsmBo+QrdyESwm1Q5YpO/zYjLzhz6aPzYUaXShraovSP3tg=="
+    },
+    {
+      "license": "MIT",
+      "source": "https://api.nuget.org/v3/index.json",
+      "name": "Microsoft.Extensions.Caching.Abstractions",
+      "version": "10.0.4",
+      "contentHash": "uDRooaV6N3WZ0kdlNPMB68/MdGn/in1Fs7Db7DnIm85RBTPy4P321WO+daAImiYpH5dekjNggDqy1N44WaIlMA=="
+    },
+    {
+      "license": "MIT",
+      "source": "https://api.nuget.org/v3/index.json",
+      "name": "Microsoft.Extensions.Caching.Memory",
+      "version": "10.0.4",
+      "contentHash": "CLLussNUMdSbyJOu4VBF7sqskHGB/5N1EcFzrqG/HsPATN8fCRUcfp0qns1VwkxKHwxrtYCh5FKe+kM81Q1PHA=="
+    },
+    {
+      "license": "MIT",
+      "source": "https://api.nuget.org/v3/index.json",
+      "name": "Microsoft.Extensions.Configuration",
+      "version": "10.0.4",
+      "contentHash": "601B3ha6XvOsOcu9GVd2dVd1KEDuqr49r46GUWhNJkeZDhZ/NI9EYTyoeQjZQEi8ZUvnrv++FbTfGmC8F0vgtg=="
+    },
+    {
+      "license": "MIT",
+      "source": "https://api.nuget.org/v3/index.json",
+      "name": "Microsoft.Extensions.Configuration.Abstractions",
+      "version": "10.0.4",
+      "contentHash": "3x9X9SMAMdAoEwWxHfsT2a9dTBqEtfYfbEOFw+UPtBshEH2gHWJeazxrZ1FK1O18MoCbe1NxINg5qciB01pEcg=="
+    },
+    {
+      "license": "MIT",
+      "source": "https://api.nuget.org/v3/index.json",
+      "name": "Microsoft.Extensions.Configuration.Binder",
+      "version": "10.0.4",
+      "contentHash": "ilnL/kQn62Gx3OZCVT7SJrBNi0CRIhS8VEunmE6i/a9lp9l/eos+hpxMvCW4iX2aVc/NWeDhxuQusZL7zvmKIg=="
+    },
+    {
+      "license": "MIT",
+      "source": "https://api.nuget.org/v3/index.json",
+      "name": "Microsoft.Extensions.Configuration.CommandLine",
+      "version": "10.0.4",
+      "contentHash": "DPl2tZZGtqxrkOq/Exo43hRuTA8KI7UXWnf6y0SkRBbqSkqFR1a+7rIZPFMP1KLE2UYiIvfbVR7ynRPJ/HeMDw=="
+    },
+    {
+      "license": "MIT",
+      "source": "https://api.nuget.org/v3/index.json",
+      "name": "Microsoft.Extensions.Configuration.EnvironmentVariables",
+      "version": "10.0.4",
+      "contentHash": "iapetemB9HxFe5YzEOD1faKC3pYKKaK0CUi85e5iZU5s541x1UVloswQB5zaN1TZg8t/7ONWaf8RYKuTDjveOw=="
+    },
+    {
+      "license": "MIT",
+      "source": "https://api.nuget.org/v3/index.json",
+      "name": "Microsoft.Extensions.Configuration.FileExtensions",
+      "version": "10.0.4",
+      "contentHash": "LD4T4s2uW2kZUkwGc4A9KK5o3wfkgySHKEiYqV0NXeNdeLN563NgNqDpi3DNXAdrt2TwU0rK7QMPdWLLIaMipA=="
+    },
+    {
+      "license": "MIT",
+      "source": "https://api.nuget.org/v3/index.json",
+      "name": "Microsoft.Extensions.Configuration.Json",
+      "version": "10.0.4",
+      "contentHash": "gn2Rf0dvIa6Sz/WJ5cNHhG/oUOT1yrHXd7Q0vCpXDlLsMuRqv9G5NBXFJbSh/ZRzSbvbOQWMV0amQS/3N0Fzzg=="
+    },
+    {
+      "license": "MIT",
+      "source": "https://api.nuget.org/v3/index.json",
+      "name": "Microsoft.Extensions.Configuration.UserSecrets",
+      "version": "10.0.4",
+      "contentHash": "+lRKEecmj+pSZh3we5sxiVS90YmfdJye4qps6vF9GFRbdm563kU0YyFnwCsm2PDTqQbOe3M8kE2vaV4zleeE7Q=="
+    },
+    {
+      "license": "MIT",
+      "source": "https://api.nuget.org/v3/index.json",
+      "name": "Microsoft.Extensions.DependencyInjection",
+      "version": "10.0.4",
+      "contentHash": "NkvJ8aSr3AG30yabjv7ZWwTG/wq5OElNTlNq39Ok2HSEF3TIwAc1f1xnTJlR/GuoJmEgkfT7WBO9YbSXRk41+g=="
+    },
+    {
+      "license": "MIT",
+      "source": "https://api.nuget.org/v3/index.json",
+      "name": "Microsoft.Extensions.DependencyInjection.Abstractions",
+      "version": "10.0.4",
+      "contentHash": "SIe9zlVQJecnk/DTmevIcl6+aEDYhoVLc2eG2AKwVeNEC8CSyxHAbh4lf0xtHq9JUum0vVTEByGNTK+b6oihTQ=="
+    },
+    {
+      "license": "MIT",
+      "source": "https://api.nuget.org/v3/index.json",
+      "name": "Microsoft.Extensions.DependencyModel",
+      "version": "10.0.4",
+      "contentHash": "LiJXylfk8pk+2zsUsITkou3QTFMJ8RNJ0oKKY0Oyjt6HJctGJwPw//ZgoNO4J29zKaT+dR4/PI2jW/znRcspLg=="
+    },
+    {
+      "license": "MIT",
+      "source": "https://api.nuget.org/v3/index.json",
+      "name": "Microsoft.Extensions.Diagnostics",
+      "version": "10.0.4",
+      "contentHash": "R9W7AttMedwOwJ7wRqTGBoVbX2JmlyWA+LJQUhizmS7Be9f6EJUn/+lvaIYDrOYtA1UzAfrwU871hpvZSPyIkg=="
+    },
+    {
+      "license": "MIT",
+      "source": "https://api.nuget.org/v3/index.json",
+      "name": "Microsoft.Extensions.Diagnostics.Abstractions",
+      "version": "10.0.4",
+      "contentHash": "JH2RyevIwJ1E9mBsZRXR+12TnUauptKgzCdOghhk3sE+dqcxB16GoE7x+0IuqTbaixM1ESXTNoqEw/IBnhM7LQ=="
+    },
+    {
+      "license": "MIT",
+      "source": "https://api.nuget.org/v3/index.json",
+      "name": "Microsoft.Extensions.FileProviders.Abstractions",
+      "version": "10.0.4",
+      "contentHash": "3hLXFZ1E/Kj3obIcb9iMCC95MpW2e8EkWxpXKgUfgGBfm+yn507pHAjPaHoi2U3GlSHIm/21DPCDLumwlMowjw=="
+    },
+    {
+      "license": "MIT",
+      "source": "https://api.nuget.org/v3/index.json",
+      "name": "Microsoft.Extensions.FileProviders.Physical",
+      "version": "10.0.4",
+      "contentHash": "gVVHdOFwlnXmTtx41e2aGfcFXX+8+9DPkOzEqQuHN8rOv+6RQWs/wfeQLaosOt3CQLKNoCaFmHopTtGB9PB5fg=="
+    },
+    {
+      "license": "MIT",
+      "source": "https://api.nuget.org/v3/index.json",
+      "name": "Microsoft.Extensions.FileSystemGlobbing",
+      "version": "10.0.4",
+      "contentHash": "eCEFVuuZL++SqMcdB5i4KA16GvcxCzdKKK+clapXYyGMkhd4BxwZi2/vGzo8s7a8Vi0BA78p5u/NScgOP1pzTg=="
+    },
+    {
+      "license": "MIT",
+      "source": "https://api.nuget.org/v3/index.json",
+      "name": "Microsoft.Extensions.Hosting",
+      "version": "10.0.4",
+      "contentHash": "DqWjjar9YgGXswSmp81jW6kSsOXVqsBkJS9nRI0HEi7NK9c7uSjCfZ0pXLEYlKP3+t3uLWrDdyLIlkKQYxUwmA=="
+    },
+    {
+      "license": "MIT",
+      "source": "https://api.nuget.org/v3/index.json",
+      "name": "Microsoft.Extensions.Hosting.Abstractions",
+      "version": "10.0.4",
+      "contentHash": "+5mQrqlBhqNUaPyDmFSNM/qiWStvE9LMxZW1MRF0NhEbO781xNeKryXNR9gGDJ0PmYFDAVoMT9ffX+I15LPFTw=="
+    },
+    {
+      "license": "MIT",
+      "source": "https://api.nuget.org/v3/index.json",
+      "name": "Microsoft.Extensions.Logging",
+      "version": "10.0.4",
+      "contentHash": "S8+6fCuMOhJZGk8sGFtOy3VsF9mk9x4UOL59GM91REiA/fmCDjunKKIw4RmStG87qyXPfxelDJf2pXIbTuaBdw=="
+    },
+    {
+      "license": "MIT",
+      "source": "https://api.nuget.org/v3/index.json",
+      "name": "Microsoft.Extensions.Logging.Abstractions",
+      "version": "10.0.4",
+      "contentHash": "PDMMt7fvBatv6hcxxyJtXIzSwn7Dy00W6I2vDAOTYrQqNM2dF5A2L9n0uMzdPz2IPoNZWkAmYjoOCEdDLq0i4w=="
+    },
+    {
+      "license": "MIT",
+      "source": "https://api.nuget.org/v3/index.json",
+      "name": "Microsoft.Extensions.Logging.Configuration",
+      "version": "10.0.4",
+      "contentHash": "XPXoOpUnWEh0pV7Vl2DK2wj47y73Krhrve5OkPrvGIWdZ4U2r47WO8hEdv+wKn65Kh4pmDdiWm7Ibo5pZX+vig=="
+    },
+    {
+      "license": "MIT",
+      "source": "https://api.nuget.org/v3/index.json",
+      "name": "Microsoft.Extensions.Logging.Console",
+      "version": "10.0.4",
+      "contentHash": "70fnP/xbQmH3cRtj4jjXOuqRWrYIMRz897KngW5Egu6to60pikT/09Y9ZxCljT/PWQDZ+qLqyeaAwNJe/L6FbA=="
+    },
+    {
+      "license": "MIT",
+      "source": "https://api.nuget.org/v3/index.json",
+      "name": "Microsoft.Extensions.Logging.Debug",
+      "version": "10.0.4",
+      "contentHash": "vd1bEO+hoJsQZ+cyhtLT7l5/5rtCgc4G5wJdPlYtWSSXe4hv00CDYTATbpyPjCehZL3pNv+aC1RwRlU5oWA6xQ=="
+    },
+    {
+      "license": "MIT",
+      "source": "https://api.nuget.org/v3/index.json",
+      "name": "Microsoft.Extensions.Logging.EventLog",
+      "version": "10.0.4",
+      "contentHash": "P/iPKwMNvtcfX5tb48KbcAs8ZMfv5tfDUilFNtTW9hwiWrLDFBJ7WE1QZuVMb8Ro1MvXHaqmc+p2rRPVEqZ2SA=="
+    },
+    {
+      "license": "MIT",
+      "source": "https://api.nuget.org/v3/index.json",
+      "name": "Microsoft.Extensions.Logging.EventSource",
+      "version": "10.0.4",
+      "contentHash": "se693u6nFSHxBaAL6CVshlPhrWiGi6NjgkbmTxACLmuJfcldaGsDdzc0e8Izcz+OFMr6hOtNKMBTbv4U8XaFxw=="
+    },
+    {
+      "license": "MIT",
+      "source": "https://api.nuget.org/v3/index.json",
+      "name": "Microsoft.Extensions.Options",
+      "version": "10.0.4",
+      "contentHash": "kRxa2Zjzhg/ohh7EklpqQpBIcyQnC3meWxCcpZBn+0QWy/fY1DmDd45JiW8Vyrpj2J1RDtau5yRHiLZS/AoxUw=="
+    },
+    {
+      "license": "MIT",
+      "source": "https://api.nuget.org/v3/index.json",
+      "name": "Microsoft.Extensions.Options.ConfigurationExtensions",
+      "version": "10.0.4",
+      "contentHash": "amQUITwSnkbMPxh/ngneNykz4UtytEOXo0M/pbwdBiQU57EAVvBV5PFI8r/dRastUj0yxHVwrH64N9ACR5SdGQ=="
+    },
+    {
+      "license": "MIT",
+      "source": "https://api.nuget.org/v3/index.json",
+      "name": "Microsoft.Extensions.Primitives",
+      "version": "10.0.4",
+      "contentHash": "lABYqiRH9HgYJsjzO3W7+cucUwWXhEkiyrRylANdIubnzcESlkIsLowXpQ4E+sc7kjMLbk1hk5oxw4qTKowTEg=="
+    },
+    {
+      "license": "MIT",
+      "source": "https://api.nuget.org/v3/index.json",
+      "name": "Microsoft.Identity.Client",
+      "version": "4.73.1",
+      "contentHash": "NnDLS8QwYqO5ZZecL2oioi1LUqjh5Ewk4bMLzbgiXJbQmZhDLtKwLxL3DpGMlQAJ2G4KgEnvGPKa+OOgffeJbw=="
+    },
+    {
+      "license": "MIT",
+      "source": "https://api.nuget.org/v3/index.json",
+      "name": "Microsoft.Identity.Client.Extensions.Msal",
+      "version": "4.73.1",
+      "contentHash": "xDztAiV2F0wI0W8FLKv5cbaBefyLD6JVaAsvgSN7bjWNCzGYzHbcOEIP5s4TJXUpQzMfUyBsFl1mC6Zmgpz0PQ=="
+    },
+    {
+      "license": "MIT",
+      "source": "https://api.nuget.org/v3/index.json",
+      "name": "Microsoft.IdentityModel.Abstractions",
+      "version": "7.7.1",
+      "contentHash": "S7sHg6gLg7oFqNGLwN1qSbJDI+QcRRj8SuJ1jHyCmKSipnF6ZQL+tFV2NzVfGj/xmGT9TykQdQiBN+p5Idl4TA=="
+    },
+    {
+      "license": "MIT",
+      "source": "https://api.nuget.org/v3/index.json",
+      "name": "Microsoft.IdentityModel.JsonWebTokens",
+      "version": "7.7.1",
+      "contentHash": "3Izi75UCUssvo8LPx3OVnEeZay58qaFicrtSnbtUt7q8qQi0gy46gh4V8VUTkMVMKXV6VMyjBVmeNNgeCUJuIw=="
+    },
+    {
+      "license": "MIT",
+      "source": "https://api.nuget.org/v3/index.json",
+      "name": "Microsoft.IdentityModel.Logging",
+      "version": "7.7.1",
+      "contentHash": "BZNgSq/o8gsKExdYoBKPR65fdsxW0cTF8PsdqB8y011AGUJJW300S/ZIsEUD0+sOmGc003Gwv3FYbjrVjvsLNQ=="
+    },
+    {
+      "license": "MIT",
+      "source": "https://api.nuget.org/v3/index.json",
+      "name": "Microsoft.IdentityModel.Protocols",
+      "version": "7.7.1",
+      "contentHash": "h+fHHBGokepmCX+QZXJk4Ij8OApCb2n2ktoDkNX5CXteXsOxTHMNgjPGpAwdJMFvAL7TtGarUnk3o97NmBq2QQ=="
+    },
+    {
+      "license": "MIT",
+      "source": "https://api.nuget.org/v3/index.json",
+      "name": "Microsoft.IdentityModel.Protocols.OpenIdConnect",
+      "version": "7.7.1",
+      "contentHash": "yT2Hdj8LpPbcT9C9KlLVxXl09C8zjFaVSaApdOwuecMuoV4s6Sof/mnTDz/+F/lILPIBvrWugR9CC7iRVZgbfQ=="
+    },
+    {
+      "license": "MIT",
+      "source": "https://api.nuget.org/v3/index.json",
+      "name": "Microsoft.IdentityModel.Tokens",
+      "version": "7.7.1",
+      "contentHash": "fQ0VVCba75lknUHGldi3iTKAYUQqbzp1Un8+d9cm9nON0Gs8NAkXddNg8iaUB0qi/ybtAmNWizTR4avdkCJ9pQ=="
+    },
+    {
+      "license": "MIT",
+      "source": "https://api.nuget.org/v3/index.json",
+      "name": "Microsoft.NET.Test.Sdk",
+      "version": "18.10.1",
+      "contentHash": "SxCFvJE/2ltUQgCgv6+Ixagohw4sZc9hM7Wid2foaNM7paBscktoHLoRDz91fW8wbHG87Rg9Ku59/8PXumqUrA=="
+    },
+    {
+      "license": "MIT",
+      "source": "https://api.nuget.org/v3/index.json",
+      "name": "Microsoft.SqlServer.Server",
+      "version": "1.0.0",
+      "contentHash": "N4KeF3cpcm1PUHym1RmakkzfkEv3GRMyofVv40uXsQhCQeglr2OHNcUk2WOG51AKpGO8ynGpo9M/kFXSzghwug=="
+    },
+    {
+      "license": "MIT",
+      "source": "https://api.nuget.org/v3/index.json",
+      "name": "Microsoft.TestPlatform.ObjectModel",
+      "version": "18.10.1",
+      "contentHash": "o+PuLDRVp1iwiVAPBADZItXgm9Ck23XtPhE4kZtZVi0uYnMiiz1Dx9Cjh75kJ+ijfqnORL3VOTOaQVKi0f/ixg=="
+    },
+    {
+      "license": "MIT",
+      "source": "https://api.nuget.org/v3/index.json",
+      "name": "Microsoft.TestPlatform.TestHost",
+      "version": "18.10.1",
+      "contentHash": "KYz2omqkoz9E2mWa4fdgT+Ycie1wi5968EmyJlusjlp87RxxtA2FvDm8tcBEYIDzLnkWGnsKjE4d13Z7/rxkQA=="
+    },
+    {
+      "license": "MIT",
+      "source": "https://api.nuget.org/v3/index.json",
+      "name": "Microsoft.Win32.Registry",
+      "version": "5.0.0",
+      "contentHash": "dDoKi0PnDz31yAyETfRntsLArTlVAVzUzCIvvEDsDsucrl33Dl8pIJG06ePTJTI3tGpeyHS9Cq7Foc/s4EeKcg=="
+    },
+    {
+      "license": "MIT",
+      "source": "https://api.nuget.org/v3/index.json",
+      "name": "System.ClientModel",
+      "version": "1.5.1",
+      "contentHash": "k2jKSO0X45IqhVOT9iQB4xralNN9foRQsRvXBTyRpAVxyzCJlG895T9qYrQWbcJ6OQXxOouJQ37x5nZH5XKK+A=="
+    },
+    {
+      "license": "MIT",
+      "source": "https://api.nuget.org/v3/index.json",
+      "name": "System.Configuration.ConfigurationManager",
+      "version": "9.0.4",
+      "contentHash": "dvjqKp+2LpGid6phzrdrS/2mmEPxFl3jE1+L7614q4ZChKbLJCpHXg6sBILlCCED1t//EE+un/UdAetzIMpqnw=="
+    },
+    {
+      "license": "MIT",
+      "source": "https://api.nuget.org/v3/index.json",
+      "name": "System.Diagnostics.EventLog",
+      "version": "10.0.4",
+      "contentHash": "xXo5NcIPeMUMfpo9Efl/3Rgomjb/Jfa3Aa0BgSfqYctN4YpwjPzvIrnD9JTwoKqe3pFtLF9vmtMl892+wwZ6EA=="
+    },
+    {
+      "license": "MIT",
+      "source": "https://api.nuget.org/v3/index.json",
+      "name": "System.IdentityModel.Tokens.Jwt",
+      "version": "7.7.1",
+      "contentHash": "rQkO1YbAjLwnDJSMpRhRtrc6XwIcEOcUvoEcge+evurpzSZM3UNK+MZfD3sKyTlYsvknZ6eJjSBfnmXqwOsT9Q=="
+    },
+    {
+      "license": "MIT",
+      "source": "https://api.nuget.org/v3/index.json",
+      "name": "System.Memory.Data",
+      "version": "8.0.1",
+      "contentHash": "BVYuec3jV23EMRDeR7Dr1/qhx7369dZzJ9IWy2xylvb4YfXsrUxspWc4UWYid/tj4zZK58uGZqn2WQiaDMhmAg=="
+    },
+    {
+      "license": "MIT",
+      "source": "https://api.nuget.org/v3/index.json",
+      "name": "System.Security.AccessControl",
+      "version": "6.0.1",
+      "contentHash": "IQ4NXP/B3Ayzvw0rDQzVTYsCKyy0Jp9KI6aYcK7UnGVlR9+Awz++TIPCQtPYfLJfOpm8ajowMR09V7quD3sEHw=="
+    },
+    {
+      "license": "MIT",
+      "source": "https://api.nuget.org/v3/index.json",
+      "name": "System.Security.Cryptography.Pkcs",
+      "version": "9.0.4",
+      "contentHash": "cUFTcMlz/Qw9s90b2wnWSCvHdjv51Bau9FQqhsr4TlwSe1OX+7SoXUqphis5G74MLOvMOCghxPPlEqOdCrVVGA=="
+    },
+    {
+      "license": "MIT",
+      "source": "https://api.nuget.org/v3/index.json",
+      "name": "System.Security.Cryptography.ProtectedData",
+      "version": "9.0.4",
+      "contentHash": "o94k2RKuAce3GeDMlUvIXlhVa1kWpJw95E6C9LwW0KlG0nj5+SgCiIxJ2Eroqb9sLtG1mEMbFttZIBZ13EJPvQ=="
+    },
+    {
+      "license": "Apache-2.0",
+      "source": "https://api.nuget.org/v3/index.json",
+      "name": "xunit.analyzers",
+      "version": "2.1.0",
+      "contentHash": "X7QXEcZQGz0G/HL4HUyK+aAvNa/IMGbOCnFIq4jD/Evktq12xANKwzOUr7b08vCmC1LXu/47qHWOdjm3KfaJ0A=="
+    },
+    {
+      "license": "Apache-2.0",
+      "source": "https://api.nuget.org/v3/index.json",
+      "name": "xunit.runner.visualstudio",
+      "version": "4.0.0",
+      "contentHash": "kzLFyBYUnoidpGOXvpNOfIo8C92gVgVR6X8ncHwhcrDYugiOut5rrhDkr0L3cWHd7J2pKXf6LgaeXoBBDlx1ag=="
+    },
+    {
+      "license": "Apache-2.0",
+      "source": "https://api.nuget.org/v3/index.json",
+      "name": "xunit.v3.assert",
+      "version": "4.0.1",
+      "contentHash": "nC7d3cY06Oo7hkdwWPZkBR0Ud75xNhgx0P7i0GmMMZC3puCGlc4szFiT30biH03IN/eDnr8h+nv3A1UD17bk/A=="
+    },
+    {
+      "license": "Apache-2.0",
+      "source": "https://api.nuget.org/v3/index.json",
+      "name": "xunit.v3.common",
+      "version": "4.0.1",
+      "contentHash": "Qf25TVdadDQYf9zVxSd7L9RNQhuP0jCUHmo96XTmIKLxGefylIEV63jRbXBPFzdXmV09TCdcurk+AQ9LiWS2Hg=="
+    },
+    {
+      "license": "Apache-2.0",
+      "source": "https://api.nuget.org/v3/index.json",
+      "name": "xunit.v3.core.mtp-off",
+      "version": "4.0.1",
+      "contentHash": "pPKhAFeXpN95l8sBBRQ4YrqhFDoTDj/QVgc//oSPlBXjrW7YLUBN/eDqvWSWVle1ITvNbYHGLmy3LZSPC6gGJQ=="
+    },
+    {
+      "license": "Apache-2.0",
+      "source": "https://api.nuget.org/v3/index.json",
+      "name": "xunit.v3.extensibility.core",
+      "version": "4.0.1",
+      "contentHash": "J0d5OfFcp920nZxCRIvU14+TZhiSPQR0wvqEMZ3MRiJLPu1VmYlcRNkmcSW0i1DwkB81gAHc+fHUQf/cU64MYg=="
+    },
+    {
+      "license": "Apache-2.0",
+      "source": "https://api.nuget.org/v3/index.json",
+      "name": "xunit.v3.mtp-off",
+      "version": "4.0.1",
+      "contentHash": "miSoh5QghDDdVN95dJEl+XrfCjdYy70IWumadlxHMhHie1ym+qG8UPIHRZOepBu2MbGs6nRB0pr4cd1fw/Gfvw=="
+    },
+    {
+      "license": "Apache-2.0",
+      "source": "https://api.nuget.org/v3/index.json",
+      "name": "xunit.v3.runner.common",
+      "version": "4.0.1",
+      "contentHash": "p9AyfBpj2e5Iws8B57SbLiSngg7mEdvegHInKR4T2cjt2mis9h8htVgCnmu//agZO4zri6p6VQOj5EkHHTy3gA=="
+    },
+    {
+      "license": "Apache-2.0",
+      "source": "https://api.nuget.org/v3/index.json",
+      "name": "xunit.v3.runner.inproc.console",
+      "version": "4.0.1",
+      "contentHash": "Hqwfd6ehMIhPmVWUQ2dgmknzuLFTWeyp8ES1q3D4YR5bQVyiXDcaIoaFwqAz2zgLr49WaW4Mz7VVncP7u/Q8/Q=="
+    }
+  ],
+  "knownVulnerabilities": 0,
+  "reviewDate": "2026-10-04"
+}

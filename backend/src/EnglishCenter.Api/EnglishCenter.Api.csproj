@@ -11,6 +11,8 @@
   </PropertyGroup>
 
 <ItemGroup><Content Remove="Resources/PasswordBlocklist/**" /><None Remove="Resources/PasswordBlocklist/**" /><Content Include="Resources/PasswordBlocklist/**" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest" /></ItemGroup>
+<ItemGroup><PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="10.0.4" /></ItemGroup>
 </Project>
+
 
 
