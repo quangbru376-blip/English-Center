@@ -1,0 +1,34 @@
+{
+  "timeout": "15m",
+  "forbidden_paths": [
+    ".env",
+    "**/packages.lock.json",
+    "**/*.csproj",
+    "docs/**",
+    ".agents/**",
+    "AGENTS.md"
+  ],
+  "max_changed_files": 2,
+  "mode": "edit",
+  "acceptance_criteria": [
+    "Built-in ASP.NET PasswordHasher IdentityV3 HMACSHA512220000, safe bounded canonical verification with rehash-needed old lower iteration.",
+    "32ASCII CSPRNG unbiased generator validates policy without plaintext persistence/logging.",
+    "Only two production files; complete explicit allowed context reads and no commands."
+  ],
+  "context_files": [
+    "AGENTS.md",
+    "docs/plan/P08_TASK_CARD.md",
+    "docs/plan/SKILL_ROUTING.md",
+    ".agents/skills/backend-clean-code/SKILL.md",
+    "backend/src/EnglishCenter.Api/Common/Security/PasswordPolicy.cs",
+    "backend/src/EnglishCenter.Api/Common/Security/OfflinePasswordBlocklist.cs",
+    "backend/src/EnglishCenter.Api/Common/Errors/ApiErrorException.cs"
+  ],
+  "model": "",
+  "allowed_paths": [
+    "backend/src/EnglishCenter.Api/Common/Security/CredentialHasher.cs",
+    "backend/src/EnglishCenter.Api/Common/Security/TemporaryPasswordGenerator.cs"
+  ],
+  "objective": "Implement ONLY P08 Part B production CredentialHasher and TemporaryPasswordGenerator exactly task card. Explicit view_file all context first including complete AGENTS, card, skill/routing and existing policy/loader. Codex writes tests/DI integration. Only authorized file reads/writes, no links/scans/commands/network/MCP/browser/subagents/secrets. Preserve raw passwords and canonical bounded IdentityV3 hash verification; secure unbiased32char generator. Under220lines, concise final.",
+  "max_diff_lines": 220
+}

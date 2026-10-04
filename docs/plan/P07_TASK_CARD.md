@@ -103,6 +103,8 @@ Test guards establish ordering only; full transport/auth/CSRF/live SQL/replay
 precedence remains a later integration gate, explicitly not claimed implemented.
 skill_verification: complete backend skill/routing reads in successful runs;
 Codex audited file-only tools, caps and source behavior, ran checks independently.
-AGENTS was inherited context in A(no explicit view event); B explicitly read it.
+A did not emit an explicit AGENTS view event; its card/skill/routing reads and
+actual behavior were independently verified. B explicitly read AGENTS too.
 Worktrees retained. Source/diff and every tool path reviewed; no worker commands.
+
 

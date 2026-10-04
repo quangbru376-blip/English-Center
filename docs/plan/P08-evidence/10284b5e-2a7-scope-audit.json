@@ -1,0 +1,14 @@
+{
+  "id": "10284b5e-2a7",
+  "status": "review_required",
+  "agy": "SUCCESS",
+  "exit": 0,
+  "diffLines": 188,
+  "receiptViolations": [],
+  "tools": 13,
+  "reads": 11,
+  "writes": 2,
+  "violations": [],
+  "missingExplicitContext": [],
+  "eventsSha256": "687f1c819f027a1b0bca0b3a43121d0d01d5c126fc15566132d6a80c7b4a4b68"
+}

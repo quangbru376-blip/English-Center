@@ -1,0 +1,34 @@
+{
+  "timeout": "15m",
+  "forbidden_paths": [
+    ".env",
+    "**/packages.lock.json",
+    "**/*.csproj",
+    "docs/**",
+    ".agents/**",
+    "AGENTS.md"
+  ],
+  "max_changed_files": 3,
+  "mode": "edit",
+  "acceptance_criteria": [
+    "Exact typed safe registry and middleware guards/Program registration per card; preserve empty unmapped404.",
+    "No tests authored in this run; no packages/config changes.",
+    "Use selected skill/canonical overrides and authorized reads/writes only."
+  ],
+  "context_files": [
+    "AGENTS.md",
+    "docs/plan/P07_TASK_CARD.md",
+    "docs/plan/SKILL_ROUTING.md",
+    ".agents/skills/backend-clean-code/SKILL.md",
+    "backend/src/EnglishCenter.Api/Program.cs",
+    "backend/tests/EnglishCenter.Tests/Infrastructure/StartupTests.cs"
+  ],
+  "model": "",
+  "allowed_paths": [
+    "backend/src/EnglishCenter.Api/Common/Errors/ApiErrorException.cs",
+    "backend/src/EnglishCenter.Api/Common/Errors/ApiErrorMiddleware.cs",
+    "backend/src/EnglishCenter.Api/Program.cs"
+  ],
+  "objective": "Implement P07 Part A production only (3 allowed files), exactly card registry/middleware. Codex writes all tests; do not create tests. Read complete authorized context and skill/routing first. Read only context_files and allowed existing output files. No links/scans/commands/network/MCP/browser/subagents/secrets. Keep implementation compact under300lines; concise final result.",
+  "max_diff_lines": 300
+}

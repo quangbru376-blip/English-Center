@@ -1,0 +1,14 @@
+{
+  "id": "21cd1e2d-877",
+  "status": "review_required",
+  "agy": "SUCCESS",
+  "exit": 0,
+  "diffLines": 196,
+  "receiptViolations": [],
+  "tools": 11,
+  "reads": 9,
+  "writes": 2,
+  "violations": [],
+  "missingExplicitContext": [],
+  "eventsSha256": "082c5a1969e9afa15c0b59ac27eca138af4d1721eed4cfa30a143df38b9ecc16"
+}
