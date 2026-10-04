@@ -2,13 +2,33 @@
 
 ## Current implemented architecture
 
+Latest checkpoint2026-10-04: P07/P08/D01 applied/reverified PASS, final mainf6fd902
+locked restore/build0warnings0errors/400tests PASS. P07 adds a fixed Vietnamese
+error registry/envelope/global middleware and strict JSON allowlist/presence/
+duplicate/type binding adapters over P04–P06; no public test/business endpoints.
+Auth/CSRF/transport/live-state precedence is still a later integration obligation.
+P08 eagerly validates shipped offline SecLists/license SHA256 before host build,
+registers raw15–128codepoint policy/IdentityV3 SHA512220k hasher/32ASCII CSPRNG
+generator in DI. Password/case/spaces/NFC remain untouched; no plaintext storage
+or secret logs, credential workflows/delivery/session implementation remain later.
+D01 adds plain Domain/Identity entities and a SQLServer EF10.0.4 DbContext with
+four explicit configurations: Role/Account/StudentProfile/AuthSession,33columns,
+3rowversions/NO ACTION FKs,7indexes/9checks. Context is not wired to an invented
+connection/profile; no project DB/migration/SQL execution. Metadata/DDL generated
+disconnected does not prove real-engine constraints/concurrency/locks/readiness.
+See [P07](plan/P07_TASK_CARD.md), [P08](plan/P08_TASK_CARD.md),
+[D01](plan/D01_TASK_CARD.md); original reviewed/rejected/manager trees retained.
+
+The checkpoints below describe their original stage, before these additions.
+
 On 2026-10-04 P02 was implemented/reviewed in detached commit d9eb194, then
 applied to main as df7cd9a with explicit owner authorization and reverified;
 see [P02 task card](plan/P02_TASK_CARD.md). Its net10.0 API has only
 CreateBuilder/Build/Run plus public partial Program; no application endpoints.
 The xUnit executable references the real API and uses WebApplicationFactory's
 in-process TestServer for ten verified missing-route cases in two environments.
-Primary has no EF model, migration, auth, SQL connection or ready profile.
+At the original P02 checkpoint primary had no EF model, migration, auth, SQL
+connection or ready profile. Latest additions are described above.
 P02 startup tests remain unchanged; P05 adds31time tests (41total main PASS).
 
 P03 frontend applied/reverified on main6cb2590 (reviewed c5e4eac); see

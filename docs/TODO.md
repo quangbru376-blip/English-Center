@@ -10,11 +10,14 @@
 
 ## Next
 
-- [P06](plan/P06_TASK_CARD.md) complete/applied PASS (94dd832,4e0a0fa,5afaf34),
-  main287tests pass. Next proposed P07 error envelope/binding/precedence needs
-  bounded contract; not started. P02/P03/P05/P04 remain applied PASS.
-  Auto-apply reviewed PASS authorized stages under ADR-163.
-- [P02 task card](plan/P02_TASK_CARD.md):
+- P07/P08/D01 owner-authorized batch complete/reviewed PASS/applied main,
+  finalf6fd902 locked restore/build0warnings0errors/400tests PASS. Cards:
+  [P07](plan/P07_TASK_CARD.md), [P08](plan/P08_TASK_CARD.md), [D01](plan/D01_TASK_CARD.md).
+  D01 scope is mapping only; real SQL/migrations/full readiness remain later.
+- Next proposed D02 T05–T08 Course/Band/TrainingProgram/ScoreComponentConfig:
+  prepare a bounded card, backend skill context and dependency checks when
+  owner authorizes continuation. Not started; no remaining work in this batch.
+  Auto-apply reviewed PASS authorized stages under ADR-163.- [P02 task card](plan/P02_TASK_CARD.md):
   P01 P02 prerequisites complete; reviewed d9eb194 applied to main as df7cd9a
   with explicit owner consent. Main locked restore/build0warnings/0errors,
   discovery10/tests10pass; source and lock hashes unchanged. Do not start

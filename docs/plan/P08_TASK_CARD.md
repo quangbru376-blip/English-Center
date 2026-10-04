@@ -75,7 +75,8 @@ csproj copies resources to output+publish. Program eagerly loads validated
 blocklist before host build and registers singleton policy/hasher/generator.
 No credential network/logging and no business routes. Existing startup tests
 exercise actual eager load; direct loader tests establish missing/corrupt fail.
-skill_verification: pending worker audit, Codex build/tests/review/main recheck.
+skill_verification: complete Codex verification/source review; see checkpoint
+for worker audit/rejections, source versions, tests and integration boundaries.
 Status: complete; Codex review PASS applied/reverified main390tests PASS.
 
 ## Verified checkpoint2026-10-04
@@ -101,4 +102,3 @@ No external password check/log/plaintext persistence/network/auth endpoints.
 Once-only Admin display, password expiry/credential TX/revocation remain A tasks.
 skill_verification: Codex actual source/tool audit/build/tests/publish PASS;
 successful original detached trees retained, no SQL operations/deployment.
-

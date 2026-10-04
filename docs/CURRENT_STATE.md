@@ -4,18 +4,30 @@ Last updated: 2026-10-04
 
 ## Current task
 
-Owner authorized three next families P07→P08→D01 in this turn2026-10-04.
-P07 complete within edge primitive scope, reviewed PASS and applied/reverified
-main653e1cc/5a49afa, main5f266a9 full357tests PASS/build0warnings0errors.
-See [P07 card](plan/P07_TASK_CARD.md). Error middleware and strict JSON helpers
-have no public business/test routes; full auth/CSRF/transport/live SQL/replay
-integration remains later. Initial AGY cap failure rejected, never applied.
-P08 in progress: approved SecLists revision/license/hash corpus pinned and exact
-bytes preserved across Windows checkouts; [P08 card](plan/P08_TASK_CARD.md).
-D01 planned next in same authorized batch; [D01 card](plan/D01_TASK_CARD.md).
-ADR-163 permits applying each Codex PASS. No D02/migrations/SQL DB execution,
-push/deployment/rest M0 authorized by this batch. Prior P02/P03/P05/P04/P06 PASS
-remain applied; original evidence trees retained. No unresolved P07 blocker.
+Owner-requested three-family batch P07→P08→D01 completed2026-10-04, reviewed
+PASS and applied/reverified on main under ADR-163. Final code mainf6fd902:
+locked restore/build0warnings0errors/full400tests PASS/0fail/0skip.
+
+- [P07](plan/P07_TASK_CARD.md): safe error registry/middleware and strict JSON
+  binding/adapters; main653e1cc/5a49afa,70new tests. No production test routes.
+- [P08](plan/P08_TASK_CARD.md): pinned offline SecLists15310entries/license/hash,
+  raw Unicode policy, IdentityV3/SHA512220k hasher,32char secure generator and
+  eager fail-closed startup/DI; mainf80a5d2/2d3c9c8,33new tests. Published missing
+  corpus fails before listening; sampled hash mean113.4ms, not a load result.
+- [D01](plan/D01_TASK_CARD.md): SQLServer EF10.0.4 mapping4tables/33columns,
+  3RV/3NO ACTION FK/7indexes/9CHECKs; main210c5ad/e7ca9b4/f6fd902,10new tests.
+  Metadata/DDL generated disconnected, no SQL execution or migrations.
+
+Initial P07 cap failure rejected. D01 final AGY run rejected for unauthorized
+read attempts; none of its output applied. Codex independently completed the
+mapping in a fresh manager tree. Successful AGY/manager snapshots retained.
+No unresolved blocker within these three families. Full transport/auth/CSRF/
+credential delivery/TX/revocation/real SQL enforcement remain future integration
+checks, not application readiness. P01 LOCAL_DEV/DB/keys/deadlines still incomplete.
+Next proposed family D02 Course/Band/TrainingProgram/ScoreComponentConfig requires
+its own bounded authorized continuation; not started. No push/deploy/runtime
+installation/project DB/SQL/migration operations occurred in this batch.
+
 ### Applied P02 checkpoint
 
 P01 prerequisites needed by P02 complete; P02 reviewed **PASS** after two
@@ -642,4 +654,3 @@ next work;do not autonomously create implementation plan/code/SQL/Git/scaffold/
 deployment/packages or operational configuration. D12/D13 remain deferred and
 DF01–05 prerequisite/evidence records remain;revisit them only in applicable
 owner-authorized scope. Preserve Accepted ADRs001–161/role/RF/FE/operator rules.
-

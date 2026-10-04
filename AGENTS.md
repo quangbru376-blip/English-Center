@@ -20,21 +20,20 @@ is in `docs/reference/REPORT_BASELINE.md`. Do not modify the source Word report.
 The full design baseline E01–E05 is Accepted (ADR-160/161), tracked in
 `docs/plan/design-baseline.md`. The current stage is quality-based implementation
 planning in `docs/plan/implementation-plan.md` and `docs/plan/M0_QUALITY_PLAN.md`.
-On 2026-10-04 the owner requested a handoff for the next chat to begin the
-first coding stage: complete P01 prerequisites then implement/review P02
-backend/test skeleton under docs/plan/FIRST_CODE_HANDOFF.md. P01 P02 prerequisites
-and reviewed P02 PASS are now recorded in docs/plan/P02_TASK_CARD.md. The owner
-separately confirmed main application; P02 is applied and reverified on main
-at df7cd9a, with the original detached worktree retained for evidence.
-P03 is applied/reverified PASS at 6cb2590; P05 at 8784686, with31time
-plus10startup tests passing; see docs/plan/P03_TASK_CARD.md and P05_TASK_CARD.md.
-Standing owner authorization (ADR-163): apply reviewed PASS stages already
+P02/P03/P05/P04/P06 remain applied PASS. On2026-10-04 the owner requested
+three next families P07→P08→D01 in one turn; this batch is complete/reviewed
+PASS/applied/reverified, final code mainf6fd902 full400tests PASS. See
+CURRENT_STATE and docs/plan/P07_TASK_CARD.md, P08_TASK_CARD.md, D01_TASK_CARD.md.
+P07 supplies safe error/binding primitives; P08 pinned offline/raw credential
+helpers; D01 four-table EF mapping without SQL execution or migrations. One
+D01 AGY overread run rejected; Codex independently completed the final mappings.
+Next proposed D02 is not started. Historical initial scope is retained in
+FIRST_CODE_HANDOFF; latest checkpoint and explicit current owner scope govern.
+Standing owner authority ADR-163: apply Codex-reviewed PASS stages already
 authorized for implementation to main without asking again. Report issues
-requiring owner action. P04 applied/reverified PASS at d9840bd with120tests passing; see
- docs/plan/P04_TASK_CARD.md. P06 complete/applied PASS (94dd832,4e0a0fa,5afaf34), main287tests pass;
- see docs/plan/P06_TASK_CARD.md. P07 complete/applied PASS (653e1cc/5a49afa), main357tests PASS. Owner now authorized three families P07→P08→D01 in one turn; P08 in progress/D01 next. See their task cards. D02/migrations/SQL execution are outside this batch. This permission
-does not open unrelated tasks, SQL/migrations, installs, push or deployment.
-
+requiring owner action. Keep unreviewed/rejected worker output detached.
+This authority does not open unrelated tasks, SQL/migrations, installation,
+push or deployment. Original reviewed/rejected trees are retained as evidence.
 Project-local skills live in `.agents/skills/`. Read the selected skill's
 complete `SKILL.md` before using it. Installing a skill does not automatically
 start its connection or delegation workflow.
@@ -84,4 +83,3 @@ After meaningful work, update only the memory affected by the change:
 Keep memory concise, current, and actionable. Never store chat transcripts,
 hidden reasoning, secrets, temporary logs, or facts that have not been
 verified.
-

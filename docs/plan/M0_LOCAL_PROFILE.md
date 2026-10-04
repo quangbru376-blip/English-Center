@@ -52,6 +52,27 @@ xunit.v3.mtp-off; no new framework or additional direct dependency.
 variant for VSTest on .NET10+. Exact registry metadata checked before restore:
 listed, Apache-2.0, net8+, no deprecation/direct vulnerability entries.
 
+## P07/P08/D01 prerequisite checkpoint2026-10-04
+
+P08 offline source manifest is shipped under
+backend/src/EnglishCenter.Api/Resources/PasswordBlocklist, exact upstream bytes
+preserved with .gitattributes -text. SecLists pinned56da8d991239cc52b0da594db53457504a757670,
+MIT,15310Ordinal entries; source/license hashes and quarterly dates in
+[P08 card](P08_TASK_CARD.md). Program loads/validates eagerly before host build.
+Built-in ASP.NET10.0.4 PasswordHasher requires no package; explicit IdentityV3
+SHA512220000/128bit salt/256bit subkey,84character hash fits accepted varchar512.
+Five warmed samples mean113.4ms/max117.6ms; no full load/throttle claim.
+
+EF SQLServer provider10.0.4 now pinned/locked for D01. Current API26packages/full
+graph74unique packages:64MIT/9Apache2.0/one Microsoft SqlClient SNI6.0.2 license.
+Lock/assets/cache normalized content hashes agree; full SNI license retained,
+dev/test rights reviewed; distribution remains a future release gate.
+[Dependency manifest](D01-evidence/dependency-manifest.json), known vulnerabilities0
+on2026-10-04. Mapping compatibility160/dbo/current CI_AS_SC collation chosen per E03.
+No SQL connection/profile/DB/schema/principals configured; no runtime installation.
+Mainf6fd902 locked restore/build0warnings0errors/full400tests PASS. Earlier package/
+startup inventory above remains the historical P02 checkpoint, not current count.
+
 ## Isolation and unresolved runtime slots
 
 P02 tests run the actual API through in-process TestServer; no listening socket,
@@ -65,7 +86,7 @@ sample weather route or mock auth. Do not run the API as a network server here.
 | LOCAL_DEV kind, same origin/listen port/HTTPS trust/proxies | Unconfigured; blocks business/network use. No arbitrary fallback endpoint. |
 | DB/schema/principals/snapshot | SQL2025 Express retained ADR-162; no project DB. Explicit DB+EF compatibility160 and full E03 signatures/grants required later. |
 | JWT/CSRF/protected keys, issuer/audience | Missing; no auth/business traffic until supplied and validated. |
-| Password blocklist | Pin/license/hash review remains P08; not needed for empty host. |
+| Password blocklist | P08 resolved: pinned shipped corpus/license/hashes, eager fail-closed loader verified. Quarterly review remains2027-01-04. |
 | Deadlines/budgets | Positive finite typed slots required later, ordered as E04; no numeric SLO assigned by P02. Manager commands are bounded by invocation timeouts. |
 | Backup/media/key/restore | DF03 remains; no backup or recovery operation. |
 | Runtime/SQL servicing | Installed runtime 10.0.4 and SQL RTM are inventory; compatible security patch review before real data/exposure. No runtime install/update here. |

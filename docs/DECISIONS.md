@@ -2524,6 +2524,14 @@ Related: ADR-053/054/091/098/119. No concrete hash parameters, list revision or
 packages installed yet. Existing exact Unicode/space/length/password rules
 remain unchanged; frontend secret-delivery interaction FE18 is still open.
 
+Implementation checkpoint2026-10-04: P08 applied/reverified PASS2d3c9c8,
+IdentityV3/PBKDF2-HMAC-SHA512220000iterations/128bit salt/256bit subkey,84char
+output fits varchar512. Shipped SecLists revision56da8d991239cc52b0da594db53457504a757670
+and license/content hashes verified; exact Ordinal union15310entries, raw password
+policy unchanged. Secure32character generator has no plaintext persistence/logs.
+See [P08 task card](plan/P08_TASK_CARD.md) for sources/verification/benchmark.
+FE18/once-only delivery, expiry/TX/session behavior are still future integration.
+
 ## ADR-115: Roll back mandatory audited mutations; keep security-event logging best-effort — D08
 
 Status: Accepted — 2026-09-29

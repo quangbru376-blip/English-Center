@@ -102,5 +102,44 @@ Tests independent expected column/type/null/default/index/FK/check signatures fo
 all4tables; RV generation/concurrency flags, DateOnly SQL date, SQL provider DDL,
 noncascade relationships, Sid32 fixed length; no modelHasData, no extra table or
 token fields. Tests do not claim real SQL constraint/locking/RV behavior.
-skill_verification: pending provenance/audit/restore/build/tests/review/main check.
-Status: P07/P08 PASS applied; D01 active third group, no mapping PASS yet.
+skill_verification: complete Codex verification/source review; see checkpoint
+for worker audit/rejections, source versions, tests and integration boundaries.
+Status: complete within mapping scope; Codex review PASS applied/reverified main.
+
+## Verified checkpoint2026-10-04
+
+A runa4ddce79-515 SUCCESS/exit0/6files141runner lines/zero violations;
+18tools12reads6writes, complete authorized contexts and selected skill/policy.
+Codex independently added2Role metadata/DDL tests. Reviewed/applied210c5ad,
+locked restore/build0warnings0errors/392PASS. Partial other3entities ignored
+at that checkpoint; removed only when complete mappings were reviewed.
+
+B run8e4ef2fe-9c7 runner SUCCESS/301lines/no write-cap violations but **manager
+REJECTED**:20read attempts outside allowlist across13distinct documentation/test
+paths, including one missing path.40tools36reads4writes; no commands/network/
+secret read observed. Runner receipt checks mutations, not enforceable read
+sandbox. Worker output never applied. Manager attempted a scoped stop after
+detecting overreads; run had already exited, no process was killed.
+
+Codex independently implemented B in fresh detached
+C:/Users/asus/AppData/Local/Temp/codex-d01-manager/identity-mapping fromc24f543;
+no copied failed-worker source. Four production mappings/context and two test
+files changed259insertions/5deletions. Reviewed/appliede7ca9b4/400PASS. Final
+review fixed trailing-space enum comparison: BIN2 alone still follows SQL string
+padding; add DATALENGTH=LEN only for these ASCII literal sets. Existing Role
+configuration and matching metadata tests included in this bounded repair.
+[Microsoft string comparison](https://learn.microsoft.com/en-us/sql/t-sql/language-elements/string-comparison-assignment)
+supports the padding behavior; real-engine negative cases remain D07 integration.
+Reviewedc40a378/mainf6fd902, locked restore/build0warnings0errors/400PASS/0fail/0skip.
+
+Final model exactly4tables/33columns/4PK/3NO ACTION FK/7indexes/9CHECKs, no shadow
+columns/seeds/token storage; all3RV properties generated/concurrency/ignored-on-save.
+Identity keys and32byte binary Sid map correctly; optional phone filtered unique,
+email CI, UTF16 capacities/date/datetime2(3)/hash512/defaults match accepted E03.
+Status empty CLR sentinel allows server ACTIVE default without inserting empty
+status. Context is not registered against an invented DB/profile in Program.
+SQL-provider metadata and DDL generation performed disconnected; no DB provision,
+SQL execution/migration/locking/RV runtime/auth readiness claim. All such later
+integration checks are explicitly open. No D02 started.
+skill_verification: complete worker context/policy audit, manager independent
+source review and checks PASS. Original successful/rejected/manager trees retained.

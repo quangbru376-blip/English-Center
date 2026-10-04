@@ -1,7 +1,8 @@
 # Handoff thực thi đầu tiên — P01 → P02
 
-Historical initial scope below. Latest: P02/P03/P05/P04/P06 applied/reverified PASS;
-see HANDOFF.md, P06_TASK_CARD.md and ADR-163 standing PASS application authority.
+Historical initial scope below. Latest: owner-authorized P07/P08/D01 batch
+applied/reverified PASS, mainf6fd902 full400tests PASS; see HANDOFF.md and these
+three task cards/ADR-163. D01 mapping only; next proposed D02 not started.
 No auto-start of remaining tasks/SQL/migrations/deployment.
 
 Cập nhật04/10/2026. Repository: `C:\Study\SOEN\main_workplace`.

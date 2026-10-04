@@ -82,8 +82,8 @@ ordering evidence for primitives/test hosts, not an authentication implementatio
 Transport/body-size/content-type/deadline profile enforcement and real auth/CSRF/
 request gate/state precedence are integration gates when routes/profile exist.
 
-skill_verification: selected skills read in full by Codex; worker read/tool scope,
-source review, locked restore/build/tests and main recheck pending.
+skill_verification: complete Codex verification/source review; see checkpoint
+for worker audit/rejections, source versions, tests and integration boundaries.
 Status: complete within primitive scope, Codex review PASS applied/reverified main.
 
 ## Verified checkpoint2026-10-04
@@ -106,5 +106,3 @@ Codex audited file-only tools, caps and source behavior, ran checks independentl
 A did not emit an explicit AGENTS view event; its card/skill/routing reads and
 actual behavior were independently verified. B explicitly read AGENTS too.
 Worktrees retained. Source/diff and every tool path reviewed; no worker commands.
-
-

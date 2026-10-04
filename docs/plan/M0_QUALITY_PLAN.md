@@ -1,16 +1,17 @@
 # M0 — kế hoạch task theo chất lượng
 
-Updated 2026-10-04: P02/P03/P05/P04/P06 applied and reverified PASS on main.
-P03:6cb2590 (reviewed c5e4eac), npm scripts/audit and browser evidence in
-[P03 card](P03_TASK_CARD.md). P05:8784686 (reviewed 6e5abe5), controlled clock
-and Vietnam conversions; locked restore/build0warnings/0errors and41tests
-pass, see [P05 card](P05_TASK_CARD.md). Original detached trees retained.
-Owner standing authorization ADR-163 permits automatic main application of
-reviewed PASS stages authorized for implementation; no repeat approval needed.
-P04 applied/reverified d9840bd (reviewed6a5269c),120tests pass; see
-[P04 card](P04_TASK_CARD.md). P06 applied/reverified PASS (94dd832/4e0a0fa/5afaf34),287tests pass;
-[P06 card](P06_TASK_CARD.md). P07 complete/applied PASS653e1cc/5a49afa, main357tests PASS; [P07 card](P07_TASK_CARD.md). Owner authorized P07→P08→D01 in one turn: P08 in progress, D01 next; task cards define exact boundaries. Rest M0/SQL/migrations/runtime
-install/push/deployment remain outside this request. M0/V01 incomplete.
+Updated2026-10-04: owner-requested P07→P08→D01 batch complete, reviewed PASS,
+applied/reverified final code mainf6fd902. Locked restore/build0warnings0errors/
+400tests PASS/0fail/0skip. Cards: [P07](P07_TASK_CARD.md), [P08](P08_TASK_CARD.md),
+[D01](D01_TASK_CARD.md). Error/binding primitives, pinned offline/raw credential
+helpers and four-table EF mapping implemented. D01 has no SQL execution/migrations;
+real auth/CSRF/credential workflows/SQL constraints/readiness remain integration gates.
+Rejected AGY overread output never applied; final mapping completed independently
+by Codex in a fresh tree. Earlier P02/P03/P05/P04/P06 PASS remain applied.
+ADR-163 permits autoapply after Codex PASS within owner-authorized stages.
+Next proposed D02 is not started. No remaining work in this three-family batch;
+rest M0/SQL/migrations/runtime installation/push/deployment outside this request.
+M0/V01 incomplete.
 ## 1. Đầu ra M0 và nguồn hợp đồng
 
 M0 cung cấp nền database/runtime đúng baseline và một luồng tài khoản thật:
@@ -268,4 +269,3 @@ SQL Agent/native backup encryption. Backup cần scheduler ngoài engine và arc
 mã hóa giữ nguyên ADR-118; media/key/tool/restore còn DF03. Build RTM không mới
 nhất: review compatible17.x patch trước dữ liệu thật/exposure; không tự cài.
 Thứ tự39families, skill/quality gates, D12/D13 owner-deferred không đổi.
-
