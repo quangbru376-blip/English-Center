@@ -184,3 +184,11 @@ full structural DB groundwork is an implementation ordering recommendation, not 
 new data model. Before execution, ask only necessary concrete development-profile,
 package or bootstrap choices not determined by accepted contracts; bundle choices
 with recommendations and actual evidence. Do not request deadline/weekly hours.
+
+## 10. Skill selection gate
+
+Áp dụng [SKILL_ROUTING](SKILL_ROUTING.md) mỗi task viết code. Mapping P/D/A/R/U/V
+đã ghi tại policy; task card phải có selected implementation/review skills,
+source revision/hash, applicable overrides và actual verification. P01 chỉ
+planning không ép code skill; AGY task phải đưa selected skill files/policy vào
+read scope hợp lệ trước validate. Không tự activate C2C hoặc broaden đọc/ghi.

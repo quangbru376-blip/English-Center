@@ -28,6 +28,11 @@ nghiệm thu lại E04/E05. Nghiệm thu này chỉ chốt thiết kế,chưa im
 
 ### Checkpoint hiện tại
 
+- Skill audit04/10/2026: AGENTS and docs/plan/SKILL_ROUTING.md now require
+  scope-appropriate backend/frontend skills and Codex code-review for code tasks.
+  Task cards/worker contexts include skill sources, canonical overrides and actual
+  verification.4local skills audited; C2C inactive, no dispatch/code/skill install.
+
 - M0 detailed planning04/10/2026: docs/plan/M0_QUALITY_PLAN.md records task families,
   dependencies, evidence gates and first3proposed scopes. Local SDK10.0.200/
   Node24.16.0/npm11.13.0 checked; SQL .\SQLEXPRESS version17.0.1000.7 Express

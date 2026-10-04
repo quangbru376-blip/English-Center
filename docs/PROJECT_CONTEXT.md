@@ -258,8 +258,10 @@ No execution started;do not re-ask approved policy/outputs.
   Source Word/E01/E02/E03/priorADRs/sidework unchanged;no new runtime evidence.
 - Official report source and normalized corrections:
   `docs/reference/REPORT_BASELINE.md`.
-- Project-local skill store: `.agents/skills/`; currently contains
-  `codex-with-chatgpt`. The skill is discovered in the current catalog.
+- Project-local skill store: `.agents/skills/`; contains `backend-clean-code`,
+  `frontend-ui`, `code-review`, `codex-with-chatgpt`. Required task selection and
+  canonical compatibility overrides: `docs/plan/SKILL_ROUTING.md`. Integration
+  skills remain opt-in; Codex retains manager/review authority.
 - The older kit under `instructions/english-center-agent-kit/` supplies stack,
   code style, structure, and planning templates where compatible with memory.
   Its requirements and role assignments must not override newer decisions.

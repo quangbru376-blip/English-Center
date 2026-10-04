@@ -59,6 +59,14 @@ replay, errors, tests or explanation just to fit a prompt. If scope no longer fi
 stop at a documented incomplete state, review the partial diff and issue a narrower
 follow-up; no silent continuation of an unrelated contract or success claim.
 
+### Required skill routing
+
+[Skill policy](SKILL_ROUTING.md) is a required preflight/review gate for every
+code-writing task. Task cards record selected complete skill sources, baseline
+overrides and actual verification. Backend/UI skills follow the affected scope;
+Codex code-review is required before done. Integration protocols do not replace
+implementation skills or authorize extra scope.
+
 ### Contract for every generation task
 
 Before code: record the task identifier, verified baseline commit and dependencies,

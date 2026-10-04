@@ -17,15 +17,28 @@ For product planning, implementation, and review, also read
 from the official report and the owner's accepted decisions. Source provenance
 is in `docs/reference/REPORT_BASELINE.md`. Do not modify the source Word report.
 
-The current stage is full design agreement, tracked in
-`docs/plan/design-baseline.md`: business functions, workflows, database, then
-system architecture. Agree on the complete baseline with the owner before
-discussing the implementation plan. Do not start Slice 0, Git initialization,
-scaffolding or application coding during this stage.
+The full design baseline E01–E05 is Accepted (ADR-160/161), tracked in
+`docs/plan/design-baseline.md`. The current stage is quality-based implementation
+planning in `docs/plan/implementation-plan.md` and `docs/plan/M0_QUALITY_PLAN.md`.
+Planning is authorized; application coding/scaffolding/installations/deployment
+have not started. Do not infer execution permission from design acceptance.
 
 Project-local skills live in `.agents/skills/`. Read the selected skill's
 complete `SKILL.md` before using it. Installing a skill does not automatically
 start its connection or delegation workflow.
+
+Before every code-writing task, follow `docs/plan/SKILL_ROUTING.md`. Select and
+read the applicable complete skills: backend-clean-code for backend/DTO/API/SQL
+work, frontend-ui for frontend/UI work, both for changes spanning both scopes.
+Codex uses code-review before code tasks or integrated slices are marked done.
+Record selected skills, source versions, canonical overrides and verification
+in the task card. Worker contracts must explicitly include the selected skill
+files/policy in authorized read context and require their use; skills grant no
+additional write/command/network/merge authority. Codex verifies actual behavior.
+Accepted E03/E04/requirements override stale skill guidance, including JWT-cookie
+transport, SQL Server-specific tests, full-set DTOs and exact money representations.
+Use antigravity-worker only for bounded AGY delegation, with Codex as manager.
+codex-with-chatgpt remains opt-in; reviewing a skill never starts its integration.
 
 `instructions/` is an input inbox supplied by the owner. It is not the source
 tree, Project Memory, or an automatically active rule set. An instruction file
