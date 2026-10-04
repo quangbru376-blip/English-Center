@@ -240,7 +240,11 @@ not implementation/runtime evidence. DF01–05 remain environment/evidence
 prerequisites;no code/SQL/Git/scaffold/deployment/implementationplan authority.
 Owner requested implementation-plan discussion03/10/2026; draft at
 `docs/plan/implementation-plan.md`, proposed M0–M4 pending discussion.
-No execution started;do not re-ask approved policy/outputs.
+Detailed proposed M0 working order and diagram are stored in
+`docs/plan/M0_QUALITY_PLAN.md` section11; first task=P01 profile/preflight.
+Task quality/skill gates apply; no execution started. Do not re-ask approved
+policy/outputs. SQL2025Express locally verified differs from accepted
+SQL2022Developer; edition explanation is an environment note, no ADR change.
 
 - Product rules/screen catalog: `docs/requirements.md`.
 - Accepted decisions including actual E04/E05: `docs/DECISIONS.md` ADR001–161,

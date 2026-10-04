@@ -19,10 +19,10 @@ deployment is active or authorized by the planning request.
 | Complete detailed report transfer and business agreement | done | E01/requirements/source provenance accepted; Word unchanged. |
 | Agree on workflows, database and architecture | done | E02/E03/E04-v1 accepted; actual E04 ADR-160, environment/evidence prerequisites retained. |
 | Cross-check and accept the complete design | done | Actual E05-v1/full baseline accepted ADR-161 after E04,03/10/2026. |
-| Confirm repository and initialize Git | deferred | Only with separate owner-authorized scope; no Git action from design acceptance. |
+| Confirm repository and preserve baseline in Git | done | Owner requested cleanup; accepted docs/local skills/planning preserved in local commits, checkout clean; no push. |
 | Scaffold backend and frontend | deferred | Only during authorized implementation. |
 | Resolve Slice 0 scope | doing | M0 identity pilot proposed; refine during owner-requested planning, no code. |
-| Register agent integration contracts | todo | Add each contract when its skill is supplied. |
+| Register agent integration contracts | doing | AGY analyze smoke contract/receipt verified; edit untested. Skill routing required; C2C inactive. |
 
 ## Phase 1–4
 
@@ -40,3 +40,11 @@ been activated by this request.
 ## Slice status vocabulary
 
 Use only: `todo`, `doing`, `review`, `done`.
+
+## Working-order source
+
+[M0_QUALITY_PLAN](M0_QUALITY_PLAN.md) section11 is the single detailed source
+for proposed39family default order and Mermaid diagram; sections4–7 hold actual
+dependencies. Current next task=P01 planning/preflight. M0–M4 remain coverage
+proposals; no code/installation/worker edit activated. CURRENT_STATE/TODO/HANDOFF
+must reference this order rather than replacing it with a chat-only shorthand.

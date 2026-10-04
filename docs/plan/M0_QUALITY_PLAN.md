@@ -61,7 +61,7 @@ worktree đến khi owner cho phép áp dụng; Codex không tự merge vào mai
 | P01 | Hồ sơ công cụ/package compatibility và LOCAL_DEV prerequisite được trình rõ, không chứa secret | Không | Phiên bản thật; package provenance/pins trước restore; SQL edition/profile thiếu được ghi rõ. |
 | P02 | Backend/test skeleton theo layout đã chốt, không business routes | P01 phần SDK/package | Build và discovery test target; không health-ready giả khi profile/DB thiếu. |
 | P03 | Frontend skeleton, scripts build/lint/typecheck rõ, chưa màn hình nghiệp vụ | P01 phần Node/package | Các scripts chạy thật; không thêm thư viện chưa duyệt hoặc API mocks thành success. |
-| P04 | Bộ chuẩn hóa nonsecret text/email/phone/DOB | P02 | Unicode/code point/NFC/surrogate, blank/NULL, duplicate-equivalence và ngày Việt Nam. |
+| P04 | Bộ chuẩn hóa nonsecret text/email/phone/DOB | P02,P05 | Unicode/code point/NFC/surrogate, blank/NULL, duplicate-equivalence và ngày Việt Nam. |
 | P05 | Clock/time abstractions và conversion | P02 | UTC milliseconds, ngày Việt Nam, cutoff equality bằng clock kiểm soát; không tùy timezone máy. |
 | P06 | Parser/version và numeric representations | P02 | UUID strict/8-byte padded Base64 RV, tiền chuỗi exact, precision/range; tách RV và numeric thành task riêng nếu lớn. |
 | P07 | Error envelope và binding/error precedence | P02,P04–06 | Accepted status/code/fieldErrors/traceId; malformed input; không stack/SQL/PII leak. |
@@ -93,6 +93,9 @@ composite relationships, filtered unique, checks/defaults/RV và index candidate
 | D12 | Four SQL roles/grants and schema/maintenance separation | D07–D11; actual allowed and forbidden principal operations; not dbo runtime. |
 | D13 | SQL compatibility/readiness and EF trigger/OUTPUT integration | D07–D12; full expected signature/schema checks and EF writes to5affected tables; isolated failures/missing objects fail closed. |
 
+Các ID task M0.D12/M0.D13 trong bảng không phải hai owner-review decisions
+D12/D13 đang hoãn; khác namespace, không thay trạng thái owner decisions.
+
 D01–D06 model fragments may build with technical test hosts; they are not a ready
 application. No partial schema readiness exemption is introduced. Keep migration
 history readable; do not edit applied migrations to repair later fragments.
@@ -106,16 +109,16 @@ count-only/stub objects to pass. Full24table/5TG/6VW/6FN/7SP target retained.
 
 | ID | Đầu ra của task | Phụ thuộc | Các ca quan trọng |
 | --- | --- | --- | --- |
-| A01 | Audit writer: mandatory atomic and security fallback paths | D06,P05,P07 | Mandatory failure rolls back; security failure không phục hồi quyền/phiên; secret-free allowlist. |
+| A01 | Audit writer: mandatory atomic and security fallback paths | D06,D07,P05,P07 | Mandatory failure rolls back; security failure không phục hồi quyền/phiên; secret-free allowlist. |
 | A02 | Bootstrap7roles/Admin và test identities tách biệt | D07,P08 | Không password seed trong source/migration/log; runtime không quyền bootstrap/migrate; repeat không tạo trùng/ghi đè. |
-| A03 | API018 Student signup service/API | D07,P04,P05,P07,P08,A01 | TX01 Account+Profile atomic, normalized email/phone race, invalid DOB/password, no auto-login/UUID/retry. |
+| A03 | API018 Student signup service/API | D07,P04,P05,P07,P08,A01,A04 | TX01 Account+Profile atomic, normalized email/phone race, invalid DOB/password, no auto-login/UUID/retry. |
 | A04 | API001 CSRF and safe HTTP/cookie boundary | P01,P07 | Same-origin/Secure flags/Origin, anonymous và authenticated context, no-store, token RAM. |
 | A05 | API002 login/throttle and session issuance | A02,A04,D01,P08,A01 | Generic failure privacy;5failures/15min; status vs throttle; restricted/normal scope; concurrent login counters. |
 | A06 | API003 me and reusable current-session authorization | A05,P05 | Account/version/revocation/absolute2h/idle30min checks; me không gia hạn idle; deny restricted business access. |
 | A07 | API005 current-session logout | A06,A01 | Server revoke, other devices remain; failure/log handling; no credential replay. |
 | A08 | API004 password change and restricted scope lifecycle | A06,P08,A01 | Current password, RV conflict, temp24h/restricted10min bounds, atomic all-session invalidation. |
 | R01 | Canonical registry/C1 digest primitives | P04–P06 |55actions exact, full intent/ordered versus sets, accepted literal UTF8 hashes and negative equality; no secrets. |
-| R02 | Completion storage/TX protocol and scoped lookup primitives | D06,A01,A06,R01 | Caller/action/key uniqueness;24h expiry; retained expired409/lookup404; current rights/order; no response/secret snapshots. |
+| R02 | Completion storage/TX protocol and scoped lookup primitives | D06,D07,A01,A06,R01 | Caller/action/key uniqueness;24h expiry; retained expired409/lookup404; current rights/order; no response/secret snapshots. |
 | R03 | API007 Admin detail, API010 lock and API014 lock-result lookup | A06,A01,R02,D12 | Split detail and atomic lock/lookup integration if needed; self/last-active concurrency, current rights, revoke races, lost-response/different-intent/stale409. |
 
 Backend integration tests require actual SQL2022 Developer for locks/RV/audit/
@@ -192,3 +195,70 @@ with recommendations and actual evidence. Do not request deadline/weekly hours.
 source revision/hash, applicable overrides và actual verification. P01 chỉ
 planning không ép code skill; AGY task phải đưa selected skill files/policy vào
 read scope hợp lệ trước validate. Không tự activate C2C hoặc broaden đọc/ghi.
+
+## 11. Thứ tự mặc định đã lưu và sơ đồ
+
+Đây là thứ tự đề xuất cụ thể để chọn task, không chỉ dựa vào sơ đồ chat.
+Mỗi ID là family cần tách task con trước dispatch; không phải39lần sinh code cố
+định. Mặc định tuần tự để review từng baseline; không tự tạo agent song song.
+Task đang chọn đầu tiên: P01 planning/preflight, chưa bắt đầu coding.
+
+P01 → P02 → P03 → P05 → P04 → P06 → P07 → P08.
+
+D01 → D02 → D03 → D04 → D05 → D06 → D07 → D08 → D09 → D10 → D11 → D12 → D13.
+
+A01 → A02 → A04 → A03 → A05 → A06 → A07 → A08 → R01 → R02 → R03.
+
+U02 → U01 → U03 → U04 → U05 → U06 → V01.
+
+
+Phụ thuộc bảng mục4–7 là điều kiện tối thiểu; thứ tự trên chủ ý bảo thủ và hợp
+lệ với chúng. P05 trước P04 vì DOB dùng ngày Việt Nam/clock; A04 trước A03 vì
+API signup là unsafe request cần CSRF/Origin; D07 trước audit/replay SQL tests.
+SQL family/object phụ thuộc nhau phải tách theo actual E03/E04 references tại
+contract. Không đổi source-state/guard/save-unit hoặc readiness để giữ thứ tự.
+
+```mermaid
+flowchart TD
+    P01["P01 · Profile và dependencies"] --> P02["P02 · Backend skeleton"]
+    P02 --> P03["P03 · Frontend skeleton"]
+    P03 --> CORE["P05 → P04 → P06 → P07 → P08 · Nền dùng chung"]
+    CORE --> MAP["D01–D06 · Mapping từng nhóm bảng"]
+    MAP --> MIG["D07 · Model và migration tích hợp"]
+    MIG --> SQL["D08–D11 · Từng SQL object"]
+    SQL --> READY["D12–D13 · Grants, EF và readiness"]
+    READY --> BASE["A01–A02 · Audit và bootstrap"]
+    BASE --> CSRF["A04 · CSRF/HTTP boundary"]
+    CSRF --> SIGNUP["A03 · Student signup"]
+    SIGNUP --> AUTH["A05–A08 · Login/me/logout/password"]
+    AUTH --> REPLAY["R01–R03 · C1/replay và Admin lock pilot"]
+    REPLAY --> UI["U02 → U01 → U03–U06 · UI nối API thật"]
+    UI --> VERIFY["V01 · Kiểm chứng toàn slice M0"]
+```
+
+Đây là sơ đồ thứ tự mặc định, không mô tả mọi edge của dependency graph. Một
+technical task có thể test độc lập trước full readiness nhưng không được nhận
+runtime-ready hoặc integrated-flow claim. Sau M0, các nhóm coverage đề xuất
+M1configuration/admissions → M2payment/class/schedule → M3teaching/publication
+→ M4reports/final evidence; chi tiết task chưa lập, không giao cả nhóm một lần.
+
+Khi phải đổi thứ tự hoặc chia ID thành task con: update bảng/dependencies,
+thứ tự/sơ đồ tại đây và current memory trước bước tiếp theo, ghi lý do. Mọi
+skill gate và owner permission trước apply worker changes tiếp tục giữ nguyên.
+
+## 12. Express và Developer — ghi chú environment, không đổi ADR
+
+Đã đọc Microsoft Learn04/10/2026:
+[SQL2022 editions](https://learn.microsoft.com/en-us/sql/sql-server/editions-and-components-of-sql-server-2022?view=sql-server-ver16),
+[SQL2025 editions](https://learn.microsoft.com/en-us/sql/sql-server/editions-and-components-of-sql-server-2025?view=sql-server-ver17).
+Express là edition miễn phí cho ứng dụng nhỏ, có giới hạn capacity; SQL2022
+Express10GB/database, SQL2025 Express50GB/database, buffer pool1410MB và
+compute lesser1socket/4cores. Express không có SQL Server Agent hoặc native
+backup encryption. Developer2022 có Enterprise features, licensed dev/test
+non-production; phù hợp accepted project target, không production license.
+
+Máy đã kiểm có version17.0.1000.7 Express, thuộc major SQL2025 theo Microsoft;
+khác target2022Developer ở cả version và edition. Không kết luận mọi chức năng
+đồ án không chạy trên Express; thiếu target-compatible evidence là prerequisite.
+Giữ ADR119, chưa install/upgrade/remove hoặc thay config. Backup policy/job
+chưa implemented và việc chọn Developer không tự chứng minh recovery đạt.

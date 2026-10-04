@@ -28,6 +28,12 @@ nghiệm thu lại E04/E05. Nghiệm thu này chỉ chốt thiết kế,chưa im
 
 ### Checkpoint hiện tại
 
+- M0 order synchronized04/10/2026: docs/plan/M0_QUALITY_PLAN.md section11 holds
+  proposed39family default order and Mermaid; dependencies in sections4–7.
+  Start=P01 planning/profile. P05beforeP04, A04beforeA03, D07beforeSQLaudit/replay
+  evidence explicit; full readiness/skill gates retained. SQL edition comparison
+  verified from Microsoft, target2022Developer unchanged; no install/code/dispatch.
+
 - Skill audit04/10/2026: AGENTS and docs/plan/SKILL_ROUTING.md now require
   scope-appropriate backend/frontend skills and Codex code-review for code tasks.
   Task cards/worker contexts include skill sources, canonical overrides and actual

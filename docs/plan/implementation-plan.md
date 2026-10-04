@@ -167,3 +167,11 @@ readiness is not replaced by partial-table checks. Existing local SQL Express
 is a verified mismatch with the accepted SQL2022 Developer target.
 No deadline input required; no source generation/installation/worker dispatch
 from this planning output. M0–M4 and detailed task ordering remain proposals.
+
+## Persisted working order
+
+M0's detailed proposed default sequence and Mermaid live in
+[M0_QUALITY_PLAN section11](M0_QUALITY_PLAN.md#11-thứ-tự-mặc-định-đã-lưu-và-sơ-đồ).
+Next=P01planning/preflight; schedule is not a prerequisite. Detailed dependency
+corrections precede execution. M1–M4 remain coverage proposals pending their own
+small task plans. No plan-source disagreement should be resolved from chat alone.
