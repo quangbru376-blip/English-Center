@@ -4,6 +4,16 @@ Last updated: 2026-10-04
 
 ## Current task
 
+Owner separately authorized bounded P03 frontend skeleton after P02 application.
+[P03 task card](plan/P03_TASK_CARD.md) records exact compatible npm manifest,
+nine worker paths/400lines and four proposed context files. English contract
+validated at clean base eeed057c24dd3cd359d69766388b5b47ba11eeef;
+scoped external sharing consent pending, no P03 dispatch/source/install yet.
+Codex manager/AGY worker; code stays detached pending separate main apply.
+This opens only P03; SQL/later M0/runtime installs/deployment remain outside scope.
+
+### Applied P02 checkpoint
+
 P01 prerequisites needed by P02 complete; P02 reviewed **PASS** after two
 manager fixes. Owner explicitly confirmed main application on 2026-10-04;
 applied as df7cd9ac3b7f8b54e6b2814255ca5c424d768b99, reverified PASS on main.
@@ -17,8 +27,8 @@ Manager fixes: xUnit cancellation tokens and same-version mtp-off package for
 VSTest/SDK10 compatibility. Prior docs preserved1054888; dispatch base72696e5.
 Main source exactly matches reviewed detached source; lock hashes unchanged.
 Main locked restore/build0warnings/0errors/discovery10/tests10pass/0fail/0skip
-verified after apply. No push/deployment. Next: owner direction for a new bounded task.
-P03/rest M0/SQL changes/installs/deployment remain outside scope. Full LOCAL_DEV
+verified after apply. No push/deployment. Next: bounded P03 as authorized above.
+Rest M0/SQL changes/installs/deployment remain outside scope. Full LOCAL_DEV
 and DB/readiness unconfigured; M0/V01 not done. Historical preparation below
 describes state before this execution; edit and main application verified for P02.
 

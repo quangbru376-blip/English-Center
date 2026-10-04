@@ -10,11 +10,15 @@
 
 ## Next
 
-- Await owner direction for a new bounded task. [P02 task card](plan/P02_TASK_CARD.md):
+- Execute only owner-authorized [P03 task card](plan/P03_TASK_CARD.md): contract
+  validated, exact package pins/read-write scope prepared; scoped AGY context
+  sharing consent pending. Worker code stays detached, manager verifies actual
+  npm graph/scripts/browser; no SQL/later M0 or automatic main apply.
+- [P02 task card](plan/P02_TASK_CARD.md):
   P01 P02 prerequisites complete; reviewed d9eb194 applied to main as df7cd9a
   with explicit owner consent. Main locked restore/build0warnings/0errors,
   discovery10/tests10pass; source and lock hashes unchanged. Do not start
-  P03/rest M0/SQL/runtime install/deployment from this application permission.
+  rest M0/SQL/runtime install/deployment from this application permission.
 
 SQL assessment04/10/2026 completed: installed SQL2025 Express17.0.1000.7
 retained by ADR-162; see [assessment](plan/SQL_INSTANCE_ASSESSMENT.md).
