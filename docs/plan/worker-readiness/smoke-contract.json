@@ -1,0 +1,20 @@
+{
+  "mode": "analyze",
+  "objective": "Perform a bounded authenticated CLI smoke test. This task-specific read boundary overrides general repository instructions to read additional memory, requirements, plans or references. You may use view_file ONLY on docs/plan/HANDOFF.md (only its first 65 lines) and docs/plan/implementation-plan.md, inside this worktree. Do NOT open any other file or follow links, including OWNER_REVIEW.md, DECISIONS.md, requirements.md or any skill file. Do not discover files, use shell commands, browser, MCP, subagents, or search tools. From these two files alone report: the E04 and E05 accepted ADR numbers; the two deferred owner decisions; whether M0-M4 is draft or accepted; and two sentences describing M0. Cite just these two relative paths. End with AGY_SMOKE_READONLY_OK and Changed files: none. If either file is unavailable, stop and report that rather than reading another file.",
+  "allowed_paths": [],
+  "forbidden_paths": [
+    "**"
+  ],
+  "acceptance_criteria": [
+    "Only view_file reads of the two named files; no other tool calls or paths.",
+    "Correctly identify ADR-160/161, D12/D13 and draft M0-M4 from HANDOFF and implementation-plan.",
+    "Change zero files and run no commands or validation. Return AGY_SMOKE_READONLY_OK."
+  ],
+  "context_files": [
+    "docs/plan/HANDOFF.md",
+    "docs/plan/implementation-plan.md"
+  ],
+  "max_changed_files": 1,
+  "max_diff_lines": 1,
+  "timeout": "3m"
+}

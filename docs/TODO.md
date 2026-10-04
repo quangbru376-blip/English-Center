@@ -10,10 +10,9 @@
 
 ## Next
 
-- Complete antigravity-worker authenticated smoke test after pending document
-  sharing consent; see docs/plan/antigravity-worker-readiness.md. Runner/preflight
-  checks passed; external dispatch was rejected before execution. Keep repo clean.
-
+- Analyze smoke test complete04/10/2026: SUCCESS/exit0,manager event/diff review
+  and6runner tests pass. Edit mode untested; future tasks need bounded contracts,
+  detached worktrees and owner permission before applying worker changes.
 - Discuss proposed M0–M4 implementation milestones in
   `docs/plan/implementation-plan.md`; gather deadline/weekly availability, then
   refine dependencies, slice sizes and M0 contract with owner. Planning only;

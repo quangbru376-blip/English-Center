@@ -20,18 +20,42 @@ stashed or pushed. The checkout was clean immediately after this commit.
   names the ordered memory inputs. Runner validate returned status=validated.
 - Application test/lint/typecheck not applicable yet: no application scaffold.
 
-## Actual authenticated dispatch pending
+## Authenticated analyze smoke test — 2026-10-04
 
-Automatic approval review rejected the attempted run before execution because
-it would send internal Project Memory content through the authenticated external
-AGY service without sufficiently explicit file-content sharing consent. No AGY
-run receipt, authenticated success or worker read/diff result is available.
-Owner was asked to approve sharing the eight named context files or choose a
-synthetic no-document test. Do not bypass this rejection or infer approval.
+Owner explicitly approved sharing the eight named context files with Google AGY.
+After preserving three newly installed local skills in commit ead88d8, the repo
+was clean and preflight validated before each dispatch. The earlier automatic
+review rejection is historical and consent has now been supplied.
 
-After approval: recheck clean Git and validate, dispatch outside Codex sandbox
-with the real profile and reduced environment, keep AGY permission checks,
-inspect AGY_WORKER_RECEIPT and require explicit SUCCESS plus exit0 and no policy
-violations; independently inspect detached worktree status/diff/limits and facts.
-Never use --dangerously-skip-permissions; do not merge/apply worker changes
-without owner permission. No code implementation is active.
+First run932a6452-acc: manager terminated the process after observing a read of
+OWNER_REVIEW.md outside the eight-file read scope. This run is rejected; there
+is no final runner receipt because the process tree was stopped. Both this
+worktree and the primary checkout stayed unchanged. Prompt-only read restrictions
+are not a hard access barrier; manager must inspect tool events as well as diffs.
+
+Second run d83b58f7-165 used a narrower English contract, with only HANDOFF
+(first65lines requested) and implementation-plan allowed to be read, and no
+linked-file exploration. These files were within the owner's sharing consent.
+
+- [Contract](worker-readiness/smoke-contract.json): analyze; no allowed writes;
+  all edits forbidden; limits1file/1line, actual expected and observed0/0.
+- [Runner receipt](worker-readiness/smoke-receipt.json): review_required,
+  explicit AGY SUCCESS/exit0, no reported policy violations. Manager verdict PASS
+  for this analyze smoke test; raw events and both worktrees retained in temp.
+- Codex checked events: exactly2view_file calls, only the two named paths, no
+  command/test/network/browser/MCP/subagent tools. Returned ADR160/161,D12/D13,
+  draft M0–M4 and M0 description match the accepted sources.
+- Codex checked both detached HEADs and primary checkout: clean, zero changed
+  files, zero diff lines; Git diff --check passes. Allowed/forbidden edit checks
+  and limits pass. No worker changes merged or applied.
+- Codex syntax check and6/6runner unit tests pass after the run. No application
+  lint/typecheck/test targets exist yet. A worker-suggested nonexistent test
+  script was ignored; worker claims were not accepted as verification.
+
+Authenticated analyze delegation is verified; actual edit execution, permission
+approval, file generation and application build/lint/typecheck remain untested.
+No implementation/scaffold/package installation or deployment begun. Future edit
+contracts require detached worktrees, clean Git, explicit path scope, validate,
+manager tests/review and owner permission before applying changes to primary.
+Never use --dangerously-skip-permissions. This is not blanket consent to export
+other repository files or credentials in future worker tasks.

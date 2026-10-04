@@ -25,11 +25,11 @@ nghiệm thu lại E04/E05. Nghiệm thu này chỉ chốt thiết kế,chưa im
 
 ### Checkpoint hiện tại
 
-- Worker-readiness task: owner requested current-repo cleanup and skill check.
-  d6724a6 preserves baseline; runner syntax/6tests/preflight pass. Actual AGY
-  dispatch blocked by automatic review pending explicit file-sharing consent;
-  see [readiness](antigravity-worker-readiness.md). No worker success/code claimed.
-
+- Worker readiness04/10/2026: owner approved named context sharing; first run
+  stopped/rejected for extra read; narrowed analyze SUCCESS/exit0,2allowedreads,
+  zerochanges. Codex events/diffs/detachedHEADs/6runner tests verified.
+  [Readiness](antigravity-worker-readiness.md) has durable contract/receipt.
+  Actual edit mode untested; no worker changes applied/code/push/deploy.
 - All5designstages done;E01–E05 actual outputs Accepted. ADRrecords001–161
   giữ trạng thái riêng;RF03=156,RF01/02/04=157–159,actualE04=160,baselineE05=161.
 - OWNER_REVIEW75rows/73accepted;chỉ D12/D13 unchecked/hoãn,originalnotes kept.
