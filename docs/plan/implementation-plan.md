@@ -1,6 +1,6 @@
 # Implementation planning — discussion draft
 
-Updated: 2026-10-03. Status: doing (planning only).
+Updated: 2026-10-04. Status: doing (planning only).
 
 ## Authority and baseline
 
@@ -16,7 +16,100 @@ Build small vertical capabilities: database constraints/persistence → service
 transaction and authorization → API → Vietnamese UI → verification and demo.
 Use conventional code the owner can explain in the oral examination. Preserve
 the agreed stack/module boundaries and avoid new package/framework decisions
-inside a schedule discussion. Do not equate 154 endpoints with equal-sized tasks.
+during task sizing. Do not equate 154 endpoints with equal-sized tasks.
+
+## Owner direction — quality before calendar throughput
+
+On2026-10-04 the owner explicitly chose task decomposition for code quality,
+accounting for output-token limits and uneven task complexity. Deadline and
+weekly-hours inputs are not prerequisites for this plan. M0–M4 are coverage
+and dependency groups, not calendar commitments or single worker prompts.
+The operational decomposition below refines that direction; individual contracts
+and the proposed execution sequence remain to be made concrete before coding.
+
+### Three levels of work
+
+- Coverage group: M0–M4 tracks which accepted capabilities must eventually exist.
+- Integrated slice: one demonstrable real workflow with all applicable guards,
+  persistence/API/UI and required failure/concurrency evidence.
+- Generation task: one cohesive code change small enough to implement and review
+  completely. A slice can require several tasks; an infrastructure task may have
+  a build/testable technical outcome rather than a user-facing screen.
+
+Task completion does not imply slice completion. Partial layers must not be
+exposed as a finished workflow, and mocks/stubs do not satisfy integration gates.
+Keep every accepted atomic business operation all-or-none even when implementation
+is produced in several tasks. Split supporting components, not transaction semantics.
+
+### Size tasks by risk and reviewability
+
+Codex inspects the actual context and estimates implementation plus necessary
+tests/documentation before dispatch. Reduce scope when a task combines multiple
+independent outcomes, introduces too many unfamiliar dependencies, touches shared
+infrastructure and domain rules together, or cannot be fully reviewed and verified
+within the available output. Prefer one complex transaction per task; a repetitive
+low-risk DTO/mapping group may fit together. File count and diff lines are enforceable
+bounds, not proof of task quality; no universal files/lines/token quota is assumed.
+
+Reserve output capacity for failure paths, tests and a concise receipt. Code is
+written to files rather than duplicated wholesale in chat. Context readings and
+output generation limits are distinct: having read a large baseline does not mean
+an entire module can be implemented in one response. Do not omit guards, audit,
+replay, errors, tests or explanation just to fit a prompt. If scope no longer fits,
+stop at a documented incomplete state, review the partial diff and issue a narrower
+follow-up; no silent continuation of an unrelated contract or success claim.
+
+### Contract for every generation task
+
+Before code: record the task identifier, verified baseline commit and dependencies,
+one observable outcome, exact F/W/API/DTO/TX/data references, allowed/forbidden paths,
+conservative file/diff limits, required success/failure/boundary checks, manager-run
+validation commands, exclusions and integration obligations. No invented scripts:
+commands must exist or be explicitly part of the authorized task being added.
+Worker contracts are English and use only the declared read context; following a
+linked file requires scope/consent assessment, not implicit broader access.
+
+### Quality gates and continuation
+
+1. Ready: accepted source contracts and dependencies available; task fits output
+   and review capacity; no unresolved choice hidden behind a placeholder.
+2. Generate: implementation and relevant tests in bounded paths. Worker edit tasks
+   use clean Git, validated contracts and detached worktrees. Codex retains secrets,
+   architectural decisions and final validation. Analyze smoke test is verified;
+   real edit execution still needs validation when first used.
+3. Verify: Codex inspects receipt, tool events, changed paths/limits and the actual
+   diff; runs applicable build/lint/typecheck/tests independently. Use real SQL
+   Server for SQL-specific invariants, locks, triggers, grants and transaction races.
+   A failed or unavailable required check leaves that outcome unresolved.
+4. Review: behavior matches accepted guards/privacy/errors/save units and is simple
+   enough for the owner to explain. Tests cover meaningful edge/failure conditions,
+   not just the implementation's happy path. Review dependent callers/interfaces.
+5. Record: update the task/slice status, commands/results and remaining integration
+   obligations in memory. Next dependent generation starts only on a verified
+   baseline; do not accumulate unreviewed dependent diffs. Small independent work
+   does not authorize overlapping concurrent worker edits.
+
+Worker changes remain isolated until owner permission to apply to primary. Testing
+an approved dependency chain within the same isolated worktree does not itself
+approve applying it. No merge/apply permission inferred from the quality principle.
+
+### Illustrative M0 decomposition — proposal, not executable contracts
+
+| Task family | Bounded outcome | Required evidence before dependent work |
+| --- | --- | --- |
+| Development profile and dependency pins | Concrete compatible development/test configuration and prerequisites | Actual tool/profile checks; do not invent D12/D13 values. |
+| Backend skeleton | Agreed backend/test layout builds | Build/test project discovery and a meaningful startup check. |
+| Frontend skeleton | Agreed frontend layout and shared HTTP/error boundary build | Existing build/lint/typecheck targets execute; no business success mocks. |
+| Identity persistence | A coherent E03 identity/schema/bootstrap foundation | Real SQL migration/constraints and safe bootstrap checks; cross-domain schema dependencies explicit. |
+| Shared representations | Exact normalization/time/money/RowVersion contracts, split by complexity | Accepted boundary examples and meaningful invalid-input tests. |
+| Student signup | Atomic self-registration service/API | Uniqueness races, rollback, privacy and accepted validation. |
+| Session/auth operations | Login/context/logout and session checks, split into bounded operations | Real revocation/timers/CSRF/role checks per operation; no token persistence. |
+| Identity UI integration | Real signup/login/own-context/logout flow in small UI tasks | Backend-connected states/permissions and required responsive/browser checks. |
+| Restricted password flow | Actual temporary-password lifecycle and relevant UI | One-time secret handling, expiration and all-session invalidation. |
+| Audit/replay foundation and first caller | Exact shared contracts then one real authorized Admin command | Atomic completion/audit, current rights, duplicate/conflicting intent and lost-response handling. |
+
+This table is a sizing illustration, not an instruction to generate a whole row at
+once. Codex must split further if dependency, error or concurrency complexity warrants.
 
 ## Proposed milestones — not an approved execution sequence
 
@@ -56,9 +149,10 @@ and test isolation must be resolved for the affected execution slice. Backup
 media/keys/isolated restore are prerequisites for actual backup/recovery evidence.
 Do not claim load/RPO/RTO success without the approved environment and measurements.
 
-## Discussion inputs and next refinement
+## Next refinement
 
-Owner deadline/demo date and available hours per week requested; not known yet.
-Use those inputs to discuss milestone sizing, dependencies, owner review cadence
-and a detailed M0 slice contract. Proposed sequence remains subject to discussion;
-no dates, delivery guarantee, implementation authorization or new ADR inferred.
+Build the dependency map and detailed generation-task contracts for M0 using the
+quality gates above. Discuss genuine new environment/package/bootstrap choices
+only when necessary; do not re-ask accepted product contracts. Dates and weekly
+availability are not needed to size quality-bounded tasks. M0–M4 grouping remains
+a proposal; no application execution authority inferred from this planning change.

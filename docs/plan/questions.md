@@ -35,8 +35,9 @@ direction required for any next work. Deferred historical future-work items:
 ### Q-001 — Four implementation phases
 
 The owner now requests planning after baseline acceptance. M1–M4 boundaries
-are proposed explicitly in implementation-plan.md; discuss sizing/dependencies
-and deadline, not an inherited or already-approved four-phase mandate.
+are proposed explicitly in implementation-plan.md; owner chose quality-based
+sizing/dependencies/output limits, not deadline-driven work. The grouping is
+not an inherited or already-approved four-phase mandate.
 
 ### Q-002 — Pilot Slice 0 contract
 

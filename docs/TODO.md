@@ -14,8 +14,9 @@
   and6runner tests pass. Edit mode untested; future tasks need bounded contracts,
   detached worktrees and owner permission before applying worker changes.
 - Discuss proposed M0–M4 implementation milestones in
-  `docs/plan/implementation-plan.md`; gather deadline/weekly availability, then
-  refine dependencies, slice sizes and M0 contract with owner. Planning only;
+  `docs/plan/implementation-plan.md`; refine M0 dependencies and small generation
+  contracts by complexity/output capacity and quality gates, not calendar speed.
+  Owner chose quality-first decomposition04/10/2026. Planning only;
   no code/SQL/Git/scaffold/packages/deployment/runtime operations started.
 - Update affected source/trace/ADRs if owner asks for a later design change.
 

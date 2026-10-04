@@ -5,7 +5,9 @@ Complete design agreement in `design-baseline.md` is done: E01–E05 accepted,
 actual E04-v1 ADR-160 then E05-v1/full baseline ADR-161 on2026-10-03.
 Owner requested coding-plan discussion on2026-10-03. Planning is now active
 in [implementation-plan.md](implementation-plan.md), with proposed M0–M4
-milestones pending discussion. No application slice/code/SQL/Git/scaffold/
+groups pending discussion. Owner chose quality-bounded generation tasks on
+2026-10-04, sized by complexity/output and verification, not calendar throughput.
+No application slice/code/SQL/Git/scaffold/
 deployment is active or authorized by the planning request.
 
 ## Preparation

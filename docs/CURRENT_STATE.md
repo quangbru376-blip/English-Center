@@ -1,6 +1,6 @@
 # Current State
 
-Last updated: 2026-10-03
+Last updated: 2026-10-04
 
 ## Current task
 
@@ -31,7 +31,9 @@ patch/blocklistpins/config and future SQL/API/EF/race/browser/CSV/load/recovery
 verification. Accepted design is not installed/configured/implemented/tested.
 Owner now explicitly requests discussing implementation planning (03/10/2026).
 Planning is active in docs/plan/implementation-plan.md; M0–M4 are proposals,
-not accepted execution milestones. Deadline and weekly availability requested.
+not accepted execution milestones. Owner now requires quality-bounded generation
+tasks based on complexity/output limits, not calendar deadlines or weekly hours.
+Plan defines group/slice/task distinctions and manager verification gates.
 No code/SQL/Git/scaffold/packages/deployment begun or authorized by this request.
 Do not reopen approved contracts.
 Report/sequence/C2C work remains on-demand;skill installation is not integration.

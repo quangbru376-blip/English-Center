@@ -6,7 +6,10 @@ Cập nhật03/10/2026. Workspace:C:\Study\SOEN\main_workplace.
 
 Owner yêu cầu bàn kế hoạch viết code sau nghiệm thu. Đã mở bản thảo
 [implementation-plan.md](implementation-plan.md), đề xuất M0–M4; chưa duyệt
-thứ tự/mốc thực thi. Đang lấy hạn nộp/demo và thời gian mỗi tuần để chia slice.
+thứ tự/mốc thực thi. Owner chọn04/10/2026 chia task theo chất lượng/độ phức
+tạp/giới hạn output; không cần hạn nộp hoặc giờ mỗi tuần để chia việc.
+Phân biệt nhóm M0–M4, slice tích hợp và từng task sinh code; Codex kiểm chứng
+trước task phụ thuộc, không giảm guard/test để nhét trong một lần sinh.
 Planning được yêu cầu riêng; chưa code/SQL/Git/scaffold/cài package/triển khai.
 
 Owner đã nghiệm thu actual E04-v1 trước (ADR-160),rồi E05-v1/complete baseline
