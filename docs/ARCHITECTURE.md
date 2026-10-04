@@ -33,6 +33,15 @@ P04 applied/reverified on main d9840bd (reviewed6a5269c); see
 canonical0 phone) and StudentBirthDateValidator using P05 Vietnam clock.
 Helpers do not process passwords, perform uniqueness queries or expose routes.
 No new dependencies.79P04 tests bring main total to120pass/0fail/0skip.
+P06 applied/reverified on main94dd832/4e0a0fa/5afaf34; see
+[task card](plan/P06_TASK_CARD.md). Common/Serialization now has strict
+UUID-D/single-header, LocalDate/MinuteTime and JSON Int32 lexeme parsers;
+RowVersionCodec canonical padded Base64 preserves8bytes. ExactNumbers uses
+decimal for positive whole VND18 and score/weight2precision; ReportAmountCodec
+uses built-in BigInteger for canonical nonnegative decimal38 totals. No float,
+new packages or binder/endpoint wiring. Main287tests pass/0fail/0skip.
+Successful AGY scalar/report parts and independent manager numeric recovery
+are retained as separate review snapshots; rejected AGY outputs never applied.
 `instructions/` is a directive/reference inbox and is not part of the planned
 runtime architecture.
 

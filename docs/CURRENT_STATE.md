@@ -4,20 +4,22 @@ Last updated: 2026-10-04
 
 ## Current task
 
-P04 reviewed PASS and applied/reverified on main d9840bd on2026-10-04;
-[task card/evidence](plan/P04_TASK_CARD.md), detached6a5269c retained.
-AGY81794616-978 SUCCESS/exit0/exact6files613workerlines/zero scope violations.
-Codex inspected all19tool calls and full sources; corrected NFC/surrogate
-fixtures and email parser gaps. Final6files627lines; no packages/locks/P05/
-Program/frontend/SQL changes. Main matches reviewed source, locked restore/
-build0warnings/0errors/full120tests pass (79P04+31P05+10startup),0fail/0skip.
-Pure normalization/DOB primitives; no API/DB uniqueness integration yet.
-P03 main6cb2590 and P05 main8784686 remain applied PASS.
-Standing owner authority ADR-163: auto-apply reviewed PASS authorized stages,
-request owner action only for unresolved issues. No blocker. P04 complete;
-next proposed P06 strict scalar/version/numeric parsers is not started.
-SQL/migrations/install/push/deployment/rest M0 outside this request; no push.
-Full LOCAL_DEV/readiness and M0/V01 incomplete.
+P06 complete, reviewed PASS and applied/reverified on main on2026-10-04;
+[task card/evidence](plan/P06_TASK_CARD.md). A strict scalars/RV main94dd832
+(reviewed d950e6b), report decimal38 main4e0a0fa (reviewed bb91b2d), exact
+money/score/weight main5afaf34 (reviewed manager836a6cb). Final main locked
+restore/build0warnings0errors/full287tests pass/0fail/0skip; exact source
+matches reviewed snapshots. New8files794lines in3bounded PASS parts.
+AGY A/B2 SUCCESS/exit0/zero violations; all tool scopes/complete contexts audited.
+Numeric AGY attempts3times rejected due output-token ERROR; never applied.
+Codex independently completed the2file185line numeric part in fresh detached
+worktree and verified exact decimal tests. No unresolved P06 blocker.
+No packages/locks/Program/P04/P05/frontend/SQL changes. No API binder/public
+error/uniqueness/persistence/auth consumers yet; M0/V01/readiness incomplete.
+P02/P03/P05/P04 remain applied PASS. Standing owner authority ADR-163 applies.
+Next proposed P07 error envelope and strict binding/error precedence; not started.
+SQL/migrations/install/push/deployment/rest M0 outside this request. No push.
+Original successful/rejected worker trees and manager tree retained for evidence.
 ### Applied P02 checkpoint
 
 P01 prerequisites needed by P02 complete; P02 reviewed **PASS** after two

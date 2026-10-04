@@ -31,7 +31,8 @@ plus10startup tests passing; see docs/plan/P03_TASK_CARD.md and P05_TASK_CARD.md
 Standing owner authorization (ADR-163): apply reviewed PASS stages already
 authorized for implementation to main without asking again. Report issues
 requiring owner action. P04 applied/reverified PASS at d9840bd with120tests passing; see
- docs/plan/P04_TASK_CARD.md. P04 complete; P06 is not started. This permission
+ docs/plan/P04_TASK_CARD.md. P06 complete/applied PASS (94dd832,4e0a0fa,5afaf34), main287tests pass;
+ see docs/plan/P06_TASK_CARD.md. P07 is not started. This permission
 does not open unrelated tasks, SQL/migrations, installs, push or deployment.
 
 Project-local skills live in `.agents/skills/`. Read the selected skill's

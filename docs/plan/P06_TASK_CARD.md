@@ -119,3 +119,51 @@ same4file scope and concise objective, not continuation of failed output.
 Part B retry fd0266d7-7d9 also rejected for AGY output token limit (ERROR, CLIexit0/runnerexit1,4files493lines/zero violations); never applied. Recovery splits Part B into B1 ExactNumbers+tests (2files/350lines) and B2 ReportAmountCodec+tests (2files/180lines). Existing exact API/grammar/gates remain; no broadening. New workers read same4contexts and only their own2output paths. Generate independently, no failed-output access.
 
 B1 fccbc3ad-28c rejected again (AGY output-limit ERROR,2files310lines/zero scope violations); rejected code not applied. Codex manager now independently implements only the authorized ExactNumbers+tests in a fresh detached worktree, same public API/350line cap, following backend skill and independent review. Successful AGY A/B2 remain applied; this is bounded recovery, not extra task scope.
+
+## Final numeric and whole P06 review — PASS
+
+B2 AGY c0abb4ce-4b2 SUCCESS/exit0/2files154runnerlines/zero violations,
+conversation a2c43330-30d0-48e8-8fc7-bbb3b1869538; basee7e1c47.
+All10tools audited (8reads/2writes), complete4contexts before edits; no extra
+paths/tools. Exact report amount0..10^38-1, negatives/noncanonical/Unicode
+rejection and culture-independent literal roundtrips above decimal.MaxValue
+verified. No manager code corrections required; final2files152insertions.
+Locked restore/build0warnings0errors/full246tests PASS. Reviewed detached
+bb91b2db95668dfb45bdc22c1e921076d51fc2c8 applied main
+4e0a0fa39993d5e83e6b2496abbb8d7e6d1d23ea; source matches, main246tests PASS.
+[Contract](p06-evidence/part-b2-contract.json),
+[receipt](p06-evidence/part-b2-receipt.json).
+
+B1 completed independently by Codex manager after three rejected numeric AGY
+runs; none of their output was applied. Fresh detached manager tree based on
+4e0a0fa, no copied worker files. ExactNumbers+tests2files185insertions under350
+cap; full source/whitespace/scope review PASS. No package/lock/P04/P05/A/B2 changes.
+Uses exact decimal arithmetic and ASCII lexical guards, validates precision
+before invariant formatting; money leading zeros normalize but whitespace does
+not, score zero valid/weight zero invalid.41new exact tests cover18digit max,
+valid10^17 padded spelling, long leading-zero equivalence, score/weight boundaries,
+precision/sign/exponent/Unicode failures, culture and secret-free errors.
+No floating-point implementation or test fixtures. No weighted/report-percent
+calculation/business sum or rounding algorithm added.
+
+Final manager detached836a6cb3dfb555d7fd0a7cf75573a824ea711b74 at
+C:\Users\asus\AppData\Local\Temp\codex-p06-manager\manager-numbers.
+Applied automatically as main5afaf34871847731ee095aab53e6b4db219d5300.
+Whole backend source equals final reviewed tree; main locked restore, build
+warnings-as-errors0warnings0errors and287tests pass/0fail/0skip reverified
+(94P06A +32report +41exact numbers +120prior). Original successful and rejected
+worker trees retained, no push/installation/deployment.
+
+skill_verification: PASS via actual tool/source/behavior checks and independent
+Codex tests; complete backend skill/routing overrides followed. Code-review
+verdict **PASS**, no unresolved P06 must-fix. Auth/SQL/DTO/route/DI/UI checks N/A;
+P07 owns API binder/public errors/presence/unknown-property precedence. M0/V01
+and SQL/readiness incomplete. P06 complete; next proposed P07, not started.
+[Full scope audit](p06-evidence/tool-scope-audit.json),
+[raw-event hashes](p06-evidence/runner-event-hashes.json),
+[main test counts](p06-evidence/main-test-counts.json).
+
+Code flow: strict scalar parsers preserve type/lexeme/date shape and RV bytes;
+ExactNumbers enforces decimal18 money and decimal2 score/weight without coercion;
+ReportAmountCodec keeps decimal38 totals in BigInteger and canonical strings.
+These are reusable primitives with no endpoints or persistence consumers yet.

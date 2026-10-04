@@ -1,6 +1,6 @@
 # M0 — kế hoạch task theo chất lượng
 
-Updated 2026-10-04: P02/P03/P05/P04 applied and reverified PASS on main.
+Updated 2026-10-04: P02/P03/P05/P04/P06 applied and reverified PASS on main.
 P03:6cb2590 (reviewed c5e4eac), npm scripts/audit and browser evidence in
 [P03 card](P03_TASK_CARD.md). P05:8784686 (reviewed 6e5abe5), controlled clock
 and Vietnam conversions; locked restore/build0warnings/0errors and41tests
@@ -8,7 +8,8 @@ pass, see [P05 card](P05_TASK_CARD.md). Original detached trees retained.
 Owner standing authorization ADR-163 permits automatic main application of
 reviewed PASS stages authorized for implementation; no repeat approval needed.
 P04 applied/reverified d9840bd (reviewed6a5269c),120tests pass; see
-[P04 card](P04_TASK_CARD.md). P04 complete; next proposed P06 is not started. Rest M0/SQL/migrations/runtime
+[P04 card](P04_TASK_CARD.md). P06 applied/reverified PASS (94dd832/4e0a0fa/5afaf34),287tests pass;
+[P06 card](P06_TASK_CARD.md). P06 complete; next proposed P07 is not started. Rest M0/SQL/migrations/runtime
 install/push/deployment remain outside this request. M0/V01 incomplete.
 ## 1. Đầu ra M0 và nguồn hợp đồng
 

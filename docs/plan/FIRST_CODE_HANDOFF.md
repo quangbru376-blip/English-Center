@@ -1,7 +1,7 @@
 # Handoff thực thi đầu tiên — P01 → P02
 
-Historical initial scope below. Latest: P02/P03/P05 applied/reverified PASS;
-see HANDOFF.md, P05_TASK_CARD.md and ADR-163 standing PASS application authority.
+Historical initial scope below. Latest: P02/P03/P05/P04/P06 applied/reverified PASS;
+see HANDOFF.md, P06_TASK_CARD.md and ADR-163 standing PASS application authority.
 No auto-start of remaining tasks/SQL/migrations/deployment.
 
 Cập nhật04/10/2026. Repository: `C:\Study\SOEN\main_workplace`.

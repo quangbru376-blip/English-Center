@@ -10,9 +10,9 @@
 
 ## Next
 
-- [P04](plan/P04_TASK_CARD.md) applied/reverified PASS (d9840bd), main120tests
-  pass. P03/P05 remain applied PASS. Next proposed P06 strict scalar/version/
-  numeric parsing needs a bounded contract, split if large; not started.
+- [P06](plan/P06_TASK_CARD.md) complete/applied PASS (94dd832,4e0a0fa,5afaf34),
+  main287tests pass. Next proposed P07 error envelope/binding/precedence needs
+  bounded contract; not started. P02/P03/P05/P04 remain applied PASS.
   Auto-apply reviewed PASS authorized stages under ADR-163.
 - [P02 task card](plan/P02_TASK_CARD.md):
   P01 P02 prerequisites complete; reviewed d9eb194 applied to main as df7cd9a
