@@ -42,9 +42,9 @@ public class RoleMappingTests
         Assert.False(context.Database.GetDbConnection().State==System.Data.ConnectionState.Open);
     }
     [Fact]
-    public void PartA_ModelContainsOnlyReviewedRole()
+    public void CompletedD01_ModelContainsExactlyFourReviewedTables()
     {
         using var context=Create();
-        Assert.Equal(new[]{"Role"},context.Model.GetEntityTypes().Select(e=>e.GetTableName()).Order().ToArray());
+        Assert.Equal(new[]{"Account","AuthSession","Role","StudentProfile"},context.Model.GetEntityTypes().Select(e=>e.GetTableName()).Order().ToArray());
     }
 }

@@ -25,8 +25,8 @@ public class EnglishCenterDbContext : DbContext
 
         modelBuilder.ApplyConfiguration(new RoleConfiguration());
 
-        modelBuilder.Ignore<Account>();
-        modelBuilder.Ignore<StudentProfile>();
-        modelBuilder.Ignore<AuthSession>();
+        modelBuilder.ApplyConfiguration(new AccountConfiguration());
+        modelBuilder.ApplyConfiguration(new StudentProfileConfiguration());
+        modelBuilder.ApplyConfiguration(new AuthSessionConfiguration());
     }
 }
