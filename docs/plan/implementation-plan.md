@@ -9,7 +9,7 @@ Owner standing authorization ADR-163 permits automatic main application of
 reviewed PASS stages authorized for implementation; no repeat approval needed.
 P04 applied/reverified d9840bd (reviewed6a5269c),120tests pass; see
 [P04 card](P04_TASK_CARD.md). P06 applied/reverified PASS (94dd832/4e0a0fa/5afaf34),287tests pass;
-[P06 card](P06_TASK_CARD.md). P06 complete; next proposed P07 is not started. Rest M0/SQL/migrations/runtime
+[P06 card](P06_TASK_CARD.md). P07 complete/applied PASS653e1cc/5a49afa, main357tests PASS; [P07 card](P07_TASK_CARD.md). Owner authorized P07→P08→D01 in one turn: P08 in progress, D01 next; task cards define exact boundaries. Rest M0/SQL/migrations/runtime
 install/push/deployment remain outside this request. M0/V01 incomplete.
 ## Authority and baseline
 
@@ -192,3 +192,4 @@ M0's detailed proposed default sequence and Mermaid live in
 Next=P01planning/preflight; schedule is not a prerequisite. Detailed dependency
 corrections precede execution. M1–M4 remain coverage proposals pending their own
 small task plans. No plan-source disagreement should be resolved from chat alone.
+

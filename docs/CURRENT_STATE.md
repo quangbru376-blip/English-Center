@@ -4,22 +4,18 @@ Last updated: 2026-10-04
 
 ## Current task
 
-P06 complete, reviewed PASS and applied/reverified on main on2026-10-04;
-[task card/evidence](plan/P06_TASK_CARD.md). A strict scalars/RV main94dd832
-(reviewed d950e6b), report decimal38 main4e0a0fa (reviewed bb91b2d), exact
-money/score/weight main5afaf34 (reviewed manager836a6cb). Final main locked
-restore/build0warnings0errors/full287tests pass/0fail/0skip; exact source
-matches reviewed snapshots. New8files794lines in3bounded PASS parts.
-AGY A/B2 SUCCESS/exit0/zero violations; all tool scopes/complete contexts audited.
-Numeric AGY attempts3times rejected due output-token ERROR; never applied.
-Codex independently completed the2file185line numeric part in fresh detached
-worktree and verified exact decimal tests. No unresolved P06 blocker.
-No packages/locks/Program/P04/P05/frontend/SQL changes. No API binder/public
-error/uniqueness/persistence/auth consumers yet; M0/V01/readiness incomplete.
-P02/P03/P05/P04 remain applied PASS. Standing owner authority ADR-163 applies.
-Next proposed P07 error envelope and strict binding/error precedence; not started.
-SQL/migrations/install/push/deployment/rest M0 outside this request. No push.
-Original successful/rejected worker trees and manager tree retained for evidence.
+Owner authorized three next families P07→P08→D01 in this turn2026-10-04.
+P07 complete within edge primitive scope, reviewed PASS and applied/reverified
+main653e1cc/5a49afa, main5f266a9 full357tests PASS/build0warnings0errors.
+See [P07 card](plan/P07_TASK_CARD.md). Error middleware and strict JSON helpers
+have no public business/test routes; full auth/CSRF/transport/live SQL/replay
+integration remains later. Initial AGY cap failure rejected, never applied.
+P08 in progress: approved SecLists revision/license/hash corpus pinned and exact
+bytes preserved across Windows checkouts; [P08 card](plan/P08_TASK_CARD.md).
+D01 planned next in same authorized batch; [D01 card](plan/D01_TASK_CARD.md).
+ADR-163 permits applying each Codex PASS. No D02/migrations/SQL DB execution,
+push/deployment/rest M0 authorized by this batch. Prior P02/P03/P05/P04/P06 PASS
+remain applied; original evidence trees retained. No unresolved P07 blocker.
 ### Applied P02 checkpoint
 
 P01 prerequisites needed by P02 complete; P02 reviewed **PASS** after two
@@ -646,3 +642,4 @@ next work;do not autonomously create implementation plan/code/SQL/Git/scaffold/
 deployment/packages or operational configuration. D12/D13 remain deferred and
 DF01–05 prerequisite/evidence records remain;revisit them only in applicable
 owner-authorized scope. Preserve Accepted ADRs001–161/role/RF/FE/operator rules.
+

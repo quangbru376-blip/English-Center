@@ -32,7 +32,7 @@ Standing owner authorization (ADR-163): apply reviewed PASS stages already
 authorized for implementation to main without asking again. Report issues
 requiring owner action. P04 applied/reverified PASS at d9840bd with120tests passing; see
  docs/plan/P04_TASK_CARD.md. P06 complete/applied PASS (94dd832,4e0a0fa,5afaf34), main287tests pass;
- see docs/plan/P06_TASK_CARD.md. P07 is not started. This permission
+ see docs/plan/P06_TASK_CARD.md. P07 complete/applied PASS (653e1cc/5a49afa), main357tests PASS. Owner now authorized three families P07→P08→D01 in one turn; P08 in progress/D01 next. See their task cards. D02/migrations/SQL execution are outside this batch. This permission
 does not open unrelated tasks, SQL/migrations, installs, push or deployment.
 
 Project-local skills live in `.agents/skills/`. Read the selected skill's
@@ -84,3 +84,4 @@ After meaningful work, update only the memory affected by the change:
 Keep memory concise, current, and actionable. Never store chat transcripts,
 hidden reasoning, secrets, temporary logs, or facts that have not been
 verified.
+

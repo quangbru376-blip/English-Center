@@ -9,7 +9,7 @@ Owner standing authorization ADR-163 permits automatic main application of
 reviewed PASS stages authorized for implementation; no repeat approval needed.
 P04 applied/reverified d9840bd (reviewed6a5269c),120tests pass; see
 [P04 card](P04_TASK_CARD.md). P06 applied/reverified PASS (94dd832/4e0a0fa/5afaf34),287tests pass;
-[P06 card](P06_TASK_CARD.md). P06 complete; next proposed P07 is not started. Rest M0/SQL/migrations/runtime
+[P06 card](P06_TASK_CARD.md). P07 complete/applied PASS653e1cc/5a49afa, main357tests PASS; [P07 card](P07_TASK_CARD.md). Owner authorized P07→P08→D01 in one turn: P08 in progress, D01 next; task cards define exact boundaries. Rest M0/SQL/migrations/runtime
 install/push/deployment remain outside this request. M0/V01 incomplete.
 ## 1. Đầu ra M0 và nguồn hợp đồng
 
@@ -268,3 +268,4 @@ SQL Agent/native backup encryption. Backup cần scheduler ngoài engine và arc
 mã hóa giữ nguyên ADR-118; media/key/tool/restore còn DF03. Build RTM không mới
 nhất: review compatible17.x patch trước dữ liệu thật/exposure; không tự cài.
 Thứ tự39families, skill/quality gates, D12/D13 owner-deferred không đổi.
+
