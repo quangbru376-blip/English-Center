@@ -4,18 +4,13 @@ Last updated: 2026-10-04
 
 ## Current task
 
-Owner-authorized P03 frontend skeleton reviewed **PASS** after minor manager
-copy/favicon corrections; detached c5e4eac0452f62fcd6bc788a209c9919d81d4576.
-[P03 task card/evidence](plan/P03_TASK_CARD.md): actual dispatch base3f72bc7,
-AGY4151e913-734 SUCCESS/exit0/exact9files193lines/zero scope violations;
-Codex checked tool events/source/npm lock/licenses/provenance, real
-typecheck/lint(maxwarnings0)/build and audit0vulnerabilities. Built browser
-375/768/1280 passes, no overflow/console/API/external requests; contrast measured,
-preview stopped. Manager lock only; no lifecycle/global/runtime install.
-P03 source not applied to primary; next owner review/separate main apply approval.
-P02 remains applied/verified on main. SQL/later M0/deployment outside scope;
-full LOCAL_DEV/readiness and M0/V01 incomplete. Do not auto-dispatch P05.
-
+Owner authorized P03 application and bounded P05 on 2026-10-04. P03 applied
+as 6cb2590862cac2469e4dce76b704f72cbdd254a0, main npm ci/lint/typecheck/build
+PASS; source matches reviewed c5e4eac. P05 is active under
+[task card](plan/P05_TASK_CARD.md), AGY worker with Codex manager.
+Standing owner authorization: apply each reviewed PASS stage to main without
+asking again; report issues requiring owner action. This does not authorize
+starting unrelated stages, SQL/migrations, installation or deployment.
 ### Applied P02 checkpoint
 
 P01 prerequisites needed by P02 complete; P02 reviewed **PASS** after two

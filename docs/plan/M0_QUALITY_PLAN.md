@@ -1,5 +1,11 @@
 # M0 — kế hoạch task theo chất lượng
 
+Latest 2026-10-04: P03 applied/reverified PASS at 6cb2590; bounded P05 active.
+Owner now authorizes automatic main application after review PASS; no repeat
+approval required. Older pending-apply restrictions below are superseded.
+No authority to start unrelated stages, SQL/migrations/install/deployment.
+See P05_TASK_CARD.md.
+
 Cập nhật: 04/10/2026. Status: P02 applied PASS; P03 reviewed detached PASS, chờ owner apply.
 
 Nguyên tắc chia theo chất lượng đã được owner yêu cầu. Danh sách task/phạm vi

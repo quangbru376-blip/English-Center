@@ -1,5 +1,11 @@
 # Implementation planning — discussion draft
 
+Latest 2026-10-04: P03 applied/reverified PASS at 6cb2590; bounded P05 active.
+Owner now authorizes automatic main application after review PASS; no repeat
+approval required. Older pending-apply restrictions below are superseded.
+No authority to start unrelated stages, SQL/migrations/install/deployment.
+See P05_TASK_CARD.md.
+
 Updated: 2026-10-04. Status: P02 applied PASS; separately authorized P03 reviewed detached PASS, pending owner application.
 
 ## Authority and baseline

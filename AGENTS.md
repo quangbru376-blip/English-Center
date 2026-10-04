@@ -26,11 +26,13 @@ backend/test skeleton under docs/plan/FIRST_CODE_HANDOFF.md. P01 P02 prerequisit
 and reviewed P02 PASS are now recorded in docs/plan/P02_TASK_CARD.md. The owner
 separately confirmed main application; P02 is applied and reverified on main
 at df7cd9a, with the original detached worktree retained for evidence.
-The owner later separately authorized bounded P03; it is reviewed PASS in a
-detached worktree under docs/plan/P03_TASK_CARD.md, awaiting separate main apply.
-Other tasks, SQL changes, runtime installation and deployment
-are outside that initial scope. Worker code stays detached until owner authorizes
-primary-checkout application. Do not infer broader permission from design acceptance.
+Owner authorized P03 application and bounded P05 on 2026-10-04. P03 applied
+as 6cb2590862cac2469e4dce76b704f72cbdd254a0, main npm ci/lint/typecheck/build
+PASS; source matches reviewed c5e4eac. P05 is active under
+docs/plan/P05_TASK_CARD.md, AGY worker with Codex manager.
+Standing owner authorization: apply each reviewed PASS stage to main without
+asking again; report issues requiring owner action. This does not authorize
+starting unrelated stages, SQL/migrations, installation or deployment.
 
 Project-local skills live in `.agents/skills/`. Read the selected skill's
 complete `SKILL.md` before using it. Installing a skill does not automatically

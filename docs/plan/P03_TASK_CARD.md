@@ -211,3 +211,6 @@ Primary receives only manager docs/evidence; no frontend source/gitignore
 apply/merge/push. Retain detached tree for owner review. Next: separate owner
 approval to apply this exact P03 result, then direction for another bounded task.
 Do not infer P05/SQL/rest M0/deployment permission.
+
+## Main application — 2026-10-04
+Owner authorized apply and P05. Cherry-pick c5e4eac => main 6cb2590862cac2469e4dce76b704f72cbdd254a0. Exact source equality verified. Main npm ci --ignore-scripts, lint max-warnings0 and typecheck/build PASS; audit0. Earlier pending-apply text above is historical.

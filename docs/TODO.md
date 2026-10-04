@@ -10,9 +10,8 @@
 
 ## Next
 
-- Owner review and separate application approval for [P03](plan/P03_TASK_CARD.md):
-  final detached c5e4eac PASS; real typecheck/lint/build, npm audit0 and browser
-  375/768/1280 verified. No frontend apply yet; no SQL/later M0 auto-dispatch.
+- P03 applied PASS (6cb2590). Complete bounded [P05](plan/P05_TASK_CARD.md),
+  review and auto-apply on PASS under standing owner authorization.
 - [P02 task card](plan/P02_TASK_CARD.md):
   P01 P02 prerequisites complete; reviewed d9eb194 applied to main as df7cd9a
   with explicit owner consent. Main locked restore/build0warnings/0errors,
