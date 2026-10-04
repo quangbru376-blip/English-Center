@@ -4,13 +4,17 @@ Last updated: 2026-10-04
 
 ## Current task
 
-Owner separately authorized bounded P03 frontend skeleton after P02 application.
-[P03 task card](plan/P03_TASK_CARD.md) records exact compatible npm manifest,
-nine worker paths/400lines and four proposed context files. English contract
-validated at clean base eeed057c24dd3cd359d69766388b5b47ba11eeef;
-scoped external sharing consent pending, no P03 dispatch/source/install yet.
-Codex manager/AGY worker; code stays detached pending separate main apply.
-This opens only P03; SQL/later M0/runtime installs/deployment remain outside scope.
+Owner-authorized P03 frontend skeleton reviewed **PASS** after minor manager
+copy/favicon corrections; detached c5e4eac0452f62fcd6bc788a209c9919d81d4576.
+[P03 task card/evidence](plan/P03_TASK_CARD.md): actual dispatch base3f72bc7,
+AGY4151e913-734 SUCCESS/exit0/exact9files193lines/zero scope violations;
+Codex checked tool events/source/npm lock/licenses/provenance, real
+typecheck/lint(maxwarnings0)/build and audit0vulnerabilities. Built browser
+375/768/1280 passes, no overflow/console/API/external requests; contrast measured,
+preview stopped. Manager lock only; no lifecycle/global/runtime install.
+P03 source not applied to primary; next owner review/separate main apply approval.
+P02 remains applied/verified on main. SQL/later M0/deployment outside scope;
+full LOCAL_DEV/readiness and M0/V01 incomplete. Do not auto-dispatch P05.
 
 ### Applied P02 checkpoint
 
@@ -27,7 +31,7 @@ Manager fixes: xUnit cancellation tokens and same-version mtp-off package for
 VSTest/SDK10 compatibility. Prior docs preserved1054888; dispatch base72696e5.
 Main source exactly matches reviewed detached source; lock hashes unchanged.
 Main locked restore/build0warnings/0errors/discovery10/tests10pass/0fail/0skip
-verified after apply. No push/deployment. Next: bounded P03 as authorized above.
+verified after apply. No push/deployment. P03 reviewed detached as recorded above.
 Rest M0/SQL changes/installs/deployment remain outside scope. Full LOCAL_DEV
 and DB/readiness unconfigured; M0/V01 not done. Historical preparation below
 describes state before this execution; edit and main application verified for P02.

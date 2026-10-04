@@ -8,9 +8,15 @@ see [P02 task card](plan/P02_TASK_CARD.md). Its net10.0 API has only
 CreateBuilder/Build/Run plus public partial Program; no application endpoints.
 The xUnit executable references the real API and uses WebApplicationFactory's
 in-process TestServer for ten verified missing-route cases in two environments.
-There is no frontend, EF model, migration, auth, SQL connection or ready profile.
+Primary has no frontend, EF model, migration, auth, SQL connection or ready profile.
 Locked restore/build and all ten startup tests pass on main. The detached tree
 is retained as original review evidence; later tasks require owner direction.
+
+P03 frontend is reviewed PASS in retained detached commit c5e4eac only; see
+[task card](plan/P03_TASK_CARD.md). React19.3/Vite8.3/TypeScript6/Tailwind4
+entry renders one semantic noninteractive Vietnamese unavailable-functionality
+page; no router/API/auth/storage/business UI. npm lock/typecheck/lint/build and
+three-width built-page checks verified; source not applied to main.
 
 `instructions/` is a directive/reference inbox and is not part of the planned
 runtime architecture.

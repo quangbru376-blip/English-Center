@@ -1,6 +1,6 @@
 # M0 — kế hoạch task theo chất lượng
 
-Cập nhật: 04/10/2026. Status: P01 prerequisites cho P02 hoàn tất; P02 applied/reverified PASS trên main.
+Cập nhật: 04/10/2026. Status: P02 applied PASS; P03 reviewed detached PASS, chờ owner apply.
 
 Nguyên tắc chia theo chất lượng đã được owner yêu cầu. Danh sách task/phạm vi
 bên dưới là task families để materialize từng contract. Owner04/10/2026 yêu
@@ -10,8 +10,10 @@ skeleton, theo [FIRST_CODE_HANDOFF](FIRST_CODE_HANDOFF.md). Đã hoàn thành sc
 manager fixes và kiểm chứng thật. Build sạch, discovery10/tests10pass;
 review commit d9eb194 đã apply vào main df7cd9a sau owner xác nhận; main
 locked restore/build/discovery10/tests10pass đã kiểm lại. M0/V01 chưa hoàn tất.
-P03/rest M0/SQL changes/runtime installs/deployment ngoài scope đầu; owner chỉ
-xác nhận main apply cho P02. M0–M4 là nhóm phạm vi, không lịch làm việc.
+Owner sau đó mở riêng P03; [task card](P03_TASK_CARD.md) ghi verified detached
+c5e4eac, typecheck/lint/build/audit0 và browser375/768/1280 pass. Chưa apply P03;
+rest M0/SQL changes/runtime installs/deployment chưa được mở. M0–M4 là nhóm
+phạm vi, không lịch làm việc.
 
 ## 1. Đầu ra M0 và nguồn hợp đồng
 

@@ -2,6 +2,14 @@
 
 Cập nhật04/10/2026. Workspace:C:\Study\SOEN\main_workplace.
 
+## Checkpoint mới nhất — P03 reviewed detached PASS
+
+Owner mở riêng P03 sau P02; [task card/receipt/browser evidence](P03_TASK_CARD.md)
+ghi final detached c5e4eac, manager typecheck/lint/build pass, npm audit0,
+browser375/768/1280/contrast/absence of API traffic đã kiểm; preview đã dừng.
+Chưa apply frontend vào main. Tiếp theo owner review/quyền apply P03 riêng;
+không tự P05/SQL/rest M0. P02 checkpoint applied phía dưới vẫn đúng.
+
 ## Checkpoint code đầu — P02 applied/reverified PASS trên main
 
 P01 prerequisites cho P02 đã hoàn tất; P02 **PASS** sau hai manager fixes,

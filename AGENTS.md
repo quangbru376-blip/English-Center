@@ -26,6 +26,8 @@ backend/test skeleton under docs/plan/FIRST_CODE_HANDOFF.md. P01 P02 prerequisit
 and reviewed P02 PASS are now recorded in docs/plan/P02_TASK_CARD.md. The owner
 separately confirmed main application; P02 is applied and reverified on main
 at df7cd9a, with the original detached worktree retained for evidence.
+The owner later separately authorized bounded P03; it is reviewed PASS in a
+detached worktree under docs/plan/P03_TASK_CARD.md, awaiting separate main apply.
 Other tasks, SQL changes, runtime installation and deployment
 are outside that initial scope. Worker code stays detached until owner authorizes
 primary-checkout application. Do not infer broader permission from design acceptance.

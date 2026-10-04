@@ -1,8 +1,12 @@
 # Implementation planning — discussion draft
 
-Updated: 2026-10-04. Status: P01 P02 prerequisites complete; P02 applied/reverified PASS on main.
+Updated: 2026-10-04. Status: P02 applied PASS; separately authorized P03 reviewed detached PASS, pending owner application.
 
 ## Authority and baseline
+
+Owner subsequently authorized only bounded P03. [Task card](P03_TASK_CARD.md)
+records reviewed c5e4eac and real npm/script/browser verification. P03 source
+remains detached pending separate owner apply; later M0/SQL/deployment unopened.
 
 Owner explicitly requested discussing the coding plan after E01–E05 acceptance.
 The wider milestone proposal remains a planning baseline. Owner04/10/2026
