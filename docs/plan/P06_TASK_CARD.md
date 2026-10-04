@@ -115,3 +115,5 @@ runner exit1 although CLIexit0,4files423lines/zero scope violations. Original
 output remains detached and was never applied. Fresh independent retry uses
 same4file scope and concise objective, not continuation of failed output.
 [Rejected receipt](p06-evidence/part-b-rejected-receipt.json). Raw events local.
+
+Part B retry fd0266d7-7d9 also rejected for AGY output token limit (ERROR, CLIexit0/runnerexit1,4files493lines/zero violations); never applied. Recovery splits Part B into B1 ExactNumbers+tests (2files/350lines) and B2 ReportAmountCodec+tests (2files/180lines). Existing exact API/grammar/gates remain; no broadening. New workers read same4contexts and only their own2output paths. Generate independently, no failed-output access.
