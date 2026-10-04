@@ -151,8 +151,11 @@ Do not claim load/RPO/RTO success without the approved environment and measureme
 
 ## Next refinement
 
-Build the dependency map and detailed generation-task contracts for M0 using the
-quality gates above. Discuss genuine new environment/package/bootstrap choices
-only when necessary; do not re-ask accepted product contracts. Dates and weekly
-availability are not needed to size quality-bounded tasks. M0–M4 grouping remains
-a proposal; no application execution authority inferred from this planning change.
+Detailed quality-based [M0 task plan](M0_QUALITY_PLAN.md) now lists prerequisites,
+source trace, small task families/dependencies, verification and proposed scopes
+for the first three tasks. Review ordering and materialize each English contract
+only after actual prerequisites and file targets are known. Full schema/object
+readiness is not replaced by partial-table checks. Existing local SQL Express
+is a verified mismatch with the accepted SQL2022 Developer target.
+No deadline input required; no source generation/installation/worker dispatch
+from this planning output. M0–M4 and detailed task ordering remain proposals.

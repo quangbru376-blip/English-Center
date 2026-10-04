@@ -4,6 +4,12 @@ Last updated: 2026-10-04
 
 ## Current task
 
+M0 detailed planning04/10/2026: docs/plan/M0_QUALITY_PLAN.md records task families,
+dependencies, evidence gates and first3proposed scopes. Local SDK10.0.200/
+Node24.16.0/npm11.13.0 checked; SQL .\SQLEXPRESS version17.0.1000.7 Express
+is not accepted SQL2022 Developer. Prepare compatible local profile before
+execution; full DB readiness retained. No code/installs/migrations/dispatch.
+
 2026-10-04 worker readiness completed for analyze mode: owner approved sharing
 named context files; first authenticated run rejected/stopped for extra read,
 second narrowed run SUCCESS/exit0,exact2allowedreads,zerochanges/violations.
