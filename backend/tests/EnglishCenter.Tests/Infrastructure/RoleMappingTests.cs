@@ -33,6 +33,7 @@ public class RoleMappingTests
         foreach(var code in new[]{"Student","Admissions","AcademicAffairs","Teacher","Accountant","Director","Admin"})
             Assert.Contains("'"+code+"'",check);
         Assert.Contains("BIN2",check);
+        Assert.Contains("DATALENGTH([role_code]) = LEN([role_code])",check);
         Assert.Equal("Latin1_General_100_CI_AS_SC",model.GetCollation());
         Assert.Empty(role.GetSeedData());
         var ddl=context.Database.GenerateCreateScript();

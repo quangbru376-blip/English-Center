@@ -12,7 +12,7 @@ public sealed class RoleConfiguration : IEntityTypeConfiguration<Role>
         {
             t.HasCheckConstraint(
                 "CK_Role_Code",
-                "[role_code] COLLATE Latin1_General_100_BIN2 IN ('Student', 'Admissions', 'AcademicAffairs', 'Teacher', 'Accountant', 'Director', 'Admin')");
+                "[role_code] COLLATE Latin1_General_100_BIN2 IN ('Student', 'Admissions', 'AcademicAffairs', 'Teacher', 'Accountant', 'Director', 'Admin') AND DATALENGTH([role_code]) = LEN([role_code])");
         });
 
         builder.HasKey(r => r.RoleId);

@@ -10,7 +10,7 @@ public sealed class AccountConfiguration : IEntityTypeConfiguration<Account>
     {
         builder.ToTable("Account", table =>
         {
-            table.HasCheckConstraint("CK_Account_Status", "[status] COLLATE Latin1_General_100_BIN2 IN ('ACTIVE', 'LOCKED', 'DISABLED')");
+            table.HasCheckConstraint("CK_Account_Status", "[status] COLLATE Latin1_General_100_BIN2 IN ('ACTIVE', 'LOCKED', 'DISABLED') AND DATALENGTH([status]) = LEN([status])");
             table.HasCheckConstraint("CK_Account_SecurityVersion", "[security_version] > 0");
             table.HasCheckConstraint("CK_Account_FailedLoginCount", "[failed_login_count] >= 0");
             table.HasCheckConstraint("CK_Account_TempBundle",

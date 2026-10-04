@@ -10,7 +10,7 @@ public sealed class AuthSessionConfiguration : IEntityTypeConfiguration<AuthSess
     {
         builder.ToTable("AuthSession", table =>
         {
-            table.HasCheckConstraint("CK_AuthSession_Scope", "[session_scope] COLLATE Latin1_General_100_BIN2 IN ('NORMAL', 'PASSWORD_CHANGE')");
+            table.HasCheckConstraint("CK_AuthSession_Scope", "[session_scope] COLLATE Latin1_General_100_BIN2 IN ('NORMAL', 'PASSWORD_CHANGE') AND DATALENGTH([session_scope]) = LEN([session_scope])");
             table.HasCheckConstraint("CK_AuthSession_Lifetime", "[issued_at] <= [last_activity_at] AND [last_activity_at] <= [expires_at] AND [expires_at] > [issued_at]");
             table.HasCheckConstraint("CK_AuthSession_RevokedAt", "[revoked_at] IS NULL OR [revoked_at] >= [issued_at]");
         });

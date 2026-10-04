@@ -116,6 +116,7 @@ public class IdentityMappingTests
         var status=checks.Single(c=>c.Sql.Contains("[status]"));
         foreach(var literal in new[]{"ACTIVE","LOCKED","DISABLED"})Assert.Contains("'"+literal+"'",status.Sql);
         Assert.Contains("BIN2",status.Sql);
+        Assert.Contains("DATALENGTH([status]) = LEN([status])",status.Sql);
         Assert.Contains("> 0",checks.Single(c=>c.Sql.Contains("[security_version]")).Sql);
         Assert.Contains(">= 0",checks.Single(c=>c.Sql.Contains("[failed_login_count]")).Sql);
         var temp=checks.Single(c=>c.Sql.Contains("[must_change_password]")).Sql;
@@ -126,6 +127,7 @@ public class IdentityMappingTests
         var session=model.FindEntityType(typeof(AuthSession))!.GetCheckConstraints().ToArray();
         var scope=session.Single(c=>c.Sql.Contains("[session_scope]")).Sql;
         Assert.Contains("'NORMAL'",scope);Assert.Contains("'PASSWORD_CHANGE'",scope);Assert.Contains("BIN2",scope);
+        Assert.Contains("DATALENGTH([session_scope]) = LEN([session_scope])",scope);
         var all=string.Join(" ",session.Select(c=>c.Sql));
         foreach(var term in new[]{"[issued_at] <= [last_activity_at]","[last_activity_at] <= [expires_at]","[expires_at] > [issued_at]","[revoked_at] IS NULL","[revoked_at] >= [issued_at]"})Assert.Contains(term,all);
     }
