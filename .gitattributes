@@ -1,2 +1,5 @@
 # Auto detect text files and perform LF normalization
 * text=auto
+
+# Public pinned corpus and license must retain upstream bytes for SHA256 checks.
+/backend/src/EnglishCenter.Api/Resources/PasswordBlocklist/* -text
