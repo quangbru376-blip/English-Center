@@ -148,3 +148,52 @@ Expected full16tables/151columns/16PK/2AK/33FK/51indexes/46CHECKs/14RV;
 D04 adds35columns/10FK(6required,4optional)/14indexes/12checks/2RV. Package locks
 unchanged. Locked restore/build/full tests in manager then main, source equality;
 closed DB and generated DDL only, no claim of SQL/TX/service readiness.
+
+## Review PASS — manager fdebabc, 2026-10-05
+
+skill_verification: all three AGY runs SUCCESS/exit0; exact two-file write scopes
+and caps, zero observed scope violations. Complete card151lines/backend46lines/
+routing101lines viewed before first write, path/hash/header/step proof in
+D04-evidence. Tool events are observed evidence, not OS read isolation or proof
+of unobserved activity. No observed commands/network/MCP; manager independently
+reviewed every entity/config against T14–T16 and wrote13 new test cases.
+
+| Fragment | Run | Reads/writes | Runner diff lines |
+| --- | --- | --- | --- |
+| Class | 938f16c6-38e | 7/2 | 162 |
+| StudentClassAssignment | 03e936b4-612 | 7/2 | 93 |
+| Schedule | 4f5f68a2-d0b | 7/2 | 261 |
+
+Dispatch base e86b409. Original workers remain at
+%TEMP%/codex-antigravity-worker/worktrees/main_workplace-<run>; manager at
+%TEMP%/codex-d04/manager. Codex added explicit precision3 for Class created_at/
+cancelled_at (independent test initially failed metadata precision), and explicit
+Schedule rowversion SQL type. Final regression build0warnings0errors/full440tests
+PASS/0fail/0skip. Locked restore PASS; package locks unchanged.
+
+D04 adds35columns/10NO ACTION FK(6required,4optional)/14indexes/12CHECKs/2RV.
+Full16tables/151columns/16PK/2AK/33FK/51indexes/46CHECKs/14RV verified. D01–D03
+physical signatures unchanged; all33FK lookup coverage explicit under ADR-164.
+Three Schedule conditional uniques keep historical rows; predecessor is optional
+unique scalar FK, self-pointer CHECK permits roots and rejects self reference.
+Event bundles explicitly guard every mandatory NULL; current-state/minute/ASCII/
+case/padding/max-size checks, defaults/identity/time types/rowversions verified.
+Assignment is exactly5columns without rowversion. ObligationKey has no SQL default
+or EF value generation. IsCurrent default/sentinel/CLR initialization true.
+
+Final scope9backend files/719insertions/8deletions, diff check clean. No package/
+project/lock/Program/API/DI/profile/SQL/migration/seed/trigger changes. Generated
+DDL remains disconnected and connection closed. Scope/backend/security review
+PASS; API/UI/workflow/live SQL/migration checks N/A to mapping-only completion.
+Exactly-one current, cross-row chains/cycles, conflict/role/capacity/freeze,
+immutable assignment enforcement and atomic GradeReport creation remain future
+SQL/service/TX gates; they are not proven by metadata tests. No unresolved D04
+blocker. This card supplies review notes; no route/API docs changed.
+
+Owner explanation: Class holds class limits and cancellation data, Assignment
+links one registration to a class, Schedule preserves each obligation's history
+and conditional current occurrence. Services implement the workflows later.
+Reviewed manager fdebabc3a0b7e49e54c9d2c213bcd8f3c940dec8, backend Git tree
+504798e989b417f29edd57f8978b4fb8d4297c0a. Apply under standing ADR-163 then
+reverify exact snapshot on main. Next proposed D05 Attendance/Score/GradeReport
+is not started; no further scope opened.
