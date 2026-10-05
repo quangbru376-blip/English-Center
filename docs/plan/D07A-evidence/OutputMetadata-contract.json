@@ -1,0 +1,34 @@
+{
+  "mode": "edit",
+  "objective": "Implement ONLY D07A table-scoped UseSqlOutputClause(false) on the five exact existing configurations listed in D07_TASK_CARD. VIEW COMPLETE card/backend SKILL/routing before editing. Read ONLY context_files and exact allowed_paths, no links/AGENTS/memory/other source/search/scans/commands/Git/network/MCP/subagents. Preserve every physical mapping and only add OUTPUT false calls. No HasTrigger/new files/migrations/SQL/packages. Codex independently tests/reviews.",
+  "allowed_paths": [
+    "backend/src/EnglishCenter.Api/Infrastructure/Configurations/BandConfiguration.cs",
+    "backend/src/EnglishCenter.Api/Infrastructure/Configurations/TrainingProgramConfiguration.cs",
+    "backend/src/EnglishCenter.Api/Infrastructure/Configurations/ScoreComponentConfigConfiguration.cs",
+    "backend/src/EnglishCenter.Api/Infrastructure/Configurations/AttendanceConfiguration.cs",
+    "backend/src/EnglishCenter.Api/Infrastructure/Configurations/ScoreConfiguration.cs"
+  ],
+  "forbidden_paths": [
+    "AGENTS.md",
+    "docs/**",
+    ".agents/**",
+    "**/*.csproj",
+    "**/packages.lock.json",
+    "**/Migrations/**",
+    ".env"
+  ],
+  "acceptance_criteria": [
+    "Only five exact config paths changed, OUTPUT false scoped to correct table builders.",
+    "Complete three context reads before edits; no reads outside context/config allowlist.",
+    "No schema/column/FK/index/check/default/type changes, no SQL/HasTrigger/package/migration."
+  ],
+  "context_files": [
+    "docs/plan/D07_TASK_CARD.md",
+    ".agents/skills/backend-clean-code/SKILL.md",
+    "docs/plan/SKILL_ROUTING.md"
+  ],
+  "max_changed_files": 5,
+  "max_diff_lines": 80,
+  "model": "",
+  "timeout": "15m"
+}

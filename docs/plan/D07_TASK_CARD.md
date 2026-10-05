@@ -67,3 +67,30 @@ only in that new DB. No existing user DB/instance settings/SQL update/grants/see
 D08triggers/UDF/views/SP/runtime connection/push/deployment. Keep DB for evidence,
 no DROP cleanup until separately authorized. Schema/SQL execution does not prove
 all business triggers/TX/readiness; D07 complete only after required gates pass.
+
+## D07A review PASS — manager8474804, 2026-10-05
+
+skill_verification: AGY56d6e3a1-81f SUCCESS/exit0, exact5config files/13runner
+diff lines,8reads/5writes, zero observed scope violations. Complete card70lines/
+backend46lines/routing101lines viewed before first write; compact path/hash/
+step/header proof in D07A-evidence. No observed commands/network/MCP. Tool events
+are not OS read isolation or proof every line understood. Dispatch base755fbce;
+worker %TEMP%/codex-antigravity-worker/worktrees/main_workplace-56d6e3a1-81f,
+manager %TEMP%/codex-d07a/manager, both retained. No manager production fixes.
+
+Codex independently reviewed all five diffs against E04 EF trigger integration;
+only table-scoped UseSqlOutputClause(false), no HasTrigger/SQL/schema changes.
+Four new cases verify exact disabled set and19enabled tables at runtime/design/
+relational metadata, absence of invented triggers and unchanged physical model.
+Locked restore/build0warnings0errors/full478tests PASS/0fail/0skip. Original
+24tables/230columns/24PK/2AK/50FK/78IX/70CHECK/20RV retained; old signatures and
+FK lookup coverage PASS. Final6backend files/72insertions/1deletion, diff clean.
+No packages/tool activation/migrations/SQL/DI/API/profile changes. Closed DB/
+generated DDL verified. Scope/backend/security review PASS; live EF generated
+ID/RV with real triggers, migration chain and SQL remain unverified D07/D13 gates.
+This is D07A completion only; full D07 incomplete. Card supplies owner notes.
+
+Reviewed manager8474804913ae1b7784df915c67266fe564f6db64; backend Git tree
+3efa3ce638578514481f77bd41c38394f7067c06. Apply only authorized metadata/test code
+under ADR163 then reverify main. D07B migration/tooling and D07C SQL await explicit
+scope approval described above; no D08–D13 scope opened.
