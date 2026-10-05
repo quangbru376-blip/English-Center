@@ -1,4 +1,4 @@
-# M0.D13 — SQL compatibility and EF trigger integration — preparation
+# M0.D13 — SQL compatibility and EF trigger integration — reviewed PASS
 
 Owner2026-10-05 requests two next families after D12: M0.D13 then A01.
 Base1d5ba8f/codefc9227f; D12 remains484unit+335SQL PASS. Standing ADR163 allows
@@ -15,7 +15,7 @@ prevail over generic SQLite/seeding/API skill guidance. No package/routes/UI cha
 read_context: ordered memory, requirements, HANDOFF/FIRST_CODE_HANDOFF, M0 quality,
 E04 SQL trigger/output/grants/signatures, runtime readiness contract, D12 evidence,
 current EF model/migrations and existing SQL test helpers. No decisions reopened.
-skill_verification: not dispatched or verified yet; no implementation PASS claim.
+skill_verification: AGY f485f91e-de0 SUCCESS/exit0; full3context reads before write, one112line helper, zero observed scope violations. Codex independent source/model/real SQL review PASS; original worker and manager trees retained.
 
 ## Code scope
 
@@ -41,7 +41,7 @@ runtime has no migration-history SELECT grant: inspection denied under current
 role must return not-ready; do not silently add a grant or bypass with operator.
 Actual operator diagnostic compatibility may pass without certifying runtime.
 
-## SQL proposal awaiting explicit approval
+## Owner-approved isolated SQL scope
 
 Only existing .\\SQLEXPRESS/EnglishCenter_D07_20261005. Read complete catalog and
 execute EF test-fixture INSERT/UPDATE/DELETE as diagnostic operator. Reuse only
@@ -59,3 +59,23 @@ Required gates: build/locked restore/unit+real SQL regressions, exact healthy
 catalog and intentionally missing/drifted cases, five EF generated ID/RV paths,
 failure/cancellation/unreadable role and unchanged D12 baseline after rollback.
 Codex code-review before PASS/apply, record actual results and limits here.
+
+## Review and verification — 2026-10-05
+
+Owner explicitly approved this card plus A01 payload/SQL scope; no further approval pending.
+Codex review PASS after fixing SQL catalog collation451 and partitioning a slow
+UNION query into20 result sets; NULL module visibility now UNREADABLE_CATALOG.
+Pinned full manifest includes25tables (history included)/232columns/27keys/105indexes/
+50FK/70CHECK/21defaults/24full module bodies/58params/123result columns/6migrations/
+4roles/exact102permissions. Source provenance and hashes in D13-evidence.
+495ordinary tests PASS;360SQL PASS (D12 baseline335 +25D13),0fail0skip/buildclean.
+10drift paths +same-count CHECK/index-body drift; five EF INSERT/UPDATE generated
+ID/fresh8byteRV paths and five invalid EF writes roll back all setup and clear tracking.
+Cancellation preserves caller TX; operator compatible, dbo runtime rejected,
+restricted role invisible catalog fails closed. No grant relaxation.
+Native CHECK/default spelling is an engine-specific reviewed baseline fingerprint,
+not a generic semantic parser; never refresh it automatically from a failing DB.
+Full runtime profile/login/key/deadline/readiness and application callers remain
+unverified/absent. Schema diagnostic PASS is not full runtime-ready.
+No migrations/applied SQL/config/dependency changes; no other DB/owner/logins/seed.
+Apply is limited to this reviewed stage under ADR163, followed by main verification.
