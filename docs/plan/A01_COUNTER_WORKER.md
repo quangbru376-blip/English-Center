@@ -1,0 +1,9 @@
+# A01 — bounded secret-free security audit incident counter
+
+Read COMPLETE this card, .agents/skills/backend-clean-code/SKILL.md and docs/plan/SKILL_ROUTING.md BEFORE writing. Read ONLY these3paths and exact output if it exists. Do not follow links/read AGENTS/other source/memory. No commands/search/scans/network/SQL/Git/MCP/browser/subagents/secrets. Only view_file/write_to_file/replace_file_content. Codex independently tests/reviews. E03/E04 SQLServer/shared-TX/secret-free audit override stale SQLite/API/seed guidance. Skills grant no extra authority.
+
+Write ONLY backend/src/EnglishCenter.Api/Common/Auditing/AuditIncidentCounter.cs, at most220lines. Namespace EnglishCenter.Api.Common.Auditing. No packages, logging/IO/network/connections/runtime/config/migrations/grants/notifications.
+
+Public enum SecurityAuditKind { Login, Logout, AccessDenied, Throttled }. Public sealed class AuditIncidentCounter. Public void RecordFailure(SecurityAuditKind kind), public long GetFailureCount(SecurityAuditKind kind). Exactly4fixed counters only, initialized0. Invalid enum throws ArgumentOutOfRangeException WITHOUT including user/event payload. Thread-safe Interlocked/Volatile; increment saturates at long.MaxValue rather than overflow and supports concurrent writers/readers. Do not allocate unbounded maps/history or record actor/IP/time/exception/message/action strings/request IDs/payload. No window reset/dropped count or fallback success claims. Counter data only safe per-known-kind numeric incident counts for future operator observation; no new public route.
+
+Use fixed array or4fields, validate kind0..3 explicitly before access. GetFailureCount never modifies data. No dependencies or tests in worker output; Codex tests concurrency/invalid values and injects actual security persistence failures while ensuring logout/revocation state remains unaffected.
