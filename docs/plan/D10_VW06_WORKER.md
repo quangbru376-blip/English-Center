@@ -4,7 +4,7 @@ Read COMPLETE this card, .agents/skills/backend-clean-code/SKILL.md and docs/pla
 
 Exact output: backend/src/EnglishCenter.Api/Infrastructure/Sql/D10/VW06.sql
 
-One Invoice row plus max one Payment via unique invoice_id. Join Registration/Course, left Payment. Aliases invoiceId,registrationId,studentId,courseId,courseCode,courseName,courseStatus,invoiceNumber,amount,invoiceStatus,issuedAt,dueDate,paymentId,paidAt. amount decimal18,0, paidAt Payment.confirmed_at. Include all states/history. No debt=billed-revenue, no GETDATE/FN06 without supplied today (view cannot accept time). No payment method/reference/contact/profile columns: reporting allowed SELECT VW06. Reference IDs are explicitly accepted E03 finance facts, Director later SP-only.
+One Invoice row plus max one Payment via unique invoice_id. Join Registration/Course, left Payment. Aliases invoiceId,registrationId,studentId,courseId,courseCode,courseName,courseStatus,invoiceNumber,amount,invoiceStatus,issuedAt,dueDate,paymentId,paidAt,paidAmount. amount decimal18,0, paidAt Payment.paid_at; paidAmount Payment.amount_paid (revenue must use actual Payment amount, not Invoice amount). Include all states/history. No debt=billed-revenue, no GETDATE/FN06 without supplied today (view cannot accept time). No payment method/reference/contact/profile columns: reporting allowed SELECT VW06. Reference IDs are explicitly accepted E03 finance facts, Director later SP-only.
 
 Exact initial schema:
 
