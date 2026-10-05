@@ -1,4 +1,4 @@
-# A01 — mandatory audit persistence and security fallback — preparation
+# A01 — mandatory audit persistence and security fallback — reviewed PASS
 
 Second family in owner2026-10-05 two-next request: D13→A01. Depends on D06/D07,
 P05/P07; do not start A02 bootstrap, login routes or later workflow families.
@@ -12,7 +12,7 @@ applicable_overrides: E03 AuditLog/E04 section7 exact event allowlists, SQLServe
 tests/shared caller transaction, UTCms and90day expiry override generic seeds/SQLite.
 read_context: memory/requirements, HANDOFF/FIRST_CODE_HANDOFF, M0 quality/routing,
 ADR058–062/093/115/116, E04 audit/replay action registry, existing AuditLog/model.
-skill_verification: not dispatched/verified yet; no audit implementation PASS claim.
+skill_verification: AGY7426ce5d-f17 SUCCESS/exit0, one63line helper; all3complete context reads before write, zero observed violations. Codex independently authored persistence/projection/tests and reviewed final scope PASS. Original worker/manager trees retained.
 
 ## Code scope and acceptance
 
@@ -39,7 +39,7 @@ business IP. Structured old/new fields per accepted command family, unknown keys
 not persisted, reason only where required, no intermediate scratch config names.
 No persistent cleanup job, grants/roles/login/bootstrap, endpoint/DI wiring added.
 
-## Isolated SQL proposal awaiting explicit approval
+## Owner-approved isolated SQL scope
 
 Use existing .\\SQLEXPRESS/EnglishCenter_D07_20261005 only. Fixture inserts AuditLog
 and synthetic business/replay/counter/session changes in caller TX; forced audit
@@ -55,3 +55,31 @@ cancellation and bounded fallback/concurrent counters/no session resurrection.
 Owner walkthrough: mandatory append shares the workflow TX and failure aborts it;
 security log failure counts an operator incident while the security outcome stays.
 Real callers/auth/audit UI/cleanup remain later; no full product audit claim.
+
+## Review and verification — 2026-10-05
+
+Owner explicitly approved D13→A01 exact payload and isolated rollback-only SQL scope.
+Codex review PASS after correcting canonical action/field names, per-action Account
+and Payment-correction projections, positive child parent references, UTCms/IP bounds,
+reason NFC/trim1000code-points and finite store timeout/null constructor checks.
+54SC02 mandatory action policies (API133 deliberately excluded under E04 section7),
+exact root/entity/child field projections; no full DTO, password/hash/token/sid/digest.
+Details frozen at construction; mandatory SUCCESS only, verified actor/reference/
+operation; required reason only accepted command families; child `.EFFECT` requires
+projected parent IDs. Security technical actions AUTH.LOGIN/LOGOUT/ACCESS_DENIED/
+THROTTLED selected by enum, no request action/payload. Four fixed saturating counters.
+Final manager513unit+366SQL=879PASS/0fail0skip/buildclean; adds18unit+6SQL to D13.
+Actual grouped program/component history shares existing TX, no writer commit;
+mandatory FK failure/cancellation rollback all fixture account/session/counter/replay/
+business rows. Actual DENY INSERT fails mandatory append safely. Independent audit
+connection/rollback TX denied SECURITY append leaves business session revoked and
+increments logout incident. Security NULLactor/exact90days/IP expiry verified.
+Counter concurrency16000incidents/no cross-kind loss/longMAX saturation verified.
+All user0/membership/permission/data/schema fixtures rollback; no extra principal.
+Test-only internals visibility lets SQL tests exercise the actual parameterized adapter,
+not a duplicated SQL implementation. Production security store owns a fresh supplied
+connection; no real runtime profile/DI or committed security seed is configured.
+Caller replay/no-op suppression and non-SC02 Account password/bootstrap integration
+belong to later slices. No whole workflow/API/cleanup coverage claim; no A02 authority.
+Owner walkthrough: docs/notes/D13_A01.md. Apply only reviewed stage via ADR163,
+then reverify main and physical D12 catalog/profile/module bodies/102permissions.
