@@ -116,3 +116,19 @@ transactional fixture validation; no existing DB changes/drop DB/grants/real see
 No SQL command executed. Continue detached code and offline validation while pending.
 D08/D09 each object gets a separate bounded AGY contract, complete backend skill/routing
 and self-contained object task card; no commands/SQL/network/Git/extra reads.
+
+## D07B/C reviewed PASS / owner SQL authority
+
+Owner explicitly approved the bounded new isolated database, profile, empty schema
+Up→Down→Up and D08/D09 rollback-fixture SQL verification. Initial automatic rejection
+preceded this explicit authority; no rejected SQL operation executed. D07 applied
+main e4b8364 from manager b90aeaa: offline cache-only Design/private10.0.4/local tool,
+disconnected factory160, generated InitialSchema/designer/snapshot,3independent
+migration tests. No pending model changes. 481tests PASS/build0warnings0errors.
+Live SQL Up→Down→Up PASS on fresh EnglishCenter_D07_20261005;24tables/230columns/
+24PK/2AK/50NO ACTION FK/78IX/70trusted CHECK/20RV; collation exact/compatibility160/
+snapshotON and SNAPSHOT read PASS. No seed/real data/grants/runtime/other DB changes.
+First sqlcmd execution lacked QUOTED_IDENTIFIER; transaction rollback verified,
+then -I applied and full chain reverified. No migration source change needed.
+D07Schema.sql retained for pre-D08 verification. Database retained, no DROP DB.
+D08/D09 are next authorized families, not evidence of app callers or D13 readiness.
