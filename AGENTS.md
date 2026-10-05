@@ -31,7 +31,13 @@ On2026-10-05 D02 continuation completed/reviewed PASS/applied/reverified main5a4
 Course/Band/TrainingProgram/ScoreComponentConfig mapping, full8tables/56columns,
 410tests PASS/build0warnings0errors. Four AGY runs had zero observed scope violations;
 Codex fixed/reviewed and independently tested. See docs/plan/D02_TASK_CARD.md.
-Next proposed D03 is not started. Historical initial scope is retained in
+D03 continuation2026-10-05 completed/reviewed PASS/applied/reverified main244353f:
+Registration/EntryTestSession/EntryTestAttempt/EntryTestBooking/BandAssignment,
+full13tables/116columns/2AK/23NO ACTION FK/37indexes/34checks/12RV;
+427tests PASS/build0warnings0errors. Three AGY runs had zero observed violations;
+Codex independently tested and reviewed. See docs/plan/D03_TASK_CARD.md.
+FK indexes are explicit under ADR-164; full lookup coverage verified.
+Next proposed D04 is not started. Historical initial scope is retained in
 FIRST_CODE_HANDOFF; latest checkpoint and explicit current owner scope govern.
 Standing owner authority ADR-163: apply Codex-reviewed PASS stages already
 authorized for implementation to main without asking again. Report issues

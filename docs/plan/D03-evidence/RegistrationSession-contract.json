@@ -1,0 +1,34 @@
+{
+  "mode": "edit",
+  "objective": "Implement ONLY Registration and EntryTestSession plain Domain/Admissions entities and EF mappings exactly from D03_TASK_CARD. View COMPLETE D03 card, COMPLETE backend skill and COMPLETE routing before edits. Read ONLY those three context files and own allowed outputs if present. The manager already read AGENTS/memory/canonical sources: do NOT repeat preflight or follow links/read any other files. Use only view_file and writes on allowed paths. No search/list/commands/network/MCP/subagents. Keep exact table/column/FK/AK names, nullability, bundle guards and distinct filtered model index names. Missing parents are supplied by other fragments with exact names in card. Codex independently assembles/tests/reviews. Mapping only, no migrations/packages/services.",
+  "allowed_paths": [
+    "backend/src/EnglishCenter.Api/Domain/Admissions/Registration.cs",
+    "backend/src/EnglishCenter.Api/Infrastructure/Configurations/RegistrationConfiguration.cs",
+    "backend/src/EnglishCenter.Api/Domain/Admissions/EntryTestSession.cs",
+    "backend/src/EnglishCenter.Api/Infrastructure/Configurations/EntryTestSessionConfiguration.cs"
+  ],
+  "forbidden_paths": [
+    "docs/**",
+    ".agents/**",
+    "AGENTS.md",
+    "**/*.csproj",
+    "**/packages.lock.json",
+    "**/Migrations/**",
+    ".env",
+    "**/*.key"
+  ],
+  "acceptance_criteria": [
+    "Exact entities and configurations from assigned D03 card sections; no additional production paths.",
+    "All required context read completely before edits; zero extra reads/commands/network.",
+    "NO ACTION relationships including exact composite keys; null-safe iff bundles; distinct filtered indexes; no defaults beyond accepted ones."
+  ],
+  "context_files": [
+    "docs/plan/D03_TASK_CARD.md",
+    ".agents/skills/backend-clean-code/SKILL.md",
+    "docs/plan/SKILL_ROUTING.md"
+  ],
+  "max_changed_files": 4,
+  "max_diff_lines": 700,
+  "model": "",
+  "timeout": "15m"
+}

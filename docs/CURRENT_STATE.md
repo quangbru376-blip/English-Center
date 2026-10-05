@@ -4,25 +4,28 @@ Last updated: 2026-10-05
 
 ## Current task
 
-D02 authorized continuation2026-10-05 completed/reviewed PASS and applied under
-ADR-163 as main5a4ba3d (reviewed manager ea2cef9). Locked restore/build0warnings/
-0errors/full410tests PASS/0failed/0skipped; backend tree matches review.
-See [D02 task card/evidence](plan/D02_TASK_CARD.md).
+D03 authorized continuation2026-10-05 completed/reviewed PASS and applied under
+ADR-163 as main244353f (manager bdcd9ad). Main locked restore/build0warnings/
+0errors/full427tests PASS/0fail/0skip; exact reviewed backend tree equality.
+See [D03 task card/evidence](plan/D03_TASK_CARD.md).
 
-D02 adds Course/Band/TrainingProgram/ScoreComponentConfig entities/mappings and
-10independent metadata/DDL tests. Full EF model8tables/56columns/8PK/6required
-NO ACTION FK/16indexes/19CHECKs/7rowversions. D01 exact identity signature retained.
-Four bounded AGY runs SUCCESS, zero observed read/write violations; Codex fixed
-Course trailing-padding guard and Program table/identity before PASS. No packages,
-SQL execution/migrations/seeds/connection/DI/services/endpoints added.
+D03 adds Registration/EntryTestSession/EntryTestAttempt/EntryTestBooking/
+BandAssignment entities/mappings,17independent tests. Full model13tables/
+116columns/13PK/2AK/23NO ACTION FK/37indexes/34CHECKs/12RV. Composite result→
+Booking remains optional until grading; best Attempt must belong to Registration.
+Explicit NULL-safe event/result bundles, two distinct filtered Booking unique
+indexes and conditional unfinished uniqueness. No fake attempt state/count/score.
+Three AGY fragments SUCCESS, zero observed scope violations. Codex reviewed/fixed
+explicit identity/precision and configured FK indexes explicitly under ADR-164;
+all23FK lookup coverage and D01/D02 signatures verified. No packages, migrations,
+SQL execution/seeds/services/routes/connection/DI/profile changes.
 
-Earlier P02/P03/P05/P04/P06/P07/P08/D01 remain applied PASS. Prior three-family
-batch mainf6fd902/400tests is historical; rejected D01 overread output not applied.
-Original worker/manager evidence trees retained. No unresolved D02 blocker.
-Real-engine constraints/TX/freeze/seed/auth/CSRF/readiness remain integration gates;
-full P01 LOCAL_DEV/DB/keys/deadlines and M0/V01 incomplete.
-Next proposed D03 Registration/EntrySession/Attempt/Booking/BandAssignment,
-not started. No installation/project DB/SQL/migration/push/deployment operations.
+Earlier P02/P03/P05/P04/P06/P07/P08/D01/D02 remain applied PASS. Original worker/
+manager evidence trees retained; no unresolved D03 blocker. Live SQL/TX/roles/
+occupancy/result consistency/best tie/freeze/audit/replay/auth/readiness remain
+integration gates. Full P01 LOCAL_DEV and M0/V01 incomplete.
+Next proposed D04 Class/StudentClassAssignment/Schedule, not started. No runtime
+installation/project DB/SQL/migration/push/deployment operations.
 
 ### Applied P02 checkpoint
 

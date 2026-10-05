@@ -10,16 +10,16 @@
 
 ## Next
 
-- D02 complete/reviewed PASS/applied main5a4ba3d, locked restore/build clean/
-  full410tests PASS. [Card/evidence](plan/D02_TASK_CARD.md): four academic
-  configuration mappings; full model8tables/56columns. No SQL/migrations.
-- Next proposed D03 T09–T13: prepare bounded object contracts with composite/cycle
-  relationships and independent tests when continuing. Not started.
-- P02/P03/P05/P04/P06/P07/P08/D01 remain applied PASS. No D02 blocker;
-  real SQL/TX/auth/readiness and full LOCAL_DEV remain later gates.
-  Auto-apply Codex-reviewed PASS authorized stages under ADR-163.
-- [P02 task card](plan/P02_TASK_CARD.md): original P01 prerequisite/P02 checkpoint
-  applied df7cd9a after owner consent; latest checkpoint above governs.
+- D03 complete/reviewed PASS/applied main244353f, locked restore/build clean/
+  full427tests PASS. [Card/evidence](plan/D03_TASK_CARD.md): admissions five-table
+  mapping, full13tables/116columns; composite cycle/ownership and NULL bundles.
+  No SQL/migrations/services/endpoints; no D03 blocker.
+- Next proposed D04 T14–T16 Class/StudentClassAssignment/Schedule: prepare
+  bounded contracts and independent obligation/replacement/current-state checks
+  when continuing. Not started. Explicit FK index coverage under ADR-164.
+- P02/P03/P05/P04/P06/P07/P08/D01/D02 remain applied PASS. Real SQL/TX/auth/
+  readiness/full LOCAL_DEV remain later gates. Auto-apply authorized Codex PASS
+  stages under ADR-163; no authority for migrations/install/push/deploy/rest M0.
 
 SQL assessment04/10/2026 completed: installed SQL2025 Express17.0.1000.7
 retained by ADR-162; see [assessment](plan/SQL_INSTANCE_ASSESSMENT.md).

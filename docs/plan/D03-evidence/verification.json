@@ -1,0 +1,40 @@
+{
+  "date": "2026-10-05",
+  "managerCommit": "bdcd9ad9e524d6bb741231c0683bb49c7f75402d",
+  "mainCodeCommit": "244353fe43ec58599954c9097b92c638c62e9255",
+  "backendTree": "3f22776db8abd00175a1376a79dc3eee595c264d",
+  "lockedRestore": "PASS",
+  "build": {
+    "warnings": 0,
+    "errors": 0
+  },
+  "tests": {
+    "total": 427,
+    "passed": 427,
+    "failed": 0,
+    "skipped": 0,
+    "newD03": 17
+  },
+  "trxSha256": "b05e17a4fd358e4fee3321d2e015f6900d29970a93c2813b494e4a0e994206f9",
+  "signature": {
+    "tables": 13,
+    "columns": 116,
+    "primaryKeys": 13,
+    "alternateKeys": 2,
+    "noActionForeignKeys": 23,
+    "indexes": 37,
+    "checks": 34,
+    "rowversions": 12
+  },
+  "limits": "Disconnected SQLServer metadata/DDL only; no SQL execution or migrations. D04 not started.",
+  "packageLocks": [
+    {
+      "path": "backend/src/EnglishCenter.Api/packages.lock.json",
+      "sha256": "fbdbfcc4d4ccaaa33bbdfac13f4d1e8b6544593cf22f50a1e4c8080c9b8eb4ee"
+    },
+    {
+      "path": "backend/tests/EnglishCenter.Tests/packages.lock.json",
+      "sha256": "0ecab98dcab0baee797c121f92a07f3913d546ad8035cb6ee6618defc5d0f4ed"
+    }
+  ]
+}

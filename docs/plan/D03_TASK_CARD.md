@@ -175,7 +175,7 @@ registration_id) covers exact composite FK. No CHECK best result cross-table.
 
 ## Codex verification / skill_verification
 
-Pending: independently inspect columns/null/default/type/precision/ID/RV, exact
+Completed below: independently inspected columns/null/default/type/precision/ID/RV, exact
 FKs/AKs/filter/index order, NULL-safe bundles, minute/VN-date checks, no shadow/
 extra state fields. Preserve old signatures, locked restore/build/full tests,
 disconnected SQLServer DDL and closed connection; no engine enforcement claim.
@@ -183,3 +183,59 @@ Expected total13tables/116columns/13PK/2AK/23FK/37indexes/34CHECKs/12RV;
 D03 adds5tables/60columns/17FK/21indexes/15checks. Package locks unchanged.
 Activation/transitions/unfinished/result↔COMPLETED/best tie/role/time/occupancy/
 freeze/audit/replay require future service/TX/real SQL evidence; not D03 claims.
+
+## Review PASS — manager bdcd9ad,2026-10-05
+
+skill_verification: three AGY runs SUCCESS/exit0; exact writes/read scopes/caps,
+zero observed violations. Whole D03 card186lines, backend skill46lines and
+routing101lines viewed before first write in every run, hashes/step/header
+proof retained in D03-evidence. Tool-event audit is not OS read isolation or
+proof of unobserved activity. Codex independently reviewed every entity/config
+against T09–T13, requirements and compatibility policy, wrote17new tests.
+
+| Fragment | Run | Reads/writes | Runner diff lines |
+| --- | --- | --- | --- |
+| Registration/Session | 0942acef-2f4 | 8/4 | 399 |
+| Attempt/Booking | ef25b7d5-bdf | 11/4 | 347 |
+| BandAssignment | 6bde16ab-40b | 7/2 | 100 |
+
+All dispatch base60e1656. Worker snapshots retained under
+%TEMP%/codex-antigravity-worker/worktrees/main_workplace-<run>; manager tree
+%TEMP%/codex-d03/manager. No rejected D03 run; no observed commands/network/MCP.
+Manager made explicit IDENTITY(1,1) for5PK and assigned_at precision3. Final model
+uses explicit FK indexes and removes only EF ForeignKeyIndexConvention to avoid
+redundant composite completed-booking index. All23FKs independently checked for
+lookup coverage; D01/D02 physical signatures retain PASS. EF recreates removed
+FK indexes ([EF10.0.4 source](https://raw.githubusercontent.com/dotnet/efcore/v10.0.4/src/EFCore/Metadata/Conventions/ForeignKeyIndexConvention.cs)); no direct metadata-index removal workaround retained.
+
+Locked restore/build0warnings0errors/full427tests PASS/0fail/0skip, including
+17new D03 cases. Exact full model13tables/116columns/13PK/2AK/23FK/37indexes/
+34CHECKs/12RV. D03 adds60columns/17FK(9required,8optional)/21indexes/15checks;
+FKs all NO ACTION. Composite result→Booking is optional until result exists;
+best Attempt/Registration ownership is composite required; no duplicate scalar
+FKs. Distinct filtered UQ current/completed Booking remain simultaneously present.
+No default score/absence/actors/times except accepted creation/recalculation
+server UTC fields. Iff event bundles explicitly guard every mandatory NULL;
+optional cancellation reason remains optional by actor rule. Strict literal
+case/padding, attempt1–2, score0–100, capacity1–20 and minute/VN same-date/room
+checks mapped. No additional persisted attempt status/booked_count/best_score.
+
+Final scope13backend files/1157insertions/8deletions, diff check clean. No package/
+lock/project/Program.cs/API/DI/profile/migration/trigger/seed changes. Closed SQL
+connection and disconnected generated DDL verified. This proves physical mapping,
+not live constraints/TX/result↔COMPLETED/best tie/role/occupancy/freeze/replay.
+Applicable schema/security/scope/backend review PASS; API/UI/workflow/migration/
+real SQL checks remain future integration gates, N/A to D03 mapping completion.
+Owner explanation: five data classes preserve enrollment and appointments,
+with optional ungraded result and same-owner composite links. Services implement
+workflow later; this card supplies review notes, no API/UI docs change required.
+Reviewed manager bdcd9ad9e524d6bb741231c0683bb49c7f75402d, backend Git tree
+3f22776db8abd00175a1376a79dc3eee595c264d. Main verification follows below.
+Next proposed D04 Class/Assignment/Schedule, not started; no further scope opened.
+
+## Main application / reverified PASS
+
+Main244353fe43ec58599954c9097b92c638c62e9255 under ADR-163, identical reviewed
+backend tree3f22776db8abd00175a1376a79dc3eee595c264d. Locked restore/build
+0warnings0errors/full427tests PASS/0fail/0skip on main. Package locks unchanged;
+no SQL/DB/migrations/installation/push/deployment. No unresolved D03 blocker.

@@ -1,15 +1,16 @@
 # M0 — kế hoạch task theo chất lượng
 
-Updated2026-10-05: D02 owner-authorized continuation complete/reviewed PASS,
-applied/reverified main5a4ba3d. Locked restore/build0warnings0errors/full410tests
-PASS/0fail/0skip. [D02 card/evidence](D02_TASK_CARD.md): four academic configuration
-mappings, full EF model8tables/56columns. Four AGY runs stayed within observed
-read/write scopes; Codex independent tests/fixes/review. Previous P02/P03/P05/
-P04/P06/P07/P08/D01 remain applied PASS. No SQL execution/migrations/new packages/
-services/endpoints. Real SQL/auth/TX/readiness and full P01 profile remain later.
-ADR-163 permits autoapply after Codex PASS within authorized stages. Next proposed
-D03 not started; no automatic scope for SQL/migrations/install/push/deploy/rest M0.
-M0/V01 incomplete.
+Updated2026-10-05: D03 authorized continuation complete/reviewed PASS,
+applied/reverified main244353f. Locked restore/build0warnings0errors/full427tests
+PASS/0fail/0skip. [D03 card/evidence](D03_TASK_CARD.md): admissions five-table
+mapping, full13tables/116columns/2alternate keys; optional result cycle and
+same-Registration best composite FK. Three AGY runs stayed within observed scopes;
+Codex independent17tests/identity/precision/index fixes/review. D01/D02 signatures
+retained; FK indexes explicit under ADR-164, coverage verified across23FKs.
+Earlier stages remain applied PASS. No SQL execution/migrations/packages/services/
+routes/profile changes. Live SQL/TX/auth/readiness and full P01 remain future gates.
+ADR-163 permits applying authorized Codex PASS. Next proposed D04 not started;
+no automatic scope for migrations/SQL/install/push/deploy/rest M0. M0/V01 incomplete.
 
 ## 1. Đầu ra M0 và nguồn hợp đồng
 

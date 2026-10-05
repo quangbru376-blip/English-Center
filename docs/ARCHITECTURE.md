@@ -2,23 +2,27 @@
 
 ## Current implemented architecture
 
-Latest checkpoint2026-10-05: D02 applied/reverified PASS main5a4ba3d;
-locked restore/build0warnings0errors/full410tests PASS. Domain/Academics adds
-Course/Band/TrainingProgram/ScoreComponentConfig and four explicit configurations
-registered in the existing DbContext. Full model8tables/56columns/8PK/6required
-NO ACTION FK/16indexes/19CHECKs/7rowversions; identity mapping stays intact.
-Course price decimal(18,0), Band threshold/component weight decimal(5,2);
-Program DRAFT default, unique Course/Band and component names, filtered maximum
-one FINAL_EXAM. No frozen flag or workflow enforcement invented. Component
-names use CI_AS_SC. Precision/NFC/full-set activation/freeze remain service/TX/
-trigger obligations. [D02 task card](plan/D02_TASK_CARD.md).
+Latest checkpoint2026-10-05: D03 applied/reverified PASS main244353f;
+locked restore/build0warnings0errors/full427tests PASS. Domain/Admissions adds
+Registration/EntryTestSession/EntryTestAttempt/EntryTestBooking/BandAssignment,
+five explicit configurations and DbSets. Full model13tables/116columns/13PK/
+2AK/23NO ACTION FK/37indexes/34CHECKs/12rowversions. D01/D02 signatures retained.
+Optional result FK(completed_booking_id,attempt_id)→Booking(booking_id,attempt_id)
+and required best FK(best_attempt_id,registration_id)→Attempt(attempt_id,
+registration_id) enforce structural ownership; no duplicate scalar FKs. Alternate
+keys preserve the cycle: future writes create ungraded Attempt then Booking.
+Distinct filtered current/completed booking uniques, unfinished Registration
+unique, NULL-safe event bundles and minute/VN-date/room/capacity checks mapped.
+FK lookup indexes are explicit; ForeignKeyIndexConvention removed to avoid a
+redundant cycle index. All23FK lookups covered; see ADR-164 and
+[D03 task card](plan/D03_TASK_CARD.md). Other EF conventions unchanged.
 
-P07 safe error/strict JSON primitives and P08 eager pinned offline/raw credential
-helpers remain applied PASS. P08 registers password policy/IdentityV3 SHA512220k/
-32ASCII CSPRNG generator; no plaintext storage/logs or credential workflow yet.
-DbContext is not wired to a fabricated connection/profile; no DB/migrations/SQL
-execution. Disconnected metadata/DDL does not prove real constraints/locks/auth/
-CSRF/readiness. Original reviewed worker/manager trees retained.
+Existing Domain/Identity and Domain/Academics mappings, P07 error/binding and P08
+pinned offline/raw credential helpers remain applied PASS. DbContext still lacks
+runtime connection/profile/DI wiring. No SQL/migrations/seed/business routes.
+Disconnected metadata/DDL does not prove live constraints/TX/result consistency/
+best tie/freeze/auth/CSRF/readiness; services and real SQL integration remain.
+Original reviewed worker/manager trees retained.
 
 The checkpoints below describe their original stage, before these additions.
 

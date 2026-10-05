@@ -4281,3 +4281,18 @@ request owner action only when needed. This grants application authority for
 stages authorized for implementation, not permission to start all M0 tasks,
 change SQL/migrations, install runtimes, push or deploy. P03/P05 applied and
 reverified; their task cards hold actual commit/evidence details.
+## ADR-164: Explicit EF foreign-key lookup indexes during model assembly
+
+Status: Implemented — 2026-10-05, Codex technical choice within authorized D03.
+
+D03 composite result FK caused EF10.0.4 to create a redundant two-column index
+beside the accepted unique nonnull completed_booking_id lookup. ConfigureConventions
+removes ForeignKeyIndexConvention; entity configurations specify reviewed indexes
+explicitly. No other conventions removed. D01/D02 physical signatures remain
+unchanged and every FK lookup is independently covered across the13-table model.
+
+Future mappings must specify required FK/query indexes and keep the full coverage
+check passing. This avoids automatic unreviewed physical indexes, does not change
+keys/ownership/NO ACTION deletion or grant migration/SQL execution authority.
+See D03_TASK_CARD and its exact metadata/DDL tests; real SQL performance remains
+an integration gate. No new business restriction or owner design decision.
