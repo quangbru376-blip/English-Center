@@ -1,0 +1,33 @@
+{
+  "mode": "edit",
+  "objective": "Implement ONLY AuditLog and ReplayOperation plain Domain/Administration entities and EF configurations exactly D06_TASK_CARD. VIEW COMPLETE card, COMPLETE backend skill and COMPLETE routing before writing. Read ONLY these three context files and your exact allowed output files if present. Codex already read AGENTS/memory/canonical sources; no repeating preflight, links, other source/tests, search/list/scans/commands/network/MCP/subagents. Use only view_file and allowed writes. Explicit exact SQL types/precision/null/defaults/FKs/index directions/checks. Counter year is smallint NOT identity; Audit/Replay have NO rowversion. Explicit FK indexes ADR164; no services/packages/migrations. Codex integrates and independently tests.",
+  "allowed_paths": [
+    "backend/src/EnglishCenter.Api/Domain/Administration/AuditLog.cs",
+    "backend/src/EnglishCenter.Api/Infrastructure/Configurations/AuditLogConfiguration.cs",
+    "backend/src/EnglishCenter.Api/Domain/Administration/ReplayOperation.cs",
+    "backend/src/EnglishCenter.Api/Infrastructure/Configurations/ReplayOperationConfiguration.cs"
+  ],
+  "forbidden_paths": [
+    "AGENTS.md",
+    "docs/**",
+    ".agents/**",
+    "**/*.csproj",
+    "**/packages.lock.json",
+    "**/Migrations/**",
+    ".env"
+  ],
+  "acceptance_criteria": [
+    "Exactly authorized output files implement only assigned fragment from D06 card; no other edits.",
+    "Read full three context files before edits and do not read outside exact context/output allowlist.",
+    "Explicit physical signature, NO ACTION, all lookup indexes, NULL-safe bundles and accepted defaults; no invented fields/workflows."
+  ],
+  "context_files": [
+    "docs/plan/D06_TASK_CARD.md",
+    ".agents/skills/backend-clean-code/SKILL.md",
+    "docs/plan/SKILL_ROUTING.md"
+  ],
+  "max_changed_files": 4,
+  "max_diff_lines": 650,
+  "model": "",
+  "timeout": "15m"
+}

@@ -164,3 +164,58 @@ Expected adds50columns/7FK(4required,3optional)/16IX/18CHECK/3RV; full24tables/
 Locked restore/build/full tests manager then main, exact backend tree equality,
 locks unchanged, generated DDL/closed connection only; no live SQL evidence.
 D07 not started, requires separately authorized migration/isolated SQL execution.
+
+## Review PASS — manager f501def, 2026-10-05
+
+skill_verification: three AGY runs SUCCESS/exit0; exact authorized writes/caps,
+zero observed scope violations. Full card167lines/backend46lines/routing101lines
+viewed before first write; hashes/headers/steps retained in D06-evidence. Tool
+events are observed scope evidence, not OS read isolation or proof every line
+was understood. No observed commands/network/MCP. Codex independently reviewed
+all10entity/config files against T20–T24/E04 and wrote20new test cases.
+
+| Fragment | Run | Reads/writes | Runner diff lines |
+| --- | --- | --- | --- |
+| Finance | 8c2dcfbf-6db | 8/4 | 309 |
+| AuditReplay | fe49b427-192 | 8/4 | 294 |
+| Counter | 1856a3fd-c84 | 7/2 | 49 |
+
+Dispatch base7c99809. Original worker trees remain at
+%TEMP%/codex-antigravity-worker/worktrees/main_workplace-<run>; manager at
+%TEMP%/codex-d06/manager. Codex made IDENTITY(1,1) explicit for4new int PKs and
+SQL rowversion/requiredness explicit on Invoice/Payment/Counter. Counter short
+PK stays ValueGeneratedNever; no identity/default year. Audit/Replay remain
+append-only-shaped without rowversion. No existing production configuration
+changed; DbContext only adds imports/5DbSets/config registrations.
+
+Locked restore/build0warnings0errors/full474tests PASS/0fail/0skip,20newD06cases.
+Full24tables/230columns/24PK/2AK/50NO ACTION FK/78indexes/70CHECKs/20RV;
+D06 adds50columns/7FK(4required,3optional)/16indexes/18CHECKs/3RV. D01–D05
+signatures intact; all50FK lookup coverage independently verified under ADR164.
+Exact money decimal18,0/positive snapshots, nullable cancellation/correction
+bundles/TRANSFER reference/number pattern/DateOnly/defaults verified. Payment
+reference has no unique index. Audit index directions match stable paging;
+NULL-safe category/security>=90d/IPexact90d bundles do not expire mandatory rows.
+JSON stays nvarchar(max) with ISJSON checks; binary32 digest fixed length;
+actor/action/request unique/replay modes/minimum24h CHECK explicit. E04 exact24h
+service policy and safe reference schema remain future implementation, not SQL
+minimum-check claims. Counter ranges/default0 do not allocate invoice numbers.
+
+Final scope15backend files/905insertions/12deletions; diff check clean. Package/
+lock/project/Program/API/DI/profile/migration/SQL/seed/trigger/cleanup unchanged.
+Disconnected generated DDL/closed connection verified. Scope/backend/security
+review PASS; API/UI/workflow/live SQL/migration checks N/A to mapping completion.
+Admission/invoice/payment atomicity/equality/immutability, due VN+7/numberyear,
+SP07/year lock/overflow/nonreuse, secret-safe audit/C1/replay JSON allowlists,
+exact clocks/rights/expired-key409/no overwrite/grants/cleanup remain future
+service/TX/SQL integration gates. No unresolved D06 blocker; this card supplies
+owner notes, no route/API docs changes required.
+
+Owner explanation: Invoice holds the issued tuition snapshot; Payment records
+one confirmation and latest metadata correction. Audit holds history with separate
+security/IP retention; Replay holds completion references and digest, without
+credentials. Counter records a year and last number; SQL allocator comes later.
+Reviewed manager f501def9c18de4b0f1fbb5db02f4cf90476a1a9c, backend Git tree
+5b9bbb2e2e9c24b1350d6564ae57731a59716f05. Apply under ADR163 then reverify main.
+Next proposed D07 model assembly/migration chain not started; migration/isolated
+SQL execution need explicit scope authorization. No authority implied by D06 PASS.
