@@ -4,27 +4,27 @@ Last updated: 2026-10-05
 
 ## Current task
 
-D03 authorized continuation2026-10-05 completed/reviewed PASS and applied under
-ADR-163 as main244353f (manager bdcd9ad). Main locked restore/build0warnings/
-0errors/full427tests PASS/0fail/0skip; exact reviewed backend tree equality.
-See [D03 task card/evidence](plan/D03_TASK_CARD.md).
+D04 authorized continuation2026-10-05 completed/reviewed PASS and applied under
+ADR-163 as main e741176 (manager fdebabc). Main locked restore/build0warnings/
+0errors/full440tests PASS/0fail/0skip; exact backend tree equality
+504798e989b417f29edd57f8978b4fb8d4297c0a. See [D04 card/evidence](plan/D04_TASK_CARD.md).
 
-D03 adds Registration/EntryTestSession/EntryTestAttempt/EntryTestBooking/
-BandAssignment entities/mappings,17independent tests. Full model13tables/
-116columns/13PK/2AK/23NO ACTION FK/37indexes/34CHECKs/12RV. Composite result→
-Booking remains optional until grading; best Attempt must belong to Registration.
-Explicit NULL-safe event/result bundles, two distinct filtered Booking unique
-indexes and conditional unfinished uniqueness. No fake attempt state/count/score.
-Three AGY fragments SUCCESS, zero observed scope violations. Codex reviewed/fixed
-explicit identity/precision and configured FK indexes explicitly under ADR-164;
-all23FK lookup coverage and D01/D02 signatures verified. No packages, migrations,
+D04 adds Class/StudentClassAssignment/Schedule entities/configurations/DbSets,
+13 independent test cases. Full16tables/151columns/16PK/2AK/33NO ACTION FK/
+51indexes/46CHECKs/14RV. Conditional Schedule uniqueness preserves history;
+optional unique predecessor/self-pointer/current-state/event bundles mapped.
+Assignment is exactly5columns without rowversion. Three AGY runs SUCCESS,
+zero observed scope violations; Codex fixed Class precision metadata/explicit
+Schedule rowversion type and reviewed final source. D01–D03 signatures remain
+PASS; all33FK lookup coverage explicit under ADR-164. No packages/migrations/
 SQL execution/seeds/services/routes/connection/DI/profile changes.
 
-Earlier P02/P03/P05/P04/P06/P07/P08/D01/D02 remain applied PASS. Original worker/
-manager evidence trees retained; no unresolved D03 blocker. Live SQL/TX/roles/
-occupancy/result consistency/best tie/freeze/audit/replay/auth/readiness remain
+Earlier P02/P03/P05/P04/P06/P07/P08/D01/D02/D03 remain applied PASS. Original
+worker/manager evidence trees retained; no unresolved D04 blocker. Cross-row
+chains/cycles/exactly-one current, roles/conflicts/capacity/freeze/immutable
+assignment/atomic GradeReport/audit/replay and live SQL/TX/auth/readiness remain
 integration gates. Full P01 LOCAL_DEV and M0/V01 incomplete.
-Next proposed D04 Class/StudentClassAssignment/Schedule, not started. No runtime
+Next proposed D05 Attendance/Score/GradeReport, not started. No runtime
 installation/project DB/SQL/migration/push/deployment operations.
 
 ### Applied P02 checkpoint

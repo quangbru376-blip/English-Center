@@ -2,27 +2,26 @@
 
 ## Current implemented architecture
 
-Latest checkpoint2026-10-05: D03 applied/reverified PASS main244353f;
-locked restore/build0warnings0errors/full427tests PASS. Domain/Admissions adds
-Registration/EntryTestSession/EntryTestAttempt/EntryTestBooking/BandAssignment,
-five explicit configurations and DbSets. Full model13tables/116columns/13PK/
-2AK/23NO ACTION FK/37indexes/34CHECKs/12rowversions. D01/D02 signatures retained.
-Optional result FK(completed_booking_id,attempt_id)→Booking(booking_id,attempt_id)
-and required best FK(best_attempt_id,registration_id)→Attempt(attempt_id,
-registration_id) enforce structural ownership; no duplicate scalar FKs. Alternate
-keys preserve the cycle: future writes create ungraded Attempt then Booking.
-Distinct filtered current/completed booking uniques, unfinished Registration
-unique, NULL-safe event bundles and minute/VN-date/room/capacity checks mapped.
-FK lookup indexes are explicit; ForeignKeyIndexConvention removed to avoid a
-redundant cycle index. All23FK lookups covered; see ADR-164 and
-[D03 task card](plan/D03_TASK_CARD.md). Other EF conventions unchanged.
+Latest checkpoint2026-10-05: D04 applied/reverified PASS main e741176;
+locked restore/build0warnings0errors/full440tests PASS. Domain/Training adds
+Class/StudentClassAssignment/Schedule, three explicit configurations and DbSets.
+Full16tables/151columns/16PK/2AK/33NO ACTION FK/51indexes/46CHECKs/14rowversions.
+D01–D03 signatures retained; existing Admissions composite result/best ownership
+links preserved. Class keeps capacity/code/cancellation; Assignment links unique
+Registration to Class with actor/time and no rowversion. Schedule stores date/
+minute time, obligation identity, optional unique predecessor and current state.
+Three filtered uniques restrict current obligation/current final/predecessor,
+without removing historical rows. NULL-safe event bundles/current-state/ASCII/
+case/padding/minute/capacity constraints mapped. Cross-row chains/cycles/exactly
+one current/conflicts/roles/capacity/freeze/immutable writes/atomic GradeReport
+require later services/TX/SQL; scalar metadata constraints do not prove these.
 
-Existing Domain/Identity and Domain/Academics mappings, P07 error/binding and P08
-pinned offline/raw credential helpers remain applied PASS. DbContext still lacks
-runtime connection/profile/DI wiring. No SQL/migrations/seed/business routes.
-Disconnected metadata/DDL does not prove live constraints/TX/result consistency/
-best tie/freeze/auth/CSRF/readiness; services and real SQL integration remain.
-Original reviewed worker/manager trees retained.
+FK lookup indexes remain explicit, ForeignKeyIndexConvention removed under
+ADR-164. All33FK lookups covered; see [D04 card](plan/D04_TASK_CARD.md).
+Other EF conventions unchanged. Existing P07/P08 helpers remain applied PASS.
+DbContext still lacks runtime connection/profile/DI wiring. No SQL/migrations/
+seed/business routes. Disconnected metadata/DDL does not prove live constraints/
+TX/auth/CSRF/readiness. Original reviewed worker/manager trees retained.
 
 The checkpoints below describe their original stage, before these additions.
 

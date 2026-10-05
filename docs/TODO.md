@@ -10,14 +10,15 @@
 
 ## Next
 
-- D03 complete/reviewed PASS/applied main244353f, locked restore/build clean/
-  full427tests PASS. [Card/evidence](plan/D03_TASK_CARD.md): admissions five-table
-  mapping, full13tables/116columns; composite cycle/ownership and NULL bundles.
-  No SQL/migrations/services/endpoints; no D03 blocker.
-- Next proposed D04 T14–T16 Class/StudentClassAssignment/Schedule: prepare
-  bounded contracts and independent obligation/replacement/current-state checks
-  when continuing. Not started. Explicit FK index coverage under ADR-164.
-- P02/P03/P05/P04/P06/P07/P08/D01/D02 remain applied PASS. Real SQL/TX/auth/
+- D04 complete/reviewed PASS/applied main e741176, locked restore/build clean/
+  full440tests PASS. [Card/evidence](plan/D04_TASK_CARD.md): training three-table
+  mapping, full16tables/151columns; conditional schedule history/current filters,
+  NULL-safe event bundles, immutable-shaped Assignment without rowversion.
+  No SQL/migrations/services/endpoints; no D04 blocker.
+- Next proposed D05 T17–T19 Attendance/Score/GradeReport: prepare bounded
+  contracts and independent missing-versus0/schedule/finalization checks when
+  continuing. Not started. Explicit FK index coverage under ADR-164.
+- P02/P03/P05/P04/P06/P07/P08/D01/D02/D03 remain applied PASS. Real SQL/TX/auth/
   readiness/full LOCAL_DEV remain later gates. Auto-apply authorized Codex PASS
   stages under ADR-163; no authority for migrations/install/push/deploy/rest M0.
 

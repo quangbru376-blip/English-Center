@@ -140,7 +140,7 @@ type/key, cycle detection/future replacement/whole-TX and conflicts remain futur
 
 ## Codex verification / skill_verification
 
-Pending independent physical signatures, no shadow/seeds, ID/RV/immutable no-RV,
+Completed below: independent physical signatures, no shadow/seeds, ID/RV/immutable no-RV,
 exact defaults/precision/nullability, required/optional FK/cardinality/NO ACTION,
 conditional unique filters/history, NULL-safe bundles/current-state/time/ASCII
 checks. D01–D03 signatures remain intact; global FK lookup coverage checked.
@@ -197,3 +197,12 @@ Reviewed manager fdebabc3a0b7e49e54c9d2c213bcd8f3c940dec8, backend Git tree
 504798e989b417f29edd57f8978b4fb8d4297c0a. Apply under standing ADR-163 then
 reverify exact snapshot on main. Next proposed D05 Attendance/Score/GradeReport
 is not started; no further scope opened.
+
+
+## Main application / reverified PASS
+
+Main e7411767e804ffc4aa65a133fdabac3ef25325b2 under ADR-163; identical reviewed
+backend tree504798e989b417f29edd57f8978b4fb8d4297c0a. Locked restore/build
+0warnings0errors/full440tests PASS/0fail/0skip on main. Package locks unchanged;
+compact TRX counters/hashes in D04-evidence/verification.json. No SQL/DB/migrations/
+installation/push/deployment. No unresolved D04 blocker. D05 not started.

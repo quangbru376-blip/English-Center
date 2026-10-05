@@ -37,7 +37,12 @@ full13tables/116columns/2AK/23NO ACTION FK/37indexes/34checks/12RV;
 427tests PASS/build0warnings0errors. Three AGY runs had zero observed violations;
 Codex independently tested and reviewed. See docs/plan/D03_TASK_CARD.md.
 FK indexes are explicit under ADR-164; full lookup coverage verified.
-Next proposed D04 is not started. Historical initial scope is retained in
+D04 continuation2026-10-05 completed/reviewed PASS/applied/reverified main e741176:
+Class/StudentClassAssignment/Schedule mapping, full16tables/151columns/33FK/
+51indexes/46checks/14RV;440tests PASS/build0warnings0errors. Three AGY runs had
+zero observed scope violations; Codex independently tested/fixed/reviewed.
+See docs/plan/D04_TASK_CARD.md. Next proposed D05 is not started.
+Historical initial scope is retained in
 FIRST_CODE_HANDOFF; latest checkpoint and explicit current owner scope govern.
 Standing owner authority ADR-163: apply Codex-reviewed PASS stages already
 authorized for implementation to main without asking again. Report issues

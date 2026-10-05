@@ -1,16 +1,19 @@
 # M0 — kế hoạch task theo chất lượng
 
-Updated2026-10-05: D03 authorized continuation complete/reviewed PASS,
-applied/reverified main244353f. Locked restore/build0warnings0errors/full427tests
-PASS/0fail/0skip. [D03 card/evidence](D03_TASK_CARD.md): admissions five-table
-mapping, full13tables/116columns/2alternate keys; optional result cycle and
-same-Registration best composite FK. Three AGY runs stayed within observed scopes;
-Codex independent17tests/identity/precision/index fixes/review. D01/D02 signatures
-retained; FK indexes explicit under ADR-164, coverage verified across23FKs.
-Earlier stages remain applied PASS. No SQL execution/migrations/packages/services/
-routes/profile changes. Live SQL/TX/auth/readiness and full P01 remain future gates.
-ADR-163 permits applying authorized Codex PASS. Next proposed D04 not started;
-no automatic scope for migrations/SQL/install/push/deploy/rest M0. M0/V01 incomplete.
+Updated2026-10-05: D04 authorized continuation complete/reviewed PASS,
+applied/reverified main e741176 (manager fdebabc). Locked restore/build0warnings/
+0errors/full440tests PASS/0fail/0skip; identical reviewed backend tree.
+[D04 card/evidence](D04_TASK_CARD.md): Class/StudentClassAssignment/Schedule
+mapping, full16tables/151columns/16PK/2AK/33NO ACTION FK/51indexes/46CHECKs/14RV.
+Three bounded AGY runs stayed within observed scopes; Codex independent13cases,
+precision/explicit-type fixes and review. D01–D03 signatures retained, all33FK
+lookup coverage explicit under ADR-164. Schedule conditional uniques preserve
+history; Assignment has no rowversion. No packages/SQL execution/migrations/
+services/routes/profile changes. Cross-row chains/exactly-one/conflicts/roles/
+capacity/freeze/atomic GradeReport and real SQL/TX/auth/readiness remain future.
+ADR-163 permits applying authorized Codex PASS. Next proposed D05 T17–T19
+Attendance/Score/GradeReport not started. M0/V01 and full P01 remain incomplete;
+no automatic scope for SQL/migrations/install/push/deploy/rest M0.
 
 ## 1. Đầu ra M0 và nguồn hợp đồng
 
