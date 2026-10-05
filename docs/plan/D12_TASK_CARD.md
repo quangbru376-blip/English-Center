@@ -1,4 +1,4 @@
-# D12 — four SQL roles and isolated permission evidence — preparation
+# D12 — four SQL roles and isolated permission evidence — independently reviewed PASS; apply pending
 
 Owner2026-10-05 requested D11 and D12. D11 remains applied PASS at code
 6aaa4d7 (483unit+182SQL); do not regenerate its immutable SQL. D12 implementation
@@ -18,9 +18,11 @@ No new dependencies, API/DTO/UI changes; corresponding review checklist N/A.
 read_context: ordered Project Memory, requirements, HANDOFF/FIRST_CODE_HANDOFF,
 M0 quality/local profile, E03 role contract, E04 grants/runtime profile, routing
 and complete selected skills. Worker reads only own card plus backendSKILL/routing.
-skill_verification: not dispatched; no review/test/PASS claim yet.
+skill_verification: four AGY SUCCESS/exit0; complete three context reads before
+write and zero observed worker scope violations. Exact outputs independently
+reviewed; no worker validation claims used as evidence.
 
-## Concrete worker scope awaiting data-sharing approval
+## Explicitly approved worker/data-sharing scope
 
 Four independent, sequential bounded contracts: D12_RUNTIME_WORKER.md,
 D12_FINANCE_WORKER.md, D12_ACADEMICS_WORKER.md, D12_DIRECTOR_WORKER.md.
@@ -31,7 +33,7 @@ docs/plan/SKILL_ROUTING.md. No AGENTS/other source reads, commands, SQL executio
 network tools, migrations, principals, secrets or apply authority for worker.
 Codex handles migration lifecycle, actual permission tests, review and apply.
 
-## Isolated SQL execution proposal
+## Explicitly approved isolated SQL execution
 
 Only existing .\\SQLEXPRESS/EnglishCenter_D07_20261005. A new immutable migration
 creates four dbo-owned ec_* roles and exact object grants/explicit reporting
@@ -57,3 +59,38 @@ No credentials or server-level permission changes are needed for this proposal.
 Owner walkthrough: migration gives each role only listed objects; SQL tests execute
 as a role member, show permitted projections and rejected operations, then rollback.
 Tests use an operator connection for setup only, never claim it is the runtime user.
+
+## Independent review and verification
+
+Owner explicitly approved the exact six-file external payload and the isolated
+roles/migration/four WITHOUT LOGIN test-user scope before dispatch/execution.
+Four worker outputs preserve exact accepted object rights without manager source
+changes; original detached trees/receipts/compact read audits retained as evidence.
+Codex generated immutable LeastPrivilegeRoles migration and independent unit/SQL
+tests, reviewed unchanged model/package locks/D07–D11 resources. Down preflights
+all role memberships before any removal. No broad grants or grant options.
+
+484unit+335SQL=819PASS/0fail0skip; build0warnings0errors/cache-only locked restore.
+153new SQL cases cover full96 runtime table-operation matrix,24role/view cases,
+actual runtime update/unused DRAFT component insert/delete, six direct UDF calls,
+all seven procedure execution paths including operational business rejection,
+allowed report sets equal operator projections, reporting base reads/deletes/
+updates forbidden, counter direct access denied while allocator works, effective
+ALTER/CONTROL/history-delete0, DDL/delegation/impersonation blocked, DENY overriding
+direct user grant and reporting REVOKE removing its sole view path. Reverts and
+fixtures/users/memberships/temporary permission changes rollback.
+Exact102permissions/four dbo-owned custom roles/six migrations/profile PASS;
+Down→D11 exact catalog and noD12roles→Up PASS. Existing24table230column/model and
+24live SQL module-body regression remain PASS. No migration history/table drift.
+
+Diagnostic limitation: ALTER/history-delete failures can be15517 in the local
+Windows owner context; they are paired with independent effective-rights0 checks,
+not treated alone as authorization proof. Impersonation is tested against another
+of the four isolated role principals. An initial extra WITHOUT LOGIN diagnostic
+probe was created outside the approved four-name set; it was rolled back, absence
+verified, and discarded from final source. No persistent extra principal/grant.
+This manager scope deviation is recorded separately from zero observed AGY scope
+violations. Login/Windows-linked identity provisioning/authentication, owner profile
+health and full E03 login demonstration remain unverified operator prerequisites.
+No owner/database-owner/server-login changes were made to mask those limitations.
+Next proposed M0.D13 is not authorized or started by this D11/D12 request.

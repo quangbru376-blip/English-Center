@@ -1,0 +1,75 @@
+{
+  "stage": "D12",
+  "review": "PASS authorized roles/grants and database-principal impersonation scope",
+  "base": "6ed5343eaeb36347f8f42a3b3b8b3ebeced85ff1",
+  "backendTree": "c0aa1f9f379d42ec390d7722b29f77ea2d8da371",
+  "unit": {
+    "path": "C:\\Users\\asus\\AppData\\Local\\Temp\\codex-d12\\unit-results\\d12-unit.trx",
+    "sha256": "948f756e842cb317c84c512977e45ee27580c639e250bd59404e87b11a11ed2e",
+    "counters": {
+      "total": "484",
+      "executed": "484",
+      "passed": "484",
+      "failed": "0",
+      "error": "0",
+      "timeout": "0",
+      "aborted": "0",
+      "inconclusive": "0",
+      "passedButRunAborted": "0",
+      "notRunnable": "0",
+      "notExecuted": "0",
+      "disconnected": "0",
+      "warning": "0",
+      "completed": "0",
+      "inProgress": "0",
+      "pending": "0"
+    }
+  },
+  "sql": {
+    "path": "C:\\Users\\asus\\AppData\\Local\\Temp\\codex-d12\\sql-results\\d12-sql.trx",
+    "sha256": "f342282852504f772d33c106c6f96dfb56bb453131c3d798641f036eecd1556c",
+    "counters": {
+      "total": "335",
+      "executed": "335",
+      "passed": "335",
+      "failed": "0",
+      "error": "0",
+      "timeout": "0",
+      "aborted": "0",
+      "inconclusive": "0",
+      "passedButRunAborted": "0",
+      "notRunnable": "0",
+      "notExecuted": "0",
+      "disconnected": "0",
+      "warning": "0",
+      "completed": "0",
+      "inProgress": "0",
+      "pending": "0"
+    }
+  },
+  "workerRuns": [
+    "38796338-055",
+    "67c439e4-993",
+    "2909a018-f6f",
+    "6d827a19-363"
+  ],
+  "workerObservedScopeViolations": 0,
+  "sqlTarget": "EnglishCenter_D07_20261005",
+  "migration": "20261005114956_LeastPrivilegeRoles",
+  "roles": 4,
+  "exactPermissionEntries": 102,
+  "migrationRoundtrip": "Down to D11 catalog + no D12 roles, Up to exact D12 catalog PASS",
+  "physicalBaseline": "24 tables/230 columns/50FK/78IX/70CHECK/20RV unchanged; module bodies and47parameters regression PASS",
+  "limits": [
+    "WITHOUT LOGIN impersonation is not login authentication or production principal provisioning",
+    "ALTER/history DELETE15517 owner-resolution failures are not taken alone as permission proof; effective rights checked zero",
+    "Initial additional diagnostic user probe was rolled back and verified absent; final source uses only four approved principal names",
+    "No runtime/config/server login/owner change/other database/push/deploy/D13"
+  ],
+  "files": {
+    "backend/src/EnglishCenter.Api/Infrastructure/Sql/D12/ACADEMICS.sql": "8e4b64afce0f5b3b1db7919fdae4ca0d36414b1673c13735d31140c48065d609",
+    "backend/src/EnglishCenter.Api/Infrastructure/Sql/D12/DIRECTOR.sql": "45091f5c7d79a66515b6ebe49b55e1fdbd4c9002477e599588cc735632b9eef7",
+    "backend/src/EnglishCenter.Api/Infrastructure/Sql/D12/FINANCE.sql": "5cdb7ad22d3de955881b94c007f8932b480006de604f850d79f924f38c823cb4",
+    "backend/src/EnglishCenter.Api/Infrastructure/Sql/D12/RUNTIME.sql": "01dac323545e85e981fb410ae1deee10027d4f15f1001fa77c337b7ae0bbb17f"
+  }
+}

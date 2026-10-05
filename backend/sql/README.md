@@ -32,3 +32,16 @@ decimal(38,0) aggregation. Scope-miss/validation errors still require future
 service mappings and current session authorization. Views are internal SQL
 facts, without new endpoint/reporting grants. Race fixtures use finite local
 diagnostic lock timeout, then rollback both connections. No committed fixture.
+
+D12 creates four dbo-owned ec_* roles with exactly102object permission entries.
+D12Schema.sql checks exact grants/DENYs, role ownership and six migrations; use
+D11Schema.sql only after D12 Down. Down refuses while any of the four roles has
+members. No login/user binding or runtime connection is installed by migration.
+Permission tests use four WITHOUT LOGIN users and EXECUTE AS USER; users, role
+memberships, fixtures and GRANT/REVOKE demonstrations rollback. Actual report/view
+outputs and counter allocation are checked alongside rejected reads/writes/DDL.
+ALTER/history-delete may hit owner-resolution15517 in this diagnostic environment;
+zero ALTER/CONTROL/history-delete rights are checked independently. Impersonation
+denial is tested against another isolated role member, avoiding Windows dbo lookup.
+This does not prove login authentication, deployment identities, full runtime
+readiness or service authorization. Those remain separate operator/D13 checks.

@@ -1,0 +1,30 @@
+{
+  "forbidden_paths": [
+    "AGENTS.md",
+    "docs/**",
+    ".agents/**",
+    "**/*.csproj",
+    "**/packages.lock.json",
+    "**/Migrations/**",
+    ".env"
+  ],
+  "timeout": "15m",
+  "max_changed_files": 1,
+  "mode": "edit",
+  "model": "",
+  "context_files": [
+    "docs/plan/D12_DIRECTOR_WORKER.md",
+    ".agents/skills/backend-clean-code/SKILL.md",
+    "docs/plan/SKILL_ROUTING.md"
+  ],
+  "objective": "Implement ONLY role permission batch described in docs/plan/D12_DIRECTOR_WORKER.md in exact output backend/src/EnglishCenter.Api/Infrastructure/Sql/D12/DIRECTOR.sql. Read all three context files completely before writing, obey exact read allowlist, no commands/search/network/SQL/Git/MCP/other reads. Codex validates.",
+  "acceptance_criteria": [
+    "Only exact role CREATE and object grants/DENYs in card, fail if role already exists.",
+    "Complete three authorized context reads before write; only view_file/write_to_file/replace_file_content.",
+    "No users/logins/memberships/dynamic SQL/GO/USE/business DML/commands/secrets; no broader grants."
+  ],
+  "max_diff_lines": 220,
+  "allowed_paths": [
+    "backend/src/EnglishCenter.Api/Infrastructure/Sql/D12/DIRECTOR.sql"
+  ]
+}
