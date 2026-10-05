@@ -103,3 +103,16 @@ Main378431aeb677e405d9044e15fa27965fc189b8cc under ADR163; reviewed backend tree
 full478tests PASS/0fail/0skip on main; package locks unchanged. Compact TRX/hash
 proof in D07A-evidence/verification.json. No migrations/SQL/tool activation.
 D07A complete; family D07 incomplete, D07B/C proposal awaits explicit scope.
+
+## Owner continuation — D07 → D08 → D09, 2026-10-05
+
+Owner requested three families and explicitly selected D07→D08→D09. D07B offline
+Design/private dependency/local tool10.0.4 and EF-generated migration are authorized.
+D07C SQL creation/execution was rejected by automatic approval review: family
+selection alone was not accepted as explicit SQL authority. Concrete bounded SQL
+request pending: new fail-if-exists EnglishCenter_D07_20261005 only, compatibility160,
+accepted collation/snapshot ON, empty schema Up→Down→Up, five triggers/six UDFs,
+transactional fixture validation; no existing DB changes/drop DB/grants/real seeds.
+No SQL command executed. Continue detached code and offline validation while pending.
+D08/D09 each object gets a separate bounded AGY contract, complete backend skill/routing
+and self-contained object task card; no commands/SQL/network/Git/extra reads.
