@@ -19,7 +19,7 @@ Return new row only after caller commit to client, gaps allowed/no reuse.
 
 
 Manager integration requirements:
-Require XACT_STATE()=1 and@@TRANCOUNT>0, no isolation requirement. @issueYear smallint range1..9999; counter use SELECT last_value WITH(UPDLOCK,HOLDLOCK) by PK year covering missing-range. Existinglast>=99999999 THROW51108 BEFORE update; missing insertlast1 otherwise updateold+1. Single result invoiceNumber varchar17 exactly HD-YYYY-NNNNNNNN (pad year4/counter8). Row/range remains locked untilcaller commit/rollback. No ownTX or commit/savepoint/rollback, noInvoice/Registration/Audit/replay changes. Failures THROW with unchangedcallerownership. Zero new deps/sequence/SQLobjects. SET XACT_ABORT ON acceptable no rollback claim; managertests failurepath/rollback/counterexisting andmissingrange race.
+Require XACT_STATE()=1 and@@TRANCOUNT>0, no isolation requirement. @issueYear smallint range1..9999; counter use SELECT last_value WITH(UPDLOCK,HOLDLOCK) by PK year covering missing-range. Existinglast>=99999999 THROW51108 BEFORE update; missing insertlast1 otherwise updateold+1. Single result invoiceNumber varchar16 exactly HD-YYYY-NNNNNNNN (pad year4/counter8). Row/range remains locked untilcaller commit/rollback. No ownTX or commit/savepoint/rollback, noInvoice/Registration/Audit/replay changes. Failures THROW with unchangedcallerownership. Zero new deps/sequence/SQLobjects. SET XACT_ABORT ON acceptable no rollback claim; managertests failurepath/rollback/counterexisting andmissingrange race.
 
 
 Exact initial schema:
