@@ -19,3 +19,19 @@ self-contained object card + backend skill + routing, writes one SQL file,
 no commands/search/network/SQL/Git/MCP/other reads. Codex tests and owns migrations.
 
 Status: in progress; no PASS or applied claim. Exact final evidence recorded later.
+
+## Preparation checkpoint
+
+Seven exact procedure payloads saved; pending owner question lists seven cards
+plus backendSKILL/routing, each worker own card+2policies/one SQL output only.
+D10 dispatch was auto-review rejected before execution; no D11 worker dispatched.
+Read procedures require caller-owned active SNAPSHOT transaction, allocator
+requires caller-owned transaction/UPDLOCK+HOLDLOCK year row/range; no SP commit.
+SP07 output exact varchar16. SP04 uses Payment.amount_paid/paid_at independently
+from billed/debt; final SQL behavior will be independently verified after AGY.
+Detached manager `%TEMP%/codex-d11/manager` atf4ff841:36procedure behavior cases
+and optional fixture isolation prepared; helper SqlRows copied fromD10 (currently
+untracked here, committed inD10). Locked restore/build0warnings0errors, no SQL
+tests run. Race/complete result metadata checks and migrations still to implement.
+No production SP/review PASS/apply. Pending SQL scope covers existing isolated
+database D10/D11 rollback/race fixtures, not grants/runtime/other DB changes.

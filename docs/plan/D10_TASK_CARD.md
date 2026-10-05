@@ -19,3 +19,16 @@ self-contained object card + backend skill + routing, writes one SQL file,
 no commands/search/network/SQL/Git/MCP/other reads. Codex tests and owns migrations.
 
 Status: in progress; no PASS or applied claim. Exact final evidence recorded later.
+
+## Preparation checkpoint
+
+Six exact view payloads saved; first AGY invocation rejected BEFORE execution
+by automatic approval review: external Google Antigravity needs specific D10
+payload/destination authorization. Pending owner question lists six cards plus
+backendSKILL/routing; each run reads only own card+2policies and writes one SQL.
+No retry/bypass or worker execution. Separate pending SQL question specifies
+existing isolated database only, D10/D11 Down→Up and rollback/race fixtures.
+Detached manager `%TEMP%/codex-d10/manager`, commit1c9e414; SqlRows + ViewTests
+prepared, locked restore and SQL-test-project build0warnings0errors. Nine new
+behavior cases compiled but NOT SQL-executed. Disconnected full481unit PASS,
+0fail0skip. No SQL production files/migration/review PASS/apply yet.
