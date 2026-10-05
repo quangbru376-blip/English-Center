@@ -137,3 +137,58 @@ signatures unchanged. Expected D05 adds29columns/10FK(7required,3optional)/11IX/
 Locked restore/build/full tests manager then main, exact reviewed tree equality,
 package locks unchanged, disconnected DDL/closed connection only. No live SQL/
 workflow enforcement or publication-readiness claim. D06 not started.
+
+## Review PASS — manager 3ed9cf5, 2026-10-05
+
+skill_verification: three AGY runs SUCCESS/exit0, exact2files/caps each, zero
+observed scope violations. Full card140lines/backend46lines/routing101lines
+viewed before first write; hashes/header/step proof retained in D05-evidence.
+Audit helper normalized Windows path separators for Attendance's forward-slash
+paths; no missing/ranged context read or broadened authority. Tool-event headers
+are observed evidence, not OS read isolation or proof every line was understood.
+Codex independently reviewed all six source files and wrote14 new test cases.
+
+| Fragment | Run | Reads/writes | Runner diff lines |
+| --- | --- | --- | --- |
+| Attendance | 9572b2a2-311 | 7/2 | 109 |
+| Score | 305abb61-ab3 | 7/2 | 139 |
+| GradeReport | 0aa37e38-460 | 5/2 | 187 |
+
+All dispatch base4ef8e58. Original worker trees remain at
+%TEMP%/codex-antigravity-worker/worktrees/main_workplace-<run>; manager at
+%TEMP%/codex-d05/manager. No observed commands/network/MCP. Codex made GradeReport
+SQL types explicit, aligned BIN2 collation with Latin1_General_100_BIN2, and made
+Attendance FK requiredness explicit. Removed unused usings. Global FK lookup
+checker now admits nonunique leading-FK indexes filtered only by nullable-FK
+IS NOT NULL while preserving unique completed-booking coverage. First regression
+caught an accidentally removed checker exception; fixed before PASS. No changes
+to existing production mappings/conventions beyond three registrations/DbSets.
+
+Locked restore/build0warnings0errors/full454tests PASS/0fail/0skip, including
+14new D05 cases. Full19tables/180columns/19PK/2AK/43NO ACTION FK/62indexes/
+52CHECKs/17RV. D05 adds29columns/10FK(7required,3optional)/11indexes/6CHECKs/3RV.
+D01–D04 signatures remain unchanged; all43FK lookup coverage verified. Score's
+nullable Schedule FK does not fabricate kind/current/Class validation; the
+filtered dependency lookup has exact accepted columns/filter. No default present/
+score/entered timestamp or seeded missing rows. FinalScore nullable decimal(5,2)
+is confined to FINALIZED by NULL-safe FinalResult including complete review and
+same finalized/review time; complete latest submit required outside DRAFT.
+Review bundle all-null/all-present and RETURNED reason/review mandatory, with
+reason retained on resubmit. No stored draft total/weight/pass/GradeHistory.
+
+Final scope10backend files/733insertions/9deletions; diff check clean. No package/
+lock/project/Program/API/DI/profile/migration/SQL/seed/trigger changes. Closed
+connection and disconnected generated DDL verified. Scope/backend/security review
+PASS; migration/API/UI/workflow/live SQL checks N/A to mapping-only completion.
+TG04/TG05/current Class/type/kind/role/window/report locks, parent RV touch,
+whole-class all-or-none/audit/history/half-up calculation/publication and atomic
+DRAFT creation remain future service/TX/SQL integration gates. No unresolved D05
+blocker. Card supplies owner review notes; no route/API docs change required.
+
+Owner explanation: Attendance stores an explicitly recorded present/absent value;
+Score stores an explicitly entered component score including0; GradeReport keeps
+submission/review metadata and only a finalized total. Missing rows remain missing,
+and workflow services calculate/validate/publish later.
+Reviewed manager3ed9cf54ab7e4432aa4e75901e6c8451e82cad8f, backend Git tree
+2cfec2e8bac0415753cf8fb06d4d7f09b3e6ed67. Apply under ADR-163 then reverify main.
+Next proposed D06 financial/audit/replay/counter mappings not started.
