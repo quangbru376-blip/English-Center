@@ -10,17 +10,17 @@
 
 ## Next
 
-- D05 complete/reviewed PASS/applied main9e843b8, locked restore/build clean/
-  full454tests PASS. [Card/evidence](plan/D05_TASK_CARD.md): assessment three-table
-  mapping, full19tables/180columns; missing-versus0, optional schedule linkage,
-  finalized-only score and NULL-safe latest submit/review/return bundles.
-  No SQL/migrations/services/endpoints; no D05 blocker.
-- Next proposed D06 T20–T24 Invoice/Payment/AuditLog/ReplayOperation/
-  InvoiceNumberCounter: prepare bounded financial/counter and audit/replay
-  contracts when continuing. Not started. Explicit FK coverage under ADR-164.
-- P02/P03/P05/P04/P06/P07/P08/D01/D02/D03/D04 remain applied PASS. Real SQL/TX/
-  auth/readiness/full LOCAL_DEV remain later gates. Auto-apply authorized Codex
-  PASS under ADR-163; no authority for migrations/install/push/deploy/rest M0.
+- D06 complete/reviewed PASS/applied main543fcf0, locked restore/build clean/
+  full474tests PASS. [Card/evidence](plan/D06_TASK_CARD.md): financial/audit/replay/
+  counter mappings; complete24tables/230columns, nullable event/retention bundles,
+  decimal18,0/JSONstring/digest32/explicit non-identity year key. No D06 blocker.
+- Next proposed D07 model assembly and reviewed migration chain; prepare bounded
+  plan/creation order/constraint/index/trigger EF compatibility review first.
+  Not started. Migrations and isolated SQL database/apply require explicit scope
+  authorization; current mapping authority does not permit these operations.
+- P02/P03/P05/P04/P06/P07/P08/D01–D05 remain applied PASS. Real SQL/TX/auth/
+  readiness/full LOCAL_DEV remain later gates. Auto-apply authorized Codex PASS
+  under ADR163; no authority for migrations/install/push/deploy/rest M0.
 
 SQL assessment04/10/2026 completed: installed SQL2025 Express17.0.1000.7
 retained by ADR-162; see [assessment](plan/SQL_INSTANCE_ASSESSMENT.md).

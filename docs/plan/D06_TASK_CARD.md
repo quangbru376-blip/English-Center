@@ -157,7 +157,7 @@ remain later SQL/TX. Counter.initial0 does not generate invoice numbers here.
 
 ## Codex verification / skill_verification
 
-Pending physical signature/identity-vs-year/RV/defaults/decimal18/date/nullable
+Completed below: physical signature/identity-vs-year/RV/defaults/decimal18/date/nullable
 bundles/JSON/binary32/retention/enum/numberpattern/index directions/FK checks.
 Expected adds50columns/7FK(4required,3optional)/16IX/18CHECK/3RV; full24tables/
 230columns/24PK/2AK/50FK/78IX/70CHECK/20RV. D01–D05 signatures unchanged.
@@ -219,3 +219,12 @@ Reviewed manager f501def9c18de4b0f1fbb5db02f4cf90476a1a9c, backend Git tree
 5b9bbb2e2e9c24b1350d6564ae57731a59716f05. Apply under ADR163 then reverify main.
 Next proposed D07 model assembly/migration chain not started; migration/isolated
 SQL execution need explicit scope authorization. No authority implied by D06 PASS.
+
+
+## Main application / reverified PASS
+
+Main543fcf00c168d6ba91fdf3087cfb5b3684ebee6e under ADR163; identical reviewed
+backend tree5b9bbb2e2e9c24b1350d6564ae57731a59716f05. Locked restore/build
+0warnings0errors/full474tests PASS/0fail/0skip on main. Package locks unchanged;
+compact TRX counters/hashes in D06-evidence/verification.json. No SQL/DB/migrations/
+installation/push/deployment. No unresolved D06 blocker. D07 not started.

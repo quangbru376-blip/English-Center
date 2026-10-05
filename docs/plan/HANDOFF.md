@@ -1,22 +1,22 @@
 # Handoff — E01–E05 và complete design baseline đã Accepted
 
-## Latest checkpoint — D05 applied PASS
+## Latest checkpoint — D06 applied PASS
 
-Updated2026-10-05: D05 authorized continuation complete/reviewed PASS,
-applied/reverified main9e843b8 (manager3ed9cf5). Locked restore/build0warnings/
-0errors/full454tests PASS/0fail/0skip; identical reviewed backend tree.
-[D05 card/evidence](D05_TASK_CARD.md): Attendance/Score/GradeReport mapping,
-full19tables/180columns/19PK/2AK/43NO ACTION FK/62indexes/52CHECKs/17RV.
-Three bounded AGY runs stayed within observed scopes; Codex independent14cases,
-explicit SQL types/collation/requiredness fixes and review. D01–D04 signatures
-retained, all43FK lookup coverage verified under ADR-164. Missing rows remain
-missing; no default present/score; final_score only FINALIZED with complete
-NULL-safe submit/review/return/final bundles. No packages/SQL execution/migrations/
-services/routes/profile changes. TG04/TG05/current kind/Class/role/window/locks,
-atomic cohort publish/audit/half-up totals and live SQL/TX remain future gates.
-ADR-163 permits applying authorized Codex PASS. Next proposed D06 financial/
-audit/replay/counter mappings not started. Full P01/M0/V01 remain incomplete;
-no automatic scope for SQL/migrations/install/push/deploy/rest M0.
+Updated2026-10-05: D06 authorized continuation complete/reviewed PASS,
+applied/reverified main543fcf0 (managerf501def). Locked restore/build0warnings/
+0errors/full474tests PASS/0fail/0skip; identical reviewed backend tree.
+[D06 card/evidence](D06_TASK_CARD.md): Invoice/Payment/AuditLog/ReplayOperation/
+InvoiceNumberCounter mapping; full24tables/230columns/24PK/2AK/50NO ACTION FK/
+78indexes/70CHECKs/20RV. Three bounded AGY runs stayed within observed scopes;
+Codex independent20cases/explicit IDENTITY and rowversion fixes/review. D01–D05
+signatures retained; all50FK lookup coverage verified under ADR164. Exact money/
+nullable events/JSON/digest32/retention/index directions/counter key mapped.
+No packages/SQL execution/migrations/services/routes/profile changes. Number
+allocation/payment atomicity/secret-safe C1/audit/replay/grants/cleanup and live
+SQL/TX/auth/readiness remain later gates. ADR163 permits applying authorized
+Codex PASS. Next proposed D07 model assembly/reviewed migration chain not started.
+Migrations/isolated SQL execution require explicit task scope authorization;
+D06 PASS grants none. Full P01/M0/V01 incomplete; no install/push/deploy/rest M0.
 
 ## Checkpoint code đầu — P02 applied/reverified PASS trên main
 

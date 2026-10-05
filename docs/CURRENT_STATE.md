@@ -4,29 +4,31 @@ Last updated: 2026-10-05
 
 ## Current task
 
-D05 authorized continuation2026-10-05 completed/reviewed PASS and applied under
-ADR-163 as main9e843b8 (manager3ed9cf5). Main locked restore/build0warnings/
-0errors/full454tests PASS/0fail/0skip; exact backend tree equality
-2cfec2e8bac0415753cf8fb06d4d7f09b3e6ed67. See [D05 card/evidence](plan/D05_TASK_CARD.md).
+D06 authorized continuation2026-10-05 completed/reviewed PASS and applied under
+ADR163 as main543fcf0 (managerf501def). Main locked restore/build0warnings/
+0errors/full474tests PASS/0fail/0skip; exact backend tree equality
+5b9bbb2e2e9c24b1350d6564ae57731a59716f05. See [D06 card/evidence](plan/D06_TASK_CARD.md).
 
-D05 adds Attendance/Score/GradeReport entities/configurations/DbSets,14independent
-test cases. Full19tables/180columns/19PK/2AK/43NO ACTION FK/62indexes/52CHECKs/
-17RV. Missing Attendance/Score are absent rows, no default present/score or server
-clock; last-write timestamps supplied later by service. Nullable Score.Schedule
-has accepted nonnull filtered lookup. FinalScore decimal(5,2) only FINALIZED,
-NULL-safe complete submit/review/return/final bundles preserve latest reason.
-Three AGY runs SUCCESS, zero observed scope violations; Codex fixed explicit
-SQL types/collation/FK requiredness and reviewed. D01–D04 signatures remain PASS;
-all43FK lookup coverage explicit under ADR-164. No packages/migrations/SQL
-execution/seeds/services/routes/connection/DI/profile changes.
+D06 adds Invoice/Payment/AuditLog/ReplayOperation/InvoiceNumberCounter mappings,
+5DbSets/configs and20independent test cases. Complete physical model24tables/
+230columns/24PK/2AK/50NO ACTION FK/78indexes/70CHECKs/20RV. Finance decimal18,0/
+DateOnly/unique links/NULL-safe cancellation-correction bundles; Payment reference
+not unique. Audit paging directions/security>=90d/IPexact90d bundles preserve
+mandatory history. Replay binary32/JSONstring/actor-action-request unique/minimum
+24h CHECK; future service exact24h policy. Counter short year PK not generated,
+initial0/ranges/RV; Audit/Replay no RV. Three AGY runs SUCCESS/zero observed scope
+violations; Codex reviewed/fixed explicit4PK identity/3rowversion SQL types.
+D01–D05 signatures preserved; all50FK lookup coverage explicit ADR164. No package/
+migration/SQL execution/seed/service/API/connection/DI/profile changes.
 
-Earlier P02/P03/P05/P04/P06/P07/P08/D01/D02/D03/D04 remain applied PASS. Original
-worker/manager evidence trees retained; no unresolved D05 blocker. TG04/TG05,
-Class/component/current schedule/kind/Teacher/window/report locks, parent RV
-touch, all-or-none cohort/history/audit/half-up totals/atomic DRAFT creation and
-live SQL/TX/auth/readiness remain future integration gates. Full P01 LOCAL_DEV
-and M0/V01 incomplete. Next proposed D06 financial/audit/replay/counter mappings,
-not started. No installation/project DB/SQL/migration/push/deployment operations.
+Earlier P02/P03/P05/P04/P06/P07/P08/D01–D05 remain applied PASS. Original worker/
+manager trees retained; no unresolved D06 blocker. Live constraints/triggers/
+SP07/allocation/overflow/nonreuse/due VN+7/payment equality+atomicity/immutability,
+C1/replay JSON allowlists/current rights/expiry/nooverwrite/audit retention grants/
+cleanup/auth/readiness remain service/TX/SQL gates. Full P01 LOCAL_DEV and M0/V01
+incomplete. Next proposed D07 model assembly/reviewed migration chain, not started.
+Migration/isolated SQL execution need explicit scope authorization; no install/
+project DB/SQL/migration/push/deployment performed or opened by D06 PASS.
 
 ### Applied P02 checkpoint
 

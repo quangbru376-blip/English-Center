@@ -2,28 +2,30 @@
 
 ## Current implemented architecture
 
-Latest checkpoint2026-10-05: D05 applied/reverified PASS main9e843b8;
-locked restore/build0warnings0errors/full454tests PASS. Domain/Training adds
-Attendance/Score/GradeReport, three explicit configurations and DbSets.
-Full19tables/180columns/19PK/2AK/43NO ACTION FK/62indexes/52CHECKs/17rowversions.
-D01–D04 signatures retained; Admissions composite ownership links and Schedule
-conditional current/history/predecessor shapes preserved. Attendance unique
-Schedule/Assignment and Score unique Assignment/Component keep missing as no row;
-no defaults for present/score/last-write timestamps. Score.Schedule optional FK
-has nonnull filtered lookup; same Class/current/type/kind is future TG05/service.
-GradeReport unique Assignment stores optional comments/latest submission/review/
-return metadata, decimal(5,2) final_score only FINALIZED with complete review and
-same final/review timestamp. Complete latest submit required outside DRAFT;
-NULL-safe review bundle and retained return reason support resubmission history.
+Latest checkpoint2026-10-05: D06 applied/reverified PASS main543fcf0;
+locked restore/build0warnings0errors/full474tests PASS. Domain/Finance now has
+Invoice/Payment/InvoiceNumberCounter, Domain/Administration AuditLog/ReplayOperation,
+with5explicit configs/DbSets. Full physical EF model24tables/230columns/24PK/
+2AK/50NO ACTION FK/78indexes/70CHECKs/20RV. D01–D05 signatures preserved, including
+Admissions composite ownership, Schedule history/current filters and finalized-only
+GradeReport. FK lookup indexes explicit ADR164; all50covered. No other conventions
+changed; see [D06 card](plan/D06_TASK_CARD.md).
 
-All43FK lookups explicitly covered under ADR-164, including filtered nonunique
-Score.Schedule lookup; unique completed-booking coverage retained. No other EF
-conventions changed. See [D05 card](plan/D05_TASK_CARD.md). Parent report RV touch,
-TG04/TG05/cross-table Class/type/kind/role/window/locks, cohort all-or-none,
-half-up total/history/audit/atomic DRAFT creation remain later service/TX/SQL.
-DbContext still lacks runtime connection/profile/DI wiring; no SQL/migrations/
-seed/business routes. Disconnected metadata/DDL does not prove live constraints/
-TX/auth/CSRF/readiness. Original reviewed worker/manager trees retained.
+Invoice/Payment use positive decimal18,0 snapshots/unique owner links and NULL-safe
+cancellation/correction bundles; reference is not unique. Invoice has business
+DateOnly due date and exact invoice-number pattern. Audit keeps nullable verified
+actor/JSONstring/operation/category and separate security>=90d/IPexact90d bundles;
+mandatory rows do not expire. Explicit ASC/DESC keys support stable paging.
+Replay uses binary32 digest, unique actor/action/request, safe modes/JSONstring and
+minimum24h CHECK; exact24h clock/reference schema/replay semantics implemented later.
+Counter has short non-generated year key/default0/rowversion; no allocator code.
+Audit/Replay have no rowversion; append-only grants/cleanup remain later SQL gates.
+
+No runtime connection/profile/DI, migration/SQL execution/seed/business routes.
+Disconnected metadata/DDL does not prove live constraints/EF trigger compatibility,
+SP07/atomic payment+invoice/equality/immutability/number allocation/overflow/nonreuse,
+C1/audit/replay/retention grants/cleanup/TX/auth/CSRF/readiness. These remain later
+service and SQL integration tasks. Original reviewed worker/manager trees retained.
 
 The checkpoints below describe their original stage, before these additions.
 

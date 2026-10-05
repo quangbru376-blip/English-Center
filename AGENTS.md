@@ -46,7 +46,13 @@ D05 continuation2026-10-05 completed/reviewed PASS/applied/reverified main9e843b
 Attendance/Score/GradeReport mapping, full19tables/180columns/43FK/62indexes/
 52checks/17RV;454tests PASS/build0warnings0errors. Three AGY runs had zero
 observed scope violations; Codex independently tested/fixed/reviewed.
-See docs/plan/D05_TASK_CARD.md. Next proposed D06 is not started.
+See docs/plan/D05_TASK_CARD.md.
+D06 continuation2026-10-05 completed/reviewed PASS/applied/reverified main543fcf0:
+Invoice/Payment/AuditLog/ReplayOperation/InvoiceNumberCounter mapping,
+complete24tables/230columns/50FK/78indexes/70checks/20RV;474tests PASS/build clean.
+Three bounded AGY runs stayed within observed scopes; Codex independent tests/
+fixes/review. See docs/plan/D06_TASK_CARD.md. Next proposed D07 not started;
+migration/isolated SQL execution require explicit scope authorization.
 Historical initial scope is retained in
 FIRST_CODE_HANDOFF; latest checkpoint and explicit current owner scope govern.
 Standing owner authority ADR-163: apply Codex-reviewed PASS stages already
