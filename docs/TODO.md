@@ -10,17 +10,17 @@
 
 ## Next
 
-- D06 complete/reviewed PASS/applied main543fcf0, locked restore/build clean/
-  full474tests PASS. [Card/evidence](plan/D06_TASK_CARD.md): financial/audit/replay/
-  counter mappings; complete24tables/230columns, nullable event/retention bundles,
-  decimal18,0/JSONstring/digest32/explicit non-identity year key. No D06 blocker.
-- Next proposed D07 model assembly and reviewed migration chain; prepare bounded
-  plan/creation order/constraint/index/trigger EF compatibility review first.
-  Not started. Migrations and isolated SQL database/apply require explicit scope
-  authorization; current mapping authority does not permit these operations.
-- P02/P03/P05/P04/P06/P07/P08/D01–D05 remain applied PASS. Real SQL/TX/auth/
-  readiness/full LOCAL_DEV remain later gates. Auto-apply authorized Codex PASS
-  under ADR163; no authority for migrations/install/push/deploy/rest M0.
+- D07A model OUTPUT metadata completed/reviewed PASS/applied main378431a,
+  full478tests PASS/build clean; [D07 card/evidence](plan/D07_TASK_CARD.md).
+  Exactly5tables OUTPUT false,19enabled;24table/230column physical signature intact.
+- D07 family incomplete. Next concrete D07B offline migration scope awaits explicit
+  authorization: private Design10.0.4 dependency, backend-local dotnet-ef10.0.4
+  from cache, disconnected factory/provider160, initial migration/snapshot/SQL
+  generation and reviewed cycle/order/Down; no SQL execution. D07C isolated new
+  database/apply also needs explicit scope. No tooling added/activated yet.
+- D01–D06/prior stages remain PASS. Live EF trigger ID/RV/TX/grants/auth/readiness/
+  full LOCAL_DEV later gates. ADR163 auto-applies authorized reviewed PASS code;
+  no authority for SQL/migrations/install/push/deploy/rest M0 from D07A.
 
 SQL assessment04/10/2026 completed: installed SQL2025 Express17.0.1000.7
 retained by ADR-162; see [assessment](plan/SQL_INSTANCE_ASSESSMENT.md).

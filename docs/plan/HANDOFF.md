@@ -1,22 +1,22 @@
 # Handoff — E01–E05 và complete design baseline đã Accepted
 
-## Latest checkpoint — D06 applied PASS
+## Latest checkpoint — D07A applied PASS, D07 family incomplete
 
-Updated2026-10-05: D06 authorized continuation complete/reviewed PASS,
-applied/reverified main543fcf0 (managerf501def). Locked restore/build0warnings/
-0errors/full474tests PASS/0fail/0skip; identical reviewed backend tree.
-[D06 card/evidence](D06_TASK_CARD.md): Invoice/Payment/AuditLog/ReplayOperation/
-InvoiceNumberCounter mapping; full24tables/230columns/24PK/2AK/50NO ACTION FK/
-78indexes/70CHECKs/20RV. Three bounded AGY runs stayed within observed scopes;
-Codex independent20cases/explicit IDENTITY and rowversion fixes/review. D01–D05
-signatures retained; all50FK lookup coverage verified under ADR164. Exact money/
-nullable events/JSON/digest32/retention/index directions/counter key mapped.
-No packages/SQL execution/migrations/services/routes/profile changes. Number
-allocation/payment atomicity/secret-safe C1/audit/replay/grants/cleanup and live
-SQL/TX/auth/readiness remain later gates. ADR163 permits applying authorized
-Codex PASS. Next proposed D07 model assembly/reviewed migration chain not started.
-Migrations/isolated SQL execution require explicit task scope authorization;
-D06 PASS grants none. Full P01/M0/V01 incomplete; no install/push/deploy/rest M0.
+Updated2026-10-05: D07A model assembly metadata completed/reviewed PASS,
+applied/reverified main378431a (manager8474804). Locked restore/build clean/
+full478tests PASS/0fail/0skip; identical reviewed backend tree. [D07 card](D07_TASK_CARD.md)
+and D07A-evidence: table-scoped UseSqlOutputClause(false) exactly on Band,
+TrainingProgram, ScoreComponentConfig, Attendance, Score; other19tables enabled
+in runtime/design/relational metadata. One bounded AGY SUCCESS/zero observed
+scope violations; Codex independent4cases/review. Full24tables/230columns/
+24PK/2AK/50FK/78IX/70CHECK/20RV unchanged, D01–D06 signatures retained.
+No HasTrigger/SQL/trigger implementation/package/tooling/migration/profile changes.
+D07 family incomplete. D07B proposed offline Design10.0.4/private dependency+
+backend-local dotnet-ef10.0.4 from cache, disconnected factory/provider160,
+initial migration/designer/snapshot/cycle-order review; explicit authority pending.
+D07C isolated new SQL DB/apply also pending separate scope authorization. No
+D08–D13/runtime/installation/push/deploy opened. Earlier stages remain PASS;
+ADR163 applies authorized reviewed code. Full P01/M0/V01/readiness incomplete.
 
 ## Checkpoint code đầu — P02 applied/reverified PASS trên main
 

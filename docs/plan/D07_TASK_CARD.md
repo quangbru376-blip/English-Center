@@ -38,7 +38,7 @@ Expected full signature unchanged24tables/230columns/24PK/2AK/50NO ACTION FK/
 on Band/TrainingProgram/ScoreComponentConfig/Attendance/Score and true on other19;
 SQL table metadata check confirms no global disable. No trigger objects claimed.
 Closed connection/generated DDL, old physical signatures, locked restore/build/
-full tests manager then main and exact reviewed source equality. Pending.
+full tests manager then main and exact reviewed source equality. Completed below.
 
 ## D07B concrete proposal — migration/tooling authorization pending
 
@@ -94,3 +94,12 @@ Reviewed manager8474804913ae1b7784df915c67266fe564f6db64; backend Git tree
 3efa3ce638578514481f77bd41c38394f7067c06. Apply only authorized metadata/test code
 under ADR163 then reverify main. D07B migration/tooling and D07C SQL await explicit
 scope approval described above; no D08–D13 scope opened.
+
+
+## D07A main application / reverified PASS
+
+Main378431aeb677e405d9044e15fa27965fc189b8cc under ADR163; reviewed backend tree
+3efa3ce638578514481f77bd41c38394f7067c06 identical. Locked restore/build clean/
+full478tests PASS/0fail/0skip on main; package locks unchanged. Compact TRX/hash
+proof in D07A-evidence/verification.json. No migrations/SQL/tool activation.
+D07A complete; family D07 incomplete, D07B/C proposal awaits explicit scope.

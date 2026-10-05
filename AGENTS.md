@@ -51,8 +51,14 @@ D06 continuation2026-10-05 completed/reviewed PASS/applied/reverified main543fcf
 Invoice/Payment/AuditLog/ReplayOperation/InvoiceNumberCounter mapping,
 complete24tables/230columns/50FK/78indexes/70checks/20RV;474tests PASS/build clean.
 Three bounded AGY runs stayed within observed scopes; Codex independent tests/
-fixes/review. See docs/plan/D06_TASK_CARD.md. Next proposed D07 not started;
-migration/isolated SQL execution require explicit scope authorization.
+fixes/review. See docs/plan/D06_TASK_CARD.md.
+D07A continuation2026-10-05 model OUTPUT metadata completed/reviewed PASS/applied/
+reverified main378431a full478tests PASS/build clean: table-scoped OUTPUT false
+on exactly5trigger-affected tables, no physical signature/package/SQL changes.
+One bounded AGY SUCCESS/zero observed violations; Codex independent4cases/review.
+See docs/plan/D07_TASK_CARD.md. D07 family incomplete; D07B offline migrations/
+Design package/local EF tooling and D07C isolated SQL execution await explicit
+scope authorization. No migration/tool activation or SQL operations yet.
 Historical initial scope is retained in
 FIRST_CODE_HANDOFF; latest checkpoint and explicit current owner scope govern.
 Standing owner authority ADR-163: apply Codex-reviewed PASS stages already

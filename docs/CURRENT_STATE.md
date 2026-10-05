@@ -4,31 +4,30 @@ Last updated: 2026-10-05
 
 ## Current task
 
-D06 authorized continuation2026-10-05 completed/reviewed PASS and applied under
-ADR163 as main543fcf0 (managerf501def). Main locked restore/build0warnings/
-0errors/full474tests PASS/0fail/0skip; exact backend tree equality
-5b9bbb2e2e9c24b1350d6564ae57731a59716f05. See [D06 card/evidence](plan/D06_TASK_CARD.md).
+D07A authorized model-assembly metadata/preflight continuation2026-10-05 completed/
+reviewed PASS/applied main378431a (manager8474804) under ADR163. Locked restore/
+build0warnings0errors/full478tests PASS/0fail/0skip; exact reviewed backend tree
+3efa3ce638578514481f77bd41c38394f7067c06. See [D07 card](plan/D07_TASK_CARD.md)
+and D07A-evidence. D07 family is incomplete.
 
-D06 adds Invoice/Payment/AuditLog/ReplayOperation/InvoiceNumberCounter mappings,
-5DbSets/configs and20independent test cases. Complete physical model24tables/
-230columns/24PK/2AK/50NO ACTION FK/78indexes/70CHECKs/20RV. Finance decimal18,0/
-DateOnly/unique links/NULL-safe cancellation-correction bundles; Payment reference
-not unique. Audit paging directions/security>=90d/IPexact90d bundles preserve
-mandatory history. Replay binary32/JSONstring/actor-action-request unique/minimum
-24h CHECK; future service exact24h policy. Counter short year PK not generated,
-initial0/ranges/RV; Audit/Replay no RV. Three AGY runs SUCCESS/zero observed scope
-violations; Codex reviewed/fixed explicit4PK identity/3rowversion SQL types.
-D01–D05 signatures preserved; all50FK lookup coverage explicit ADR164. No package/
-migration/SQL execution/seed/service/API/connection/DI/profile changes.
+Table-scoped UseSqlOutputClause(false) exactly on Band/TrainingProgram/
+ScoreComponentConfig/Attendance/Score; other19tables enabled at runtime/design/
+relational metadata. One AGY run56d6e3a1-81f SUCCESS/8reads5writes/zero observed
+scope violations; only5configs/13runner lines, Codex independent4cases/review.
+Full24tables/230columns/24PK/2AK/50NO ACTION FK/78IX/70CHECKs/20RV and D01–D06
+signatures retained. No fake HasTrigger, real trigger SQL, packages/tools/migrations/
+SQL execution/API/runtime DI/profile changes. Original worker/manager trees retained.
 
-Earlier P02/P03/P05/P04/P06/P07/P08/D01–D05 remain applied PASS. Original worker/
-manager trees retained; no unresolved D06 blocker. Live constraints/triggers/
-SP07/allocation/overflow/nonreuse/due VN+7/payment equality+atomicity/immutability,
-C1/replay JSON allowlists/current rights/expiry/nooverwrite/audit retention grants/
-cleanup/auth/readiness remain service/TX/SQL gates. Full P01 LOCAL_DEV and M0/V01
-incomplete. Next proposed D07 model assembly/reviewed migration chain, not started.
-Migration/isolated SQL execution need explicit scope authorization; no install/
-project DB/SQL/migration/push/deployment performed or opened by D06 PASS.
+Tooling preflight: no local/global dotnet tool registrations; Design10.0.4 and
+dotnet-ef10.0.4 packages present in NuGet cache, not activated/added. D07B concrete
+offline proposal in card: private Design dependency/local tool manifest+activation,
+disconnected factory/provider160, initial migration/designer/snapshot and cycle/
+index/check/Down review. Await explicit migration/package/tool authority before
+writing/activation; no SQL connection/execution. D07C new isolated database/apply
+needs separate explicit scope. Earlier P02/P03/P05/P04/P06/P07/P08/D01–D06 PASS.
+No unresolved D07A blocker; D07B/C approval gates remain. Actual EF generated ID/
+RV with5real triggers/migration chain/live SQL/TX/grants/auth/readiness/full LOCAL_DEV/
+M0/V01 remain unverified. No DB/migration/install/push/deployment performed.
 
 ### Applied P02 checkpoint
 

@@ -2,8 +2,15 @@
 
 ## Current implemented architecture
 
-Latest checkpoint2026-10-05: D06 applied/reverified PASS main543fcf0;
-locked restore/build0warnings0errors/full474tests PASS. Domain/Finance now has
+Latest checkpoint2026-10-05: D07A applied/reverified PASS main378431a;
+locked restore/build0warnings0errors/full478tests PASS. E04 EF compatibility
+metadata now table-scoped OUTPUT false on Band/TrainingProgram/ScoreComponentConfig/
+Attendance/Score, other19tables unchanged/enabled. Runtime/design/relational
+metadata independently verified; no actual triggers/HasTrigger/SQL implementation.
+D07 family incomplete; D07B offline migration/tooling and D07C live isolated DB
+scope await explicit authority. See [D07 card](plan/D07_TASK_CARD.md).
+
+D06 complete mappings remain applied PASS. Domain/Finance now has
 Invoice/Payment/InvoiceNumberCounter, Domain/Administration AuditLog/ReplayOperation,
 with5explicit configs/DbSets. Full physical EF model24tables/230columns/24PK/
 2AK/50NO ACTION FK/78indexes/70CHECKs/20RV. D01–D05 signatures preserved, including
