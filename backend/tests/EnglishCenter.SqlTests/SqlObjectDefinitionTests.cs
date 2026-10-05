@@ -7,6 +7,12 @@ using Xunit;
 
 public class SqlObjectDefinitionTests
 {
+    private static string NormalizeDefinition(string sql)
+    {
+        // SQL Server stores CREATE OR ALTER as CREATE with the middle tokens blanked.
+        var text=sql.Replace("\r\n","\n",StringComparison.Ordinal).Trim();
+        return Regex.Replace(text,@"\ACREATE(?:\s+OR\s+ALTER)?\s+(?=(?:TRIGGER|FUNCTION|VIEW|PROCEDURE)\b)","CREATE ",RegexOptions.None,TimeSpan.FromSeconds(1));
+    }
     [Theory]
     [InlineData("D08","TG",5)] [InlineData("D09","FN",6)]
     [InlineData("D10","VW",6)] [InlineData("D11","SP",7)]
@@ -24,7 +30,7 @@ public class SqlObjectDefinitionTests
             Assert.True(match.Success,resource);
             var objectName="dbo."+(match.Groups[1].Success?match.Groups[1].Value:match.Groups[2].Value);
             var actual=await f.Context.Database.SqlQuery<string>($"SELECT definition AS Value FROM sys.sql_modules WHERE object_id=OBJECT_ID({objectName})").SingleAsync(TestContext.Current.CancellationToken);
-            Assert.Equal(expected.Replace("\r\n","\n",StringComparison.Ordinal).Trim(),actual.Replace("\r\n","\n",StringComparison.Ordinal).Trim());
+            Assert.Equal(NormalizeDefinition(expected),NormalizeDefinition(actual));
         }
     }
 }
