@@ -1,0 +1,30 @@
+{
+  "max_diff_lines": 160,
+  "context_files": [
+    "docs/plan/A04_ORIGIN_WORKER.md",
+    ".agents/skills/backend-clean-code/SKILL.md",
+    "docs/plan/SKILL_ROUTING.md"
+  ],
+  "timeout": "15m",
+  "mode": "edit",
+  "allowed_paths": [
+    "backend/src/EnglishCenter.Api/Common/Security/SameOrigin.cs"
+  ],
+  "max_changed_files": 1,
+  "acceptance_criteria": [
+    "Exact API and behavior from complete worker card, framework only.",
+    "Complete three authorized context reads before write; zero forbidden tools/reads.",
+    "One bounded helper only, no tests/config/packages/SQL/commands/secrets."
+  ],
+  "forbidden_paths": [
+    "AGENTS.md",
+    "docs/**",
+    ".agents/**",
+    "**/*.csproj",
+    "**/packages.lock.json",
+    "**/Migrations/**",
+    ".env"
+  ],
+  "model": "",
+  "objective": "Implement ONLY the helper defined by docs/plan/A04_ORIGIN_WORKER.md. Read all three context files completely before edit; no commands/SQL/network/links/other reads. Codex independently verifies."
+}
