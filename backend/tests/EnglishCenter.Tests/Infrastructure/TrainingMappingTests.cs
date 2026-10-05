@@ -177,7 +177,7 @@ public class TrainingMappingTests
         Assert.Equal(System.Data.ConnectionState.Closed,context.Database.GetDbConnection().State);Assert.False(context.Database.CreateExecutionStrategy().RetriesOnFailure);
     }
 
-    private static IEnumerable<IEntityType> Prior(IModel model) => model.GetEntityTypes().Where(e=>e.GetTableName() is not ("Attendance" or "Score" or "GradeReport"));
+    private static IEnumerable<IEntityType> Prior(IModel model) => model.GetEntityTypes().Where(e=>e.ClrType.Namespace is "EnglishCenter.Api.Domain.Identity" or "EnglishCenter.Api.Domain.Academics" or "EnglishCenter.Api.Domain.Admissions" or "EnglishCenter.Api.Domain.Training" && e.GetTableName() is not ("Attendance" or "Score" or "GradeReport"));
     private static IEntityType Entity(IModel model,string table)=>model.GetEntityTypes().Single(e=>e.GetTableName()==table);
     private static IProperty Column(IEntityType entity,string name)=>entity.GetProperties().Single(p=>p.GetColumnName()==name);
     private static string Check(IModel model,string table,string name)=>Entity(model,table).GetCheckConstraints().Single(c=>c.Name==name).Sql;

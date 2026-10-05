@@ -215,21 +215,21 @@ public class AssessmentMappingTests
     }
 
     [Fact]
-    public void CompleteModel_ContainsOnlyNineteenTablesAndDisconnectedDdl()
+    public void D01D05_SubsetRetainsNineteenReviewedTables()
     {
         using var context = RoleMappingTests.Create();
         var model = context.GetService<IDesignTimeModel>().Model;
-        Assert.Equal(new[] { "Account", "Attendance", "AuthSession", "Band", "BandAssignment", "Class", "Course", "EntryTestAttempt", "EntryTestBooking", "EntryTestSession", "GradeReport", "Registration", "Role", "Schedule", "Score", "ScoreComponentConfig", "StudentClassAssignment", "StudentProfile", "TrainingProgram" }, model.GetEntityTypes().Select(e => e.GetTableName()).Order());
-        Assert.Equal(180, model.GetEntityTypes().Sum(e => e.GetProperties().Count()));
-        Assert.Equal(62, model.GetEntityTypes().Sum(e => e.GetIndexes().Count()));
-        Assert.Equal(52, model.GetEntityTypes().Sum(e => e.GetCheckConstraints().Count()));
-        Assert.Equal(43, model.GetEntityTypes().Sum(e => e.GetForeignKeys().Count()));
-        Assert.Equal(19, model.GetEntityTypes().Sum(e => e.GetKeys().Count(k => k.IsPrimaryKey())));
-        Assert.Equal(2, model.GetEntityTypes().Sum(e => e.GetKeys().Count(k => !k.IsPrimaryKey())));
+        Assert.Equal(new[] { "Account", "Attendance", "AuthSession", "Band", "BandAssignment", "Class", "Course", "EntryTestAttempt", "EntryTestBooking", "EntryTestSession", "GradeReport", "Registration", "Role", "Schedule", "Score", "ScoreComponentConfig", "StudentClassAssignment", "StudentProfile", "TrainingProgram" }, Prior(model).Select(e => e.GetTableName()).Order());
+        Assert.Equal(180, Prior(model).Sum(e => e.GetProperties().Count()));
+        Assert.Equal(62, Prior(model).Sum(e => e.GetIndexes().Count()));
+        Assert.Equal(52, Prior(model).Sum(e => e.GetCheckConstraints().Count()));
+        Assert.Equal(43, Prior(model).Sum(e => e.GetForeignKeys().Count()));
+        Assert.Equal(19, Prior(model).Sum(e => e.GetKeys().Count(k => k.IsPrimaryKey())));
+        Assert.Equal(2, Prior(model).Sum(e => e.GetKeys().Count(k => !k.IsPrimaryKey())));
         Assert.Equal(5, Entity(model, "GradeReport").GetCheckConstraints().Count());
         var ddl = context.Database.GenerateCreateScript();
-        Assert.Equal(19, ddl.Split("CREATE TABLE", StringSplitOptions.None).Length - 1);
-        Assert.Equal(17, ddl.Split("rowversion NOT NULL", StringSplitOptions.None).Length - 1);
+        Assert.Equal(19, Prior(model).Count());
+        Assert.Equal(17, Prior(model).SelectMany(e => e.GetProperties()).Count(p => p.GetColumnType() == "rowversion"));
         Assert.Contains("[present] bit NOT NULL", ddl);
         Assert.Contains("[score_value] decimal(5,2) NOT NULL", ddl);
         Assert.Contains("[final_score] decimal(5,2) NULL", ddl);
@@ -241,6 +241,7 @@ public class AssessmentMappingTests
         Assert.False(context.Database.CreateExecutionStrategy().RetriesOnFailure);
     }
 
+    private static IEnumerable<IEntityType> Prior(IModel model) => model.GetEntityTypes().Where(e => e.ClrType.Namespace is not ("EnglishCenter.Api.Domain.Finance" or "EnglishCenter.Api.Domain.Administration"));
     private static IEntityType Entity(IModel model, string table) => model.GetEntityTypes().Single(e => e.GetTableName() == table);
     private static IProperty Column(IEntityType entity, string name) => entity.GetProperties().Single(p => p.GetColumnName() == name);
     private static string Check(IModel model, string name) => Entity(model, "GradeReport").GetCheckConstraints().Single(c => c.Name == name).Sql;

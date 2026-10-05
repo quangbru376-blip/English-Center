@@ -232,7 +232,7 @@ public class AdmissionsMappingTests
     public void D01D03_SubsetRetainsCompositeCycleAndPhysicalSignature()
     {
         using var context=RoleMappingTests.Create();var model=context.GetService<IDesignTimeModel>().Model;
-        var prior=model.GetEntityTypes().Where(e=>e.ClrType.Namespace!=typeof(EnglishCenter.Api.Domain.Training.Class).Namespace).ToArray();
+        var prior=model.GetEntityTypes().Where(e=>e.ClrType.Namespace is "EnglishCenter.Api.Domain.Identity" or "EnglishCenter.Api.Domain.Academics" or "EnglishCenter.Api.Domain.Admissions").ToArray();
         Assert.Equal(new[]{"Account","AuthSession","Band","BandAssignment","Course","EntryTestAttempt","EntryTestBooking","EntryTestSession","Registration","Role","ScoreComponentConfig","StudentProfile","TrainingProgram"},prior.Select(e=>e.GetTableName()).Order());
         Assert.Equal(116,prior.Sum(e=>e.GetProperties().Count()));
         Assert.Equal(37,prior.Sum(e=>e.GetIndexes().Count()));

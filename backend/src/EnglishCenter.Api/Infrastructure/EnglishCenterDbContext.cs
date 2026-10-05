@@ -4,6 +4,8 @@ using EnglishCenter.Api.Domain.Identity;
 using EnglishCenter.Api.Domain.Academics;
 using EnglishCenter.Api.Domain.Admissions;
 using EnglishCenter.Api.Domain.Training;
+using EnglishCenter.Api.Domain.Finance;
+using EnglishCenter.Api.Domain.Administration;
 using EnglishCenter.Api.Infrastructure.Configurations;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Conventions;
@@ -39,6 +41,12 @@ public class EnglishCenterDbContext : DbContext
     public DbSet<Score> Scores => Set<Score>();
     public DbSet<GradeReport> GradeReports => Set<GradeReport>();
 
+    public DbSet<Invoice> Invoices => Set<Invoice>();
+    public DbSet<Payment> Payments => Set<Payment>();
+    public DbSet<AuditLog> AuditLogs => Set<AuditLog>();
+    public DbSet<ReplayOperation> ReplayOperations => Set<ReplayOperation>();
+    public DbSet<InvoiceNumberCounter> InvoiceNumberCounters => Set<InvoiceNumberCounter>();
+
     protected override void ConfigureConventions(ModelConfigurationBuilder configurationBuilder)
     {
         base.ConfigureConventions(configurationBuilder);
@@ -73,6 +81,11 @@ public class EnglishCenterDbContext : DbContext
         modelBuilder.ApplyConfiguration(new AttendanceConfiguration());
         modelBuilder.ApplyConfiguration(new ScoreConfiguration());
         modelBuilder.ApplyConfiguration(new GradeReportConfiguration());
+        modelBuilder.ApplyConfiguration(new InvoiceConfiguration());
+        modelBuilder.ApplyConfiguration(new PaymentConfiguration());
+        modelBuilder.ApplyConfiguration(new AuditLogConfiguration());
+        modelBuilder.ApplyConfiguration(new ReplayOperationConfiguration());
+        modelBuilder.ApplyConfiguration(new InvoiceNumberCounterConfiguration());
 
     }
 }
