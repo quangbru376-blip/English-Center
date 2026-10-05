@@ -1,21 +1,21 @@
 # Handoff — E01–E05 và complete design baseline đã Accepted
 
-## Latest checkpoint — D07–D09 applied/reverified PASS
+## Latest checkpoint — D10/D11 applied/reverified PASS
 
-Updated2026-10-05: owner-requested D07→D08→D09 complete/reviewed PASS/applied/
-reverified code main a7561dd, exact backend tree c7045ddbe52e1006b649d03877702515a04c5572.
-Locked builds0warnings0errors/481unit+102SQL tests PASS/0fail0skip. See
-[D07](D07_TASK_CARD.md),[D08](D08_TASK_CARD.md),[D09](D09_TASK_CARD.md)/D09-evidence.
-D07 offline cache-only Design/local dotnet-ef10.0.4, disconnected160factory and
-InitialSchema; explicit owner authority created only new isolated
-.\SQLEXPRESS/EnglishCenter_D07_20261005,160/exact collation/snapshotON. Reviewed
-Up→Down→Up and later object Down→Up PASS; complete24tables230cols/24PK2AK50NOACTION
-FK78indexes70CHECKs20RV; all230livecolumn shapes verified. D08 five set-based
-preheld-gate guards; D09 six pure exact-signature UDFs.11AGY runs SUCCESS/zero
-observed scope violations; Codex independent fixes/review/tests.3migrations,
-fixtures rollback/no real seeds; no runtime DB DI/grants/business callers. D10
-six views is next proposed family, not started; D10–D13/restM0/push/deploy not opened.
-ADR163 applies authorized reviewed PASS code; isolated DB retained/no DROP DB.
+Updated2026-10-05: owner-requested D10→D11 complete/reviewed PASS/applied/reverified.
+D10 code main18e1edb/482unit+117SQL; finalD11main6aaa4d7/manager01f7fc3,
+backend tree999cd7e67d5a145caea9481281544246963df5e3 identical. Locked build clean/
+483unit+182SQL=665PASS/0fail0skip. See D10_TASK_CARD/D11_TASK_CARD and evidence.
+Owner explicitly approved exact Google Antigravity payloads and isolated SQL
+D10/D11 Down→Up/rollback/allocator two-connection scope. Six one-grain views/seven
+exact-signature caller-owned procedures;13AGY SUCCESS/1ERROR rejected, zero observed
+scope violations; Codex independent corrections/review/tests. Five migrations,
+24tables230cols/5TG6FN6VW7SP;47SP parameters/live24SQLbodies verified. Only existing
+EnglishCenter_D07_20261005/profile160/exactcollation/snapshotON; fixtures rollback,
+database retained/no other DB changes. No grants/real seeds/runtime/business callers/
+push/deploy. NextD12 roles/grants not started; D13/restM0 remain later. ADR163 applies
+only authorized reviewed PASS stages. Historical initial scope remains below.
+
 
 ## Checkpoint code đầu — P02 applied/reverified PASS trên main
 

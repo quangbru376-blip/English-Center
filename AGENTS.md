@@ -61,8 +61,12 @@ Up→Down→Up/schema PASS:24tables230cols50FK78IX70CHECK20RV; all230columns ver
 D08 exact5set-based preheld-gate guards, D09 six pure exact-signature UDFs;
 11bounded AGY SUCCESS/zero observed violations, Codex independent fixes/review.
 Three migrations; fixtures rolled back, database retained/no DROP DB. See D07/
-D08/D09_TASK_CARD and evidence. Next proposed D10 not started; no authority for
-other DB changes/runtime connection/grants/restM0/push/deploy from this batch.
+D08/D09_TASK_CARD and evidence. D10/D11 subsequently owner-authorized2026-10-05,
+complete/reviewed PASS/applied/reverified main6aaa4d7:483unit+182SQL PASS/buildclean;
+6views/7SP/5migrations, exact47params/live24module bodies. Exact AGY payload +
+existing isolated SQL scope explicitly approved;13SUCCESS/1ERROR rejected, no
+observed scope violations. See D10/D11_TASK_CARD/evidence. NextD12 not started;
+no roles/grants/runtime/other DB/restM0/push/deploy authority from this batch.
 Historical initial scope is retained in
 FIRST_CODE_HANDOFF; latest checkpoint and explicit current owner scope govern.
 Standing owner authority ADR-163: apply Codex-reviewed PASS stages already

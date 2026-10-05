@@ -4320,3 +4320,23 @@ finite diagnostic gate-timeout probes; it is separate from disconnected ordinary
 solution tests. No runtime auto-migration/connection/grants/readiness authority.
 
 D07/D08/D09 cards record source/scope/review/actual SQL and main verification.
+
+## ADR-166: Caller-owned SQL read snapshots and bounded invoice allocation
+
+Status: Implemented — 2026-10-05, technical integration within authorizedD11.
+
+Accepted E04 service owns connection/transaction/auth/projection. SP01–06 verify
+active committable caller SNAPSHOT (current-session isolation5) and never begin/
+commit/rollback it. Count/page/options and parent EF reads share this transaction.
+SP07 verifies caller TX, UPDLOCK/HOLDLOCK year PK row/missing range, year1..9999/
+counter<=99999999, no independent commit/Invoice/audit/replay. No runtime grants.
+Tagged errors51101authorization/51102scope/51103filters/51104readTX/51107allocatorTX/
+51108year-or-overflow are internal SQL contracts; future services map them safely
+while enforcing current web session/rights. No new web authorization established.
+
+Reports aggregate decimal38 before exact varchar38 strings, full-set totals and
+distinct cohorts independent of paging; options retain accepted history. Creation
+resources immutable; SQL Server stores OR ALTER header as blanked CREATE, so tests
+normalize only header/newlines and compare entire24module bodies. Source/47parameter/
+scope/migration rollback/main665tests evidence in D10/D11 cards. D12principal grants
+and D13readiness/full caller races remain later, not inferred from catalog counts.

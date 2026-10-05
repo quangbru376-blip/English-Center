@@ -7,17 +7,24 @@ This is a nonsecret inventory and manifest, not a configured business profile.
 
 ## Latest isolated SQL/tooling checkpoint — 2026-10-05
 
-Owner batch D07–D09 PASS maina7561dd/481unit+102SQL. API SQLServer10.0.4 remains
-pinned; private Design10.0.4/local backend/.config/dotnet-tools.json dotnet-ef10.0.4
-activated from cache only.20added Design dependencies licenses/normalized actual
-archive-vs-lock/assets/cache hashes verified offline; raw signed archive SHA512 is
-a different format, no new vulnerability audit claim. Design excluded from local
-publish-check artifact. See D07-evidence/package-verification.json/D09-evidence.
-Only isolated .\SQLEXPRESS/EnglishCenter_D07_20261005 created after explicit owner
-authority;160/Latin1_General_100_CI_AS_SC/snapshotON,24tables230cols/5triggers6UDFs/
-3migrations. Windows/local diagnostic trusted certificate, rollback-only fixture
-runner; not runtime credentials/TLS/principal or complete LOCAL_DEV profile.
-No startup auto-migrate/real seeds/roles/grants/runtime DB connection/push/deploy.
+Updated2026-10-05: owner-requested D10→D11 complete/reviewed PASS/applied/reverified.
+D10 code main18e1edb/482unit+117SQL; finalD11main6aaa4d7/manager01f7fc3,
+backend tree999cd7e67d5a145caea9481281544246963df5e3 identical. Locked build clean/
+483unit+182SQL=665PASS/0fail0skip. See D10_TASK_CARD/D11_TASK_CARD and evidence.
+Owner explicitly approved exact Google Antigravity payloads and isolated SQL
+D10/D11 Down→Up/rollback/allocator two-connection scope. Six one-grain views/seven
+exact-signature caller-owned procedures;13AGY SUCCESS/1ERROR rejected, zero observed
+scope violations; Codex independent corrections/review/tests. Five migrations,
+24tables230cols/5TG6FN6VW7SP;47SP parameters/live24SQLbodies verified. Only existing
+EnglishCenter_D07_20261005/profile160/exactcollation/snapshotON; fixtures rollback,
+database retained/no other DB changes. No grants/real seeds/runtime/business callers/
+push/deploy. NextD12 roles/grants not started; D13/restM0 remain later. ADR163 applies
+only authorized reviewed PASS stages. Historical initial scope remains below.
+
+No dependency/runtime/profile change inD10/D11. SQLServer/Design/localdotnet-ef10.0.4
+remain cache-only pins fromD07; Windows/local diagnostic trusted certificate only,
+not runtime TLS/principal/completeLOCAL_DEV. D07 package hash/license proof retained.
+
 Historical P02 inventory below describes its original checkpoint.
 
 ## Verified inventory and choices

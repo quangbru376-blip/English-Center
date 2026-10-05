@@ -12,14 +12,12 @@
 
 - D07→D08→D09 owner batch complete/reviewed PASS/applied/reverified code maina7561dd;
   build clean/481unit+102SQL PASS. Cards/evidence in docs/plan/D07/D08/D09.
-- Current owner request D10→D11 preparation started:13single-object worker
-  contracts saved; detached tests compile clean/481unit regression PASS.
-  Await exact D10+D11 AGY payload approvals and expanded isolated SQL permission.
-  First D10 dispatch rejected by auto-review before execution for egress scope.
-  Next: AGY→manager object review→migrations/SQL tests→PASS apply perstage.
-  D12roles/D13readiness later; no new backend main changes yet.
+- D10→D11 complete/reviewed PASS/applied/reverified main6aaa4d7:
+  sixviews/sevenSP/fivemigrations,483unit+182SQL PASS/buildclean; task cards/evidence.
+- Next proposedD12: four roles/grants and principal permission checks; not started.
+  Current two-package authority does not open roles/users/grants/D13/restM0.
 - Isolated EnglishCenter_D07_20261005 retained,160/collation/snapshotON;24tables/
-  230cols/5triggers/6UDF/3migrations, fixtures rolled back. No DROP DB/other DB changes.
+  230cols/5triggers/6UDF/6views/7SP/5migrations, fixtures rolled back. No DROP DB/other DB changes.
 - Runtime DB DI/profile/business callers/complete TX/auth/audit/replay/grants/
   fullLOCAL_DEV/M0/V01 still pending; no push/deploy. ADR163 applies reviewed PASS
   stages already authorized, not unrelated stages. D01–D06/prior tasks remain PASS.

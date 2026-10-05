@@ -1,11 +1,18 @@
 # Handoff thực thi đầu tiên — P01 → P02
 
-Historical initial scope below. Latest2026-10-05: owner batch D07→D08→D09
-complete/reviewed PASS/applied/reverified code maina7561dd/481unit+102SQL PASS.
-See HANDOFF/D07/D08/D09 cards/ADR163/165. Explicit isolated SQL authority included
-new EnglishCenter_D07_20261005/profile/migrations/object rollback-fixture checks;
-no other DB changes/drop DB/runtime wiring/grants/push/deploy/restM0. Next proposed
-D10 not started. Latest checkpoint/current owner scope govern historical limits.
+Updated2026-10-05: owner-requested D10→D11 complete/reviewed PASS/applied/reverified.
+D10 code main18e1edb/482unit+117SQL; finalD11main6aaa4d7/manager01f7fc3,
+backend tree999cd7e67d5a145caea9481281544246963df5e3 identical. Locked build clean/
+483unit+182SQL=665PASS/0fail0skip. See D10_TASK_CARD/D11_TASK_CARD and evidence.
+Owner explicitly approved exact Google Antigravity payloads and isolated SQL
+D10/D11 Down→Up/rollback/allocator two-connection scope. Six one-grain views/seven
+exact-signature caller-owned procedures;13AGY SUCCESS/1ERROR rejected, zero observed
+scope violations; Codex independent corrections/review/tests. Five migrations,
+24tables230cols/5TG6FN6VW7SP;47SP parameters/live24SQLbodies verified. Only existing
+EnglishCenter_D07_20261005/profile160/exactcollation/snapshotON; fixtures rollback,
+database retained/no other DB changes. No grants/real seeds/runtime/business callers/
+push/deploy. NextD12 roles/grants not started; D13/restM0 remain later. ADR163 applies
+only authorized reviewed PASS stages. Historical initial scope remains below.
 
 Cập nhật04/10/2026. Repository: `C:\Study\SOEN\main_workplace`.
 Owner yêu cầu handoff để chat kế tiếp hiểu ngữ cảnh và viết giai đoạn code đầu

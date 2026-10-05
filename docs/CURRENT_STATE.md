@@ -4,20 +4,19 @@ Last updated: 2026-10-05
 
 ## Current task
 
-Owner2026-10-05 requested next two families D10→D11. Preparation started:
-six view + seven procedure self-contained worker contracts committed. No new
-SQL objects/migrations or backend main changes yet. Automatic approval review
-rejected first D10 AGY dispatch for insufficient payload/destination-specific
-egress authority; no worker executed. Three pending owner approvals explicitly
-cover D10 payload, D11 payload and D10–D11 SQL/rollback/race scope on existing
-EnglishCenter_D07_20261005 only; prior SQL permission covered D07–D09.
-Detached manager checkpoints: D10 `%TEMP%/codex-d10/manager` at1c9e414;
-D11 `%TEMP%/codex-d11/manager` atf4ff841 (SqlRows helper copied fromD10).
-New view/SP behavioral tests compile0warnings0errors, not executed against SQL;
-disconnected481unit tests PASS/0fail0skip. No implementation/review PASS claim.
-Continue bounded AGY only after pending payload approval; SQL only after scoped
-approval. Apply stages independently only after review PASS under ADR163.
-See [D10](plan/D10_TASK_CARD.md),[D11](plan/D11_TASK_CARD.md).
+Updated2026-10-05: owner-requested D10→D11 complete/reviewed PASS/applied/reverified.
+D10 code main18e1edb/482unit+117SQL; finalD11main6aaa4d7/manager01f7fc3,
+backend tree999cd7e67d5a145caea9481281544246963df5e3 identical. Locked build clean/
+483unit+182SQL=665PASS/0fail0skip. See D10_TASK_CARD/D11_TASK_CARD and evidence.
+Owner explicitly approved exact Google Antigravity payloads and isolated SQL
+D10/D11 Down→Up/rollback/allocator two-connection scope. Six one-grain views/seven
+exact-signature caller-owned procedures;13AGY SUCCESS/1ERROR rejected, zero observed
+scope violations; Codex independent corrections/review/tests. Five migrations,
+24tables230cols/5TG6FN6VW7SP;47SP parameters/live24SQLbodies verified. Only existing
+EnglishCenter_D07_20261005/profile160/exactcollation/snapshotON; fixtures rollback,
+database retained/no other DB changes. No grants/real seeds/runtime/business callers/
+push/deploy. NextD12 roles/grants not started; D13/restM0 remain later. ADR163 applies
+only authorized reviewed PASS stages. Historical initial scope remains below.
 
 ## Previous applied checkpoint
 
@@ -48,7 +47,7 @@ Private Design absent from publish-check artifact;20added Design dependency pins
 licenses and normalized archive/lock/assets/cache hashes verified offline, no new
 vulnerability audit claim. No push/deployment/other DB changes.
 
-No unresolved D07–D09 blocker. Next proposed D10=six views, not started. D10–D13,
+No unresolved D07–D09 blocker at that checkpoint. D10/D11 now complete above; D12/D13,
 complete service/TX/authorization/audit/replay/callers/grants/readiness/fullLOCAL_DEV/
 M0/V01 remain incomplete. Standing ADR163 only applies authorized reviewed PASS
 code; this completed batch does not open restM0. Earlier stages remain PASS.

@@ -2,6 +2,26 @@
 
 ## Current implemented architecture
 
+Updated2026-10-05: owner-requested D10→D11 complete/reviewed PASS/applied/reverified.
+D10 code main18e1edb/482unit+117SQL; finalD11main6aaa4d7/manager01f7fc3,
+backend tree999cd7e67d5a145caea9481281544246963df5e3 identical. Locked build clean/
+483unit+182SQL=665PASS/0fail0skip. See D10_TASK_CARD/D11_TASK_CARD and evidence.
+Owner explicitly approved exact Google Antigravity payloads and isolated SQL
+D10/D11 Down→Up/rollback/allocator two-connection scope. Six one-grain views/seven
+exact-signature caller-owned procedures;13AGY SUCCESS/1ERROR rejected, zero observed
+scope violations; Codex independent corrections/review/tests. Five migrations,
+24tables230cols/5TG6FN6VW7SP;47SP parameters/live24SQLbodies verified. Only existing
+EnglishCenter_D07_20261005/profile160/exactcollation/snapshotON; fixtures rollback,
+database retained/no other DB changes. No grants/real seeds/runtime/business callers/
+push/deploy. NextD12 roles/grants not started; D13/restM0 remain later. ADR163 applies
+only authorized reviewed PASS stages. Historical initial scope remains below.
+
+Read SP01–06 require caller-owned activeSNAPSHOT; SP07 locks counter year row/range
+and never commits/createInvoice. Versioned resources add explicit views/procedures;
+no runtime DB wiring. Fact grains and decimal38→varchar38 reports avoid joined
+count/money multiplication; Director-capable SP04–06 expose aggregates only.
+Prior D07–D09 checkpoint below is historical beforeD10/D11 additions.
+
 Latest2026-10-05: D07–D09 applied/reverified PASS code maina7561dd; locked build
 clean/481unit+102SQL tests PASS. Explicit EF migration chain InitialSchema→
 ConfigurationAndAcademicGuards→ReadOnlyBusinessFunctions; private Design10.0.4/

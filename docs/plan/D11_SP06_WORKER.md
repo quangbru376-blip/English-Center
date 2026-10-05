@@ -4,7 +4,7 @@ Read COMPLETE this card, .agents/skills/backend-clean-code/SKILL.md and docs/pla
 
 Manager SQL integration choices: SP01–06 REQUIRE existing caller transaction with isolation_level=5 (SNAPSHOT) and XACT_STATE()=1. If absent/wrong isolation THROW51104. Never begin/commit/rollback caller transaction. This preserves service-owned transaction plus same-snapshot parent EF reads/options. Read SPs may use table variables/temp staging only, no business DML. Error51101 unauthorized active role/restricted account;51102 scope miss (parent absent/Teacher not assigned/no visible grade report) maps404 in future service;51103 invalid filters/page/date/sort; SP07 absent transaction51107/year/overflow51108. TRY/CATCH THROW without own rollback. Current account active AND must_change_password=0 for role defenses; role_code exact accepted case. SP04–06 no actor parameter or web auth claim (service future).
 
-Exact referenced view object names: dbo.vw_TrainingClassFacts and dbo.vw_FinalizedGradeFacts. Use these exact names; do not invent vw_ClassProgress or vw_FinalizedGradeReports. PageSize maximum100; Band.band_code varchar(16) as exact schema.
+Exact referenced view object names: dbo.vw_TrainingClassFacts and dbo.vw_FinalizedGradeFacts. Use these exact names; do not invent vw_ClassProgress or vw_FinalizedGradeReports. PageSize maximum100; Band.band_code varchar(30) as exact schema.
 
 Exact output: backend/src/EnglishCenter.Api/Infrastructure/Sql/D11/SP06.sql
 
