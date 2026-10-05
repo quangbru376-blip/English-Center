@@ -3,6 +3,7 @@ namespace EnglishCenter.Api.Infrastructure;
 using EnglishCenter.Api.Domain.Identity;
 using EnglishCenter.Api.Domain.Academics;
 using EnglishCenter.Api.Domain.Admissions;
+using EnglishCenter.Api.Domain.Training;
 using EnglishCenter.Api.Infrastructure.Configurations;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Conventions;
@@ -29,6 +30,10 @@ public class EnglishCenterDbContext : DbContext
     public DbSet<EntryTestAttempt> EntryTestAttempts => Set<EntryTestAttempt>();
     public DbSet<EntryTestBooking> EntryTestBookings => Set<EntryTestBooking>();
     public DbSet<BandAssignment> BandAssignments => Set<BandAssignment>();
+
+    public DbSet<Class> Classes => Set<Class>();
+    public DbSet<StudentClassAssignment> StudentClassAssignments => Set<StudentClassAssignment>();
+    public DbSet<Schedule> Schedules => Set<Schedule>();
 
     protected override void ConfigureConventions(ModelConfigurationBuilder configurationBuilder)
     {
@@ -58,6 +63,9 @@ public class EnglishCenterDbContext : DbContext
         modelBuilder.ApplyConfiguration(new EntryTestAttemptConfiguration());
         modelBuilder.ApplyConfiguration(new EntryTestBookingConfiguration());
         modelBuilder.ApplyConfiguration(new BandAssignmentConfiguration());
+        modelBuilder.ApplyConfiguration(new ClassConfiguration());
+        modelBuilder.ApplyConfiguration(new StudentClassAssignmentConfiguration());
+        modelBuilder.ApplyConfiguration(new ScheduleConfiguration());
 
     }
 }

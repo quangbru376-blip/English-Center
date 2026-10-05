@@ -229,18 +229,19 @@ public class AdmissionsMappingTests
     }
 
     [Fact]
-    public void CompleteModelAndDdl_KeepThirteenTablesCompositeCycleAndNoDatabaseIo()
+    public void D01D03_SubsetRetainsCompositeCycleAndPhysicalSignature()
     {
         using var context=RoleMappingTests.Create();var model=context.GetService<IDesignTimeModel>().Model;
-        Assert.Equal(new[]{"Account","AuthSession","Band","BandAssignment","Course","EntryTestAttempt","EntryTestBooking","EntryTestSession","Registration","Role","ScoreComponentConfig","StudentProfile","TrainingProgram"},model.GetEntityTypes().Select(e=>e.GetTableName()).Order());
-        Assert.Equal(116,model.GetEntityTypes().Sum(e=>e.GetProperties().Count()));
-        Assert.Equal(37,model.GetEntityTypes().Sum(e=>e.GetIndexes().Count()));
-        Assert.Equal(34,model.GetEntityTypes().Sum(e=>e.GetCheckConstraints().Count()));
-        Assert.Equal(23,model.GetEntityTypes().Sum(e=>e.GetForeignKeys().Count()));
+        var prior=model.GetEntityTypes().Where(e=>e.ClrType.Namespace!=typeof(EnglishCenter.Api.Domain.Training.Class).Namespace).ToArray();
+        Assert.Equal(new[]{"Account","AuthSession","Band","BandAssignment","Course","EntryTestAttempt","EntryTestBooking","EntryTestSession","Registration","Role","ScoreComponentConfig","StudentProfile","TrainingProgram"},prior.Select(e=>e.GetTableName()).Order());
+        Assert.Equal(116,prior.Sum(e=>e.GetProperties().Count()));
+        Assert.Equal(37,prior.Sum(e=>e.GetIndexes().Count()));
+        Assert.Equal(34,prior.Sum(e=>e.GetCheckConstraints().Count()));
+        Assert.Equal(23,prior.Sum(e=>e.GetForeignKeys().Count()));
         Assert.All(model.GetEntityTypes().SelectMany(e=>e.GetForeignKeys()),f=>Assert.Equal(DeleteBehavior.NoAction,f.DeleteBehavior));
         var ddl=context.Database.GenerateCreateScript();
-        Assert.Equal(13,ddl.Split("CREATE TABLE",StringSplitOptions.None).Length-1);
-        Assert.Equal(12,ddl.Split("rowversion NOT NULL",StringSplitOptions.None).Length-1);
+        Assert.Equal(13,prior.Length);
+        Assert.Equal(12,prior.SelectMany(e=>e.GetProperties()).Count(p=>p.GetColumnType()=="rowversion"));
         foreach(var table in Signatures.Keys)Assert.Contains("CREATE TABLE [dbo].["+table+"]",ddl);
         Assert.Contains("FOREIGN KEY ([completed_booking_id], [attempt_id]) REFERENCES [dbo].[EntryTestBooking] ([booking_id], [attempt_id])",ddl);
         Assert.Contains("FOREIGN KEY ([best_attempt_id], [registration_id]) REFERENCES [dbo].[EntryTestAttempt] ([attempt_id], [registration_id])",ddl);
