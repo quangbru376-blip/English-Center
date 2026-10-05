@@ -4340,3 +4340,27 @@ resources immutable; SQL Server stores OR ALTER header as blanked CREATE, so tes
 normalize only header/newlines and compare entire24module bodies. Source/47parameter/
 scope/migration rollback/main665tests evidence in D10/D11 cards. D12principal grants
 and D13readiness/full caller races remain later, not inferred from catalog counts.
+
+
+## ADR-167: Object-scoped SQL roles and bounded database-principal evidence
+
+Status: Implemented — 2026-10-05 within explicitly approved M0.D12 scope.
+
+Four dbo-owned custom ec_* roles implement E03/E04 object rights only: runtime
+table matrix plus7SP/6FN/6VW, finance VW06/SP04, academics VW03–04/SP06, director
+SP04–06 only. Reporting explicit base-table SELECT DENYs; no schema grants/fixed
+role membership/grant options or direct counter rights. Membership does not confer
+dbo ownership. Applied D07–D11 resources remain immutable; a new migration creates
+roles with fail-if-exists and preflights all memberships before Down drops roles.
+
+Approved four WITHOUT LOGIN users/EXECUTE AS USER prove actual database operations,
+allowed outputs/ownership chains and grant/revoke/deny behavior with rollback.
+This is not login authentication or completed real deployment/demo identities.
+E03 login/Windows-linked demo and runtime/schema/maintenance identity separation
+remain operator-profile prerequisites; no secret/server-login/owner changes here.
+Owner-resolution15517 on ALTER/history-delete is paired with effective-rights0;
+not misreported as permission-only failure. Cross-role impersonation uses isolated
+test members. An initial additional manager diagnostic probe was rolled back and
+verified absent; final tests use the approved four names. No extra persistent user.
+Exact matrix/roundtrip/main819test evidence is retained in D12_TASK_CARD/evidence.
+M0.D13 readiness, runtime connections and business authorization remain later.

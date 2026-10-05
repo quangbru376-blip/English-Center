@@ -14,11 +14,14 @@
   build clean/481unit+102SQL PASS. Cards/evidence in docs/plan/D07/D08/D09.
 - D10→D11 complete/reviewed PASS/applied/reverified main6aaa4d7:
   sixviews/sevenSP/fivemigrations,483unit+182SQL PASS/buildclean; task cards/evidence.
-- Next proposedD12: four roles/grants and principal permission checks; not started.
-  Current two-package authority does not open roles/users/grants/D13/restM0.
+- D12 authorized roles/grants scope applied/reverified code mainfc9227f: four roles/
+  exact102permissions/six migrations;484unit+335SQL PASS. See D12_TASK_CARD/evidence.
+- Next proposed M0.D13 readiness/EF integration is not started or authorized.
+  Real login/Windows-linked demo users and runtime/schema/maintenance bindings
+  remain operator-profile prerequisites; WITHOUT LOGIN tests do not prove login auth.
 - Isolated EnglishCenter_D07_20261005 retained,160/collation/snapshotON;24tables/
-  230cols/5triggers/6UDF/6views/7SP/5migrations, fixtures rolled back. No DROP DB/other DB changes.
-- Runtime DB DI/profile/business callers/complete TX/auth/audit/replay/grants/
+  230cols/5triggers/6UDF/6views/7SP/6migrations/4SQLroles, fixtures/users/memberships rolled back. No DROP DB/other DB changes.
+- Runtime DB DI/profile/business callers/complete TX/auth/audit/replay/identity bindings/
   fullLOCAL_DEV/M0/V01 still pending; no push/deploy. ADR163 applies reviewed PASS
   stages already authorized, not unrelated stages. D01–D06/prior tasks remain PASS.
 

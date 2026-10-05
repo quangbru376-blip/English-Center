@@ -2,19 +2,26 @@
 
 ## Current implemented architecture
 
-Updated2026-10-05: owner-requested D10→D11 complete/reviewed PASS/applied/reverified.
-D10 code main18e1edb/482unit+117SQL; finalD11main6aaa4d7/manager01f7fc3,
-backend tree999cd7e67d5a145caea9481281544246963df5e3 identical. Locked build clean/
-483unit+182SQL=665PASS/0fail0skip. See D10_TASK_CARD/D11_TASK_CARD and evidence.
-Owner explicitly approved exact Google Antigravity payloads and isolated SQL
-D10/D11 Down→Up/rollback/allocator two-connection scope. Six one-grain views/seven
-exact-signature caller-owned procedures;13AGY SUCCESS/1ERROR rejected, zero observed
-scope violations; Codex independent corrections/review/tests. Five migrations,
-24tables230cols/5TG6FN6VW7SP;47SP parameters/live24SQLbodies verified. Only existing
-EnglishCenter_D07_20261005/profile160/exactcollation/snapshotON; fixtures rollback,
-database retained/no other DB changes. No grants/real seeds/runtime/business callers/
-push/deploy. NextD12 roles/grants not started; D13/restM0 remain later. ADR163 applies
-only authorized reviewed PASS stages. Historical initial scope remains below.
+Updated2026-10-05: owner-requested D11/D12 complete in the approved scope.
+D11 remains applied PASS; D12 four SQL roles/exact102object grants-DENYs and guarded
+LeastPrivilegeRoles migration reviewed PASS/applied/reverified code mainfc9227f,
+manager9318f40; identical backend treec0aa1f9f379d42ec390d7722b29f77ea2d8da371.
+484unit+335SQL=819PASS/0fail0skip/build0warnings0errors/cache-only locked restore.
+Four bounded AGY SUCCESS/zero observed worker scope violations; complete authorized
+context reads audited. Exact external six-file payload and isolated DB role/
+Down→Up/four WITHOUT LOGIN-user permission scope explicitly owner-approved.
+Only EnglishCenter_D07_20261005,160/collation/snapshotON; six migrations, unchanged
+24tables230cols/5TG6FN6VW7SP/47SPparams/live24module bodies. Fixtures/users/role
+memberships/GRANT-REVOKE demonstrations rollback; database+four roles retained.
+Actual allowed and denied SQL operations/output ownership chains verified. Login
+authentication/Windows-linked demo users/production runtime-schema-maintenance
+identity bindings remain operator prerequisites. Local owner-context15517 DDL/
+history errors are paired with effective-rights0, not alone permission proof.
+Initial extra diagnostic probe was rolled back/verified absent; final tests use
+only four approved principal names; see D12_TASK_CARD/evidence for manager deviation.
+Next proposed M0.D13 not started/authorized; no runtime/other DB/server logins/
+owner changes/push/deploy. ADR163 applies only authorized reviewed PASS stages.
+Historical initial scope remains below.
 
 Read SP01–06 require caller-owned activeSNAPSHOT; SP07 locks counter year row/range
 and never commits/createInvoice. Versioned resources add explicit views/procedures;

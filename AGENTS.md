@@ -65,8 +65,16 @@ D08/D09_TASK_CARD and evidence. D10/D11 subsequently owner-authorized2026-10-05,
 complete/reviewed PASS/applied/reverified main6aaa4d7:483unit+182SQL PASS/buildclean;
 6views/7SP/5migrations, exact47params/live24module bodies. Exact AGY payload +
 existing isolated SQL scope explicitly approved;13SUCCESS/1ERROR rejected, no
-observed scope violations. See D10/D11_TASK_CARD/evidence. NextD12 not started;
-no roles/grants/runtime/other DB/restM0/push/deploy authority from this batch.
+observed scope violations. See D10/D11_TASK_CARD/evidence. Owner subsequently
+requested D11/D12 and approved exact D12 payload/isolated roles and four WITHOUT
+LOGIN test users. D12 roles/grants reviewed PASS/applied/reverified code mainfc9227f:
+484unit+335SQL=819PASS/buildclean; four roles/exact102permissions/six migrations.
+Four AGY SUCCESS/zero observed worker violations, Codex independent review/tests.
+Down→D11→Up and fixture/user/membership rollback PASS. Initial extra manager probe
+rolled back/verified absent and discarded; see D12_TASK_CARD/evidence. Login-based
+auth/demo bindings and owner-context health are unverified operator prerequisites;
+DDL/history15517 is not alone permission proof. M0.D13 not started/authorized;
+no runtime/server logins/owner changes/other DB/restM0/push/deploy authority.
 Historical initial scope is retained in
 FIRST_CODE_HANDOFF; latest checkpoint and explicit current owner scope govern.
 Standing owner authority ADR-163: apply Codex-reviewed PASS stages already

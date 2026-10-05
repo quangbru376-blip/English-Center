@@ -1,4 +1,4 @@
-# D12 — four SQL roles and isolated permission evidence — independently reviewed PASS; apply pending
+# D12 — four SQL roles and isolated permission evidence — applied/reverified PASS within approved scope
 
 Owner2026-10-05 requested D11 and D12. D11 remains applied PASS at code
 6aaa4d7 (483unit+182SQL); do not regenerate its immutable SQL. D12 implementation
@@ -94,3 +94,12 @@ violations. Login/Windows-linked identity provisioning/authentication, owner pro
 health and full E03 login demonstration remain unverified operator prerequisites.
 No owner/database-owner/server-login changes were made to mask those limitations.
 Next proposed M0.D13 is not authorized or started by this D11/D12 request.
+
+## Main checkpoint
+
+Manager9318f40 applied as mainfc9227f under ADR163; backend tree
+c0aa1f9f379d42ec390d7722b29f77ea2d8da371 identical. Main locked cache-only restore,
+both builds0warnings0errors,484unit+335SQL=819PASS/0fail0skip. ExactD12 catalog and
+final rollback verified after main tests. Evidence JSON includes actual main TRX
+hashes/counters, source hashes and both tree identities. Repository contains no
+unreviewed worker output. Original workers/manager tree retained for inspection.

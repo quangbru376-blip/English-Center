@@ -1,6 +1,6 @@
 {
   "stage": "D12",
-  "review": "PASS authorized roles/grants and database-principal impersonation scope",
+  "review": "PASS authorized D12 roles/grants and database-principal impersonation scope; applied/reverified",
   "base": "6ed5343eaeb36347f8f42a3b3b8b3ebeced85ff1",
   "backendTree": "c0aa1f9f379d42ec390d7722b29f77ea2d8da371",
   "unit": {
@@ -71,5 +71,52 @@
     "backend/src/EnglishCenter.Api/Infrastructure/Sql/D12/DIRECTOR.sql": "45091f5c7d79a66515b6ebe49b55e1fdbd4c9002477e599588cc735632b9eef7",
     "backend/src/EnglishCenter.Api/Infrastructure/Sql/D12/FINANCE.sql": "5cdb7ad22d3de955881b94c007f8932b480006de604f850d79f924f38c823cb4",
     "backend/src/EnglishCenter.Api/Infrastructure/Sql/D12/RUNTIME.sql": "01dac323545e85e981fb410ae1deee10027d4f15f1001fa77c337b7ae0bbb17f"
+  },
+  "managerCommit": "9318f40456642470076b9923446cca838622e9f8",
+  "mainCodeCommit": "fc9227f7f94c90b02cfa20f9d7e0f18fdf76ba06",
+  "mainBackendTree": "c0aa1f9f379d42ec390d7722b29f77ea2d8da371",
+  "mainUnit": {
+    "path": "C:\\Users\\asus\\AppData\\Local\\Temp\\codex-d12\\main-unit-results\\d12-main-unit.trx",
+    "sha256": "91539a603f872a7aca2e7fb4c45ac74573a274a04561243806147594377bf034",
+    "counters": {
+      "total": "484",
+      "executed": "484",
+      "passed": "484",
+      "failed": "0",
+      "error": "0",
+      "timeout": "0",
+      "aborted": "0",
+      "inconclusive": "0",
+      "passedButRunAborted": "0",
+      "notRunnable": "0",
+      "notExecuted": "0",
+      "disconnected": "0",
+      "warning": "0",
+      "completed": "0",
+      "inProgress": "0",
+      "pending": "0"
+    }
+  },
+  "mainSql": {
+    "path": "C:\\Users\\asus\\AppData\\Local\\Temp\\codex-d12\\main-sql-results\\d12-main-sql.trx",
+    "sha256": "8bbdd84b227e2e91020bbc447a6889ea1b35a1b5293fe8f76c7fc951c46e391c",
+    "counters": {
+      "total": "335",
+      "executed": "335",
+      "passed": "335",
+      "failed": "0",
+      "error": "0",
+      "timeout": "0",
+      "aborted": "0",
+      "inconclusive": "0",
+      "passedButRunAborted": "0",
+      "notRunnable": "0",
+      "notExecuted": "0",
+      "disconnected": "0",
+      "warning": "0",
+      "completed": "0",
+      "inProgress": "0",
+      "pending": "0"
+    }
   }
 }
