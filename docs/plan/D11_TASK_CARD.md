@@ -35,3 +35,7 @@ untracked here, committed inD10). Locked restore/build0warnings0errors, no SQL
 tests run. Race/complete result metadata checks and migrations still to implement.
 No production SP/review PASS/apply. Pending SQL scope covers existing isolated
 database D10/D11 rollback/race fixtures, not grants/runtime/other DB changes.
+
+## Owner authorization now granted
+
+Owner approved all three concrete scopes on2026-10-05: exact D10 payload, exact D11 payload to Google Antigravity; isolated D10/D11 migrations Down-Up and rollback fixtures including allocator two-connection race on existing EnglishCenter_D07_20261005 only. No other DB/grants/runtime/seed/push/deploy. Historical pending notes above superseded; continue without asking again.

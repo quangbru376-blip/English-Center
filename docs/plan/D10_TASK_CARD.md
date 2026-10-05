@@ -32,3 +32,7 @@ Detached manager `%TEMP%/codex-d10/manager`, commit1c9e414; SqlRows + ViewTests
 prepared, locked restore and SQL-test-project build0warnings0errors. Nine new
 behavior cases compiled but NOT SQL-executed. Disconnected full481unit PASS,
 0fail0skip. No SQL production files/migration/review PASS/apply yet.
+
+## Owner authorization now granted
+
+Owner approved all three concrete scopes on2026-10-05: exact D10 payload, exact D11 payload to Google Antigravity; isolated D10/D11 migrations Down-Up and rollback fixtures including allocator two-connection race on existing EnglishCenter_D07_20261005 only. No other DB/grants/runtime/seed/push/deploy. Historical pending notes above superseded; continue without asking again.
