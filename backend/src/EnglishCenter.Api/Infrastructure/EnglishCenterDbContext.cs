@@ -35,6 +35,10 @@ public class EnglishCenterDbContext : DbContext
     public DbSet<StudentClassAssignment> StudentClassAssignments => Set<StudentClassAssignment>();
     public DbSet<Schedule> Schedules => Set<Schedule>();
 
+    public DbSet<Attendance> Attendances => Set<Attendance>();
+    public DbSet<Score> Scores => Set<Score>();
+    public DbSet<GradeReport> GradeReports => Set<GradeReport>();
+
     protected override void ConfigureConventions(ModelConfigurationBuilder configurationBuilder)
     {
         base.ConfigureConventions(configurationBuilder);
@@ -66,6 +70,9 @@ public class EnglishCenterDbContext : DbContext
         modelBuilder.ApplyConfiguration(new ClassConfiguration());
         modelBuilder.ApplyConfiguration(new StudentClassAssignmentConfiguration());
         modelBuilder.ApplyConfiguration(new ScheduleConfiguration());
+        modelBuilder.ApplyConfiguration(new AttendanceConfiguration());
+        modelBuilder.ApplyConfiguration(new ScoreConfiguration());
+        modelBuilder.ApplyConfiguration(new GradeReportConfiguration());
 
     }
 }

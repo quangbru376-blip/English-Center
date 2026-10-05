@@ -112,7 +112,7 @@ public class TrainingMappingTests
         Foreign(s,"FK_Schedule_Schedule_replaces_schedule_id","Schedule",false,true,"replaces_schedule_id","schedule_id");
         Foreign(s,"FK_Schedule_Account_held_by","Account",false,false,"held_by","account_id");
         Foreign(s,"FK_Schedule_Account_not_held_by","Account",false,false,"not_held_by","account_id");Assert.Equal(4,s.GetForeignKeys().Count());
-        Assert.Equal(33,model.GetEntityTypes().Sum(e=>e.GetForeignKeys().Count()));
+        Assert.Equal(33,Prior(model).Sum(e=>e.GetForeignKeys().Count()));
     }
 
     [Fact]
@@ -159,15 +159,15 @@ public class TrainingMappingTests
     }
 
     [Fact]
-    public void CompleteModelDdlAndConnections_KeepSixteenReviewedTablesOnly()
+    public void D01D04_SubsetRetainsSixteenReviewedTables()
     {
         using var context=RoleMappingTests.Create();var model=context.GetService<IDesignTimeModel>().Model;
-        Assert.Equal(new[]{"Account","AuthSession","Band","BandAssignment","Class","Course","EntryTestAttempt","EntryTestBooking","EntryTestSession","Registration","Role","Schedule","ScoreComponentConfig","StudentClassAssignment","StudentProfile","TrainingProgram"},model.GetEntityTypes().Select(e=>e.GetTableName()).Order());
-        Assert.Equal(151,model.GetEntityTypes().Sum(e=>e.GetProperties().Count()));Assert.Equal(51,model.GetEntityTypes().Sum(e=>e.GetIndexes().Count()));
-        Assert.Equal(46,model.GetEntityTypes().Sum(e=>e.GetCheckConstraints().Count()));Assert.Equal(33,model.GetEntityTypes().Sum(e=>e.GetForeignKeys().Count()));
-        Assert.Equal(16,model.GetEntityTypes().Sum(e=>e.GetKeys().Count(k=>k.IsPrimaryKey())));Assert.Equal(2,model.GetEntityTypes().Sum(e=>e.GetKeys().Count(k=>!k.IsPrimaryKey())));
-        var ddl=context.Database.GenerateCreateScript();Assert.Equal(16,ddl.Split("CREATE TABLE",StringSplitOptions.None).Length-1);
-        Assert.Equal(14,ddl.Split("rowversion NOT NULL",StringSplitOptions.None).Length-1);
+        Assert.Equal(new[]{"Account","AuthSession","Band","BandAssignment","Class","Course","EntryTestAttempt","EntryTestBooking","EntryTestSession","Registration","Role","Schedule","ScoreComponentConfig","StudentClassAssignment","StudentProfile","TrainingProgram"},Prior(model).Select(e=>e.GetTableName()).Order());
+        Assert.Equal(151,Prior(model).Sum(e=>e.GetProperties().Count()));Assert.Equal(51,Prior(model).Sum(e=>e.GetIndexes().Count()));
+        Assert.Equal(46,Prior(model).Sum(e=>e.GetCheckConstraints().Count()));Assert.Equal(33,Prior(model).Sum(e=>e.GetForeignKeys().Count()));
+        Assert.Equal(16,Prior(model).Sum(e=>e.GetKeys().Count(k=>k.IsPrimaryKey())));Assert.Equal(2,Prior(model).Sum(e=>e.GetKeys().Count(k=>!k.IsPrimaryKey())));
+        var ddl=context.Database.GenerateCreateScript();Assert.Equal(16,Prior(model).Count());
+        Assert.Equal(14,Prior(model).SelectMany(e=>e.GetProperties()).Count(p=>p.GetColumnType()=="rowversion"));
         foreach(var table in Expected.Keys)Assert.Contains("CREATE TABLE [dbo].["+table+"]",ddl);
         Assert.Contains("[session_date] date NOT NULL",ddl);Assert.Contains("[start_time] time(0) NOT NULL",ddl);Assert.Contains("[end_time] time(0) NOT NULL",ddl);
         Assert.Contains("CREATE UNIQUE INDEX [UQ_Schedule_CurrentObligation]",ddl);Assert.Contains("WHERE [is_current] = 1",ddl);
@@ -177,6 +177,7 @@ public class TrainingMappingTests
         Assert.Equal(System.Data.ConnectionState.Closed,context.Database.GetDbConnection().State);Assert.False(context.Database.CreateExecutionStrategy().RetriesOnFailure);
     }
 
+    private static IEnumerable<IEntityType> Prior(IModel model) => model.GetEntityTypes().Where(e=>e.GetTableName() is not ("Attendance" or "Score" or "GradeReport"));
     private static IEntityType Entity(IModel model,string table)=>model.GetEntityTypes().Single(e=>e.GetTableName()==table);
     private static IProperty Column(IEntityType entity,string name)=>entity.GetProperties().Single(p=>p.GetColumnName()==name);
     private static string Check(IModel model,string table,string name)=>Entity(model,table).GetCheckConstraints().Single(c=>c.Name==name).Sql;

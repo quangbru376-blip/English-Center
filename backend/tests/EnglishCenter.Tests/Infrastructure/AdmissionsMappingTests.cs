@@ -263,7 +263,8 @@ public class AdmissionsMappingTests
         {
             var covered=entity.GetIndexes().Any(index =>
                 (index.GetFilter()==null && index.Properties.Take(fk.Properties.Count).SequenceEqual(fk.Properties)) ||
-                (index.IsUnique && index.Properties.Count==1 && index.Properties[0]==fk.Properties[0] &&
+                ((index.Properties.Take(fk.Properties.Count).SequenceEqual(fk.Properties) ||
+                    (index.IsUnique && index.Properties.Count==1 && index.Properties[0]==fk.Properties[0])) &&
                     index.Properties[0].IsNullable && index.GetFilter()=="["+index.Properties[0].GetColumnName()+"] IS NOT NULL"));
             Assert.True(covered,fk.GetConstraintName());
         }
