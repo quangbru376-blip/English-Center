@@ -10,6 +10,8 @@ public sealed class BandConfiguration : IEntityTypeConfiguration<Band>
     {
         builder.ToTable("Band", "dbo", table =>
         {
+            table.UseSqlOutputClause(false);
+
             table.HasCheckConstraint(
                 "CK_Band_MinScore",
                 "[min_score] >= 0 AND [min_score] <= 100");

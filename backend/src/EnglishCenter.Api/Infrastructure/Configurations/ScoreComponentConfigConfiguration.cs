@@ -10,6 +10,8 @@ public sealed class ScoreComponentConfigConfiguration : IEntityTypeConfiguration
     {
         builder.ToTable("ScoreComponentConfig", "dbo", table =>
         {
+            table.UseSqlOutputClause(false);
+
             table.HasCheckConstraint(
                 "CK_ScoreComponentConfig_Kind",
                 "[kind] COLLATE Latin1_General_100_BIN2 IN ('GENERAL','LESSON','FINAL_EXAM') AND DATALENGTH([kind]) = LEN([kind])");

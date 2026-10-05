@@ -10,6 +10,8 @@ public sealed class TrainingProgramConfiguration : IEntityTypeConfiguration<Trai
     {
         builder.ToTable("TrainingProgram", "dbo", table =>
         {
+            table.UseSqlOutputClause(false);
+
             table.HasCheckConstraint(
                 "CK_TrainingProgram_Status",
                 "[status] COLLATE Latin1_General_100_BIN2 IN ('DRAFT','ACTIVE','INACTIVE') AND DATALENGTH([status]) = LEN([status])");

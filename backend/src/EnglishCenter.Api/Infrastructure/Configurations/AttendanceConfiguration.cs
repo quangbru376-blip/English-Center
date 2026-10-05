@@ -8,7 +8,10 @@ public sealed class AttendanceConfiguration : IEntityTypeConfiguration<Attendanc
 {
     public void Configure(EntityTypeBuilder<Attendance> builder)
     {
-        builder.ToTable("Attendance", "dbo");
+        builder.ToTable("Attendance", "dbo", table =>
+        {
+            table.UseSqlOutputClause(false);
+        });
 
         builder.HasKey(a => a.AttendanceId);
 

@@ -10,6 +10,8 @@ public sealed class ScoreConfiguration : IEntityTypeConfiguration<Score>
     {
         builder.ToTable("Score", table =>
         {
+            table.UseSqlOutputClause(false);
+
             table.HasCheckConstraint(
                 "CK_Score_Score",
                 "[score_value] >= 0 AND [score_value] <= 100");
