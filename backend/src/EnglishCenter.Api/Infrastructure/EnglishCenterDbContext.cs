@@ -2,8 +2,10 @@ namespace EnglishCenter.Api.Infrastructure;
 
 using EnglishCenter.Api.Domain.Identity;
 using EnglishCenter.Api.Domain.Academics;
+using EnglishCenter.Api.Domain.Admissions;
 using EnglishCenter.Api.Infrastructure.Configurations;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Conventions;
 
 public class EnglishCenterDbContext : DbContext
 {
@@ -22,6 +24,19 @@ public class EnglishCenterDbContext : DbContext
     public DbSet<TrainingProgram> TrainingPrograms => Set<TrainingProgram>();
     public DbSet<ScoreComponentConfig> ScoreComponentConfigs => Set<ScoreComponentConfig>();
 
+    public DbSet<Registration> Registrations => Set<Registration>();
+    public DbSet<EntryTestSession> EntryTestSessions => Set<EntryTestSession>();
+    public DbSet<EntryTestAttempt> EntryTestAttempts => Set<EntryTestAttempt>();
+    public DbSet<EntryTestBooking> EntryTestBookings => Set<EntryTestBooking>();
+    public DbSet<BandAssignment> BandAssignments => Set<BandAssignment>();
+
+    protected override void ConfigureConventions(ModelConfigurationBuilder configurationBuilder)
+    {
+        base.ConfigureConventions(configurationBuilder);
+        // FK lookup indexes are explicit; the composite cycle otherwise creates a duplicate.
+        configurationBuilder.Conventions.Remove(typeof(ForeignKeyIndexConvention));
+    }
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
@@ -38,5 +53,11 @@ public class EnglishCenterDbContext : DbContext
         modelBuilder.ApplyConfiguration(new BandConfiguration());
         modelBuilder.ApplyConfiguration(new TrainingProgramConfiguration());
         modelBuilder.ApplyConfiguration(new ScoreComponentConfigConfiguration());
+        modelBuilder.ApplyConfiguration(new RegistrationConfiguration());
+        modelBuilder.ApplyConfiguration(new EntryTestSessionConfiguration());
+        modelBuilder.ApplyConfiguration(new EntryTestAttemptConfiguration());
+        modelBuilder.ApplyConfiguration(new EntryTestBookingConfiguration());
+        modelBuilder.ApplyConfiguration(new BandAssignmentConfiguration());
+
     }
 }

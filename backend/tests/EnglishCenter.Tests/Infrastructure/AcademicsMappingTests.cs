@@ -154,19 +154,20 @@ public class AcademicsMappingTests
     }
 
     [Fact]
-    public void FullModelAndDdl_ContainOnlyEightReviewedTablesWithConnectionClosed()
+    public void D01D02_SubsetRetainsPhysicalSignatureWithConnectionClosed()
     {
         using var context = RoleMappingTests.Create();
         var model = context.GetService<IDesignTimeModel>().Model;
-        Assert.Equal(new[]{"Account","AuthSession","Band","Course","Role","ScoreComponentConfig","StudentProfile","TrainingProgram"},model.GetEntityTypes().Select(e=>e.GetTableName()).Order());
-        Assert.Equal(56,model.GetEntityTypes().Sum(e=>e.GetProperties().Count()));
-        Assert.Equal(16,model.GetEntityTypes().Sum(e=>e.GetIndexes().Count()));
-        Assert.Equal(19,model.GetEntityTypes().Sum(e=>e.GetCheckConstraints().Count()));
-        Assert.Equal(6,model.GetEntityTypes().Sum(e=>e.GetForeignKeys().Count()));
+        var prior=model.GetEntityTypes().Where(e=>e.ClrType.Namespace==typeof(Course).Namespace || e.ClrType.Namespace==typeof(EnglishCenter.Api.Domain.Identity.Role).Namespace).ToArray();
+        Assert.Equal(new[]{"Account","AuthSession","Band","Course","Role","ScoreComponentConfig","StudentProfile","TrainingProgram"},prior.Select(e=>e.GetTableName()).Order());
+        Assert.Equal(56,prior.Sum(e=>e.GetProperties().Count()));
+        Assert.Equal(16,prior.Sum(e=>e.GetIndexes().Count()));
+        Assert.Equal(19,prior.Sum(e=>e.GetCheckConstraints().Count()));
+        Assert.Equal(6,prior.Sum(e=>e.GetForeignKeys().Count()));
         Assert.All(model.GetEntityTypes().SelectMany(e=>e.GetForeignKeys()), f=>Assert.Equal(DeleteBehavior.NoAction,f.DeleteBehavior));
         var ddl = context.Database.GenerateCreateScript();
-        Assert.Equal(8,ddl.Split("CREATE TABLE",StringSplitOptions.None).Length-1);
-        Assert.Equal(7,ddl.Split("rowversion NOT NULL",StringSplitOptions.None).Length-1);
+        Assert.Equal(8,prior.Length);
+        Assert.Equal(7,prior.SelectMany(e=>e.GetProperties()).Count(p=>p.GetColumnType()=="rowversion"));
         foreach(var table in Expected.Keys) Assert.Contains("CREATE TABLE [dbo].["+table+"]",ddl);
         Assert.Contains("[base_price] decimal(18,0) NOT NULL",ddl);
         Assert.Contains("[min_score] decimal(5,2) NOT NULL",ddl);
