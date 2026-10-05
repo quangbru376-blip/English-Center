@@ -16,7 +16,10 @@
   sixviews/sevenSP/fivemigrations,483unit+182SQL PASS/buildclean; task cards/evidence.
 - D12 authorized roles/grants scope applied/reverified code mainfc9227f: four roles/
   exact102permissions/six migrations;484unit+335SQL PASS. See D12_TASK_CARD/evidence.
-- Next proposed M0.D13 readiness/EF integration is not started or authorized.
+- D13→A01 completed/reviewed PASS/applied/reverified main74e3085:513unit+366SQL
+  PASS/buildclean; exact catalog/five EF trigger paths/atomic audit/security fallback.
+- Next canonical A02 bootstrap, then A04 registration foundation; not started or
+  authorized by this completed two-family batch. Full runtime readiness still deferred.
   Real login/Windows-linked demo users and runtime/schema/maintenance bindings
   remain operator-profile prerequisites; WITHOUT LOGIN tests do not prove login auth.
 - Isolated EnglishCenter_D07_20261005 retained,160/collation/snapshotON;24tables/

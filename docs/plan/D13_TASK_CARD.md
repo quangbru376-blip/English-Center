@@ -79,3 +79,5 @@ Full runtime profile/login/key/deadline/readiness and application callers remain
 unverified/absent. Schema diagnostic PASS is not full runtime-ready.
 No migrations/applied SQL/config/dependency changes; no other DB/owner/logins/seed.
 Apply is limited to this reviewed stage under ADR163, followed by main verification.
+
+Applied/reverified maind9a47d5, reviewed detached manageref15c67. Final batch main513unit+366SQL PASS; unchanged backend tree67ffc5d0fde4c150f0f5b71287701886a3315fbc. Post-fixture full catalog/profile and zero residual fixture users/memberships/business rows verified. Main evidence: A01-evidence/main-verification.json.

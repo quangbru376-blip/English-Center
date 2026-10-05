@@ -4363,4 +4363,33 @@ not misreported as permission-only failure. Cross-role impersonation uses isolat
 test members. An initial additional manager diagnostic probe was rolled back and
 verified absent; final tests use the approved four names. No extra persistent user.
 Exact matrix/roundtrip/main819test evidence is retained in D12_TASK_CARD/evidence.
-M0.D13 readiness, runtime connections and business authorization remain later.
+D13 structural/EF diagnostic is now applied (ADR168); full runtime readiness,
+runtime connections and business authorization remain later.
+
+
+## ADR-168: Pinned structural catalog diagnostics and explicit audit persistence boundaries
+
+Status: Implemented — 2026-10-05, owner-authorized D13→A01 scope; no product rule change.
+
+D13 compares complete ordinal native catalog facts and immutable module bodies, not
+object counts. Only leading CREATE/ALTER header and line endings normalize; body
+changes remain drift. Native CHECK/default spelling is pinned from independently
+verified D12 state with immutable-source provenance and disconnected EF parity;
+not a generic SQL semantic parser or auto-refresh. Diagnostic command timeout and
+cancellation are supplied explicitly; caller connection/transaction ownership remains.
+Operator structural PASS never certifies production runtime profile/login readiness.
+Restricted unreadable metadata/history fails closed; no permission relaxation.
+
+A01 uses immutable projected event snapshots, accepted E04 field families and54SC02
+mandatory action policies; API133 extra history remains excluded. Child `.EFFECT`
+shares operation and requires positive projected parent references. Required reasons
+use existing NFC/trim1000code-point normalization. Security technical action strings
+AUTH.LOGIN/LOGOUT/ACCESS_DENIED/THROTTLED are selected by four typed event kinds;
+no request action strings, credentials/payload/digest/raw errors in fallback.
+Mandatory adapter never owns commit or catches away failure: caller must roll back
+business/revocation/replay/counter/children on sanitized SQL failure or cancellation.
+Pure security persistence is independently supplied; failure/cancellation increments
+fixed thread-safe saturating numeric incidents and never compensates security state.
+SECURITY/IP exact90days; MANDATORY no expiry/default IP. No cleanup/runtime DI/routes.
+Real callers, replay/no-op suppression and non-SC02 password/bootstrap integration
+remain in later authorized families. Scope/evidence: D13/A01_TASK_CARD/evidence.

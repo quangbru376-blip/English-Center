@@ -1,25 +1,24 @@
 # M0 — kế hoạch task theo chất lượng
 
-Updated2026-10-05: owner-requested D11/D12 complete in the approved scope.
-D11 remains applied PASS; D12 four SQL roles/exact102object grants-DENYs and guarded
-LeastPrivilegeRoles migration reviewed PASS/applied/reverified code mainfc9227f,
-manager9318f40; identical backend treec0aa1f9f379d42ec390d7722b29f77ea2d8da371.
-484unit+335SQL=819PASS/0fail0skip/build0warnings0errors/cache-only locked restore.
-Four bounded AGY SUCCESS/zero observed worker scope violations; complete authorized
-context reads audited. Exact external six-file payload and isolated DB role/
-Down→Up/four WITHOUT LOGIN-user permission scope explicitly owner-approved.
-Only EnglishCenter_D07_20261005,160/collation/snapshotON; six migrations, unchanged
-24tables230cols/5TG6FN6VW7SP/47SPparams/live24module bodies. Fixtures/users/role
-memberships/GRANT-REVOKE demonstrations rollback; database+four roles retained.
-Actual allowed and denied SQL operations/output ownership chains verified. Login
-authentication/Windows-linked demo users/production runtime-schema-maintenance
-identity bindings remain operator prerequisites. Local owner-context15517 DDL/
-history errors are paired with effective-rights0, not alone permission proof.
-Initial extra diagnostic probe was rolled back/verified absent; final tests use
-only four approved principal names; see D12_TASK_CARD/evidence for manager deviation.
-Next proposed M0.D13 not started/authorized; no runtime/other DB/server logins/
-owner changes/push/deploy. ADR163 applies only authorized reviewed PASS stages.
-Historical initial scope remains below.
+Updated2026-10-05: owner-approved two-family D13→A01 batch complete/reviewed
+PASS/applied/reverified code main74e3085, manager0116002; identical backend tree
+67ffc5d0fde4c150f0f5b71287701886a3315fbc. D13 maind9a47d5:495unit+360SQL PASS;
+final513unit+366SQL=879PASS/0fail0skip/build0warnings0errors/locked cache restore.
+Two bounded AGY SUCCESS/full3context reads before write/zero observed scope violations;
+Codex independent implementation fixes, source/model review and real SQL verification.
+D13 exact catalog pin/read-only inspector +five EF identity/RV/invalid-write rollback
+paths; A01 immutable field-projected mandatory shared-TX writer +independent SECURITY
+store/four fixed incident counters. No startup/DI/API/runtime profile/cleanup wiring.
+Only approved EnglishCenter_D07_20261005 used; all fixtures/data/schema/DENY/users/
+memberships rolled back, retained0business rows/0test users/0role members. Complete
+post-fixture catalog/module bodies/exact102permissions PASS;24tables230columns,
+5TG6FN6VW7SP/6migrations/4roles/profile160/collation/snapshotON unchanged.
+Full runtime readiness/login/demo and runtime/schema/maintenance identity bindings
+remain operator prerequisites. Runtime role cannot read complete catalog/history;
+inspector fails closed and adds no grant. No owner/logins/other DB/migration change.
+See D13_TASK_CARD/A01_TASK_CARD/evidence and docs/notes/D13_A01.md. Next canonical
+A02→A04; neither started or opened by this batch. No restM0/push/deploy authority.
+ADR163 continues only for authorized reviewed PASS stages. Historical scope below.
 
 
 

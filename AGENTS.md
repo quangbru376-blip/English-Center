@@ -73,7 +73,17 @@ Four AGY SUCCESS/zero observed worker violations, Codex independent review/tests
 Down→D11→Up and fixture/user/membership rollback PASS. Initial extra manager probe
 rolled back/verified absent and discarded; see D12_TASK_CARD/evidence. Login-based
 auth/demo bindings and owner-context health are unverified operator prerequisites;
-DDL/history15517 is not alone permission proof. M0.D13 not started/authorized;
+DDL/history15517 is not alone permission proof. Owner-approved D13→A01 batch now
+complete/reviewed PASS/applied/reverified2026-10-05 main74e3085:513unit+366SQL=879PASS/
+buildclean; manager0116002 identical backend67ffc5d0fde4c150f0f5b71287701886a3315fbc.
+Two AGY SUCCESS/full bounded context reads/zero observed scope violations; Codex
+independent exact catalog/model/SQL review and audit failure/rollback/fallback tests.
+D13 catalog/EF structural diagnostic PASS; full runtime profile/login readiness
+remains blocked, runtime role invisible catalog fails closed/no grant added. A01
+mandatory caller-TX and independent security/fixed incident-counter primitives only;
+no real auth/API/business callers or cleanup/DI. All approved SQL fixtures rollback;
+0retained business rows/users/memberships, unchanged complete catalog/102permissions.
+See D13/A01_TASK_CARD/evidence. Next A02→A04 not started/authorized by this batch;
 no runtime/server logins/owner changes/other DB/restM0/push/deploy authority.
 Historical initial scope is retained in
 FIRST_CODE_HANDOFF; latest checkpoint and explicit current owner scope govern.

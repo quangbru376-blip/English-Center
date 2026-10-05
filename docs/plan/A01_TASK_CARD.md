@@ -83,3 +83,5 @@ Caller replay/no-op suppression and non-SC02 Account password/bootstrap integrat
 belong to later slices. No whole workflow/API/cleanup coverage claim; no A02 authority.
 Owner walkthrough: docs/notes/D13_A01.md. Apply only reviewed stage via ADR163,
 then reverify main and physical D12 catalog/profile/module bodies/102permissions.
+
+Applied/reverified main74e3085, reviewed detached manager0116002. Final batch main513unit+366SQL PASS; unchanged backend tree67ffc5d0fde4c150f0f5b71287701886a3315fbc. Post-fixture full catalog/profile and zero residual fixture users/memberships/business rows verified. Main evidence: A01-evidence/main-verification.json.

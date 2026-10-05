@@ -1,25 +1,14 @@
 # Implementation planning — discussion draft
 
-Updated2026-10-05: owner-requested D11/D12 complete in the approved scope.
-D11 remains applied PASS; D12 four SQL roles/exact102object grants-DENYs and guarded
-LeastPrivilegeRoles migration reviewed PASS/applied/reverified code mainfc9227f,
-manager9318f40; identical backend treec0aa1f9f379d42ec390d7722b29f77ea2d8da371.
-484unit+335SQL=819PASS/0fail0skip/build0warnings0errors/cache-only locked restore.
-Four bounded AGY SUCCESS/zero observed worker scope violations; complete authorized
-context reads audited. Exact external six-file payload and isolated DB role/
-Down→Up/four WITHOUT LOGIN-user permission scope explicitly owner-approved.
-Only EnglishCenter_D07_20261005,160/collation/snapshotON; six migrations, unchanged
-24tables230cols/5TG6FN6VW7SP/47SPparams/live24module bodies. Fixtures/users/role
-memberships/GRANT-REVOKE demonstrations rollback; database+four roles retained.
-Actual allowed and denied SQL operations/output ownership chains verified. Login
-authentication/Windows-linked demo users/production runtime-schema-maintenance
-identity bindings remain operator prerequisites. Local owner-context15517 DDL/
-history errors are paired with effective-rights0, not alone permission proof.
-Initial extra diagnostic probe was rolled back/verified absent; final tests use
-only four approved principal names; see D12_TASK_CARD/evidence for manager deviation.
-Next proposed M0.D13 not started/authorized; no runtime/other DB/server logins/
-owner changes/push/deploy. ADR163 applies only authorized reviewed PASS stages.
-Historical initial scope remains below.
+Updated2026-10-05: owner-approved D13→A01 completed/reviewed PASS/applied/reverified
+code main74e3085, manager0116002, identical backend67ffc5d0fde4c150f0f5b71287701886a3315fbc.
+513unit+366SQL=879PASS/build0warnings0errors; two bounded AGY SUCCESS/zero observed
+scope violations, Codex independent review/tests. Exact catalog/EF trigger diagnostics
+and atomic mandatory audit/independent security fallback primitives only. All SQL
+fixtures rolled back, retained catalog/profile/102permissions unchanged. Full runtime
+readiness/login/identity bindings and real API/callers remain deferred. Next A02→A04
+not started/authorized by this batch; no other DB/owner/logins/restM0/push/deploy.
+See CURRENT_STATE, D13/A01_TASK_CARD/evidence and ADR168. Historical planning below.
 
 
 ## Authority and baseline
