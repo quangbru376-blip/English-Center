@@ -1,4 +1,4 @@
-# A04 — API001 CSRF and safe HTTP/cookie boundary — reviewed PASS (detached)
+# A04 — API001 CSRF and safe HTTP/cookie boundary — authorized scope applied/reverified PASS
 
 Second authorized family in A02→A04 batch. A04 is CSRF/HTTP boundary; Student
 registration is A03, not A04. Correct stale TODO wording; no product decision change.
@@ -72,3 +72,12 @@ no-store. No idle/session writes/JWT issuance. Cookie helper supplies only canon
 __Host-ec-auth flags; A05 still owns session expiry and issuance. Origin tests14 + host
 boundary17 cases; fresh token required on anonymous→verified identity transition.
 Owner walkthrough: docs/notes/A04.md. docs/api.md records implementation exposure.
+
+## Main application and re-verification
+
+Reviewed PASS applied under standing owner ADR163: A04 maina8ad1d5; final code
+maina8ad1d5, managerd1612ed, identical backend tree8a7e73f1bf9114311c9484f5c7c16d639ebd5916.
+A02 stage main514unit+375SQL PASS; final main545unit+375SQL=920PASS/0fail0skip;
+build0warnings0errors. Final exact post-catalog/columns2checks PASS, retained0business
+rows/0test users/0ec-role memberships;4roles/6migrations/160/collation/snapshotON unchanged.
+No actual Admin/runtime API activation claim. Next A03/A05 unstarted.

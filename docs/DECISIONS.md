@@ -4393,3 +4393,33 @@ fixed thread-safe saturating numeric incidents and never compensates security st
 SECURITY/IP exact90days; MANDATORY no expiry/default IP. No cleanup/runtime DI/routes.
 Real callers, replay/no-op suppression and non-SC02 password/bootstrap integration
 remain in later authorized families. Scope/evidence: D13/A01_TASK_CARD/evidence.
+
+
+## ADR-169 — Explicit operator bootstrap and guarded CSRF integration
+
+Status: Implemented — 2026-10-05; owner-approved A02→A04 scope, no product rule change.
+
+Bootstrap uses the canonical EC:ADMINSET gate and SERIALIZABLE role/account range locks.
+Caller owns the complete transaction/rollback; repository never commits/retries. Supplied
+finite SQL/lock deadlines and operator Role/Account INSERT rights are required. Exact
+seven role codes are checked; an existing Admin in any status is never recreated/reset/
+unlocked or given a new credential. Initial Admin receives an operator-selected regular
+P08-compliant password only in memory (not generated temporary staff onboarding).
+SYSTEM.ADMIN.BOOTSTRAP is an internal technical mandatory action with null actor because
+no Account actor exists yet. Fixed projection contains roleId/ACTIVE/mustChangePassword
+false only, no contact/credential/operator snapshot or expiry/IP. It shares caller TX.
+Real operator provisioning is deferred; rollback fixtures are not a real Admin seed.
+
+A04 uses framework antiforgery with explicit supplied key provider/canonical HTTPS origin
+and verified-identity resolver contract. No production ephemeral-key/config fallback.
+__Host-ec-csrf and __Host-ec-auth require Secure/HttpOnly/SameSiteStrict/Path=/, no Domain.
+A05 still owns real JWT/session cookie issuance and expiry; A06 owns live session/account
+verification without idle renewal. Unsafe methods require one exact Origin and framework
+header token; form fallback is rejected. Transport/profile and identity precede CSRF,
+normal-scope restriction follows it. Unclassified API metadata and invalid identities
+fail closed. API001 requires a private verified-boundary marker before token minting,
+rejects body/query, emits only requestToken/no-store, never touches sessions.
+Production Program stays unmodified/unexposed until its dependencies are authorized;
+fixture resolver headers and ephemeral provider do not prove runtime authentication.
+A04 is CSRF/HTTP boundary; Student signup is A03. No requirement was reopened.
+Scope/evidence: A02/A04_TASK_CARD and evidence; implementation exposure: docs/api.md.

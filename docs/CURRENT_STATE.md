@@ -4,25 +4,29 @@ Last updated: 2026-10-05
 
 ## Current task
 
-Updated2026-10-05: owner-approved two-family D13→A01 batch complete/reviewed
-PASS/applied/reverified code main74e3085, manager0116002; identical backend tree
-67ffc5d0fde4c150f0f5b71287701886a3315fbc. D13 maind9a47d5:495unit+360SQL PASS;
-final513unit+366SQL=879PASS/0fail0skip/build0warnings0errors/locked cache restore.
+Updated2026-10-05: owner-approved A02→A04 implementation scope complete/reviewed
+PASS/applied/reverified code maina8ad1d5, managerd1612ed; identical backend tree
+8a7e73f1bf9114311c9484f5c7c16d639ebd5916. A02 maindf36d98:514unit+375SQL PASS;
+final545unit+375SQL=920PASS/0fail0skip/build0warnings0errors/cache-only locked restore.
 Two bounded AGY SUCCESS/full3context reads before write/zero observed scope violations;
-Codex independent implementation fixes, source/model review and real SQL verification.
-D13 exact catalog pin/read-only inspector +five EF identity/RV/invalid-write rollback
-paths; A01 immutable field-projected mandatory shared-TX writer +independent SECURITY
-store/four fixed incident counters. No startup/DI/API/runtime profile/cleanup wiring.
-Only approved EnglishCenter_D07_20261005 used; all fixtures/data/schema/DENY/users/
-memberships rolled back, retained0business rows/0test users/0role members. Complete
-post-fixture catalog/module bodies/exact102permissions PASS;24tables230columns,
-5TG6FN6VW7SP/6migrations/4roles/profile160/collation/snapshotON unchanged.
-Full runtime readiness/login/demo and runtime/schema/maintenance identity bindings
-remain operator prerequisites. Runtime role cannot read complete catalog/history;
-inspector fails closed and adds no grant. No owner/logins/other DB/migration change.
-See D13_TASK_CARD/A01_TASK_CARD/evidence and docs/notes/D13_A01.md. Next canonical
-A02→A04; neither started or opened by this batch. No restM0/push/deploy authority.
-ADR163 continues only for authorized reviewed PASS stages. Historical scope below.
+Codex independent source review, transaction/host checks and fail-closed fixes.
+A02 explicit operator bootstrap: exact7roles, first Admin+projected mandatory audit on
+caller SERIALIZABLE/EC:ADMINSET; repeat preserves existing Admin credentials/status.
+Seven-role synthetic identities use generated RAM-only secrets and rollback. Runtime
+role cannot bootstrap. No real Admin provisioned or automatic startup seed/commit.
+A04 framework antiforgery API001 integration, exact Origin/header, verified-identity
+boundary and safe cookie flags. No-store, no session/idle writes. Explicit origin/keys/
+resolver required; private guard rejects token issuance without the boundary. Default
+Program remains unmodified and API001 unexposed; test resolver/keys are fixtures only.
+Only EnglishCenter_D07_20261005 used; all fixture data/schema/DENY/users/memberships
+rolled back, retained0business rows/0test users/0ec-role members. Exact post-fixture
+catalog/230columns/24module bodies/102permissions PASS;24tables/6migrations/4roles/
+profile160/collation/snapshotON unchanged. No schema/migration/grant/profile/owner/
+login/other DB/persistent keys/push/deploy change. Operator real Admin provisioning,
+production profile/keys/auth resolver and full runtime readiness remain deferred.
+See A02/A04_TASK_CARD/evidence, docs/notes/A02.md, A04.md and docs/api.md; ADR169.
+Next canonical A03 Student signup, then A05 login/session; not started/opened by this
+batch. ADR163 continues only for authorized reviewed PASS stages. Historical scope below.
 
 ## Previous applied checkpoint
 

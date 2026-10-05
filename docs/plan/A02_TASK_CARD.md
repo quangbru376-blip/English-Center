@@ -1,4 +1,4 @@
-# A02 — operator bootstrap and isolated test identities — reviewed PASS (detached)
+# A02 — operator bootstrap and isolated test identities — authorized scope applied/reverified PASS
 
 Owner2026-10-05 authorized two next families A02→A04 after code74e3085/docs08ff5ba.
 Baseline513unit+366SQL PASS. ADR163 applies reviewed authorized PASS stages only.
@@ -29,7 +29,7 @@ No plaintext test-identity catalogue or real students: seven role test accounts 
 inside rollback fixtures with fresh generated in-memory secrets, separate from real
 Admin provisioning. No startup or runtime-role bootstrap path.
 
-Proposed SQL: ONLY EnglishCenter_D07_20261005; bootstrap and seven-role synthetic
+Authorized SQL: ONLY EnglishCenter_D07_20261005; bootstrap and seven-role synthetic
 accounts inside rollback transactions. Full existing SQL regressions reuse only
 D12_fixture_user_0..3, prior transient DENY/catalog drift fixtures and rollback;
 no persistent seed/schema/grants/principal/owner/profile/logins/other DB change.
@@ -74,3 +74,12 @@ InvalidOperationException inner cause; no product code change for that test fail
 Existing A01 actual mandatory audit denial/failure tests remain PASS; no new claim of
 bootstrap-specific SQL audit DENY execution. Fixed-role unit1; stage-only main gate514unit.
 Owner walkthrough: docs/notes/A02.md. Real Admin provisioning remains deferred.
+
+## Main application and re-verification
+
+Reviewed PASS applied under standing owner ADR163: A02 maindf36d98; final code
+maina8ad1d5, managerd1612ed, identical backend tree8a7e73f1bf9114311c9484f5c7c16d639ebd5916.
+A02 stage main514unit+375SQL PASS; final main545unit+375SQL=920PASS/0fail0skip;
+build0warnings0errors. Final exact post-catalog/columns2checks PASS, retained0business
+rows/0test users/0ec-role memberships;4roles/6migrations/160/collation/snapshotON unchanged.
+No actual Admin/runtime API activation claim. Next A03/A05 unstarted.

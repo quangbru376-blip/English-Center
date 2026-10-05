@@ -2,6 +2,17 @@
 
 ## Current implemented architecture
 
+A02/A04 authorized scope applied/reverified PASS2026-10-05. Services/Bootstrap
+owns fixed-role/Admin creation rules; Infrastructure/Bootstrap requires caller-owned
+SERIALIZABLE, finite deadlines and EC:ADMINSET, appending projected mandatory initial
+Admin audit in the same transaction. Operator-only, no own commit/retry/reset/startup.
+Common/Security supplies immutable role codes/exact HTTPS origin/safe cookie flags.
+Api/Auth exposes explicit framework antiforgery integration with required keys/origin/
+verified identity resolver, strict middleware ordering and private minting guard.
+No default runtime DI/route/profile wiring; test-host identity headers/ephemeral keys
+are fixtures. No real Admin, JWT/session issuance or idle renewal added. Current
+counts/commits/operator limits: CURRENT_STATE and A02/A04 task cards.
+
 D13/A01 applied/reverified PASS2026-10-05. Infrastructure/Compatibility embeds a
 pinned complete SQL catalog manifest and read-only caller-connection inspector,
 with explicit operator diagnostic vs runtime-principal checks. Missing/drifted/
@@ -12,7 +23,7 @@ caller connection/transaction; failures propagate sanitized and caller rolls bac
 Security store receives a fresh independent connection factory; its recorder catches
 persist failures and increments one of four bounded numeric counters, never undoing
 security outcomes. UTCms/90day security-IP expiry, mandatory retained/no default IP.
-No auth/API callers, bootstrap, cleanup or runtime DI/profile has been wired.
+No production auth/API callers, automatic bootstrap, cleanup or runtime DI/profile has been wired.
 Current counts/commits/operator limits: CURRENT_STATE and D13/A01 task cards.
 
 

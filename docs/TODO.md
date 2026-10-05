@@ -18,8 +18,11 @@
   exact102permissions/six migrations;484unit+335SQL PASS. See D12_TASK_CARD/evidence.
 - D13→A01 completed/reviewed PASS/applied/reverified main74e3085:513unit+366SQL
   PASS/buildclean; exact catalog/five EF trigger paths/atomic audit/security fallback.
-- Next canonical A02 bootstrap, then A04 registration foundation; not started or
-  authorized by this completed two-family batch. Full runtime readiness still deferred.
+- A02→A04 authorized scope completed/reviewed PASS/applied/reverified maina8ad1d5:
+  545unit+375SQL=920PASS/buildclean; operator bootstrap and framework CSRF boundary.
+  No real Admin or runtime activation; see A02/A04 task cards and operator prerequisites.
+- Next canonical A03 Student signup, then A05 login/session. A04 is CSRF/HTTP boundary,
+  not registration. Next families are not started or authorized by this completed batch.
   Real login/Windows-linked demo users and runtime/schema/maintenance bindings
   remain operator-profile prerequisites; WITHOUT LOGIN tests do not prove login auth.
 - Isolated EnglishCenter_D07_20261005 retained,160/collation/snapshotON;24tables/

@@ -7,26 +7,29 @@ This is a nonsecret inventory and manifest, not a configured business profile.
 
 ## Latest isolated SQL/tooling checkpoint — 2026-10-05
 
-Updated2026-10-05: owner-requested D11/D12 complete in the approved scope.
-D11 remains applied PASS; D12 four SQL roles/exact102object grants-DENYs and guarded
-LeastPrivilegeRoles migration reviewed PASS/applied/reverified code mainfc9227f,
-manager9318f40; identical backend treec0aa1f9f379d42ec390d7722b29f77ea2d8da371.
-484unit+335SQL=819PASS/0fail0skip/build0warnings0errors/cache-only locked restore.
-Four bounded AGY SUCCESS/zero observed worker scope violations; complete authorized
-context reads audited. Exact external six-file payload and isolated DB role/
-Down→Up/four WITHOUT LOGIN-user permission scope explicitly owner-approved.
-Only EnglishCenter_D07_20261005,160/collation/snapshotON; six migrations, unchanged
-24tables230cols/5TG6FN6VW7SP/47SPparams/live24module bodies. Fixtures/users/role
-memberships/GRANT-REVOKE demonstrations rollback; database+four roles retained.
-Actual allowed and denied SQL operations/output ownership chains verified. Login
-authentication/Windows-linked demo users/production runtime-schema-maintenance
-identity bindings remain operator prerequisites. Local owner-context15517 DDL/
-history errors are paired with effective-rights0, not alone permission proof.
-Initial extra diagnostic probe was rolled back/verified absent; final tests use
-only four approved principal names; see D12_TASK_CARD/evidence for manager deviation.
-Next proposed M0.D13 not started/authorized; no runtime/other DB/server logins/
-owner changes/push/deploy. ADR163 applies only authorized reviewed PASS stages.
-Historical initial scope remains below.
+Updated2026-10-05: owner-approved A02→A04 implementation scope complete/reviewed
+PASS/applied/reverified code maina8ad1d5, managerd1612ed; identical backend tree
+8a7e73f1bf9114311c9484f5c7c16d639ebd5916. A02 maindf36d98:514unit+375SQL PASS;
+final545unit+375SQL=920PASS/0fail0skip/build0warnings0errors/cache-only locked restore.
+Two bounded AGY SUCCESS/full3context reads before write/zero observed scope violations;
+Codex independent source review, transaction/host checks and fail-closed fixes.
+A02 explicit operator bootstrap: exact7roles, first Admin+projected mandatory audit on
+caller SERIALIZABLE/EC:ADMINSET; repeat preserves existing Admin credentials/status.
+Seven-role synthetic identities use generated RAM-only secrets and rollback. Runtime
+role cannot bootstrap. No real Admin provisioned or automatic startup seed/commit.
+A04 framework antiforgery API001 integration, exact Origin/header, verified-identity
+boundary and safe cookie flags. No-store, no session/idle writes. Explicit origin/keys/
+resolver required; private guard rejects token issuance without the boundary. Default
+Program remains unmodified and API001 unexposed; test resolver/keys are fixtures only.
+Only EnglishCenter_D07_20261005 used; all fixture data/schema/DENY/users/memberships
+rolled back, retained0business rows/0test users/0ec-role members. Exact post-fixture
+catalog/230columns/24module bodies/102permissions PASS;24tables/6migrations/4roles/
+profile160/collation/snapshotON unchanged. No schema/migration/grant/profile/owner/
+login/other DB/persistent keys/push/deploy change. Operator real Admin provisioning,
+production profile/keys/auth resolver and full runtime readiness remain deferred.
+See A02/A04_TASK_CARD/evidence, docs/notes/A02.md, A04.md and docs/api.md; ADR169.
+Next canonical A03 Student signup, then A05 login/session; not started/opened by this
+batch. ADR163 continues only for authorized reviewed PASS stages. Historical scope below.
 
 No dependency/runtime/profile change inD10/D11. SQLServer/Design/localdotnet-ef10.0.4
 remain cache-only pins fromD07; Windows/local diagnostic trusted certificate only,

@@ -1,15 +1,28 @@
 # Implementation planning — discussion draft
 
-Updated2026-10-05: owner-approved D13→A01 completed/reviewed PASS/applied/reverified
-code main74e3085, manager0116002, identical backend67ffc5d0fde4c150f0f5b71287701886a3315fbc.
-513unit+366SQL=879PASS/build0warnings0errors; two bounded AGY SUCCESS/zero observed
-scope violations, Codex independent review/tests. Exact catalog/EF trigger diagnostics
-and atomic mandatory audit/independent security fallback primitives only. All SQL
-fixtures rolled back, retained catalog/profile/102permissions unchanged. Full runtime
-readiness/login/identity bindings and real API/callers remain deferred. Next A02→A04
-not started/authorized by this batch; no other DB/owner/logins/restM0/push/deploy.
-See CURRENT_STATE, D13/A01_TASK_CARD/evidence and ADR168. Historical planning below.
-
+Updated2026-10-05: owner-approved A02→A04 implementation scope complete/reviewed
+PASS/applied/reverified code maina8ad1d5, managerd1612ed; identical backend tree
+8a7e73f1bf9114311c9484f5c7c16d639ebd5916. A02 maindf36d98:514unit+375SQL PASS;
+final545unit+375SQL=920PASS/0fail0skip/build0warnings0errors/cache-only locked restore.
+Two bounded AGY SUCCESS/full3context reads before write/zero observed scope violations;
+Codex independent source review, transaction/host checks and fail-closed fixes.
+A02 explicit operator bootstrap: exact7roles, first Admin+projected mandatory audit on
+caller SERIALIZABLE/EC:ADMINSET; repeat preserves existing Admin credentials/status.
+Seven-role synthetic identities use generated RAM-only secrets and rollback. Runtime
+role cannot bootstrap. No real Admin provisioned or automatic startup seed/commit.
+A04 framework antiforgery API001 integration, exact Origin/header, verified-identity
+boundary and safe cookie flags. No-store, no session/idle writes. Explicit origin/keys/
+resolver required; private guard rejects token issuance without the boundary. Default
+Program remains unmodified and API001 unexposed; test resolver/keys are fixtures only.
+Only EnglishCenter_D07_20261005 used; all fixture data/schema/DENY/users/memberships
+rolled back, retained0business rows/0test users/0ec-role members. Exact post-fixture
+catalog/230columns/24module bodies/102permissions PASS;24tables/6migrations/4roles/
+profile160/collation/snapshotON unchanged. No schema/migration/grant/profile/owner/
+login/other DB/persistent keys/push/deploy change. Operator real Admin provisioning,
+production profile/keys/auth resolver and full runtime readiness remain deferred.
+See A02/A04_TASK_CARD/evidence, docs/notes/A02.md, A04.md and docs/api.md; ADR169.
+Next canonical A03 Student signup, then A05 login/session; not started/opened by this
+batch. ADR163 continues only for authorized reviewed PASS stages. Historical scope below.
 
 ## Authority and baseline
 

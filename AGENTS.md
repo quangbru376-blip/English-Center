@@ -83,8 +83,19 @@ remains blocked, runtime role invisible catalog fails closed/no grant added. A01
 mandatory caller-TX and independent security/fixed incident-counter primitives only;
 no real auth/API/business callers or cleanup/DI. All approved SQL fixtures rollback;
 0retained business rows/users/memberships, unchanged complete catalog/102permissions.
-See D13/A01_TASK_CARD/evidence. Next A02→A04 not started/authorized by this batch;
+See D13/A01_TASK_CARD/evidence. This earlier batch did not open A02/A04;
 no runtime/server logins/owner changes/other DB/restM0/push/deploy authority.
+Owner-approved A02→A04 scope2026-10-05 now complete/reviewed PASS/applied/reverified
+maina8ad1d5:545unit+375SQL=920PASS/buildclean; managerd1612ed same backend
+8a7e73f1bf9114311c9484f5c7c16d639ebd5916. Two bounded AGY SUCCESS/full authorized context
+reads/zero observed violations; Codex independent review/rollback/host tests. A02
+operator-only caller-TX bootstrap preserves existing Admin; A04 explicit framework
+CSRF API001 boundary fails closed. Default host unchanged, no real Admin/runtime
+activation. Generated RAM-only test secrets; all approved SQL fixtures rollback,
+0business rows/users/role members; exact catalog/102permissions unchanged. No new
+schema/migration/grants/profile/owner/logins/keys/other DB/push/deploy. See A02/A04
+cards/evidence, ADR169. Next A03 signup→A05 login/session remains unstarted; actual
+operator provisioning/production keys/profile/resolver/full readiness deferred.
 Historical initial scope is retained in
 FIRST_CODE_HANDOFF; latest checkpoint and explicit current owner scope govern.
 Standing owner authority ADR-163: apply Codex-reviewed PASS stages already
