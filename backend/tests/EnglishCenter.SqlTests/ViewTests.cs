@@ -7,6 +7,29 @@ using Xunit;
 
 public class ViewTests
 {
+    [Theory]
+    [InlineData("vw_AdmissionsRegistrationFacts","registrationId,studentId,fullName,email,phone,courseId,courseCode,courseName,courseStatus,registrationStatus,createdAt,admissionConfirmedAt,admissionApprovedAt,bandId,bandCode,bandMinScore,invoiceId,invoiceNumber,invoiceAmount,invoiceStatus,classId,assignmentId,classCode,classStatus,registrationVersion")]
+    [InlineData("vw_EntryTestBookingFacts","bookingId,attemptId,sessionId,graderId,sessionStatus,sessionStartAt,attemptNumber,registrationId,studentId,courseId,bookedAt,bookingStatus,registrationStatus,fullName,email,phone,courseCode,courseName,courseStatus,targetScore,targetGradedAt,bandId,bandCode,bandMinScore,invoiceStatus")]
+    [InlineData("vw_CurrentScheduleOccurrences","scheduleId,classId,classCode,classStatus,teacherId,type,obligationKey,date,startTime,endTime,room,occurrenceState,replacesScheduleId,version")]
+    [InlineData("vw_TrainingClassFacts","classId,programId,teacherId,classCode,courseId,courseCode,courseName,courseStatus,bandId,bandCode,bandMinScore,classStatus,maxSize,placedCount,expectedCount,currentCount,heldCount,examCurrentCount,examHeldCount")]
+    [InlineData("vw_FinalizedGradeFacts","reportId,classAssignmentId,registrationId,studentId,classId,courseId,bandId,teacherId,finalScore,isPassing,finalizedAt")]
+    [InlineData("vw_FinanceInvoiceFacts","invoiceId,registrationId,studentId,courseId,courseCode,courseName,courseStatus,invoiceNumber,amount,invoiceStatus,issuedAt,dueDate,paymentId,paidAt,paidAmount")]
+    public async Task FactProjection_ExactOrderedColumnsAndWidths(string view,string columns)
+    {
+        await using var f=await SqlFixture.CreateAsync();
+        var r=Assert.Single(await SqlRows.ReadAsync(f,"SELECT TOP(0) * FROM dbo."+view));
+        Assert.Equal(columns.Split(','),r.Columns);
+        foreach(var column in r.Schema)
+        {
+            if(column.ColumnName is "version" or "registrationVersion") Assert.Equal(8,column.ColumnSize);
+            if(column.ColumnName=="fullName") Assert.Equal(200,column.ColumnSize);
+            if(column.ColumnName=="courseName") Assert.Equal(300,column.ColumnSize);
+            if(column.ColumnName is "finalScore" or "targetScore" or "bandMinScore") {Assert.Equal(5,column.NumericPrecision);Assert.Equal(2,column.NumericScale);}
+            if(column.ColumnName is "amount" or "paidAmount" or "invoiceAmount") {Assert.Equal(18,column.NumericPrecision);Assert.Equal(0,column.NumericScale);}
+            if(column.ColumnName is "heldCount" or "currentCount") Assert.Equal("bigint",r.Types[column.ColumnOrdinal!.Value]);
+        }
+    }
+
     private static async Task<SqlResult> Read(SqlFixture f, string view) => Assert.Single(await SqlRows.ReadAsync(f, "SELECT * FROM dbo." + view));
 
     [Fact]
@@ -38,21 +61,22 @@ public class ViewTests
     }
 
     [Fact]
-    public async Task CurrentSchedules_ExcludeHistoricalAndCancelledClass_KeepCurrentNotHeld()
+    public async Task CurrentSchedules_ExcludeHistoricalAndCancelledClass_CountReplacementOnce()
     {
         await using var f = await SqlFixture.CreateAsync();
-        await f.ExecuteAsync($"UPDATE dbo.Schedule SET is_current=0,occurrence_state='NOT_HELD' WHERE schedule_id={f.Schedule.ScheduleId}; INSERT dbo.Schedule(class_id,session_type,obligation_key,is_current,session_date,start_time,end_time,room,occurrence_state,replaces_schedule_id) SELECT class_id,session_type,obligation_key,1,session_date,start_time,end_time,room,'NOT_HELD',schedule_id FROM dbo.Schedule WHERE schedule_id={f.Schedule.ScheduleId}; UPDATE dbo.Class SET status='CANCELLED',cancelled_by={f.Teacher.AccountId},cancelled_at={SqlFixture.Instant},cancellation_reason='fixture',cancellation_operation_id={Guid.NewGuid()} WHERE class_id={f.OtherClass.ClassId};");
+        await f.ExecuteAsync($"UPDATE dbo.Schedule SET is_current=0,occurrence_state='NOT_HELD',not_held_by={f.Teacher.AccountId},not_held_at={SqlFixture.Instant},not_held_reason='fixture',replacement_operation_id={Guid.NewGuid()} WHERE schedule_id={f.Schedule.ScheduleId}; INSERT dbo.Schedule(class_id,session_type,obligation_key,is_current,session_date,start_time,end_time,room,occurrence_state,replaces_schedule_id) SELECT class_id,session_type,obligation_key,1,session_date,start_time,end_time,room,'PLANNED',schedule_id FROM dbo.Schedule WHERE schedule_id={f.Schedule.ScheduleId}; UPDATE dbo.Class SET status='CANCELLED',cancelled_by={f.Teacher.AccountId},cancelled_at={SqlFixture.Instant},cancellation_reason='fixture',cancellation_operation_id={Guid.NewGuid()} WHERE class_id={f.OtherClass.ClassId};");
         var r = await Read(f, "vw_CurrentScheduleOccurrences"); Assert.Equal(2, r.Rows.Count);
         Assert.DoesNotContain(r.Rows, x => Equals(x[Array.IndexOf(r.Columns, "scheduleId")], f.Schedule.ScheduleId));
         Assert.All(r.Rows, x => Assert.Equal(f.Class.ClassId, x[Array.IndexOf(r.Columns, "classId")]));
-        Assert.Contains(r.Rows, x => Equals(x[Array.IndexOf(r.Columns, "occurrenceState")], "NOT_HELD"));
+        Assert.DoesNotContain(r.Rows, x => Equals(x[Array.IndexOf(r.Columns, "occurrenceState")], "NOT_HELD"));
+        Assert.Contains(r.Rows, x => Equals(x[Array.IndexOf(r.Columns, "replacesScheduleId")], f.Schedule.ScheduleId));
     }
 
     [Fact]
     public async Task Training_GrainAndPreAggregation_AvoidScheduleTimesPlacementMultiplication()
     {
         await using var f = await SqlFixture.CreateAsync(); await f.OtherAssignmentAsync();
-        await f.ExecuteAsync($"UPDATE dbo.Schedule SET occurrence_state='HELD' WHERE schedule_id={f.Schedule.ScheduleId};");
+        await f.ExecuteAsync($"UPDATE dbo.Schedule SET occurrence_state='HELD',held_by={f.Teacher.AccountId},held_at={SqlFixture.Instant} WHERE schedule_id={f.Schedule.ScheduleId};");
         var r = await Read(f, "vw_TrainingClassFacts"); Assert.Equal(2, r.Rows.Count);
         var index = r.Rows.FindIndex(x => Equals(x[Array.IndexOf(r.Columns, "classId")], f.Class.ClassId));
         Assert.Equal(1, r.Value(index, "placedCount")); Assert.Equal(2, r.Value(index, "expectedCount"));

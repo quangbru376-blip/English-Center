@@ -1,0 +1,30 @@
+{
+  "mode": "edit",
+  "objective": "Implement ONLY dbo.vw_CurrentScheduleOccurrences in exact allowed SQL file. Complete three context reads first. Obey read allowlist. No commands/search/scans/network/SQL/Git/MCP/other reads. One CREATE OR ALTER VIEW, no GO/USE/grants/seeds/migrations. Codex validates.",
+  "allowed_paths": [
+    "backend/src/EnglishCenter.Api/Infrastructure/Sql/D10/VW03.sql"
+  ],
+  "forbidden_paths": [
+    "AGENTS.md",
+    "docs/**",
+    ".agents/**",
+    "**/*.csproj",
+    "**/packages.lock.json",
+    "**/Migrations/**",
+    ".env"
+  ],
+  "acceptance_criteria": [
+    "Exactly one allowed SQL object/file changed.",
+    "Complete context reads before first write, no other reads/tools.",
+    "One current Schedule row per obligation: Schedule.is_current=1 and Class.status<>CANCELLED. Exact aliases scheduleId,classId,classCode,classStatus,teacherId,type,obligationKey,date,startTime,endTime,room,occurrenceState,replacesScheduleId,version. version Schedule.row_version. Retain all current occurrence states including NOT_HELD; occupancy consumers later apply state/time filter. No GETDATE, no history rows, no filtering completed classes or HELD by wall clock."
+  ],
+  "context_files": [
+    "docs/plan/D10_VW03_WORKER.md",
+    ".agents/skills/backend-clean-code/SKILL.md",
+    "docs/plan/SKILL_ROUTING.md"
+  ],
+  "max_changed_files": 1,
+  "max_diff_lines": 180,
+  "model": "",
+  "timeout": "15m"
+}

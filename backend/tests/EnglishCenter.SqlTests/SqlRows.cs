@@ -1,12 +1,13 @@
 namespace EnglishCenter.SqlTests;
 
 using System.Data;
+using System.Data.Common;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage;
 using Xunit;
 
-internal sealed record SqlResult(string[] Columns, string[] Types, List<object?[]> Rows)
+internal sealed record SqlResult(string[] Columns, string[] Types, List<object?[]> Rows, IReadOnlyList<DbColumn> Schema)
 {
     internal object? Value(int row, string column) => Rows[row][Array.IndexOf(Columns, column)];
 }
@@ -30,6 +31,7 @@ internal static class SqlRows
             if (reader.FieldCount == 0) continue;
             var columns = Enumerable.Range(0, reader.FieldCount).Select(reader.GetName).ToArray();
             var types = Enumerable.Range(0, reader.FieldCount).Select(reader.GetDataTypeName).ToArray();
+            var schema = reader.GetColumnSchema();
             var rows = new List<object?[]>();
             while (await reader.ReadAsync(TestContext.Current.CancellationToken))
             {
@@ -37,7 +39,7 @@ internal static class SqlRows
                 for (var i = 0; i < row.Length; i++) row[i] = reader.IsDBNull(i) ? null : reader.GetValue(i);
                 rows.Add(row);
             }
-            sets.Add(new(columns, types, rows));
+            sets.Add(new(columns, types, rows, schema));
         } while (await reader.NextResultAsync(TestContext.Current.CancellationToken));
         return sets;
     }

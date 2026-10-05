@@ -1,0 +1,30 @@
+{
+  "mode": "edit",
+  "objective": "Implement ONLY dbo.vw_FinalizedGradeFacts in exact allowed SQL file. Complete three context reads first. Obey read allowlist. No commands/search/scans/network/SQL/Git/MCP/other reads. One CREATE OR ALTER VIEW, no GO/USE/grants/seeds/migrations. Codex validates.",
+  "allowed_paths": [
+    "backend/src/EnglishCenter.Api/Infrastructure/Sql/D10/VW05.sql"
+  ],
+  "forbidden_paths": [
+    "AGENTS.md",
+    "docs/**",
+    ".agents/**",
+    "**/*.csproj",
+    "**/packages.lock.json",
+    "**/Migrations/**",
+    ".env"
+  ],
+  "acceptance_criteria": [
+    "Exactly one allowed SQL object/file changed.",
+    "Complete context reads before first write, no other reads/tools.",
+    "One FINALIZED GradeReport/enrollment; WHERE report.status=FINALIZED only. Join assignment/registration/class/program. Exact aliases reportId,classAssignmentId,registrationId,studentId,classId,courseId,bandId,teacherId,finalScore,isPassing,finalizedAt. isPassing CAST(CASE WHEN final_score>=50 THEN1 ELSE0 END AS bit). Keep cancelled-class finalized history and immutable stored final_score (never recompute from editable scores). No DRAFT/SUBMITTED/RETURNED values or comments/contacts."
+  ],
+  "context_files": [
+    "docs/plan/D10_VW05_WORKER.md",
+    ".agents/skills/backend-clean-code/SKILL.md",
+    "docs/plan/SKILL_ROUTING.md"
+  ],
+  "max_changed_files": 1,
+  "max_diff_lines": 180,
+  "model": "",
+  "timeout": "15m"
+}

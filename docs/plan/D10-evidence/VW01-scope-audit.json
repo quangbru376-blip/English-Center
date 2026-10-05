@@ -1,0 +1,35 @@
+{
+  "id": "91b2813f-294",
+  "status": "review_required",
+  "agy": "SUCCESS",
+  "exit": 0,
+  "diffLines": 46,
+  "receiptViolations": [],
+  "tools": 5,
+  "reads": 4,
+  "writes": 1,
+  "violations": [],
+  "missingExplicitContext": [],
+  "eventsSha256": "da22744350d28b4a9b1d1d7ec0d9bb776902fd09fd7c4daf8aabf73c0aeb864d",
+  "fullContextReads": [
+    {
+      "path": "docs/plan/D10_VW01_WORKER.md",
+      "step": 2,
+      "outputHeader": "171 lines, 13564 bytes",
+      "sha256": "c4fe25430c94c7e0e4d66f33421ae66355803d601c57ae04c637f98248d43bff"
+    },
+    {
+      "path": ".agents/skills/backend-clean-code/SKILL.md",
+      "step": 4,
+      "outputHeader": "46 lines, 3767 bytes",
+      "sha256": "76acec868ed4d918dc1c6616904f78ff2710737d6a06ccf605da783bc914dd23"
+    },
+    {
+      "path": "docs/plan/SKILL_ROUTING.md",
+      "step": 6,
+      "outputHeader": "101 lines, 9995 bytes",
+      "sha256": "adb7938fe69e00c991aefb4eb114854f124eb3e2ac3963763937225646d3e915"
+    }
+  ],
+  "managerVerdict": "PASS observed scope; final source/manager fixes and independent tests in task card"
+}

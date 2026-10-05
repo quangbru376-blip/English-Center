@@ -1,0 +1,30 @@
+{
+  "mode": "edit",
+  "objective": "Implement ONLY dbo.vw_FinanceInvoiceFacts in exact allowed SQL file. Complete three context reads first. Obey read allowlist. No commands/search/scans/network/SQL/Git/MCP/other reads. One CREATE OR ALTER VIEW, no GO/USE/grants/seeds/migrations. Codex validates.",
+  "allowed_paths": [
+    "backend/src/EnglishCenter.Api/Infrastructure/Sql/D10/VW06.sql"
+  ],
+  "forbidden_paths": [
+    "AGENTS.md",
+    "docs/**",
+    ".agents/**",
+    "**/*.csproj",
+    "**/packages.lock.json",
+    "**/Migrations/**",
+    ".env"
+  ],
+  "acceptance_criteria": [
+    "Exactly one allowed SQL object/file changed.",
+    "Complete context reads before first write, no other reads/tools.",
+    "One Invoice row plus max one Payment via unique invoice_id. Join Registration/Course, left Payment. Aliases invoiceId,registrationId,studentId,courseId,courseCode,courseName,courseStatus,invoiceNumber,amount,invoiceStatus,issuedAt,dueDate,paymentId,paidAt. amount decimal18,0, paidAt Payment.confirmed_at. Include all states/history. No debt=billed-revenue, no GETDATE/FN06 without supplied today (view cannot accept time). No payment method/reference/contact/profile columns: reporting allowed SELECT VW06. Reference IDs are explicitly accepted E03 finance facts, Director later SP-only."
+  ],
+  "context_files": [
+    "docs/plan/D10_VW06_WORKER.md",
+    ".agents/skills/backend-clean-code/SKILL.md",
+    "docs/plan/SKILL_ROUTING.md"
+  ],
+  "max_changed_files": 1,
+  "max_diff_lines": 180,
+  "model": "",
+  "timeout": "15m"
+}
