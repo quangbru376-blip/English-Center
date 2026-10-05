@@ -56,3 +56,8 @@ Catalog exact5enabled triggers/14events/correct tables; physical24tables/230cols
 fixture Course/Role/Account/Band empty. Review scope/security/backend PASS.
 D13 readiness/full writers/current auth/audit/grants/TX proofs remain future gates.
 Apply exact reviewed snapshot under ADR163, then independently reverify main.
+
+
+## Main application / reverified PASS
+
+Applied reviewed D08 under ADR163: mainbad4b65, manager514bcea. Main481unit+50SQL PASS/build clean, exact reviewed tree; five enabled triggers/events and rollback verified. Final D09 extends trigger suite to56cases, allPASS.

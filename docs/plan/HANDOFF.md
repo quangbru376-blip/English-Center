@@ -1,22 +1,21 @@
 # Handoff — E01–E05 và complete design baseline đã Accepted
 
-## Latest checkpoint — D07A applied PASS, D07 family incomplete
+## Latest checkpoint — D07–D09 applied/reverified PASS
 
-Updated2026-10-05: D07A model assembly metadata completed/reviewed PASS,
-applied/reverified main378431a (manager8474804). Locked restore/build clean/
-full478tests PASS/0fail/0skip; identical reviewed backend tree. [D07 card](D07_TASK_CARD.md)
-and D07A-evidence: table-scoped UseSqlOutputClause(false) exactly on Band,
-TrainingProgram, ScoreComponentConfig, Attendance, Score; other19tables enabled
-in runtime/design/relational metadata. One bounded AGY SUCCESS/zero observed
-scope violations; Codex independent4cases/review. Full24tables/230columns/
-24PK/2AK/50FK/78IX/70CHECK/20RV unchanged, D01–D06 signatures retained.
-No HasTrigger/SQL/trigger implementation/package/tooling/migration/profile changes.
-D07 family incomplete. D07B proposed offline Design10.0.4/private dependency+
-backend-local dotnet-ef10.0.4 from cache, disconnected factory/provider160,
-initial migration/designer/snapshot/cycle-order review; explicit authority pending.
-D07C isolated new SQL DB/apply also pending separate scope authorization. No
-D08–D13/runtime/installation/push/deploy opened. Earlier stages remain PASS;
-ADR163 applies authorized reviewed code. Full P01/M0/V01/readiness incomplete.
+Updated2026-10-05: owner-requested D07→D08→D09 complete/reviewed PASS/applied/
+reverified code main a7561dd, exact backend tree c7045ddbe52e1006b649d03877702515a04c5572.
+Locked builds0warnings0errors/481unit+102SQL tests PASS/0fail0skip. See
+[D07](D07_TASK_CARD.md),[D08](D08_TASK_CARD.md),[D09](D09_TASK_CARD.md)/D09-evidence.
+D07 offline cache-only Design/local dotnet-ef10.0.4, disconnected160factory and
+InitialSchema; explicit owner authority created only new isolated
+.\SQLEXPRESS/EnglishCenter_D07_20261005,160/exact collation/snapshotON. Reviewed
+Up→Down→Up and later object Down→Up PASS; complete24tables230cols/24PK2AK50NOACTION
+FK78indexes70CHECKs20RV; all230livecolumn shapes verified. D08 five set-based
+preheld-gate guards; D09 six pure exact-signature UDFs.11AGY runs SUCCESS/zero
+observed scope violations; Codex independent fixes/review/tests.3migrations,
+fixtures rollback/no real seeds; no runtime DB DI/grants/business callers. D10
+six views is next proposed family, not started; D10–D13/restM0/push/deploy not opened.
+ADR163 applies authorized reviewed PASS code; isolated DB retained/no DROP DB.
 
 ## Checkpoint code đầu — P02 applied/reverified PASS trên main
 

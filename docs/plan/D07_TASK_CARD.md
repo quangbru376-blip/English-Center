@@ -1,9 +1,13 @@
 # D07 — model assembly and reviewed migration chain
 
-Continuation2026-10-05: authorized ordinary model-assembly code/preflight only.
+Current status: D07 complete/reviewed PASS/applied main e4b8364; final D09 main
+a7561dd reverified481unit+102SQL PASS. Historical authorization proposals below
+were superseded by explicit owner scope; isolated database retained.
+
+Historical D07A initial scope2026-10-05: ordinary model-assembly code/preflight only.
 D07A below does not create migration, install tooling, connect/create/alter DB,
-execute SQL, or open D08–D13/runtime/API/deployment. Family D07 incomplete.
-AGENTS latest explicitly requires migration/isolated SQL scope authorization.
+execute SQL, or open D08–D13/runtime/API/deployment. At that historical checkpoint family D07 was incomplete.
+AGENTS required explicit migration/isolated SQL authority, subsequently granted below.
 Implementation skills backend-clean-code; review code-review; integration AGY.
 skill_sources: backend726586298710499CD9E5CE7A1E3A2A9FCFD00C07C1F73DFCE34CF58E7DA8EE3B;
 review04B72A9627A717BBDF017A3275974B62BBE41F23440E86E5341954E8863A7E70;
@@ -40,7 +44,7 @@ SQL table metadata check confirms no global disable. No trigger objects claimed.
 Closed connection/generated DDL, old physical signatures, locked restore/build/
 full tests manager then main and exact reviewed source equality. Completed below.
 
-## D07B concrete proposal — migration/tooling authorization pending
+## Historical D07B proposal — later explicitly authorized/completed below
 
 Observed2026-10-05: no local/global dotnet tool registrations; NuGet cache contains
 Microsoft.EntityFrameworkCore.Design10.0.4 and dotnet-ef10.0.4. API references only
@@ -57,7 +61,7 @@ Generate and review SQL only, no DB execution; test empty→model schema operati
 pending-model changes/rollback script and locked build/full tests. Apply code
 only after Codex PASS under ADR163. D07B is NOT started/authorized by this card.
 
-## D07C later isolated SQL scope — authorization pending
+## Historical D07C proposal — later explicitly authorized/completed below
 
 Proposed target .\SQLEXPRESS / EnglishCenter_D07_20261005, fresh empty disposable
 project database only; fail if name already exists, never adopt/reset/drop an
@@ -132,3 +136,8 @@ First sqlcmd execution lacked QUOTED_IDENTIFIER; transaction rollback verified,
 then -I applied and full chain reverified. No migration source change needed.
 D07Schema.sql retained for pre-D08 verification. Database retained, no DROP DB.
 D08/D09 are next authorized families, not evidence of app callers or D13 readiness.
+
+
+## Main application / reverified PASS
+
+Applied reviewed D07 under ADR163: maine4b8364, managerb90aeaa. Main481unit PASS/build clean; isolated Up→Down→Up/catalog/profile/snapshot PASS.20new Design dependency licenses/actual NuGet SDK normalized hashes vs lock/assets/cache verified; local tool10.0.4 normalized hash verified (legacy raw hash sidecar not used). Private Design absent from publish-check. See D07-evidence/package-verification.json; final D09 also verifies all230live column shapes.

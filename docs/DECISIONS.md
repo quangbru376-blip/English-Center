@@ -4296,3 +4296,27 @@ check passing. This avoids automatic unreviewed physical indexes, does not chang
 keys/ownership/NO ACTION deletion or grant migration/SQL execution authority.
 See D03_TASK_CARD and its exact metadata/DDL tests; real SQL performance remains
 an integration gate. No new business restriction or owner design decision.
+
+
+## ADR-165: Preheld writer-gate checks and immutable SQL migration resources
+
+Status: Implemented — 2026-10-05, technical choice within authorized D08/D09.
+
+Accepted E04 requires all writers use Exclusive Transaction DbPrincipal=public
+canonical PROGRAM/BANDSET/CLASS gates before DML. Five triggers verify the relevant
+old/new gate set with APPLOCK_MODE and fail closed on missing/nonexclusive owner;
+they do not acquire locks after DML, avoiding a reversed gate/row-lock protocol.
+TG01 also checks harmless metadata mutations' existing PROGRAM gate (BANDSET is
+not newly required for rename). Future first-use/result/lifecycle/service writers
+must acquire the same correctly ordered gates and reload before writing; these
+trigger tests do not certify arbitrary direct parent mutations or SNAPSHOT writers.
+
+SQL object migrations embed versioned immutable resources and invoke escaped
+constant EXEC batches so CREATE object is first in its dynamic batch. No user SQL
+fragment enters this helper. New changes require new migration/resource versions;
+no edit to applied source. Down reverses object creation. Dedicated SqlTests is
+explicitly run against the owner-approved isolated DB, with fixture rollback and
+finite diagnostic gate-timeout probes; it is separate from disconnected ordinary
+solution tests. No runtime auto-migration/connection/grants/readiness authority.
+
+D07/D08/D09 cards record source/scope/review/actual SQL and main verification.

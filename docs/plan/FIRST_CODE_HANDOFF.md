@@ -1,10 +1,11 @@
 # Handoff thực thi đầu tiên — P01 → P02
 
-Historical initial scope below. Latest2026-10-05: D07A OUTPUT metadata applied/
-reverified main378431a/full478tests PASS; HANDOFF.md/D07_TASK_CARD.md/ADR163/164.
-D01–D06 mapping PASS; full24tables/230columns. D07 family incomplete; D07B offline
-migration/tooling and D07C SQL await explicit scope. No automatic SQL/migrations/
-rest M0/install/push/deploy permission from this checkpoint.
+Historical initial scope below. Latest2026-10-05: owner batch D07→D08→D09
+complete/reviewed PASS/applied/reverified code maina7561dd/481unit+102SQL PASS.
+See HANDOFF/D07/D08/D09 cards/ADR163/165. Explicit isolated SQL authority included
+new EnglishCenter_D07_20261005/profile/migrations/object rollback-fixture checks;
+no other DB changes/drop DB/runtime wiring/grants/push/deploy/restM0. Next proposed
+D10 not started. Latest checkpoint/current owner scope govern historical limits.
 
 Cập nhật04/10/2026. Repository: `C:\Study\SOEN\main_workplace`.
 Owner yêu cầu handoff để chat kế tiếp hiểu ngữ cảnh và viết giai đoạn code đầu

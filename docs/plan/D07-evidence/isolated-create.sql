@@ -1,0 +1,8 @@
+USE [master];
+IF DB_ID(N'EnglishCenter_D07_20261005') IS NOT NULL
+    THROW 51000, 'Isolated D07 database already exists; refusing to adopt or reset it.', 1;
+CREATE DATABASE [EnglishCenter_D07_20261005] COLLATE Latin1_General_100_CI_AS_SC;
+GO
+ALTER DATABASE [EnglishCenter_D07_20261005] SET COMPATIBILITY_LEVEL = 160;
+ALTER DATABASE [EnglishCenter_D07_20261005] SET ALLOW_SNAPSHOT_ISOLATION ON;
+GO

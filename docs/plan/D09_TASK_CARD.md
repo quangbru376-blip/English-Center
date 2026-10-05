@@ -60,3 +60,8 @@ Apply exact reviewed snapshot ADR163 and independently reverify main.
 3. Functions receive time/date or IDs and return calculations without mutation.
 4. Dedicated SQL tests insert fixtures and rollback; ordinary solution stays
    disconnected. No startup database mutation or application connection added.
+
+
+## Main application / reverified PASS
+
+Applied reviewed D09 under ADR163: maina7561dd, managera7561dd. Main481unit+102SQL=583PASS/0fail0skip, locked build0warnings0errors; exact reviewed backend treec7045ddbe52e1006b649d03877702515a04c5572. D08/D09 catalogs/fixture rollback PASS. D09-evidence/verification.json has actual TRX/hash/tree/lock proof. No unresolved batch blocker; next proposedD10 not started.

@@ -4,30 +4,37 @@ Last updated: 2026-10-05
 
 ## Current task
 
-D07A authorized model-assembly metadata/preflight continuation2026-10-05 completed/
-reviewed PASS/applied main378431a (manager8474804) under ADR163. Locked restore/
-build0warnings0errors/full478tests PASS/0fail/0skip; exact reviewed backend tree
-3efa3ce638578514481f77bd41c38394f7067c06. See [D07 card](plan/D07_TASK_CARD.md)
-and D07A-evidence. D07 family is incomplete.
+Owner-requested three families D07→D08→D09 completed/reviewed PASS/applied/reverified
+2026-10-05. Final code maina7561dd (manager same), backend tree
+c7045ddbe52e1006b649d03877702515a04c5572 identical; locked build0warnings0errors/
+481unit+102SQL PASS/0fail0skip. [D07](plan/D07_TASK_CARD.md),
+[D08](plan/D08_TASK_CARD.md),[D09](plan/D09_TASK_CARD.md)/D09-evidence.
 
-Table-scoped UseSqlOutputClause(false) exactly on Band/TrainingProgram/
-ScoreComponentConfig/Attendance/Score; other19tables enabled at runtime/design/
-relational metadata. One AGY run56d6e3a1-81f SUCCESS/8reads5writes/zero observed
-scope violations; only5configs/13runner lines, Codex independent4cases/review.
-Full24tables/230columns/24PK/2AK/50NO ACTION FK/78IX/70CHECKs/20RV and D01–D06
-signatures retained. No fake HasTrigger, real trigger SQL, packages/tools/migrations/
-SQL execution/API/runtime DI/profile changes. Original worker/manager trees retained.
+D07 offline Design/private10.0.4/localdotnet-ef10.0.4 from cache, disconnected
+factory/provider160, EF-generated InitialSchema/cycle/Down. Explicit owner SQL
+approval followed initial auto-review rejection; no rejected operation executed.
+Only new .\SQLEXPRESS/EnglishCenter_D07_20261005 created with fail-if-exists,
+compatibility160/Latin1_General_100_CI_AS_SC/snapshotON, retained/no DROP database.
+Initial Up→Down→Up and object rollback chains PASS. Physical24tables230columns/
+24PK2AK50NO ACTION FK78indexes70trustedCHECKs20RV;230live column names/types/NULL/
+identity/collation/RV match model. Five table-scoped OUTPUTfalse mappings preserved.
 
-Tooling preflight: no local/global dotnet tool registrations; Design10.0.4 and
-dotnet-ef10.0.4 packages present in NuGet cache, not activated/added. D07B concrete
-offline proposal in card: private Design dependency/local tool manifest+activation,
-disconnected factory/provider160, initial migration/designer/snapshot and cycle/
-index/check/Down review. Await explicit migration/package/tool authority before
-writing/activation; no SQL connection/execution. D07C new isolated database/apply
-needs separate explicit scope. Earlier P02/P03/P05/P04/P06/P07/P08/D01–D06 PASS.
-No unresolved D07A blocker; D07B/C approval gates remain. Actual EF generated ID/
-RV with5real triggers/migration chain/live SQL/TX/grants/auth/readiness/full LOCAL_DEV/
-M0/V01 remain unverified. No DB/migration/install/push/deployment performed.
+D08 exact5enabled triggers/14events, set-based old/new guards, preheld Exclusive
+Transaction canonical gates checked before invariant handling; Codex fixed TG01
+rename/status gate omission. D09 exact6UDFs/11parameter+return rows, pure decimal/
+time/missing/current-obligation/unfinished/debt rules; rounding parity PASS.
+11bounded AGY runs SUCCESS/exit0/zero observed scope violations, complete card/
+backend skill/routing read proof. Codex independent engine tests/source review;
+original worker/manager trees retained.3migrations, all fixture transactions
+rollback; no real seeds, runtime DB DI/profile/grants/business callers/SP/views.
+Private Design absent from publish-check artifact;20added Design dependency pins/
+licenses and normalized archive/lock/assets/cache hashes verified offline, no new
+vulnerability audit claim. No push/deployment/other DB changes.
+
+No unresolved D07–D09 blocker. Next proposed D10=six views, not started. D10–D13,
+complete service/TX/authorization/audit/replay/callers/grants/readiness/fullLOCAL_DEV/
+M0/V01 remain incomplete. Standing ADR163 only applies authorized reviewed PASS
+code; this completed batch does not open restM0. Earlier stages remain PASS.
 
 ### Applied P02 checkpoint
 

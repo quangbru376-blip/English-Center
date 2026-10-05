@@ -10,17 +10,15 @@
 
 ## Next
 
-- D07A model OUTPUT metadata completed/reviewed PASS/applied main378431a,
-  full478tests PASS/build clean; [D07 card/evidence](plan/D07_TASK_CARD.md).
-  Exactly5tables OUTPUT false,19enabled;24table/230column physical signature intact.
-- D07 family incomplete. Next concrete D07B offline migration scope awaits explicit
-  authorization: private Design10.0.4 dependency, backend-local dotnet-ef10.0.4
-  from cache, disconnected factory/provider160, initial migration/snapshot/SQL
-  generation and reviewed cycle/order/Down; no SQL execution. D07C isolated new
-  database/apply also needs explicit scope. No tooling added/activated yet.
-- D01–D06/prior stages remain PASS. Live EF trigger ID/RV/TX/grants/auth/readiness/
-  full LOCAL_DEV later gates. ADR163 auto-applies authorized reviewed PASS code;
-  no authority for SQL/migrations/install/push/deploy/rest M0 from D07A.
+- D07→D08→D09 owner batch complete/reviewed PASS/applied/reverified code maina7561dd;
+  build clean/481unit+102SQL PASS. Cards/evidence in docs/plan/D07/D08/D09.
+- Next proposed D10: six views, each bounded task against accepted grains; not
+  started or authorized by this completed batch. D11 SP/D12roles/D13readiness later.
+- Isolated EnglishCenter_D07_20261005 retained,160/collation/snapshotON;24tables/
+  230cols/5triggers/6UDF/3migrations, fixtures rolled back. No DROP DB/other DB changes.
+- Runtime DB DI/profile/business callers/complete TX/auth/audit/replay/grants/
+  fullLOCAL_DEV/M0/V01 still pending; no push/deploy. ADR163 applies reviewed PASS
+  stages already authorized, not unrelated stages. D01–D06/prior tasks remain PASS.
 
 SQL assessment04/10/2026 completed: installed SQL2025 Express17.0.1000.7
 retained by ADR-162; see [assessment](plan/SQL_INSTANCE_ASSESSMENT.md).

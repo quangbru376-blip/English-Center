@@ -2,13 +2,20 @@
 
 ## Current implemented architecture
 
-Latest checkpoint2026-10-05: D07A applied/reverified PASS main378431a;
-locked restore/build0warnings0errors/full478tests PASS. E04 EF compatibility
-metadata now table-scoped OUTPUT false on Band/TrainingProgram/ScoreComponentConfig/
-Attendance/Score, other19tables unchanged/enabled. Runtime/design/relational
-metadata independently verified; no actual triggers/HasTrigger/SQL implementation.
-D07 family incomplete; D07B offline migration/tooling and D07C live isolated DB
-scope await explicit authority. See [D07 card](plan/D07_TASK_CARD.md).
+Latest2026-10-05: D07–D09 applied/reverified PASS code maina7561dd; locked build
+clean/481unit+102SQL tests PASS. Explicit EF migration chain InitialSchema→
+ConfigurationAndAcademicGuards→ReadOnlyBusinessFunctions; private Design10.0.4/
+localdotnet-ef10.0.4, disconnected compatibility160factory. No startup auto-migrate.
+Versioned embedded SQL keeps each migration's exact DDL; constant escaped EXEC
+satisfies SQL object's batch restriction, no user-supplied SQL. Five guards check
+preheld Exclusive Transaction public canonical gates, validate row sets; six UDFs
+are pure/read calculations with exact E04 signatures. OUTPUTfalse on exactly5
+trigger tables remains; no fake HasTrigger/global disable. Dedicated SqlTests
+project explicitly connects only isolated diagnostic DB and rolls fixture data
+back; ordinary solution tests stay disconnected. See D07/D08/D09 cards/ADR165.
+Owner-approved isolated DB EnglishCenter_D07_20261005 only:160/exact collation/
+snapshotON, schema/chain/230livecolumns verified, retained/no DROP DB. No views/SP/
+roles/grants/runtime connection profile or business callers added.
 
 D06 complete mappings remain applied PASS. Domain/Finance now has
 Invoice/Payment/InvoiceNumberCounter, Domain/Administration AuditLog/ReplayOperation,
@@ -28,8 +35,8 @@ minimum24h CHECK; exact24h clock/reference schema/replay semantics implemented l
 Counter has short non-generated year key/default0/rowversion; no allocator code.
 Audit/Replay have no rowversion; append-only grants/cleanup remain later SQL gates.
 
-No runtime connection/profile/DI, migration/SQL execution/seed/business routes.
-Disconnected metadata/DDL does not prove live constraints/EF trigger compatibility,
+No runtime connection/profile/DI, real seed or business routes. Isolated SQL/guard/
+UDF/schema/EF basic generated ID-RV evidence above does not prove full readiness,
 SP07/atomic payment+invoice/equality/immutability/number allocation/overflow/nonreuse,
 C1/audit/replay/retention grants/cleanup/TX/auth/CSRF/readiness. These remain later
 service and SQL integration tasks. Original reviewed worker/manager trees retained.

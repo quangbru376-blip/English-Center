@@ -5,6 +5,21 @@ restore/build/discovery and ten real host tests verified in detached P02, then
 reverified on main after explicit owner-authorized application (df7cd9a).
 This is a nonsecret inventory and manifest, not a configured business profile.
 
+## Latest isolated SQL/tooling checkpoint — 2026-10-05
+
+Owner batch D07–D09 PASS maina7561dd/481unit+102SQL. API SQLServer10.0.4 remains
+pinned; private Design10.0.4/local backend/.config/dotnet-tools.json dotnet-ef10.0.4
+activated from cache only.20added Design dependencies licenses/normalized actual
+archive-vs-lock/assets/cache hashes verified offline; raw signed archive SHA512 is
+a different format, no new vulnerability audit claim. Design excluded from local
+publish-check artifact. See D07-evidence/package-verification.json/D09-evidence.
+Only isolated .\SQLEXPRESS/EnglishCenter_D07_20261005 created after explicit owner
+authority;160/Latin1_General_100_CI_AS_SC/snapshotON,24tables230cols/5triggers6UDFs/
+3migrations. Windows/local diagnostic trusted certificate, rollback-only fixture
+runner; not runtime credentials/TLS/principal or complete LOCAL_DEV profile.
+No startup auto-migrate/real seeds/roles/grants/runtime DB connection/push/deploy.
+Historical P02 inventory below describes its original checkpoint.
+
 ## Verified inventory and choices
 
 - Windows x64; SDK 10.0.200 / MSBuild 18.3.0; installed ASP.NET Core and
@@ -69,7 +84,8 @@ Lock/assets/cache normalized content hashes agree; full SNI license retained,
 dev/test rights reviewed; distribution remains a future release gate.
 [Dependency manifest](D01-evidence/dependency-manifest.json), known vulnerabilities0
 on2026-10-04. Mapping compatibility160/dbo/current CI_AS_SC collation chosen per E03.
-No SQL connection/profile/DB/schema/principals configured; no runtime installation.
+No runtime SQL connection/profile/principals configured; isolated schema/tooling
+now exists as recorded in the latest checkpoint above. No runtime installation.
 Mainf6fd902 locked restore/build0warnings0errors/full400tests PASS. Earlier package/
 startup inventory above remains the historical P02 checkpoint, not current count.
 

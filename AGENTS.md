@@ -52,13 +52,17 @@ Invoice/Payment/AuditLog/ReplayOperation/InvoiceNumberCounter mapping,
 complete24tables/230columns/50FK/78indexes/70checks/20RV;474tests PASS/build clean.
 Three bounded AGY runs stayed within observed scopes; Codex independent tests/
 fixes/review. See docs/plan/D06_TASK_CARD.md.
-D07A continuation2026-10-05 model OUTPUT metadata completed/reviewed PASS/applied/
-reverified main378431a full478tests PASS/build clean: table-scoped OUTPUT false
-on exactly5trigger-affected tables, no physical signature/package/SQL changes.
-One bounded AGY SUCCESS/zero observed violations; Codex independent4cases/review.
-See docs/plan/D07_TASK_CARD.md. D07 family incomplete; D07B offline migrations/
-Design package/local EF tooling and D07C isolated SQL execution await explicit
-scope authorization. No migration/tool activation or SQL operations yet.
+D07→D08→D09 owner-requested batch2026-10-05 complete/reviewed PASS/applied/
+reverified code maina7561dd:481unit+102SQL PASS/build0warnings0errors. D07 adds
+private Design/localdotnet-ef10.0.4 from cache/disconnected160factory/InitialSchema;
+owner explicitly approved isolated SQL new EnglishCenter_D07_20261005 only,
+fail-if-exists/profile160/collation/snapshotON/migration+object rollback fixtures.
+Up→Down→Up/schema PASS:24tables230cols50FK78IX70CHECK20RV; all230columns verified.
+D08 exact5set-based preheld-gate guards, D09 six pure exact-signature UDFs;
+11bounded AGY SUCCESS/zero observed violations, Codex independent fixes/review.
+Three migrations; fixtures rolled back, database retained/no DROP DB. See D07/
+D08/D09_TASK_CARD and evidence. Next proposed D10 not started; no authority for
+other DB changes/runtime connection/grants/restM0/push/deploy from this batch.
 Historical initial scope is retained in
 FIRST_CODE_HANDOFF; latest checkpoint and explicit current owner scope govern.
 Standing owner authority ADR-163: apply Codex-reviewed PASS stages already
