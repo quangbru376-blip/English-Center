@@ -40,6 +40,35 @@ public class ProcedureTests
     }
 
     [Theory]
+    [InlineData(1)] [InlineData(2)] [InlineData(4)] [InlineData(5)] [InlineData(6)]
+    public async Task PagedReads_RejectAboveMaximumRatherThanReturningUnboundedRows(int sp)
+    {
+        await using var f=await Fixture();if(sp==1) await Role(f,"Admissions");
+        var args=Arguments(sp,f);args["pageSize"]=101;
+        var error=await Assert.ThrowsAsync<SqlException>(()=>Call(f,sp,args));Assert.Equal(51103,error.Number);
+    }
+
+    [Theory]
+    [InlineData(1,"sort","CREATED_ASC ")] [InlineData(1,"status","pending")]
+    [InlineData(2,"view","CURRENT")] [InlineData(2,"sort","BOOKED_ASC ")]
+    [InlineData(5,"status","PENDING ")] [InlineData(6,"status","ongoing")]
+    public async Task EnumFilters_RejectCaseAndTrailingPaddingOutsideExactAllowlist(int sp,string key,string value)
+    {
+        await using var f=await Fixture();if(sp==1) await Role(f,"Admissions");
+        var args=Arguments(sp,f);args[key]=value;
+        var error=await Assert.ThrowsAsync<SqlException>(()=>Call(f,sp,args));Assert.Equal(51103,error.Number);
+    }
+
+    [Theory]
+    [InlineData(4)] [InlineData(5)] [InlineData(6)]
+    public async Task Reports_EqualHalfOpenBoundsAreInvalid(int sp)
+    {
+        await using var f=await Fixture();var args=Arguments(sp,f);
+        args[sp==6?"finalizedToExclusiveUtc":"toExclusiveUtc"]=SqlFixture.Instant;
+        var error=await Assert.ThrowsAsync<SqlException>(()=>Call(f,sp,args));Assert.Equal(51103,error.Number);
+    }
+
+    [Theory]
     [InlineData(1)] [InlineData(2)] [InlineData(3)] [InlineData(4)] [InlineData(5)] [InlineData(6)]
     public async Task ReadProcedure_RejectsReadCommittedCallerWithoutChangingTransaction(int sp)
     {
@@ -95,6 +124,8 @@ public class ProcedureTests
         var session=await f.Context.EntryTestSessions.SingleAsync(TestContext.Current.CancellationToken);
         var args=Arguments(2,f);args["sessionId"]=session.SessionId;
         var sets=await Call(f,2,args);Assert.Equal(2,sets.Count);Assert.Single(sets[1].Rows);
+        string[] roster=["bookingId","attemptId","registrationId","studentId","courseId","attemptNumber","bookedAt","bookingStatus","registrationStatus","fullName","email","phone","courseCode","courseName","courseStatus","targetScore","targetGradedAt","bandId","bandCode","bandMinScore"];
+        Assert.Equal(invoiceColumn?roster.Concat(["invoiceStatus"]):roster,sets[1].Columns);
         Assert.Equal(invoiceColumn,sets[1].Columns.Contains("invoiceStatus"));Assert.Equal(50m,sets[1].Value(0,"targetScore"));
         args["view"]="current";sets=await Call(f,2,args);Assert.Equal(0L,sets[0].Value(0,"totalCount"));Assert.Empty(sets[1].Rows);
         args["sessionId"]=int.MaxValue;var miss=await Assert.ThrowsAsync<SqlException>(()=>Call(f,2,args));Assert.Equal(51102,miss.Number);
@@ -120,6 +151,9 @@ public class ProcedureTests
         // Same class has a draft report with a secret comment and saved score.
         await f.ExecuteAsync($"UPDATE dbo.Registration SET is_unfinished=0 WHERE registration_id={f.Registration.RegistrationId}; DECLARE @r int; INSERT dbo.Registration(student_id,course_id,status,is_unfinished) SELECT student_id,course_id,'PENDING',1 FROM dbo.Registration WHERE registration_id={f.Registration.RegistrationId}; SET @r=SCOPE_IDENTITY(); INSERT dbo.StudentClassAssignment(registration_id,class_id,assigned_by,assigned_at) VALUES(@r,{f.Class.ClassId},{f.Teacher.AccountId},{SqlFixture.Instant}); DECLARE @a int=SCOPE_IDENTITY(); INSERT dbo.GradeReport(class_assignment_id,status,teacher_comment) VALUES(@a,'DRAFT','PRIVATE DRAFT'); INSERT dbo.Score(class_assignment_id,component_id,score_value,entered_by,entered_at) VALUES(@a,{f.General.ComponentId},12,{f.Teacher.AccountId},{SqlFixture.Instant});");
         var sets=await Call(f,3);Assert.Equal(5,sets.Count);
+        string[] shapes=["classId,programId,teacherId,classCode,classStatus,classVersion,programVersion,cohortSize,visibleReportCount","componentId,name,kind,weight,version","classAssignmentId,registrationId,studentId,reportId,fullName,status,teacherComment,submittedAt,reviewedAt,finalizedAt,latestReturnReason,finalScore,version,requiredComponentCount,enteredComponentCount,isComplete,total","classAssignmentId,scoreId,componentId,score,scheduleId,enteredByAccountId,enteredAt,version","scheduleId,classId,type,obligationKey,date,startTime,endTime,room,occurrenceState,isCurrent,replacesScheduleId,version"];
+        for(var i=0;i<shapes.Length;i++) Assert.Equal(shapes[i].Split(','),sets[i].Columns);
+        Assert.All(sets.SelectMany(x=>x.Schema).Where(x=>x.ColumnName is "version" or "classVersion" or "programVersion"),column=>{Assert.Equal("binary",column.DataTypeName);Assert.Equal(8,column.ColumnSize);});
         Assert.Equal(2,sets[0].Value(0,"cohortSize"));Assert.Equal(1,sets[0].Value(0,"visibleReportCount"));Assert.Equal(2,sets[1].Rows.Count);
         Assert.Single(sets[2].Rows);Assert.Equal(state,sets[2].Value(0,"status"));Assert.Equal(70m,sets[2].Value(0,"total"));
         Assert.Equal(2,sets[3].Rows.Count);Assert.All(sets[3].Rows,r=>Assert.Equal(f.Assignment.ClassAssignmentId,r[0]));
@@ -149,6 +183,8 @@ public class ProcedureTests
         Assert.Equal(revenue,sets[0].Value(0,"revenueAmount"));Assert.Equal(billed,sets[0].Value(0,"billedAmount"));
         Assert.Equal(overdue?debt:"130",sets[0].Value(0,"currentDebtAmount"));Assert.Equal(overdueDebt,sets[0].Value(0,"overdueDebtAmount"));
         Assert.Single(sets[1].Rows);Assert.All(sets[0].Types.Skip(1),type=>Assert.Equal("varchar",type));
+        Assert.All(sets[0].Schema.Skip(1),column=>Assert.Equal(38,column.ColumnSize));
+        Assert.All(sets[1].Schema.Skip(3),column=>Assert.Equal(38,column.ColumnSize));
         args["page"]=int.MaxValue;Assert.Empty((await Call(f,4,args))[1].Rows);
         args["page"]=null;args["pageSize"]=null;Assert.Single((await Call(f,4,args))[1].Rows);
         args["page"]=1;var bad=await Assert.ThrowsAsync<SqlException>(()=>Call(f,4,args));Assert.Equal(51103,bad.Number);
@@ -159,6 +195,7 @@ public class ProcedureTests
         await f.ExecuteAsync($"UPDATE dbo.Registration SET is_unfinished=0 WHERE student_id={f.Registration.StudentId}; INSERT dbo.Registration(student_id,course_id,status,is_unfinished) VALUES({f.Registration.StudentId},{f.Course.CourseId},'PENDING',1);");
         var id=await f.Context.Database.SqlQueryRaw<int>("SELECT MAX(registration_id) AS Value FROM dbo.Registration").SingleAsync(TestContext.Current.CancellationToken);
         var invoice=new Invoice {RegistrationId=id,InvoiceNumber="HD-2026-"+id.ToString("D8",System.Globalization.CultureInfo.InvariantCulture),Amount=amount,Status=status,IssuedAt=issue,DueDate=due};
+        if(status=="CANCELLED") {invoice.CancelledBy=f.Teacher.AccountId;invoice.CancelledAt=SqlFixture.Instant;invoice.CancellationReason="fixture";invoice.CancelledFromStatus="UNPAID";invoice.CancellationOperationId=Guid.NewGuid();}
         f.Context.Add(invoice);await f.Context.SaveChangesAsync(TestContext.Current.CancellationToken);
         if(paid is not null){f.Context.Add(new Payment {InvoiceId=invoice.InvoiceId,AmountPaid=paid.Value,PaidAt=receipt!.Value,ConfirmedBy=f.Teacher.AccountId,Method="CASH"});await f.Context.SaveChangesAsync(TestContext.Current.CancellationToken);}
     }
@@ -176,16 +213,49 @@ public class ProcedureTests
     public async Task AdmissionsReport_DistinctWholeStudentNotSumGroups()
     {
         await using var f=await Fixture();
-        await f.ExecuteAsync($"UPDATE dbo.Registration SET created_at={SqlFixture.Instant} WHERE registration_id={f.Registration.RegistrationId}; INSERT dbo.Course(course_code,course_name,base_price,status) VALUES('ANOTHER','Other',1,'INACTIVE'); DECLARE @c int=SCOPE_IDENTITY(); INSERT dbo.Registration(student_id,course_id,status,created_at) VALUES({f.Registration.StudentId},@c,'PENDING',{SqlFixture.Instant});");
-        var sets=await Call(f,5);Assert.Equal(3,sets.Count);Assert.Equal(2L,sets[0].Value(0,"totalCount"));Assert.Equal(2L,sets[0].Value(0,"registrationCount"));Assert.Equal(1L,sets[0].Value(0,"distinctStudentCount"));Assert.Equal(2,sets[1].Rows.Count);Assert.All(sets[1].Rows,r=>Assert.Equal(1L,r[^1]));
+        await f.ExecuteAsync($"UPDATE dbo.Registration SET created_at={SqlFixture.Instant},is_unfinished=0 WHERE registration_id={f.Registration.RegistrationId}; INSERT dbo.Registration(student_id,course_id,status,created_at) VALUES({f.Registration.StudentId},{f.Course.CourseId},'PENDING',{SqlFixture.Instant}); INSERT dbo.Course(course_code,course_name,base_price,status) VALUES('ANOTHER','Other',1,'INACTIVE'); DECLARE @c int=SCOPE_IDENTITY(); INSERT dbo.Registration(student_id,course_id,status,created_at) VALUES({f.Registration.StudentId},@c,'PENDING',{SqlFixture.Instant});");
+        var sets=await Call(f,5);Assert.Equal(3,sets.Count);Assert.Equal(2L,sets[0].Value(0,"totalCount"));Assert.Equal(3L,sets[0].Value(0,"registrationCount"));Assert.Equal(1L,sets[0].Value(0,"distinctStudentCount"));Assert.Equal(2,sets[1].Rows.Count);Assert.All(sets[1].Rows,r=>Assert.Equal(1L,r[^1]));
         Assert.Equal(2,sets[2].Rows.Count);
+    }
+
+    [Fact]
+    public async Task Finance_CancelledInvoiceNeverContributesBilledOrDebtEvenInPeriod()
+    {
+        await using var f=await Fixture();await Invoice(f,1000,"CANCELLED",SqlFixture.Instant,new(2026,10,4));
+        var sets=await Call(f,4);Assert.Equal(0L,sets[0].Value(0,"totalCount"));Assert.Empty(sets[1].Rows);
+        Assert.All(sets[0].Rows[0].Skip(1),v=>Assert.Equal("0",v));
+    }
+
+    [Fact]
+    public async Task GradeReview_RetainsLinkedHistoricalScheduleOutsideActiveView()
+    {
+        await using var f=await Fixture();await Role(f,"AcademicAffairs");
+        await f.ExecuteAsync($"INSERT dbo.Score(class_assignment_id,component_id,schedule_id,score_value,entered_by,entered_at) VALUES({f.Assignment.ClassAssignmentId},{f.Lesson.ComponentId},{f.Schedule.ScheduleId},60,{f.Teacher.AccountId},{SqlFixture.Instant});");
+        await Publish(f,"SUBMITTED");
+        await f.ExecuteAsync($"UPDATE dbo.Schedule SET occurrence_state='NOT_HELD',is_current=0,not_held_by={f.Teacher.AccountId},not_held_at={SqlFixture.Instant},not_held_reason='fixture',replacement_operation_id={Guid.NewGuid()} WHERE schedule_id={f.Schedule.ScheduleId}; INSERT dbo.Schedule(class_id,session_type,obligation_key,is_current,session_date,start_time,end_time,room,occurrence_state,replaces_schedule_id) SELECT class_id,session_type,obligation_key,1,session_date,start_time,end_time,room,'PLANNED',schedule_id FROM dbo.Schedule WHERE schedule_id={f.Schedule.ScheduleId};");
+        var sets=await Call(f,3);Assert.Single(sets[4].Rows);Assert.Equal(f.Schedule.ScheduleId,sets[4].Value(0,"scheduleId"));Assert.Equal(false,sets[4].Value(0,"isCurrent"));Assert.Equal("NOT_HELD",sets[4].Value(0,"occurrenceState"));
+    }
+
+    [Fact]
+    public async Task Training_HalfUpRatesUseFullResultSet_NotCurrentPageOrUniqueStudents()
+    {
+        await using var f=await Fixture();await Publish(f,"FINALIZED",50m);
+        foreach(var score in new[]{49m,80m})
+        {
+            await f.ExecuteAsync($"UPDATE dbo.Registration SET is_unfinished=0 WHERE student_id={f.Registration.StudentId}; INSERT dbo.Registration(student_id,course_id,status,is_unfinished) VALUES({f.Registration.StudentId},{f.Course.CourseId},'PENDING',1); DECLARE @r int=SCOPE_IDENTITY(); INSERT dbo.StudentClassAssignment(registration_id,class_id,assigned_by,assigned_at) VALUES(@r,{f.Class.ClassId},{f.Teacher.AccountId},{SqlFixture.Instant}); DECLARE @a int=SCOPE_IDENTITY(); INSERT dbo.GradeReport(class_assignment_id,status,final_score,submitted_by,submitted_at,submitted_operation_id,reviewed_by,reviewed_at,review_operation_id,finalized_at) VALUES(@a,'FINALIZED',{score},{f.Teacher.AccountId},{SqlFixture.Instant},{Guid.NewGuid()},{f.Teacher.AccountId},{SqlFixture.Instant},{Guid.NewGuid()},{SqlFixture.Instant});");
+        }
+        await f.ExecuteAsync($"UPDATE dbo.Schedule SET occurrence_state='HELD',held_by={f.Teacher.AccountId},held_at={SqlFixture.Instant} WHERE schedule_id={f.Schedule.ScheduleId};");
+        var args=Arguments(6,f);args["pageSize"]=1;
+        var sets=await Call(f,6,args);Assert.Equal(3L,sets[0].Value(0,"finalizedResultCount"));Assert.Equal(2L,sets[0].Value(0,"passingResultCount"));Assert.Equal(66.67m,sets[0].Value(0,"passRatePercent"));
+        Assert.Single(sets[1].Rows);Assert.Equal(50m,sets[1].Value(0,"progressPercent"));Assert.Equal(66.67m,sets[1].Value(0,"passRatePercent"));
+        args["page"]=int.MaxValue;sets=await Call(f,6,args);Assert.Empty(sets[1].Rows);Assert.Equal(66.67m,sets[0].Value(0,"passRatePercent"));Assert.Equal(2,sets[4].Rows.Count);
     }
 
     [Fact]
     public async Task Training_DateChangesOnlyResults_CancelledProgressNullAndStoredRoundedPassing()
     {
         await using var f=await Fixture();await Publish(f,"FINALIZED",50m);
-        await f.ExecuteAsync($"UPDATE dbo.Schedule SET occurrence_state='HELD' WHERE schedule_id={f.Schedule.ScheduleId}; UPDATE dbo.Class SET status='CANCELLED',cancelled_by={f.Teacher.AccountId},cancelled_at={SqlFixture.Instant},cancellation_reason='fixture',cancellation_operation_id={Guid.NewGuid()} WHERE class_id={f.Class.ClassId};");
+        await f.ExecuteAsync($"UPDATE dbo.Schedule SET occurrence_state='HELD',held_by={f.Teacher.AccountId},held_at={SqlFixture.Instant} WHERE schedule_id={f.Schedule.ScheduleId}; UPDATE dbo.Class SET status='CANCELLED',cancelled_by={f.Teacher.AccountId},cancelled_at={SqlFixture.Instant},cancellation_reason='fixture',cancellation_operation_id={Guid.NewGuid()} WHERE class_id={f.Class.ClassId};");
         var sets=await Call(f,6);Assert.Equal(6,sets.Count);Assert.Equal(2L,sets[0].Value(0,"classCount"));Assert.Equal(1L,sets[0].Value(0,"cancelledCount"));Assert.Equal(1L,sets[0].Value(0,"passingResultCount"));Assert.Equal(100m,sets[0].Value(0,"passRatePercent"));
         var index=sets[1].Rows.FindIndex(r=>Equals(r[0],f.Class.ClassId));
         foreach(var column in new[]{"heldCount","progressPercent","examCurrentCount","examHeldCount"}) Assert.Null(sets[1].Value(index,column));

@@ -1,0 +1,30 @@
+{
+  "mode": "edit",
+  "objective": "Implement ONLY dbo.usp_GetFinancialReport in exact allowed SQL file. Complete three context reads first and obey read allowlist. No commands/search/network/SQL/Git/MCP/other reads. Exact canonical signatures, caller-owned transaction, one CREATE OR ALTER PROCEDURE, no grants/GO/USE/migrations. Codex validates.",
+  "allowed_paths": [
+    "backend/src/EnglishCenter.Api/Infrastructure/Sql/D11/SP04.sql"
+  ],
+  "forbidden_paths": [
+    "AGENTS.md",
+    "docs/**",
+    ".agents/**",
+    "**/*.csproj",
+    "**/packages.lock.json",
+    "**/Migrations/**",
+    ".env"
+  ],
+  "acceptance_criteria": [
+    "Exactly one allowed SQL object/file, no forbidden operations.",
+    "Complete3contextreads beforewrite, nootherreads/tools.",
+    "from<to; both page ints null CSV OR page>=1,size1..100 (reject one-null). course positive/null; overdue bit/today nonnull. Revenue uses paidAmount at paidAt in halfopenperiod (do not replace by Invoice amount). Billed invoice amount UNPAID/PAID issuedAt period, excludesCANCELLED. Debt allcurrentUNPAID independentdate; overdueOnly affects ONLY debt subset via FN06 with passedtoday. Aggregate separately/CASE independently before uniongroups; Course group exists iff some qualifying FACT even amount0 absent aggregates (allmoneypositive). SUM(CONVERT(decimal(38,0),amount)) BEFORE varchar(38) conversion; totals whole unionnotpage. Groups perCourse ordercode/id, no invoice/payment/student IDs in any output. Courseoptions full referenced/history plus ACTIVE per shared scope below. No filter dates sharedbase or billed-revenue debt. Empty totals4string0/groupempty/options retained."
+  ],
+  "context_files": [
+    "docs/plan/D11_SP04_WORKER.md",
+    ".agents/skills/backend-clean-code/SKILL.md",
+    "docs/plan/SKILL_ROUTING.md"
+  ],
+  "max_changed_files": 1,
+  "max_diff_lines": 450,
+  "model": "",
+  "timeout": "15m"
+}

@@ -1,0 +1,30 @@
+{
+  "mode": "edit",
+  "objective": "Implement ONLY dbo.usp_GetEntryTestRoster in exact allowed SQL file. Complete three context reads first and obey read allowlist. No commands/search/network/SQL/Git/MCP/other reads. Exact canonical signatures, caller-owned transaction, one CREATE OR ALTER PROCEDURE, no grants/GO/USE/migrations. Codex validates.",
+  "allowed_paths": [
+    "backend/src/EnglishCenter.Api/Infrastructure/Sql/D11/SP02.sql"
+  ],
+  "forbidden_paths": [
+    "AGENTS.md",
+    "docs/**",
+    ".agents/**",
+    "**/*.csproj",
+    "**/packages.lock.json",
+    "**/Migrations/**",
+    ".env"
+  ],
+  "acceptance_criteria": [
+    "Exactly one allowed SQL object/file, no forbidden operations.",
+    "Complete3contextreads beforewrite, nootherreads/tools.",
+    "Actor AcademicAffairs OR current assigned Teacher active normal. Parent missing/wrong assignment THROW51102 (Teacher cannot distinguish outside scope); other role51101. Session cancellation/closed alone does not hide retained history. Evaluate FN01(@status,@startAt,@asOfUtc) once for scoped parent, do not return extra state columns. current=onlySCHEDULED; history=allinclSCHEDULED. bookingStatus conjunctive optional. Validate view/sort/pages/status. Target score bundle already projected view. Exact RS2 branch Teachers omit invoiceStatus entirely, AA append invoiceStatus. Full role variant metadata, not NULL union. Literal search. Count/page same filtered scoped set."
+  ],
+  "context_files": [
+    "docs/plan/D11_SP02_WORKER.md",
+    ".agents/skills/backend-clean-code/SKILL.md",
+    "docs/plan/SKILL_ROUTING.md"
+  ],
+  "max_changed_files": 1,
+  "max_diff_lines": 450,
+  "model": "",
+  "timeout": "15m"
+}

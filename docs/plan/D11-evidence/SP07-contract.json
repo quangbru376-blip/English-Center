@@ -1,0 +1,30 @@
+{
+  "mode": "edit",
+  "objective": "Implement ONLY dbo.usp_AllocateInvoiceNumber in exact allowed SQL file. Complete three context reads first and obey read allowlist. No commands/search/network/SQL/Git/MCP/other reads. Exact canonical signatures, caller-owned transaction, one CREATE OR ALTER PROCEDURE, no grants/GO/USE/migrations. Codex validates.",
+  "allowed_paths": [
+    "backend/src/EnglishCenter.Api/Infrastructure/Sql/D11/SP07.sql"
+  ],
+  "forbidden_paths": [
+    "AGENTS.md",
+    "docs/**",
+    ".agents/**",
+    "**/*.csproj",
+    "**/packages.lock.json",
+    "**/Migrations/**",
+    ".env"
+  ],
+  "acceptance_criteria": [
+    "Exactly one allowed SQL object/file, no forbidden operations.",
+    "Complete3contextreads beforewrite, nootherreads/tools.",
+    "Require XACT_STATE()=1 and@@TRANCOUNT>0, no isolation requirement. @issueYear smallint range1..9999; counter use SELECT last_value WITH(UPDLOCK,HOLDLOCK) by PK year covering missing-range. Existinglast>=99999999 THROW51108 BEFORE update; missing insertlast1 otherwise updateold+1. Single result invoiceNumber varchar16 exactly HD-YYYY-NNNNNNNN (pad year4/counter8). Row/range remains locked untilcaller commit/rollback. No ownTX or commit/savepoint/rollback, noInvoice/Registration/Audit/replay changes. Failures THROW with unchangedcallerownership. Zero new deps/sequence/SQLobjects. SET XACT_ABORT ON acceptable no rollback claim; managertests failurepath/rollback/counterexisting andmissingrange race."
+  ],
+  "context_files": [
+    "docs/plan/D11_SP07_WORKER.md",
+    ".agents/skills/backend-clean-code/SKILL.md",
+    "docs/plan/SKILL_ROUTING.md"
+  ],
+  "max_changed_files": 1,
+  "max_diff_lines": 450,
+  "model": "",
+  "timeout": "15m"
+}

@@ -20,3 +20,15 @@ D09Schema.sql verifies all six UDF signatures and the three-migration chain. The
 explicit SQL suite covers guards/functions/full live column-model agreement.
 Runtime callers, roles/grants, complete service transactions and full readiness
 remain later tasks; this runner does not configure an application connection.
+
+D10 adds six one-grain fact views; D10Schema.sql is the pre-D11 gate. D11 adds
+seven procedures; D11Schema.sql verifies47typed parameters and the five-migration
+chain. Gate scripts describe their own checkpoint (D09 excludes views, D10
+excludes procedures); use the gate matching the migration being verified.
+SP01–06 require a caller-owned active SNAPSHOT transaction. SP07 requires a
+caller transaction, locks the year counter row/range, and never commits or
+creates Invoice/audit/replay records. Report amounts are varchar(38) after
+decimal(38,0) aggregation. Scope-miss/validation errors still require future
+service mappings and current session authorization. Views are internal SQL
+facts, without new endpoint/reporting grants. Race fixtures use finite local
+diagnostic lock timeout, then rollback both connections. No committed fixture.

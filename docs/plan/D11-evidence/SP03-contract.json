@@ -1,0 +1,30 @@
+{
+  "mode": "edit",
+  "objective": "Implement ONLY dbo.usp_GetClassGradeReview in exact allowed SQL file. Complete three context reads first and obey read allowlist. No commands/search/network/SQL/Git/MCP/other reads. Exact canonical signatures, caller-owned transaction, one CREATE OR ALTER PROCEDURE, no grants/GO/USE/migrations. Codex validates.",
+  "allowed_paths": [
+    "backend/src/EnglishCenter.Api/Infrastructure/Sql/D11/SP03.sql"
+  ],
+  "forbidden_paths": [
+    "AGENTS.md",
+    "docs/**",
+    ".agents/**",
+    "**/*.csproj",
+    "**/packages.lock.json",
+    "**/Migrations/**",
+    ".env"
+  ],
+  "acceptance_criteria": [
+    "Exactly one allowed SQL object/file, no forbidden operations.",
+    "Complete3contextreads beforewrite, nootherreads/tools.",
+    "AA ACTIVE normal only. Missing class/no visible (SUBMITTED/RETURNED/FINALIZED) report THROW51102 before any result. RS1 cohortSize COUNT all assigned learners (int), visible count int. Config RS2 all components. RS3 visible report only joined current student Account, latestReturnReason=returned_reason; required/entered/isComplete/total FN05. RS4 only scores whose own report visible (DRAFT assignments no score token). RS5 DISTINCT Schedule referenced by these visible saved scores, including noncurrent/historical occurrence refs; do NOT use active view which hides old links. No DRAFT comments/versions/scores. All5sets exact columns/order and binary8 versions, no extra parent metadata."
+  ],
+  "context_files": [
+    "docs/plan/D11_SP03_WORKER.md",
+    ".agents/skills/backend-clean-code/SKILL.md",
+    "docs/plan/SKILL_ROUTING.md"
+  ],
+  "max_changed_files": 1,
+  "max_diff_lines": 450,
+  "model": "",
+  "timeout": "15m"
+}
