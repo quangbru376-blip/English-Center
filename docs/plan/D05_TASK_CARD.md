@@ -130,7 +130,7 @@ No GradeHistory, stored draft total/weight/pass flag or individual publication.
 
 ## Codex verification / skill_verification
 
-Pending independent full signatures/defaults/precision/identity/RV/FK NO ACTION/
+Completed below: independent full signatures/defaults/precision/identity/RV/FK NO ACTION/
 exact indexes/filter and NULL-safe final/submit/review/return bundles. D01–D04
 signatures unchanged. Expected D05 adds29columns/10FK(7required,3optional)/11IX/
 6CHECK/3RV; full19tables/180columns/19PK/2AK/43FK/62IX/52CHECKs/17RV.
@@ -192,3 +192,12 @@ and workflow services calculate/validate/publish later.
 Reviewed manager3ed9cf54ab7e4432aa4e75901e6c8451e82cad8f, backend Git tree
 2cfec2e8bac0415753cf8fb06d4d7f09b3e6ed67. Apply under ADR-163 then reverify main.
 Next proposed D06 financial/audit/replay/counter mappings not started.
+
+
+## Main application / reverified PASS
+
+Main9e843b860e83da58da9006d91036f75de1d99162 under ADR-163; identical reviewed
+backend tree2cfec2e8bac0415753cf8fb06d4d7f09b3e6ed67. Locked restore/build
+0warnings0errors/full454tests PASS/0fail/0skip on main. Package locks unchanged;
+compact TRX counters/hashes in D05-evidence/verification.json. No SQL/DB/migrations/
+installation/push/deployment. No unresolved D05 blocker. D06 not started.

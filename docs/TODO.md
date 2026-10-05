@@ -10,17 +10,17 @@
 
 ## Next
 
-- D04 complete/reviewed PASS/applied main e741176, locked restore/build clean/
-  full440tests PASS. [Card/evidence](plan/D04_TASK_CARD.md): training three-table
-  mapping, full16tables/151columns; conditional schedule history/current filters,
-  NULL-safe event bundles, immutable-shaped Assignment without rowversion.
-  No SQL/migrations/services/endpoints; no D04 blocker.
-- Next proposed D05 T17–T19 Attendance/Score/GradeReport: prepare bounded
-  contracts and independent missing-versus0/schedule/finalization checks when
-  continuing. Not started. Explicit FK index coverage under ADR-164.
-- P02/P03/P05/P04/P06/P07/P08/D01/D02/D03 remain applied PASS. Real SQL/TX/auth/
-  readiness/full LOCAL_DEV remain later gates. Auto-apply authorized Codex PASS
-  stages under ADR-163; no authority for migrations/install/push/deploy/rest M0.
+- D05 complete/reviewed PASS/applied main9e843b8, locked restore/build clean/
+  full454tests PASS. [Card/evidence](plan/D05_TASK_CARD.md): assessment three-table
+  mapping, full19tables/180columns; missing-versus0, optional schedule linkage,
+  finalized-only score and NULL-safe latest submit/review/return bundles.
+  No SQL/migrations/services/endpoints; no D05 blocker.
+- Next proposed D06 T20–T24 Invoice/Payment/AuditLog/ReplayOperation/
+  InvoiceNumberCounter: prepare bounded financial/counter and audit/replay
+  contracts when continuing. Not started. Explicit FK coverage under ADR-164.
+- P02/P03/P05/P04/P06/P07/P08/D01/D02/D03/D04 remain applied PASS. Real SQL/TX/
+  auth/readiness/full LOCAL_DEV remain later gates. Auto-apply authorized Codex
+  PASS under ADR-163; no authority for migrations/install/push/deploy/rest M0.
 
 SQL assessment04/10/2026 completed: installed SQL2025 Express17.0.1000.7
 retained by ADR-162; see [assessment](plan/SQL_INSTANCE_ASSESSMENT.md).

@@ -4,28 +4,29 @@ Last updated: 2026-10-05
 
 ## Current task
 
-D04 authorized continuation2026-10-05 completed/reviewed PASS and applied under
-ADR-163 as main e741176 (manager fdebabc). Main locked restore/build0warnings/
-0errors/full440tests PASS/0fail/0skip; exact backend tree equality
-504798e989b417f29edd57f8978b4fb8d4297c0a. See [D04 card/evidence](plan/D04_TASK_CARD.md).
+D05 authorized continuation2026-10-05 completed/reviewed PASS and applied under
+ADR-163 as main9e843b8 (manager3ed9cf5). Main locked restore/build0warnings/
+0errors/full454tests PASS/0fail/0skip; exact backend tree equality
+2cfec2e8bac0415753cf8fb06d4d7f09b3e6ed67. See [D05 card/evidence](plan/D05_TASK_CARD.md).
 
-D04 adds Class/StudentClassAssignment/Schedule entities/configurations/DbSets,
-13 independent test cases. Full16tables/151columns/16PK/2AK/33NO ACTION FK/
-51indexes/46CHECKs/14RV. Conditional Schedule uniqueness preserves history;
-optional unique predecessor/self-pointer/current-state/event bundles mapped.
-Assignment is exactly5columns without rowversion. Three AGY runs SUCCESS,
-zero observed scope violations; Codex fixed Class precision metadata/explicit
-Schedule rowversion type and reviewed final source. D01–D03 signatures remain
-PASS; all33FK lookup coverage explicit under ADR-164. No packages/migrations/
-SQL execution/seeds/services/routes/connection/DI/profile changes.
+D05 adds Attendance/Score/GradeReport entities/configurations/DbSets,14independent
+test cases. Full19tables/180columns/19PK/2AK/43NO ACTION FK/62indexes/52CHECKs/
+17RV. Missing Attendance/Score are absent rows, no default present/score or server
+clock; last-write timestamps supplied later by service. Nullable Score.Schedule
+has accepted nonnull filtered lookup. FinalScore decimal(5,2) only FINALIZED,
+NULL-safe complete submit/review/return/final bundles preserve latest reason.
+Three AGY runs SUCCESS, zero observed scope violations; Codex fixed explicit
+SQL types/collation/FK requiredness and reviewed. D01–D04 signatures remain PASS;
+all43FK lookup coverage explicit under ADR-164. No packages/migrations/SQL
+execution/seeds/services/routes/connection/DI/profile changes.
 
-Earlier P02/P03/P05/P04/P06/P07/P08/D01/D02/D03 remain applied PASS. Original
-worker/manager evidence trees retained; no unresolved D04 blocker. Cross-row
-chains/cycles/exactly-one current, roles/conflicts/capacity/freeze/immutable
-assignment/atomic GradeReport/audit/replay and live SQL/TX/auth/readiness remain
-integration gates. Full P01 LOCAL_DEV and M0/V01 incomplete.
-Next proposed D05 Attendance/Score/GradeReport, not started. No runtime
-installation/project DB/SQL/migration/push/deployment operations.
+Earlier P02/P03/P05/P04/P06/P07/P08/D01/D02/D03/D04 remain applied PASS. Original
+worker/manager evidence trees retained; no unresolved D05 blocker. TG04/TG05,
+Class/component/current schedule/kind/Teacher/window/report locks, parent RV
+touch, all-or-none cohort/history/audit/half-up totals/atomic DRAFT creation and
+live SQL/TX/auth/readiness remain future integration gates. Full P01 LOCAL_DEV
+and M0/V01 incomplete. Next proposed D06 financial/audit/replay/counter mappings,
+not started. No installation/project DB/SQL/migration/push/deployment operations.
 
 ### Applied P02 checkpoint
 

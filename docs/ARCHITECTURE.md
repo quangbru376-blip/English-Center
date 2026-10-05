@@ -2,24 +2,26 @@
 
 ## Current implemented architecture
 
-Latest checkpoint2026-10-05: D04 applied/reverified PASS main e741176;
-locked restore/build0warnings0errors/full440tests PASS. Domain/Training adds
-Class/StudentClassAssignment/Schedule, three explicit configurations and DbSets.
-Full16tables/151columns/16PK/2AK/33NO ACTION FK/51indexes/46CHECKs/14rowversions.
-D01–D03 signatures retained; existing Admissions composite result/best ownership
-links preserved. Class keeps capacity/code/cancellation; Assignment links unique
-Registration to Class with actor/time and no rowversion. Schedule stores date/
-minute time, obligation identity, optional unique predecessor and current state.
-Three filtered uniques restrict current obligation/current final/predecessor,
-without removing historical rows. NULL-safe event bundles/current-state/ASCII/
-case/padding/minute/capacity constraints mapped. Cross-row chains/cycles/exactly
-one current/conflicts/roles/capacity/freeze/immutable writes/atomic GradeReport
-require later services/TX/SQL; scalar metadata constraints do not prove these.
+Latest checkpoint2026-10-05: D05 applied/reverified PASS main9e843b8;
+locked restore/build0warnings0errors/full454tests PASS. Domain/Training adds
+Attendance/Score/GradeReport, three explicit configurations and DbSets.
+Full19tables/180columns/19PK/2AK/43NO ACTION FK/62indexes/52CHECKs/17rowversions.
+D01–D04 signatures retained; Admissions composite ownership links and Schedule
+conditional current/history/predecessor shapes preserved. Attendance unique
+Schedule/Assignment and Score unique Assignment/Component keep missing as no row;
+no defaults for present/score/last-write timestamps. Score.Schedule optional FK
+has nonnull filtered lookup; same Class/current/type/kind is future TG05/service.
+GradeReport unique Assignment stores optional comments/latest submission/review/
+return metadata, decimal(5,2) final_score only FINALIZED with complete review and
+same final/review timestamp. Complete latest submit required outside DRAFT;
+NULL-safe review bundle and retained return reason support resubmission history.
 
-FK lookup indexes remain explicit, ForeignKeyIndexConvention removed under
-ADR-164. All33FK lookups covered; see [D04 card](plan/D04_TASK_CARD.md).
-Other EF conventions unchanged. Existing P07/P08 helpers remain applied PASS.
-DbContext still lacks runtime connection/profile/DI wiring. No SQL/migrations/
+All43FK lookups explicitly covered under ADR-164, including filtered nonunique
+Score.Schedule lookup; unique completed-booking coverage retained. No other EF
+conventions changed. See [D05 card](plan/D05_TASK_CARD.md). Parent report RV touch,
+TG04/TG05/cross-table Class/type/kind/role/window/locks, cohort all-or-none,
+half-up total/history/audit/atomic DRAFT creation remain later service/TX/SQL.
+DbContext still lacks runtime connection/profile/DI wiring; no SQL/migrations/
 seed/business routes. Disconnected metadata/DDL does not prove live constraints/
 TX/auth/CSRF/readiness. Original reviewed worker/manager trees retained.
 

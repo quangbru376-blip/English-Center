@@ -1,20 +1,21 @@
 # Handoff — E01–E05 và complete design baseline đã Accepted
 
-## Latest checkpoint — D04 applied PASS
+## Latest checkpoint — D05 applied PASS
 
-Updated2026-10-05: D04 authorized continuation complete/reviewed PASS,
-applied/reverified main e741176 (manager fdebabc). Locked restore/build0warnings/
-0errors/full440tests PASS/0fail/0skip; identical reviewed backend tree.
-[D04 card/evidence](D04_TASK_CARD.md): Class/StudentClassAssignment/Schedule
-mapping, full16tables/151columns/16PK/2AK/33NO ACTION FK/51indexes/46CHECKs/14RV.
-Three bounded AGY runs stayed within observed scopes; Codex independent13cases,
-precision/explicit-type fixes and review. D01–D03 signatures retained, all33FK
-lookup coverage explicit under ADR-164. Schedule conditional uniques preserve
-history; Assignment has no rowversion. No packages/SQL execution/migrations/
-services/routes/profile changes. Cross-row chains/exactly-one/conflicts/roles/
-capacity/freeze/atomic GradeReport and real SQL/TX/auth/readiness remain future.
-ADR-163 permits applying authorized Codex PASS. Next proposed D05 T17–T19
-Attendance/Score/GradeReport not started. M0/V01 and full P01 remain incomplete;
+Updated2026-10-05: D05 authorized continuation complete/reviewed PASS,
+applied/reverified main9e843b8 (manager3ed9cf5). Locked restore/build0warnings/
+0errors/full454tests PASS/0fail/0skip; identical reviewed backend tree.
+[D05 card/evidence](D05_TASK_CARD.md): Attendance/Score/GradeReport mapping,
+full19tables/180columns/19PK/2AK/43NO ACTION FK/62indexes/52CHECKs/17RV.
+Three bounded AGY runs stayed within observed scopes; Codex independent14cases,
+explicit SQL types/collation/requiredness fixes and review. D01–D04 signatures
+retained, all43FK lookup coverage verified under ADR-164. Missing rows remain
+missing; no default present/score; final_score only FINALIZED with complete
+NULL-safe submit/review/return/final bundles. No packages/SQL execution/migrations/
+services/routes/profile changes. TG04/TG05/current kind/Class/role/window/locks,
+atomic cohort publish/audit/half-up totals and live SQL/TX remain future gates.
+ADR-163 permits applying authorized Codex PASS. Next proposed D06 financial/
+audit/replay/counter mappings not started. Full P01/M0/V01 remain incomplete;
 no automatic scope for SQL/migrations/install/push/deploy/rest M0.
 
 ## Checkpoint code đầu — P02 applied/reverified PASS trên main

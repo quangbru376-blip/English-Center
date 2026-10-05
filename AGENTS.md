@@ -41,7 +41,12 @@ D04 continuation2026-10-05 completed/reviewed PASS/applied/reverified main e7411
 Class/StudentClassAssignment/Schedule mapping, full16tables/151columns/33FK/
 51indexes/46checks/14RV;440tests PASS/build0warnings0errors. Three AGY runs had
 zero observed scope violations; Codex independently tested/fixed/reviewed.
-See docs/plan/D04_TASK_CARD.md. Next proposed D05 is not started.
+See docs/plan/D04_TASK_CARD.md.
+D05 continuation2026-10-05 completed/reviewed PASS/applied/reverified main9e843b8:
+Attendance/Score/GradeReport mapping, full19tables/180columns/43FK/62indexes/
+52checks/17RV;454tests PASS/build0warnings0errors. Three AGY runs had zero
+observed scope violations; Codex independently tested/fixed/reviewed.
+See docs/plan/D05_TASK_CARD.md. Next proposed D06 is not started.
 Historical initial scope is retained in
 FIRST_CODE_HANDOFF; latest checkpoint and explicit current owner scope govern.
 Standing owner authority ADR-163: apply Codex-reviewed PASS stages already
