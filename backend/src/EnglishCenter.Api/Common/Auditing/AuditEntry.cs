@@ -42,6 +42,14 @@ public sealed class AuditEntry
             AuditPolicy.Project(action,entity,changes),occurredAt,operation,"MANDATORY",null);
     }
 
+    // Bootstrap has no pre-existing Account actor; no operator/email/credential snapshot.
+    internal static AuditEntry InitialAdmin(int accountId,int roleId,Guid operation,DateTimeOffset occurredAt)
+    {
+        if (accountId<=0 || roleId<=0) throw new ArgumentException("Invalid bootstrap reference.");
+        var details=new JsonObject { ["new"]=new JsonObject { ["roleId"]=roleId,["status"]="ACTIVE",["mustChangePassword"]=false } }.ToJsonString();
+        return new(null,"SYSTEM.ADMIN.BOOTSTRAP","Account",accountId.ToString(System.Globalization.CultureInfo.InvariantCulture),"SUCCESS",details,occurredAt,operation,"MANDATORY",null);
+    }
+
     public static AuditEntry Security(SecurityAuditKind kind,int? verifiedActorAccountId,bool success,
         Guid operation,DateTimeOffset occurredAt,string? ipAddress = null)
     {
