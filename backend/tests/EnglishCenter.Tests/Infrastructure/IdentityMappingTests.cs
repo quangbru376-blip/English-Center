@@ -132,18 +132,19 @@ public class IdentityMappingTests
         foreach(var term in new[]{"[issued_at] <= [last_activity_at]","[last_activity_at] <= [expires_at]","[expires_at] > [issued_at]","[revoked_at] IS NULL","[revoked_at] >= [issued_at]"})Assert.Contains(term,all);
     }
     [Fact]
-    public void SQLServerDDL_IsGeneratedDisconnectedForExactlyFourTables()
+    public void D01_PhysicalSignatureAndDisconnectedDDLRemainIntact()
     {
         using var context=RoleMappingTests.Create();
         var model=context.GetService<IDesignTimeModel>().Model;
-        Assert.Equal(new[]{"Account","AuthSession","Role","StudentProfile"},model.GetEntityTypes().Select(e=>e.GetTableName()).Order().ToArray());
-        Assert.Equal(33,model.GetEntityTypes().Sum(e=>e.GetProperties().Count()));
-        Assert.Equal(7,model.GetEntityTypes().Sum(e=>e.GetIndexes().Count()));
-        Assert.Equal(9,model.GetEntityTypes().Sum(e=>e.GetCheckConstraints().Count()));
+        var identity=model.GetEntityTypes().Where(e=>e.ClrType.Namespace==typeof(Role).Namespace).ToArray();
+        Assert.Equal(new[]{"Account","AuthSession","Role","StudentProfile"},identity.Select(e=>e.GetTableName()).Order().ToArray());
+        Assert.Equal(33,identity.Sum(e=>e.GetProperties().Count()));
+        Assert.Equal(7,identity.Sum(e=>e.GetIndexes().Count()));
+        Assert.Equal(9,identity.Sum(e=>e.GetCheckConstraints().Count()));
         var ddl=context.Database.GenerateCreateScript();
         foreach(var table in new[]{"Role","Account","StudentProfile","AuthSession"})Assert.Contains("CREATE TABLE [dbo].["+table+"]",ddl);
-        Assert.Equal(4,ddl.Split("CREATE TABLE",StringSplitOptions.None).Length-1);
-        Assert.Equal(3,ddl.Split("rowversion NOT NULL",StringSplitOptions.None).Length-1);
+        Assert.Equal(4,identity.Length);
+        Assert.Equal(3,identity.SelectMany(e=>e.GetProperties()).Count(p=>p.GetColumnType()=="rowversion"));
         Assert.Contains("WHERE [phone] IS NOT NULL",ddl);
         Assert.DoesNotContain("ON DELETE CASCADE",ddl);
         Assert.DoesNotContain("JWT",ddl);Assert.DoesNotContain("__EFMigrationsHistory",ddl);

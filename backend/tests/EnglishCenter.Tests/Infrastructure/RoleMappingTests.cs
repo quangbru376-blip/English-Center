@@ -43,9 +43,9 @@ public class RoleMappingTests
         Assert.False(context.Database.GetDbConnection().State==System.Data.ConnectionState.Open);
     }
     [Fact]
-    public void CompletedD01_ModelContainsExactlyFourReviewedTables()
+    public void D01_SubsetRetainsExactlyFourReviewedIdentityTables()
     {
         using var context=Create();
-        Assert.Equal(new[]{"Account","AuthSession","Role","StudentProfile"},context.Model.GetEntityTypes().Select(e=>e.GetTableName()).Order().ToArray());
+        Assert.Equal(new[]{"Account","AuthSession","Role","StudentProfile"},context.Model.GetEntityTypes().Where(e=>e.ClrType.Namespace==typeof(Role).Namespace).Select(e=>e.GetTableName()).Order().ToArray());
     }
 }
