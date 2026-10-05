@@ -40,14 +40,14 @@ internal sealed class SqlFixture : IAsyncDisposable
             .UseSqlServer("Server=lpc:.\\SQLEXPRESS;Database=EnglishCenter_D07_20261005;Integrated Security=True;Encrypt=True;TrustServerCertificate=True", sql => sql.UseCompatibilityLevel(160)).Options);
     }
 
-    internal static async Task<SqlFixture> CreateAsync(decimal generalWeight = 50m, decimal lessonWeight = 50m, string generalKind = "GENERAL")
+    internal static async Task<SqlFixture> CreateAsync(decimal generalWeight = 50m, decimal lessonWeight = 50m, string generalKind = "GENERAL", System.Data.IsolationLevel isolation = System.Data.IsolationLevel.ReadCommitted)
     {
         var fixture = new SqlFixture();
         try
         {
             await fixture.Context.Database.OpenConnectionAsync(TestContext.Current.CancellationToken);
             Assert.Equal("EnglishCenter_D07_20261005", fixture.Context.Database.GetDbConnection().Database);
-            fixture.transaction = await fixture.Context.Database.BeginTransactionAsync(TestContext.Current.CancellationToken);
+            fixture.transaction = await fixture.Context.Database.BeginTransactionAsync(isolation, TestContext.Current.CancellationToken);
             await fixture.LockAsync("EC:BANDSET");
             await fixture.SetupAsync(generalWeight, lessonWeight, generalKind);
             return fixture;
