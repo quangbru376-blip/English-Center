@@ -1,32 +1,28 @@
 # Current State
 
-Last updated: 2026-10-04
+Last updated: 2026-10-05
 
 ## Current task
 
-Owner-requested three-family batch P07→P08→D01 completed2026-10-04, reviewed
-PASS and applied/reverified on main under ADR-163. Final code mainf6fd902:
-locked restore/build0warnings0errors/full400tests PASS/0fail/0skip.
+D02 authorized continuation2026-10-05 completed/reviewed PASS and applied under
+ADR-163 as main5a4ba3d (reviewed manager ea2cef9). Locked restore/build0warnings/
+0errors/full410tests PASS/0failed/0skipped; backend tree matches review.
+See [D02 task card/evidence](plan/D02_TASK_CARD.md).
 
-- [P07](plan/P07_TASK_CARD.md): safe error registry/middleware and strict JSON
-  binding/adapters; main653e1cc/5a49afa,70new tests. No production test routes.
-- [P08](plan/P08_TASK_CARD.md): pinned offline SecLists15310entries/license/hash,
-  raw Unicode policy, IdentityV3/SHA512220k hasher,32char secure generator and
-  eager fail-closed startup/DI; mainf80a5d2/2d3c9c8,33new tests. Published missing
-  corpus fails before listening; sampled hash mean113.4ms, not a load result.
-- [D01](plan/D01_TASK_CARD.md): SQLServer EF10.0.4 mapping4tables/33columns,
-  3RV/3NO ACTION FK/7indexes/9CHECKs; main210c5ad/e7ca9b4/f6fd902,10new tests.
-  Metadata/DDL generated disconnected, no SQL execution or migrations.
+D02 adds Course/Band/TrainingProgram/ScoreComponentConfig entities/mappings and
+10independent metadata/DDL tests. Full EF model8tables/56columns/8PK/6required
+NO ACTION FK/16indexes/19CHECKs/7rowversions. D01 exact identity signature retained.
+Four bounded AGY runs SUCCESS, zero observed read/write violations; Codex fixed
+Course trailing-padding guard and Program table/identity before PASS. No packages,
+SQL execution/migrations/seeds/connection/DI/services/endpoints added.
 
-Initial P07 cap failure rejected. D01 final AGY run rejected for unauthorized
-read attempts; none of its output applied. Codex independently completed the
-mapping in a fresh manager tree. Successful AGY/manager snapshots retained.
-No unresolved blocker within these three families. Full transport/auth/CSRF/
-credential delivery/TX/revocation/real SQL enforcement remain future integration
-checks, not application readiness. P01 LOCAL_DEV/DB/keys/deadlines still incomplete.
-Next proposed family D02 Course/Band/TrainingProgram/ScoreComponentConfig requires
-its own bounded authorized continuation; not started. No push/deploy/runtime
-installation/project DB/SQL/migration operations occurred in this batch.
+Earlier P02/P03/P05/P04/P06/P07/P08/D01 remain applied PASS. Prior three-family
+batch mainf6fd902/400tests is historical; rejected D01 overread output not applied.
+Original worker/manager evidence trees retained. No unresolved D02 blocker.
+Real-engine constraints/TX/freeze/seed/auth/CSRF/readiness remain integration gates;
+full P01 LOCAL_DEV/DB/keys/deadlines and M0/V01 incomplete.
+Next proposed D03 Registration/EntrySession/Attempt/Booking/BandAssignment,
+not started. No installation/project DB/SQL/migration/push/deployment operations.
 
 ### Applied P02 checkpoint
 

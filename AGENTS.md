@@ -27,7 +27,11 @@ CURRENT_STATE and docs/plan/P07_TASK_CARD.md, P08_TASK_CARD.md, D01_TASK_CARD.md
 P07 supplies safe error/binding primitives; P08 pinned offline/raw credential
 helpers; D01 four-table EF mapping without SQL execution or migrations. One
 D01 AGY overread run rejected; Codex independently completed the final mappings.
-Next proposed D02 is not started. Historical initial scope is retained in
+On2026-10-05 D02 continuation completed/reviewed PASS/applied/reverified main5a4ba3d:
+Course/Band/TrainingProgram/ScoreComponentConfig mapping, full8tables/56columns,
+410tests PASS/build0warnings0errors. Four AGY runs had zero observed scope violations;
+Codex fixed/reviewed and independently tested. See docs/plan/D02_TASK_CARD.md.
+Next proposed D03 is not started. Historical initial scope is retained in
 FIRST_CODE_HANDOFF; latest checkpoint and explicit current owner scope govern.
 Standing owner authority ADR-163: apply Codex-reviewed PASS stages already
 authorized for implementation to main without asking again. Report issues

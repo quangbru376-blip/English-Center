@@ -1,9 +1,10 @@
 # Handoff thực thi đầu tiên — P01 → P02
 
-Historical initial scope below. Latest: owner-authorized P07/P08/D01 batch
-applied/reverified PASS, mainf6fd902 full400tests PASS; see HANDOFF.md and these
-three task cards/ADR-163. D01 mapping only; next proposed D02 not started.
-No auto-start of remaining tasks/SQL/migrations/deployment.
+Historical initial scope below. Latest2026-10-05: D02 applied/reverified PASS,
+main5a4ba3d full410tests PASS; see HANDOFF.md/D02_TASK_CARD.md/ADR-163.
+P07/P08/D01 prior batch and earlier stages remain applied PASS. Eight-table EF
+mapping only; next proposed D03 not started. No automatic start of remaining
+M0/SQL/migrations/installation/push/deployment.
 
 Cập nhật04/10/2026. Repository: `C:\Study\SOEN\main_workplace`.
 Owner yêu cầu handoff để chat kế tiếp hiểu ngữ cảnh và viết giai đoạn code đầu

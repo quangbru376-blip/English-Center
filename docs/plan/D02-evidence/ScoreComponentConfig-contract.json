@@ -1,0 +1,32 @@
+{
+  "mode": "edit",
+  "objective": "Implement ONLY ScoreComponentConfig plain Domain/Academics entity and its EF configuration, exactly the D02_TASK_CARD contract. Read the COMPLETE D02 card, COMPLETE backend skill and COMPLETE routing policy using view_file BEFORE editing. The manager already read repository instructions/memory/baseline. This worker is authorized to read ONLY those THREE context files and its TWO allowed output files if present. Do not view AGENTS, memory, baseline, links or any other file. Do not list/search/scan or run commands/network/MCP/browser/subagents. Stop instead of widening scope. Apply card compatibility overrides: mapping only, no migrations, no packages, SQLServer types, NO ACTION. Codex independently assembles/tests/reviews.",
+  "allowed_paths": [
+    "backend/src/EnglishCenter.Api/Domain/Academics/ScoreComponentConfig.cs",
+    "backend/src/EnglishCenter.Api/Infrastructure/Configurations/ScoreComponentConfigConfiguration.cs"
+  ],
+  "forbidden_paths": [
+    ".env",
+    "**/.env*",
+    "**/packages.lock.json",
+    "**/*.csproj",
+    "**/Migrations/**",
+    "docs/**",
+    ".agents/**",
+    "AGENTS.md"
+  ],
+  "acceptance_criteria": [
+    "Exactly two allowed production files implementing only ScoreComponentConfig accepted physical contract in D02 card.",
+    "Read all three context files completely before editing; no reads outside exact allowlist, no commands/network/tests.",
+    "No extra indexes/defaults/shadow columns/seeds/migrations/DI/services/API; explicit precision/length/nullability/RV/generation/checks."
+  ],
+  "context_files": [
+    "docs/plan/D02_TASK_CARD.md",
+    ".agents/skills/backend-clean-code/SKILL.md",
+    "docs/plan/SKILL_ROUTING.md"
+  ],
+  "max_changed_files": 2,
+  "max_diff_lines": 220,
+  "model": "",
+  "timeout": "15m"
+}

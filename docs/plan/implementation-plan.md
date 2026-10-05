@@ -1,17 +1,16 @@
 # Implementation planning — discussion draft
 
-Updated2026-10-04: owner-requested P07→P08→D01 batch complete, reviewed PASS,
-applied/reverified final code mainf6fd902. Locked restore/build0warnings0errors/
-400tests PASS/0fail/0skip. Cards: [P07](P07_TASK_CARD.md), [P08](P08_TASK_CARD.md),
-[D01](D01_TASK_CARD.md). Error/binding primitives, pinned offline/raw credential
-helpers and four-table EF mapping implemented. D01 has no SQL execution/migrations;
-real auth/CSRF/credential workflows/SQL constraints/readiness remain integration gates.
-Rejected AGY overread output never applied; final mapping completed independently
-by Codex in a fresh tree. Earlier P02/P03/P05/P04/P06 PASS remain applied.
-ADR-163 permits autoapply after Codex PASS within owner-authorized stages.
-Next proposed D02 is not started. No remaining work in this three-family batch;
-rest M0/SQL/migrations/runtime installation/push/deployment outside this request.
+Updated2026-10-05: D02 owner-authorized continuation complete/reviewed PASS,
+applied/reverified main5a4ba3d. Locked restore/build0warnings0errors/full410tests
+PASS/0fail/0skip. [D02 card/evidence](D02_TASK_CARD.md): four academic configuration
+mappings, full EF model8tables/56columns. Four AGY runs stayed within observed
+read/write scopes; Codex independent tests/fixes/review. Previous P02/P03/P05/
+P04/P06/P07/P08/D01 remain applied PASS. No SQL execution/migrations/new packages/
+services/endpoints. Real SQL/auth/TX/readiness and full P01 profile remain later.
+ADR-163 permits autoapply after Codex PASS within authorized stages. Next proposed
+D03 not started; no automatic scope for SQL/migrations/install/push/deploy/rest M0.
 M0/V01 incomplete.
+
 ## Authority and baseline
 
 Owner explicitly requested discussing the coding plan after E01–E05 acceptance.

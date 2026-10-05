@@ -97,7 +97,7 @@ protect first-use freeze. Metadata does not prove those workflow invariants.
 
 ## Codex verification / skill_verification
 
-Pending. Independently verify exact columns, types/nullability, ID/RV generation,
+Completed; results below. Independently verified exact columns, types/nullability, ID/RV generation,
 no shadow/seeds/defaults beyond DRAFT, exact indexes/filters/collation, required
 FKs NO ACTION and disconnected SQLServer DDL; retain all D01 semantics. Test
 literal case/padding guards and range predicates as metadata, not live SQL.
@@ -105,3 +105,57 @@ Full model expected8tables/56columns/7RV/6FK, no migrations/history/cascade.
 Locked restore/build/tests in reviewed detached manager tree then main; package
 locks and source tree equality. Audit worker receipts/tool events/read ranges.
 Reject any unauthorized read or write; never apply rejected worker output.
+
+## Review PASS — detached manager ea2cef9,2026-10-05
+
+skill_verification: all four SUCCESS/exit0 runs have9observed tool operations
+(7reads/2writes), zero read/write/cap violations. Three full context files viewed
+before first write in each run; headers/step indices/hashes and compact audits
+retained in D02-evidence. No observed commands/network/extra reads. Tool audit is
+not an OS read sandbox or proof of unobserved activity. Output files inspected
+by Codex against canonical dictionary/ADR079 and compatibility policy.
+
+| Object | AGY run | Runner diff lines |
+| --- | --- | --- |
+| Course | 9d31a1b8-e03 | 91 |
+| Band | 3982cfb4-f9a | 71 |
+| TrainingProgram | b4c9245b-078 | 114 |
+| ScoreComponentConfig | ccb4b13a-3ca | 102 |
+
+Original trees under %TEMP%/codex-antigravity-worker/worktrees/main_workplace-<run>;
+manager %TEMP%/codex-d02/manager. Dispatch base15631d4; no rejected D02 run.
+Manager corrections before PASS: training_programs→TrainingProgram exact table;
+explicit Program IDENTITY(1,1)/Course int; Course code adds
+DATALENGTH([course_code]) = LEN([course_code]) to forbid trailing padding that
+varchar LIKE may ignore ([Microsoft LIKE](https://learn.microsoft.com/en-gb/sql/t-sql/language-elements/like-transact-sql?view=sql-server-ver15)).
+These supersede initial worker output; no baseline change. Independent test
+initially expected Unicode N'DRAFT' but status is varchar; corrected expected
+SQL literal 'DRAFT'. No production change for that test fix.
+
+Codex independent10new tests plus adjusted D01 subset assertions: full410PASS,
+0failed/0skipped; locked restore/build0warnings0errors. Exact model8tables/
+56columns/8PK/6required NO ACTION FK/16indexes/19CHECKs/7generated RV. D02 adds
+23columns/4PK/3FK/9indexes/10CHECKs/4RV; identity slice remains33cols/7IX/9checks.
+Only Program has DRAFT default among D02 tables; no price/score/weight/kind/course
+state defaults, seeds/shadows/version flags. Decimal(18,0)/(5,2), name CI_AS_SC.
+Filtered unique FINAL_EXAM is maximum one; total100/exactly one/freeze/raw input
+precision are future service/SQL integration checks, not claimed here. Band
+technical label uses printable ASCII without Course uppercase pattern.
+
+Review scope12backend files only,603insertions/9deletions; no package/lock/project
+changes, Program.cs/DI/routes untouched; diff check clean. No SQL connections
+opened; DDL generated disconnected, no migrations/triggers/DB operations.
+Applicable scope/security/schema/backend checks PASS. Endpoint/UI/workflow/
+migration/real SQL checks N/A to this mapping task and remain future gates.
+
+Applied under ADR-163 as main5a4ba3df9c386f3d229f0e8207c2005a1bba3234.
+Reviewed manager ea2cef9546d4750a8175c7089ff6c121a64c4aab and main have identical
+backend Git tree4c555c9d2fd9a74267a29a2ba81fb23e65a03c8e. Main locked restore/
+build0warnings0errors/full410tests PASS/0fail/0skip reverified. Prior400tests
+retain PASS; no runtime install/push/deploy. Original worker/manager trees retained.
+Next proposed D03, not started; no authority for SQL execution/migrations/rest M0.
+
+Owner explanation: these classes describe four configuration tables; EF metadata
+sets their columns/keys/checks/indexes. Future services handle activation/freeze;
+future authorized SQL integration proves real enforcement. This card supplies
+scope-specific review notes; no API/UI documentation changes apply here.

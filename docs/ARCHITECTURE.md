@@ -2,22 +2,23 @@
 
 ## Current implemented architecture
 
-Latest checkpoint2026-10-04: P07/P08/D01 applied/reverified PASS, final mainf6fd902
-locked restore/build0warnings0errors/400tests PASS. P07 adds a fixed Vietnamese
-error registry/envelope/global middleware and strict JSON allowlist/presence/
-duplicate/type binding adapters over P04–P06; no public test/business endpoints.
-Auth/CSRF/transport/live-state precedence is still a later integration obligation.
-P08 eagerly validates shipped offline SecLists/license SHA256 before host build,
-registers raw15–128codepoint policy/IdentityV3 SHA512220k hasher/32ASCII CSPRNG
-generator in DI. Password/case/spaces/NFC remain untouched; no plaintext storage
-or secret logs, credential workflows/delivery/session implementation remain later.
-D01 adds plain Domain/Identity entities and a SQLServer EF10.0.4 DbContext with
-four explicit configurations: Role/Account/StudentProfile/AuthSession,33columns,
-3rowversions/NO ACTION FKs,7indexes/9checks. Context is not wired to an invented
-connection/profile; no project DB/migration/SQL execution. Metadata/DDL generated
-disconnected does not prove real-engine constraints/concurrency/locks/readiness.
-See [P07](plan/P07_TASK_CARD.md), [P08](plan/P08_TASK_CARD.md),
-[D01](plan/D01_TASK_CARD.md); original reviewed/rejected/manager trees retained.
+Latest checkpoint2026-10-05: D02 applied/reverified PASS main5a4ba3d;
+locked restore/build0warnings0errors/full410tests PASS. Domain/Academics adds
+Course/Band/TrainingProgram/ScoreComponentConfig and four explicit configurations
+registered in the existing DbContext. Full model8tables/56columns/8PK/6required
+NO ACTION FK/16indexes/19CHECKs/7rowversions; identity mapping stays intact.
+Course price decimal(18,0), Band threshold/component weight decimal(5,2);
+Program DRAFT default, unique Course/Band and component names, filtered maximum
+one FINAL_EXAM. No frozen flag or workflow enforcement invented. Component
+names use CI_AS_SC. Precision/NFC/full-set activation/freeze remain service/TX/
+trigger obligations. [D02 task card](plan/D02_TASK_CARD.md).
+
+P07 safe error/strict JSON primitives and P08 eager pinned offline/raw credential
+helpers remain applied PASS. P08 registers password policy/IdentityV3 SHA512220k/
+32ASCII CSPRNG generator; no plaintext storage/logs or credential workflow yet.
+DbContext is not wired to a fabricated connection/profile; no DB/migrations/SQL
+execution. Disconnected metadata/DDL does not prove real constraints/locks/auth/
+CSRF/readiness. Original reviewed worker/manager trees retained.
 
 The checkpoints below describe their original stage, before these additions.
 

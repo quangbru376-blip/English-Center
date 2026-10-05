@@ -10,18 +10,16 @@
 
 ## Next
 
-- P07/P08/D01 owner-authorized batch complete/reviewed PASS/applied main,
-  finalf6fd902 locked restore/build0warnings0errors/400tests PASS. Cards:
-  [P07](plan/P07_TASK_CARD.md), [P08](plan/P08_TASK_CARD.md), [D01](plan/D01_TASK_CARD.md).
-  D01 scope is mapping only; real SQL/migrations/full readiness remain later.
-- Next proposed D02 T05–T08 Course/Band/TrainingProgram/ScoreComponentConfig:
-  prepare a bounded card, backend skill context and dependency checks when
-  owner authorizes continuation. Not started; no remaining work in this batch.
-  Auto-apply reviewed PASS authorized stages under ADR-163.- [P02 task card](plan/P02_TASK_CARD.md):
-  P01 P02 prerequisites complete; reviewed d9eb194 applied to main as df7cd9a
-  with explicit owner consent. Main locked restore/build0warnings/0errors,
-  discovery10/tests10pass; source and lock hashes unchanged. Do not start
-  rest M0/SQL/runtime install/deployment from this application permission.
+- D02 complete/reviewed PASS/applied main5a4ba3d, locked restore/build clean/
+  full410tests PASS. [Card/evidence](plan/D02_TASK_CARD.md): four academic
+  configuration mappings; full model8tables/56columns. No SQL/migrations.
+- Next proposed D03 T09–T13: prepare bounded object contracts with composite/cycle
+  relationships and independent tests when continuing. Not started.
+- P02/P03/P05/P04/P06/P07/P08/D01 remain applied PASS. No D02 blocker;
+  real SQL/TX/auth/readiness and full LOCAL_DEV remain later gates.
+  Auto-apply Codex-reviewed PASS authorized stages under ADR-163.
+- [P02 task card](plan/P02_TASK_CARD.md): original P01 prerequisite/P02 checkpoint
+  applied df7cd9a after owner consent; latest checkpoint above governs.
 
 SQL assessment04/10/2026 completed: installed SQL2025 Express17.0.1000.7
 retained by ADR-162; see [assessment](plan/SQL_INSTANCE_ASSESSMENT.md).
