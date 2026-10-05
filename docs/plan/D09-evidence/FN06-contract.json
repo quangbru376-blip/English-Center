@@ -1,0 +1,30 @@
+{
+  "mode": "edit",
+  "objective": "Implement ONLY dbo.ufn_InvoiceDebtFlags in exact allowed SQL file. VIEW COMPLETE the three context files before editing; obey explicit read allowlist and accepted object behavior in task card. No commands/search/scans/network/SQL/Git/MCP/other reads. SQL Server160, one CREATE OR ALTER object, no GO/USE/grants/seeds/migrations. Codex validates and reviews.",
+  "allowed_paths": [
+    "backend/src/EnglishCenter.Api/Infrastructure/Sql/D09/FN06.sql"
+  ],
+  "forbidden_paths": [
+    "AGENTS.md",
+    "docs/**",
+    ".agents/**",
+    "**/*.csproj",
+    "**/packages.lock.json",
+    "**/Migrations/**",
+    ".env"
+  ],
+  "acceptance_criteria": [
+    "Exactly one authorized SQL file changed, one object, no forbidden operations.",
+    "Complete three context reads before first write, no reads beyond context_files and output.",
+    "Inline TVF @status varchar(16),@dueDate date,@todayVn date -> exactly1row isOverdue bit,daysOverdue int. Only UNPAID due<today true/DATEDIFF(day,due,today); else false0 including due equality, PAID,CANCELLED. No penalties/state/time mutation. All supplied inputs nonnull contract."
+  ],
+  "context_files": [
+    "docs/plan/D09_FN06_WORKER.md",
+    ".agents/skills/backend-clean-code/SKILL.md",
+    "docs/plan/SKILL_ROUTING.md"
+  ],
+  "max_changed_files": 1,
+  "max_diff_lines": 220,
+  "model": "",
+  "timeout": "15m"
+}

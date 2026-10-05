@@ -1,0 +1,30 @@
+{
+  "mode": "edit",
+  "objective": "Implement ONLY dbo.ufn_EffectiveEntryTestState in exact allowed SQL file. VIEW COMPLETE the three context files before editing; obey explicit read allowlist and accepted object behavior in task card. No commands/search/scans/network/SQL/Git/MCP/other reads. SQL Server160, one CREATE OR ALTER object, no GO/USE/grants/seeds/migrations. Codex validates and reviews.",
+  "allowed_paths": [
+    "backend/src/EnglishCenter.Api/Infrastructure/Sql/D09/FN01.sql"
+  ],
+  "forbidden_paths": [
+    "AGENTS.md",
+    "docs/**",
+    ".agents/**",
+    "**/*.csproj",
+    "**/packages.lock.json",
+    "**/Migrations/**",
+    ".env"
+  ],
+  "acceptance_criteria": [
+    "Exactly one authorized SQL file changed, one object, no forbidden operations.",
+    "Complete three context reads before first write, no reads beyond context_files and output.",
+    "Scalar @status varchar(16),@startAt datetime2(3),@asOfUtc datetime2(3) -> varchar(16). CANCELLED first unchanged; now>=start CLOSED else stored status. Inputs nonnull contract, no GETDATE/state mutations."
+  ],
+  "context_files": [
+    "docs/plan/D09_FN01_WORKER.md",
+    ".agents/skills/backend-clean-code/SKILL.md",
+    "docs/plan/SKILL_ROUTING.md"
+  ],
+  "max_changed_files": 1,
+  "max_diff_lines": 220,
+  "model": "",
+  "timeout": "15m"
+}

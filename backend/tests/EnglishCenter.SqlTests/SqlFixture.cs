@@ -40,7 +40,7 @@ internal sealed class SqlFixture : IAsyncDisposable
             .UseSqlServer("Server=lpc:.\\SQLEXPRESS;Database=EnglishCenter_D07_20261005;Integrated Security=True;Encrypt=True;TrustServerCertificate=True", sql => sql.UseCompatibilityLevel(160)).Options);
     }
 
-    internal static async Task<SqlFixture> CreateAsync()
+    internal static async Task<SqlFixture> CreateAsync(decimal generalWeight = 50m, decimal lessonWeight = 50m, string generalKind = "GENERAL")
     {
         var fixture = new SqlFixture();
         try
@@ -49,7 +49,7 @@ internal sealed class SqlFixture : IAsyncDisposable
             Assert.Equal("EnglishCenter_D07_20261005", fixture.Context.Database.GetDbConnection().Database);
             fixture.transaction = await fixture.Context.Database.BeginTransactionAsync(TestContext.Current.CancellationToken);
             await fixture.LockAsync("EC:BANDSET");
-            await fixture.SetupAsync();
+            await fixture.SetupAsync(generalWeight, lessonWeight, generalKind);
             return fixture;
         }
         catch
@@ -72,7 +72,7 @@ internal sealed class SqlFixture : IAsyncDisposable
 
     private async Task SaveAsync() => await Context.SaveChangesAsync(TestContext.Current.CancellationToken);
 
-    private async Task SetupAsync()
+    private async Task SetupAsync(decimal generalWeight, decimal lessonWeight, string generalKind)
     {
         var role = new Role { RoleCode = "Teacher", RoleName = "SQL fixture" };
         Context.Roles.Add(role); await SaveAsync();
@@ -86,8 +86,8 @@ internal sealed class SqlFixture : IAsyncDisposable
         Context.AddRange(Program, UnusedProgram); await SaveAsync();
         await LockAsync($"EC:PROGRAM:{Program.ProgramId}");
         await LockAsync($"EC:PROGRAM:{UnusedProgram.ProgramId}");
-        General = new ScoreComponentConfig { ProgramId = Program.ProgramId, ComponentName = "General", Kind = "GENERAL", Weight = 50 };
-        Lesson = new ScoreComponentConfig { ProgramId = Program.ProgramId, ComponentName = "Lesson", Kind = "LESSON", Weight = 50 };
+        General = new ScoreComponentConfig { ProgramId = Program.ProgramId, ComponentName = "General", Kind = generalKind, Weight = generalWeight };
+        Lesson = new ScoreComponentConfig { ProgramId = Program.ProgramId, ComponentName = "Lesson", Kind = "LESSON", Weight = lessonWeight };
         Context.AddRange(General, Lesson); await SaveAsync();
         Class = new Class { ProgramId = Program.ProgramId, TeacherId = Teacher.AccountId, ClassCode = "FIXTURE1", Status = "ONGOING", MaxSize = 10 };
         OtherClass = new Class { ProgramId = Program.ProgramId, TeacherId = Teacher.AccountId, ClassCode = "FIXTURE2", Status = "OPEN", MaxSize = 10 };

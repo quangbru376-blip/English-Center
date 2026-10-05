@@ -15,3 +15,8 @@ checks five enabled triggers, table/event matches and fixture rollback. Migratio
 are explicit offline-generated/reviewed artifacts; no startup auto-migration or
 runtime DB configuration is added. Never edit an applied versioned SQL resource;
 make a new reviewed migration/resource version for future changes.
+
+D09Schema.sql verifies all six UDF signatures and the three-migration chain. The
+explicit SQL suite covers guards/functions/full live column-model agreement.
+Runtime callers, roles/grants, complete service transactions and full readiness
+remain later tasks; this runner does not configure an application connection.

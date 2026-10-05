@@ -183,6 +183,8 @@ public class TriggerTests
     [InlineData("band",51021)]
     [InlineData("attendance",51031)]
     [InlineData("score",51041)]
+    [InlineData("attendance-program",51031)]
+    [InlineData("score-program",51041)]
     public async Task MissingPreheldGateFailsClosed(string kind, int error)
     {
         await using var f = await SqlFixture.CreateAsync();
@@ -192,7 +194,7 @@ public class TriggerTests
             "program" => $"UPDATE dbo.TrainingProgram SET program_name=N'Changed' WHERE program_id={f.Program.ProgramId}",
             "component" => $"UPDATE dbo.ScoreComponentConfig SET weight=weight WHERE component_id={f.General.ComponentId}",
             "band" => $"UPDATE dbo.Band SET min_score=min_score WHERE band_id={f.Band.BandId}",
-            "attendance" => $"INSERT dbo.Attendance(class_assignment_id,schedule_id,present,entered_by,entered_at) VALUES ({f.Assignment.ClassAssignmentId},{f.Schedule.ScheduleId},1,{f.Teacher.AccountId},{SqlFixture.Instant})",
+            "attendance" or "attendance-program" => $"INSERT dbo.Attendance(class_assignment_id,schedule_id,present,entered_by,entered_at) VALUES ({f.Assignment.ClassAssignmentId},{f.Schedule.ScheduleId},1,{f.Teacher.AccountId},{SqlFixture.Instant})",
             _ => $"INSERT dbo.Score(class_assignment_id,component_id,schedule_id,score_value,entered_by,entered_at) VALUES ({f.Assignment.ClassAssignmentId},{f.General.ComponentId},NULL,50,{f.Teacher.AccountId},{SqlFixture.Instant})"
         };
         await f.ExpectViolationAsync(error, sql);
@@ -240,6 +242,19 @@ public class TriggerTests
         Assert.Equal(-1,Convert.ToInt32(await command.ExecuteScalarAsync(TestContext.Current.CancellationToken)));
         await f.ReleaseAsync(resource);
         Assert.True(Convert.ToInt32(await command.ExecuteScalarAsync(TestContext.Current.CancellationToken))>=0);
+    }
+
+    [Theory]
+    [InlineData("valid")]
+    [InlineData("missing")]
+    [InlineData("lesson")]
+    [InlineData("wrong-class")]
+    public async Task FinalExamComponentAcceptsOnlyMatchingCurrentExam(string scenario)
+    {
+        await using var f=await SqlFixture.CreateAsync(generalKind:"FINAL_EXAM");
+        int? schedule=scenario switch {"missing"=>null,"lesson"=>f.Schedule.ScheduleId,"wrong-class"=>f.OtherSchedule.ScheduleId,_=>f.Exam.ScheduleId};
+        FormattableString sql=$"INSERT dbo.Score(class_assignment_id,component_id,schedule_id,score_value,entered_by,entered_at) VALUES ({f.Assignment.ClassAssignmentId},{f.General.ComponentId},{schedule},50,{f.Teacher.AccountId},{SqlFixture.Instant})";
+        if(scenario=="valid") await f.ExecuteAsync(sql);else await f.ExpectViolationAsync(51042,sql);
     }
 
     internal static async Task InsertScoreAsync(SqlFixture f) => await f.ExecuteAsync($"INSERT dbo.Score(class_assignment_id,component_id,schedule_id,score_value,entered_by,entered_at) VALUES ({f.Assignment.ClassAssignmentId},{f.General.ComponentId},NULL,50,{f.Teacher.AccountId},{SqlFixture.Instant})");
