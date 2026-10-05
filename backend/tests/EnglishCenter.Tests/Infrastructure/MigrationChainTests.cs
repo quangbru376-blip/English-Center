@@ -12,7 +12,7 @@ public class MigrationChainTests
     private static Migration Initial(EnglishCenterDbContext context)
     {
         var assembly = context.GetService<IMigrationsAssembly>();
-        return assembly.CreateMigration(Assert.Single(assembly.Migrations).Value, context.Database.ProviderName!);
+        return assembly.CreateMigration(Assert.Single(assembly.Migrations, m => m.Key.EndsWith("_InitialSchema", StringComparison.Ordinal)).Value, context.Database.ProviderName!);
     }
 
     [Fact]

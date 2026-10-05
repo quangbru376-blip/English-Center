@@ -12,4 +12,5 @@
 
 <ItemGroup><Content Remove="Resources/PasswordBlocklist/**" /><None Remove="Resources/PasswordBlocklist/**" /><Content Include="Resources/PasswordBlocklist/**" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest" /></ItemGroup>
 <ItemGroup><PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="10.0.4" /><PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="10.0.4"><PrivateAssets>all</PrivateAssets></PackageReference></ItemGroup>
+<ItemGroup><EmbeddedResource Include="Infrastructure/Sql/**/*.sql" /></ItemGroup>
 </Project>
