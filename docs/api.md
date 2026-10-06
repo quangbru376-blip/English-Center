@@ -74,3 +74,32 @@ whole supplied intent/manifests/expected absence, numeric/composite set ordering
 ordered weekly candidates and omitted/null semantics follow accepted E04. Registry
 metadata does not confer current rights. No T23/completion/lookup/replay endpoint,
 no secret/body/hash logging or plaintext persistence; R02/R03 remain unstarted.
+
+
+## R02/R03 explicit Admin pilot — 2026-10-06
+
+Implementation is available through explicit adapters; default Program remains unmounted.
+All three paths require live NORMAL Admin authority and no-store. Unsafe requests
+require framework CSRF and accepted Origin before detailed validation.
+
+| Method/path | Request | Response |
+| --- | --- | --- |
+| GET /api/v1/admin/accounts/{id} | Positive canonical ID; no body/query |200 exact AccountAdminView12fields, coherent SNAPSHOT plus final live authority; missing404. |
+| POST /api/v1/admin/accounts/{id}/lock | Strict Idempotency-Key UUID; body only expectedVersions.account exact8byte RV |200 current AccountAdminCommandResult account+operationId after atomic TX13 commit. |
+| GET /api/v1/admin/command-results/{requestId}?action=... | Strict UUID and single canonical action selector; no body/other query |200 SafeCommandCompletion4fields outcome/operationId/resultMode/target; unconfirmed404. |
+
+Lock ACTIVE→LOCKED, self/last-active protection, security version increment/all-own-SID
+revocation/mandatory audit/completion are atomic. No role/profile/hash/temp/throttle
+edits or new credentials. Matching active replay bypasses old mutation RV/state and
+returns current authorized view with old operation; no additional audit/effects.
+Different intent409 IDEMPOTENCY_CONTENT_MISMATCH only after stored-target access.
+Expired retained command key409 CONFLICT; lookup absent/not-caller/expired/out-of-scope
+404 RESULT_NOT_CONFIRMED does not prove rollback. No auto-retry or new-key recovery.
+
+API014 recognizes exact six ADMIN.* selectors; this does not implement other Admin
+mutations. Create/reset markers expose SECRET_RESULT_UNAVAILABLE and accountId only.
+R02 reusable55action target/mode codec and six lookup allowlists need mandatory live
+domain-scope callers; other modules/routes remain deferred. No response/PII/secret/
+body snapshot, no pending/failed status, no purge/overwrite. SQL execution evidence
+is rollback-only; owned COMMIT wrappers source-reviewed with explicit HTTP fixture
+commit seams. Runtime/profile/principals/full readiness and committed stress deferred.

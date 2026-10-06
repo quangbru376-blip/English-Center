@@ -10,9 +10,10 @@
 
 ## Next
 
-- Owner requested R02→R03 continuation2026-10-06. Concrete task/worker contracts
-  prepared; pending exact new external payload and rollback T23/Admin fixture
-  consent. No worker/SQL/code yet. See R02/R03_TASK_CARD. No later U/restM0.
+- R02→R03 owner-approved scope reviewed PASS2026-10-06:1386tests/buildclean.
+  Ready for ADR163 main apply/reverification. Explicit Admin007/010/014 plus
+  completion protocol; default Program unmounted. See cards/evidence.
+- Next U02→U01 unstarted; runtime/profile/keys/login principals remain deferred.
 
 - D07→D08→D09 owner batch complete/reviewed PASS/applied/reverified code maina7561dd;
   build clean/481unit+102SQL PASS. Cards/evidence in docs/plan/D07/D08/D09.
@@ -33,7 +34,7 @@
   session hooks remain explicit/unmounted; production profile/principal/full readiness deferred.
 - A08→R01 owner-approved scope reviewed PASS2026-10-06:733unit/HTTP+462SQL=1195PASS,
   buildclean; applied/reverified code main3b46460 under ADR163. API004 and disconnected
-  registry55/schema-aware C1 only; no runtime/T23. Next R02→R03 unstarted.
+  registry55/schema-aware C1 only; no runtime/T23 at that checkpoint. R02→R03 now reviewed above.
   Real login/Windows-linked demo users and runtime/schema/maintenance bindings
   remain operator-profile prerequisites; WITHOUT LOGIN tests do not prove login auth.
 - Isolated EnglishCenter_D07_20261005 retained,160/collation/snapshotON;24tables/

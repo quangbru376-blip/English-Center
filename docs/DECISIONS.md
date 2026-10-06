@@ -4489,3 +4489,23 @@ No live-state filtering/RV comparison during digest, T23 storage/lookups or work
 Codex corrects worker buffer placement and independently tests; skills grant no extra
 scope. Only existing isolated DB, rolled-back four fixture users/DENY/regression drift;
 no schema/profile/principal/package/runtime/deployment authority opened. R02/R03 deferred.
+
+## ADR-173 — R02 completion protocol and first Admin lock caller
+
+Implemented2026-10-06 under owner-approved R02→R03 scope; no product decision changed.
+Request applock uses exact caller/action/lowercase UUID partition, Exclusive/Transaction/
+public and positive finite timeout; all negative results abort with accepted503/500.
+T23 append-only completion stores exact registry safe references, digest/operation/
+UTCms/exact24h expiry. Current stored-target read authority precedes digest mismatch.
+R03 discovers request/stored IDs only to prelock a complete ascending Account set after
+request/ADMINSET, then locks binary SIDs individually; discovery grants no authority.
+Changed route key intent returns409 mismatch after current stored-target authority,
+not false404 or new-target RV check. Malformed persisted reference fails closed after
+live proof. Admin detail uses short SNAPSHOT data buffering and a separate final live
+authorization transaction; current-session reads/replay/lookup never renew activity.
+New lock activity is an explicit same-TX A06 hook. Self/last-active/RV/state/version/
+all-session revoke, mandatory audit and completion share one transaction. API014 supports
+all six accepted Admin selectors as safe metadata only, not extra Admin mutations.
+SQL callers checked only rollback fixtures, owned COMMIT source-reviewed with real
+HTTP fixture commit seams; no persisted/committed stress/readiness claim. Program/
+profile/keys/principals/packages/schema/grants unchanged, next U02/U01 deferred.

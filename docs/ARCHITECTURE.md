@@ -1,5 +1,17 @@
 # Architecture
 
+R02/R03 reviewed PASS2026-10-06. Services/Replay and Infrastructure/Replay implement
+append-only actor/action/UUID completion, exact24h expiry, mandatory current-read-scope
+callbacks before digest comparison, and finite request applocks. Stored references
+are exact registry IDs; no payload/PII/secret response snapshots. Domain callers stay
+responsible for current ownership/task authority; registry membership grants no rights.
+Administration adds the first explicit caller: request→ADMINSET→ascending Account
+(including caller/request/stored-target/Admin set)→binary SID locks. Lock status/
+security version/revoke-all/audit/T23/activity share one caller transaction. Detail
+uses a short SNAPSHOT buffer and separate initial/final live authorization. Explicit
+007/010/014 adapters remain unmounted; source-reviewed owned COMMIT/HTTP fixture
+seams and rollback SQL do not prove production readiness/committed runtime stress.
+
 ## Current implemented architecture
 
 A08/R01 reviewed PASS2026-10-06. Services/Auth owns current-proof/RV/raw-password

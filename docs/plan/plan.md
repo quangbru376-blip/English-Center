@@ -1,5 +1,9 @@
 # Project Planning
 
+Latest2026-10-06: R02→R03 reviewed PASS;1386tests/buildclean, ready for ADR163
+main apply/reverification. Explicit Admin detail/lock/lookup and completion protocol;
+unmounted/rollback-only SQL. Next U02→U01 unstarted. See R02/R03 cards/evidence.
+
 Latest2026-10-06: A08→R01 owner-approved scope reviewed PASS;1195tests/buildclean.
 Applied/reverified main3b46460 under ADR163; exact password change and disconnected
 registry55/C1, no R02/R03/runtime/storage activation. See cards/evidence.

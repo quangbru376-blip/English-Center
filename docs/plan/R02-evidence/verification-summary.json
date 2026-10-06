@@ -1,0 +1,60 @@
+{
+  "date": "2026-10-06",
+  "verdict": "PASS manager reviewed; main apply/reverification pending",
+  "tests": [
+    {
+      "run": "manager-unit",
+      "passed": 891,
+      "failed": 0,
+      "skipped": 0,
+      "trx_sha256": "c88b6dbf5b978383ac2425dfa121d9a1d72fbc7366bae3a612bf2b715089462e"
+    },
+    {
+      "run": "manager-sql",
+      "passed": 495,
+      "failed": 0,
+      "skipped": 0,
+      "trx_sha256": "692c6b7e4b66898af6a085949e8c7581f4dff4369de3d4c60559e3fdbcf323e8"
+    }
+  ],
+  "builds": {
+    "solution": {
+      "warnings": 0,
+      "errors": 0
+    },
+    "sql_tests": {
+      "warnings": 0,
+      "errors": 0
+    }
+  },
+  "retained_sql_after_tests": {
+    "database": "EnglishCenter_D07_20261005",
+    "business_rows": 0,
+    "fixture_users": 0,
+    "ec_role_members": 0,
+    "roles": 4,
+    "permissions": 102,
+    "migrations": 6,
+    "compatibility": 160,
+    "collation": "Latin1_General_100_CI_AS_SC",
+    "snapshot": "ON",
+    "catalog_regression": "PASS"
+  },
+  "workers": [
+    {
+      "run": "134d7619-b9d",
+      "observed_scope_violations": 0
+    },
+    {
+      "run": "9dc8e503-214",
+      "observed_scope_violations": 0
+    }
+  ],
+  "limits": [
+    "Default Program unmounted; production profile/keys/login principals/full readiness deferred",
+    "SQL fixtures caller-TX rollback only; owned SQL COMMIT wrappers source-reviewed with HTTP fixture commit seams",
+    "No persisted runtime/committed multi-client stress proof",
+    "Other canonical workflow callers/current task scopes and Admin mutations deferred",
+    "U02 U01/restM0 unstarted"
+  ]
+}

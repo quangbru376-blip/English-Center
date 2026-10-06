@@ -30,13 +30,13 @@ search/list/other sources/secrets/commands/Git/SQL/tests/network.
 skill_verification: pending observed read-event/diff review and independent Codex
 build/unit/HTTP/real SQL checks. Claims by worker alone are not evidence.
 
-Proposed external union exactly docs/plan/R02_WINDOW_WORKER.md,
+Approved external union exactly docs/plan/R02_WINDOW_WORKER.md,
 docs/plan/R03_GUARD_WORKER.md, .agents/skills/backend-clean-code/SKILL.md and
 docs/plan/SKILL_ROUTING.md. Each writes one pure helper in a detached tree.
 Keep rejected/original worker trees and manager review tree; main stays protected
 until independent PASS. Worker skill grants no extra authority.
 
-Proposed SQL scope ONLY .\SQLEXPRESS/EnglishCenter_D07_20261005: synthetic Role/
+Approved SQL scope ONLY .\SQLEXPRESS/EnglishCenter_D07_20261005: synthetic Role/
 Account/AuthSession/AuditLog/ReplayOperation fixtures, including two or more temporary
 Admin accounts for last-active/self guards; passwords/keys/tokens generated RAM-only.
 Every fixture DML caller-TX rollback; finite multiple connections for request/
@@ -100,3 +100,38 @@ key isolation, immutable copies, scope-before-mismatch and revoked current-sessi
 denial; actual SQL append uniqueness/FK/digest/profile constraints, caller rollback
 on failed audit/storage/cancel/DENY, request-gate contention/negative handling.
 No proof of persisted commits from rollback-only tests. R03 is the first real caller.
+
+
+## Implementation review checkpoint
+
+Worker WINDOW134d7619-b9d SUCCESS46diff lines/4observed reads1write;
+GUARD9dc8e503-214 SUCCESS42diff lines/5reads1write. Full authorized3contexts
+before write; zero observed scope violations. Compact evidence retained, no raw
+thinking/transcripts/logs. Codex source integration and independent verification.
+
+Review corrections: stored-target access before changed-route digest mismatch;
+prelock union of caller/request/stored target/admin set ascending then binary SIDs;
+malformed marker diagnostics after live proof; detail SNAPSHOT buffer with separate
+live final authority; every negative applock result aborts with accepted503/500.
+No additional packages/schema/SQL modules/audit policies or mounted Program changes.
+SQL validation includes actual post-completion faults/cancel rollback, denied DML/
+audit/T23, SQL unique backstop, full catalog/regression and finite competing locks.
+SQL owned COMMIT paths remain source-reviewed; HTTP uses real crypto/CSRF/service
+with explicit in-memory commit seams. Not persisted runtime/committed stress proof.
+Next U02→U01 unstarted; no frontend/restM0/runtime/installation/push/deploy authority.
+
+## Completion review — 2026-10-06
+
+Verdict PASS; baseline1195, added158unit/HTTP/protocol+33SQL=191 meaningful checks.
+Full manager891unit/HTTP/C1+495SQL=1386PASS/0fail0skip, build0warnings0errors.
+Retained business rows/test users/memberships0;4roles102permissions6migrations/profile
+unchanged; full catalog/module/column/permission regression PASS. Scope/business/
+backend/security/owner-notes/docs checklist PASS; frontend/migrations/money/pagination
+N/A to this bounded pilot. Existing Role/Account DTO projection is exact12fields;
+SQL snapshot buffers are discarded on final current authority failure. Only request
+and ADMINSET gates are introduced at service caller, with explicit shared lock order.
+Owned SQL COMMIT wrappers source-reviewed and HTTP fixture seams; no persisted or
+committed stress/runtime readiness claim. Other domains/current-scope integrations,
+Admin mutations/U families/production profile and real principals remain deferred.
+Original worker/manager trees retained. Apply authorized PASS under ADR163 and rerun
+full main suites before closing. No further owner product decision required.

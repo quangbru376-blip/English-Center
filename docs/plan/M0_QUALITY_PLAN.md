@@ -1,5 +1,23 @@
 # M0 — kế hoạch task theo chất lượng
 
+## Latest R02/R03 checkpoint — reviewed PASS, ready for main
+
+Owner-approved R02→R03 completed/independently reviewed PASS2026-10-06 in detached
+manager;891unit/HTTP/C1+495SQL=1386PASS/0fail0skip/build0warnings0errors.
+Two bounded AGY SUCCESS/full3contexts before write/zero observed scope violations;
+Codex independent integration/fixes/tests/review. R02 exact completion references/
+24h/caller-action-key partition/request gate/scope-before-digest/append-only TX.
+R03 explicit API007 detail SNAPSHOT+final live authority, API010 lock atomic status/
+version/all-own-SID revoke/mandatory audit/T23, API014 safe caller6action lookup.
+Request→ADMINSET→ascending Account→binary SID locks; replay never repeats effects,
+stale-RV mutation guards or activity. Other55workflow callers/Admin mutations deferred.
+Program remains unmounted; production keys/profile/principals/readiness deferred.
+SQL fixtures rollback only, owned COMMIT source-reviewed/HTTP fixture commit seams;
+no persisted runtime/committed stress proof. Retained business rows/test users/members0,
+4roles102permissions6migrations/full catalog/profile unchanged. Original trees retained.
+Ready for ADR163 main apply/reverification; see R02/R03_TASK_CARD/evidence/notes.
+Next U02→U01 unstarted; no frontend/restM0/installation/push/deploy authority.
+
 ## Latest A08/R01 checkpoint — applied and reverified PASS
 
 Owner-approved A08→R01 implementation completed and independently reviewed PASS
