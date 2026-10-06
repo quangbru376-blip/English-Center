@@ -1,0 +1,31 @@
+{
+  "mode": "edit",
+  "objective": "Implement exactly the pure helper defined in docs/plan/A08_VERSION_WORKER.md. Read ONLY this card and the complete authorized backend skill and routing first; no links/other reads/search/list/commands/Git/SQL/network/secrets. Only your sole output if present may additionally be read. Use the stated canonical overrides. Codex independently tests/reviews; do not run validation.",
+  "allowed_paths": [
+    "backend/src/EnglishCenter.Api/Common/Security/PasswordChangeVersionGuard.cs"
+  ],
+  "forbidden_paths": [
+    ".env",
+    "**/*.env",
+    "**/appsettings*.json",
+    "**/Migrations/**",
+    "**/bin/**",
+    "**/obj/**",
+    ".git/**",
+    "instructions/**"
+  ],
+  "acceptance_criteria": [
+    "Read all three authorized contexts fully before writing; no scope expansion.",
+    "Exact signatures and pure behavior from card; no side effects or dependencies.",
+    "Only one output file within line cap; no commands/tests/network."
+  ],
+  "context_files": [
+    "docs/plan/A08_VERSION_WORKER.md",
+    ".agents/skills/backend-clean-code/SKILL.md",
+    "docs/plan/SKILL_ROUTING.md"
+  ],
+  "max_changed_files": 1,
+  "max_diff_lines": 70,
+  "model": "",
+  "timeout": "10m"
+}

@@ -2,6 +2,17 @@
 
 ## Current implemented architecture
 
+A08/R01 reviewed PASS2026-10-06. Services/Auth owns current-proof/RV/raw-password
+checks and atomic hash/security-version/tempclear/revoke-all/mandatory audit. SQL
+repository retains caller-TX Account then explicit per-SID binary order; owned
+executor commit precedes API004204/cookie deletion. Auditing adds narrow nonsecret
+own-change projection only. Normal/restricted sessions can change password,
+never automatic upgrade/login. Common/Replay supplies immutable registry55/6 and
+schema-aware full-intent EC-C1 codec/digest without storage/auth/workflow authority.
+Default Program unchanged/unmounted; rollback-only SQL evidence and explicit HTTP
+commit seams do not prove production principal/profile/committed runtime readiness.
+
+
 A06/A07 reviewed PASS2026-10-06. Common/Security verifies supplied-key/issuer/audience/
 algorithm JWT proof with raw-clock cutoff and no ambient profile/network fallback.
 Immutable proof carries SID/version/scope, not role rights. Services/Auth checks fresh

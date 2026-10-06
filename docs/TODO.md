@@ -27,8 +27,9 @@
 - A06→A07 applied/reverified PASS mained40a4b2026-10-06:632unit/HTTP+438SQL=1070PASS/buildclean;
   main/manager identical backend verified under ADR163. Exact me/logout and live
   session hooks remain explicit/unmounted; production profile/principal/full readiness deferred.
-- Owner requested A08→R01; task/worker cards prepared, exact external/SQL consent
-  pending before dispatch/fixture execution. No code/SQL run yet.
+- A08→R01 owner-approved scope reviewed PASS2026-10-06:733unit/HTTP+462SQL=1195PASS,
+  buildclean; ready for ADR163 apply/main reverification. API004 and disconnected
+  registry55/schema-aware C1 only; no runtime/T23. Next R02→R03 unstarted.
   Real login/Windows-linked demo users and runtime/schema/maintenance bindings
   remain operator-profile prerequisites; WITHOUT LOGIN tests do not prove login auth.
 - Isolated EnglishCenter_D07_20261005 retained,160/collation/snapshotON;24tables/

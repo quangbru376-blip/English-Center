@@ -4,6 +4,9 @@ using System.Net;
 using System.Security.Cryptography;
 using System.Text.Json;
 using EnglishCenter.Api.Api.Auth;
+using EnglishCenter.Api.Api.Identity;
+using EnglishCenter.Api.Common.Serialization;
+using Microsoft.AspNetCore.Identity;
 using EnglishCenter.Api.Common.Auditing;
 using EnglishCenter.Api.Common.Errors;
 using EnglishCenter.Api.Common.Security;
@@ -27,7 +30,7 @@ public class CurrentSessionHostingTests
         internal DateTimeOffset Now = DateTimeOffset.FromUnixTimeSeconds(DateTimeOffset.UtcNow.ToUnixTimeSeconds());
         public override DateTimeOffset GetUtcNow() => Now;
     }
-    private sealed class State : ICurrentSessionReader, ICurrentSessionLogout, ISecurityAuditStore
+    private sealed class State : ICurrentSessionReader, ICurrentSessionLogout, IPasswordChangeExecutor, ISecurityAuditStore
     {
         internal readonly Clock Time = new(); internal BusinessClock Clock => new(Time);
         internal readonly AuditIncidentCounter Incidents = new();
@@ -38,6 +41,30 @@ public class CurrentSessionHostingTests
         internal string Role;
         internal bool PauseCommit, FailCommit, AuditFails, AuditCanceled, RevokeOnSecondRead, Csrf = true, LegacyResolver;
         internal int Reads, Revokes, AuditAttempts;
+        internal string? CurrentSecret, NewSecret;
+        internal AuthSession? OtherOwn;
+        internal bool MandatoryFails;
+        internal int Changes;
+        internal CredentialHasher Hasher => new(new(OfflinePasswordBlocklist.Load(Path.Combine(AppContext.BaseDirectory, "Resources", "PasswordBlocklist"))));
+        internal void PreparePassword()
+        {
+            var generator = new TemporaryPasswordGenerator(new(OfflinePasswordBlocklist.Load(Path.Combine(AppContext.BaseDirectory, "Resources", "PasswordBlocklist"))));
+            CurrentSecret = "  " + generator.Generate() + "😀  "; NewSecret = generator.Generate();
+            Account.PasswordHash = Hasher.Hash(CurrentSecret);
+            OtherOwn = new() { Sid = RandomNumberGenerator.GetBytes(32), AccountId = 42, SecurityVersion = 1, SessionScope = Session.SessionScope, IssuedAt = Session.IssuedAt, ExpiresAt = Session.ExpiresAt, LastActivityAt = Session.LastActivityAt };
+        }
+        public async Task ExecuteAsync(VerifiedSessionToken token, PasswordChangeInput input, CancellationToken ct)
+        {
+            Changes++; var repository = new Repository(this);
+            var deadline = await new PasswordChangeService(repository, Hasher, Clock).ChangeAsync(token, input, ct);
+            Started.TrySetResult(); if (PauseCommit) await Commit.Task.WaitAsync(ct);
+            if (FailCommit) throw new InvalidOperationException("Synthetic commit failure.");
+            if (!Clock.IsBefore(deadline)) throw new ApiErrorException(ApiErrorCode.AUTHENTICATION_REQUIRED);
+            Account.PasswordHash = repository.Account!.PasswordHash; Account.SecurityVersion = repository.Account.SecurityVersion;
+            Account.MustChangePassword = false; Account.TempIssuedAt = null; Account.TempExpiresAt = null;
+            Session.RevokedAt = repository.Session!.RevokedAt; OtherOwn!.RevokedAt = repository.Other!.RevokedAt;
+            LastAudit = repository.Pending;
+        }
         internal AuditEntry? LastAudit;
         internal readonly TaskCompletionSource Started = new(TaskCreationOptions.RunContinuationsAsynchronously);
         internal readonly TaskCompletionSource Commit = new(TaskCreationOptions.RunContinuationsAsynchronously);
@@ -71,14 +98,28 @@ public class CurrentSessionHostingTests
             return AuditFails || AuditCanceled ? Task.FromException(AuditCanceled ? new OperationCanceledException() : new InvalidOperationException("Synthetic audit failure.")) : Task.CompletedTask;
         }
     }
-    private sealed class Repository(State state) : ICurrentSessionRepository
+    private sealed class Repository(State state) : IPasswordChangeRepository
     {
-        internal AuthSession? Session;
-        public Task<Account?> LockAccountAsync(int id, CancellationToken ct) => Task.FromResult<Account?>(id == 42 ? new() { AccountId = 42, RoleId = 1, FullName = state.Account.FullName, Email = state.Account.Email, Status = state.Account.Status, SecurityVersion = state.Account.SecurityVersion, MustChangePassword = state.Account.MustChangePassword, TempIssuedAt = state.Account.TempIssuedAt, TempExpiresAt = state.Account.TempExpiresAt, RowVersion = state.Account.RowVersion.ToArray() } : null);
+        internal AuthSession? Session, Other;
+        internal Account? Account;
+        internal AuditEntry? Pending;
+        public Task<Account?> LockAccountAsync(int id, CancellationToken ct) => Task.FromResult<Account?>(id == 42 ? (Account ??= new() { AccountId = 42, RoleId = 1, PasswordHash = state.Account.PasswordHash, FullName = state.Account.FullName, Email = state.Account.Email, Status = state.Account.Status, SecurityVersion = state.Account.SecurityVersion, MustChangePassword = state.Account.MustChangePassword, TempIssuedAt = state.Account.TempIssuedAt, TempExpiresAt = state.Account.TempExpiresAt, RowVersion = state.Account.RowVersion.ToArray() }) : null);
         public Task<AuthSession?> LockSessionAsync(byte[] sid, CancellationToken ct)
         {
             if (!sid.SequenceEqual(state.Session.Sid)) return Task.FromResult<AuthSession?>(null);
+            if (Session is not null) return Task.FromResult<AuthSession?>(Session);
             var s = state.Session; Session = new() { Sid = s.Sid.ToArray(), AccountId = s.AccountId, SecurityVersion = s.SecurityVersion, SessionScope = s.SessionScope, IssuedAt = s.IssuedAt, ExpiresAt = s.ExpiresAt, LastActivityAt = s.LastActivityAt, RevokedAt = s.RevokedAt, RowVersion = s.RowVersion.ToArray() }; return Task.FromResult<AuthSession?>(Session);
+        }
+        public async Task<IReadOnlyList<AuthSession>> LockAllSessionsAsync(int id, CancellationToken ct)
+        {
+            _ = await LockSessionAsync(state.Session.Sid, ct);
+            var s = state.OtherOwn!; Other = new() { Sid = s.Sid.ToArray(), AccountId = s.AccountId, SecurityVersion = s.SecurityVersion, SessionScope = s.SessionScope, IssuedAt = s.IssuedAt, ExpiresAt = s.ExpiresAt, LastActivityAt = s.LastActivityAt, RevokedAt = s.RevokedAt };
+            return [Session!, Other];
+        }
+        public Task SaveChangeAsync(AuditEntry entry, CancellationToken ct)
+        {
+            if (state.MandatoryFails) throw new InvalidOperationException("Synthetic mandatory audit failure.");
+            Pending = entry; return Task.CompletedTask;
         }
         public Task<string?> RoleCodeAsync(int id, CancellationToken ct) => Task.FromResult<string?>(state.Role);
         public Task SaveSessionAsync(CancellationToken ct) => Task.CompletedTask;
@@ -91,8 +132,8 @@ public class CurrentSessionHostingTests
     {
         public Action<IApplicationBuilder> Configure(Action<IApplicationBuilder> next) => app =>
         {
-            next(app); app.UseRouting(); if (state.Csrf) app.UseCsrfBoundary(Origin, state.LegacyResolver ? new Legacy() : new LiveCsrfIdentityResolver(state.Validator, state, new(state, state.Incidents), state.Clock));
-            app.UseEndpoints(e => { e.MapCsrfContext(); e.MapCurrentSession(state, state.Clock); e.MapCurrentSessionLogout(state); });
+            next(app); app.UseRouting(); app.UseAuthJsonBoundary(); if (state.Csrf) app.UseCsrfBoundary(Origin, state.LegacyResolver ? new Legacy() : new LiveCsrfIdentityResolver(state.Validator, state, new(state, state.Incidents), state.Clock));
+            app.UseEndpoints(e => { e.MapCsrfContext(); e.MapCurrentSession(state, state.Clock); e.MapCurrentSessionLogout(state); e.MapPasswordChange(state, 4096); });
         };
     }
     private static WebApplicationFactory<Program> Factory(State state) => new WebApplicationFactory<Program>().WithWebHostBuilder(b => b.ConfigureServices(s => { s.AddCsrfBoundary(new EphemeralDataProtectionProvider()); s.AddSingleton<IStartupFilter>(new Mount(state)); }));
@@ -117,6 +158,67 @@ public class CurrentSessionHostingTests
         return await client.SendAsync(req, TestContext.Current.CancellationToken);
     }
     private static bool AuthCookie(HttpResponseMessage res) => res.Headers.TryGetValues("Set-Cookie", out var values) && values.Any(v => v.StartsWith(SafeCookiePolicy.AuthCookieName + "=", StringComparison.Ordinal));
+    private static string ChangeBody(State state, string? current = null, string? next = null, string? rv = null) => JsonSerializer.Serialize(new { currentPassword = current ?? state.CurrentSecret, newPassword = next ?? state.NewSecret, expectedVersions = new { account = rv ?? RowVersionCodec.Encode(state.Account.RowVersion) } });
+    [Theory]
+    [InlineData("Admin", false)]
+    [InlineData("Admissions", false)]
+    [InlineData("AcademicAffairs", false)]
+    [InlineData("Teacher", false)]
+    [InlineData("Accountant", false)]
+    [InlineData("Director", false)]
+    [InlineData("Student", false)]
+    [InlineData("Teacher", true)]
+    public async Task PasswordChangeCommitsAllSessionsAndMandatoryAuditBefore204(string role, bool restricted)
+    {
+        var state = new State(role, restricted); state.PreparePassword();
+        using var factory = Factory(state); using var client = Client(factory); var csrf = await Csrf(state, client);
+        using var response = await Logout(state, client, csrf, ChangeBody(state), path: "change-password");
+        Assert.Equal(HttpStatusCode.NoContent, response.StatusCode); Assert.True(AuthCookie(response)); Assert.Empty(await response.Content.ReadAsStringAsync(TestContext.Current.CancellationToken));
+        Assert.Equal(2, state.Account.SecurityVersion); Assert.False(state.Account.MustChangePassword); Assert.Null(state.Account.TempExpiresAt);
+        Assert.NotNull(state.Session.RevokedAt); Assert.NotNull(state.OtherOwn!.RevokedAt); Assert.Equal(state.Session.IssuedAt, state.Session.LastActivityAt);
+        Assert.Equal(PasswordVerificationResult.Failed, state.Hasher.Verify(state.Account.PasswordHash, state.CurrentSecret));
+        Assert.NotEqual(PasswordVerificationResult.Failed, state.Hasher.Verify(state.Account.PasswordHash, state.NewSecret));
+        Assert.Equal("MANDATORY", state.LastAudit!.Category); Assert.Equal("AUTH.PASSWORD_CHANGE", state.LastAudit.Action);
+        Assert.DoesNotContain(state.CurrentSecret!, state.LastAudit.Details!); Assert.DoesNotContain(state.NewSecret!, state.LastAudit.Details!); Assert.DoesNotContain(state.Account.PasswordHash, state.LastAudit.Details!);
+        using var old = Request(state, HttpMethod.Get, "me"); using var expired = await client.SendAsync(old, TestContext.Current.CancellationToken); Assert.Equal(HttpStatusCode.Unauthorized, expired.StatusCode);
+    }
+    [Theory]
+    [InlineData("wrong", HttpStatusCode.BadRequest)]
+    [InlineData("blocked", HttpStatusCode.BadRequest)]
+    [InlineData("stale", HttpStatusCode.Conflict)]
+    [InlineData("unknown", HttpStatusCode.BadRequest)]
+    [InlineData("duplicate", HttpStatusCode.BadRequest)]
+    [InlineData("query", HttpStatusCode.BadRequest)]
+    [InlineData("missing", HttpStatusCode.BadRequest)]
+    [InlineData("null", HttpStatusCode.BadRequest)]
+    [InlineData("origin", HttpStatusCode.Forbidden)]
+    [InlineData("csrf", HttpStatusCode.Forbidden)]
+    [InlineData("audit", HttpStatusCode.InternalServerError)]
+    [InlineData("commit", HttpStatusCode.InternalServerError)]
+    public async Task PasswordChangeFailuresDoNotClearCookieOrCommit(string fault, HttpStatusCode expected)
+    {
+        var state = new State(); state.PreparePassword(); var hash = state.Account.PasswordHash;
+        using var factory = Factory(state); using var client = Client(factory); var csrf = await Csrf(state, client);
+        var body = ChangeBody(state, fault == "wrong" ? "wrong raw credential" : null, fault == "blocked" ? "short" : null, fault == "stale" ? "AAECAwQFBgc=" : null);
+        if (fault == "unknown") body = body[..^1] + ",\"actor\":42}";
+        if (fault == "duplicate") body = body[..^1] + ",\"newPassword\":\"duplicate\"}";
+        if (fault == "missing") body = "{}";
+        if (fault == "null") body = "{\"currentPassword\":null,\"newPassword\":null,\"expectedVersions\":{\"account\":\"AAAAAAAAAAA=\"}}";
+        state.MandatoryFails = fault == "audit"; state.FailCommit = fault == "commit";
+        using var response = await Logout(state, client, csrf, body, origin: fault != "origin", token: fault != "csrf", path: fault == "query" ? "change-password?x=1" : "change-password");
+        Assert.Equal(expected, response.StatusCode); Assert.False(AuthCookie(response)); Assert.Equal(hash, state.Account.PasswordHash); Assert.Equal(1, state.Account.SecurityVersion); Assert.Null(state.Session.RevokedAt);
+        var text = await response.Content.ReadAsStringAsync(TestContext.Current.CancellationToken); Assert.DoesNotContain(state.CurrentSecret!, text); Assert.DoesNotContain(state.NewSecret!, text);
+    }
+    [Fact]
+    public async Task PasswordChangeWaitsForCommitAndDeadlineFailureDoesNotClearCookie()
+    {
+        var state = new State(restricted: true); state.PreparePassword(); state.PauseCommit = true;
+        using var factory = Factory(state); using var client = Client(factory); var csrf = await Csrf(state, client);
+        var pending = Logout(state, client, csrf, ChangeBody(state), path: "change-password");
+        await state.Started.Task.WaitAsync(TimeSpan.FromSeconds(10), TestContext.Current.CancellationToken); Assert.False(pending.IsCompleted); Assert.Null(state.Session.RevokedAt);
+        state.Time.Now = state.Time.Now.AddMinutes(10); state.Commit.TrySetResult(); using var response = await pending;
+        Assert.Equal(HttpStatusCode.Unauthorized, response.StatusCode); Assert.True(AuthCookie(response)); Assert.Equal(1, state.Account.SecurityVersion); Assert.Null(state.Session.RevokedAt);
+    }
     [Fact]
     public async Task InvalidTemporaryBundleAndExpiredBoundaryNeverReturnOldContext()
     {
@@ -127,10 +229,10 @@ public class CurrentSessionHostingTests
     [Fact]
     public async Task IdleExpiredCookieIsDeletedOn401SoDeliberateAnonymousCsrfCanResume()
     {
-        var state = new State();state.Time.Now=state.Time.Now.AddMinutes(30);
-        using var factory=Factory(state);using var client=Client(factory);using var request=Request(state,HttpMethod.Get,"me");using var response=await client.SendAsync(request,TestContext.Current.CancellationToken);
-        Assert.Equal(HttpStatusCode.Unauthorized,response.StatusCode);Assert.True(AuthCookie(response));Assert.Equal(0,state.Revokes);Assert.Null(state.Session.RevokedAt);
-        using var anonymous=Request(state,HttpMethod.Get,"csrf",auth:false);using var fresh=await client.SendAsync(anonymous,TestContext.Current.CancellationToken);Assert.Equal(HttpStatusCode.OK,fresh.StatusCode);Assert.False(AuthCookie(fresh));
+        var state = new State(); state.Time.Now = state.Time.Now.AddMinutes(30);
+        using var factory = Factory(state); using var client = Client(factory); using var request = Request(state, HttpMethod.Get, "me"); using var response = await client.SendAsync(request, TestContext.Current.CancellationToken);
+        Assert.Equal(HttpStatusCode.Unauthorized, response.StatusCode); Assert.True(AuthCookie(response)); Assert.Equal(0, state.Revokes); Assert.Null(state.Session.RevokedAt);
+        using var anonymous = Request(state, HttpMethod.Get, "csrf", auth: false); using var fresh = await client.SendAsync(anonymous, TestContext.Current.CancellationToken); Assert.Equal(HttpStatusCode.OK, fresh.StatusCode); Assert.False(AuthCookie(fresh));
     }
     [Theory]
     [InlineData("Admin")]

@@ -58,6 +58,20 @@ public sealed class AuditEntry
         return new(null,"STUDENT.ACCOUNT.CREATE","Account",accountId.ToString(System.Globalization.CultureInfo.InvariantCulture),"SUCCESS",details,occurredAt,operation,"MANDATORY",null);
     }
 
+    internal static AuditEntry OwnPasswordChange(int actor, bool wasTemporary, long previousVersion,
+        long nextVersion, int revokedSessions, Guid operation, DateTimeOffset at)
+    {
+        if (actor <= 0 || previousVersion < 1 || previousVersion == long.MaxValue ||
+            nextVersion != previousVersion + 1 || revokedSessions < 1) throw new ArgumentException("Invalid password change audit.");
+        var details = new JsonObject
+        {
+            ["old"] = new JsonObject { ["mustChangePassword"] = wasTemporary, ["securityVersion"] = previousVersion },
+            ["new"] = new JsonObject { ["mustChangePassword"] = false, ["securityVersion"] = nextVersion, ["revokedSessionCount"] = revokedSessions }
+        }.ToJsonString();
+        return new(actor, "AUTH.PASSWORD_CHANGE", "Account", actor.ToString(System.Globalization.CultureInfo.InvariantCulture),
+            "SUCCESS", details, at, operation, "MANDATORY", null);
+    }
+
     public static AuditEntry Security(SecurityAuditKind kind,int? verifiedActorAccountId,bool success,
         Guid operation,DateTimeOffset occurredAt,string? ipAddress = null)
     {

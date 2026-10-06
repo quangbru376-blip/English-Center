@@ -1,6 +1,32 @@
 # Handoff thực thi đầu tiên — P01 → P02
 
-## Latest A06/A07 checkpoint — applied and reverified PASS
+## Latest A08/R01 checkpoint — reviewed PASS, ready for main application
+
+Owner-approved A08→R01 implementation completed and independently reviewed PASS
+2026-10-06;733unit/HTTP+462SQL=1195PASS/0fail0skip/build0warnings0errors.
+Two bounded AGY SUCCESS/full3contexts before write/zero observed scope violations;
+Codex source integration/fixes/schema parity/independent tests. A08 exact API004,
+normal/restricted current proof and RV, raw credentials/P08 policy; mandatory
+hash/security-version/temp-clear/all-own-SID revoke/audit caller-TX unit; secure
+cookie deletion only after commit. Account first, explicit SID locks binary order;
+per-SID round trips intentional for accepted lock protocol, no invented session cap.
+AuditEntry narrow fixed AUTH.PASSWORD_CHANGE factory contains no credentials/hashes.
+No automatic scope upgrade/new session/login or credential replay. R01 disconnected
+55exact canonical registry/6lookup groups, full schema-aware EC-C1 normalized bytes/
+SHA25632binary, frozen literal fixtures, full supplied intent/absence/sets vs ordered
+weekly plan. No T23 storage/lookup/mutation/replay routes or55executed workflows claim.
+Program unchanged/unmounted; no real Admin/production profile/keys/principals/full
+runtime readiness. SQL cores rollback-only; owned executor COMMIT source-reviewed
+and explicit HTTP fixture commit seams, not persisted/committed stress proof.
+All retained dbo rows except history/test users/role memberships0;4roles/exact102
+permissions/6migrations/profile160/Latin1_General_100_CI_AS_SC/snapshotON unchanged;
+exact full catalog/modules/columns regression PASS. No schema/module/package/grants/
+profile/owner/logins/other DB/seed/persistent keys/install/push/deploy changes.
+Original detached worker/manager evidence retained. See A08/R01_TASK_CARD/evidence,
+notes/A08.md,R01.md; ADR172. Source ready for ADR163 main apply/reverification.
+Next canonical R02 completion/TX/lookup primitives → R03 Admin lock pilot; unstarted.
+
+## Previous A06/A07 checkpoint — applied and reverified PASS
 
 Owner-approved A06→A07 implementation completed/reviewed PASS/applied/reverified
 mained40a4b, manager633671b, identical backend0d407841beeb719bbd753e828a9a5d408549a1bc;

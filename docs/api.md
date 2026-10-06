@@ -53,3 +53,24 @@ allowing deliberate anonymous /csrf bootstrap afterward; it never turns401 into2
 No cookie removal on CSRF403 or failed valid-session commit500. No automatic retries.
 Real production profiles/keys/principals/connection readiness remain deferred; API004
 password change/A08 and replay tasks are not implemented by this batch.
+
+
+## A08 password change and R01 canonical primitives — reviewed 2026-10-06
+
+Explicit (unmounted) POST `/api/v1/auth/change-password`: live NORMAL or
+PASSWORD_CHANGE cookie/session, exact same-origin/framework CSRF; bounded strict
+JSON `{currentPassword,newPassword,expectedVersions:{account}}`, no query/unknowns.
+Current credential raw; new credential P08 policy. Invalid session401; CSRF403;
+malformed/blocked new/wrong current400 VALIDATION_ERROR field errors without echo;
+stale RV409. Atomic new hash/security-version+1/tempclear/all-own-SID revoke and
+mandatory audit. Success204/no body, secure cookie deletion only after commit;
+no new JWT/automatic login/replay or caller-result. Deliberate new login required.
+Default Program unchanged; SQL COMMIT wrapper source-reviewed with HTTP fixtures,
+actual SQL core tested rollback-only, no persisted runtime readiness claim.
+
+R01 supplies disconnected exact55action/6lookup registry and EC-C1 full-request
+schema normalization/strict canonical UTF8/SHA256 binary32. Trusted route selection,
+whole supplied intent/manifests/expected absence, numeric/composite set ordering,
+ordered weekly candidates and omitted/null semantics follow accepted E04. Registry
+metadata does not confer current rights. No T23/completion/lookup/replay endpoint,
+no secret/body/hash logging or plaintext persistence; R02/R03 remain unstarted.

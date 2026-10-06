@@ -1,0 +1,12 @@
+{
+  "source": "docs/design/E04_REPLAY_SPEC.md",
+  "source_sha256": "5715e7c3ef148064f789f3e7d953e8a3f79789b8537bb1fa99eac515e240d4d5",
+  "registry_sha256": "03d21675bedd74a1eb1cd9bdde67a3e0a876d1824b7a9aa71f4204d741b5044c",
+  "actions": 55,
+  "lookup_groups": 6,
+  "secret_modes": 2,
+  "exact_api_action_method_path_role_tx_target_result_lookup_noop_mode_parity": "PASS",
+  "schema_review": "Accepted DTO input fields/manifests reviewed; API097 no reason; C1 scalar/array/weekly rules independently tested",
+  "scope": "Disconnected primitives only; no workflows/T23/routes",
+  "hash_note": "Manager source raw bytes after formatting; Git backend tree binds main parity."
+}

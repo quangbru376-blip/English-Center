@@ -1,5 +1,9 @@
 # Project Planning
 
+Latest2026-10-06: A08→R01 owner-approved scope reviewed PASS;1195tests/buildclean.
+Ready for ADR163 apply/reverification; exact password change and disconnected
+registry55/C1, no R02/R03/runtime/storage activation. See cards/evidence.
+
 Latest2026-10-06: owner-approved A06→A07 applied/reverified PASS mained40a4b;1070tests/buildclean,
 ADR163 main application/reverification complete. Explicit /me/logout/live session
 integration remains unmounted. Next A08→R01, not started; HANDOFF/cards are current.

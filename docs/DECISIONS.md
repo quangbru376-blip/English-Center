@@ -4470,3 +4470,22 @@ Current logout rechecks live facts, updates one SID, raw cutoff checked before c
 then A01 independent AUTH.LOGOUT and204/cookie removal. Logging failure cannot compensate.
 Read/current revoke SQL cores verified rollback-only; owned request commit paths source
 reviewed plus HTTP fixture seams. No persisted concurrency/runtime/readiness claim.
+
+
+## ADR-172: Implement A08 transaction and immutable EC-C1 primitives
+
+Accepted implementation refinement2026-10-06 under owner-approved A08→R01 scope;
+no accepted product contract changed. Exact API004 allows normal/restricted proof,
+mandatory caller-TX own-password mutation with projected AUTH.PASSWORD_CHANGE audit;
+no credential/hash snapshot or new replay action. Account serializes protocol writers;
+explicit binary-SID lock queries enforce acquisition order (bulk ORDER BY is insufficient).
+Round trips are intentional, no unapproved session cap. Secure cookie deletion after
+commit only; production owned COMMIT paths source-reviewed/HTTP fixture seams while
+SQL validation remains rollback-only. Default Program stays unchanged/unmounted.
+R01 freezes exact55registry/6lookup metadata, schema-aware full normalized intent,
+immutable copy-out EC-C1 bytes/SHA25632. Sets vs ordered weekly plan, composite primary
+then remaining ASCII ID keys, required absence and optional-null behavior stay accepted.
+No live-state filtering/RV comparison during digest, T23 storage/lookups or workflows.
+Codex corrects worker buffer placement and independently tests; skills grant no extra
+scope. Only existing isolated DB, rolled-back four fixture users/DENY/regression drift;
+no schema/profile/principal/package/runtime/deployment authority opened. R02/R03 deferred.
