@@ -104,4 +104,6 @@ required by SQL grammar and documented ADR170; account SQL remains parameterized
 Limits: supplied production profiles/keys/origin/IP trust/DB principals/full readiness,
 real Admin/A06 resolver, owned executor persisted commit and committed concurrency
 not verified. Default Program remains unchanged/unmounted. No unapproved scope opened.
-Source/evidence remains manager detached until ADR163 apply and main reverification.
+Applied/reverified maina9abdc6; manager e5ff366 retained detached, identical backend
+53e36afc0d1ad2b9232d04010222e805ca009410. Both main build and all995tests PASS;
+verification-summary.json binds exact source/manager/main TRX hashes and retained DB.

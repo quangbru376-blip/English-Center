@@ -22,7 +22,7 @@
   545unit+375SQL=920PASS/buildclean; operator bootstrap and framework CSRF boundary.
   No real Admin or runtime activation; see A02/A04 task cards and operator prerequisites.
 - A03→A05 reviewed PASS2026-10-06:586unit/HTTP+409SQL=995PASS/buildclean;
-  awaiting mechanical main apply/reverification under ADR163. Signup/login adapters
+  applied/reverified maina9abdc6 under ADR163. Signup/login adapters
   explicitly unmounted; no production profile, real Admin or current-session resolver.
 - Next canonical A06 current-session/me, then A07 logout; not started in this batch.
   Real login/Windows-linked demo users and runtime/schema/maintenance bindings

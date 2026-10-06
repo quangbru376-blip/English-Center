@@ -2,7 +2,7 @@
 
 Latest2026-10-06: owner-approved A03→A05 reviewed PASS;586unit/HTTP+409SQL=995PASS.
 Explicit signup/login integration remains unmounted; production profile/auth resolver
-and full readiness deferred. Apply/reverify under standing ADR163; see current
+and full readiness deferred. Applied/reverified maina9abdc6 under ADR163; see current
 HANDOFF and A03/A05 task cards. Next canonical A06→A07, not opened by this batch.
 The preparation and first-code scope below are historical.
 

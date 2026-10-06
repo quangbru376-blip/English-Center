@@ -1,0 +1,68 @@
+{
+  "date": "2026-10-06",
+  "scope": "owner-approved A03 signup and A05 login/session only",
+  "verdict": "PASS",
+  "main_code": "a9abdc6bdd9b86ed5ac97413f90998908f939e74",
+  "manager_code": "e5ff36608c0915b4270e1080ad135a5cae24cac6",
+  "identical_backend_tree": "53e36afc0d1ad2b9232d04010222e805ca009410",
+  "tests": [
+    {
+      "run": "manager-unit",
+      "passed": 586,
+      "failed": 0,
+      "skipped": 0,
+      "trx_sha256": "90f625e5ce7e64fd0ed8e4f8b0f42b4d5bd8c4ac3504f432aeabffbf00d56084"
+    },
+    {
+      "run": "manager-sql",
+      "passed": 409,
+      "failed": 0,
+      "skipped": 0,
+      "trx_sha256": "3858fa190f259dd08967d98f14fa07c86a289ad454ae51a78e8b75c9f8bec0d6"
+    },
+    {
+      "run": "main-unit",
+      "passed": 586,
+      "failed": 0,
+      "skipped": 0,
+      "trx_sha256": "10b3e668bc27b038877c699dda4888c2a687fb5fe05400ad408f76b1ece47b7a"
+    },
+    {
+      "run": "main-sql",
+      "passed": 409,
+      "failed": 0,
+      "skipped": 0,
+      "trx_sha256": "acc201a8e8930798f9cab13c65c3027412bfb34e1f273d0af30515265cd06213"
+    }
+  ],
+  "build": {
+    "warnings": 0,
+    "errors": 0,
+    "main_solution_and_sql_project": "PASS"
+  },
+  "database": "EnglishCenter_D07_20261005",
+  "post_fixture": {
+    "retained_dbo_rows_except_migration_history": 0,
+    "fixture_users": 0,
+    "ec_role_memberships": 0,
+    "roles": 4,
+    "permissions": 102,
+    "migrations": 6,
+    "compatibility": 160,
+    "collation": "Latin1_General_100_CI_AS_SC",
+    "snapshot": "ON",
+    "exact_catalog_regression": "PASS"
+  },
+  "limits": [
+    "default Program unchanged; adapters unmounted",
+    "SQL cores rollback only; owned commit paths source review plus explicit HTTP fixture executors",
+    "no persisted login/signup or committed multi-client stress proof",
+    "production keys/profile/trusted proxy/principals/current-session resolver/full readiness deferred"
+  ],
+  "workers": {
+    "A03": "65bf320b-621",
+    "A05": "773dd70d-a63",
+    "status": "both SUCCESS; zero observed scope violations"
+  },
+  "retention": "original worker worktrees and manager detached retained; no raw logs/secrets/transcripts committed"
+}

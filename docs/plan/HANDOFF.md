@@ -1,8 +1,8 @@
 # Handoff — E01–E05 và complete design baseline đã Accepted
 
-## Latest A03/A05 checkpoint — reviewed PASS, ready for main application
+## Latest A03/A05 checkpoint — applied/reverified PASS maina9abdc6
 
-Owner-approved A03→A05 implementation completed and independently reviewed PASS
+Owner-approved A03→A05 implementation completed/reviewed PASS/applied/reverified maina9abdc6
 2026-10-06; 586 unit/HTTP +409 SQL=995 PASS, 0 fail/skip, build0warnings0errors.
 Two bounded AGY SUCCESS/full authorized context before write/zero observed violations;
 Codex integrated, corrected and tested independently. A03 supplies strict API018

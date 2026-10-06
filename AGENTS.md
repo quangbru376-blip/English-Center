@@ -96,6 +96,18 @@ activation. Generated RAM-only test secrets; all approved SQL fixtures rollback,
 schema/migration/grants/profile/owner/logins/keys/other DB/push/deploy. See A02/A04
 cards/evidence, ADR169. Next A03 signup→A05 login/session remains unstarted; actual
 operator provisioning/production keys/profile/resolver/full readiness deferred.
+Owner-approved A03→A05 scope2026-10-06 completed/reviewed PASS/applied/reverified
+maina9abdc6; manager e5ff366 identical backend53e36afc0d1ad2b9232d04010222e805ca009410.
+586unit/HTTP+409SQL=995PASS/build0warnings0errors. Two bounded AGY SUCCESS/full
+context before write/zero observed violations; Codex independent fixes/review/tests.
+A03 Account+Profile+mandatory audit atomic signup; A05 generic5/15/15 throttle,
+fresh locked account/session issuance, supplied JWT signer and postcommit cookie.
+Explicit adapters remain unmounted; no real Admin/production keys/profile/runtime.
+All approved SQL fixtures rollback;0retained dbo rows except history/0test users/
+role members;4roles102permissions6migrations/profile unchanged. Owned SQL commit
+paths source-reviewed plus HTTP fixture seams, not persisted runtime/stress proof.
+See A03/A05 cards/evidence, ADR170. Next A06 current-session/me→A07 logout unstarted;
+no A08/restM0/schema/grants/owner/logins/other DB/installation/push/deploy authority.
 Historical initial scope is retained in
 FIRST_CODE_HANDOFF; latest checkpoint and explicit current owner scope govern.
 Standing owner authority ADR-163: apply Codex-reviewed PASS stages already
