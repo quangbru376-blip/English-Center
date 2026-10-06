@@ -22,7 +22,8 @@
   545unit+375SQL=920PASS/buildclean; operator bootstrap and framework CSRF boundary.
   No real Admin or runtime activation; see A02/A04 task cards and operator prerequisites.
 - Next canonical A03 Student signup, then A05 login/session. A04 is CSRF/HTTP boundary,
-  not registration. Next families are not started or authorized by this completed batch.
+  not registration. Owner2026-10-06 requested A03→A05; task/worker cards prepared,
+  exact new external/SQL approval pending. No dispatch/new SQL/code PASS yet.
   Real login/Windows-linked demo users and runtime/schema/maintenance bindings
   remain operator-profile prerequisites; WITHOUT LOGIN tests do not prove login auth.
 - Isolated EnglishCenter_D07_20261005 retained,160/collation/snapshotON;24tables/
