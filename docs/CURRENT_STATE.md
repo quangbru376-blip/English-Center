@@ -25,7 +25,9 @@ Retained dbo rows except history/test users/role memberships0;4roles102permissio
 regression PASS. No schema/module/package/grant/profile/owner/logins/other DB/seed/
 persistent keys/install/push/deploy change. Original worker/manager detached retained.
 See A06/A07_TASK_CARD/evidence, notes/A06.md,A07.md, docs/api.md; ADR171.
-Next canonical A08 password change, then R01 canonical replay registry; unstarted.
+Owner requested A08→R01 on2026-10-06. Task/worker contracts prepared; exact new
+external payload and rollback SQL consent pending. No worker/SQL/code run yet;
+see A08_TASK_CARD.md and R01_TASK_CARD.md. Product decisions remain accepted.
 ADR163 permits applying only already authorized reviewed PASS stages.
 
 ## Previous A03/A05 applied checkpoint

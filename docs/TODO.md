@@ -27,7 +27,8 @@
 - A06→A07 applied/reverified PASS mained40a4b2026-10-06:632unit/HTTP+438SQL=1070PASS/buildclean;
   main/manager identical backend verified under ADR163. Exact me/logout and live
   session hooks remain explicit/unmounted; production profile/principal/full readiness deferred.
-- Next canonical A08 password change, then R01 canonical registry; unstarted.
+- Owner requested A08→R01; task/worker cards prepared, exact external/SQL consent
+  pending before dispatch/fixture execution. No code/SQL run yet.
   Real login/Windows-linked demo users and runtime/schema/maintenance bindings
   remain operator-profile prerequisites; WITHOUT LOGIN tests do not prove login auth.
 - Isolated EnglishCenter_D07_20261005 retained,160/collation/snapshotON;24tables/
