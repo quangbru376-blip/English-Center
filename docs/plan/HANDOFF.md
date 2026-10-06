@@ -1,5 +1,13 @@
 # Handoff — E01–E05 và complete design baseline đã Accepted
 
+## Active A06/A07 preparation — 2026-10-06
+
+Owner requested starting A06 current-session/me→A07 logout. Concrete task/worker
+cards and local contracts ready for exact new external/SQL consent (routing3.4).
+No new worker/SQL execution/code completion. Baseline codea9abdc6/docs87b4885,
+995tests PASS. See A06_TASK_CARD/A07_TASK_CARD; A08/runtime remains unopened.
+
+
 ## Latest A03/A05 checkpoint — applied/reverified PASS maina9abdc6
 
 Owner-approved A03→A05 implementation completed/reviewed PASS/applied/reverified maina9abdc6

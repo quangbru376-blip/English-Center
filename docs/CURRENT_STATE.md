@@ -4,6 +4,15 @@ Last updated: 2026-10-06
 
 ## Current task
 
+Owner2026-10-06 requested starting A06 current-session/me → A07 logout.
+Concrete task/worker cards and local contracts prepared; exact new four-file Google
+Antigravity sharing and isolated rollback SQL scope await consent under routing3.4.
+No worker dispatch/new SQL/code completion yet. Standing ADR163 apply remains valid
+for authorized reviewed PASS implementation. No A08/runtime/profile/key activation.
+See A06_TASK_CARD/A07_TASK_CARD. Previous applied checkpoint follows.
+
+## Previous A03/A05 applied checkpoint
+
 Owner-approved A03→A05 implementation completed/reviewed PASS/applied/reverified maina9abdc6
 2026-10-06; manager e5ff366, identical backend53e36afc0d1ad2b9232d04010222e805ca009410;
 586 unit/HTTP +409 SQL=995 PASS, 0 fail/skip, build0warnings0errors.
