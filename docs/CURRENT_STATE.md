@@ -4,6 +4,15 @@ Last updated: 2026-10-06
 
 ## Current task
 
+Owner requested next R02→R03 on2026-10-06. Concrete task/worker cards prepared:
+R02 completion/TX/scoped lookup primitives; R03 API007 detail/API010 lock/API014
+caller result pilot. Exact new external payload and rollback-only T23/Admin SQL
+fixtures await consent; no worker/SQL/implementation run yet. Product decisions
+unchanged. See R02_TASK_CARD.md and R03_TASK_CARD.md. ADR163 remains applicable
+after authorized implementation is independently reviewed PASS.
+
+## Latest applied A08/R01 checkpoint
+
 Owner-approved A08→R01 implementation completed and independently reviewed PASS
 2026-10-06;733unit/HTTP+462SQL=1195PASS/0fail0skip/build0warnings0errors.
 Two bounded AGY SUCCESS/full3contexts before write/zero observed scope violations;

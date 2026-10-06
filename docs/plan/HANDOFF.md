@@ -1,5 +1,13 @@
 # Handoff — E01–E05 và complete design baseline đã Accepted
 
+## Current R02/R03 preparation — 2026-10-06
+
+Owner requested continuation. Task cards R02_TASK_CARD.md/R03_TASK_CARD.md and
+bounded R02_WINDOW_WORKER.md/R03_GUARD_WORKER.md prepared. New external payload
+and rollback-only ReplayOperation/Admin fixtures await consent. No worker/SQL/
+implementation run yet. Accepted product decisions unchanged; ADR163 main apply
+only after authorized implementation passes independent review.
+
 ## Latest A08/R01 checkpoint — applied and reverified PASS
 
 Owner-approved A08→R01 implementation completed and independently reviewed PASS

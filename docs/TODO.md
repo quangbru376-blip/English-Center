@@ -10,6 +10,10 @@
 
 ## Next
 
+- Owner requested R02→R03 continuation2026-10-06. Concrete task/worker contracts
+  prepared; pending exact new external payload and rollback T23/Admin fixture
+  consent. No worker/SQL/code yet. See R02/R03_TASK_CARD. No later U/restM0.
+
 - D07→D08→D09 owner batch complete/reviewed PASS/applied/reverified code maina7561dd;
   build clean/481unit+102SQL PASS. Cards/evidence in docs/plan/D07/D08/D09.
 - D10→D11 complete/reviewed PASS/applied/reverified main6aaa4d7:
