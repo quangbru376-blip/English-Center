@@ -1,7 +1,7 @@
 # Project Planning
 
-Latest2026-10-06: owner-approved A06→A07 reviewed PASS;1070tests/buildclean,
-ready for ADR163 main application/reverification. Explicit /me/logout/live session
+Latest2026-10-06: owner-approved A06→A07 applied/reverified PASS mained40a4b;1070tests/buildclean,
+ADR163 main application/reverification complete. Explicit /me/logout/live session
 integration remains unmounted. Next A08→R01, not started; HANDOFF/cards are current.
 Earlier A03/A05 and first-code planning below are historical.
 

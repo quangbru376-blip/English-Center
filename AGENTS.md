@@ -108,6 +108,17 @@ role members;4roles102permissions6migrations/profile unchanged. Owned SQL commit
 paths source-reviewed plus HTTP fixture seams, not persisted runtime/stress proof.
 See A03/A05 cards/evidence, ADR170. Next A06 current-session/me→A07 logout unstarted;
 no A08/restM0/schema/grants/owner/logins/other DB/installation/push/deploy authority.
+Owner-approved A06→A07 completed/reviewed PASS/applied/reverified2026-10-06
+mained40a4b, manager633671b, identical backend0d407841beeb719bbd753e828a9a5d408549a1bc;
+632unit/HTTP+438SQL=1070PASS/build0warnings0errors. Two bounded AGY SUCCESS/
+zero observed scope violations; Codex independently integrated/reviewed/tested.
+Fresh JWT/current Account→Session authority, exact me context/non-renewing reads,
+explicit activity hook/current-SID logout and independent audit. Invalid cookie401
+cleanup permits login recovery. Default Program unmounted; SQL caller-TX fixtures
+rollback only; owned COMMIT paths source-reviewed/HTTP fixture seams, no persisted
+runtime or committed stress proof. Retained rows/users/members0; exact catalog/
+102permissions/profile unchanged. See A06/A07 cards/evidence, ADR171.
+Next A08 password change→R01 canonical replay registry unstarted.
 Historical initial scope is retained in
 FIRST_CODE_HANDOFF; latest checkpoint and explicit current owner scope govern.
 Standing owner authority ADR-163: apply Codex-reviewed PASS stages already

@@ -24,8 +24,8 @@
 - A03→A05 reviewed PASS2026-10-06:586unit/HTTP+409SQL=995PASS/buildclean;
   applied/reverified maina9abdc6 under ADR163. Signup/login adapters
   explicitly unmounted; no production profile, real Admin or current-session resolver.
-- A06→A07 reviewed PASS2026-10-06:632unit/HTTP+438SQL=1070PASS/buildclean;
-  ready for main application/reverification under ADR163. Exact me/logout and live
+- A06→A07 applied/reverified PASS mained40a4b2026-10-06:632unit/HTTP+438SQL=1070PASS/buildclean;
+  main/manager identical backend verified under ADR163. Exact me/logout and live
   session hooks remain explicit/unmounted; production profile/principal/full readiness deferred.
 - Next canonical A08 password change, then R01 canonical registry; unstarted.
   Real login/Windows-linked demo users and runtime/schema/maintenance bindings

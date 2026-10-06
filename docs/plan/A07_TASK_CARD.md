@@ -88,8 +88,11 @@ postcommit cannot undo logout. Distinguish rollback fixtures from persistent tra
 
 ## Completion and independent review — 2026-10-06
 
-Both integrated authorized stages reviewed PASS; source/evidence retained manager
-detached, ready for ADR163 apply and main reverification. No A08/restM0 activation.
+Both authorized stages reviewed PASS/applied/reverified mained40a4b;
+manager633671b, identical backend0d407841beeb719bbd753e828a9a5d408549a1bc.
+Source/evidence retained detached. Main repeated632unit/HTTP+438SQL PASS,
+both builds0warnings0errors. See A07-evidence/verification-summary.json.
+Post-test retained business rows/users/members0. No A08/restM0 activation.
 A06 AGY8aba3a3b-d0a SUCCESS/116diff lines; A07 AGY442d3e33-d34 SUCCESS/10diff lines.
 Each5observed reads/1write/full3authorized context reads before write/0observed
 scope violations; helpers independently inspected and tested. Original trees retained.

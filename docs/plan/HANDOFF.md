@@ -1,8 +1,9 @@
 # Handoff — E01–E05 và complete design baseline đã Accepted
 
-## Latest A06/A07 checkpoint — reviewed PASS, ready for main application
+## Latest A06/A07 checkpoint — applied and reverified PASS
 
-Owner-approved A06→A07 implementation completed and independently reviewed PASS
+Owner-approved A06→A07 implementation completed/reviewed PASS/applied/reverified
+mained40a4b, manager633671b, identical backend0d407841beeb719bbd753e828a9a5d408549a1bc;
 2026-10-06;632unit/HTTP+438SQL=1070PASS/0fail0skip/build0warnings0errors.
 Two bounded AGY SUCCESS/full three contexts before write/zero observed violations;
 Codex implemented/reviewed/tested JWT/current-state/transaction/HTTP integration.

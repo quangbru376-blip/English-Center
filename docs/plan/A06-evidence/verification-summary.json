@@ -1,0 +1,77 @@
+{
+  "date": "2026-10-06",
+  "verdict": "PASS applied and reverified",
+  "manager_commit": "633671ba9717dddeb8939098cba6fb3ff0225445",
+  "main_code_commit": "ed40a4bb938e35a46631ec669658c891382a618a",
+  "identical_backend_tree": "0d407841beeb719bbd753e828a9a5d408549a1bc",
+  "tests": [
+    {
+      "run": "manager-unit",
+      "passed": 632,
+      "failed": 0,
+      "skipped": 0,
+      "trx_sha256": "21c027aed915e2e716621da8be87b1dc061ec16ffc763e283fb49c690e80adfc"
+    },
+    {
+      "run": "manager-sql",
+      "passed": 438,
+      "failed": 0,
+      "skipped": 0,
+      "trx_sha256": "c2c2a6584a76dbd174d55aac18eed1356df18bfc1c22e44ff2bde3a95f845cd7"
+    },
+    {
+      "run": "main-unit",
+      "passed": 632,
+      "failed": 0,
+      "skipped": 0,
+      "trx_sha256": "42674bb7430822c2f22bd7787a823f91a9645f11640a9dd8b7ba5879127443d9"
+    },
+    {
+      "run": "main-sql",
+      "passed": 438,
+      "failed": 0,
+      "skipped": 0,
+      "trx_sha256": "2d7967d0f28c3a1baf6a908c07d09cb311578ce6084292033fbc0e5109968d7d"
+    }
+  ],
+  "builds": {
+    "solution": {
+      "warnings": 0,
+      "errors": 0
+    },
+    "sql_tests": {
+      "warnings": 0,
+      "errors": 0
+    }
+  },
+  "retained_sql_after_tests": {
+    "database": "EnglishCenter_D07_20261005",
+    "business_rows": 0,
+    "fixture_users": 0,
+    "ec_role_members": 0,
+    "roles": 4,
+    "permissions": 102,
+    "migrations": 6,
+    "compatibility": 160,
+    "collation": "Latin1_General_100_CI_AS_SC",
+    "snapshot": "ON",
+    "catalog_regression": "PASS"
+  },
+  "workers": [
+    {
+      "run": "8aba3a3b-d0a",
+      "observed_scope_violations": 0
+    },
+    {
+      "run": "442d3e33-d34",
+      "observed_scope_violations": 0
+    }
+  ],
+  "limits": [
+    "Default Program unmounted; production profile, keys, login principals and full readiness deferred",
+    "SQL cores verified using rollback-only caller transactions",
+    "Owned SQL COMMIT executors source-reviewed; HTTP uses explicit fixture commit seams",
+    "Persisted runtime and committed multi-client stress not proven",
+    "A08 and R01 unstarted"
+  ]
+}
