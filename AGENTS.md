@@ -119,6 +119,19 @@ rollback only; owned COMMIT paths source-reviewed/HTTP fixture seams, no persist
 runtime or committed stress proof. Retained rows/users/members0; exact catalog/
 102permissions/profile unchanged. See A06/A07 cards/evidence, ADR171.
 Next A08 password change→R01 canonical replay registry unstarted.
+Owner-approved A08→R01 completed/reviewed PASS/applied/reverified2026-10-06
+code main3b46460, manager18c0af7; identical backend4fb65a2e2f0e3ef9fc95dd040cf4438c4156be24.
+733unit/HTTP/C1+462SQL=1195PASS/build0warnings0errors on manager and main.
+Two bounded AGY SUCCESS/full authorized context/zero observed scope violations;
+Codex independently fixed/integrated/reviewed/tested. A08 exact API004 raw credentials,
+fresh normal/restricted proof/RV, Account→binary SID locks, atomic hash/version/temp
+clear/all-own-session revoke/mandatory audit; postcommit204 cookie deletion.
+R01 disconnected exact55 registry/6lookup groups/schema-aware EC-C1 bytes/SHA256;
+no T23 completion storage or live replay routes. Program unmounted; SQL rollback-only,
+owned COMMIT source-reviewed/HTTP fixture seams, no persisted runtime/stress claim.
+Retained business rows/test users/members0;4roles102permissions6migrations/profile
+unchanged. No schema/grants/owner/logins/other DB/install/push/deploy. See A08/R01
+cards/evidence, ADR172. Next R02 completion/TX/lookup→R03 Admin lock pilot unstarted.
 Historical initial scope is retained in
 FIRST_CODE_HANDOFF; latest checkpoint and explicit current owner scope govern.
 Standing owner authority ADR-163: apply Codex-reviewed PASS stages already

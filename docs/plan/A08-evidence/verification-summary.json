@@ -1,0 +1,83 @@
+{
+  "date": "2026-10-06",
+  "verdict": "PASS applied and reverified",
+  "manager_commit": "18c0af753d1ebb88335dc250c5526138c42be3d3",
+  "main_code_commit": "3b464606a519cc93455eb1cc1fbc249292ea3f53",
+  "identical_backend_tree": "4fb65a2e2f0e3ef9fc95dd040cf4438c4156be24",
+  "tests": [
+    {
+      "run": "manager-unit",
+      "passed": 733,
+      "failed": 0,
+      "skipped": 0,
+      "trx_sha256": "26f7998795c001083bd6c972ac3589c31bb79cef97e02487b4fc19878e953560"
+    },
+    {
+      "run": "manager-sql",
+      "passed": 462,
+      "failed": 0,
+      "skipped": 0,
+      "trx_sha256": "e10d7b11f8fca162ef3eb8d80519b8da80e8b09dcae3ef742f22cf8540fd73cd"
+    },
+    {
+      "run": "main-unit",
+      "passed": 733,
+      "failed": 0,
+      "skipped": 0,
+      "trx_sha256": "4e90fcac2b97c36d95f2b3f98395b315dd6674cfd0ead7932632b9e7eb808b71"
+    },
+    {
+      "run": "main-sql",
+      "passed": 462,
+      "failed": 0,
+      "skipped": 0,
+      "trx_sha256": "2d7a502c7303bfa0cf53944937689155b530337eb63609d3d9a0c99380b9e606"
+    }
+  ],
+  "builds": {
+    "solution": {
+      "warnings": 0,
+      "errors": 0
+    },
+    "sql_tests": {
+      "warnings": 0,
+      "errors": 0
+    }
+  },
+  "retained_sql_after_tests": {
+    "database": "EnglishCenter_D07_20261005",
+    "business_rows": 0,
+    "fixture_users": 0,
+    "ec_role_members": 0,
+    "roles": 4,
+    "permissions": 102,
+    "migrations": 6,
+    "compatibility": 160,
+    "collation": "Latin1_General_100_CI_AS_SC",
+    "snapshot": "ON",
+    "catalog_regression": "PASS"
+  },
+  "workers": [
+    {
+      "run": "d32988a5-9ff",
+      "observed_scope_violations": 0
+    },
+    {
+      "run": "234f6d2a-ef7",
+      "observed_scope_violations": 0
+    }
+  ],
+  "canonical_registry": {
+    "actions": 55,
+    "lookup_groups": 6,
+    "parity_evidence": "R01-evidence/registry-parity.json"
+  },
+  "limits": [
+    "Default Program unmounted; production profile, keys, login principals and full readiness deferred",
+    "SQL cores verified using rollback-only caller transactions",
+    "Owned SQL COMMIT executors source-reviewed; HTTP uses explicit fixture commit seams",
+    "Persisted runtime and committed multi-client stress not proven",
+    "R01 disconnected registry/schema/C1 only; no T23 completion storage or live replay routes",
+    "R02 and R03 unstarted"
+  ]
+}

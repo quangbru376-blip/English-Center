@@ -1,6 +1,6 @@
 # Handoff — E01–E05 và complete design baseline đã Accepted
 
-## Latest A08/R01 checkpoint — reviewed PASS, ready for main application
+## Latest A08/R01 checkpoint — applied and reverified PASS
 
 Owner-approved A08→R01 implementation completed and independently reviewed PASS
 2026-10-06;733unit/HTTP+462SQL=1195PASS/0fail0skip/build0warnings0errors.
@@ -23,7 +23,9 @@ permissions/6migrations/profile160/Latin1_General_100_CI_AS_SC/snapshotON unchan
 exact full catalog/modules/columns regression PASS. No schema/module/package/grants/
 profile/owner/logins/other DB/seed/persistent keys/install/push/deploy changes.
 Original detached worker/manager evidence retained. See A08/R01_TASK_CARD/evidence,
-notes/A08.md,R01.md; ADR172. Source ready for ADR163 main apply/reverification.
+notes/A08.md,R01.md; ADR172. Applied/reverified under ADR163 code main3b46460, manager18c0af7; identical backend
+4fb65a2e2f0e3ef9fc95dd040cf4438c4156be24. Both manager and main full suites PASS;
+compact TRX hashes/checks in A08/R01-evidence/verification-summary.json.
 Next canonical R02 completion/TX/lookup primitives → R03 Admin lock pilot; unstarted.
 
 ## Previous A06/A07 checkpoint — applied and reverified PASS

@@ -28,7 +28,7 @@
   main/manager identical backend verified under ADR163. Exact me/logout and live
   session hooks remain explicit/unmounted; production profile/principal/full readiness deferred.
 - A08→R01 owner-approved scope reviewed PASS2026-10-06:733unit/HTTP+462SQL=1195PASS,
-  buildclean; ready for ADR163 apply/main reverification. API004 and disconnected
+  buildclean; applied/reverified code main3b46460 under ADR163. API004 and disconnected
   registry55/schema-aware C1 only; no runtime/T23. Next R02→R03 unstarted.
   Real login/Windows-linked demo users and runtime/schema/maintenance bindings
   remain operator-profile prerequisites; WITHOUT LOGIN tests do not prove login auth.

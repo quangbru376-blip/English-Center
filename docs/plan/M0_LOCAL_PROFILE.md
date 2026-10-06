@@ -1,6 +1,15 @@
 # P01 — local bootstrap profile
 
-## Latest A06/A07 checkpoint — applied and reverified PASS
+## Latest A08/R01 checkpoint — applied and reverified PASS
+
+Code main3b46460, manager18c0af7; identical backend verified,1195tests PASS/buildclean.
+All approved SQL fixtures rolled back:0business rows/test users/role memberships;
+4roles102permissions6migrations/profile160/Latin1_General_100_CI_AS_SC/snapshotON unchanged.
+API004 and disconnected canonical registry/C1 remain explicitly unmounted.
+Production profile/keys/login principals/full readiness deferred; owned SQL COMMIT
+source-reviewed with HTTP fixture seams only. See A08/R01 cards/verification-summary.
+
+## Previous A06/A07 checkpoint — applied and reverified PASS
 
 Owner-approved A06→A07 implementation completed/reviewed PASS/applied/reverified
 mained40a4b, manager633671b, identical backend0d407841beeb719bbd753e828a9a5d408549a1bc;
