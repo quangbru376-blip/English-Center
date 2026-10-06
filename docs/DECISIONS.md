@@ -4446,3 +4446,27 @@ and security version come from the locked row; no session upgrade/revocation/idl
 Production key/principal/origin/proxy/current-session resolver remains explicit and
 unconfigured. Approved fixture execution is rollback-only; owned executor commit paths
 are source-reviewed plus HTTP fixture seams, not persisted SQL or committed stress proof.
+
+## ADR-171 — Fresh live-session authority and current-session logout integration
+
+Status: Implemented — 2026-10-06; owner approved bounded A06→A07 payload/rollback SQL.
+No product decision reopened. Supplied JWT keys/issuer/audience/algorithm/token byte
+limit are explicit; framework validates signature, issuer/audience/type and raw clock
+lifetime, with no skew extending deadlines. Strict required private claims are positive
+canonical Account/version,32byte canonical SID, exact scope and integer iat/nbf/exp.
+Proof cannot supply role/contact permissions; fresh SQL Account→Session locks guard
+current status/version/SID relation/revocation/time/scope and fixed current role.
+Temporary bundle must satisfy the existing exact24h invariant; restricted never upgrades.
+Fresh SQL snapshots copied over an unchanged tracked entity explicitly reset Unchanged;
+otherwise EF can retain false modified flags. SqlLoginRepository receives that narrow
+A05 prerequisite fix; dirty caller entities still fail STATE_CONFLICT, never overwritten.
+Private proof stored by the live resolver plus A04 verified marker protects adapters.
+Current context checks occur again after pre-CSRF resolution. Explicit business activity
+hook requires valid NORMAL session and caller transaction; no real business route mounted.
+Invalid cookie401 schedules secure host-only cookie removal at response start so global
+error clearing cannot strand anonymous CSRF/login recovery. It preserves401/no fake
+server revocation;403/500 do not delete a valid session cookie. Deliberate refetch only.
+Current logout rechecks live facts, updates one SID, raw cutoff checked before commit,
+then A01 independent AUTH.LOGOUT and204/cookie removal. Logging failure cannot compensate.
+Read/current revoke SQL cores verified rollback-only; owned request commit paths source
+reviewed plus HTTP fixture seams. No persisted concurrency/runtime/readiness claim.

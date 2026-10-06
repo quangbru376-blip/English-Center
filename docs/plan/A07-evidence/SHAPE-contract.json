@@ -1,0 +1,30 @@
+{
+  "mode": "edit",
+  "objective": "Implement ONLY the pure helper defined by docs/plan/A07_SHAPE_WORKER.md. Read all three context files completely before edit. No commands/SQL/network/links/other reads; Codex independently verifies.",
+  "allowed_paths": [
+    "backend/src/EnglishCenter.Api/Api/Auth/LogoutRequestShape.cs"
+  ],
+  "forbidden_paths": [
+    "AGENTS.md",
+    "docs/**",
+    ".agents/**",
+    "**/*.csproj",
+    "**/packages.lock.json",
+    "**/Migrations/**",
+    ".env"
+  ],
+  "context_files": [
+    "docs/plan/A07_SHAPE_WORKER.md",
+    ".agents/skills/backend-clean-code/SKILL.md",
+    "docs/plan/SKILL_ROUTING.md"
+  ],
+  "acceptance_criteria": [
+    "Exact public API/behavior and canonical overrides from full worker card.",
+    "Complete three authorized context reads before write, no forbidden reads/tools.",
+    "One bounded framework-only helper; no tests/SQL/config/secrets/commands."
+  ],
+  "max_changed_files": 1,
+  "max_diff_lines": 60,
+  "model": "",
+  "timeout": "15m"
+}

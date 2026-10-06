@@ -4,12 +4,28 @@ Last updated: 2026-10-06
 
 ## Current task
 
-Owner2026-10-06 requested starting A06 current-session/me → A07 logout.
-Concrete task/worker cards and local contracts prepared; exact new four-file Google
-Antigravity sharing and isolated rollback SQL scope await consent under routing3.4.
-No worker dispatch/new SQL/code completion yet. Standing ADR163 apply remains valid
-for authorized reviewed PASS implementation. No A08/runtime/profile/key activation.
-See A06_TASK_CARD/A07_TASK_CARD. Previous applied checkpoint follows.
+Owner-approved A06→A07 implementation completed and independently reviewed PASS
+2026-10-06;632unit/HTTP+438SQL=1070PASS/0fail0skip/build0warnings0errors.
+Two bounded AGY SUCCESS/full three contexts before write/zero observed violations;
+Codex implemented/reviewed/tested JWT/current-state/transaction/HTTP integration.
+A06 supplied-key framework JWT validation plus fresh Account→Session SQL guards,
+exact9-field API003 /me, live CSRF resolver and explicit caller-TX activity/recheck
+hook. Me/CSRF/background never renew idle; restricted scope cannot enter business.
+A07 API005 revokes only current SID; commit before204/secure cookie deletion;
+independent A01 security audit faults cannot restore revocation or block success.
+Invalid auth cookies are removed on401 to permit deliberate anonymous CSRF/login
+recovery; response remains401 and does not claim revoke success.403/500 unchanged.
+Default Program stays unchanged/unmounted, no real Admin/production profile/keys/
+principal or full runtime readiness. SQL cores execute only rollback fixtures;
+owned SQL commit paths source-reviewed with explicit HTTP fixture commit seams,
+not proof of persisted runtime/committed multi-client concurrency. No A08/restM0.
+Retained dbo rows except history/test users/role memberships0;4roles102permissions/
+6migrations, profile160/Latin1_General_100_CI_AS_SC/snapshotON unchanged; exact catalog
+regression PASS. No schema/module/package/grant/profile/owner/logins/other DB/seed/
+persistent keys/install/push/deploy change. Original worker/manager detached retained.
+See A06/A07_TASK_CARD/evidence, notes/A06.md,A07.md, docs/api.md; ADR171.
+Next canonical A08 password change, then R01 canonical replay registry; unstarted.
+ADR163 permits applying only already authorized reviewed PASS stages.
 
 ## Previous A03/A05 applied checkpoint
 

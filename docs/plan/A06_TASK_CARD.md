@@ -1,4 +1,4 @@
-# A06 — API003 /me and reusable live-session authorization — preparation
+# A06 — API003 /me and reusable live-session authorization — reviewed PASS
 
 Owner2026-10-06 requests starting the next two canonical families A06→A07.
 Baseline codea9abdc6/docs87b4885:586unit/HTTP+409SQL=995PASS; default host unmounted.
@@ -15,19 +15,19 @@ real fixtures, explicit origin/keys/profile/deadlines; no SQLite/CORS/new packag
 read_context: ordered Project Memory, requirements relevant auth/privacy/acceptance;
 HANDOFF/FIRST_CODE_HANDOFF/implementation-plan/M0_QUALITY_PLAN; accepted E04 DTO/
 final contract/runtime/SQL lock order and existing A01/A04/A05 identity code.
-skill_verification: preparation, no AGY dispatch/new SQL/code completion yet.
+skill_verification: independent Codex source/build/test review PASS; bounded read-before-write/scope audit below.
 
 ## Authority and proposed execution scope
 
 Implementation is owner-requested. Existing external read and SQL fixture approvals
-were for A03/A05 only. Exact new scope below awaits explicit data-sharing/SQL consent
-under SKILL_ROUTING3.4; do not treat earlier approvals as blanket future consent.
+were for A03/A05 only. Owner explicitly approved this exact new data-sharing/SQL scope2026-10-06.
+SKILL_ROUTING3.4 gate satisfied; earlier approvals remain historical.
 External union: A06_DEADLINE_WORKER.md, A07_SHAPE_WORKER.md,
 backend-clean-code/SKILL.md, SKILL_ROUTING.md only. Each worker reads own card +
 complete selected skill/routing and its sole output if it exists. No AGENTS/links/
 other source/commands/SQL/network/secrets. One helper each, independent detached trees.
 
-Codex proposed SQL ONLY .\SQLEXPRESS/EnglishCenter_D07_20261005, synthetic
+Codex verified SQL ONLY .\SQLEXPRESS/EnglishCenter_D07_20261005, synthetic
 Account/Role/AuthSession fixtures and RAM-generated passwords/signing keys/tokens,
 caller transactions rollback only. Multiple connections permitted for finite lock/
 revocation/denied-update contention; all fixture DML rolls back. Existing regression
@@ -102,3 +102,33 @@ normal2h/idle30min and raw equality boundaries; restricted min10min/temp cap/no 
 me/CSRF/background no idle writes; explicit activity cannot resurrect expired session;
 fresh SQL facts and Account→Session finite contention/recheck; exact9JSON/no tokens/
 no cookie renewal, safe401/403/400/503, Origin/CSRF guards and denial-audit failure.
+
+## Completion and independent review — 2026-10-06
+
+Both integrated authorized stages reviewed PASS; source/evidence retained manager
+detached, ready for ADR163 apply and main reverification. No A08/restM0 activation.
+A06 AGY8aba3a3b-d0a SUCCESS/116diff lines; A07 AGY442d3e33-d34 SUCCESS/10diff lines.
+Each5observed reads/1write/full3authorized context reads before write/0observed
+scope violations; helpers independently inspected and tested. Original trees retained.
+No raw AGY thinking/transcripts or test credential/key/JWT logs committed; compact
+contract/receipt/scope evidence stored. Whitespace normalized in manager integration.
+Scope clarification: narrow shared A05 SqlLoginRepository fresh-load state reset;
+A04 denied observer hook; invalid live-cookie401 cleanup as A06 recovery prerequisite.
+No new product rule or external payload was introduced. See ADR171 and explicit diff.
+
+Codex checklist scope/business/backend/DTO/security/owner-notes/docs PASS; frontend,
+new migrations, money, pagination N/A. Full locked restore from existing global cache
+using an empty feed/NuGetAuditfalse, no package/version change or new vulnerability
+assessment. Solution and SQL build0warnings0errors.632unit/HTTP+438SQL=1070PASS/
+0fail0skip; baseline586+409, added46unit/HTTP+29SQL. JWT algorithm/signature/issuer/
+audience/type/shape/raw timing, seven roles/current context, restricted/idle/revocation,
+callback recovery, commit/cookie/audit failure seams PASS. Actual caller SQL fault after
+Save/cancel, temporary runtime DENY UPDATE, two-connection finite contention, other SID
+preserved, non-renewing reads and explicit interactive touch PASS; fixtures rollback.
+Exact full catalog/modules/columns/102permissions regression PASS. Read-only retained
+all dbo rows except migration history0, test users0, ec-role members0;4roles/6migrations,
+profile160/Latin1_General_100_CI_AS_SC/snapshotON unchanged.
+Limits: no owned SQL persistent commit executed, committed multi-client stress/profile/
+Windows-linked login principals/production keys/network TLS/full readiness evidence.
+Future business workflows must recheck/touch in their own TX after domain gates;
+no full application permission/ownership matrix is claimed. Program stays unmounted.

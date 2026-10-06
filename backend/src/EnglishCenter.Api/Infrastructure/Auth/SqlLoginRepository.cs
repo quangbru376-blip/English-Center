@@ -18,7 +18,7 @@ public sealed class SqlLoginRepository(SqlAuthDeadlineScope scope) : ILoginRepos
         var entry = context.Entry(tracked);
         if (entry.State != EntityState.Unchanged) throw new EnglishCenter.Api.Common.Errors.ApiErrorException(EnglishCenter.Api.Common.Errors.ApiErrorCode.STATE_CONFLICT);
         // Locks guard fresh SQL facts, never an earlier tracked status/version snapshot.
-        entry.CurrentValues.SetValues(fresh); entry.OriginalValues.SetValues(fresh); return tracked;
+        entry.CurrentValues.SetValues(fresh); entry.OriginalValues.SetValues(fresh); entry.State=EntityState.Unchanged; return tracked;
     }
     public Task<string?> RoleCodeAsync(int roleId, CancellationToken cancellationToken) => Context.Roles.AsNoTracking().Where(r => r.RoleId == roleId).Select(r => r.RoleCode).SingleOrDefaultAsync(cancellationToken);
     public async Task SaveAccountAsync(CancellationToken cancellationToken) { await Context.SaveChangesAsync(cancellationToken); }

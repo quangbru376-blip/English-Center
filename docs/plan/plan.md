@@ -1,5 +1,10 @@
 # Project Planning
 
+Latest2026-10-06: owner-approved A06→A07 reviewed PASS;1070tests/buildclean,
+ready for ADR163 main application/reverification. Explicit /me/logout/live session
+integration remains unmounted. Next A08→R01, not started; HANDOFF/cards are current.
+Earlier A03/A05 and first-code planning below are historical.
+
 Latest2026-10-06: owner-approved A03→A05 reviewed PASS;586unit/HTTP+409SQL=995PASS.
 Explicit signup/login integration remains unmounted; production profile/auth resolver
 and full readiness deferred. Applied/reverified maina9abdc6 under ADR163; see current

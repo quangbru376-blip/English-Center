@@ -2,6 +2,24 @@
 
 ## Current implemented architecture
 
+A06/A07 reviewed PASS2026-10-06. Common/Security verifies supplied-key/issuer/audience/
+algorithm JWT proof with raw-clock cutoff and no ambient profile/network fallback.
+Immutable proof carries SID/version/scope, not role rights. Services/Auth checks fresh
+Account/Session/version/revocation/scope/deadlines and maps current minimal context.
+Infrastructure/Auth holds Account before Session under caller READ COMMITTED/
+SERIALIZABLE transactions and explicit finite SqlAuthDeadlineScope. Fresh EF reload
+resets Unchanged after copying trusted SQL values; dirty caller entries are rejected.
+Me/CSRF do not save; interactive business activity is an explicit future caller hook,
+never inferred from headers/background requests. Mutation workflows must recheck after
+sorted domain gates and retain locks until their transaction finishes.
+API003/API005 and LiveCsrfIdentityResolver are explicit integration functions only.
+Private proof marker prevents bypass through a claims-only resolver. A04 Observer
+records denied access independently without granting rights. Invalid auth cookie401
+removes unusable browser credential for anonymous CSRF recovery, without server revoke.
+Logout owns request commit then independent security logging and cookie removal;
+other SID/account/version/activity remains unchanged. Default Program unmounted,
+real keys/profile/principals/readiness and committed runtime stress remain deferred.
+
 A03/A05 reviewed PASS2026-10-06. Services/Identity owns strict anonymous Student
 signup; repository holds normalized unique predicates and writes Account/Profile plus
 mandatory projected audit on one caller transaction. Explicit operation executor owns

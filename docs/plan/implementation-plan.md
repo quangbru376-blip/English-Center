@@ -1,6 +1,33 @@
 # Implementation planning — discussion draft
 
-## Latest A03/A05 checkpoint — applied/reverified PASS maina9abdc6
+## Latest A06/A07 checkpoint — reviewed PASS, ready for main application
+
+Owner-approved A06→A07 implementation completed and independently reviewed PASS
+2026-10-06;632unit/HTTP+438SQL=1070PASS/0fail0skip/build0warnings0errors.
+Two bounded AGY SUCCESS/full three contexts before write/zero observed violations;
+Codex implemented/reviewed/tested JWT/current-state/transaction/HTTP integration.
+A06 supplied-key framework JWT validation plus fresh Account→Session SQL guards,
+exact9-field API003 /me, live CSRF resolver and explicit caller-TX activity/recheck
+hook. Me/CSRF/background never renew idle; restricted scope cannot enter business.
+A07 API005 revokes only current SID; commit before204/secure cookie deletion;
+independent A01 security audit faults cannot restore revocation or block success.
+Invalid auth cookies are removed on401 to permit deliberate anonymous CSRF/login
+recovery; response remains401 and does not claim revoke success.403/500 unchanged.
+Default Program stays unchanged/unmounted, no real Admin/production profile/keys/
+principal or full runtime readiness. SQL cores execute only rollback fixtures;
+owned SQL commit paths source-reviewed with explicit HTTP fixture commit seams,
+not proof of persisted runtime/committed multi-client concurrency. No A08/restM0.
+Retained dbo rows except history/test users/role memberships0;4roles102permissions/
+6migrations, profile160/Latin1_General_100_CI_AS_SC/snapshotON unchanged; exact catalog
+regression PASS. No schema/module/package/grant/profile/owner/logins/other DB/seed/
+persistent keys/install/push/deploy change. Original worker/manager detached retained.
+See A06/A07_TASK_CARD/evidence, notes/A06.md,A07.md, docs/api.md; ADR171.
+Next canonical A08 password change, then R01 canonical replay registry; unstarted.
+ADR163 permits applying only already authorized reviewed PASS stages.
+
+## Historical A03/A05 checkpoint
+
+### A03/A05 applied checkpoint (historical) — applied/reverified PASS maina9abdc6
 
 Owner-approved A03→A05 implementation completed/reviewed PASS/applied/reverified maina9abdc6
 2026-10-06; 586 unit/HTTP +409 SQL=995 PASS, 0 fail/skip, build0warnings0errors.

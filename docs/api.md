@@ -33,3 +33,23 @@ Missing body/CSRF/trusted-IP profile fails closed503. Rejected counter changes a
 accepted sessions commit before adapter output; cancellation/exception rolls back.
 NumericDate floor may reject subsecond temporary lifetime; no deadline extension.
 No API003/me, API004/password change, API005/logout or runtime route activation yet.
+
+2026-10-06 A06/A07: explicit MapCurrentSession GET /api/v1/auth/me (API003),
+MapCurrentSessionLogout POST /api/v1/auth/logout (API005); unchanged Program mounts none.
+LiveCsrfIdentityResolver requires supplied JWT profile/reader/clock/A01 recorder; JWT
+is taken only from __Host-ec-auth. Current SQL facts establish identity and minimal role
+context, not private token claims. Required body/Origin/CSRF/profile ordering remains.
+GET /me has no body/query, allows verified NORMAL/PASSWORD_CHANGE context200 with
+exact same9fields as login/no-store, no JWT/SID/reissue/idle renewal. Invalid session401,
+restricted business403, invalid shape400, missing trusted proof/middleware503.
+POST /logout has no business body/query/UUID. Valid current session +Origin/framework
+CSRF required before absent-input check and final Account→Session mutation guard.
+Success204 empty body/secure host-only expired auth cookie after current-SID commit;
+other device remains valid. Existing/missing/expired/revoked session401, bad CSRF403,
+extra body/query400; failure500/known lock conflict409 never fake successful logout.
+Independent logout/denied security logging uses A01 fixed fallback counter, no secrets.
+Live resolver removes an invalid supplied auth cookie on401 (including idle expiry),
+allowing deliberate anonymous /csrf bootstrap afterward; it never turns401 into204.
+No cookie removal on CSRF403 or failed valid-session commit500. No automatic retries.
+Real production profiles/keys/principals/connection readiness remain deferred; API004
+password change/A08 and replay tasks are not implemented by this batch.
