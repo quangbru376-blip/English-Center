@@ -1,7 +1,6 @@
 # Project Planning
 
-Latest2026-10-06: R02→R03 reviewed PASS;1386tests/buildclean, ready for ADR163
-main apply/reverification. Explicit Admin detail/lock/lookup and completion protocol;
+Latest2026-10-06: R02→R03 reviewed PASS;1386tests/buildclean, applied/reverified mainfcdd21e under ADR163. Explicit Admin detail/lock/lookup and completion protocol;
 unmounted/rollback-only SQL. Next U02→U01 unstarted. See R02/R03 cards/evidence.
 
 Latest2026-10-06: A08→R01 owner-approved scope reviewed PASS;1195tests/buildclean.

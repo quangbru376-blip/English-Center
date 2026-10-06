@@ -1,5 +1,14 @@
 # P01 — local bootstrap profile
 
+## Latest R02/R03 checkpoint — applied and reverified PASS
+
+Code mainfcdd21e/manager1cb6ebc share backend10ecb75c6fbd6e7155d8ed4b6a4723e74112e88a;
+1386tests PASS/buildclean. Approved SQL fixtures rollback:0business rows/test users/
+memberships;4roles102permissions6migrations/full catalog/profile unchanged.
+Explicit Admin007/010/014 remain unmounted; production profile/keys/principals deferred.
+Owned COMMIT source-reviewed/HTTP fixture seams only, no committed runtime/stress claim.
+See R02/R03 cards/verification-summary. No profile/schema/grant/owner/login changes.
+
 ## Latest A08/R01 checkpoint — applied and reverified PASS
 
 Code main3b46460, manager18c0af7; identical backend verified,1195tests PASS/buildclean.

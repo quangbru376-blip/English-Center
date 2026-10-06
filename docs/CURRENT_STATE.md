@@ -4,8 +4,7 @@ Last updated: 2026-10-06
 
 ## Current task
 
-Owner-approved R02→R03 completed/independently reviewed PASS2026-10-06 in detached
-manager;891unit/HTTP/C1+495SQL=1386PASS/0fail0skip/build0warnings0errors.
+Owner-approved R02→R03 completed/reviewed PASS/applied/reverified2026-10-06;891unit/HTTP/C1+495SQL=1386PASS/0fail0skip/build0warnings0errors.
 Two bounded AGY SUCCESS/full3contexts before write/zero observed scope violations;
 Codex independent integration/fixes/tests/review. R02 exact completion references/
 24h/caller-action-key partition/request gate/scope-before-digest/append-only TX.
@@ -17,7 +16,9 @@ Program remains unmounted; production keys/profile/principals/readiness deferred
 SQL fixtures rollback only, owned COMMIT source-reviewed/HTTP fixture commit seams;
 no persisted runtime/committed stress proof. Retained business rows/test users/members0,
 4roles102permissions6migrations/full catalog/profile unchanged. Original trees retained.
-Ready for ADR163 main apply/reverification; see R02/R03_TASK_CARD/evidence/notes.
+Applied/reverified under ADR163 code mainfcdd21e, manager1cb6ebc; identical backend
+10ecb75c6fbd6e7155d8ed4b6a4723e74112e88a. Both full suites passed on manager and main;
+see R02/R03-evidence/verification-summary.json for four TRX hashes/retained DB checks.
 Next U02→U01 unstarted; no frontend/restM0/installation/push/deploy authority.
 
 ## Latest applied A08/R01 checkpoint

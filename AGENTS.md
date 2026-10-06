@@ -132,6 +132,20 @@ owned COMMIT source-reviewed/HTTP fixture seams, no persisted runtime/stress cla
 Retained business rows/test users/members0;4roles102permissions6migrations/profile
 unchanged. No schema/grants/owner/logins/other DB/install/push/deploy. See A08/R01
 cards/evidence, ADR172. Next R02 completion/TX/lookup→R03 Admin lock pilot unstarted.
+Owner-approved R02→R03 completed/reviewed PASS/applied/reverified2026-10-06
+code mainfcdd21e, manager1cb6ebc; identical backend10ecb75c6fbd6e7155d8ed4b6a4723e74112e88a.
+891unit/HTTP/C1+495SQL=1386PASS/build0warnings0errors on manager and main.
+Two bounded AGY SUCCESS/full3contexts before write/zero observed scope violations;
+Codex independently integrated/fixed/reviewed/tested. R02 exact append-only completion/
+24h/request gate/mandatory current target authority before digest; no response snapshots.
+R03 explicit007detail SNAPSHOT+final live authority/010atomic Admin lock/014safe6action
+lookup. Request→ADMINSET→ascending Account union→binary SIDs; stale RV bypass only
+matched active replay, no repeat effects/audit/activity. Status/security version/all-own
+SID revoke/audit/T23 share caller TX; self/last-active guards and strict UUID/RV retained.
+Program unmounted; SQL rollback-only, owned COMMIT source-reviewed/HTTP fixture seams;
+no persisted runtime/committed stress proof. Retained business rows/test users/members0;
+4roles102permissions6migrations/full catalog/profile unchanged. See R02/R03 cards/evidence,
+ADR173. Next U02→U01 unstarted; no frontend/restM0/runtime/install/push/deploy authority.
 Historical initial scope is retained in
 FIRST_CODE_HANDOFF; latest checkpoint and explicit current owner scope govern.
 Standing owner authority ADR-163: apply Codex-reviewed PASS stages already

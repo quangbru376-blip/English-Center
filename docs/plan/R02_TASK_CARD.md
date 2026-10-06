@@ -133,5 +133,4 @@ and ADMINSET gates are introduced at service caller, with explicit shared lock o
 Owned SQL COMMIT wrappers source-reviewed and HTTP fixture seams; no persisted or
 committed stress/runtime readiness claim. Other domains/current-scope integrations,
 Admin mutations/U families/production profile and real principals remain deferred.
-Original worker/manager trees retained. Apply authorized PASS under ADR163 and rerun
-full main suites before closing. No further owner product decision required.
+Original worker/manager trees retained. Authorized PASS applied under ADR163; full main suites reverified. No further owner product decision required.

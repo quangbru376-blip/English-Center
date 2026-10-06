@@ -1,6 +1,6 @@
 {
   "date": "2026-10-06",
-  "verdict": "PASS manager reviewed; main apply/reverification pending",
+  "verdict": "PASS applied and reverified",
   "tests": [
     {
       "run": "manager-unit",
@@ -15,6 +15,20 @@
       "failed": 0,
       "skipped": 0,
       "trx_sha256": "692c6b7e4b66898af6a085949e8c7581f4dff4369de3d4c60559e3fdbcf323e8"
+    },
+    {
+      "run": "main-unit",
+      "passed": 891,
+      "failed": 0,
+      "skipped": 0,
+      "trx_sha256": "487e0942a2dbbd1669fd2fce7d22ee749d32f90ea32da0a2792d93c04c1b036b"
+    },
+    {
+      "run": "main-sql",
+      "passed": 495,
+      "failed": 0,
+      "skipped": 0,
+      "trx_sha256": "b812fc12dd423766535ae925b0922e8180d4150630f011e96a13836525dba38d"
     }
   ],
   "builds": {
@@ -56,5 +70,8 @@
     "No persisted runtime/committed multi-client stress proof",
     "Other canonical workflow callers/current task scopes and Admin mutations deferred",
     "U02 U01/restM0 unstarted"
-  ]
+  ],
+  "manager_commit": "1cb6ebc66a6a480d39d7e28735e5b887b0fda59f",
+  "main_code_commit": "fcdd21e414fe90108eb1e0d728dc8e43eb8cbbcc",
+  "identical_backend_tree": "10ecb75c6fbd6e7155d8ed4b6a4723e74112e88a"
 }

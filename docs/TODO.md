@@ -11,7 +11,7 @@
 ## Next
 
 - R02→R03 owner-approved scope reviewed PASS2026-10-06:1386tests/buildclean.
-  Ready for ADR163 main apply/reverification. Explicit Admin007/010/014 plus
+  Applied/reverified code mainfcdd21e under ADR163. Explicit Admin007/010/014 plus
   completion protocol; default Program unmounted. See cards/evidence.
 - Next U02→U01 unstarted; runtime/profile/keys/login principals remain deferred.
 
