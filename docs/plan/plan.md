@@ -1,5 +1,11 @@
 # Project Planning
 
+Latest2026-10-06: owner-approved A03→A05 reviewed PASS;586unit/HTTP+409SQL=995PASS.
+Explicit signup/login integration remains unmounted; production profile/auth resolver
+and full readiness deferred. Apply/reverify under standing ADR163; see current
+HANDOFF and A03/A05 task cards. Next canonical A06→A07, not opened by this batch.
+The preparation and first-code scope below are historical.
+
 This file indexes the current planning stage and later implementation work.
 Complete design agreement in `design-baseline.md` is done: E01–E05 accepted,
 actual E04-v1 ADR-160 then E05-v1/full baseline ADR-161 on2026-10-03.

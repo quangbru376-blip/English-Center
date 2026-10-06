@@ -1,4 +1,4 @@
-# A03 — API018 Student self-registration — preparation
+# A03 — API018 Student self-registration — reviewed PASS
 
 Owner2026-10-06 requested continuation of the next two canonical families A03→A05.
 Baseline codea8ad1d5/docsc5c3e6e:545unit+375SQL PASS; default host remains unexposed.
@@ -15,13 +15,13 @@ explicit caller profile/keys/deadlines; no SQLite, guessed defaults or startup s
 read_context: ordered Project Memory; HANDOFF/FIRST_CODE_HANDOFF/M0_QUALITY_PLAN,
 requirements/auth/profile ADRs, E04 DTO/final pipeline/runtime/SQL integration,
 existing P04/P05/P06/P07/P08/A01/A02/A04 and EF identity foundations.
-skill_verification: preparation; no worker dispatch/SQL execution/PASS claim yet.
+skill_verification: Codex review PASS; bounded worker scope audits and independent tests below.
 Standing ADR163 applies only independently reviewed authorized PASS code stages.
 
 External proposal is exactly both new worker cards, backend skill and routing.
 Each worker reads only its own card + skill/routing (and its sole output if present),
 writes one detached helper, no commands/SQL/Git/search/network/secrets/links/other reads.
-Owner must approve this exact new sharing scope under routing section3.4 before dispatch.
+Owner explicitly approved this exact sharing and rollback SQL scope2026-10-06 ("tôi duyệt").
 
 Codex proposed verification: ONLY .\SQLEXPRESS/EnglishCenter_D07_20261005, generated
 synthetic credentials/signing keys in RAM, no real accounts, all database fixtures
@@ -30,7 +30,7 @@ D12_fixture_user_0..3 WITHOUT LOGIN and prior rollback drift/DENY fixtures. New 
 may use multiple connections for lock contention, with finite explicit deadlines,
 without persistent seed/commit/grants/schema changes. No database owner/profile/login/
 other DB/persistent principal/key/installation/push/deploy/runtime activation changes.
-SQL mutation scope requires explicit approval; previous A02/A04 consent is historical.
+Current A03→A05 rollback SQL scope explicitly approved; prior A02/A04 consent historical.
 Real operator keys/origin/proxy/DB principals and A06 live-session resolver remain
 prerequisites. Test profiles/signers/identity resolvers never become runtime defaults.
 No A06–A08/R01–R03/UI/restM0 work. API integration functions remain unmounted in Program.
@@ -76,3 +76,32 @@ and roll back. Clearly distinguish adapter tests from real committed runtime tra
 Checks: strict fields/raw policy, birth-date/Vietnam day boundary, email CI/+tag and
 0/+84 phone equivalence across roles, exact fields/no cookie, signup+audit atomicity,
 failure/cancel rollback, competing SQL predicate/unique backstop, no session/replay.
+
+## Completion and independent review — 2026-10-06
+
+Review PASS for both integrated authorized stages; combined dependency slice, no A06/A07.
+Scope clarification: A03 also extends CsrfBoundary.RequireVerified as an A04 prerequisite;
+A05 narrowly extends CredentialHasher.RehashVerified in P08. Shared auth body/deadline
+and tests are within the authorized slice, no new library/schema/runtime wiring.
+AGY A03 RESULT65bf320b-621 SUCCESS:5reads/1write/24diff lines; A05 WINDOW773dd70d-a63
+SUCCESS:5reads/1write/82diff lines. Both read full three authorized context files
+before write; zero observed scope violations. Compact contract/receipt/scope audit
+retained under respective evidence directories; original detached worker trees retained.
+Manager whitespace-normalized new helpers; substantive worker outputs preserved.
+Codex independent fixes: fresh locked account data; active throttle expiry priority;
+known uniqueness only409; wrapped lock errors; all seven current role contexts; malformed DTO IP cap; raw deadline and NumericDate cutoffs;
+verified legacy rehash; no output before commit; independent audit failure preserves result.
+Build clean;586unit/HTTP+409SQL=995PASS/0fail/0skip.34 new SQL cases cover A03/A05
+rollback/fault/cancel/locks/unique guards/session/counter/temp precision; baseline375.
+Unit/HTTP baseline545 +41new: strict shapes, profiles/signing, Origin/CSRF/order,
+commit seams, IP gate, audit fault/cancel, exact responses/cookie and missing guards.
+Exact catalog/modules/permissions regression PASS; read-only retained check: Account,
+StudentProfile,AuthSession,AuditLog,test users,role memberships0;4roles102permissions/
+6migrations, compatibility160/collation/snapshotON unchanged.
+Review checklist scope/contract/backend/security/owner notes/docs PASS; frontend,
+new migration/money/list pagination N/A. Validated Int32 literal SET LOCK_TIMEOUT is
+required by SQL grammar and documented ADR170; account SQL remains parameterized.
+Limits: supplied production profiles/keys/origin/IP trust/DB principals/full readiness,
+real Admin/A06 resolver, owned executor persisted commit and committed concurrency
+not verified. Default Program remains unchanged/unmounted. No unapproved scope opened.
+Source/evidence remains manager detached until ADR163 apply and main reverification.

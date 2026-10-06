@@ -4423,3 +4423,26 @@ Production Program stays unmodified/unexposed until its dependencies are authori
 fixture resolver headers and ephemeral provider do not prove runtime authentication.
 A04 is CSRF/HTTP boundary; Student signup is A03. No requirement was reopened.
 Scope/evidence: A02/A04_TASK_CARD and evidence; implementation exposure: docs/api.md.
+
+## ADR-170 — Explicit signup/login integration and bounded issuance
+
+Status: Implemented — 2026-10-06; owner approved exact A03→A05 worker sharing and
+isolated rollback fixtures. No product decision reopened or runtime activation.
+Anonymous signup uses STUDENT.ACCOUNT.CREATE internal mandatory action, null actor,
+Account reference and fixed roleId/ACTIVE/mustChangePassword projection; no PII/secrets.
+A04's private verified guard now protects all three explicit auth adapters. Required
+caller body limit is enforced in RAM before CSRF, strict DTO binding afterward.
+Scoped finite SQL/lock deadlines restore prior connection settings. SQL Server SET
+LOCK_TIMEOUT requires a numeric literal: only validated Int32/invariant formatting
+is emitted; all account selectors remain parameterized. No user text enters this SQL.
+Fresh locked Account values replace unchanged EF tracked snapshots; preexisting modified
+tracked accounts are rejected. Known email/phone constraints and deadlock/lock timeout
+map409; other SQL errors remain sanitized500. Wrong-password counters commit before401.
+Verified legacy hashes can rehash without applying new-password strength rules again.
+JWT NumericDate expiry rounds DOWN to seconds, never extending DB datetime2(3) expiry;
+a temporary credential with no usable whole-second JWT interval gets generic401.
+Raw clock cutoff is checked before session DML, commit and HTTP cookie. Account status
+and security version come from the locked row; no session upgrade/revocation/idle renew.
+Production key/principal/origin/proxy/current-session resolver remains explicit and
+unconfigured. Approved fixture execution is rollback-only; owned executor commit paths
+are source-reviewed plus HTTP fixture seams, not persisted SQL or committed stress proof.

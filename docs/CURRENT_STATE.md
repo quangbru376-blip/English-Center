@@ -4,11 +4,28 @@ Last updated: 2026-10-06
 
 ## Current task
 
-Owner2026-10-06 requested A03→A05 continuation. Prepared concrete task/worker cards
-and local contracts; exact new external sharing and rollback-only SQL scope pending
-approval under SKILL_ROUTING section3.4. No worker dispatch/new SQL execution/code
-PASS claim yet. Previous applied checkpoint remains below; ADR163 unchanged.
-See A03_TASK_CARD/A05_TASK_CARD. No production profile/keys/runtime activation.
+Owner-approved A03→A05 implementation completed and independently reviewed PASS
+2026-10-06; 586 unit/HTTP +409 SQL=995 PASS, 0 fail/skip, build0warnings0errors.
+Two bounded AGY SUCCESS/full authorized context before write/zero observed violations;
+Codex integrated, corrected and tested independently. A03 supplies strict API018
+signup, caller-TX Account+StudentProfile+mandatory audit, cross-role uniqueness and
+201 without auto-login. A05 supplies generic login/throttle, fresh SQL account locks,
+normal/restricted session issuance, supplied JWT signing and secure cookie after commit.
+Explicit API adapters remain unmounted in unchanged Program. No real Admin/profile/
+keys/login resolver or runtime readiness claim. SQL cores tested in rollback-only
+fixtures; HTTP commit boundaries use explicit fixture executors. Owned SQL executor
+commit paths source-reviewed, not executed to persist accounts/sessions. Predicate
+contention and same-transaction multiple sessions do not prove committed stress.
+Only EnglishCenter_D07_20261005 used; retained Account/Profile/Session/Audit0,
+D12 fixture users/role members0, four roles/exact102permissions/six migrations,
+profile160/Latin1_General_100_CI_AS_SC/snapshotON unchanged; exact catalog regression PASS.
+No schema/migration/package/grants/owner/profile/logins/other DB/persistent keys/
+push/deploy change. Worker and manager detached evidence trees retained.
+See A03/A05_TASK_CARD/evidence, docs/notes/A03.md,A05.md, docs/api.md, ADR170.
+Next canonical A06 current-session/me → A07 logout; not started by this batch.
+ADR163 permits applying only already authorized reviewed PASS stages.
+
+## Previous A02/A04 applied checkpoint
 
 Updated2026-10-05: owner-approved A02→A04 implementation scope complete/reviewed
 PASS/applied/reverified code maina8ad1d5, managerd1612ed; identical backend tree
@@ -31,8 +48,7 @@ profile160/collation/snapshotON unchanged. No schema/migration/grant/profile/own
 login/other DB/persistent keys/push/deploy change. Operator real Admin provisioning,
 production profile/keys/auth resolver and full runtime readiness remain deferred.
 See A02/A04_TASK_CARD/evidence, docs/notes/A02.md, A04.md and docs/api.md; ADR169.
-Next canonical A03 Student signup, then A05 login/session; not started/opened by this
-batch. ADR163 continues only for authorized reviewed PASS stages. Historical scope below.
+Historical next at A02/A04 completion was A03→A05; see current checkpoint above. ADR163 continues only for authorized reviewed PASS stages. Historical scope below.
 
 ## Previous applied checkpoint
 

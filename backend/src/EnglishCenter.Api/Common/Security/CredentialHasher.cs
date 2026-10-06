@@ -107,6 +107,13 @@ public sealed class CredentialHasher
         }
     }
 
+    // Verified legacy credentials are rehashed, not treated as newly chosen passwords.
+    public string RehashVerified(string hash,string password)
+    {
+        if(Verify(hash,password)!=PasswordVerificationResult.SuccessRehashNeeded)throw new ArgumentException("Credential does not require rehash.");
+        return _passwordHasher.HashPassword(UserSentinel,password);
+    }
+
     private static bool IsValidPassword(string password)
     {
         int codePointCount = 0;

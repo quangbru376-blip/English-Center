@@ -74,10 +74,15 @@ public static class CsrfBoundary
         });
     }
 
+    public static void RequireVerified(HttpContext context)
+    {
+        if(!context.Items.ContainsKey(VerifiedBoundary))throw new ApiErrorException(ApiErrorCode.SERVICE_UNAVAILABLE);
+    }
+
     public static IEndpointConventionBuilder MapCsrfContext(this IEndpointRouteBuilder endpoints) =>
         endpoints.MapGet("/api/v1/auth/csrf",(HttpContext context,IAntiforgery antiforgery)=>
         {
-            if (!context.Items.ContainsKey(VerifiedBoundary)) throw new ApiErrorException(ApiErrorCode.SERVICE_UNAVAILABLE);
+            RequireVerified(context);
             if (context.Request.Query.Count!=0 || (context.Features.Get<Microsoft.AspNetCore.Http.Features.IHttpRequestBodyDetectionFeature>()?.CanHaveBody ?? context.Request.ContentLength is >0)) throw ApiErrorException.Validation();
             var tokens=antiforgery.GetAndStoreTokens(context);
             if (tokens.RequestToken is null) throw new ApiErrorException(ApiErrorCode.SERVICE_UNAVAILABLE);

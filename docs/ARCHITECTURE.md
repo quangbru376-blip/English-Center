@@ -2,6 +2,20 @@
 
 ## Current implemented architecture
 
+A03/A05 reviewed PASS2026-10-06. Services/Identity owns strict anonymous Student
+signup; repository holds normalized unique predicates and writes Account/Profile plus
+mandatory projected audit on one caller transaction. Explicit operation executor owns
+request commit/rollback. Services/Auth separates generic credential/status rejection,
+5/15/15 account counters, scope/deadline calculation and session issuance. SQL repository
+reads fresh Account under UPDLOCK/HOLDLOCK before session writes; owned executor commits
+rejected counters and accepted issuance before returning. Independent A01 login audit
+cannot compensate committed outcomes. Supplied signer/profile and trusted-IP resolver
+are required; no keys/config fallback. JWT private sub/sid/ver/scope, no role/contact.
+Api/Identity enforces explicit bounded in-RAM UTF8 body before CSRF, strict binding after
+verified CSRF marker. Explicit API018/API002 mapping only; unchanged default Program.
+No A06 authorization/idle renewal or A07 revocation implementation. Fixture executors
+prove HTTP boundaries; rollback SQL cores prove DML/locks, not persisted runtime traffic.
+
 A02/A04 authorized scope applied/reverified PASS2026-10-05. Services/Bootstrap
 owns fixed-role/Admin creation rules; Infrastructure/Bootstrap requires caller-owned
 SERIALIZABLE, finite deadlines and EC:ADMINSET, appending projected mandatory initial
@@ -10,7 +24,7 @@ Common/Security supplies immutable role codes/exact HTTPS origin/safe cookie fla
 Api/Auth exposes explicit framework antiforgery integration with required keys/origin/
 verified identity resolver, strict middleware ordering and private minting guard.
 No default runtime DI/route/profile wiring; test-host identity headers/ephemeral keys
-are fixtures. No real Admin, JWT/session issuance or idle renewal added. Current
+are fixtures. A02/A04 added no real Admin or JWT/session issuance; A03/A05 additions above. Current
 counts/commits/operator limits: CURRENT_STATE and A02/A04 task cards.
 
 D13/A01 applied/reverified PASS2026-10-05. Infrastructure/Compatibility embeds a

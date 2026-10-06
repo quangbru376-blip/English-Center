@@ -50,6 +50,14 @@ public sealed class AuditEntry
         return new(null,"SYSTEM.ADMIN.BOOTSTRAP","Account",accountId.ToString(System.Globalization.CultureInfo.InvariantCulture),"SUCCESS",details,occurredAt,operation,"MANDATORY",null);
     }
 
+    // Anonymous signup is not an authenticated actor or a SC02 UUID command.
+    internal static AuditEntry StudentSignup(int accountId,int roleId,Guid operation,DateTimeOffset occurredAt)
+    {
+        if(accountId<=0||roleId<=0)throw new ArgumentException("Invalid signup reference.");
+        var details=new JsonObject { ["new"]=new JsonObject { ["roleId"]=roleId,["status"]="ACTIVE",["mustChangePassword"]=false } }.ToJsonString();
+        return new(null,"STUDENT.ACCOUNT.CREATE","Account",accountId.ToString(System.Globalization.CultureInfo.InvariantCulture),"SUCCESS",details,occurredAt,operation,"MANDATORY",null);
+    }
+
     public static AuditEntry Security(SecurityAuditKind kind,int? verifiedActorAccountId,bool success,
         Guid operation,DateTimeOffset occurredAt,string? ipAddress = null)
     {
