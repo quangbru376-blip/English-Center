@@ -5,8 +5,11 @@ Canonical family M0_QUALITY_PLAN R02; dependencies D06,D07,A01,A06,R01 applied P
 ## Authority, skills and verification
 
 Owner requested continuation R02→R03 on2026-10-06 after applied A08/R01.
-Status: concrete scope prepared; exact new external payload and rollback SQL consent
-pending. No worker/SQL/implementation run for this batch. Earlier approval is not
+Status: exact external payload and rollback SQL consent approved2026-10-06.
+Completed/reviewed PASS/applied/reverified: code mainfcdd21e, manager1cb6ebc;
+identical backend10ecb75c6fbd6e7155d8ed4b6a4723e74112e88a. Both full suites
+891unit/HTTP/C1+495SQL=1386PASS/build0warnings0errors; see verification-summary.
+Earlier approval is not
 blanket external sharing or permission to append T23 fixtures. Accepted product
 decisions are unchanged; no new business question. ADR163 permits applying authorized
 Codex-reviewed PASS implementation to main without another apply question.
@@ -27,8 +30,9 @@ FIRST_CODE_HANDOFF,M0_QUALITY_PLAN; E04 final/DTO/replay/SQL/runtime and existin
 A01/A04–A08/R01/T02/T03/T22/T23 mappings/tests. Workers read ONLY own worker card,
 complete backend skill and routing, plus sole output if it exists; no links/AGENTS/
 search/list/other sources/secrets/commands/Git/SQL/tests/network.
-skill_verification: pending observed read-event/diff review and independent Codex
-build/unit/HTTP/real SQL checks. Claims by worker alone are not evidence.
+skill_verification: two bounded AGY SUCCESS/full3contexts before write/zero observed
+scope violations. Codex independent integration/fixes/source review/build/tests PASS.
+Tool events are observed evidence, not an OS-enforced read sandbox guarantee.
 
 Approved external union exactly docs/plan/R02_WINDOW_WORKER.md,
 docs/plan/R03_GUARD_WORKER.md, .agents/skills/backend-clean-code/SKILL.md and
