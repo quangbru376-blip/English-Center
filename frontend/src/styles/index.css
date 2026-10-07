@@ -1,4 +1,5 @@
-@import "tailwindcss";
+@import "tailwindcss" source("../");
+@source "../../tests";
 @import "./tokens.css";
 
 :root {
