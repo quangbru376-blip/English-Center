@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import "./tokens.css";
 
 :root {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
@@ -10,6 +11,13 @@
 body {
   margin: 0;
   min-height: 100vh;
-  background-color: #f8fafc;
-  color: #0f172a;
+  background-color: var(--ec-background);
+  color: var(--ec-text);
 }
+
+*, *::before, *::after { box-sizing: border-box; }
+:focus-visible { outline: 3px solid var(--ec-focus); outline-offset: 3px; }
+.skip-link { position: fixed; top: -100px; left: 1rem; z-index: 10; padding: .75rem;
+  background: var(--ec-surface); color: var(--ec-primary); }
+.skip-link:focus { top: 1rem; }
+dialog { margin: auto; max-height: calc(100dvh - 2rem); overflow-y: auto; }
