@@ -32,17 +32,32 @@ export class AuthState {
   readonly requests = new RequestScope();
   #context: AuthContext | null = null;
   #csrf: string | null = null;
+  #revision = 0;
+  readonly #listeners = new Set<() => void>();
+  get revision(): number { return this.#revision; }
+  subscribe(listener: () => void): () => void {
+    this.#listeners.add(listener);
+    return () => { this.#listeners.delete(listener); };
+  }
+  #notify(): void {
+    for (const listener of [...this.#listeners]) {
+      try { listener(); } catch { /* One view observer cannot block other RAM cleanup/views. */ }
+    }
+  }
   get context(): AuthContext | null { return this.#context; }
   get csrf(): string | null { return this.#csrf; }
   clear(): void {
+    this.#revision++;
     this.#context = null;
     this.#csrf = null;
     this.requests.invalidate();
+    this.#notify();
   }
   startSession(value: unknown): void {
     const context = decodeAuthContext(value);
     this.clear();
     this.#context = context;
+    this.#notify();
   }
   refreshContext(value: unknown): void {
     const context = decodeAuthContext(value);
@@ -51,12 +66,14 @@ export class AuthState {
         prior.scope !== context.scope || prior.accountVersion !== context.accountVersion ||
         prior.absoluteExpiresAt !== context.absoluteExpiresAt) this.clear();
     this.#context = context;
+    this.#notify();
   }
   acceptCsrf(value: unknown): void {
     if (!record(value) || !exactKeys(value, ['requestToken']) || typeof value.requestToken !== 'string' ||
         !value.requestToken || /[\r\n]/.test(value.requestToken)) throw new Error('Invalid CSRF context');
     this.#csrf = value.requestToken;
+    this.#notify();
   }
-  requireCsrfRecovery(): void { this.#csrf = null; this.requests.invalidate(); }
+  requireCsrfRecovery(): void { this.#csrf = null; this.requests.invalidate(); this.#notify(); }
   canRequestBusiness(): boolean { return this.#context?.scope === 'NORMAL'; }
 }

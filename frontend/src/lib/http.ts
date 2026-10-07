@@ -22,7 +22,7 @@ export type RequestOptions<T> = {
 
 // No automatic dispatch, retry, UUID generation, storage, token parsing or logging.
 export class HttpClient {
-  constructor(readonly auth: AuthState, private readonly fetcher: typeof fetch = fetch) {}
+  constructor(readonly auth: AuthState, private readonly fetcher: typeof fetch = (input, init) => globalThis.fetch(input, init)) {}
   async request<T>(options: RequestOptions<T>): Promise<HttpResult<T>> {
     if (!Object.hasOwn(endpoints, options.endpoint)) return { kind: 'blocked' };
     const endpoint = endpoints[options.endpoint];

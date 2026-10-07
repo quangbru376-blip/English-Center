@@ -1,0 +1,32 @@
+{
+  "mode": "edit",
+  "objective": "Implement only the bounded pure form in docs/plan/U03_WORKER.md. Read ONLY own complete worker card, frontend-ui skill and SKILL_ROUTING before writing. No links, extra reads, list/search, commands, Git, validation, network, SQL or secrets. Own output may be read only after creation. Canonical overrides apply; Codex integrates/tests/reviews.",
+  "allowed_paths": [
+    "frontend/src/features/identity/components/SignupForm.tsx"
+  ],
+  "forbidden_paths": [
+    ".env",
+    "**/*.env",
+    "backend/**",
+    "instructions/**",
+    ".git/**",
+    "frontend/package*.json",
+    "frontend/*config*",
+    "frontend/node_modules/**",
+    "frontend/dist/**",
+    "docs/Nhom18_ThietKeXuLy.docx",
+    "docs/reference/**"
+  ],
+  "acceptance_criteria": [
+    "Read exactly all three full contexts before writes; no scope expansion.",
+    "Exact controlled/native form API, existing shared controls, raw password and Vietnamese labels.",
+    "No side effects/validation/commands/packages; Codex independently verifies."
+  ],
+  "context_files": [
+    "docs/plan/U03_WORKER.md .agents/skills/frontend-ui/SKILL.md docs/plan/SKILL_ROUTING.md"
+  ],
+  "max_changed_files": 1,
+  "max_diff_lines": 160,
+  "model": "",
+  "timeout": "10m"
+}
