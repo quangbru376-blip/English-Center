@@ -145,6 +145,12 @@ entry renders one semantic noninteractive Vietnamese unavailable-functionality
 page; no router/API/auth/storage/business UI. npm lock/typecheck/lint/build,
 audit0 and three-width built-page checks verified.
 
+U02/U01 applied/reverified2026-10-07 code mainfb748e7. Native controls/tokens,
+IdentityShell and dialog compose the unavailable page. Explicit instance-owned
+AuthState/RequestScope/HttpClient hold CSRF/context in RAM and discard stale
+responses; fixed auth endpoint allowlist only, no provider/routes mounted.
+Tailwind scans frontend src/tests explicitly. No packages/backend change; ADR174.
+
 P05 applied/reverified on main8784686 (reviewed 6e5abe5); see
 [task card](plan/P05_TASK_CARD.md). Common/Time has a concrete BusinessClock
 injected with built-in TimeProvider and static VietnamTime conversion helper.

@@ -146,6 +146,15 @@ Program unmounted; SQL rollback-only, owned COMMIT source-reviewed/HTTP fixture 
 no persisted runtime/committed stress proof. Retained business rows/test users/members0;
 4roles102permissions6migrations/full catalog/profile unchanged. See R02/R03 cards/evidence,
 ADR173. Next U02→U01 unstarted; no frontend/restM0/runtime/install/push/deploy authority.
+Owner-authorized U02→U01 completed/reviewed PASS/applied ADR163/reverified2026-10-07
+code mainfb748e7/manager48ff8a0, identical frontendde38145e6127d32cfcf20629387b18415e2c5746.
+24frontend tests/types/lint/build PASS; Edge375/768/1280 keyboard/dialog/contrast PASS.
+Two bounded AGY SUCCESS/full3contexts before writes/zero observed scope violations;
+Codex integrated/fixed/reviewed independently. Native controls/shell and explicit RAM
+HTTP/auth request epoch seams only; unavailable App, no mounted real identity UI.
+Backend10ecb75c6fbd6e7155d8ed4b6a4723e74112e88a unchanged; SQL not rerun.
+Four owner untracked files unchanged/unshared/unstaged. See U02/U01 cards/evidence,
+ADR174. Next U03→U04 unstarted; no restM0/runtime/SQL/packages/push/deploy authority.
 Historical initial scope is retained in
 FIRST_CODE_HANDOFF; latest checkpoint and explicit current owner scope govern.
 Standing owner authority ADR-163: apply Codex-reviewed PASS stages already

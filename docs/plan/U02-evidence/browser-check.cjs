@@ -11,6 +11,9 @@ const { chromium } = require(process.env.EC_PLAYWRIGHT);
    await page.getByRole('heading',{name:'Kiểm chứng component U02'}).waitFor();
    assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),true);
    assert.equal(await page.getByLabel('Chuỗi nguyên văn').inputValue(),'  Á thử chuỗi  ');
+   for (const control of [page.getByLabel('Tên hiển thị'),page.getByLabel('Lựa chọn mẫu'),page.getByRole('button',{name:'Mở hộp thoại'})]) {
+    assert.ok(await control.evaluate(e=>e.getBoundingClientRect().height)>=44,'minimum control height');
+   }
    const colors=await page.evaluate(()=>{
     const style=getComputedStyle(document.documentElement);
     return Object.fromEntries(['primary','text','muted','danger','success','border','surface','background'].map(k=>[k,style.getPropertyValue('--ec-'+k).trim()]));

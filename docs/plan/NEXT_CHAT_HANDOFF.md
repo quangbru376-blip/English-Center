@@ -2,10 +2,16 @@
 
 ## Mục đích và điểm tiếp tục
 
-Đây là handoff tài liệu theo yêu cầu owner, không phải lệnh triển khai gói mới.
-R02 → R03 đã hoàn tất, review PASS, apply main và kiểm chứng lại. Tiếp theo trong
-M0 là **U02 → U01**, cả hai chưa bắt đầu. Chat sau cần nhận chỉ thị tiếp tục từ
-owner; không làm lại backend đã PASS hoặc tự mở U03/rest M0.
+U02 → U01 đã hoàn tất, Codex review PASS, apply main theo ADR-163 và kiểm chứng
+lại2026-10-07. Code mainfb748e7, manager48ff8a0; frontend hash
+`de38145e6127d32cfcf20629387b18415e2c5746`, backend giữ nguyên
+`10ecb75c6fbd6e7155d8ed4b6a4723e74112e88a`.24frontend tests/types/lint/build PASS;
+Edge375/768/1280/keyboard/dialog/contrast PASS. Hai AGY SUCCESS, đúng3context,
+không ghi nhận scope violation. Xem U02/U01_TASK_CARD và verification-summary.
+Tiếp theo U03 → U04 chưa bắt đầu; cần owner giao scope, không tự mở restM0.
+HTTP/auth vẫn unmounted, không runtime/SQL/packages/push/deploy; giữ nguyên4file owner.
+Các mục Git/test/preparation bên dưới là baseline handoff trước U02/U01;
+checkpoint mới này và task cards/evidence có ưu tiên khi status khác nhau.
 
 Workspace: `C:\Study\SOEN\main_workplace`; shell PowerShell. Codex là manager;
 dùng `antigravity-worker` cho delegation AGY có giới hạn, không thay bằng agent khác.

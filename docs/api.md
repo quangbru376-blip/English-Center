@@ -103,3 +103,10 @@ domain-scope callers; other modules/routes remain deferred. No response/PII/secr
 body snapshot, no pending/failed status, no purge/overwrite. SQL execution evidence
 is rollback-only; owned COMMIT wrappers source-reviewed with explicit HTTP fixture
 commit seams. Runtime/profile/principals/full readiness and committed stress deferred.
+
+2026-10-07 U01 adds an unmounted frontend HttpClient seam only: fixed csrf/me GET,
+register/login/logout/change-password POST, exact existing paths/X-CSRF-TOKEN.
+No backend endpoint exposure changed. Same-origin cookie/no-store, RAM CSRF/context,
+strict safe envelope; session/CSRF recovery never automatically resends writes.
+Lost auth writes report unknown server outcome and clear still-current local authority.
+See U01_TASK_CARD/ADR174; production/runtime integration remains deferred.

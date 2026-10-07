@@ -4,11 +4,24 @@ Last updated: 2026-10-07
 
 ## Current task
 
-Owner-requested next-chat handoff prepared in `docs/plan/NEXT_CHAT_HANDOFF.md`.
-Git/frontend checkpoint inspected2026-10-07; implementation/test/SQL results below
-remain those verified2026-10-06. U02→U01 unstarted; no new code/runtime/SQL action.
-Handoff records four owner untracked files to preserve and clean detached manager
-worktree preparation for future bounded AGY contracts.
+Owner-authorized U02→U01 completed2026-10-07 with bounded antigravity-worker;
+Codex manager independently integrated/fixed/reviewed PASS and applied ADR163.
+Code mainfb748e7 / manager48ff8a0; identical frontendde38145e6127d32cfcf20629387b18415e2c5746.
+24frontend tests (6U02+18U01), typecheck/lint/build PASS on manager and main.
+Edge fixture375/768/1280 PASS: labels/raw values/44px/contrast/no overflow,
+Tab trap/Escape/backdrop/restore/skip link/reduced motion. Two AGY SUCCESS,
+full3contexts before write, zero observed scope violations; originals retained.
+U02 native shared controls/shell/dialog, bounded Tailwind src/tests scan.
+U01 explicit fixed auth HTTP/error/RAM context/request epoch/cleanup; unknown
+writes never imply rollback/success and cannot clear newer session authority.
+App stays unavailable-functionality page; HTTP/auth unmounted, no domain UI.
+Backend tree10ecb75c6fbd6e7155d8ed4b6a4723e74112e88a unchanged; SQL not rerun.
+Four owner untracked files preserved with exact original hashes, never staged/shared.
+See U02/U01_TASK_CARD, notes and U01-evidence/verification-summary.json; ADR174.
+Next U03→U04 remains unstarted and requires owner authority; no restM0/runtime/
+SQL/install/push/deploy opened. Production keys/profile/principals deferred.
+
+## Previous R02/R03 checkpoint
 
 Owner-approved R02→R03 completed/reviewed PASS/applied/reverified2026-10-06;891unit/HTTP/C1+495SQL=1386PASS/0fail0skip/build0warnings0errors.
 Two bounded AGY SUCCESS/full3contexts before write/zero observed scope violations;
@@ -25,7 +38,7 @@ no persisted runtime/committed stress proof. Retained business rows/test users/m
 Applied/reverified under ADR163 code mainfcdd21e, manager1cb6ebc; identical backend
 10ecb75c6fbd6e7155d8ed4b6a4723e74112e88a. Both full suites passed on manager and main;
 see R02/R03-evidence/verification-summary.json for four TRX hashes/retained DB checks.
-Next U02→U01 unstarted; no frontend/restM0/installation/push/deploy authority.
+At that checkpoint U02/U01 were unstarted; now completed as recorded above.
 
 ## Latest applied A08/R01 checkpoint
 

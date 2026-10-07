@@ -4509,3 +4509,21 @@ all six accepted Admin selectors as safe metadata only, not extra Admin mutation
 SQL callers checked only rollback fixtures, owned COMMIT source-reviewed with real
 HTTP fixture commit seams; no persisted/committed stress/readiness claim. Program/
 profile/keys/principals/packages/schema/grants unchanged, next U02/U01 deferred.
+
+## ADR-174 — U02 controls and U01 explicit RAM/session boundary
+
+Implemented2026-10-07 within owner-authorized U02→U01 scope; no product rule changed.
+Use installed React/Tailwind/system fonts and native inputs/select/buttons/dialog;
+44px controls, visible focus/contrast, explicit keyboard wrap and opener restoration.
+Tailwind source scan is bounded to frontend src/tests, avoiding unrelated text.
+HttpClient exposes only fixed existing auth routes and explicit calls: cookie
+same-origin/no-store/redirect-error, current RAM CSRF for writes, exact error/context
+validation. /me may deliberately probe cookie identity from empty RAM; no renewal.
+RequestScope abort/epoch/latest-slot prevents stale publication even if abort ignored.
+Each login marks a new boundary even for the same account; authority changes/current
+401 clear RAM before publication. CSRF errors require deliberate context/token recovery,
+never write retry. Unknown login/logout/password clears only still-current local
+identity and reports unconfirmed server outcome; stale failures cannot clear a new session.
+Cleanup hooks hold no ambient caches, storage, JWT/raw SID, UUID/retry bodies or timers.
+Real identity UI/cross-tab/routing/runtime remain deferred. Two bounded AGY runs reviewed
+by Codex;24frontend tests and technical browser fixture prove these seams only.

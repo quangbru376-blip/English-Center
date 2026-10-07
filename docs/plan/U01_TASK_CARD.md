@@ -74,3 +74,9 @@ Backend/API/schema/migration checks N/A: exact backend tree unchanged, no runtim
 Notes U01 <=15 lines; docs/api and memory updated on apply. Verdict PASS.
 Unverified: real auth runtime, production cookies/keys/profile, integrated business UI,
 cross-tab signaling/timers, SQL and committed stress; these remain outside scope.
+
+Applied/reverified ADR1632026-10-07 code mainfb748e7, manager48ff8a0;
+identical frontendde38145e6127d32cfcf20629387b18415e2c5746.
+Main24tests/types/lint/build PASS; final Edge375/768/1280/44px/contrast PASS.
+Backend unchanged;4owner files exact hashes/untracked; no SQL/runtime/U03 opened.
+See U01-evidence/verification-summary.json for final verification and test recipe.

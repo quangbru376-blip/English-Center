@@ -10,15 +10,17 @@
 
 ## Next
 
-- Next chat: read `docs/plan/NEXT_CHAT_HANDOFF.md` after ordered Project Memory.
-  U02→U01 preparation only until owner assigns continuation; prepare bounded
-  cards/contracts and exact new external sharing scope. Preserve owner untracked
-  report/reference files; existing ADR163 PASS apply authority remains unchanged.
-
+- U02→U01 complete/reviewed PASS/applied ADR163/reverified2026-10-07 code
+  mainfb748e7:24frontend tests/typecheck/lint/build and Edge375/768/1280 PASS.
+  Two bounded AGY SUCCESS/zero observed scope violations; owner files unchanged.
+  Shared controls/shell and explicit unmounted HTTP/auth RAM seams only.
+- Next U03→U04 unstarted; obtain owner scope before frontend identity flows.
+  No runtime/profile/keys/principals/SQL/install/restM0/push/deploy authority.
+  Read updated NEXT_CHAT_HANDOFF after ordered memory and U02/U01 cards/evidence.
 - R02→R03 owner-approved scope reviewed PASS2026-10-06:1386tests/buildclean.
   Applied/reverified code mainfcdd21e under ADR163. Explicit Admin007/010/014 plus
   completion protocol; default Program unmounted. See cards/evidence.
-- Next U02→U01 unstarted; runtime/profile/keys/login principals remain deferred.
+- R02/R03 backend checkpoint unchanged; SQL counts below are historical, not rerun.
 
 - D07→D08→D09 owner batch complete/reviewed PASS/applied/reverified code maina7561dd;
   build clean/481unit+102SQL PASS. Cards/evidence in docs/plan/D07/D08/D09.

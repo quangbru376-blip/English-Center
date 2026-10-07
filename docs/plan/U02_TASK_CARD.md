@@ -64,3 +64,9 @@ Verdict PASS; technical fixture only, no business/browser-runtime readiness clai
 
 Final contrast correction: control border #64748b passes3:1 on white; browser script
 asserts text >=4.5 and control boundary >=3. Reverified final keyboard/contrast fixture PASS.
+
+Applied/reverified ADR1632026-10-07 code mainfb748e7, manager48ff8a0;
+identical frontendde38145e6127d32cfcf20629387b18415e2c5746.
+Main24tests/types/lint/build PASS; final Edge375/768/1280/44px/contrast PASS.
+Backend unchanged;4owner files exact hashes/untracked; no SQL/runtime/U03 opened.
+See U01-evidence/verification-summary.json for final verification and test recipe.
