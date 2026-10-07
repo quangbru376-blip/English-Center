@@ -10,6 +10,11 @@
 
 ## Next
 
+- Next chat: read `docs/plan/NEXT_CHAT_HANDOFF.md` after ordered Project Memory.
+  U02→U01 preparation only until owner assigns continuation; prepare bounded
+  cards/contracts and exact new external sharing scope. Preserve owner untracked
+  report/reference files; existing ADR163 PASS apply authority remains unchanged.
+
 - R02→R03 owner-approved scope reviewed PASS2026-10-06:1386tests/buildclean.
   Applied/reverified code mainfcdd21e under ADR163. Explicit Admin007/010/014 plus
   completion protocol; default Program unmounted. See cards/evidence.

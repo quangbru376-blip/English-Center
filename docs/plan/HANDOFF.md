@@ -1,5 +1,13 @@
 # Handoff — E01–E05 và complete design baseline đã Accepted
 
+## Continuation handoff — 2026-10-07
+
+Owner requested a durable handoff for another chat. Read
+[NEXT_CHAT_HANDOFF.md](NEXT_CHAT_HANDOFF.md) after ordered Project Memory.
+It records verified Git/frontend state, R02/R03 evidence, owner untracked files,
+remaining authority boundaries and preparation steps for unstarted U02→U01.
+This documentation turn does not authorize or execute a new implementation stage.
+
 ## Latest R02/R03 checkpoint — applied and reverified PASS
 
 Owner-approved R02→R03 completed/reviewed PASS/applied/reverified2026-10-06;891unit/HTTP/C1+495SQL=1386PASS/0fail0skip/build0warnings0errors.
