@@ -4,6 +4,15 @@ Last updated: 2026-10-07
 
 ## Current task
 
+Owner2026-10-07 continued next U05→U06. Exact cards/worker payloads prepared and
+both runner validate PASS; new external sharing consent requested, not yet received.
+Manager WIP detached2397b85 at C:/Users/asus/AppData/Local/Temp/codex-u05-u06/manager:
+password DTO/controller/page and Admin DTO/transport/lock-intent primitives;
+29subset tests PASS. Worker views/complete UI/browser/review/apply still pending.
+Main source stays e48b604; owner files untouched; no SQL/runtime/packages.
+Resume at exact-payload consent, then bounded U05 worker; U05 PASS before U06 worker.
+Standing ADR163 applies final reviewed PASS only. Previous applied checkpoint:
+
 Owner-authorized U03→U04 completed/reviewed PASS/applied ADR163/reverified2026-10-07.
 Code maind51564e / managerd18a34a; identical frontend851877ef7396885e51d39518697659277fa0effc.
 38frontend tests/0fail0skip, typecheck/lint/build and Edge375/768/1280 PASS on both.

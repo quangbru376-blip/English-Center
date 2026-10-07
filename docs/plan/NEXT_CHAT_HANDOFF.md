@@ -2,6 +2,13 @@
 
 ## Checkpoint hiện tại
 
+Owner đã giao tiếp tục U05→U06 ngày2026-10-07. Hai cards/worker contracts mới
+validate PASS; exact external consent đang chờ trả lời, chưa dispatch AGY.
+Manager WIP2397b85 tại C:/Users/asus/AppData/Local/Temp/codex-u05-u06/manager;
+29subset tests PASS cho manager primitives. Chưa full types/lint/build/browser,
+chưa review PASS/apply. Tiếp tục từ câu hỏi cho phép hai payload; không suy thời
+gian chờ là approval. U05 PASS trước U06 worker. Main code chưa đổi bên dưới.
+
 U03→U04 hoàn tất/review PASS/apply ADR163/reverify main. Code main
 `d51564e1a19bcef22e61bfd778ad359b42ae30e0`, manager
 `d18a34a2f74a901c886d2f662df68a9573737f05`; frontend giống nhau

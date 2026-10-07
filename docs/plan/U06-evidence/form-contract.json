@@ -1,0 +1,32 @@
+{
+  "mode": "edit",
+  "objective": "Implement ONLY bounded pure view in docs/plan/U06_WORKER.md. Read ONLY complete own card, frontend-ui skill and SKILL_ROUTING in order before writing. No links/extra reads/list/search/commands/Git/tests/network/SQL/secrets. Own output may be read after creation. Codex integrates/tests/reviews.",
+  "allowed_paths": [
+    "frontend/src/features/administration/components/AdminAccountPanel.tsx"
+  ],
+  "forbidden_paths": [
+    ".env",
+    "**/*.env",
+    "backend/**",
+    "instructions/**",
+    ".git/**",
+    "frontend/package*.json",
+    "frontend/*config*",
+    "frontend/node_modules/**",
+    "frontend/dist/**",
+    "docs/Nhom18_ThietKeXuLy.docx",
+    "docs/reference/**"
+  ],
+  "acceptance_criteria": [
+    "Read exactly full3 authorized contexts before sole write.",
+    "Exact controlled/native view and shared controls; raw values/Vietnamese labels.",
+    "No side effects or commands; Codex independent validation required."
+  ],
+  "context_files": [
+    "docs/plan/U06_WORKER.md .agents/skills/frontend-ui/SKILL.md docs/plan/SKILL_ROUTING.md"
+  ],
+  "max_changed_files": 1,
+  "max_diff_lines": 150,
+  "model": "",
+  "timeout": "10m"
+}

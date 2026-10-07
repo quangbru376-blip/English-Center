@@ -14,7 +14,9 @@
   38frontend tests/types/lint/build/Edge375/768/1280 PASS; two bounded AGY SUCCESS.
   Explicit signup/login/me/logout/session UI seams; default App remains unavailable.
   Owner files/backend unchanged; see U03/U04 cards/evidence and ADR175.
-- Next U05→U06 unstarted; prepare exact contract/sharing scope when authorized.
+- U05→U06 owner continuation received2026-10-07; cards/contracts prepared/validated.
+  Exact external consent pending; detached manager2397b85 has29subset tests PASS.
+  Complete worker views/UI/browser review before apply; U05 PASS before U06 worker.
   No restM0/runtime/SQL/packages/profile/keys/principals/push/deploy authority.
   Read NEXT_CHAT_HANDOFF after ordered memory.
 - R02→R03 owner-approved scope reviewed PASS2026-10-06:1386tests/buildclean.
