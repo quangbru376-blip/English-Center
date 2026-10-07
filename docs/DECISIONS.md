@@ -4527,3 +4527,27 @@ identity and reports unconfirmed server outcome; stale failures cannot clear a n
 Cleanup hooks hold no ambient caches, storage, JWT/raw SID, UUID/retry bodies or timers.
 Real identity UI/cross-tab/routing/runtime remain deferred. Two bounded AGY runs reviewed
 by Codex;24frontend tests and technical browser fixture prove these seams only.
+
+## ADR-175 — U03 signup and U04 explicit identity UI lifecycle
+
+Implemented/reviewed PASS/applied ADR163/reverified2026-10-07 under owner U03→U04;
+no product rule or API exposure changed. Only pure forms delegated through exact
+approved external contexts; Codex independently controls integration/tests/review.
+Signup sends exact accepted fields/raw password once, validates submit hints only,
+filters public field errors, never auto-login/resend or infer rollback from lost201.
+IdentityApp is explicit supplied-client integration; default unavailable App remains.
+Normal first-F destinations and restricted password-change gate carry no business
+UI authority. Fresh me proof precedes protected rendering after startup/tab signal/
+focus/visibility/deadline; reads never renew idle or send mutation/refresh heartbeat.
+Timers use server deadline interval and elapsed setTimeout, not browser wall time;
+equal/past proof fails closed. Incoming literal-only channel signals clear RAM and
+revalidate without echo/storage; no PII/context/token/deadline is transmitted.
+New login even same account invalidates old RAM, then fetches CSRF; generic401 and
+429 do not resend. Logout204/current401 clears local proof;403 does not claim success;
+unknown removes sensitive RAM and reports unconfirmed server revocation. Epochs and
+controller operations protect newer identity from stale responses. Disposal clears
+RAM/listeners/timers; supplied-client changes cannot render another client's context.
+Codex fixes native fetch receiver through lexical globalThis.fetch wrapper; technical
+Edge fixture verifies default fetch.38frontend tests and three-width/two-tab fixtures
+prove these seams; real cookies/runtime/SQL/other-device stress remain unverified.
+No packages/backend/schema/profile/keys/principals/push/deploy/U05+ scope opened.

@@ -10,13 +10,13 @@
 
 ## Next
 
-- U02→U01 complete/reviewed PASS/applied ADR163/reverified2026-10-07 code
-  mainfb748e7:24frontend tests/typecheck/lint/build and Edge375/768/1280 PASS.
-  Two bounded AGY SUCCESS/zero observed scope violations; owner files unchanged.
-  Shared controls/shell and explicit unmounted HTTP/auth RAM seams only.
-- Next U03→U04 unstarted; obtain owner scope before frontend identity flows.
-  No runtime/profile/keys/principals/SQL/install/restM0/push/deploy authority.
-  Read updated NEXT_CHAT_HANDOFF after ordered memory and U02/U01 cards/evidence.
+- U03→U04 complete/reviewed PASS/applied ADR163/reverified2026-10-07 maind51564e.
+  38frontend tests/types/lint/build/Edge375/768/1280 PASS; two bounded AGY SUCCESS.
+  Explicit signup/login/me/logout/session UI seams; default App remains unavailable.
+  Owner files/backend unchanged; see U03/U04 cards/evidence and ADR175.
+- Next U05→U06 unstarted; prepare exact contract/sharing scope when authorized.
+  No restM0/runtime/SQL/packages/profile/keys/principals/push/deploy authority.
+  Read NEXT_CHAT_HANDOFF after ordered memory.
 - R02→R03 owner-approved scope reviewed PASS2026-10-06:1386tests/buildclean.
   Applied/reverified code mainfcdd21e under ADR163. Explicit Admin007/010/014 plus
   completion protocol; default Program unmounted. See cards/evidence.

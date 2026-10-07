@@ -1,5 +1,21 @@
 # Project Planning
 
+Owner-authorized U03→U04 completed/reviewed PASS/applied ADR163/reverified2026-10-07.
+Code maind51564e / managerd18a34a; identical frontend851877ef7396885e51d39518697659277fa0effc.
+38frontend tests/0fail0skip, typecheck/lint/build and Edge375/768/1280 PASS on both.
+Two bounded AGY SUCCESS/full3contexts before write/zero observed violations;
+Codex independently integrated/fixed/tested/reviewed; original trees retained.
+U03 exact signup201→login/no auto-login; raw credentials and unknown recovery.
+U04 explicit IdentityApp login/me/logout, normal/restricted gates, server-interval
+read-only deadline checks and literal-only cross-tab revalidation without echo.
+Default App/main stay unavailable; no mounted runtime, production cookie or SQL claim.
+Backend10ecb75c6fbd6e7155d8ed4b6a4723e74112e88a unchanged; SQL not rerun.
+Four owner files unchanged/unshared/untracked/unstaged. See U03/U04 cards/evidence,
+notes and ADR175. Next U05→U06 unstarted; no restM0/runtime/SQL/packages/push/deploy
+scope opened; actual production keys/profile/principals remain operator prerequisites.
+
+Earlier checkpoints below are historical; current next scope is above.
+
 Latest2026-10-06: R02→R03 reviewed PASS;1386tests/buildclean, applied/reverified mainfcdd21e under ADR163. Explicit Admin detail/lock/lookup and completion protocol;
 unmounted/rollback-only SQL. Next U02→U01 unstarted. See R02/R03 cards/evidence.
 

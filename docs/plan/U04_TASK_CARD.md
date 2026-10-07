@@ -1,7 +1,7 @@
 # U04 — F01 login/me/logout, session deadlines and cross-tab signals
 
-Status Codex review PASS2026-10-07, detached; U03 PASS f77d34d before U04 run.
-Base8ff239d; U01/U02 applied PASS; backend unchanged. Main apply pending batch seal.
+Status complete/Codex review PASS/applied ADR163/reverified main2026-10-07.
+Base8ff239d; U03 PASS f77d34d before U04 run; backend unchanged.
 Owner approved both exact payloads2026-10-07; Codex manager, bounded pure LoginForm.
 implementation_skills: frontend-ui; review_skills: code-review.
 skill_sources/read_context: full same verified hashes as U03/U02 cards;
@@ -70,3 +70,9 @@ deadline/equality/late proof/dispose; SQL/live cookies/other-device readiness N/
 Codex fixed effect lifecycle/client-owner guard, deadline equality and dispose RAM;
 no default App mount or backend/API activation. Notes12lines; scope/security/docs
 review PASS with these fixes verified. Retain original worker tree and receipts.
+
+Final code maind51564e / managerd18a34a; frontend851877ef7396885e51d39518697659277fa0effc
+identical. Main38tests/0fail0skip/typecheck/lint/build/Edge U03+U04 PASS.
+Four owner hashes unchanged/untracked/unstaged/unshared; backend unchanged; SQL
+not rerun. Source versions/receipts/limits: U04-evidence/verification-summary.json.
+Next U05/U06 unstarted; no default mount/runtime/packages/restM0 opened.

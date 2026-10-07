@@ -154,7 +154,15 @@ Codex integrated/fixed/reviewed independently. Native controls/shell and explici
 HTTP/auth request epoch seams only; unavailable App, no mounted real identity UI.
 Backend10ecb75c6fbd6e7155d8ed4b6a4723e74112e88a unchanged; SQL not rerun.
 Four owner untracked files unchanged/unshared/unstaged. See U02/U01 cards/evidence,
-ADR174. Next U03→U04 unstarted; no restM0/runtime/SQL/packages/push/deploy authority.
+ADR174. At that checkpoint U03→U04 was unstarted; latest state follows.
+Owner-authorized U03→U04 completed/reviewed PASS/applied ADR163/reverified2026-10-07
+code maind51564e/managerd18a34a, identical frontend851877ef7396885e51d39518697659277fa0effc.
+38frontend tests/types/lint/build/Edge375/768/1280 PASS. Two bounded AGY SUCCESS,
+full3contexts before write/zero observed scope violations; Codex independent review.
+Explicit signup201→login/no auto-login and login/me/logout/native signals/deadline
+seams; default App/main unmounted. Backend unchanged; SQL not rerun; four owner
+files unchanged/unshared/untracked/unstaged. See U03/U04 cards/evidence, ADR175.
+Next U05→U06 unstarted; no restM0/runtime/SQL/packages/push/deploy authority.
 Historical initial scope is retained in
 FIRST_CODE_HANDOFF; latest checkpoint and explicit current owner scope govern.
 Standing owner authority ADR-163: apply Codex-reviewed PASS stages already

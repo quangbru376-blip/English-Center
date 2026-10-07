@@ -1,5 +1,16 @@
 # Architecture
 
+U03/U04 applied/reverified2026-10-07 maind51564e. Explicit IdentityApp receives
+one HttpClient and owns lifecycle, native history guards and normal/restricted
+landing; default App/main do not mount it. Signup exact DTO/201 transitions to
+login without login. SessionController reads me/CSRF before authority rendering,
+clears RAM on boundaries/hidden/dispose and uses server-relative deadline timers
+only for fresh me proof; no idle renewal/write replay. Native BroadcastChannel
+transmits fixed IDENTITY_CHANGED only, receiver clears RAM/revalidates without
+echo; focus/visibility is the storage-free fallback. Auth observers isolate faults,
+request epochs keep stale completions from touching newer identity. Backend and
+API exposure unchanged; frontend fake-API fixtures prove seams, not runtime readiness.
+
 R02/R03 reviewed PASS2026-10-06. Services/Replay and Infrastructure/Replay implement
 append-only actor/action/UUID completion, exact24h expiry, mandatory current-read-scope
 callbacks before digest comparison, and finite request applocks. Stored references

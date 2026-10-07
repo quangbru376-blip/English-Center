@@ -1,9 +1,9 @@
 # U03 — F02 signup UI and exact API018 seam
 
-Status Codex review PASS2026-10-07, detached; main apply waits batch completion.
+Status complete/Codex review PASS/applied ADR163/reverified main2026-10-07.
 Base main8ff239d; codefb748e7; backend10ecb75c6fbd6e7155d8ed4b6a4723e74112e88a.
 Codex manager; antigravity-worker bounded pure view only. U03 must PASS before U04.
-Owner approved exact two payloads2026-10-07; U03 generated/reviewed, main not applied.
+Owner approved both exact payloads2026-10-07; U03 PASS before U04 dispatch.
 
 implementation_skills: frontend-ui; review_skills: code-review.
 skill_sources: same SHA256 versions as U02_TASK_CARD (re-read full current skills
@@ -56,3 +56,9 @@ stale response+RAM cleanup PASS. Native-fetch receiver dependency bug fixed and
 verified by default browser fetch; no endpoint/authority change. Source/structure/
 security/frontend/notes gates PASS; backend/schema/API exposure N/A unchanged.
 Real runtime/profile/cookies/SQL integrated proof unverified/outside scope; no V01 claim.
+
+Final code maind51564e / managerd18a34a; frontend851877ef7396885e51d39518697659277fa0effc
+identical. Main38tests/0fail0skip/typecheck/lint/build/Edge U03+U04 PASS.
+Four owner hashes unchanged/untracked/unstaged/unshared; backend unchanged; SQL
+not rerun. Source versions/receipts/limits: U03-evidence/verification-summary.json.
+Next U05/U06 unstarted; no default mount/runtime/packages/restM0 opened.

@@ -110,3 +110,10 @@ No backend endpoint exposure changed. Same-origin cookie/no-store, RAM CSRF/cont
 strict safe envelope; session/CSRF recovery never automatically resends writes.
 Lost auth writes report unknown server outcome and clear still-current local authority.
 See U01_TASK_CARD/ADR174; production/runtime integration remains deferred.
+
+2026-10-07 U03/U04 add explicit frontend signup/login/me/logout consumers only.
+Signup201 is exact CREATED/message and goes login without automatic credentials.
+IdentityApp performs non-renewing me/CSRF revalidation, normal/restricted guards
+and logout unknown handling. Default App/main and all backend exposure remain
+unchanged. Edge fixtures intercept synthetic same-origin APIs; no real production
+cookie/runtime claim. See U03/U04_TASK_CARD, verification-summary and ADR175.

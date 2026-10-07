@@ -4,22 +4,19 @@ Last updated: 2026-10-07
 
 ## Current task
 
-Owner-authorized U02→U01 completed2026-10-07 with bounded antigravity-worker;
-Codex manager independently integrated/fixed/reviewed PASS and applied ADR163.
-Code mainfb748e7 / manager48ff8a0; identical frontendde38145e6127d32cfcf20629387b18415e2c5746.
-24frontend tests (6U02+18U01), typecheck/lint/build PASS on manager and main.
-Edge fixture375/768/1280 PASS: labels/raw values/44px/contrast/no overflow,
-Tab trap/Escape/backdrop/restore/skip link/reduced motion. Two AGY SUCCESS,
-full3contexts before write, zero observed scope violations; originals retained.
-U02 native shared controls/shell/dialog, bounded Tailwind src/tests scan.
-U01 explicit fixed auth HTTP/error/RAM context/request epoch/cleanup; unknown
-writes never imply rollback/success and cannot clear newer session authority.
-App stays unavailable-functionality page; HTTP/auth unmounted, no domain UI.
-Backend tree10ecb75c6fbd6e7155d8ed4b6a4723e74112e88a unchanged; SQL not rerun.
-Four owner untracked files preserved with exact original hashes, never staged/shared.
-See U02/U01_TASK_CARD, notes and U01-evidence/verification-summary.json; ADR174.
-Next U03→U04 remains unstarted and requires owner authority; no restM0/runtime/
-SQL/install/push/deploy opened. Production keys/profile/principals deferred.
+Owner-authorized U03→U04 completed/reviewed PASS/applied ADR163/reverified2026-10-07.
+Code maind51564e / managerd18a34a; identical frontend851877ef7396885e51d39518697659277fa0effc.
+38frontend tests/0fail0skip, typecheck/lint/build and Edge375/768/1280 PASS on both.
+Two bounded AGY SUCCESS/full3contexts before write/zero observed violations;
+Codex independently integrated/fixed/tested/reviewed; original trees retained.
+U03 exact signup201→login/no auto-login; raw credentials and unknown recovery.
+U04 explicit IdentityApp login/me/logout, normal/restricted gates, server-interval
+read-only deadline checks and literal-only cross-tab revalidation without echo.
+Default App/main stay unavailable; no mounted runtime, production cookie or SQL claim.
+Backend10ecb75c6fbd6e7155d8ed4b6a4723e74112e88a unchanged; SQL not rerun.
+Four owner files unchanged/unshared/untracked/unstaged. See U03/U04 cards/evidence,
+notes and ADR175. Next U05→U06 unstarted; no restM0/runtime/SQL/packages/push/deploy
+scope opened; actual production keys/profile/principals remain operator prerequisites.
 
 ## Previous R02/R03 checkpoint
 
