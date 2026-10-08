@@ -2,25 +2,27 @@
 
 ## Checkpoint hiện tại
 
-Full M0 remains IN PROGRESS. V01-Q HTTP readiness component and V01-S explicit
-catalog metadata allowlist reviewed PASS/applied ADR163/reverified2026-10-08:
-Q main7ef2ce6/manager e18eddc; S maina6b4828/manager41b166d.
-Both1197PASS/58intentional opt-in SKIP/build0warnings0errors; Q adds28HTTP tests.
-Three readonly runtime-diagnostic denial tests PASS on each checkout; three S
-rollback grant cases PASS. R candidate and ablation each880/880 exact catalog
-facts, zero missing/extra/different; explicit VIEW SECURITY DEFINITION is redundant.
-S permits only state-G database VIEW DEFINITION and two migration-history SELECT
-columns besides CONNECT; extra business/table/grant-option rights still deny.
-No permanent grants/provisioning/role-definition/manifest/default entry changes.
-Exact src b4b552ec5c9638fead0ab5d81166f6bad30a2cda,
-tests ab39300509baafcef4f4d4a1dd3747931e2704e0; frontend unchanged.
-D07 before/after byte-identical10CD3407CE5986394703A9BEC2EE3E42314080809DDABE26906B1F14B593FC8E;
-fixture users/members/grants rolled back; owner4hashes unchanged/unshared/untracked.
-Q supplies explicit fresh-profile/all9-probe HTTP gate and minimal non-renewing
-health/startup check, unmounted. User impersonation is not real runtime login proof.
-Next actual profile selection/custody/runtime authentication/TLS/maintenance/startup
-integration; concrete LOCAL_DEV proposal remains pending, no fixture values guessed.
-No M1–M4/packages/install/push/deploy. See Q/R/S cards/QRS evidence/ADR183–184.
+Full M0 remains IN PROGRESS. V01-T maintenance SQL effects/authority reviewed
+PASS/applied ADR163/reverified: main1f0f0e9 / manager7dbcb4d.
+Only SqlMaintenanceService and its new SQL tests changed; narrow database grants
+now require state G, denying WITH GRANT OPTION. Existing cleanup statements are
+private constants used by production and tested directly, without auth/TLS bypass.
+Manager/main1197defaultPASS/63intentional opt-in SKIP/build0warnings0errors;
+5actual SQL cases PASS each: narrow rights versus delegation/business SELECT/runtime
+role, exact expiry boundary, mandatory retention/IP clearing, future rows, separate
+replay cleanup, repeat idempotence and savepoint/full rollback restoration.
+All10GUID-owned scratch DBs identity-cleaned. D07 baseline byte-identical
+10CD3407CE5986394703A9BEC2EE3E42314080809DDABE26906B1F14B593FC8E;
+owner4hashes unchanged/unshared/untracked/unstaged. No permanent grants or runtime activation.
+Exact src b0b7af270d28330541615436e298b462364f35dd,
+tests e825ccea3a4247e0c58c57914d5f07e5e21e6275; frontend unchanged.
+Actual maintenance login/TLS/scheduler, profile selection, protected key custody and
+startup integration remain unverified/unbound. Concrete LOCAL_DEV proposal pending;
+no fixture promotion, M1–M4/install/push/deploy. See V01T_TASK_CARD/T summary/notes.
+
+Historical Q/R/S: Q HTTP readiness and S exact metadata whitelist applied PASS;
+R candidate/ablation880/880facts. See Q/R/S cards/QRS summary/ADR183–184.
+
 
 Historical N/O/P: see V01NOP_TASK_CARD/NOP evidence/ADR182.
 

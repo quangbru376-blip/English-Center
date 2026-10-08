@@ -10,10 +10,10 @@
 
 ## Next
 
-- Finish owner-assigned M0; Q/S components applied/reverified PASS (1197tests, buildclean); R catalog feasibility880/880.
+- Finish owner-assigned M0; T maintenance SQL effects/authority applied/reverified PASS (1197default+5SQL each, buildclean); Q/S PASS and R catalog feasibility880/880 retained.
 - Select concrete M0_LOCAL_DEV_PROPOSAL actual values already asked; do not infer fixture
   values or re-ask accepted decisions. Resolve actual runtime identity/approved metadata bindings and PKI,
-  then actual operator bindings/startup integration and cleanup verification. M0 incomplete.
+  then actual operator bindings/startup integration and scheduler verification. T closes bounded SQL cleanup effects, not real maintenance-login/TLS proof. M0 incomplete.
 - See M0_COMPLETION_TASK_CARD/M0_ENVIRONMENT_INPUTS; preserve owner4files and D07.
 
 Historical H/I next:

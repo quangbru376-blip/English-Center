@@ -29,9 +29,31 @@ read_context ordered memory/handoffs, requirements retention, E04 runtime,
 NOP/S contracts, actual maintenance/SQL guard, mappings and OwnedSqlFixture.
 applicable_overrides exact SQL Server/90d security-IP/mandatory retained/24h replay,
 cookie auth unchanged; no SQLite/new package/default provisioning.
-skill_verification complete skill reads; implementation review/checks pending.
+skill_verification complete: skills read in full, exact two-file diff reviewed,
+actual production SQL constants exercised with narrow impersonated permissions;
+manager/main checks below. No external dispatch/context sharing.
 
 Verification manager/main build --no-restore -warnaserror, default full suite and
 explicit opt-in MaintenanceSqlTests. D07 baseline before/after and four owner-file
 hashes unchanged. Evidence ignored test-results/T-* plus sanitized T summary;
 docs this card/notes and affected current state/TODO/handoffs/closure only.
+
+## Independent review PASS/applied/reverified
+
+Main1f0f0e9 / manager7dbcb4d; two files169insertions/4deletions. Review found
+state-W database grants could match the narrow allowlist; state-G requirement
+fixes this. No public testing/auth bypass; tests reflect actual private SQL constants.
+Manager/main build0warnings0errors and1197defaultPASS/63intentional opt-in SKIP;
+5actual SQL cases PASS each. Actual narrow rights execute cleanup; WITH GRANT
+OPTION/business SELECT/runtime-role membership set exclusion1. Exact expiry -1ms/
+0/+1ms proves90d security/IP and24h replay predicates, mandatory records retained,
+future data untouched, jobs independent, repeat idempotence and rollback restoration.
+All10created scratch databases have matching ID/GUID cleanup receipts. Temporary
+user/grants/data rolled back before DROP; D07 baseline output byte-identical
+10CD3407CE5986394703A9BEC2EE3E42314080809DDABE26906B1F14B593FC8E,24empty
+tables/4roles102permissions unchanged. Four owner hashes unchanged/unshared/untracked.
+Source/tests trees b0b7af270d28330541615436e298b462364f35dd /
+e825ccea3a4247e0c58c57914d5f07e5e21e6275 identical on both checkouts.
+API/DTO/migration/frontend change checklist N/A. Notes <=15lines. Actual authenticated
+maintenance principal, strict TLS and running scheduler remain unverified; these
+rollback statement tests do not claim service COMMIT/startup readiness. Full M0 open.

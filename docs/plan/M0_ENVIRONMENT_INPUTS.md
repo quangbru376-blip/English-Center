@@ -15,7 +15,7 @@ none are registered in an active default host. Tests do not choose operator valu
 | HTTPS certificate/client trust and SQL TLS trust | Browser fixtures use transient exact-pinned certificates. Actual origin/listen and selected trust/custody needed before concrete transport proof. No global trust bypass. |
 | JWT issuer/audience/key references/rotation | K proves actual supplied HMAC/RSA/ECDSA material, not deployed keys. Generate/provision only after actual custody binding; never write keys into tracked files or external prompts. |
 | CSRF store and identity | L can read existing protected current-user DPAPI XML on Windows and prove restart decryption without key writes. Actual durable store, ACL/custody, application binding remain required. |
-| Maintenance jobs/principal/interval | Accepted replay24h/security-IP90d/mandatory-retained policy is unchanged. P supplies configuration/probe/scheduler code; actual scheduler binding and cleanup effects remain; no runtime purge permission. |
+| Maintenance jobs/principal/interval | P supplies jobs/guard; T verifies actual SQL effects at exact expiry boundaries, mandatory retention/IP clearing, replay independence/idempotence/rollback and narrow grants versus grant-option/business/role extras. Actual maintenance login/TLS/scheduler binding remains; no runtime purge permission. |
 | Approved patch/lock review | J compares explicitly supplied reviewed versions and five artifact pins with fresh runtime/hash evidence; SQL version resolver must use the selected DB reference. Fixture metadata is not actual approval. |
 
 After these bindings: use Q explicit HTTP readiness and existing transport/execution/maintenance

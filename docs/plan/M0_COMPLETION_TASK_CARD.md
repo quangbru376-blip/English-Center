@@ -134,3 +134,10 @@ All9 concrete categories implemented/unmounted. See V01NOP_TASK_CARD/ADR182/NOP 
 
 ## V01-Q/R/S PASS — whole M0 still IN PROGRESS
 Q explicit HTTP readiness and S narrow metadata allowlist applied/reverified;1197defaultPASS/58opt-in SKIP/buildclean and3read-only SQL denial cases each. R metadata candidate/ablation880/880facts, S3rollback grant cases. See cards/QRS summary/ADR183–184. No permanent grants or runtime activation; next actual profile/principal/PKI/custody/maintenance/startup integration.
+
+## V01-T PASS — whole M0 still IN PROGRESS
+Maintenance SQL effects/authority main1f0f0e9/manager7dbcb4d applied/reverified:
+1197defaultPASS/63opt-in SKIP/buildclean and5SQL PASS each. Database grant-option
+loophole fixed; exact90d/24h expiry effects/mandatory retention/IP cleanup/future/
+idempotence/rollback verified,10scratch DBs removed, D07/owner unchanged. Actual
+principal/TLS/scheduler and profile/custody/startup remain open; see T card/summary.

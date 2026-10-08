@@ -1,6 +1,12 @@
 # V01 readiness closure matrix — 2026-10-08
 
-Latest: FULL M0 remains INCOMPLETE. Q/S applied/reverified PASS (main7ef2ce6/
+Latest T: main1f0f0e9/manager7dbcb4d reviewed PASS/applied/reverified;1197default
+PASS/63opt-in SKIP,5actual maintenance SQL cases PASS each, buildclean. All10scratch
+DBs identity-cleaned, D07/owner unchanged. Cleanup effects and narrow database-grant
+exclusion now verified; actual maintenance authentication/TLS/scheduler still open.
+See V01T_TASK_CARD/T-verification-summary. FULL M0 remains INCOMPLETE.
+
+Historical Q/S applied/reverified PASS (main7ef2ce6/
 a6b4828,manager e18eddc/41b166d),1197defaultPASS/58opt-in SKIP/buildclean.
 Q provides explicit HTTP readiness/startup check but is unmounted. R candidate/
 ablation each880/880catalog facts with temporary metadata reads; S declares exact
@@ -33,7 +39,7 @@ frontend App/main remain unmounted; SQL structural inspection is not full readin
 | Runtime/patch artifacts | J fresh loaded .NET/ASP.NET/EF versions, exact five-file pins/date/ref policy PASS | Approved actual manifest and bound fresh SQL-version resolver not configured; SQL version tests synthetic |
 | Timezone/deadline/body/buffer | G typed UTC+7/finite ordering/overflow/remaining-budget/body/CSV-buffer validation | H actual BCL UTC+7 resolution PASS; N actual middleware cap/deadline tests PASS; operator budgets still unselected, fixtures not owner SLO/DF01 |
 | Offline dependencies/blocklist | H fresh pinned metadata/review-window/license/corpus/async loader PASS; resources/packages unchanged | Scheduled servicing/provenance review before real exposure; no install inferred |
-| Cleanup/expiry/recovery | Scratch ownership cleanup PASS; design90d/24h/backup policy | P explicit jobs/guard implemented, SQL effects/scheduling unverified; key/media/restore/load remain operational prerequisites; no runtime deletion role |
+| Cleanup/expiry/recovery | T actual narrow SQL authority/90d audit-IP/24h replay effects, boundary/future/idempotence/rollback PASS on scratch; all10scratch DBs removed | P jobs/guard implemented; actual maintenance authentication/TLS/scheduler unverified; key/media/restore/load remain operational prerequisites; no runtime deletion role |
 
 F6browser→owned COMMIT+E12regression PASS on manager/main;54Fscratch DBs cleaned.
 Read-only local probe confirms Windows-only/sysadmin diagnostic identity; no runtime
