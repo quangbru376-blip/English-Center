@@ -22,6 +22,17 @@ SELECT
   SELECT 1 FROM sys.database_permissions AS p
   JOIN sys.user_token AS t ON t.principal_id=p.grantee_principal_id
   WHERE t.principal_id NOT IN (DATABASE_PRINCIPAL_ID(N'public'),DATABASE_PRINCIPAL_ID(N'ec_app_runtime'))
-   AND NOT (p.class=0 AND p.permission_name=N'CONNECT' AND p.state=N'G')
+   AND NOT (
+    p.state=N'G' AND (
+     (p.class=0 AND p.permission_name IN (N'CONNECT',N'VIEW DEFINITION'))
+     OR (p.class=1 AND p.permission_name=N'SELECT'
+      AND p.major_id=ISNULL(OBJECT_ID(N'dbo.__EFMigrationsHistory'),-1)
+      AND p.minor_id IN (
+       ISNULL(COLUMNPROPERTY(OBJECT_ID(N'dbo.__EFMigrationsHistory'),N'MigrationId',N'ColumnId'),-1),
+       ISNULL(COLUMNPROPERTY(OBJECT_ID(N'dbo.__EFMigrationsHistory'),N'ProductVersion',N'ColumnId'),-1)
+      )
+     )
+    )
+   )
  ) THEN 1 ELSE 0 END AS direct_effective_grant,
  CONVERT(int,SERVERPROPERTY(N'EngineEdition')) AS engine_edition;
