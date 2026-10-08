@@ -1,0 +1,12 @@
+{
+  "mode": "edit",
+  "objective": "Read ONLY the three full authorized context files in order and implement the pure persisted audit projection assertions specified by V01E_WORKER.md. Follow backend-clean-code with SKILL_ROUTING canonical overrides. No source/AGENTS/links/owner/secrets/listing/search/commands/Git/network/SQL/validation. Only your sole output may be read afterward. Codex owns fixture, validation and review.",
+  "allowed_paths": ["backend/tests/EnglishCenter.Tests/Api/Integration/OwnedAuditAssertions.cs"],
+  "forbidden_paths": ["backend/src/**", "frontend/**", "**/*.csproj", "**/*lock*", ".env*", ".git/**", "docs/**", "AGENTS.md", "instructions/**"],
+  "acceptance_criteria": ["Sole <=85line helper with exact Security and PasswordChange assertions from worker card, no DB/fixture code", "Full three inputs read before write; no extra input, commands/network/SQL; no Details/credential diagnostics"],
+  "context_files": ["docs/plan/V01E_WORKER.md .agents/skills/backend-clean-code/SKILL.md docs/plan/SKILL_ROUTING.md"],
+  "max_changed_files": 1,
+  "max_diff_lines": 85,
+  "model": "",
+  "timeout": "10m"
+}
