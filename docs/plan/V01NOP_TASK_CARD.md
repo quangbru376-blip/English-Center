@@ -30,6 +30,9 @@ scheduled job bindings; finite replay/audit intervals. Read-only readiness check
 fresh actual principal: no dbo/sysadmin/DB or server CONTROL/runtime/db_ddladmin,
 known DELETE on AuditLog/ReplayOperation and UPDATE on IP expiry/address columns.
 Unknown facts deny. Scheduler uses supplied independent principal, owned connection/
+Predicate-column SELECT is required: Replay.expires_at and Audit.audit_category,
+security_expires_at,ip_expires_at only; no broad SELECT. Direct extra server grants
+also deny. Microsoft DELETE/UPDATE documentation confirms WHERE requires SELECT.
 transaction, fixed parameterized cleanup: replay expired only; SECURITY expired only;
 IP expiry clear only; never mandatory-history DELETE or arbitrary purge API. No
 automatic mounting/scheduling from this task. Failed cleanup fixed counters only.
@@ -70,6 +73,9 @@ no repeat permission gate. skill_verification pending actual events/diff/tests.
 Verification: real middleware streamed/known caps/RAM cleanup/cooperative deadline/
 restoration; explicit missing binding denial and buffer capacity; actual ephemeral
 loopback TLS/SAN/expired/weak/wrong pin/options/ref/deadline (keys/certs only RAM);
+Windows Schannel cannot use this ephemeral private key. Tests use existing Node
+TLS via hidden child process, generated PEM through stdin only, OS-chosen loopback
+port, no fixture files/trust-store writes; bounded process termination in finally.
 maintenance unknown/unsafe principal/config/job intervals/ref/cancellation/SQL source
 guards, no fake positive SQL. Manager/main full default tests/build --no-restore
 -warnaserror; owner hashes/source-scope checks. No actual operator profile/startup/
