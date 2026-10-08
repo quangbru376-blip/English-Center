@@ -1,5 +1,17 @@
 # Project Planning
 
+V01-D reviewed PASS/applied ADR163/reverified2026-10-08 main8920098/manager3d40160:
+37real HTTPS/browser+HTTP→SQL rollback cases PASS; default891PASS/37opt-in SKIP;
+frontend48tests/types/lint/build PASS, buildclean. Baseline/owner files unchanged.
+Bounded AGY49915a6c-e94 sole53lines/full3reads; Codex independent fixes/review.
+Default entries/production src/packages/schema unchanged; test listeners stopped.
+Full V01/M0 incomplete: next V01-E owned COMMIT/cleanup/SNAPSHOT/security-audit/race
+contract. Standing owner completion authority ADR177 applies; no repeat permission
+questions for assigned aspects. See V01D_TASK_CARD/D-verification-summary.json.
+
+Earlier checkpoints below are historical.
+
+
 V01-B/C applied/reverified PASS2026-10-08 code mainbca0e4e/manager7ed9f85:
 27actual HTTP→SQL rollback cases PASS/default891PASS/27opt-in SKIP/buildclean.
 Approved exact scopes; no retained rows/users/members/catalog/profile/grants drift.

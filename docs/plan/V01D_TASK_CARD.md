@@ -1,6 +1,6 @@
 # V01-D — browser HTTPS to rollback SQL
 
-2026-10-08. Base main3d35cc7; status: implementation/execution authorized ADR177.
+2026-10-08. Base main3d35cc7; status: reviewed PASS/applied/reverified main8920098 (ADR163/177).
 V01-B/C remain applied PASS. This is the next verification substep of V01.
 Codex owns the host, SQL transaction, browser driver and independent review.
 No new product workflow or production runtime profile is opened by preparation.
@@ -137,3 +137,15 @@ Source/backend/frontend entries/packages/schema unchanged; API/migration docs N/
 Owner explanation docs/notes/V01D.md11lines. Windows TLS prototype/header diagnostic
 failure and build-lock retry corrected; final clean assembly reverified37PASS.
 Apply reviewed bounded stage ADR163, then reverify main. Full V01 remains incomplete.
+
+## Main revalidation — PASS
+
+Main8920098/manager3d40160 identical canonical backend/browser test trees;
+production backend/src and frontend/src unchanged. Main clean build0warnings/
+0errors;37integration PASS/0fail/0skip;891default PASS/37intentional opt-in SKIP.
+Frontend48tests/typecheck/lint/build PASS. Final baseline digest unchanged,
+24empty tables/0fixture users/members/4roles102permissions6migrations/profile.
+Driver/browser/loopback listeners stopped; owner4hashes unchanged/untracked.
+D-verification-summary.json records source/TRX/worker hashes and actual limits.
+Verdict PASS for bounded V01-D, full V01/M0 incomplete. Next V01-E needs concrete
+contract and evidence under standing ADR177, not another generic permission gate.

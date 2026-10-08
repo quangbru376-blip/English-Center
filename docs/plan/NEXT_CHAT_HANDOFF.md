@@ -2,15 +2,28 @@
 
 ## Checkpoint hiện tại
 
-V01-D continuation2026-10-08: concrete10browser-group HTTPS/SQL rollback contract
-prepared in V01D_TASK_CARD and exact3input/sole70line worker card/JSON.
-Runner validate PASS on clean existing manager; schema-only, no dispatch/read
-enforcement claim. No SQL/runtime/browser run. New external payload and browser
-HTTPS+SQL scopes require explicit approval; user generic continuation is preparation.
-If approved, implement in retained manager, verify exact certificate pin before
-traffic, no global trust bypass, keep secrets RAM, baseline/rollback/stop on failure.
-Do not open owned COMMIT/runtime principals/full profile; B/C checkpoint remains.
+V01-D completed/reviewed PASS/applied ADR163/reverified2026-10-08 code main8920098,
+manager3d40160; identical backend test tree55fb9697cd5b9acab2b4e4bf35604bcc3866d0c9
+and browser test tree6be790ba5a5e311964f3011e6b8edad8d5978415. Owner standing
+completion authority ADR177 covers assigned task aspects; do not re-ask these.
+Manager/main37integration PASS/0fail/0skip (D10+B/C27); default891PASS/37intentional
+opt-in SKIP/buildclean; frontend48tests/typecheck/lint/build PASS on both.
+Real Edge→per-certificate pinned HTTPS→UI/API→caller-TX SQL; signup3widths/seven
+roles/CSRF/tabs+profiles/password/Admin lock/replay/lost-ack safe lookup verified.
+Node RAM TLS terminator/private loopback nonce preserves Origin; negative trust/
+wrong-pin/direct-bridge checks PASS. Windows transient-key/prototype logging/build
+retry issues resolved and documented; final evidence sanitized, originals retained.
+AGY49915a6c-e94 SUCCESS/full3reads/sole53line helper/zero observed scope violations;
+Codex independent review. Baseline digest/24empty tables/0users/members/4roles/
+102permissions/6migrations/profile unchanged; browsers/listeners stopped. Four owner
+files unchanged/unshared/untracked/unstaged. Production src/defaults/packages unchanged.
+See V01D_TASK_CARD/V01-evidence/D-verification-summary.json/notes/V01D.md.
+Full V01/M0 remains incomplete: next prepare V01-E concrete owned COMMIT/cleanup,
+separate SNAPSHOT executor/independent security audit/race evidence; production
+principal/profile/PKI/readiness remains unverified. ADR177 removes repeated task
+permission gates, not the need for bounded contracts and actual verification.
 
+Historical B/C checkpoint:
 V01-B→V01-C complete/reviewed PASS/applied ADR163/reverified2026-10-08 code
 mainbca0e4e/manager7ed9f85, identical test tree32decf9a213277debd9e6c9cc17783efec711aea.
 Owner BOTH exact AGY payloads and15B+12C SQL rollback scope explicitly approved;

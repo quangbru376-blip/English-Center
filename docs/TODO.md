@@ -10,11 +10,11 @@
 
 ## Next
 
-- V01-D concrete contract prepared in V01D_TASK_CARD; validated sole<=70line AGY
-  metadata helper contract. Await exact new external payload and loopback HTTPS/
-  browser/rollback SQL execution scope before dispatch/run. Preserve B/C PASS;
-  owned COMMIT/principals/profile/full readiness stay deferred.
-
+- V01-D applied/reverified PASS main8920098:37integration/891default/48frontend
+  PASS,37intentional opt-in SKIP, buildclean; SQL baseline/owner files unchanged.
+  Next V01-E: prepare bounded owned COMMIT/cleanup/SNAPSHOT/security audit/races
+  contract under standing ADR177. Full V01/M0 incomplete; runtime profile/principal
+  readiness remains unverified. See V01D_TASK_CARD/D-verification-summary.
 - V01-B→V01-C completed/reviewed PASS/applied ADR163/reverified mainbca0e4e:
   manager/main27HTTP→SQL PASS, default891PASS/27opt-in SKIP/buildclean.
   Owner exact AGY+SQL scopes approved; rollback catalog/profile/102permissions

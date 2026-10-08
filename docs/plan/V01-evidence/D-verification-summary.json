@@ -1,0 +1,151 @@
+{
+  "trees": {
+    "managerMainGitTreesIdentical": true,
+    "backendTests": "55fb9697cd5b9acab2b4e4bf35604bcc3866d0c9",
+    "frontendBrowserTests": "6be790ba5a5e311964f3011e6b8edad8d5978415",
+    "productionBackendSrc": "d1f943e467e2407dc12f7ac0c51f6e50d71b81fb",
+    "productionFrontendSrc": "fbd07191119121fd26c4b392e20d1c78eb146afa",
+    "checkoutLineEndingsMayDiffer": true
+  },
+  "worker": {
+    "run": "49915a6c-e94",
+    "observedReads": [
+      "docs/plan/V01D_WORKER.md",
+      ".agents/skills/frontend-ui/SKILL.md",
+      "docs/plan/SKILL_ROUTING.md",
+      "own cookie-policy.cjs output only"
+    ],
+    "originalRetained": true,
+    "soleWrite": "frontend/tests/browser/cookie-policy.cjs",
+    "agy": "SUCCESS",
+    "eventsSha256": "483F21ED66A8C3CFB7A4676C03109F702A82DAF467AD860AB5FBD97D8FE0035A",
+    "originalLines": 53,
+    "readLines": [
+      27,
+      44,
+      101,
+      53
+    ],
+    "receiptSha256": "E6280148A0AC90370984D8307DF2BF4D7EB568FBA5D19C6460E3A5F18D6EEC14",
+    "observedScopeViolations": 0,
+    "osEnforcedReadBoundaryNotClaimed": true,
+    "originalOutputSha256": "644238439CE12B20294CDB7856851416258FD7F6CC543E587A29DE7854B77DF6"
+  },
+  "date": "2026-10-08",
+  "status": "PASS applied/reverified bounded V01-D",
+  "checks": {
+    "browser": "Edge real API; signup375/768/1280; ten groups; per-certificate pin; negative default-trust/wrong-pin; private bridge denial; real lost-ack/manual lookup",
+    "frontend": "manager/main48tests fail0 skip0 typecheck lint build PASS",
+    "tests": [
+      {
+        "sha256": "697559F17C71153B92D9C65C628B3E1C6545C24DAEBA527D8C7836D2FC1451E2",
+        "total": 37,
+        "passed": 37,
+        "notExecuted": 0,
+        "file": "V01-D-manager-cleanbuild.trx",
+        "failed": 0,
+        "trxCounterNotExecuted": 0
+      },
+      {
+        "sha256": "2D9D348482B5A16151930DA05B0A5FE1BD7F8443D831A4101F65CAAE3A1D5D9A",
+        "total": 928,
+        "passed": 891,
+        "notExecuted": 37,
+        "file": "V01-D-manager-optout.trx",
+        "failed": 0,
+        "trxCounterNotExecuted": 0
+      },
+      {
+        "sha256": "A2252B094C8FC957C91A47344CE8204F6BD61AEAB72578E430955E09402861DB",
+        "total": 37,
+        "passed": 37,
+        "notExecuted": 0,
+        "file": "V01-D-main.trx",
+        "failed": 0,
+        "trxCounterNotExecuted": 0
+      },
+      {
+        "sha256": "A019B7B8334647619E78D45EBC3CEEEAAF940DE87A37E855CD704AF3A11EB7C9",
+        "total": 928,
+        "passed": 891,
+        "notExecuted": 37,
+        "file": "V01-D-main-optout.trx",
+        "failed": 0,
+        "trxCounterNotExecuted": 0
+      }
+    ],
+    "build": "manager/main no-restore warnings0 errors0",
+    "runtime": "fixture listeners/driver stopped"
+  },
+  "ownerFiles": "four hashes unchanged/unshared/untracked/unstaged",
+  "limits": [
+    "not full V01/M0 acceptance",
+    "owned executor COMMIT and committed races not executed",
+    "production separate SNAPSHOT executor and independent persisted security audit unverified",
+    "diagnostic Windows SQL connection, not configured runtime principal",
+    "fixture trusted TLS termination/pin, not production PKI/profile/key persistence",
+    "default Program/App/main unmounted; packages/schema unchanged"
+  ],
+  "sql": {
+    "fixtureUsers": 0,
+    "roleMembers": 0,
+    "baselineSha256": "0DE381587B6706797C2F38FB3C64DE20A3E19083E391E4684EF3820CEE6FBEF7",
+    "roles": 4,
+    "catalog": "EnglishCenter_D07_20261005",
+    "snapshot": "ON",
+    "compatibility": 160,
+    "migrations": 6,
+    "permissions": 102,
+    "retainedBusinessRows": 0,
+    "mode": "caller outer transaction/savepoints rollback only",
+    "tables": 24,
+    "catalogProfilePermissionDigestUnchanged": true,
+    "identityRowversionCounterStabilityNotClaimed": true
+  },
+  "sources": [
+    {
+      "gitBlob": "0179f408727d4e271afc8c2dbd119a38a78ca7e2",
+      "mainDiskSha256": "812BD5A9047AB302EB4917147250190E70133C6FE631EF0861A2DF75F5AC4E04",
+      "path": "backend/tests/EnglishCenter.Tests/Api/Integration/IntegrationSqlHost.cs"
+    },
+    {
+      "gitBlob": "3d943e55c8260e8de4d4d8c55c3cb8a6a0cf8f6d",
+      "mainDiskSha256": "E91F8E667251DF9DB5E3AEEA27F54FBE821A3E3334267D737C4A499E3B3E477F",
+      "path": "backend/tests/EnglishCenter.Tests/Api/Integration/BrowserSqlHostingTests.cs"
+    },
+    {
+      "gitBlob": "e91fbbde3b46cbe11432aad93e8de39771f2640a",
+      "mainDiskSha256": "C94EBF290DD6A451F4DB27C1848013E50F42FD449475C6714622BAF63502CB96",
+      "path": "frontend/tests/browser/identity-entry.html"
+    },
+    {
+      "gitBlob": "dad14a64c355b0a226a22a45045bedfb5b36afd6",
+      "mainDiskSha256": "74282EF8025C65C11E1A3641589666B7D35B0138DDBDD4F7670F80A16DA6FE5D",
+      "path": "frontend/tests/browser/identity-entry.tsx"
+    },
+    {
+      "gitBlob": "db3537b1ab7156fb059e0b30d7572badc4cc3e5f",
+      "mainDiskSha256": "9DF4DF972523AA5A0EDD698857B8B0B51BD778B7534BC105586BA73B7B02AA38",
+      "path": "frontend/tests/browser/build-fixture.mjs"
+    },
+    {
+      "gitBlob": "e658b1e65c6fd23c1dd1ad4bd8af9e894a88c001",
+      "mainDiskSha256": "3BA0D539ABE5527D2B0C4FB052EE3659DE4A48EA6488DAD0357F6E245FB5E4A2",
+      "path": "frontend/tests/browser/verify-identity.cjs"
+    },
+    {
+      "gitBlob": "592d93fc89ffabc21becb1c1e4bb469b5c57fb84",
+      "mainDiskSha256": "089E56F9DD493996CEA229158A428B5291F2E42AC629D6F7D27B7AC8BBADE494",
+      "path": "frontend/tests/browser/cookie-policy.cjs"
+    }
+  ],
+  "resolvedIssues": [
+    "Windows Kestrel transient-key TLS8009030E: RAM Node TLS terminator/private loopback nonce",
+    "route.fetch failed prototype printed synthetic ephemeral headers; ignored TRX header lines redacted; final response drop at real proxy, async failures caught and raw stderr discarded",
+    "synthetic signup phone uniqueness/10digit width1280 corrected",
+    "build-lock retry changed assembly; final cleanbuild37cases re-executed"
+  ],
+  "authority": "ADR177 task completion; ADR163 reviewed application",
+  "mainCode": "8920098283d4adbf784d8e97f78044a7694b72f5",
+  "managerCode": "3d401609bf8bbab35bd0e7d52f965fb258b70f5b"
+}
