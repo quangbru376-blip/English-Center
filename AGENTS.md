@@ -185,6 +185,13 @@ frontend unchanged; full V01/M0 still incomplete. See V01BC_TASK_CARD/verificati
 no browser HTTPS/runtime principals/owned COMMIT/restM0/install/push/deploy authority.
 Historical initial scope is retained in
 FIRST_CODE_HANDOFF; latest checkpoint and explicit current owner scope govern.
+Owner expanded standing task authority2026-10-08 (ADR-177): each assigned task
+includes the necessary implementation, bounded delegation/context sharing,
+verification and operational aspects to finish that task. Do not re-ask already
+authorized aspects. Prepare concrete scopes and preserve task boundaries/owner
+files; this does not assign unrelated product tasks or imply push/deploy.
+For current V01-D this supersedes the pending payload/HTTPS/rollback SQL gate.
+Historical narrower gates below describe their checkpoints, not a new veto.
 Standing owner authority ADR-163: apply Codex-reviewed PASS stages already
 authorized for implementation to main without asking again. Report issues
 requiring owner action. Keep unreviewed/rejected worker output detached.

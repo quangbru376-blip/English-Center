@@ -4577,3 +4577,15 @@ Worker default import/noncanonical colors corrected by Codex with original retai
 48tests and Edge3widths/roles/scopes/dialog/unknown/stale checks PASS on manager/main.
 Default App/main, backend, packages/schema/profile/principals remain unchanged;
 SQL not rerun, real production cookie/HTTPS/operator/runtime/V01 proof unverified.
+
+## ADR-177 — standing authority to finish assigned tasks
+
+Owner explicitly expanded authority2026-10-08: from now on each assigned task
+includes the aspects necessary to complete it. Codex prepares concrete bounded
+contracts, delegates via antigravity-worker where useful, runs relevant checks
+and applies reviewed PASS under ADR163 without requesting the same permission.
+Current V01-D payload/loopback HTTPS/browser/rollback SQL scope is authorized.
+Historical pending gates are superseded for that task. This is task-bound
+execution authority, not assignment of unrelated features or publication.
+Keep owner files protected, secrets out of external context/evidence, rejected
+output detached and operational changes bounded by the concrete task contract.

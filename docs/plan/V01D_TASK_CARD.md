@@ -1,6 +1,6 @@
 # V01-D — browser HTTPS to rollback SQL
 
-2026-10-08. Base main3d35cc7; status: contract prepared, execution NOT authorized.
+2026-10-08. Base main3d35cc7; status: implementation/execution authorized ADR177.
 V01-B/C remain applied PASS. This is the next verification substep of V01.
 Codex owns the host, SQL transaction, browser driver and independent review.
 No new product workflow or production runtime profile is opened by preparation.
@@ -24,7 +24,7 @@ Mount the same implemented endpoints and services with the existing caller-TX
 SQL bridge. Serve a fixture entry that instantiates IdentityApp/HttpClient/AuthState
 using relative /api/v1 requests. Production App/main/Program remain unmounted.
 
-## Proposed execution scope — requires explicit owner permission
+## Authorized execution scope — ADR177
 
 One test process owns Kestrel bound ONLY to127.0.0.1 on an OS-assigned port,
 temporary static frontend assets and headless installed Edge via bundled
@@ -80,8 +80,8 @@ Apply only independently reviewed PASS implementation under standing ADR163.
 Optional AGY sole pure cookie/storage metadata assertion<=70lines, as specified
 by V01D_WORKER.md/D-worker-contract.json. External context exactly that worker
 card, frontend-ui/SKILL.md and SKILL_ROUTING.md; no source/report/owner files,
-secrets, commands/browser/network/SQL. Exact new payload permission is pending;
-prior B/C consent is not reused. Validate contract before dispatch on clean manager.
+secrets, commands/browser/network/SQL. Exact new payload is authorized ADR177;
+new standing task authority applies, not prior B/C consent. Validate contract before dispatch on clean manager.
 implementation_skills: backend-clean-code/frontend-ui; review_skills: code-review.
 skill_sources SHA256: backend726586298710499cd9e5ce7a1e3a2a9fcfd00c07c1f73dfce34cf58e7da8ee3b;
 frontend448079d6ef3b5b514bbcba4f2a8d5aaf0fc6cc8063f79798f28a6dbbe5128f90;
