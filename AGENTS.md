@@ -175,10 +175,14 @@ See U05/U06 cards/evidence, ADR176. V01 preflight/V01-A2026-10-08 reviewed PASS:
 rollback only; before/after catalog/profile/102permissions identical,24empty
 tables/0fixture users/members. See V01_TASK_CARD. Integrated V01 incomplete;
 no runtime/owned COMMIT/restM0/packages/push/deploy authority.
-Owner next2tasks V01-B/C prepared2026-10-08; exact2AGY payloads explicitly approved,
-bounded SUCCESS71/84lines, Codex fixed/reviewed assertions. Manager00443a6 detached;
-buildclean/default891PASS/27SQL opt-in SKIP. New B/C SQL execution question pending,
-no actual new SQL/PASS/source apply. See V01BC_TASK_CARD/BC-preparation-summary.
+Owner-authorized V01-B/C complete/reviewed PASS/applied ADR163/reverified2026-10-08
+code mainbca0e4e/manager7ed9f85, identical test tree32decf9a213277debd9e6c9cc17783efec711aea.
+27HTTP→SQL PASS on manager/main; default891PASS/27opt-in SKIP/buildclean. Exact2AGY
+payloads and both SQL rollback scopes explicitly approved; bounded SUCCESS71/84lines,
+Codex independent fixes/review/tests. Catalog/profile/102permissions unchanged,
+24empty tables/0fixture users/members; owner files preserved. Production backend/src/
+frontend unchanged; full V01/M0 still incomplete. See V01BC_TASK_CARD/verification;
+no browser HTTPS/runtime principals/owned COMMIT/restM0/install/push/deploy authority.
 Historical initial scope is retained in
 FIRST_CODE_HANDOFF; latest checkpoint and explicit current owner scope govern.
 Standing owner authority ADR-163: apply Codex-reviewed PASS stages already

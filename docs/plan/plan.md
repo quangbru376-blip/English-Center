@@ -1,5 +1,12 @@
 # Project Planning
 
+V01-B/C applied/reverified PASS2026-10-08 code mainbca0e4e/manager7ed9f85:
+27actual HTTP→SQL rollback cases PASS/default891PASS/27opt-in SKIP/buildclean.
+Approved exact scopes; no retained rows/users/members/catalog/profile/grants drift.
+Production entries unchanged; full V01/M0 remains incomplete, no runtime/owned
+COMMIT/browser HTTPS/install/push/deploy scope. See V01BC_TASK_CARD/evidence.
+U05/U06 checkpoint below is historical.
+
 Owner-authorized U05→U06 complete/reviewed PASS/applied ADR163/reverified2026-10-08.
 Code mainf83a7d6 / manager0ff2ae7; identical frontend4050338d256ad268fe11cc1de7180e39f08a1458.
 48frontend tests/0fail0skip, typecheck/lint/build and Edge375/768/1280 PASS on both.

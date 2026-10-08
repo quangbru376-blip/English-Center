@@ -1,11 +1,14 @@
 # Handoff — E01–E05 và complete design baseline đã Accepted
 
-## V01-B/C prepared — SQL execution pending
+## V01-B/C applied/reverified PASS — 2026-10-08
 
-Owner requested next2tasks and approved exact2AGY payloads2026-10-08. Two bounded
-SUCCESS; manager00443a6 managed worktree retains test-only HTTP/SQL fixture and
-15identity+12Admin opt-in cases. Buildclean/default891PASS/27SKIP; new SQL question
-pending, no integrated PASS/source apply/runtime. See V01BC_TASK_CARD/evidence.
+Owner requested next2tasks and explicitly approved exact2AGY/both rollback SQL scopes.
+Code mainbca0e4e/manager7ed9f85 share test tree32decf9a213277debd9e6c9cc17783efec711aea.
+27HTTP→SQL PASS on manager/main; buildclean/default891PASS/27intentional opt-in SKIP.
+Catalog/profile/102permissions unchanged/24empty tables/0fixture users/members.
+Production backend/src/frontend unchanged; bounded workers retained/Codex fixes.
+Full V01/M0 incomplete; runtime/browser HTTPS/owned COMMIT/principals/committed races
+unopened. See V01BC_TASK_CARD/BC-verification-summary/notes V01B/C.
 
 ## V01 preflight — 2026-10-08
 

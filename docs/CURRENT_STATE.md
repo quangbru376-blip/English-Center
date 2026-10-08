@@ -4,18 +4,19 @@ Last updated: 2026-10-08
 
 ## Current task
 
-Owner requested next2tasks2026-10-08: V01-B identity HTTP/SQL and V01-C Admin
-HTTP/SQL verification prepared in V01BC_TASK_CARD, detached managed worktree
-C:/Users/asus/.codex/worktrees/v01-http-sql/main_workplace checkpoint00443a6.
-Owner approved both exact AGY payloads;2SUCCESS/full3reads/sole outputs71/84lines,
-Codex fixed C reference shape/UTC assertions. Offline build0warnings0errors;
-default unit suite891PASS/27intentional SQL opt-in SKIP/0fail. New SQL execution
-question still pending: no new SQL run, no integrated PASS or test-source apply.
-See BC-preparation-summary; next receive exact B/C rollback SQL authorization,
-baseline/check15B then12C/rollback/review, apply only if PASS under ADR163.
-Continuation read-only baseline PASS. Automatic approval review rejected starting
-V01-B before process creation because generic continuation lacked explicit new
-SQL scope approval. One combined B/C rollback question is pending; no test ran.
+Owner-authorized V01-B identity HTTP/SQL and V01-C Admin HTTP/SQL completed/reviewed
+PASS/applied ADR163/reverified2026-10-08 code mainbca0e4e/manager7ed9f85; identical
+test tree32decf9a213277debd9e6c9cc17783efec711aea.27actual SQL cases PASS/0fail/0skip
+on manager/main; default891PASS/27intentional opt-in SKIP/0fail/buildclean.
+Two bounded AGY SUCCESS/full3reads/sole71/84line outputs; Codex fixed C target
+object/UTC and independently verified clock/nonrenewal/savepoint/rollback cases.
+Catalog/profile/102permissions digest identical;24empty tables/0fixture users/
+members/4roles6migrations unchanged. Explicit SQL approval resolved initial
+auto-review rejection; no bypass. Production backend/src/frontend/entry/package
+unchanged; four owner files unchanged/untracked/unshared. See V01BC_TASK_CARD and
+BC-verification-summary. Full V01/M0 incomplete: browser HTTPS/runtime principal/
+owned COMMIT/separate SNAPSHOT executor/independent persisted security audit/
+committed races still require specific scope; no restM0/runtime/install/push/deploy.
 
 V01 manager preflight/V01-A reviewed PASS2026-10-08; integrated V01 incomplete.
 Default entries remain unmounted, no runtime/packages opened.

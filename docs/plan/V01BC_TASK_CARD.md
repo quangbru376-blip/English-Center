@@ -1,8 +1,10 @@
 # V01-B → V01-C — opt-in HTTP/SQL verification
 
 2026-10-08; base main483dd01. Owner requested next two tasks. These are bounded
-verification substeps of V01, not new product families. Status: preparing;
-new external payload sharing and new SQL fixture execution pending exact consent.
+verification substeps of V01, not new product families. Status: completed/reviewed
+PASS/applied ADR163/reverified2026-10-08 code mainbca0e4e/manager7ed9f85;
+identical six-file test tree32decf9a213277debd9e6c9cc17783efec711aea.
+Owner explicitly approved both AGY payloads and both exact rollback SQL scopes.
 
 implementation_skills: backend-clean-code; review_skills: code-review (Codex).
 skill_sources SHA256: backend726586298710499cd9e5ce7a1e3a2a9fcfd00c07c1f73dfce34cf58e7da8ee3b;
@@ -62,7 +64,7 @@ Both task checks must PASS before apply main under ADR163; rejected output detac
 Affected docs/cards/notes/evidence only; default unit suite must remain SQL-free.
 Full V01/M0 incomplete: actual browser/HTTPS/principals/owned COMMIT/races deferred.
 
-## Preparation checkpoint — SQL execution still pending
+## Historical preparation checkpoint — before explicit SQL approval
 
 Owner approved BOTH exact AGY payloads2026-10-08; SQL question remains unanswered.
 AGY B120c4c8b-5d2 SUCCESS sole71lines; C97c1123f-992 SUCCESS sole84lines;
@@ -79,7 +81,7 @@ Injection throws MandatoryAuditException after real service writes then rolls ba
 the savepoint; it is a post-write transaction seam, not a forced SQL audit DENY test.
 No SQL used in this preparation turn; V01-A remains the latest actual SQL evidence.
 
-## Continuation execution gate — 2026-10-08
+## Historical continuation execution gate — resolved2026-10-08
 
 Read-only designated baseline probe PASS: identical catalog digest,
 24empty business tables/102permissions. The attempt to start the15B tests was
@@ -87,4 +89,30 @@ rejected by automatic approval review before process creation: a generic
 "continue" did not clearly authorize the new state-changing HTTP/SQL fixture scope.
 No B/C SQL test ran. Do not bypass/retry through indirect commands. One explicit
 combined B/C rollback approval question is pending; prior AGY sharing remains
-approved. Original manager code00443a6 stays detached/unapplied/incomplete.
+approved. Original manager code00443a6 was detached/unapplied/incomplete then.
+
+## Final independent review and evidence
+
+Owner explicitly approved15B+12C after the auto-review rejection; approved execution
+then succeeded. No permission bypass. Manager15Identity+12Admin PASS/0fail/0skip;
+main27PASS/0fail/0skip. Default unit suite891PASS/27intentional opt-in SKIP/0fail;
+SQL cases are separately executed PASS, not inferred from skips. Build0warnings/
+0errors/no-restore. Actual counts/TRX hashes in BC-verification-summary.json;
+raw test logs stay locally ignored and are never shared with AGY.
+
+Codex strengthened clock evidence: me after2minutes does not renew activity;
+matched replay after1minute does not renew activity or repeat mutation/audit/T23.
+Before/after manager/main catalog/profile/permission digest identical
+0DE381587B6706797C2F38FB3C64DE20A3E19083E391E4684EF3820CEE6FBEF7.
+24tables/0retained business rows/0fixture users/0members/4roles102permissions/
+6migrations/compatibility160/snapshotON unchanged. Four owner hashes unchanged;
+untracked/unshared/unstaged. Selected skills and actual worker scope verified.
+Production backend/srcd1f943e467e2407dc12f7ac0c51f6e50d71b81fb and frontend
+4050338d256ad268fe11cc1de7180e39f08a1458 unchanged; no route/DTO/default entry/
+package/schema changes. Migration/API docs/frontend responsive checks N/A for
+test-only additions; notes V01B/V01C explain actual fixture flow within15lines.
+
+Verdict PASS for these two bounded verification tasks, not full V01/M0. Retain
+manager/worker originals. Browser HTTPS/real runtime principals/owned COMMIT/
+separate production SNAPSHOT executor/independent persisted security audit and
+committed multi-client race proof remain unverified; no new authority for them.

@@ -1,5 +1,12 @@
 # Implementation planning — discussion draft
 
+V01-B/C applied/reverified PASS2026-10-08 code mainbca0e4e/manager7ed9f85:
+27HTTP→SQL PASS/default891PASS/27opt-in SKIP/buildclean. Exact AGY/SQL scopes approved,
+rollback catalog/profile/102permissions unchanged/0retained rows/users/members.
+Test-only caller-TX bridge; default production entries unchanged. Full V01/M0
+incomplete: browser HTTPS/principals/owned COMMIT/races need scoped authority/evidence.
+See V01BC_TASK_CARD/BC-verification-summary. Earlier family checkpoints below historical.
+
 ## Latest U05/U06 checkpoint — applied and reverified PASS
 
 Owner-authorized U05→U06 complete/reviewed PASS/applied ADR163/reverified2026-10-08.

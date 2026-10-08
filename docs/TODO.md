@@ -10,10 +10,12 @@
 
 ## Next
 
-- V01-B→V01-C prepared after owner next2tasks request. Exact AGY sharing approved;
-  workers bounded SUCCESS, manager fixed assertion and built0warnings0errors.
-  Default891PASS/27SQL SKIP; manager00443a6 detached. New SQL question pending;
-  no source applied or integrated PASS. See V01BC_TASK_CARD/BC-preparation-summary.
+- V01-B→V01-C completed/reviewed PASS/applied ADR163/reverified mainbca0e4e:
+  manager/main27HTTP→SQL PASS, default891PASS/27opt-in SKIP/buildclean.
+  Owner exact AGY+SQL scopes approved; rollback catalog/profile/102permissions
+  unchanged/0retained rows/users/members. See V01BC_TASK_CARD/verification-summary.
+  Full V01 incomplete; next prepare specific browser HTTPS/profile/principal/
+  owned COMMIT/race evidence scope, no automatic runtime/SQL expansion.
 - U03→U04 complete/reviewed PASS/applied ADR163/reverified2026-10-07 maind51564e.
   38frontend tests/types/lint/build/Edge375/768/1280 PASS; two bounded AGY SUCCESS.
   Explicit signup/login/me/logout/session UI seams; default App remains unavailable.

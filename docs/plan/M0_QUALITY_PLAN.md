@@ -1,6 +1,15 @@
 # M0 — kế hoạch task theo chất lượng
 
-## Latest U05/U06 checkpoint — applied and reverified PASS
+## Current V01 partial verification checkpoint
+
+V01-A120SQL rollback and V01-B/C27HTTP→SQL rollback cases reviewed PASS;
+B/C applied/reverified2026-10-08 code mainbca0e4e/manager7ed9f85, default891PASS/
+27intentional opt-in SKIP/buildclean. Catalog/profile/102permissions unchanged,
+24empty tables/0fixture users/members. Exact scopes approved; see V01BC_TASK_CARD.
+Full V01/M0 incomplete: actual browser HTTPS/runtime principals/owned COMMIT/
+production SNAPSHOT executor/security audit/committed races are still unverified.
+
+## Historical U05/U06 checkpoint — applied and reverified PASS
 
 Owner-authorized U05→U06 complete/reviewed PASS/applied ADR163/reverified2026-10-08.
 Code mainf83a7d6 / manager0ff2ae7; identical frontend4050338d256ad268fe11cc1de7180e39f08a1458.

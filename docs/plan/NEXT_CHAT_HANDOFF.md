@@ -2,14 +2,23 @@
 
 ## Checkpoint hiện tại
 
-V01-B→V01-C preparation2026-10-08: owner next2tasks and BOTH AGY payloads approved.
-See V01BC_TASK_CARD and V01-evidence/BC-preparation-summary.json. Two SUCCESS,
-full3reads/sole71/84line assertion outputs; manager fixes C target object/UTC.
-Managed worktree C:/Users/asus/.codex/worktrees/v01-http-sql/main_workplace00443a6;
-build0warnings0errors/default891PASS/27opt-in SQL SKIP. SQL question second item
-still pending; do not infer approval from first AGY answer or original V01-A.
-No new SQL/source apply/runtime;15B+12C actual checks await authorization.
-Original workers120c4c8b-5d2/97c1123f-992 retained. Owner files still unchanged.
+V01-B→V01-C complete/reviewed PASS/applied ADR163/reverified2026-10-08 code
+mainbca0e4e/manager7ed9f85, identical test tree32decf9a213277debd9e6c9cc17783efec711aea.
+Owner BOTH exact AGY payloads and15B+12C SQL rollback scope explicitly approved;
+initial auto-review rejection resolved by explicit approval, not bypassed.
+Manager15B+12C/main27PASS/0fail/0skip; default891PASS/27intentional opt-in SKIP,
+buildclean. Before/after catalog/profile/102permissions digest identical;
+24empty tables/0fixture users/members/4roles6migrations unchanged.
+See V01BC_TASK_CARD/V01-evidence/BC-verification-summary.json and notes V01B/C.
+Managed worktree C:/Users/asus/.codex/worktrees/v01-http-sql/main_workplace7ed9f85;
+workers120c4c8b-5d2/97c1123f-992 retained. Full3reads/sole71/84lines, zero observed
+violations; Codex fixed C target object/UTC and clock nonrenewal evidence.
+Production backend/src/frontend/default entries/packages unchanged; owner files
+unchanged/unshared/untracked. Full V01/M0 incomplete; browser HTTPS/runtime principal/
+owned COMMIT/separate SNAPSHOT executor/independent persisted security audit/committed
+races remain unverified and need concrete scope; no restM0/install/push/deploy.
+
+## Historical V01-A and U05/U06 checkpoints
 
 V01 manager preflight/V01-A reviewed PASS2026-10-08: see V01_TASK_CARD and
 V01-evidence/preflight-summary.json. Source audit confirms default entries
@@ -17,7 +26,8 @@ unmounted and existing HTTP/browser fixtures do not prove real SQL integration.
 Owner approved exact V01-A five SQL classes:120PASS/0fail/0skip; rollback baseline
 digest identical,24empty tables/0fixture users/members/4roles102permissions6migrations.
 Fresh non-SQL backend891PASS after sandbox testhost connection retry.
-No AGY/new external sharing/runtime/packages/push/deploy; SQL permission only V01-A.
+At V01-A checkpoint no AGY/new external sharing/runtime/packages/push/deploy;
+its SQL permission was only V01-A. Latest B/C authority is above.
 Next combined host/profile scope must be prepared; owned COMMIT remains unopened.
 Integrated V01 remains incomplete; U05/U06 applied checkpoint below unchanged.
 

@@ -1,0 +1,155 @@
+{
+  "date": "2026-10-08",
+  "verdict": "V01-B and V01-C completed/reviewed PASS/applied ADR163/reverified; full V01 INCOMPLETE",
+  "authorization": "Owner explicitly approved both exact AGY payloads and both15B/12C SQL rollback scopes after initial automatic approval rejection",
+  "autoReviewGate": "Resolved by explicit user approval; original rejected process never started; no bypass",
+  "mainCode": "bca0e4e9fd376bf42a146768287ba74de14a9b1b",
+  "managerCode": "7ed9f853d3f365d14953408251d5050cdf366a0e",
+  "testTree": "32decf9a213277debd9e6c9cc17783efec711aea",
+  "productionBackendSrcUnchanged": "d1f943e467e2407dc12f7ac0c51f6e50d71b81fb",
+  "frontendUnchanged": "4050338d256ad268fe11cc1de7180e39f08a1458",
+  "workers": [
+    {
+      "runId": "120c4c8b-5d2",
+      "status": "SUCCESS",
+      "exitCode": 0,
+      "worktree": "C:\\Users\\asus\\AppData\\Local\\Temp\\codex-antigravity-worker\\worktrees\\main_workplace-120c4c8b-5d2",
+      "files": [
+        "backend/tests/EnglishCenter.Tests/Api/Integration/IdentitySqlAssertions.cs"
+      ],
+      "diffLines": 71,
+      "violations": [],
+      "tools": [
+        "view_file",
+        "view_file",
+        "view_file",
+        "write_to_file",
+        "view_file"
+      ],
+      "reads": [
+        "C:\\Users\\asus\\AppData\\Local\\Temp\\codex-antigravity-worker\\worktrees\\main_workplace-120c4c8b-5d2\\docs\\plan\\V01B_WORKER.md",
+        "C:\\Users\\asus\\AppData\\Local\\Temp\\codex-antigravity-worker\\worktrees\\main_workplace-120c4c8b-5d2\\.agents\\skills\\backend-clean-code\\SKILL.md",
+        "C:\\Users\\asus\\AppData\\Local\\Temp\\codex-antigravity-worker\\worktrees\\main_workplace-120c4c8b-5d2\\docs\\plan\\SKILL_ROUTING.md",
+        "C:\\Users\\asus\\AppData\\Local\\Temp\\codex-antigravity-worker\\worktrees\\main_workplace-120c4c8b-5d2\\backend\\tests\\EnglishCenter.Tests\\Api\\Integration\\IdentitySqlAssertions.cs"
+      ],
+      "receiptSha256": "22236C3602C2E9C9C185C8E8DF7AFA53915B7CF60FDE07259035D28F48EDFF9A",
+      "eventsSha256": "E2EA606E178BC7D31FED4AE4C0E8A4100D12309B5B551A7E5903F8FA12119554"
+    },
+    {
+      "runId": "97c1123f-992",
+      "status": "SUCCESS",
+      "exitCode": 0,
+      "worktree": "C:\\Users\\asus\\AppData\\Local\\Temp\\codex-antigravity-worker\\worktrees\\main_workplace-97c1123f-992",
+      "files": [
+        "backend/tests/EnglishCenter.Tests/Api/Integration/AdminSqlAssertions.cs"
+      ],
+      "diffLines": 84,
+      "violations": [],
+      "tools": [
+        "view_file",
+        "view_file",
+        "view_file",
+        "write_to_file",
+        "view_file"
+      ],
+      "reads": [
+        "C:\\Users\\asus\\AppData\\Local\\Temp\\codex-antigravity-worker\\worktrees\\main_workplace-97c1123f-992\\docs\\plan\\V01C_WORKER.md",
+        "C:\\Users\\asus\\AppData\\Local\\Temp\\codex-antigravity-worker\\worktrees\\main_workplace-97c1123f-992\\.agents\\skills\\backend-clean-code\\SKILL.md",
+        "C:\\Users\\asus\\AppData\\Local\\Temp\\codex-antigravity-worker\\worktrees\\main_workplace-97c1123f-992\\docs\\plan\\SKILL_ROUTING.md",
+        "C:\\Users\\asus\\AppData\\Local\\Temp\\codex-antigravity-worker\\worktrees\\main_workplace-97c1123f-992\\backend\\tests\\EnglishCenter.Tests\\Api\\Integration\\AdminSqlAssertions.cs"
+      ],
+      "receiptSha256": "5165FFB6E424D57DEE946ED238D9E0B535F49B1F18CDF8BFF312F379113AC538",
+      "eventsSha256": "DAB597D75DE5B94DC030FA497E164DE546BB92DFCA073C059901610E5B7CA24D"
+    }
+  ],
+  "tests": [
+    {
+      "file": "V01-B-manager.trx",
+      "sha256": "B1B0ACFD32EEBEB767CE7AE62E7CB8AC86F0861387907A1C1A95473066F461A5",
+      "total": 15,
+      "passed": 15,
+      "failed": 0,
+      "notExecuted": 0
+    },
+    {
+      "file": "V01-C-manager.trx",
+      "sha256": "1D57ACB88040F86175698E3C376CCED395397E3CADE18F93B54A7581763AB3E2",
+      "total": 12,
+      "passed": 12,
+      "failed": 0,
+      "notExecuted": 0
+    },
+    {
+      "file": "V01-BC-main.trx",
+      "sha256": "A88C163B7E102888F5F9FF1FD177B7B6559D1C9B7C2EA3D62E28CC2A5104ED6E",
+      "total": 27,
+      "passed": 27,
+      "failed": 0,
+      "notExecuted": 0
+    },
+    {
+      "file": "V01BC-main-optout.trx",
+      "sha256": "0C6B83BE3E132ACB228E07BAF58A43D63A37DD2194928BA11686498774D1BB77",
+      "total": 918,
+      "passed": 891,
+      "failed": 0,
+      "notExecuted": 0
+    }
+  ],
+  "sourceFiles": [
+    {
+      "file": "AdminSqlAssertions.cs",
+      "sha256": "DE87C01157ACA1B8EEA700714460BED77A7CBAE342215E803106C78926E336EE"
+    },
+    {
+      "file": "AdminSqlHostingTests.cs",
+      "sha256": "1959F797C0D40986DDF04E01C611D899BE1042D89C202D32E8F030ED030453CF"
+    },
+    {
+      "file": "IdentitySqlAssertions.cs",
+      "sha256": "806CA5C4015CF79C53794A6D6618360E7468878F88C54BD5968A8ADFA722824A"
+    },
+    {
+      "file": "IdentitySqlHostingTests.cs",
+      "sha256": "97A9849C154FBABE3B7C4A8152D53FA84BAE16DF07B20CF048EE44EDFB2FFF62"
+    },
+    {
+      "file": "IntegrationSqlGate.cs",
+      "sha256": "5A7A0E1D0554F4575939C4DA46C2AEDBFF00EB4CE2CD51EA70B0C942C1A6A4F1"
+    },
+    {
+      "file": "IntegrationSqlHost.cs",
+      "sha256": "09EF34AE511486FABA1261E89577EBC727344573FFA970713A4E49C2824BE93C"
+    }
+  ],
+  "reviewFixes": [
+    "C target exact accountId object and UTC format",
+    "Advance clock2minutes to detect me idle renewal",
+    "Advance clock1minute to detect matched replay activity renewal"
+  ],
+  "sql": {
+    "database": "EnglishCenter_D07_20261005",
+    "outerTransactions": "Rollback only; per-operation savepoints; no owned COMMIT",
+    "beforeDigest": "0DE381587B6706797C2F38FB3C64DE20A3E19083E391E4684EF3820CEE6FBEF7",
+    "managerAfterDigest": "0DE381587B6706797C2F38FB3C64DE20A3E19083E391E4684EF3820CEE6FBEF7",
+    "mainAfterDigest": "0DE381587B6706797C2F38FB3C64DE20A3E19083E391E4684EF3820CEE6FBEF7",
+    "tables": 24,
+    "businessRows": 0,
+    "fixtureUsers": 0,
+    "roleMembers": 0,
+    "roles": 4,
+    "permissions": 102,
+    "migrations": 6,
+    "compatibility": 160,
+    "snapshot": "ON",
+    "baselineScriptSha256": "99520CEDEFA948D3A8D8B2A43E9725DC01D4E5E8521E0D4C42FB5B72BB7F657C"
+  },
+  "ownerFiles": "All four original SHA256 unchanged; untracked/unshared/unstaged",
+  "build": "No restore,0warnings/0errors; existing dependencies only",
+  "limits": [
+    "Test-only in-process HTTP→real services→SQL repositories caller-TX bridge; default production Program/App unmounted",
+    "Owned COMMIT/separate production SNAPSHOT executor/independent persisted security-audit SQL store/runtime login principals/actual browser HTTPS/committed multi-client races not executed",
+    "Post-write injected MandatoryAuditException rollback is not actual SQL audit DENY evidence",
+    "No package/schema/permission/principal/runtime/profile changes, no other DB/push/deploy; full V01/M0 incomplete"
+  ]
+}
