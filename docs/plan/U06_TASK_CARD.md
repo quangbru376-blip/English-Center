@@ -1,8 +1,8 @@
 # U06 — minimal Admin detail and lock pilot
 
-PREPARED2026-10-07; owner continuation U05→U06 from main e48b604; U05 PASS first.
+Codex review PASS detached2026-10-08; owner continuation U05→U06 from main e48b604; U05 PASS first.
 Codex manager; bounded antigravity-worker sole pure AdminAccountPanel150lines.
-Exact new sharing gate pending; ADR163 apply PASS standing authority.
+Owner continuation2026-10-08 authorizes exact presented sharing scope; ADR163 apply PASS standing authority.
 implementation_skills: frontend-ui; review_skills: code-review.
 skill_sources/read_context: same verified full sources as U05; E04 API007/010/014,
 R03 actual DTO/endpoints/replay constants; worker own WORKER+frontend-ui+SKILL_ROUTING.
@@ -37,3 +37,10 @@ prepared,29subset tests PASS (5password+5Admin+7session+12HTTP), no worker run.
 Full typecheck/lint/build/browser and final review pending worker views.
 External exact-payload approval requested; do not treat elapsed time as approval.
 Main code remains e48b604; no source applied. Four owner files untouched.
+
+Final independent Codex review PASS2026-10-08;48tests/0fail0skip/lint/types/build
+PASS; Edge375/768/1280 U05+U06 PASS, including stale identity cleanup/role gates.
+Two AGY SUCCESS/full3contexts before sole writes/zero observed scope violations.
+U06 manager corrected default import/shared tokens; original worker output kept.
+Sources/behavior/security/notes<=15/scoped docs gates PASS. Runtime/SQL/V01 N/A
+unverified/outside scope; main apply/reverify follows. Historical preparation above.

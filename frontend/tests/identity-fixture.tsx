@@ -18,4 +18,4 @@ function Fixture() {
   </IdentityShell>;
 }
 createRoot(document.getElementById('root')!).render(new URLSearchParams(location.search).has('session')
-  ? <IdentityApp client={client} initialPath="/login" /> : <Fixture />);
+  ? <IdentityApp client={client} initialPath={new URLSearchParams(location.search).get('path')??'/login'} /> : <Fixture />);

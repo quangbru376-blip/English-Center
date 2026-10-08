@@ -11,5 +11,7 @@ export const normalLandings: Record<AuthContext['role'], Readonly<{ path: string
 export function identityPath(context: AuthContext | null, requested: string): string {
   if (!context) return requested === '/register' ? '/register' : '/login';
   if (context.scope === 'PASSWORD_CHANGE') return '/account/change-password';
+  if (requested === '/account/change-password') return requested;
+  if (context.role === 'Admin' && /^\/admin\/accounts\/[1-9]\d{0,9}$/.test(requested) && Number(requested.split('/').at(-1)) <= 2147483647) return requested;
   return normalLandings[context.role].path;
 }

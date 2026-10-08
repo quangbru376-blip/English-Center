@@ -9,6 +9,9 @@ const endpoints = {
   login: { path: '/api/v1/auth/login', method: 'POST', intent: 'write', access: 'public' },
   logout: { path: '/api/v1/auth/logout', method: 'POST', intent: 'write', access: 'session' },
   password: { path: '/api/v1/auth/change-password', method: 'POST', intent: 'write', access: 'session' },
+  adminDetail: { path: '/api/v1/admin/accounts', method: 'GET', intent: 'read', access: 'admin' },
+  adminLock: { path: '/api/v1/admin/accounts', method: 'POST', intent: 'write', access: 'admin' },
+  adminLockResult: { path: '/api/v1/admin/command-results', method: 'GET', intent: 'read', access: 'admin' },
 } as const;
 export type Endpoint = keyof typeof endpoints;
 export type HttpResult<T> =
@@ -18,6 +21,7 @@ export type HttpResult<T> =
 export type RequestOptions<T> = {
   endpoint: Endpoint; slot: string; decode: (value: unknown) => T;
   body?: unknown; signal?: AbortSignal;
+  targetId?: number; requestId?: string;
 };
 
 // No automatic dispatch, retry, UUID generation, storage, token parsing or logging.
@@ -28,6 +32,15 @@ export class HttpClient {
     const endpoint = endpoints[options.endpoint];
     if (!endpoint || (endpoint.intent === 'read' && options.body !== undefined)) return { kind: 'blocked' };
     if (endpoint.access === 'session' && !this.auth.context) return { kind: 'blocked' };
+    if (endpoint.access === 'admin' && (this.auth.context?.role !== 'Admin' || this.auth.context.scope !== 'NORMAL')) return { kind: 'blocked' };
+    const needsTarget = options.endpoint === 'adminDetail' || options.endpoint === 'adminLock';
+    const needsKey = options.endpoint === 'adminLock' || options.endpoint === 'adminLockResult';
+    if (needsTarget && (!Number.isInteger(options.targetId) || options.targetId! < 1 || options.targetId! > 2147483647) ||
+        !needsTarget && options.targetId !== undefined ||
+        needsKey && (typeof options.requestId !== 'string' || !/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/.test(options.requestId)) ||
+        !needsKey && options.requestId !== undefined) return { kind: 'blocked' };
+    const path = options.endpoint === 'adminLockResult' ? `${endpoint.path}/${options.requestId}?action=ADMIN.ACCOUNT.LOCK`
+      : needsTarget ? `${endpoint.path}/${options.targetId}${options.endpoint === 'adminLock' ? '/lock' : ''}` : endpoint.path;
     if (options.endpoint === 'login' && this.auth.context?.scope === 'PASSWORD_CHANGE') return { kind: 'blocked' };
     if (options.endpoint === 'register' && this.auth.context) return { kind: 'blocked' };
     const token = this.auth.csrf;
@@ -47,10 +60,11 @@ export class HttpClient {
       if (controller.signal.aborted) return { kind: 'discarded' };
       const headers: Record<string, string> = { Accept: 'application/json' };
       if (endpoint.intent === 'write') headers['X-CSRF-TOKEN'] = token!;
+      if (options.endpoint === 'adminLock') headers['Idempotency-Key'] = options.requestId!;
       let body: string | undefined;
       if (options.body !== undefined) { body = JSON.stringify(options.body); headers['Content-Type'] = 'application/json'; }
       sent = true;
-      const response = await this.fetcher(endpoint.path, {
+      const response = await this.fetcher(path, {
         method: endpoint.method, credentials: 'same-origin', cache: 'no-store', redirect: 'error',
         headers, body, signal: controller.signal,
       });

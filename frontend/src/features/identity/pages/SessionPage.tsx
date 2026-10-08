@@ -6,7 +6,7 @@ import type { SessionController, SessionSnapshot } from '../sessionController';
 
 const roleNames = { Student: 'Học viên', Admissions: 'Tuyển sinh', AcademicAffairs: 'Giáo vụ', Teacher: 'Giáo viên', Accountant: 'Kế toán', Director: 'Giám đốc', Admin: 'Quản trị viên' };
 
-export function SessionPage({ controller, snapshot }: { controller: SessionController; snapshot: SessionSnapshot }) {
+export function SessionPage({ controller, snapshot, onPassword }: { controller: SessionController; snapshot: SessionSnapshot; onPassword: () => void }) {
   const context = snapshot.context; if (!context) return null;
   const restricted = context.scope === 'PASSWORD_CHANGE';
   return <section>
@@ -20,6 +20,7 @@ export function SessionPage({ controller, snapshot }: { controller: SessionContr
       ? 'Phiên hạn chế chỉ cho phép đổi mật khẩu và đăng xuất. Form đổi mật khẩu chưa được triển khai.'
       : 'Chức năng nghiệp vụ của màn hình này chưa được triển khai.'} />
     <div className="mt-4 flex flex-wrap gap-3">
+      <Button variant="secondary" onClick={onPassword}>Đổi mật khẩu</Button>
       <Button disabled={!snapshot.csrfReady} onClick={() => void controller.logout()}>Đăng xuất</Button>
       <Button variant="secondary" onClick={() => void controller.checkSession()}>Kiểm tra lại phiên</Button>
     </div>

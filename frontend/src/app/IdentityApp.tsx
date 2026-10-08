@@ -9,6 +9,8 @@ import { createSessionSignals } from '../features/identity/sessionSignals';
 import { SignupPage } from '../features/identity/pages/SignupPage';
 import { LoginPage } from '../features/identity/pages/LoginPage';
 import { SessionPage } from '../features/identity/pages/SessionPage';
+import { PasswordChangePage } from '../features/identity/pages/PasswordChangePage';
+import { AdminAccountPage } from '../features/administration/pages/AdminAccountPage';
 
 function Routes({ controller, initialPath }: { controller: SessionController; initialPath?: string }) {
   const subscribe = useCallback((listener: () => void) => controller.subscribe(listener), [controller]);
@@ -28,13 +30,17 @@ function Routes({ controller, initialPath }: { controller: SessionController; in
     if (window.location.pathname !== effectivePath) window.history.replaceState(null, '', effectivePath);
     document.getElementById('main-content')?.focus();
   }, [effectivePath, snapshot.context, snapshot.phase]);
-  if (snapshot.phase === 'checking' || snapshot.phase === 'pending') return <Feedback kind="loading" message="Đang kiểm tra ngữ cảnh…" />;
+  if (snapshot.phase === 'checking' || snapshot.phase === 'pending' && effectivePath !== '/account/change-password') return <Feedback kind="loading" message="Đang kiểm tra ngữ cảnh…" />;
   if (snapshot.phase === 'unknown') return <>
     <Feedback kind="error" message={snapshot.notice ?? 'Chưa xác minh được phiên.'} />
     <Button className="mt-4" onClick={() => void controller.checkSession()}>Kiểm tra lại phiên</Button>
     <Button className="ml-3 mt-4" variant="secondary" onClick={() => { navigate('/login'); void controller.prepare(); }}>Đến đăng nhập</Button>
   </>;
-  if (snapshot.context) return <SessionPage controller={controller} snapshot={snapshot} />;
+  if (snapshot.context && effectivePath === '/account/change-password') return <PasswordChangePage controller={controller} snapshot={snapshot} onBack={() => navigate('/')} />;
+  if (snapshot.context?.role === 'Admin' && snapshot.context.scope === 'NORMAL') return <AdminAccountPage controller={controller}
+    initialId={effectivePath.startsWith('/admin/accounts/') ? Number(effectivePath.split('/').at(-1)) : undefined}
+    onDetail={id=>navigate(`/admin/accounts/${id}`)} onPassword={()=>navigate('/account/change-password')} />;
+  if (snapshot.context) return <SessionPage controller={controller} snapshot={snapshot} onPassword={() => navigate('/account/change-password')} />;
   if (effectivePath === '/register') return <SignupPage client={controller.client}
     onCreated={() => { navigate('/login'); void controller.prepare(); }} onLogin={() => navigate('/login')} />;
   return <LoginPage controller={controller} snapshot={snapshot} onRegister={() => navigate('/register')} />;

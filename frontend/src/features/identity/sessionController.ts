@@ -2,6 +2,7 @@ import { decodeAuthContext } from '../../lib/auth';
 import type { AuthContext } from '../../lib/auth';
 import type { HttpClient, HttpResult } from '../../lib/http';
 import { exactKeys, record } from '../../lib/apiError';
+import { changeOwnPassword } from './passwordApi';
 
 export type SessionSnapshot = Readonly<{
   phase: 'anonymous' | 'checking' | 'pending' | 'ready' | 'unknown';
@@ -116,6 +117,27 @@ export class SessionController {
       this.#sendChanged(); await this.#token(operation);
       if (this.#current(operation)) this.#publish({ phase: 'anonymous', notice: result.kind === 'success' ? 'Đã đăng xuất.' : 'Phiên không còn hợp lệ.' });
     } else this.#failure(result, true);
+  }
+  async changePassword(currentPassword: string, newPassword: string, accountVersion: string): Promise<HttpResult<void>> {
+    if (this.#disposed || this.#snapshot.phase === 'pending' || !this.client.auth.context || !this.client.auth.csrf) return { kind: 'blocked' };
+    const prior = this.client.auth.context; const operation = this.#begin('pending');
+    const result = await changeOwnPassword(this.client, currentPassword, newPassword, accountVersion, this.#abort?.signal);
+    if (!this.#current(operation)) return { kind: 'discarded' };
+    if (this.client.auth.context && this.client.auth.context !== prior) {
+      this.#publish({ phase: 'ready' }); return { kind: 'discarded' };
+    }
+    if (result.kind === 'success') {
+      this.#sendChanged(); await this.#token(operation);
+      if (this.#current(operation)) this.#publish({ phase: 'anonymous', notice: 'Đã đổi mật khẩu; mọi phiên đã bị hủy. Vui lòng đăng nhập lại.' });
+    } else if (result.kind === 'error' && result.outcome === 'rejected') {
+      this.#publish({ phase: this.client.auth.context ? 'ready' : 'anonymous', notice: result.action === 'conflict'
+        ? 'Thông tin tài khoản đã thay đổi. Hãy tải lại trước khi nhập lại mật khẩu.' : result.error.message });
+    } else if (result.kind === 'blocked') this.#publish({ phase: this.client.auth.context ? 'ready' : 'anonymous', notice: 'Chưa gửi đổi mật khẩu. Hãy kiểm tra lại ngữ cảnh.' });
+    else {
+      this.client.auth.clear(); this.#sendChanged();
+      this.#publish({ phase: 'unknown', notice: 'Chưa xác định kết quả đổi mật khẩu. Hãy chủ đích đăng nhập bằng mật khẩu mới hoặc liên hệ Admin; không tự gửi lại.' });
+    }
+    return result;
   }
   #failure(result: HttpResult<unknown>, logout: boolean): void {
     if (result.kind === 'error' && result.outcome === 'rejected') {

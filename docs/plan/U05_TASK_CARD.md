@@ -1,8 +1,8 @@
 # U05 — own password change
 
-PREPARED2026-10-07; owner continuation U05→U06 from main e48b604.
+Codex review PASS detached2026-10-08; owner continuation U05→U06 from main e48b604.
 Codex manager; bounded antigravity-worker sole pure PasswordChangeForm120lines.
-Exact new payload sharing gate pending; ADR163 apply PASS standing authority.
+Owner continuation2026-10-08 authorizes exact presented sharing scope; ADR163 apply PASS standing authority.
 implementation_skills: frontend-ui; review_skills: code-review.
 skill_sources: same verified full versions as U04 verification-summary; routing
 and antigravity contract re-read. Hashes recorded in verification-summary at seal.
@@ -36,3 +36,17 @@ prepared,29subset tests PASS (5password+5Admin+7session+12HTTP), no worker run.
 Full typecheck/lint/build/browser and final review pending worker views.
 External exact-payload approval requested; do not treat elapsed time as approval.
 Main code remains e48b604; no source applied. Four owner files untouched.
+
+2026-10-08 owner continuation authorizes the two previously presented exact payloads.
+U05 Codex review PASS detached: AGY2c7d9658-0e4 SUCCESS/sole84lines/full3reads/zero observed violations.
+48combined tests PASS/0fail0skip; lint/typecheck/build and U05 Edge3widths PASS.
+Exact DTO/raw/normal+restricted/204->login/400/403/409/500/lost/dirty dialog verified.
+U06 primitives included in combined unit suite only; U06 UI not yet reviewed.
+No live runtime/SQL proof; main apply awaits U06 completion. Selected skills as card.
+
+Final independent Codex review PASS2026-10-08;48tests/0fail0skip/lint/types/build
+PASS; Edge375/768/1280 U05+U06 PASS, including stale identity cleanup/role gates.
+Two AGY SUCCESS/full3contexts before sole writes/zero observed scope violations.
+U06 manager corrected default import/shared tokens; original worker output kept.
+Sources/behavior/security/notes<=15/scoped docs gates PASS. Runtime/SQL/V01 N/A
+unverified/outside scope; main apply/reverify follows. Historical preparation above.
