@@ -1,5 +1,28 @@
 # Handoff — E01–E05 và complete design baseline đã Accepted
 
+Owner assigned FULL M0 completion2026-10-08; status IN PROGRESS, not two-package scope.
+V01-J/K/L/M completed/reviewed PASS/applied ADR163/reverified: JKL main47c9c7f /
+manager4ff6f12; M mainfecb90e / manager7d99619. Identical backend src
+51d5c80913fe325ee9d9db7d70c943e5a8b8003f, tests ae4f240eb42662384dd58e74851d76a9a57d4a24.
+JKL47new + M24new; manager/main1132PASS/58intentional opt-in SKIP/build0warnings0errors.
+J fresh loaded runtime/approved artifact hashes and bound SQL-version resolver;
+K actual generated RAM signer/validator/rotation proof; L existing DPAPI-encrypted
+framework keys/restart decryption through read-only snapshot; M strict explicit local
+reference-profile reader without defaults/secret resolution. Six concrete probes
+now exist but are unregistered; transport/execution/maintenance implementation and
+actual binding still absent. J SQL version tests synthetic, no positive SQL readiness.
+AGY82e61f9f-153 SUCCESS/sole96line policy/full3reads/zero observed violations;
+Codex independent review/fixes/tests, original retained (EOF normalization only).
+SQL not rerun; D07/default Program/frontend/packages/owner4 files unchanged; owner
+hash-identical/unshared/untracked/unstaged. No M1–M4/push/deploy opened.
+Required actual profile values remain pending (missing-values question sent):
+kind/origin/listen/port/budgets/body/preview; runtime identity/catalog visibility,
+PKI/key custody and maintenance bindings remain unresolved. No diagnostic fallback
+or grant repair. Continue full assigned M0 when inputs arrive, not unrelated tasks.
+See M0_COMPLETION_TASK_CARD, M0_ENVIRONMENT_INPUTS, J-M-verification-summary,
+notes/V01JKLM and ADR181. Full V01/M0 remains INCOMPLETE.
+
+Historical V01-H/I checkpoint:
 V01-H→I owner-assigned two-package batch completed/reviewed PASS/applied ADR163/
 reverified2026-10-08: H main7df8ba8/managerf403cec, I maind59e905/manager0713687.
 Final identical src20afd339ee6b2f0316fb52d0c1d08f88393f794b /

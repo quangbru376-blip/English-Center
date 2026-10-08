@@ -1,0 +1,98 @@
+{
+  "date": "2026-10-08",
+  "assignment": "Complete M0",
+  "full_m0_status": "INCOMPLETE: required actual environment bindings pending",
+  "bounded_stages": "V01-J/K/L/M reviewed PASS applied and reverified",
+  "code_main": [
+    "47c9c7f",
+    "fecb90e"
+  ],
+  "code_manager": [
+    "4ff6f12",
+    "7d99619"
+  ],
+  "src_tree": "51d5c80913fe325ee9d9db7d70c943e5a8b8003f",
+  "tests_tree": "ae4f240eb42662384dd58e74851d76a9a57d4a24",
+  "frontend_src_unchanged": "fbd07191119121fd26c4b392e20d1c78eb146afa",
+  "new_jkl_tests": 47,
+  "new_m_tests": 24,
+  "build": {
+    "manager": "0 warnings 0 errors --no-restore -warnaserror",
+    "main": "0 warnings 0 errors --no-restore -warnaserror"
+  },
+  "tests": [
+    {
+      "file": "V01-JKL-manager-final.trx",
+      "sha256": "2CF14DA35D067707DDE87D6131CF9C9594F3817D014A328971FC20EF9B7A2219",
+      "passed": 1108,
+      "failed": 0,
+      "skipped": 58
+    },
+    {
+      "file": "V01-JKL-main.trx",
+      "sha256": "2039E74A023A6EF02240751F26697100DF2E6201DDA34E52EF3C11D027788F5A",
+      "passed": 1108,
+      "failed": 0,
+      "skipped": 58
+    },
+    {
+      "file": "V01-M-manager-full.trx",
+      "sha256": "68523B8AAB1D63412E0B3256B052A90951C55016B9CA7F68FD989C9F13FF0B3D",
+      "passed": 1132,
+      "failed": 0,
+      "skipped": 58
+    },
+    {
+      "file": "V01-M-main.trx",
+      "sha256": "51540A632FB1E4DC2CE7B50D2E53888C600B66BDB2035C1F80B11AADBAC0DA93",
+      "passed": 1132,
+      "failed": 0,
+      "skipped": 58
+    }
+  ],
+  "worker": {
+    "run": "82e61f9f-153",
+    "status": "SUCCESS",
+    "exit_code": 0,
+    "file_count": 1,
+    "reported_lines": 96,
+    "context_read_lines": [
+      28,
+      46,
+      101
+    ],
+    "observed_tools": [
+      "view_file brief",
+      "view_file complete backend skill",
+      "view_file complete routing",
+      "write_to_file sole policy",
+      "view_file own output"
+    ],
+    "observed_scope_violations": 0,
+    "receipt_sha256": "AEF448EF39AB1B464C43DF30F5729068AF0D1E90350B831720390FEC2CEC2579",
+    "events_sha256": "F5B0E9F77BE3EA47A91CB28D4AB2A435A2F4646528C6975F7A4F0F14177894CC",
+    "original_policy_sha256": "E7EBAB62F660B885FDDB53E2AFF95696C9699CF819B163FCDB18F0ECB4D93ED4",
+    "original_retained": true,
+    "integration_change": "EOF normalization only",
+    "read_boundary": "Tool observations, not OS-enforced read sandbox or proof of comprehension"
+  },
+  "scope": {
+    "sql_run": false,
+    "sql_version_j_tests": "synthetic only",
+    "jwt_tests": "Generated RAM HMAC/RSA/ECDSA, not production keys/session",
+    "csrf_tests": "Guid-owned Temp DPAPI, restart/read-only byte-hash equality",
+    "profile_tests": "Guid-owned Temp reference descriptors, not actual active profile",
+    "default_entries_changed": false,
+    "package_changes": false,
+    "owner4_hash_identical": true,
+    "owner4_unshared_untracked_unstaged": true,
+    "probe_registration": false,
+    "concrete_categories_implemented": 6,
+    "categories_still_absent": [
+      "Transport",
+      "ExecutionLimits",
+      "MaintenanceConfiguration"
+    ]
+  },
+  "next": "Resolve actual environment fields already asked, prepare remaining probe/integration contracts, verify least-privileged runtime/catalog and full M0; no M1-M4"
+}

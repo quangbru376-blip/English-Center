@@ -4648,3 +4648,30 @@ H45new/I33new+3readonlySQL cases PASS on both checkouts; default1061PASS/58opt-i
 buildclean, D07 baseline unchanged. No profile/default entries/keys/principal provisioning/
 PKI/package/schema changes. Six probe categories and positive least-privileged runtime
 bindings remain incomplete; preserve accepted D12/D13/DF01–03 deferrals. See HI card.
+
+## ADR-181 — full M0 assignment and explicit artifact/key/profile boundaries (2026-10-08)
+
+Owner now assigns completing all M0. ADR177/163 applies necessary bounded work,
+independent verification and reviewed main application, without opening M1–M4.
+Environment slots remain required accepted prerequisites; missing values are not
+inferred from tests or changed by this assignment. Actual profile input was asked;
+full M0 stays incomplete until actual runtime evidence and walkthrough are closed.
+
+J binds an explicitly supplied reviewed patch manifest and database reference;
+matches loaded .NET/ASP.NET/EF versions, fresh five-artifact SHA256/length and fresh
+supplied SQL-version facts. Fixtures use synthetic SQL version, not readiness proof.
+K requires exact issuer/audience/reference rotation set, currently usable material
+and active coverage of the accepted two-hour session; actual signer→active validator
+roundtrip uses generated RAM SID only, no database/session or token diagnostics.
+L supports existing local Windows current-user DPAPI framework XML; no custom
+decryptor or plaintext keys. Fresh read-only snapshot/new framework key manager
+decrypts existing non-revoked material and proves authenticated encryption in RAM.
+Readiness cannot store/generate/revoke keys. Explicit positive file bounds, XML
+DTD disabled, local/reparse guards; operator store/custody still unbound.
+M reads only an explicitly named local file with supplied byte/deadline bounds;
+strict UTF8/camelCase/duplicates/unknown/scalars/enums/typed profile validation,
+fixed redacted results, no ambient path/env/default/key resolution. A valid parse
+is not ready. Six probes remain unregistered; no default host or active config.
+Manager/main71new+1061=1132PASS/58opt-in SKIP/buildclean. No SQL rerun, schema/grants,
+packages/frontend/default entries or protected owner changes. See completion card,
+environment inputs, sanitized J-M evidence and notes/V01JKLM.md.

@@ -102,3 +102,29 @@ parse is never ready, does not resolve keys/SQL or mount Program. Preserve runti
 versions/owner deferrals; no new activeprofile values. Verify real Guid-owned
 Temp profile files, exact roundtrip and malformed/refused/fresh/cancel cases, full
 manager/main suites/build. Update affected docs after verification/apply PASS.
+
+## Independent review — J/K/L/M PASS; full assignment still IN PROGRESS
+
+JKL manager/main47new+1061=1108PASS/58intentional opt-in SKIP; M adds24 cases,
+final both1132PASS/58SKIP/0fail, builds0warnings0errors --no-restore -warnaserror.
+JKL main47c9c7f/manager4ff6f12; M mainfecb90e/manager7d99619. Identical src
+51d5c80913fe325ee9d9db7d70c943e5a8b8003f/tests ae4f240eb42662384dd58e74851d76a9a57d4a24.
+Main applied only after manager review/full PASS, then independently reverified.
+Skill verification: actual five AGY tools match allowlist, full allowed reads before
+write; sole96line output, zero observed violations, EOF-only integrated normalization.
+Original run82e61f9f-153/receipt/events/policy retained; hashes in sanitized summary.
+Codex review checks scope/cancellation/redaction/actual file and cryptographic checks.
+Initial JKL38PASS/9fail: DPAPI encryptedSecret namespace check wrong; corrected to
+framework namespace, not weakened. Final DPAPI restart/revocation/future/expiry/
+unknown-decryptor/corruption/duplicate/bounds/read-only byte equality PASS. Full
+ancestor reparse check and SQL-version reference binding strengthened before final.
+JWT active-key proof cannot be satisfied merely by a retiring rotation key; actual
+three algorithms/wrong key/weak key/date/rotation/identity/unknown exceptions tested.
+Profile duplicate/unknown/case/integer enum/stringified number/UTF8/size/fresh deletion/
+missing groups/no defaults/caller cancellation tested. Valid source is not ready.
+Frontend/default entries/schema/grants/packages untouched, SQL not rerun, owner4
+hash-identical/unshared/untracked/unstaged. Notes15lines; no API route/DTO/migration
+change (review checklist N/A). New probes/readers remain unmounted with no active
+config or secret provisioning. Actual profile values asked are still pending;
+remaining three categories, runtime authentication/catalog, PKI/custody and maintenance
+bindings prevent closing full M0. See M0_ENVIRONMENT_INPUTS; preserve owner deferrals.

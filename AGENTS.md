@@ -1,5 +1,17 @@
 # English Center Management System — Project Memory
 
+Latest owner assignment2026-10-08: COMPLETE M0, not only the next two packages.
+J/K/L/M applied/reverified PASS main47c9c7f/fecb90e; manager4ff6f12/7d99619,
+1132defaultPASS/58intentional opt-in SKIP/buildclean. Fresh runtime/artifact, JWT
+material, protected read-only DPAPI keys and strict reference-profile reader now
+implemented but unmounted. Six concrete probes exist; actual transport/execution/
+maintenance/bindings still absent. Required environment values were asked and are
+pending; preserve accepted D12/D13 deferrals, no guessed budgets/origin/port or
+diagnostic SQL fallback/grant repair. Continue assigned M0 after input; no M1–M4.
+See M0_COMPLETION_TASK_CARD/M0_ENVIRONMENT_INPUTS/J-M evidence/ADR181/current handoff.
+Four owner files hash-identical/unshared/untracked/unstaged; no SQL/package/default
+entry changes. Full V01/M0 INCOMPLETE; older narrow scope statements are historical.
+
 This file is the entry point for agents working in this workspace. Before any
 non-trivial task, read these files in order:
 

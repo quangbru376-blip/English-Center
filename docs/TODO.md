@@ -10,6 +10,14 @@
 
 ## Next
 
+- Finish owner-assigned M0; J/K/L/M applied/reverified PASS (1132tests, buildclean).
+- Obtain actual environment values already asked in this session; do not infer fixture
+  values or re-ask accepted decisions. Resolve runtime identity/catalog and PKI bindings,
+  then exact transport/execution/maintenance and integration contracts. M0 incomplete.
+- See M0_COMPLETION_TASK_CARD/M0_ENVIRONMENT_INPUTS; preserve owner4files and D07.
+
+Historical H/I next:
+
 - V01-H/I applied/reverified H7df8ba8/Id59e905:45+33new/1061defaultPASS+3readonlySQL
   PASS,58opt-in SKIP/buildclean. Three concrete unmounted probes; D07/owner preserved.
   Next runtime/patch manifest and key/protected-store probe contract; no startup mounting.
