@@ -1,5 +1,22 @@
 # Project Planning
 
+Owner-authorized U05→U06 complete/reviewed PASS/applied ADR163/reverified2026-10-08.
+Code mainf83a7d6 / manager0ff2ae7; identical frontend4050338d256ad268fe11cc1de7180e39f08a1458.
+48frontend tests/0fail0skip, typecheck/lint/build and Edge375/768/1280 PASS on both.
+Two bounded AGY SUCCESS/full3contexts before sole writes/zero observed violations;
+Codex independent integration/fixes/review; originals and receipt/event hashes retained.
+U05 exact raw password/RV/local-only confirmation, normal/restricted scope,204→login;
+no auto-login/upgrade/retry/storage;400/403/409/500/lost/dirty navigation verified.
+U06 explicit Admin NORMAL detail/lock pilot, frozen target/RV/UUID after confirmation,
+current response and manual safe lookup;404 is not rollback, no polling/write replay.
+All6other roles/restricted Admin blocked; stale identity response clears preview.
+Default App/main unmounted; backend10ecb75c6fbd6e7155d8ed4b6a4723e74112e88a unchanged.
+SQL not rerun; real cookie/HTTPS/profile/keys/principals/runtime proof unverified.
+Four owner files unchanged/unshared/untracked/unstaged. See U05/U06 cards/evidence,
+notes and ADR176. Next V01 unstarted; no restM0/runtime/SQL/packages/push/deploy scope.
+
+Previous dated checkpoints below are historical.
+
 Owner-authorized U03→U04 completed/reviewed PASS/applied ADR163/reverified2026-10-07.
 Code maind51564e / managerd18a34a; identical frontend851877ef7396885e51d39518697659277fa0effc.
 38frontend tests/0fail0skip, typecheck/lint/build and Edge375/768/1280 PASS on both.

@@ -117,3 +117,11 @@ IdentityApp performs non-renewing me/CSRF revalidation, normal/restricted guards
 and logout unknown handling. Default App/main and all backend exposure remain
 unchanged. Edge fixtures intercept synthetic same-origin APIs; no real production
 cookie/runtime claim. See U03/U04_TASK_CARD, verification-summary and ADR175.
+
+2026-10-08 U05/U06 add frontend consumers only: exact API004 raw credentials/
+expectedVersions.account and API007/010/014 Admin detail/lock/lock-result.
+Local confirmation is not a DTO field; UUID header only confirmed lock intent.
+Safe completion is not AccountAdminView or historical effect snapshot; lookup404
+is not rollback proof. No automatic write retry/poll or other Admin routes.
+Default App/main and backend API exposure unchanged; real cookie/SQL/runtime
+integration remains unverified. See U05/U06 cards/evidence, ADR176.

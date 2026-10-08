@@ -14,11 +14,11 @@
   38frontend tests/types/lint/build/Edge375/768/1280 PASS; two bounded AGY SUCCESS.
   Explicit signup/login/me/logout/session UI seams; default App remains unavailable.
   Owner files/backend unchanged; see U03/U04 cards/evidence and ADR175.
-- U05→U06 owner continuation received2026-10-07; cards/contracts prepared/validated.
-  Exact external consent pending; detached manager2397b85 has29subset tests PASS.
-  Complete worker views/UI/browser review before apply; U05 PASS before U06 worker.
-  No restM0/runtime/SQL/packages/profile/keys/principals/push/deploy authority.
-  Read NEXT_CHAT_HANDOFF after ordered memory.
+- U05→U06 complete/reviewed PASS/applied ADR163/reverified2026-10-08 mainf83a7d6.
+  48frontend tests/types/lint/build/Edge3widths PASS; bounded AGY reviewed independently.
+  Exact password change and Admin detail/lock/manual lookup seams; App unmounted.
+- Next V01 unstarted; requires scoped integrated evidence/operator/runtime/SQL authority.
+  No restM0/runtime/SQL/packages/push/deploy opened. Read NEXT_CHAT_HANDOFF.
 - R02→R03 owner-approved scope reviewed PASS2026-10-06:1386tests/buildclean.
   Applied/reverified code mainfcdd21e under ADR163. Explicit Admin007/010/014 plus
   completion protocol; default Program unmounted. See cards/evidence.

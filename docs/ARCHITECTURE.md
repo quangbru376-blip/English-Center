@@ -1,5 +1,16 @@
 # Architecture
 
+U05/U06 applied/reverified2026-10-08 mainf83a7d6. IdentityApp explicitly composes
+own-password page for NORMAL/all roles and PASSWORD_CHANGE;204 invalidates all
+local RAM, signals tabs and returns login, never upgrades scope. Local confirmation
+is not wire data. Admin NORMAL has exact detail/lock pilot via bounded fixed paths,
+ID/RV and caller UUID minted only after dialog confirmation. Unknown stores only
+safe key/target in RAM; manual lookup/refetch/new-intent acknowledgement, no polling
+or write replay. AccountAdminView12fields/capability hints remain server projections;
+no optimistic status or other Admin workflow. Epoch cleanup removes preview/intent
+on identity boundaries/unmount. Default App/main/backend exposure unchanged;48tests
+and synthetic browser fixtures prove seams only, not production cookie/SQL readiness.
+
 U03/U04 applied/reverified2026-10-07 maind51564e. Explicit IdentityApp receives
 one HttpClient and owns lifecycle, native history guards and normal/restricted
 landing; default App/main do not mount it. Signup exact DTO/201 transitions to

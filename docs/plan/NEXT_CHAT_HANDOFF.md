@@ -1,32 +1,21 @@
-# Handoff cho chat tiếp theo — 2026-10-07
+# Handoff cho chat tiếp theo — 2026-10-08
 
 ## Checkpoint hiện tại
 
-Owner đã giao tiếp tục U05→U06 ngày2026-10-07. Hai cards/worker contracts mới
-validate PASS; exact external consent đang chờ trả lời, chưa dispatch AGY.
-Manager WIP2397b85 tại C:/Users/asus/AppData/Local/Temp/codex-u05-u06/manager;
-29subset tests PASS cho manager primitives. Chưa full types/lint/build/browser,
-chưa review PASS/apply. Tiếp tục từ câu hỏi cho phép hai payload; không suy thời
-gian chờ là approval. U05 PASS trước U06 worker. Main code chưa đổi bên dưới.
-
-U03→U04 hoàn tất/review PASS/apply ADR163/reverify main. Code main
-`d51564e1a19bcef22e61bfd778ad359b42ae30e0`, manager
-`d18a34a2f74a901c886d2f662df68a9573737f05`; frontend giống nhau
-`851877ef7396885e51d39518697659277fa0effc`. Backend giữ nguyên
-`10ecb75c6fbd6e7155d8ed4b6a4723e74112e88a`.38frontend tests/0fail0skip,
-typecheck/lint/build và Edge375/768/1280 PASS trên manager/main. SQL không chạy lại.
-Workspace C:/Study/SOEN/main_workplace, PowerShell, branch main; chỉ bốn file owner
-untracked bên dưới. Commit seal tài liệu có thể nằm sau code checkpoint này.
-
-U03: native signup/raw credentials/exact API018 DTO và CREATED/message201;
-xóa draft rồi tới login, không tự login.400/409/CSRF/500/lost/stale và cleanup PASS.
-U04: exported IdentityApp nhận một HttpClient, login/me/logout, first-F role/gate
-PASSWORD_CHANGE, timer theo khoảng server chỉ đọc me, hidden/focus revalidation.
-BroadcastChannel chỉ IDENTITY_CHANGED, không account/PII/token/deadline hoặc echo.
-Logout403 không báo thành công; unknown xóa RAM/báo chưa xác nhận server.
-Default App/main vẫn unavailable; backend API không mount; fake API browser fixtures
-không chứng minh production HTTPS/cookie/profile/keys/logins/live revocation.
-U05 form đổi mật khẩu, U06 Admin UI, V01/restM0 chưa triển khai/mở scope.
+U05→U06 hoàn tất/review PASS/apply ADR163/reverify main2026-10-08. Code main
+f83a7d6e8af5b4ea5ac56579da2b951ad7fb088b, manager0ff2ae74b192e6ab00eef44d0673349cff0fc70b;
+frontend4050338d256ad268fe11cc1de7180e39f08a1458 giống nhau. Backend vẫn
+10ecb75c6fbd6e7155d8ed4b6a4723e74112e88a.48frontend tests/0fail0skip,
+lint/typecheck/build/Edge375/768/1280 PASS trên cả manager/main; SQL không chạy lại.
+U05: raw current/new password/RV, local confirmation không gửi API;204→login,
+không auto-login/upgrade.400/403/409/lost/dirty navigation/cleanup đã kiểm.
+U06: Admin NORMAL detail/lock, dialog target+impact, một UUID/RV sau xác nhận;
+lookup thủ công safe completion/refetch;404 không chứng minh rollback, không polling
+hay tự gửi lại.6vai trò khác/restricted Admin/stale identity bị chặn/cleanup đúng.
+Default App/main unmounted/backend exposure unchanged; browser fake API không là
+production cookie/HTTPS/keys/profile/principals/SQL/real-device readiness proof.
+V01 chưa mở; no restM0/runtime/SQL/packages/push/deploy authority. Main seal docs
+có thể sau code hash trên. Chỉ bốn owner files untracked bên dưới, giữ nguyên.
 
 ## Thứ tự đọc
 
@@ -44,34 +33,33 @@ U05 form đổi mật khẩu, U06 Admin UI, V01/restM0 chưa triển khai/mở s
 
 ## Quyền và điểm tiếp tục
 
-Owner giao hai gói tiếp theo U03→U04 và đã phê duyệt hai payload AGY exact.
-Mỗi lượt chỉ own WORKER.md + frontend-ui SKILL.md + SKILL_ROUTING.md, sole pure form;
-không source/report/owner/secrets/commands/network/SQL. Quyền đó đã dùng xong,
-không tự áp sang payload external khác. ADR163 vẫn cho apply reviewed PASS stage
-được giao mà không hỏi lại. Codex là manager; antigravity-worker là bounded worker.
-Next U05→U06 cần owner giao scope; chuẩn bị card/contract/phạm vi chia sẻ cụ thể
-trước dispatch, chỉ bổ sung consent nếu phạm vi mới chưa có quyền. Không hỏi lại
-quyết định product đã chốt hoặc quyền apply PASS. Không runtime/SQL/packages/push/
-deploy/profile/principals/keys/backend mount từ quyền frontend vừa hoàn tất.
-
+Owner giao U05→U06 và tiếp tục sau yêu cầu exact sharing ngày2026-10-08, đã dùng
+hai payload own WORKER+frontend-ui+SKILL_ROUTING, sole controlled views120/150lines.
+Không source/report/owner/secrets/commands/network/SQL. Không áp quyền chia sẻ này
+cho external context mới chưa được cho phép. ADR163 vẫn áp PASS stage được giao
+mà không hỏi lại; Codex manager, bounded antigravity-worker. Không mở C2C.
+Next V01 cần scope cụ thể cho integrated proof và operator prerequisites; chưa có
+runtime/SQL/profile/keys/principals/package/push/deploy authority từ batch frontend.
+Không gọi M0/V01 done chỉ vì48tests và fake browser PASS. Backend historical SQL
+counts không phải SQL rerun hoặc mounted production proof. Không hỏi lại product
+policy/role/operator hoặc quyền apply PASS đã chốt.
 ## Evidence và worktrees giữ lại
 
-- docs/plan/U03_TASK_CARD.md và U04_TASK_CARD.md; docs/notes/U03.md, U04.md.
-- docs/plan/U03-evidence và U04-evidence: form-contract, browser-check,
-  verification-summary (receipt/event SHA256, skills, owner hashes, giới hạn proof).
-- Manager C:/Users/asus/AppData/Local/Temp/codex-u03-u04/manager, detached d18a34a.
-  U03 PASS f77d34d trước dispatch U04. Giữ original worker trees, không xóa.
-- AGY c1486cf8-494 (SignupForm117lines) và eadd353c-600 (LoginForm67lines),
-  SUCCESS/exit0/full3contexts trước write/zero observed violations; không phải
-  OS-enforced read sandbox hoặc chứng minh tuyệt đối nội dung được hiểu.
-- Worker trees C:/Users/asus/AppData/Local/Temp/codex-antigravity-worker/worktrees/
-  manager-c1486cf8-494 và manager-eadd353c-600; runs/<runId>/receipt/events.
-- Native default fetch receiver bug đã được Codex sửa bằng lexical wrapper và
-  browser regression thật. Test helpers không cài packages. Verify từ frontend:
-  ../docs/plan/U04-evidence/verify.ps1 -BuildDirectory <absolute temporary path>.
-  Browser env EC_PLAYWRIGHT trỏ bundled playwright, EC_UI_URL loopback fixture;
-  cả hai browser scripts bắt mọi API bằng dữ liệu tổng hợp. Server fixture đã dừng.
-
+- docs/plan/U05_TASK_CARD.md/U06_TASK_CARD.md; docs/notes/U05.md/U06.md (<=15lines).
+- U05-evidence/U06-evidence verification-summary: skills, receipts/event hashes,
+  owner hashes/actual checks/limits; browser-check.cjs và U06 verify.ps1.
+- Manager C:/Users/asus/AppData/Local/Temp/codex-u05-u06/manager detached0ff2ae7;
+  U05 PASSb7e97e7 trước U06 dispatch. Originals giữ lại, không dọn.
+- AGY2c7d9658-0e4 PasswordChangeForm84lines;56c83df6-889 AdminAccountPanel113lines.
+  SUCCESS/full3reads trước write/zero observed scope violations. Codex sửa named
+  Button import/tokens của U06; worker original không áp nguyên bản chưa review.
+- Worktrees C:/Users/asus/AppData/Local/Temp/codex-antigravity-worker/worktrees/
+  manager-2c7d9658-0e4 và manager-56c83df6-889; runs/<runId>/receipt.json/events.ndjson.
+  Tool observations không là OS-enforced read sandbox hoặc proof hiểu mọi line.
+- Verify từ frontend: ../docs/plan/U06-evidence/verify.ps1 -BuildDirectory <abs temp>.
+  Browser EC_PLAYWRIGHT trỏ bundled playwright, EC_UI_URL loopback synthetic fixture,
+  mọi API bị intercept; không cài dependency. Fixture servers đã dừng.
+- Historical U03/U04 và backend family evidence còn nguyên; xem task cards riêng.
 ## Bốn file owner phải giữ nguyên
 
 Không stage/stash/delete/adopt/share/đưa vào worktree worker. SHA256 đã xác minh:

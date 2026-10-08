@@ -4551,3 +4551,29 @@ Codex fixes native fetch receiver through lexical globalThis.fetch wrapper; tech
 Edge fixture verifies default fetch.38frontend tests and three-width/two-tab fixtures
 prove these seams; real cookies/runtime/SQL/other-device stress remain unverified.
 No packages/backend/schema/profile/keys/principals/push/deploy/U05+ scope opened.
+
+## ADR-176 — U05 own password UI and U06 bounded Admin lock pilot
+
+Implemented/reviewed PASS/applied ADR163/reverified2026-10-08 within owner continuation.
+Two exact prepared payloads authorized by continuation; sole pure views delegated,
+Codex owns source integration/fixes/tests/review. No product/API exposure change.
+Password form preserves raw current/new credential, local confirmation only; exact
+expectedVersions.account from current authority. Wrong current400 preserves proof,
+403 needs deliberate CSRF recovery,409 clears raw values/requires reload.204 clears
+all RAM/signals/timers-sensitive state and returns login without scope upgrade;
+unknown clears credentials/proof and offers deliberate new-password login/Admin.
+Dirty navigation uses shared dialog/beforeunload without persistence promise.
+Admin NORMAL alone reads exact12field current detail and confirms lock effect.
+Fixed descriptor transport validates target Int32/UUID; one new UUID after deliberate
+confirmation freezes target/RV/body, not on reads/retry. Advisory capabilities do not
+replace server self/last-active/state/RV/revocation/audit/T23 guards.200 displays
+server current projection, never optimistic status or a historical snapshot claim.
+Unknown clears target PII/preview and keeps safe request/target reference in RAM.
+Manual same-caller ADMIN.ACCOUNT.LOCK lookup200 is safe completion only;404 does not
+prove rollback. Refetch and an explicit decision precede a new unresolved intent;
+no polling, automatic mutation replay, secret retrieval or extra Admin commands.
+Epochs/abort/cleanup prevent stale identity responses and destroy RAM on boundaries.
+Worker default import/noncanonical colors corrected by Codex with original retained.
+48tests and Edge3widths/roles/scopes/dialog/unknown/stale checks PASS on manager/main.
+Default App/main, backend, packages/schema/profile/principals remain unchanged;
+SQL not rerun, real production cookie/HTTPS/operator/runtime/V01 proof unverified.

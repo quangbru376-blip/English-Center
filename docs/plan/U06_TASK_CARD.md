@@ -1,6 +1,6 @@
 # U06 — minimal Admin detail and lock pilot
 
-Codex review PASS detached2026-10-08; owner continuation U05→U06 from main e48b604; U05 PASS first.
+Completed/reviewed PASS/applied ADR163/reverified main2026-10-08; owner continuation U05→U06 from main e48b604; U05 PASS first.
 Codex manager; bounded antigravity-worker sole pure AdminAccountPanel150lines.
 Owner continuation2026-10-08 authorizes exact presented sharing scope; ADR163 apply PASS standing authority.
 implementation_skills: frontend-ui; review_skills: code-review.
@@ -44,3 +44,8 @@ Two AGY SUCCESS/full3contexts before sole writes/zero observed scope violations.
 U06 manager corrected default import/shared tokens; original worker output kept.
 Sources/behavior/security/notes<=15/scoped docs gates PASS. Runtime/SQL/V01 N/A
 unverified/outside scope; main apply/reverify follows. Historical preparation above.
+
+Final code mainf83a7d6/manager0ff2ae7/frontend4050338d256ad268fe11cc1de7180e39f08a1458.
+Main48tests/lint/types/build/Edge U05+U06 PASS. Backend/default entry/packages
+unchanged; four owner hashes unchanged/untracked. SQL not rerun. U06-evidence/
+verification-summary.json has actual skill versions/receipts/limits. Next V01 unstarted.
