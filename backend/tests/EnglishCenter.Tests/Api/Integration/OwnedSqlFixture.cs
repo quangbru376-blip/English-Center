@@ -61,7 +61,7 @@ internal sealed class OwnedSqlFixture : IAsyncDisposable
     }
     internal EnglishCenterDbContext Db(params IInterceptor[] interceptors) => new(new DbContextOptionsBuilder<EnglishCenterDbContext>()
         .UseSqlServer(Connection, sql => sql.UseCompatibilityLevel(160)).AddInterceptors(interceptors).Options);
-    private SecurityAuditRecorder Audit => new(new SqlSecurityAuditStore(() => new SqlConnection(Connection), 1), Incidents);
+    internal SecurityAuditRecorder Audit => new(new SqlSecurityAuditStore(() => new SqlConnection(Connection), 1), Incidents);
     internal SqlStudentSignupExecutor Signup => new(() => Db(), Hasher, Clock, 10, 1000);
     internal SqlLoginExecutor Login => new(() => Db(), Hasher, Clock, _signer, Audit, 10, 1000);
     internal SqlCurrentSessionReader Current => new(() => Db(), Clock, 10, 1000);
@@ -113,9 +113,9 @@ internal sealed class OwnedSqlFixture : IAsyncDisposable
         currentPassword = Password, newPassword = next, expectedVersions = new { account = grant.Context.AccountVersion } }));
     internal static AdminLockInput LockInput(int target, string version, Guid request) => AdminLockInput.Parse(target, request,
         JsonSerializer.Serialize(new { expectedVersions = new { account = version } }), 4096);
-    internal async Task Restricted()
+    internal async Task Restricted(string role = "Student")
     {
-        await using var db = Db(); var account = await db.Accounts.SingleAsync(a => a.AccountId == Accounts["Student"], Ct);
+        await using var db = Db(); var account = await db.Accounts.SingleAsync(a => a.AccountId == Accounts[role], Ct);
         account.MustChangePassword = true; account.TempIssuedAt = Clock.GetUtcNow().UtcDateTime; account.TempExpiresAt = Clock.GetUtcNow().AddHours(24).UtcDateTime;
         await db.SaveChangesAsync(Ct);
     }
