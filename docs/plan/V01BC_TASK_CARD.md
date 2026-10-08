@@ -78,3 +78,13 @@ do not count skipped tests as integrated PASS or apply test sources under ADR163
 Injection throws MandatoryAuditException after real service writes then rolls back
 the savepoint; it is a post-write transaction seam, not a forced SQL audit DENY test.
 No SQL used in this preparation turn; V01-A remains the latest actual SQL evidence.
+
+## Continuation execution gate — 2026-10-08
+
+Read-only designated baseline probe PASS: identical catalog digest,
+24empty business tables/102permissions. The attempt to start the15B tests was
+rejected by automatic approval review before process creation: a generic
+"continue" did not clearly authorize the new state-changing HTTP/SQL fixture scope.
+No B/C SQL test ran. Do not bypass/retry through indirect commands. One explicit
+combined B/C rollback approval question is pending; prior AGY sharing remains
+approved. Original manager code00443a6 stays detached/unapplied/incomplete.

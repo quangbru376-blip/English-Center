@@ -13,6 +13,9 @@ default unit suite891PASS/27intentional SQL opt-in SKIP/0fail. New SQL execution
 question still pending: no new SQL run, no integrated PASS or test-source apply.
 See BC-preparation-summary; next receive exact B/C rollback SQL authorization,
 baseline/check15B then12C/rollback/review, apply only if PASS under ADR163.
+Continuation read-only baseline PASS. Automatic approval review rejected starting
+V01-B before process creation because generic continuation lacked explicit new
+SQL scope approval. One combined B/C rollback question is pending; no test ran.
 
 V01 manager preflight/V01-A reviewed PASS2026-10-08; integrated V01 incomplete.
 Default entries remain unmounted, no runtime/packages opened.

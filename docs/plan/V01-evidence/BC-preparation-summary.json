@@ -76,5 +76,12 @@
     "27opt-in cases are SKIPPED, not SQL PASS",
     "Test-only caller-TX/savepoint bridge; no owned COMMIT, separate SNAPSHOT executor, independent persisted security audit, runtime login principal or browser HTTPS evidence",
     "Default entries/packages/production source unchanged; code remains detached until SQL checks and review PASS"
-  ]
+  ],
+  "executionGate": {
+    "date": "2026-10-08",
+    "readOnlyBaseline": "PASS;24empty business tables/102permissions and unchanged catalog digest",
+    "sqlTestStarted": false,
+    "autoReview": "Rejected before process creation: generic continue did not clearly authorize new state-changing HTTP-SQL fixture scope",
+    "next": "Single explicit combined B/C rollback question pending; do not bypass rejection"
+  }
 }
