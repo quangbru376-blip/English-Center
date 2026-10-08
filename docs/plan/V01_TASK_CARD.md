@@ -1,5 +1,9 @@
 # V01 — integrated M0 verification
 
+Latest continuation2026-10-08: B/C applied PASS; next browser HTTPS/rollback SQL
+contract prepared in V01D_TASK_CARD. Schema validation only; no new dispatch/run.
+Exact execution/external payload authorization pending; full V01 incomplete.
+
 2026-10-08. Status: manager preflight/V01-A reviewed PASS; integrated acceptance incomplete.
 Base main76b40449e1fad7719e00820e0d3000ed66151659; U05/U06 codef83a7d6.
 Owner continuation opens preparation/review, not the previously excluded SQL/runtime.

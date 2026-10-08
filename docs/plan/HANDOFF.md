@@ -1,5 +1,12 @@
 # Handoff — E01–E05 và complete design baseline đã Accepted
 
+## V01-D prepared — 2026-10-08
+
+See V01D_TASK_CARD/V01D_WORKER/D-worker-contract.json: concrete loopback HTTPS→
+real UI/API→rollback SQL scope and ten browser scenario groups. Contract schema
+validated; no dispatch/SQL/runtime/browser run. Exact new payload and execution
+approval pending; B/C applied PASS unchanged, owned COMMIT/principals deferred.
+
 ## V01-B/C applied/reverified PASS — 2026-10-08
 
 Owner requested next2tasks and explicitly approved exact2AGY/both rollback SQL scopes.

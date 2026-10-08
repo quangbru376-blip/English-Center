@@ -2,6 +2,15 @@
 
 ## Checkpoint hiện tại
 
+V01-D continuation2026-10-08: concrete10browser-group HTTPS/SQL rollback contract
+prepared in V01D_TASK_CARD and exact3input/sole70line worker card/JSON.
+Runner validate PASS on clean existing manager; schema-only, no dispatch/read
+enforcement claim. No SQL/runtime/browser run. New external payload and browser
+HTTPS+SQL scopes require explicit approval; user generic continuation is preparation.
+If approved, implement in retained manager, verify exact certificate pin before
+traffic, no global trust bypass, keep secrets RAM, baseline/rollback/stop on failure.
+Do not open owned COMMIT/runtime principals/full profile; B/C checkpoint remains.
+
 V01-B→V01-C complete/reviewed PASS/applied ADR163/reverified2026-10-08 code
 mainbca0e4e/manager7ed9f85, identical test tree32decf9a213277debd9e6c9cc17783efec711aea.
 Owner BOTH exact AGY payloads and15B+12C SQL rollback scope explicitly approved;

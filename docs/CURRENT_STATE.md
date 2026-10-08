@@ -4,6 +4,13 @@ Last updated: 2026-10-08
 
 ## Current task
 
+V01-D browser HTTPS→UI→API→rollback SQL contract prepared2026-10-08 in
+V01D_TASK_CARD; ten scenario groups, loopback-only ephemeral TLS/pin, same-origin
+caller-TX bridge, sole pure AGY cookie metadata helper<=70lines. Contract schema
+validated against clean retained manager; no dispatch/SQL/runtime/browser executed.
+Exact new AGY payload and ten browser groups plus B/C27regression SQL approval
+are pending; prior scopes do not authorize them. V01-B/C PASS remains unchanged.
+
 Owner-authorized V01-B identity HTTP/SQL and V01-C Admin HTTP/SQL completed/reviewed
 PASS/applied ADR163/reverified2026-10-08 code mainbca0e4e/manager7ed9f85; identical
 test tree32decf9a213277debd9e6c9cc17783efec711aea.27actual SQL cases PASS/0fail/0skip

@@ -10,6 +10,11 @@
 
 ## Next
 
+- V01-D concrete contract prepared in V01D_TASK_CARD; validated sole<=70line AGY
+  metadata helper contract. Await exact new external payload and loopback HTTPS/
+  browser/rollback SQL execution scope before dispatch/run. Preserve B/C PASS;
+  owned COMMIT/principals/profile/full readiness stay deferred.
+
 - V01-B→V01-C completed/reviewed PASS/applied ADR163/reverified mainbca0e4e:
   manager/main27HTTP→SQL PASS, default891PASS/27opt-in SKIP/buildclean.
   Owner exact AGY+SQL scopes approved; rollback catalog/profile/102permissions
