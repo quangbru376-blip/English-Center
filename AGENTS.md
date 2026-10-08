@@ -239,6 +239,25 @@ See V01G_TASK_CARD/G-verification-summary/notes/V01G.md, ADR179 and closure matr
 Full V01/M0 incomplete: next prepare bounded concrete read-only dependency-probe
 contract; runtime principal/catalog visibility, protected stores/PKI and accepted
 D12/D13/DF01–03 environment values remain unresolved/deferred. No repeat questions.
+V01-H→I owner-assigned two-package batch completed/reviewed PASS/applied ADR163/
+reverified2026-10-08: H main7df8ba8/managerf403cec, I maind59e905/manager0713687.
+Final identical src20afd339ee6b2f0316fb52d0c1d08f88393f794b /
+testse11e2656b48ab3d2d62afbc4d96bc05f9cc5a20a. H real BCL UTC+7 and fresh pinned
+metadata/license/corpus probes; bounded async P08 loader retains sync behavior.
+H45new/1028defaultPASS; I33new/1061defaultPASS+3real readonly SQL denial cases
+PASS on manager/main,58intentional opt-in SKIP/build0warnings0errors. I binds RAM
+connection resolver/embedded manifest, owns fresh EF160/local shared-memory context,
+strict known runtime/no extra effective privilege guards and runtime-only inspector.
+SQL diagnostic rejected; counter proves4fresh principal rows/checkout, no ready claim.
+Two bounded AGY SUCCESS/94+23line policies/full3reads/zero observed scope violations;
+Codex independent integration/review/tests. D07 before/after byte-identical catalog/
+profile/102permissions/24empty tables/0fixture users/members. Owner4 hashes preserved,
+unshared/untracked/unstaged. Default Program/DI/routes/frontend/packages/schema/
+inspector/corpus unchanged; no provisioning/grant repair/exposure/runtime mounting.
+See V01HI_TASK_CARD/HI-verification-summary/notes/V01HI.md/ADR180/closure matrix.
+Full V01/M0 incomplete: next bounded runtime/patch manifest and key/protected-store
+probe contract; transport/execution/maintenance probes also absent, actual principal/
+catalog visibility/PKI and accepted D12/D13/DF01–03 remain deferred/unresolved.
 Historical initial scope is retained in
 FIRST_CODE_HANDOFF; latest checkpoint and explicit current owner scope govern.
 Owner expanded standing task authority2026-10-08 (ADR-177): each assigned task

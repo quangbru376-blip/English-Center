@@ -1,5 +1,17 @@
 # Architecture
 
+V01-H/I applied/reverified2026-10-08 main7df8ba8/d59e905 adds three unmounted
+concrete readiness dependencies: BCL Vietnam timezone/current-future UTC+7 rules,
+fresh bounded pinned offline manifest/license/corpus, and strictly bound local SQL
+runtime authority/exact catalog via existing mandatory-runtime inspector. Async
+loader shares unchanged P08 parsing with synchronous Load; no shipped bytes change.
+Database owns new EF160/shared-memory context, no pooling/enlist/retry, finite
+cancellation-aware resolver/connect/command waits; strict nullable/effective privilege
+guard and fixed secret-free completed-check counter. No DI/profile/route mounting.
+Readonly D07 diagnostic denial verified, not configured least-privileged readiness.
+Remaining six dependency implementations plus real profile/principal/PKI evidence
+are absent/unresolved; full V01/M0 incomplete. See HI card/evidence and ADR180.
+
 V01-G applied/reverified2026-10-08 main233a274 adds Infrastructure/Readiness:
 immutable essential profile references/typed slots, validation and finite deadline
 helpers, unmounted fresh all-category readiness gate. There is no config loader,

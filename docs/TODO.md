@@ -10,6 +10,14 @@
 
 ## Next
 
+- V01-H/I applied/reverified H7df8ba8/Id59e905:45+33new/1061defaultPASS+3readonlySQL
+  PASS,58opt-in SKIP/buildclean. Three concrete unmounted probes; D07/owner preserved.
+  Next runtime/patch manifest and key/protected-store probe contract; no startup mounting.
+  Six other dependencies/actual runtime identity/PKI/DF01–03 unresolved; full V01/M0 incomplete.
+  See V01HI_TASK_CARD/closure matrix; keep accepted environment deferrals.
+
+Historical V01-G checkpoint:
+
 - V01-G applied/reverified main233a274:92new/983defaultPASS/55opt-in SKIP/buildclean.
   Unmounted typed profile/readiness core only; next bounded concrete read-only probes.
   Actual principal/catalog visibility/protected stores/PKI/DF01–03 remain unresolved.

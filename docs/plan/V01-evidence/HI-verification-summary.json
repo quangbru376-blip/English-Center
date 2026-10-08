@@ -1,0 +1,213 @@
+{
+  "task": "V01-H -> V01-I",
+  "date": "2026-10-08",
+  "verdict": "PASS",
+  "authority": [
+    "owner assigned two next packages",
+    "ADR177 task completion and bounded context sharing",
+    "ADR163 reviewed PASS apply"
+  ],
+  "code": {
+    "HMain": "7df8ba8033efb1d89d105f63d8f0b8fa6ae141ba",
+    "IMain": "d59e9054c19f69a1e6734bb2bc33132d482d5e53",
+    "IManager": "07136875351e64ac01a73ab299bfae29968cc6f2",
+    "identicalFinalSrc": "20afd339ee6b2f0316fb52d0c1d08f88393f794b",
+    "HManager": "f403cec68318fbf2116ed8a94aba8c303016ad0e",
+    "identicalFinalTests": "e11e2656b48ab3d2d62afbc4d96bc05f9cc5a20a"
+  },
+  "checks": [
+    {
+      "stage": "H",
+      "checkout": "manager",
+      "passed": 1028,
+      "skipped": 55,
+      "failed": 0,
+      "total": 1083,
+      "newInStage": 45,
+      "trx": "V01-H-manager-full.trx",
+      "trxSha256": "53C13E36B1A0B23CAA0FF7BC5D7F176BEF28D40D51DA09D60634BD3AEE76997A",
+      "solutionBuildWarnings": 0,
+      "solutionBuildErrors": 0,
+      "restore": false
+    },
+    {
+      "stage": "H",
+      "checkout": "main",
+      "passed": 1028,
+      "skipped": 55,
+      "failed": 0,
+      "total": 1083,
+      "newInStage": 45,
+      "trx": "V01-H-main.trx",
+      "trxSha256": "89FF14895C85714712889A8CE0260BBA3936BE1BF2760883213700F864D97E95",
+      "solutionBuildWarnings": 0,
+      "solutionBuildErrors": 0,
+      "restore": false
+    },
+    {
+      "stage": "I",
+      "checkout": "manager",
+      "passed": 1061,
+      "skipped": 58,
+      "failed": 0,
+      "total": 1119,
+      "newInStage": 33,
+      "trx": "V01-I-manager-final.trx",
+      "trxSha256": "ED7C010DFA9E37F8DCEA52081BA1AD78CD404A09A1BAC42C733BB8F1703C60AE",
+      "solutionBuildWarnings": 0,
+      "solutionBuildErrors": 0,
+      "restore": false
+    },
+    {
+      "stage": "I",
+      "checkout": "main",
+      "passed": 1061,
+      "skipped": 58,
+      "failed": 0,
+      "total": 1119,
+      "newInStage": 33,
+      "trx": "V01-I-main-full.trx",
+      "trxSha256": "87311DBB18D5EA73D95A4658C57A569D601DD12D24E64578E3398B329F5377F4",
+      "solutionBuildWarnings": 0,
+      "solutionBuildErrors": 0,
+      "restore": false
+    },
+    {
+      "stage": "I-SQL",
+      "checkout": "manager",
+      "passed": 3,
+      "skipped": 0,
+      "failed": 0,
+      "total": 3,
+      "newInStage": 3,
+      "trx": "V01-I-manager-sql-final.trx",
+      "trxSha256": "84ECB6E1546310B5FAFAC94F8539143E3F9C2F3CC072EFAEBCB905BF3B3C3FDF",
+      "solutionBuildWarnings": 0,
+      "solutionBuildErrors": 0,
+      "restore": false
+    },
+    {
+      "stage": "I-SQL",
+      "checkout": "main",
+      "passed": 3,
+      "skipped": 0,
+      "failed": 0,
+      "total": 3,
+      "newInStage": 3,
+      "trx": "V01-I-main-sql.trx",
+      "trxSha256": "A81FFFC611CF4818EE04A018D9A8F83C12AEB964793756BA0F54CB7F361CFD3F",
+      "solutionBuildWarnings": 0,
+      "solutionBuildErrors": 0,
+      "restore": false
+    }
+  ],
+  "workers": [
+    {
+      "stage": "H",
+      "runId": "ed9f6707-8e8",
+      "status": "SUCCESS",
+      "exitCode": 0,
+      "changedFiles": 1,
+      "originalReportedLines": 94,
+      "integratedLines": 93,
+      "semanticManagerChanges": false,
+      "fullContextReadLines": [
+        23,
+        46,
+        101
+      ],
+      "readsBeforeWrite": true,
+      "ownOutputRead": true,
+      "otherObservedToolsOrReads": 0,
+      "observedScopeViolations": 0,
+      "receiptSha256": "563E91E584324F41A195D8DEDD977C1FD74EC7FFFA31AD8FB27CA09DA42F8501",
+      "eventsSha256": "779A571B68B922BA24A2823457DDC3C74E375AEF4E4AC09EBA7ED6F5CF9684FC",
+      "originalOutputSha256": "9A2B56B474F3636163C802ED5AEB81440E77AE68942AA3DCA14CA35CB8261013",
+      "originalsRetained": true,
+      "observationLimit": "Tool metadata is not OS-enforced read isolation or proof of comprehension"
+    },
+    {
+      "stage": "I",
+      "runId": "86d50676-50f",
+      "status": "SUCCESS",
+      "exitCode": 0,
+      "changedFiles": 1,
+      "originalReportedLines": 23,
+      "integratedLines": 22,
+      "semanticManagerChanges": false,
+      "fullContextReadLines": [
+        14,
+        46,
+        101
+      ],
+      "readsBeforeWrite": true,
+      "ownOutputRead": true,
+      "otherObservedToolsOrReads": 0,
+      "observedScopeViolations": 0,
+      "receiptSha256": "161353E8124D9CC20B9CF62F3C98EDCCC4D8B0E28B231B56969F1C647C42D943",
+      "eventsSha256": "97AAF681857940D262B8714EB0B9BE5910CEB5E5D6D7F15161A3CF2730E7D7B5",
+      "originalOutputSha256": "42124DEC379389FE9DA85A8F8AB0B652DBD3C7CEF6FB44CB4271AC3BF0557212",
+      "originalsRetained": true,
+      "observationLimit": "Tool metadata is not OS-enforced read isolation or proof of comprehension"
+    }
+  ],
+  "HCoverage": [
+    "actual BCL Vietnam timezone",
+    "historical allowed/current-future DST and base delta rejected",
+    "fixed approved manifest review window and strict unique JSON shapes",
+    "actual pinned shipped corpus/license/UTF8/count/ordinal union",
+    "fresh missing/tampered/oversized/reference mismatch detection",
+    "bounded async exact artifact-length reads and cancellation before/after parse and between manifest/corpus"
+  ],
+  "ICoverage": [
+    "known runtime with six known negative privilege facts; unsafe/NULL rejected",
+    "exact reference/schema binding before resolver",
+    "invalid/missing/unencrypted/remote/attach-file/user-instance connections rejected",
+    "explicit RAM resolver failure/cancellation/uncooperative async wait deadline",
+    "fresh EF160/local shared-memory/pooling and enlist off/no retry source reviewed",
+    "effective database/server roles/token grants excluded",
+    "mandatory-runtime exact existing inspector; no diagnostic fallback",
+    "real SQL diagnostic denied/repeated fresh calls/minimal readiness503"
+  ],
+  "sql": {
+    "readOnly": true,
+    "positiveRuntimeProof": false,
+    "catalogDigest": "0DE381587B6706797C2F38FB3C64DE20A3E19083E391E4684EF3820CEE6FBEF7",
+    "completedPrincipalRowsPerValidatedSuite": 4,
+    "permissions": 102,
+    "baselineBeforeAfterByteIdentical": true,
+    "businessRows": 0,
+    "casesPerCheckout": 3,
+    "snapshot": "ON",
+    "members": 0,
+    "otherSqlAndBrowserGates": false,
+    "tables": 24,
+    "fixtureUsers": 0,
+    "migrations": 6,
+    "mutationsProvisioningOrGrantRepair": 0,
+    "baselineFileSha256": "10CD3407CE5986394703A9BEC2EE3E42314080809DDABE26906B1F14B593FC8E",
+    "compatibility": 160,
+    "roles": 4
+  },
+  "unchanged": [
+    "Program/default entries/DI/routes",
+    "frontend/packages/lockfiles",
+    "schema/migrations/inspector/expected catalog",
+    "shipped manifest/license/corpus",
+    "owner4 files hash-identical/untracked/unshared/unstaged"
+  ],
+  "resolvedChecks": [
+    "custom Fact source-info analyzer fixed using existing SkipUnless/SkipType convention",
+    "server public-role identity read from catalog and unknown fails closed",
+    "resolver async wait bounded; late faults observed; final code regression passed"
+  ],
+  "limitations": [
+    "Unmounted three concrete probes only; six categories/secret-config loader/registrations/startup absent",
+    "No positive least-privileged runtime login/catalog visibility evidence or grant repair",
+    "Explicit diagnostic fixture SQL certificate trust is not production/client PKI proof",
+    "Resolvers/probes must promptly return tasks; async timeout cannot forcibly terminate synchronous work",
+    "Quarterly manifest servicing still required; resource caps not operator SLOs",
+    "D12/D13/DF01-03/operational backup/load/restore/full V01/M0 remain unresolved/deferred"
+  ],
+  "next": "Prepare bounded runtime/patch manifest and key/protected-store probe contract; preserve owner deferrals"
+}

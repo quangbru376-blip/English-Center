@@ -4627,3 +4627,24 @@ routes/config loader/Program mounting supplied. Backup/recovery values remain ga
 before those operations. G manager/main983PASS/55opt-in SKIP/buildclean; no SQL run,
 frontend/schema/package/default entry changes. Full V01/M0 incomplete. Next bounded
 concrete probe contract; accepted owner deferrals preserved, no repeat questions.
+
+## ADR-180 — concrete read-only dependency probes and truthful denial evidence (2026-10-08)
+
+V01-H resolves the fixed Vietnam BCL mapping without host fallback and verifies
+current/future UTC+7 rules; historical rules may differ. Blocklist probe binds an
+explicit local directory/reference, checks duplicate-free pinned release metadata
+and review window, then fresh bounded async artifact hashes/UTF8/count/ordinal union.
+Metadata cap4096 and exact artifact sizes are release-resource bounds, not operator
+SLOs or business caps. Existing P08 sync loader and shipped bytes preserved.
+V01-I binds a supplied RAM resolver and current embedded manifest; creates a fresh
+EF160/shared-memory context, disables pooling/enlist/retry, bounds resolver/connect/
+command waits and disposes resources. Unknown privilege facts fail closed; only
+known runtime membership without dbo/sysadmin/CONTROL/extra effective roles or token
+grants proceeds to mandatory-runtime exact catalog/snapshot inspector. No owner-mode
+fallback, grant repair or VIEW DEFINITION. Internal count proves successfully read
+principal rows without exposing values. Actual diagnostic connection is denied,
+including repeated calls and readiness503; this is negative runtime evidence only.
+H45new/I33new+3readonlySQL cases PASS on both checkouts; default1061PASS/58opt-in SKIP,
+buildclean, D07 baseline unchanged. No profile/default entries/keys/principal provisioning/
+PKI/package/schema changes. Six probe categories and positive least-privileged runtime
+bindings remain incomplete; preserve accepted D12/D13/DF01–03 deferrals. See HI card.
