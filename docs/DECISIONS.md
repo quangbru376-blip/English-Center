@@ -4589,3 +4589,22 @@ Historical pending gates are superseded for that task. This is task-bound
 execution authority, not assignment of unrelated features or publication.
 Keep owner files protected, secrets out of external context/evidence, rejected
 output detached and operational changes bounded by the concrete task contract.
+
+## ADR-178 — V01-E real owned COMMIT in identity-owned scratch databases
+
+2026-10-08. Accepted within assigned V01-E/standing completion authority ADR177.
+Direct production executors use their real owned transactions and COMMIT on new,
+previously absent EnglishCenter_V01E_20261008_<32hexGUID> scratch DBs on local
+SQLEXPRESS. Apply only the existing six migrations; synthetic identities/keys in
+fixture scope, no real operator principals. Retained D07 remains read-only.
+Pooling disabled, compatibility160/snapshotON/AUTO_CLOSE OFF. AUTO_CLOSE inherited
+ON briefly hid recovery GUID during the first cleanup; exact recorded name/id/guid
+recovery removed that scratch DB before rerun. Cleanup never adopts a DB: require
+captured database_id and database_guid plus strict name validation, then DROP only
+that fixture-created DB. No wildcard deletion, original DB or server login changes.
+Manager/main exact12cases verify persisted owned effects, actual three-context
+SNAPSHOT/final live guard, independent security audit plus timeout fallback, and
+bounded two-client races. This complements D browser/caller-rollback evidence;
+it does not establish a combined browser→owned COMMIT or least-privileged runtime
+profile/principal/production PKI. Full V01/M0 remains incomplete. Test-only changes,
+no production/default entry/package change. See V01E_TASK_CARD and E evidence.

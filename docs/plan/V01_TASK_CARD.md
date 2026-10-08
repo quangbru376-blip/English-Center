@@ -21,6 +21,23 @@ separate SNAPSHOT executor/independent security audit/race evidence; production
 principal/profile/PKI/readiness remains unverified. ADR177 removes repeated task
 permission gates, not the need for bounded contracts and actual verification.
 
+V01-E completed/reviewed PASS/applied ADR163/reverified2026-10-08 code main95bb665,
+manager3a98377; identical backend test tree55255cc6d158eeb3c6b35b4d373ddfc48d7a89dd.
+Manager/main12owned SQL COMMIT cases PASS/0fail0skip; default891PASS/49opt-in SKIP,
+build0warnings0errors. Actual separate SNAPSHOT/live final authority, independent
+security audit persistence/fallback and four bounded two-client races verified.
+Each case uses fresh synthetic scratch DB/existing6migrations/identity-checked DROP;
+all36created databases removed (35normal/1exact recovery after AUTO_CLOSE issue).
+D07 digest/profile/catalog/102permissions/24empty tables unchanged; owner4files
+unchanged/unshared/untracked/unstaged. Production src/defaults/packages unchanged.
+AGYe3b66916-9de SUCCESS/full3reads/sole76line helper/zero observed scope violations;
+Codex independent fixes/review/tests. See V01E_TASK_CARD/E-verification-summary,
+notes/V01E.md and ADR178. Full V01/M0 incomplete: next prepare readiness closure
+matrix/contract for production profile/principals/PKI and combined browser→owned
+COMMIT evidence. Diagnostic Windows SQL identity is not runtime-principal proof.
+ADR177 covers assigned aspects; no repeat permission gates or unrelated families.
+
+Historical V01-D checkpoint:
 Historical initial V01 preflight follows.
 
 2026-10-08. Status: manager preflight/V01-A reviewed PASS; integrated acceptance incomplete.

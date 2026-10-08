@@ -10,6 +10,14 @@
 
 ## Next
 
+- V01-E applied/reverified PASS main95bb665:12owned COMMIT cases, default891PASS/
+  49opt-in SKIP/buildclean. All scratch DBs cleaned by identity; D07/owner files unchanged.
+  Next readiness closure matrix/contract: runtime profile/principals/PKI and combined
+  browser→owned COMMIT remain unverified. Full V01/M0 incomplete; ADR177 applies.
+  See V01E_TASK_CARD/E-verification-summary and ADR178.
+
+Historical checkpoints:
+
 - V01-D applied/reverified PASS main8920098:37integration/891default/48frontend
   PASS,37intentional opt-in SKIP, buildclean; SQL baseline/owner files unchanged.
   Next V01-E: prepare bounded owned COMMIT/cleanup/SNAPSHOT/security audit/races

@@ -1,7 +1,7 @@
 # V01-E — owned SQL commit, independent audit and bounded races
 
 2026-10-08; base main95e92c2. Owner continuation/ADR177 authorizes all necessary
-task aspects; ADR163 applies only independently reviewed PASS. Status: implementing.
+task aspects; ADR163 applies only independently reviewed PASS. Status: completed/reviewed PASS/applied/reverified.
 Codex manager owns privileged fixture, execution, review and cleanup.
 
 ## Concrete SQL lifecycle and safety scope
@@ -9,7 +9,7 @@ Codex manager owns privileged fixture, execution, review and cleanup.
 Only local lpc:.\SQLEXPRESS. Original EnglishCenter_D07_20261005 is read-only
 baseline before/after. Each case creates ONE previously absent scratch database
 named EnglishCenter_V01E_20261008_<32hex GUID>; never adopt/reuse an existing DB.
-Explicit collation Latin1_General_100_CI_AS_SC, compatibility160 and snapshotON;
+Explicit collation Latin1_General_100_CI_AS_SC, compatibility160, snapshotON and AUTO_CLOSE OFF;
 apply ONLY existing six EF migrations using cached dependencies/no restore.
 No edits to migrations, original DB/catalog/permissions, server login, real
 operator account or production profile. SQL diagnostic Windows connection is
@@ -90,3 +90,36 @@ connection/database creation otherwise. Build --no-restore -warnaserror; run exa
 12cases sequential collection, then default SQL/socket-free suite. Apply reviewed
 PASS under ADR163 and reverify exact cases/main cleanup. UI/API/migration changes
 N/A for this fixture; notes <=15lines. Full V01/M0/profile readiness still incomplete.
+
+
+
+## Evidence and final review
+
+Manager3a98377/main95bb665 share backend test tree
+55255cc6d158eeb3c6b35b4d373ddfc48d7a89dd. Exact12cases PASS/0fail0skip on both;
+default891PASS/49intentional opt-in SKIP/0fail/940total; builds0warnings0errors.
+Raw TRX/ownership receipt remain ignored; sanitized results/hashes in
+V01-evidence/E-verification-summary.json; owner explanation notes/V01E.md14lines.
+No frontend/API/DTO/schema change; historical D frontend48PASS not rerun.
+Original production src trees/default entries/packages unchanged, four owner files
+hash-identical/unshared/untracked/unstaged. Scope checks PASS, no unresolved E checks.
+
+AGYe3b66916-9de SUCCESS sole76line assertion; observed full32/46/101 input reads
+before write and own76line output read only; no commands/network/SQL/other paths.
+This is observed tool behavior, not OS-enforced read sandbox or proof of comprehension.
+Original output/receipt/events retained; Codex fixed xUnit analyzer and TryGet
+numeric diagnostics, then integrated and independently compiled/executed.
+
+First manager run11PASS/1cleanupFAIL: inherited AUTO_CLOSE ON briefly hid recovery
+GUID. Read-only probe matched exact retained receipt name/id/guid; manager dropped
+only that scratch DB and logged recovery. Scratch AUTO_CLOSE OFF fixes ownership
+visibility; final manager/main12PASS. All36created DBs accounted for:35normal DROP,
+1exact recovery DROP,0remaining. D07 baseline before/after byte-identical with
+catalog/profile/102permissions digest0DE381587B6706797C2F38FB3C64DE20A3E19083E391E4684EF3820CEE6FBEF7;
+24empty tables/0fixture users/members/4roles/6migrations/compat160/snapshotON unchanged.
+
+Review verdict PASS for bounded V01-E, applied ADR163 and reverified. Direct owned
+COMMIT/independent audit/SNAPSHOT/two-client races are now evidenced; diagnostic
+Windows identity does not prove least-privileged runtime profile. Full V01/M0
+remains incomplete; next readiness closure matrix/contract for production profile,
+principals/PKI and combined browser→owned COMMIT. No unrelated tasks/push/deploy.
