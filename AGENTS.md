@@ -174,7 +174,11 @@ See U05/U06 cards/evidence, ADR176. V01 preflight/V01-A2026-10-08 reviewed PASS:
 891non-SQL+120SQL/0fail0skip. Owner approved exact five existing SQL classes/
 rollback only; before/after catalog/profile/102permissions identical,24empty
 tables/0fixture users/members. See V01_TASK_CARD. Integrated V01 incomplete;
-no runtime/owned COMMIT/restM0/new worker sharing/packages/push/deploy authority.
+no runtime/owned COMMIT/restM0/packages/push/deploy authority.
+Owner next2tasks V01-B/C prepared2026-10-08; exact2AGY payloads explicitly approved,
+bounded SUCCESS71/84lines, Codex fixed/reviewed assertions. Manager00443a6 detached;
+buildclean/default891PASS/27SQL opt-in SKIP. New B/C SQL execution question pending,
+no actual new SQL/PASS/source apply. See V01BC_TASK_CARD/BC-preparation-summary.
 Historical initial scope is retained in
 FIRST_CODE_HANDOFF; latest checkpoint and explicit current owner scope govern.
 Standing owner authority ADR-163: apply Codex-reviewed PASS stages already

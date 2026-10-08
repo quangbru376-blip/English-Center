@@ -4,6 +4,16 @@ Last updated: 2026-10-08
 
 ## Current task
 
+Owner requested next2tasks2026-10-08: V01-B identity HTTP/SQL and V01-C Admin
+HTTP/SQL verification prepared in V01BC_TASK_CARD, detached managed worktree
+C:/Users/asus/.codex/worktrees/v01-http-sql/main_workplace checkpoint00443a6.
+Owner approved both exact AGY payloads;2SUCCESS/full3reads/sole outputs71/84lines,
+Codex fixed C reference shape/UTC assertions. Offline build0warnings0errors;
+default unit suite891PASS/27intentional SQL opt-in SKIP/0fail. New SQL execution
+question still pending: no new SQL run, no integrated PASS or test-source apply.
+See BC-preparation-summary; next receive exact B/C rollback SQL authorization,
+baseline/check15B then12C/rollback/review, apply only if PASS under ADR163.
+
 V01 manager preflight/V01-A reviewed PASS2026-10-08; integrated V01 incomplete.
 Default entries remain unmounted, no runtime/packages opened.
 Verified source separates fixture HTTP/browser evidence from real SQL integration.

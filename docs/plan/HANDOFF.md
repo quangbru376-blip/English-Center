@@ -1,5 +1,12 @@
 # Handoff — E01–E05 và complete design baseline đã Accepted
 
+## V01-B/C prepared — SQL execution pending
+
+Owner requested next2tasks and approved exact2AGY payloads2026-10-08. Two bounded
+SUCCESS; manager00443a6 managed worktree retains test-only HTTP/SQL fixture and
+15identity+12Admin opt-in cases. Buildclean/default891PASS/27SKIP; new SQL question
+pending, no integrated PASS/source apply/runtime. See V01BC_TASK_CARD/evidence.
+
 ## V01 preflight — 2026-10-08
 
 Manager source audit and integrated evidence matrix prepared in V01_TASK_CARD.

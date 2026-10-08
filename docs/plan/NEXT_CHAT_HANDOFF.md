@@ -2,6 +2,15 @@
 
 ## Checkpoint hiện tại
 
+V01-B→V01-C preparation2026-10-08: owner next2tasks and BOTH AGY payloads approved.
+See V01BC_TASK_CARD and V01-evidence/BC-preparation-summary.json. Two SUCCESS,
+full3reads/sole71/84line assertion outputs; manager fixes C target object/UTC.
+Managed worktree C:/Users/asus/.codex/worktrees/v01-http-sql/main_workplace00443a6;
+build0warnings0errors/default891PASS/27opt-in SQL SKIP. SQL question second item
+still pending; do not infer approval from first AGY answer or original V01-A.
+No new SQL/source apply/runtime;15B+12C actual checks await authorization.
+Original workers120c4c8b-5d2/97c1123f-992 retained. Owner files still unchanged.
+
 V01 manager preflight/V01-A reviewed PASS2026-10-08: see V01_TASK_CARD and
 V01-evidence/preflight-summary.json. Source audit confirms default entries
 unmounted and existing HTTP/browser fixtures do not prove real SQL integration.

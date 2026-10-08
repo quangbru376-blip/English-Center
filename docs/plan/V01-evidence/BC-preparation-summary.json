@@ -1,0 +1,80 @@
+{
+  "date": "2026-10-08",
+  "status": "Prepared/build reviewed; V01-B and V01-C SQL execution pending consent; NOT integrated PASS",
+  "baseMain": "483dd01",
+  "manager": "00443a6",
+  "managerPath": "C:/Users/asus/.codex/worktrees/v01-http-sql/main_workplace",
+  "sharingAuthorization": "Owner explicitly approved both exact AGY payloads",
+  "sqlAuthorization": "Second question remains pending; no new SQL executed",
+  "workers": [
+    {
+      "runId": "120c4c8b-5d2",
+      "status": "SUCCESS",
+      "exitCode": 0,
+      "worktree": "C:\\Users\\asus\\AppData\\Local\\Temp\\codex-antigravity-worker\\worktrees\\main_workplace-120c4c8b-5d2",
+      "files": [
+        "backend/tests/EnglishCenter.Tests/Api/Integration/IdentitySqlAssertions.cs"
+      ],
+      "diffLines": 71,
+      "violations": [],
+      "tools": [
+        "view_file",
+        "view_file",
+        "view_file",
+        "write_to_file",
+        "view_file"
+      ],
+      "reads": [
+        "C:\\Users\\asus\\AppData\\Local\\Temp\\codex-antigravity-worker\\worktrees\\main_workplace-120c4c8b-5d2\\docs\\plan\\V01B_WORKER.md",
+        "C:\\Users\\asus\\AppData\\Local\\Temp\\codex-antigravity-worker\\worktrees\\main_workplace-120c4c8b-5d2\\.agents\\skills\\backend-clean-code\\SKILL.md",
+        "C:\\Users\\asus\\AppData\\Local\\Temp\\codex-antigravity-worker\\worktrees\\main_workplace-120c4c8b-5d2\\docs\\plan\\SKILL_ROUTING.md",
+        "C:\\Users\\asus\\AppData\\Local\\Temp\\codex-antigravity-worker\\worktrees\\main_workplace-120c4c8b-5d2\\backend\\tests\\EnglishCenter.Tests\\Api\\Integration\\IdentitySqlAssertions.cs"
+      ],
+      "receiptSha256": "22236C3602C2E9C9C185C8E8DF7AFA53915B7CF60FDE07259035D28F48EDFF9A",
+      "eventsSha256": "E2EA606E178BC7D31FED4AE4C0E8A4100D12309B5B551A7E5903F8FA12119554"
+    },
+    {
+      "runId": "97c1123f-992",
+      "status": "SUCCESS",
+      "exitCode": 0,
+      "worktree": "C:\\Users\\asus\\AppData\\Local\\Temp\\codex-antigravity-worker\\worktrees\\main_workplace-97c1123f-992",
+      "files": [
+        "backend/tests/EnglishCenter.Tests/Api/Integration/AdminSqlAssertions.cs"
+      ],
+      "diffLines": 84,
+      "violations": [],
+      "tools": [
+        "view_file",
+        "view_file",
+        "view_file",
+        "write_to_file",
+        "view_file"
+      ],
+      "reads": [
+        "C:\\Users\\asus\\AppData\\Local\\Temp\\codex-antigravity-worker\\worktrees\\main_workplace-97c1123f-992\\docs\\plan\\V01C_WORKER.md",
+        "C:\\Users\\asus\\AppData\\Local\\Temp\\codex-antigravity-worker\\worktrees\\main_workplace-97c1123f-992\\.agents\\skills\\backend-clean-code\\SKILL.md",
+        "C:\\Users\\asus\\AppData\\Local\\Temp\\codex-antigravity-worker\\worktrees\\main_workplace-97c1123f-992\\docs\\plan\\SKILL_ROUTING.md",
+        "C:\\Users\\asus\\AppData\\Local\\Temp\\codex-antigravity-worker\\worktrees\\main_workplace-97c1123f-992\\backend\\tests\\EnglishCenter.Tests\\Api\\Integration\\AdminSqlAssertions.cs"
+      ],
+      "receiptSha256": "5165FFB6E424D57DEE946ED238D9E0B535F49B1F18CDF8BFF312F379113AC538",
+      "eventsSha256": "DAB597D75DE5B94DC030FA497E164DE546BB92DFCA073C059901610E5B7CA24D"
+    }
+  ],
+  "managerFixes": [
+    "C safe completion target must be object with accountId, not scalar",
+    "C UTC exact millisecond Z format"
+  ],
+  "build": "No restore, warnaserror:0warnings/0errors",
+  "optOut": {
+    "passed": 891,
+    "failed": 0,
+    "skipped": 27,
+    "total": 918,
+    "trxSha256": "5C12DDCE3A792914B1BB6C72DAAAE632405594955DA89C8157BAE7B5A5A4CC14"
+  },
+  "limits": [
+    "27opt-in cases are SKIPPED, not SQL PASS",
+    "Test-only caller-TX/savepoint bridge; no owned COMMIT, separate SNAPSHOT executor, independent persisted security audit, runtime login principal or browser HTTPS evidence",
+    "Default entries/packages/production source unchanged; code remains detached until SQL checks and review PASS"
+  ]
+}
