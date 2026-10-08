@@ -2,7 +2,8 @@
 
 2026-10-08 base main dd73266 / manager bc0d589. Owner repeated completing M0;
 ADR177 covers bounded implementation/delegation/checks; ADR163 reviewed PASS apply.
-Status IN PROGRESS. Codex manager; AGY sole pure maintenance-principal guard.
+Status component review PASS/applied/reverified; full M0 IN PROGRESS.
+Codex manager; AGY sole pure maintenance-principal guard.
 No active environment values inferred, M1–M4/packages/install/push/deploy/owner edits.
 
 N: install explicit request deadline + bounded RAM body middleware; cancellation
@@ -68,7 +69,9 @@ JWT/CSRF/SQL17Express/160/noSQLite/no new packages/API/SLO/defaults.
 Worker read_context ONLY V01P_WORKER.md + complete backend skill + routing;
 own output read allowed, no source/links/AGENTS/owner/secrets/search/listing/commands/
 network/SQL/Git/validation. Current M0 assignment+ADR177 covers exact sharing;
-no repeat permission gate. skill_verification pending actual events/diff/tests.
+no repeat permission gate. Final skill_verification: five tool events, full15/46/101
+line authorized reads before sole27-line write and own reread. AGY8c2c2519-d14
+SUCCESS/exit0/zero observed scope violations; original retained, integrated EOF only.
 
 Verification: real middleware streamed/known caps/RAM cleanup/cooperative deadline/
 restoration; explicit missing binding denial and buffer capacity; actual ephemeral
@@ -80,3 +83,21 @@ maintenance unknown/unsafe principal/config/job intervals/ref/cancellation/SQL s
 guards, no fake positive SQL. Manager/main full default tests/build --no-restore
 -warnaserror; owner hashes/source-scope checks. No actual operator profile/startup/
 cleanup/SQL-principal/PKI/whole-M0 readiness claim from these fixture tests.
+
+## Independent component review PASS — 2026-10-08
+
+Main d145072 from manager63cff80,12exact files/758insertions/21deletions.
+37new tests; both1169PASS/58intentional opt-in SKIP/0fail; build0warnings0errors.
+Exact src9585d9f65871b305aa3dc19fa7b305e0d31ca3fc and tests
+6650877cfb965564b0df7d29ec45d656ccf5ba3a. Scope/cancellation/redaction/reference
+binding/real framework options/RAM/TLS lifecycle and retained owner hashes verified.
+Initial34-test run30PASS/4FAIL; canonical origin fixture corrected and Windows
+ephemeral-key Schannel incompatibility fixed with existing Node TLS, no weakened
+pin or trust check. Final37tests pass; late ignored-cancellation resolver is observed.
+Review fixed predicate SELECT requirements and extra direct server grant denial;
+exact fixed SELECT verified by separate V01P_SQL_READONLY_CARD. Nine facts/current
+privileged denial PASS; D07 before/after byte-hash identical. No DML.
+No route/DTO/schema/migration/new package; corresponding checklist N/A. Notes14steps.
+Not verified: actual trusted SQL open/least-privileged positive authority, scheduled
+cleanup effects, real loaded profile/protected bindings or mounted whole-M0 readiness.
+These remain operator integration obligations, not fabricated positive fixture tests.

@@ -10,10 +10,10 @@
 
 ## Next
 
-- Finish owner-assigned M0; J/K/L/M applied/reverified PASS (1132tests, buildclean).
-- Obtain actual environment values already asked in this session; do not infer fixture
+- Finish owner-assigned M0; N/O/P components applied/reverified PASS (1169tests, buildclean).
+- Select concrete M0_LOCAL_DEV_PROPOSAL actual values already asked; do not infer fixture
   values or re-ask accepted decisions. Resolve runtime identity/catalog and PKI bindings,
-  then exact transport/execution/maintenance and integration contracts. M0 incomplete.
+  then actual operator bindings/startup integration and cleanup verification. M0 incomplete.
 - See M0_COMPLETION_TASK_CARD/M0_ENVIRONMENT_INPUTS; preserve owner4files and D07.
 
 Historical H/I next:

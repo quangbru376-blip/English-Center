@@ -4675,3 +4675,28 @@ is not ready. Six probes remain unregistered; no default host or active config.
 Manager/main71new+1061=1132PASS/58opt-in SKIP/buildclean. No SQL rerun, schema/grants,
 packages/frontend/default entries or protected owner changes. See completion card,
 environment inputs, sanitized J-M evidence and notes/V01JKLM.md.
+
+## ADR-182: Explicit unmounted M0 execution, direct transport and maintenance
+
+Status: Accepted for the assigned bounded implementation, 2026-10-08.
+
+Decision: Install request-body/deadline boundaries only through explicit validated
+bindings. Body buffering is bounded RAM and zeroed; deadlines are cooperative,
+caller cancellation is restored and does not prove rollback or authorize retries.
+Direct local transport requires canonical same-origin HTTPS and matching listener
+port, actual framework CSRF options, real TLS with explicit leaf trust/SAN/time/EKU/
+strength checks and separate strict SqlClient certificate validation. No ambient
+proxy/trust-store repair. Maintenance has independent explicit identity/timers and
+fixed owned transactions, fresh nullable authority checks, narrow DELETE/UPDATE and
+predicate-column SELECT only; privileged/extra-role/grant facts deny. Readiness never
+runs cleanup. All nine probes now exist, but remain unregistered and unmounted.
+
+Evidence: V01NOP_TASK_CARD, NOP summary and notes; manager/main1169PASS/58intentional
+opt-in SKIP/buildclean,37new tests. Existing Node TLS fixture uses stdin/RAM only,
+no persistent private key or OS trust changes. Exact maintenance SELECT9facts and
+privileged diagnostic denial tested under separate read-only card; D07 before/after
+identical. No positive runtime/maintenance principal, trusted SQL or cleanup effects
+claim. M0_LOCAL_DEV_PROPOSAL supplies reviewable values for previously deferred
+E04 D12/D13 slots; they are pending selection, not fixture-derived active defaults.
+Full M0 remains incomplete until actual bindings/startup/integrated proof. ADR163
+and ADR177 preserve task/application authority; no unrelated M1–M4/push/deploy.

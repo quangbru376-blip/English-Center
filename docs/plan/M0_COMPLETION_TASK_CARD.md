@@ -128,3 +128,6 @@ change (review checklist N/A). New probes/readers remain unmounted with no activ
 config or secret provisioning. Actual profile values asked are still pending;
 remaining three categories, runtime authentication/catalog, PKI/custody and maintenance
 bindings prevent closing full M0. See M0_ENVIRONMENT_INPUTS; preserve owner deferrals.
+
+## V01-N/O/P component PASS, M0 remains IN PROGRESS
+All9 concrete categories implemented/unmounted. See V01NOP_TASK_CARD/ADR182/NOP summary; main d145072 and manager63cff80 both1169PASS/58opt-in SKIP/buildclean. Pending concrete LOCAL_DEV selection and actual runtime/catalog/PKI/protected-store/maintenance/startup integration; no fixture promotion or repeated authorization gate.

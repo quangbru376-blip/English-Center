@@ -4,6 +4,28 @@ Last updated: 2026-10-08
 
 ## Current task
 
+Full M0 remains IN PROGRESS. V01-N/O/P component review PASS/applied ADR163/
+reverified2026-10-08 main d145072 / manager63cff80:37new +1132existing =
+1169PASS/58intentional opt-in SKIP/build0warnings0errors on both checkouts.
+Identical src9585d9f65871b305aa3dc19fa7b305e0d31ca3fc,
+tests6650877cfb965564b0df7d29ec45d656ccf5ba3a; frontend unchanged.
+Explicit bounded RAM request/cooperative deadline boundary, direct local HTTPS/
+CSRF binding with actual TLS leaf-pin/SAN/time/EKU probe, and separate maintenance
+scheduler/strict authority probe implemented, all unmounted. No positive SQL trust,
+runtime login/catalog or cleanup-effect proof claimed. P read-only SELECT returned
+exact9facts and denied privileged diagnostic identity; before/after D07 byte-identical
+10CD3407CE5986394703A9BEC2EE3E42314080809DDABE26906B1F14B593FC8E.
+AGY8c2c2519-d14 SUCCESS/sole27line guard/full3reads/zero observed violations;
+Codex fixed/reviewed/tested; original retained, integrated EOF normalized only.
+Four owner hashes unchanged/unshared/untracked/unstaged. No package/default entry/
+schema/grant/login/OS-trust changes or cleanup writes. See V01NOP_TASK_CARD/
+NOP-verification-summary/notes/V01NOP and ADR182.
+Next select concrete M0_LOCAL_DEV_PROPOSAL (new exact-value question pending), then
+materialize actual runtime/catalog/PKI/key-store/maintenance/startup contract and
+rerun integrated evidence. E04 owner-deferred values are not guessed or promoted
+from fixtures; no M1–M4/push/deploy. All9 concrete categories now exist, unregistered.
+
+Historical V01-J/K/L/M checkpoint:
 Owner assigned FULL M0 completion2026-10-08; status IN PROGRESS, not two-package scope.
 V01-J/K/L/M completed/reviewed PASS/applied ADR163/reverified: JKL main47c9c7f /
 manager4ff6f12; M mainfecb90e / manager7d99619. Identical backend src

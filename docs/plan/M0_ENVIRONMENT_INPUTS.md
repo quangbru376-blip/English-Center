@@ -3,12 +3,12 @@
 2026-10-08. Owner assigned completing M0; ADR177/163 covers implementation and
 reviewed application. This is missing configuration, not a request to repeat
 permission for accepted work. No secret belongs in this document or worker context.
-Current code supplies six dependency probes and a strict reference-profile reader;
+Current code supplies all nine dependency probes and a strict reference-profile reader;
 none are registered in an active default host. Tests do not choose operator values.
 
 | Required binding | Verified state / next action |
 | --- | --- |
-| Profile kind, origin, listen address/port | D13/DF02 deferred; missing-values question pending. LOCAL_DEV loopback and LAN_DEMO are different exposure profiles. HTTPS/same-origin/Secure/CSRF stay mandatory. |
+| Profile kind, origin, listen address/port | D13/DF02 deferred; concrete M0_LOCAL_DEV_PROPOSAL value-selection question pending. LOCAL_DEV loopback and LAN_DEMO are different exposure profiles. HTTPS/same-origin/Secure/CSRF stay mandatory. |
 | Lock/SQL/request/readiness/CSV deadlines, body/response/preview bounds | Typed finite ordering already enforced; actual values still DF01 pending. No fixture budget promoted to an SLO or default. |
 | Actual least-privileged SQL authentication | Existing Windows diagnostic is privileged and denied by runtime probe. No new login/auth-mode change inferred. Must bind a genuine non-dbo ec_app_runtime identity, separate schema/maintenance contexts. |
 | Exact runtime-readable catalog | D13/I prove current ec_app_runtime visibility insufficient. Prepare an explicit reviewed metadata-access solution for the selected runtime binding; do not switch to owner-mode checks or silently repair grants. Current 102 grants/retained D07 unchanged. |

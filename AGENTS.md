@@ -1,16 +1,25 @@
 # English Center Management System — Project Memory
 
-Latest owner assignment2026-10-08: COMPLETE M0, not only the next two packages.
-J/K/L/M applied/reverified PASS main47c9c7f/fecb90e; manager4ff6f12/7d99619,
-1132defaultPASS/58intentional opt-in SKIP/buildclean. Fresh runtime/artifact, JWT
-material, protected read-only DPAPI keys and strict reference-profile reader now
-implemented but unmounted. Six concrete probes exist; actual transport/execution/
-maintenance/bindings still absent. Required environment values were asked and are
-pending; preserve accepted D12/D13 deferrals, no guessed budgets/origin/port or
-diagnostic SQL fallback/grant repair. Continue assigned M0 after input; no M1–M4.
-See M0_COMPLETION_TASK_CARD/M0_ENVIRONMENT_INPUTS/J-M evidence/ADR181/current handoff.
-Four owner files hash-identical/unshared/untracked/unstaged; no SQL/package/default
-entry changes. Full V01/M0 INCOMPLETE; older narrow scope statements are historical.
+Full M0 remains IN PROGRESS. V01-N/O/P component review PASS/applied ADR163/
+reverified2026-10-08 main d145072 / manager63cff80:37new +1132existing =
+1169PASS/58intentional opt-in SKIP/build0warnings0errors on both checkouts.
+Identical src9585d9f65871b305aa3dc19fa7b305e0d31ca3fc,
+tests6650877cfb965564b0df7d29ec45d656ccf5ba3a; frontend unchanged.
+Explicit bounded RAM request/cooperative deadline boundary, direct local HTTPS/
+CSRF binding with actual TLS leaf-pin/SAN/time/EKU probe, and separate maintenance
+scheduler/strict authority probe implemented, all unmounted. No positive SQL trust,
+runtime login/catalog or cleanup-effect proof claimed. P read-only SELECT returned
+exact9facts and denied privileged diagnostic identity; before/after D07 byte-identical
+10CD3407CE5986394703A9BEC2EE3E42314080809DDABE26906B1F14B593FC8E.
+AGY8c2c2519-d14 SUCCESS/sole27line guard/full3reads/zero observed violations;
+Codex fixed/reviewed/tested; original retained, integrated EOF normalized only.
+Four owner hashes unchanged/unshared/untracked/unstaged. No package/default entry/
+schema/grant/login/OS-trust changes or cleanup writes. See V01NOP_TASK_CARD/
+NOP-verification-summary/notes/V01NOP and ADR182.
+Next select concrete M0_LOCAL_DEV_PROPOSAL (new exact-value question pending), then
+materialize actual runtime/catalog/PKI/key-store/maintenance/startup contract and
+rerun integrated evidence. E04 owner-deferred values are not guessed or promoted
+from fixtures; no M1–M4/push/deploy. All9 concrete categories now exist, unregistered.
 
 This file is the entry point for agents working in this workspace. Before any
 non-trivial task, read these files in order:
