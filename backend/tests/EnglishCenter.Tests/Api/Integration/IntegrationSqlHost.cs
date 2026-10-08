@@ -70,7 +70,7 @@ internal sealed class IntegrationSqlHost : IAsyncDisposable, IStudentSignupExecu
         _signer = new JwtSessionIssuer(new(key, "HS256"), "v01-fixture", "v01-fixture");
         Validator = new([key], ["HS256"], "v01-fixture", "v01-fixture", Clock, 4096);
     }
-    internal static async Task<IntegrationSqlHost> CreateAsync()
+    internal static async Task<IntegrationSqlHost> CreateAsync(bool mountHttp = true)
     {
         if (!IntegrationSqlGate.Enabled) throw new InvalidOperationException("SQL fixture requires explicit opt-in.");
         var f = new IntegrationSqlHost();
@@ -89,21 +89,23 @@ internal sealed class IntegrationSqlHost : IAsyncDisposable, IStudentSignupExecu
             }
             f.Db.StudentProfiles.Add(new StudentProfile { AccountId = f.Accounts["Student"], DateOfBirth = new DateOnly(2000, 1, 1) }); await f.Db.SaveChangesAsync(Ct);
             f.Db.ChangeTracker.Clear();
-            f._factory = new WebApplicationFactory<Program>().WithWebHostBuilder(b => b.UseContentRoot(AppContext.BaseDirectory).ConfigureServices(s =>
+            if (mountHttp) f._factory = new WebApplicationFactory<Program>().WithWebHostBuilder(b => b.UseContentRoot(AppContext.BaseDirectory).ConfigureServices(s =>
             { s.AddCsrfBoundary(new EphemeralDataProtectionProvider()); s.AddSingleton<IStartupFilter>(new Mount(f)); }));
             return f;
         }
         catch { await f.DisposeAsync(); throw; }
     }
+    internal void ConfigureRoutes(IApplicationBuilder app, string origin)
+    {
+        app.UseRouting(); app.UseAuthJsonBoundary();
+        app.UseCsrfBoundary(origin, new LiveCsrfIdentityResolver(Validator, this, new(this, Incidents), Clock));
+        app.UseEndpoints(e => { e.MapCsrfContext(); e.MapStudentSignup(this, 4096); e.MapLogin(this, Limiter, this, new(this, Incidents), Clock, 4096);
+            e.MapCurrentSession(this, Clock); e.MapCurrentSessionLogout(this); e.MapPasswordChange(this, 4096); e.MapAdminAccountPilot(this, 4096); });
+    }
     private sealed class Mount(IntegrationSqlHost f) : IStartupFilter
     {
         public Action<IApplicationBuilder> Configure(Action<IApplicationBuilder> next) => app =>
-        {
-            next(app); app.UseRouting(); app.UseAuthJsonBoundary();
-            app.UseCsrfBoundary(Origin, new LiveCsrfIdentityResolver(f.Validator, f, new(f, f.Incidents), f.Clock));
-            app.UseEndpoints(e => { e.MapCsrfContext(); e.MapStudentSignup(f, 4096); e.MapLogin(f, f.Limiter, f, new(f, f.Incidents), f.Clock, 4096);
-                e.MapCurrentSession(f, f.Clock); e.MapCurrentSessionLogout(f); e.MapPasswordChange(f, 4096); e.MapAdminAccountPilot(f, 4096); });
-        };
+        { next(app); f.ConfigureRoutes(app, Origin); };
     }
     internal void Advance(TimeSpan elapsed) => _time.Now += elapsed;
     internal HttpClient Client() => _factory!.CreateClient(new() { BaseAddress = new(Origin), HandleCookies = true, AllowAutoRedirect = false });

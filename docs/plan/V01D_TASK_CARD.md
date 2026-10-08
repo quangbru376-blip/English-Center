@@ -12,23 +12,23 @@ Manager may change ONLY IntegrationSqlHost.cs and add BrowserSqlHostingTests.cs
 under backend/tests/EnglishCenter.Tests/Api/Integration; frontend/tests/browser/
 identity-entry.html, identity-entry.tsx, build-fixture.mjs, verify-identity.cjs;
 and this card, V01D_WORKER.md, D-worker-contract.json, sanitized D evidence/notes
-and affected CURRENT_STATE/TODO/handoffs. No production src/default entry,
+and affected AGENTS/DECISIONS/CURRENT_STATE/TODO/handoffs. No production src/default entry,
 project/package/lock/config/schema changes. Build with existing dependencies,
 --no-restore; frontend fixture output is temporary, not a deploy artifact.
 
 IntegrationSqlHost keeps the existing default TestServer mode and27cases.
 Add an explicit browser mode whose origin is the actual selected HTTPS loopback
-port; preserve exact Origin comparison, headers and framework CSRF. No proxy
-Origin/header rewriting, mock API interception or alternate auth policy.
+port; preserve exact Origin comparison, headers and framework CSRF. No Origin/auth-cookie/header rewriting, mock API interception or alternate auth policy.
 Mount the same implemented endpoints and services with the existing caller-TX
 SQL bridge. Serve a fixture entry that instantiates IdentityApp/HttpClient/AuthState
 using relative /api/v1 requests. Production App/main/Program remain unmounted.
 
 ## Authorized execution scope — ADR177
 
-One test process owns Kestrel bound ONLY to127.0.0.1 on an OS-assigned port,
+One test process owns Kestrel and a child Node TLS terminator, both bound ONLY
+to127.0.0.1 on OS-selected ports,
 temporary static frontend assets and headless installed Edge via bundled
-Playwright. No LAN/public bind, tunnel, proxy, firewall change or downloads.
+Playwright. No LAN/public bind, tunnel, production proxy/firewall change or downloads.
 Generate a short-lived localhost certificate/private key and JWT/CSRF keys
 in RAM. Certificate SAN must match127.0.0.1; trust only its exact public-key pin
 in the isolated browser process. Verify the loaded certificate fingerprint and
@@ -103,3 +103,37 @@ SNAPSHOT executor, independent persisted security audit and multi-client races.
 Runtime-principal/login provisioning, complete operator profile/key persistence,
 production certificate trust/readiness and DF prerequisites stay deferred.
 D success alone cannot close V01/M0. No restM0/packages/install/push/deploy.
+
+## Implemented TLS fixture refinement — ADR177
+
+Initial Windows Kestrel RAM certificate handshake failed SEC_E_NO_CREDENTIALS
+8009030E before application traffic. No key persisted/imported to fix it.
+Node HTTPS now holds the generated key/certificate in RAM and forwards to a
+private loopback Kestrel endpoint. It preserves original Host/Origin/auth headers,
+strips incoming Forwarded/X-Forwarded/X-V01-Bridge fields and supplies a random
+RAM-only bridge nonce. Kestrel checks loopback+constant-time nonce before assigning
+HTTPS scheme; direct calls without proof400. This is test-only trusted termination,
+not production forwarding/readiness proof. Both listener/process lifetimes belong
+to each rollback scenario. Negative default-trust/wrong-SPKI browsers reject the
+certificate; only exact-pin browser succeeds. Node independently verifies public
+certificate DER SHA256/SPKI and trusts only supplied public certificate/SAN.
+Group9 drops the real response after upstream processing, without intercepting or
+fabricating API output; manual safe lookup confirms the same completion.
+A rejected route.fetch prototype emitted ephemeral fixture headers in failed
+local diagnostics. Header lines were redacted from its ignored TRX; final driver
+avoids route.fetch, catches asynchronous failures and C# whitelists checkpoint
+metadata, discarding raw stderr. No token/password/keys enter committed evidence.
+## Manager review — PASS2026-10-08
+
+Final clean build0warnings0errors;37integration cases PASS/0fail/0skip (D10+B/C27).
+Default891PASS/37intentional opt-in SKIP/0fail; skips are not counted as PASS.
+Frontend48tests/0fail/0skip +typecheck/lint/build PASS. Both negative trust probes,
+wrong pin, direct unauthenticated bridge400, real signup3widths and lost-response
+completion lookup execute against actual fixture, without mock API responses.
+Baseline catalog/profile/permissions digest unchanged;24empty tables/users/members0.
+AGY49915a6c-e94 SUCCESS/full3reads/sole53line helper/zero observed scope violations;
+Codex reviewed events/diff and independently integrated/tested. Original retained.
+Source/backend/frontend entries/packages/schema unchanged; API/migration docs N/A.
+Owner explanation docs/notes/V01D.md11lines. Windows TLS prototype/header diagnostic
+failure and build-lock retry corrected; final clean assembly reverified37PASS.
+Apply reviewed bounded stage ADR163, then reverify main. Full V01 remains incomplete.
