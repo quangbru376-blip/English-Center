@@ -10,6 +10,14 @@
 
 ## Next
 
+- V01-F applied/reverified main652e48a: F6browser→ownedCOMMIT +E12 =18PASS,
+  default891PASS/55opt-in SKIP/buildclean.54scratch DBs cleaned; D07/owner files unchanged.
+  Next bounded unmounted fail-closed profile/readiness contract; runtime identity,
+  metadata visibility/key stores/PKI/DF01–03 unresolved. Full V01/M0 incomplete.
+  See V01F_TASK_CARD/V01_READINESS_CLOSURE; keep accepted D12/D13 deferrals.
+
+Historical V01-E checkpoint:
+
 - V01-E applied/reverified PASS main95bb665:12owned COMMIT cases, default891PASS/
   49opt-in SKIP/buildclean. All scratch DBs cleaned by identity; D07/owner files unchanged.
   Next readiness closure matrix/contract: runtime profile/principals/PKI and combined

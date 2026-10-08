@@ -2,6 +2,24 @@
 
 ## Checkpoint hiện tại
 
+V01-F completed/reviewed PASS/applied ADR163/reverified2026-10-08 code main652e48a,
+manager1da7463; identical backend test tree7251f84550e652456497d592c9fb317fa3bc2b18.
+Manager/main F6real Edge HTTPS→UI/API→ownedSQL COMMIT + E12regression =18PASS;
+default891PASS/55intentional opt-in SKIP/build0warnings0errors. Signup3widths,
+seven roles, tabs/profiles/logout, normal/restricted password and lost-lock-ack
+manual completion now observe committed effects through fresh SQL connections.
+Independent LOGIN/LOGOUT/ACCESS_DENIED history persists; mandatory counts stay
+separate. AGYefc6e268-2ca SUCCESS/full3reads/sole69line helper/zero observed scope
+violations; Codex fixed/reviewed/tested. All54F scratch databases identity-cleaned;
+D07 baseline/profile/catalog/102permissions unchanged. Production/default entries/
+packages/browser driver/owner4files unchanged; owner files unshared/untracked/unstaged.
+See V01F_TASK_CARD/F-verification-summary/notes/V01F.md/V01_READINESS_CLOSURE.
+Full V01/M0 remains incomplete: next prepare unmounted fail-closed typed profile/
+readiness implementation contract; actual runtime identity/catalog visibility,
+protected key stores/PKI and owner-deferred DF01–03 values are unresolved.
+Keep accepted D12/D13 deferrals; no repeat questions or unrelated product families.
+
+Historical V01-E checkpoint:
 V01-E completed/reviewed PASS/applied ADR163/reverified2026-10-08 code main95bb665,
 manager3a98377; identical backend test tree55255cc6d158eeb3c6b35b4d373ddfc48d7a89dd.
 Manager/main12owned SQL COMMIT cases PASS/0fail0skip; default891PASS/49opt-in SKIP,
