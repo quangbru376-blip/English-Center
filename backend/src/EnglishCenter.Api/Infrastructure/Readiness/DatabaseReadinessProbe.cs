@@ -55,27 +55,8 @@ public sealed class DatabaseReadinessProbe : IRuntimeReadinessProbe
         { cancellationToken.ThrowIfCancellationRequested(); return ReadinessProbeStatus.NotReady; }
     }
 
-    private static SqlConnectionStringBuilder? PrepareConnection(string resolved, ExecutionProfile execution)
-    {
-        var builder = new SqlConnectionStringBuilder(resolved);
-        if (!builder.ShouldSerialize("Encrypt") || builder.Encrypt.Equals(SqlConnectionEncryptOption.Optional) ||
-            string.IsNullOrWhiteSpace(builder.InitialCatalog) || builder.UserInstance || builder.AttachDBFilename.Length != 0)
-            return null;
-        var source = builder.DataSource;
-        if (source.StartsWith("lpc:", StringComparison.OrdinalIgnoreCase)) source = source[4..];
-        var parts = source.Split('\\');
-        if (parts.Length != 2 || parts[0] is not ("." or "localhost" or "(local)") ||
-            string.IsNullOrWhiteSpace(parts[1]) || !parts[1].All(character => char.IsAsciiLetterOrDigit(character) || character == '_'))
-            return null;
-        // Force local shared memory; a SQL client alias cannot silently redirect this probe.
-        builder.DataSource = "lpc:.\\" + parts[1];
-        builder.Pooling = false;
-        builder.Enlist = false;
-        builder.ConnectRetryCount = 0;
-        builder.PersistSecurityInfo = false;
-        builder.ConnectTimeout = Math.Min(execution.SqlSeconds, (int)((execution.ReadinessMs + 999L) / 1000));
-        return builder;
-    }
+    private static SqlConnectionStringBuilder? PrepareConnection(string resolved, ExecutionProfile execution) =>
+        LocalSqlReadinessConnection.Prepare(resolved, execution);
 
     private async Task<bool> HasSafePrincipalAsync(EnglishCenterDbContext context, int timeout, CancellationToken token)
     {
