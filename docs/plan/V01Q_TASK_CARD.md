@@ -2,7 +2,7 @@
 
 2026-10-08 base main5ddcd44/managera853149. Continue full assigned M0, ADR177/163.
 Codex manager implements this small boundary, no external delegation/context.
-Status IN PROGRESS. Operator selection remains pending; no guessed profile defaults.
+Status component PASS/applied/reverified; full M0 IN PROGRESS. Operator selection remains pending; no guessed profile defaults.
 
 Exact code scope: backend/src/EnglishCenter.Api/Api/Runtime/RuntimeReadinessBoundary.cs
 and backend/tests/EnglishCenter.Tests/Readiness/ReadinessBoundaryTests.cs.
@@ -32,10 +32,24 @@ routingADB7938FE69E00C991AEFB4EB114854F124EB3E2AC3963763937225646D3E915.
 applicable_overrides E04 literal health/no activity/cookie/CSRF/same-origin/API001
 errors, real SQL only when authorized, no SQLite/new package/route catalog rewrite.
 read_context current memory/requirements/E04 runtime/gate/error framework/tests.
-skill_verification pending independent scope/build/test review.
+skill_verification complete; see final independent review below.
 
 Verification: actual HTTP TestServer composed middleware; health methods/no-store/
 HEAD/no details, all9 wiring, fresh reload/drift, API pre-caller denial, /api/v10
 not confused, resolver cancellation/timeouts/late faults, invalid health-path refusals.
 Synthetic probes prove HTTP wiring only, never active runtime/M0-ready evidence.
 Full manager/main build --no-restore -warnaserror/tests and owner hashes unchanged.
+
+## Independent review PASS/applied/reverified
+Q main7ef2ce6/manager e18eddc, exact2files273insertions.28new HTTP tests;
+manager/main1197PASS/58intentional opt-in SKIP/build0warnings0errors.
+No source sharing/delegation; same complete backend/review/routing policies applied.
+Actual TestServer exercises all9 dependency failure routes, healthy repeated API,
+profile drift, literal minimal health/methods/no-store/HEAD, pre/in-flight cancellation,
+ignored-cancellation source/late fault, finite loader budget and unsafe path rejection.
+Initial build caught obsolete host APIs/nullability; corrected to WebApplication
+TestServer API, no suppression. Initial23PASS/1FAIL caught pre-decoded PathString
+input; validation now uses original string. Final28PASS within full suite.
+Startup/wiring check only; default Program not mounted, no actual operator health path
+or active runtime configuration inferred. Notes/V01Q/docs-api updated, no business API
+catalog/DTO/schema/package changes. Full M0 stays incomplete.

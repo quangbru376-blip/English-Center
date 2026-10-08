@@ -131,3 +131,6 @@ bindings prevent closing full M0. See M0_ENVIRONMENT_INPUTS; preserve owner defe
 
 ## V01-N/O/P component PASS, M0 remains IN PROGRESS
 All9 concrete categories implemented/unmounted. See V01NOP_TASK_CARD/ADR182/NOP summary; main d145072 and manager63cff80 both1169PASS/58opt-in SKIP/buildclean. Pending concrete LOCAL_DEV selection and actual runtime/catalog/PKI/protected-store/maintenance/startup integration; no fixture promotion or repeated authorization gate.
+
+## V01-Q/R/S PASS — whole M0 still IN PROGRESS
+Q explicit HTTP readiness and S narrow metadata allowlist applied/reverified;1197defaultPASS/58opt-in SKIP/buildclean and3read-only SQL denial cases each. R metadata candidate/ablation880/880facts, S3rollback grant cases. See cards/QRS summary/ADR183–184. No permanent grants or runtime activation; next actual profile/principal/PKI/custody/maintenance/startup integration.

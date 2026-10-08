@@ -1,25 +1,24 @@
 # English Center Management System — Project Memory
 
-Full M0 remains IN PROGRESS. V01-N/O/P component review PASS/applied ADR163/
-reverified2026-10-08 main d145072 / manager63cff80:37new +1132existing =
-1169PASS/58intentional opt-in SKIP/build0warnings0errors on both checkouts.
-Identical src9585d9f65871b305aa3dc19fa7b305e0d31ca3fc,
-tests6650877cfb965564b0df7d29ec45d656ccf5ba3a; frontend unchanged.
-Explicit bounded RAM request/cooperative deadline boundary, direct local HTTPS/
-CSRF binding with actual TLS leaf-pin/SAN/time/EKU probe, and separate maintenance
-scheduler/strict authority probe implemented, all unmounted. No positive SQL trust,
-runtime login/catalog or cleanup-effect proof claimed. P read-only SELECT returned
-exact9facts and denied privileged diagnostic identity; before/after D07 byte-identical
-10CD3407CE5986394703A9BEC2EE3E42314080809DDABE26906B1F14B593FC8E.
-AGY8c2c2519-d14 SUCCESS/sole27line guard/full3reads/zero observed violations;
-Codex fixed/reviewed/tested; original retained, integrated EOF normalized only.
-Four owner hashes unchanged/unshared/untracked/unstaged. No package/default entry/
-schema/grant/login/OS-trust changes or cleanup writes. See V01NOP_TASK_CARD/
-NOP-verification-summary/notes/V01NOP and ADR182.
-Next select concrete M0_LOCAL_DEV_PROPOSAL (new exact-value question pending), then
-materialize actual runtime/catalog/PKI/key-store/maintenance/startup contract and
-rerun integrated evidence. E04 owner-deferred values are not guessed or promoted
-from fixtures; no M1–M4/push/deploy. All9 concrete categories now exist, unregistered.
+Full M0 remains IN PROGRESS. V01-Q HTTP readiness component and V01-S explicit
+catalog metadata allowlist reviewed PASS/applied ADR163/reverified2026-10-08:
+Q main7ef2ce6/manager e18eddc; S maina6b4828/manager41b166d.
+Both1197PASS/58intentional opt-in SKIP/build0warnings0errors; Q adds28HTTP tests.
+Three readonly runtime-diagnostic denial tests PASS on each checkout; three S
+rollback grant cases PASS. R candidate and ablation each880/880 exact catalog
+facts, zero missing/extra/different; explicit VIEW SECURITY DEFINITION is redundant.
+S permits only state-G database VIEW DEFINITION and two migration-history SELECT
+columns besides CONNECT; extra business/table/grant-option rights still deny.
+No permanent grants/provisioning/role-definition/manifest/default entry changes.
+Exact src b4b552ec5c9638fead0ab5d81166f6bad30a2cda,
+tests ab39300509baafcef4f4d4a1dd3747931e2704e0; frontend unchanged.
+D07 before/after byte-identical10CD3407CE5986394703A9BEC2EE3E42314080809DDABE26906B1F14B593FC8E;
+fixture users/members/grants rolled back; owner4hashes unchanged/unshared/untracked.
+Q supplies explicit fresh-profile/all9-probe HTTP gate and minimal non-renewing
+health/startup check, unmounted. User impersonation is not real runtime login proof.
+Next actual profile selection/custody/runtime authentication/TLS/maintenance/startup
+integration; concrete LOCAL_DEV proposal remains pending, no fixture values guessed.
+No M1–M4/packages/install/push/deploy. See Q/R/S cards/QRS evidence/ADR183–184.
 
 This file is the entry point for agents working in this workspace. Before any
 non-trivial task, read these files in order:

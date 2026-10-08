@@ -1,11 +1,13 @@
 # V01 readiness closure matrix — 2026-10-08
 
-Latest: FULL M0 remains INCOMPLETE. N/O/P component PASS main d145072 /
-manager63cff80,1169defaultPASS/58opt-in SKIP/buildclean. All9 concrete categories
-implemented but unregistered; exact profile selection and actual principal/catalog/
-PKI/key custody/startup remain unresolved. P SELECT-only diagnostic denial/D07
-before-after hash equality verified; no positive trusted SQL/cleanup/runtime claim.
-See V01NOP_TASK_CARD/M0_LOCAL_DEV_PROPOSAL/NOP evidence/ADR182.
+Latest: FULL M0 remains INCOMPLETE. Q/S applied/reverified PASS (main7ef2ce6/
+a6b4828,manager e18eddc/41b166d),1197defaultPASS/58opt-in SKIP/buildclean.
+Q provides explicit HTTP readiness/startup check but is unmounted. R candidate/
+ablation each880/880catalog facts with temporary metadata reads; S declares exact
+G-only whitelist,3rollback grant cases PASS.3read-only diagnostic denials PASS
+on each checkout. No genuine runtime-login/TLS/custody/scheduler evidence yet.
+D07 byte-identical, fixtures rolled back, owner4files unchanged. See Q/R/S cards,
+QRS summary/ADR183–184 and M0_LOCAL_DEV_PROPOSAL; actual profile remains pending.
 
 Source audit at main3f649db; E code95bb665; F code652e48a; G code233a274; H7df8ba8/Id59e905 applied/reverified. This separates executed M0 evidence
 from active environment readiness. ADR177 authorizes assigned bounded work;
@@ -23,9 +25,9 @@ frontend App/main remain unmounted; SQL structural inspection is not full readin
 | Independent audit failure | E real table-lock timeout after COMMIT, incident fallback | Already bounded PASS; not production observability/SLO proof |
 | Actual SNAPSHOT/final authority | E3distinct context/isolation trace + committed revoke | Already bounded PASS; no generic report/remaining module claim |
 | Bounded races | E signup/sameUUID/differentUUID/password-logout | PASS for4two-client cases; no50-user load claim |
-| Exact schema/grants | D07–D13 exact catalog and permissions; A–E baseline unchanged | I mandatory runtime/effective-privilege wrapper +3real diagnostic denial cases PASS; positive runtime login/catalog visibility unproved |
-| Active typed profile | G descriptors/gate; M strict explicit local reference-profile reader,24new tests PASS | All9 probes unregistered; actual secret binding/startup wiring absent; no LOCAL_DEV-ready claim |
-| Runtime identity | Current local diagnostic Windows connection; runtime grants exist | Runtime must be non-dbo/ec_app_runtime/no sysadmin/CONTROL; no configured login inferred |
+| Exact schema/grants | D07–D13 exact catalog and permissions; A–E baseline unchanged | I mandatory runtime/effective-privilege wrapper +3real diagnostic denial cases PASS; R proves exact880facts via rollback-only metadata reads; S declares grant allowlist; genuine positive runtime login still unproved |
+| Active typed profile | G descriptors/gate; M strict explicit local reference-profile reader,24new tests PASS | All9 probes unregistered; Q explicit HTTP/startup check implemented; actual secret binding/default startup mounting absent; no LOCAL_DEV-ready claim |
+| Runtime identity | Current local diagnostic Windows connection; runtime grants exist | Runtime must be non-dbo/ec_app_runtime/no sysadmin/CONTROL plus declared S metadata reads; no configured login inferred |
 | HTTPS/proxy/IP | D exact-pin transient TLS/private nonce and negative checks | Fixture only; production origin/listen/trust/known-hop values remain DF02/D13 deferred |
 | JWT/CSRF keys | K actual RAM HMAC/RSA/ECDSA/active-key rotation proof; L fresh existing DPAPI XML/restart decryption/read-only challenge PASS | Actual secret refs/issuer/audience/rotation/store/application custody still unconfigured; fixture keys are not production bindings |
 | Runtime/patch artifacts | J fresh loaded .NET/ASP.NET/EF versions, exact five-file pins/date/ref policy PASS | Approved actual manifest and bound fresh SQL-version resolver not configured; SQL version tests synthetic |

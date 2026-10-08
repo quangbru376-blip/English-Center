@@ -4700,3 +4700,35 @@ claim. M0_LOCAL_DEV_PROPOSAL supplies reviewable values for previously deferred
 E04 D12/D13 slots; they are pending selection, not fixture-derived active defaults.
 Full M0 remains incomplete until actual bindings/startup/integrated proof. ADR163
 and ADR177 preserve task/application authority; no unrelated M1–M4/push/deploy.
+## ADR-183: Fresh HTTP readiness integration without a cached authority stamp
+
+Accepted bounded M0 implementation2026-10-08, V01-Q main7ef2ce6/manager e18eddc.
+RuntimeReadinessBoundary receives explicit profile source/gate/load deadline and
+explicit non-API health paths. Each API request checks a fresh profile/all9 mandatory
+dependencies before downstream; unavailable returns existing SERVICE_UNAVAILABLE.
+Health is literal ready/not_ready200/503 or alive200, no-store/HEAD/no activity,
+unsupported methods405. Raw configuration strings are validated before path decode.
+An explicit startup check does not authorize later requests from a cached result.
+Default Program/DI/paths remain unmounted; synthetic28HTTP cases prove wiring only.
+Real transport needs the HTTPS listener while business calls remain behind the gate.
+Full manager/main1197PASS/58opt-in SKIP/buildclean; actual M0 environment not ready.
+
+## ADR-184: Declared narrow catalog metadata reads, no hidden grant repair
+
+Accepted bounded M0 guard implementation2026-10-08, V01-S maina6b4828/manager41b166d.
+R rollback experiment/ablation each reads exact880facts with existing runtime-role
+membership plus database VIEW DEFINITION and SELECT on only the two EF migration
+history columns. Explicit VIEW SECURITY DEFINITION is redundant in this profile.
+S declares these state-G-only read permissions as exceptions to direct-grant
+exclusion. Broad table/business grants, W/D states, CONTROL/extra roles/server
+privileges remain excluded; unknown object/column IDs cannot match. All7 nullable
+safety facts/Express check/mandatory-runtime inspector/expected catalog unchanged.
+Three actual rollback cases prove candidate exception, business grant denial and
+grant-option denial;3readonly diagnostic denials still PASS manager/main.
+No grants/roles/logins/OS identities persist from the experiment. Baseline/catalog/
+profile/exact102rolepermissions and business rows unchanged. Impersonating a
+WITHOUT LOGIN user is not genuine login/runtime authority evidence. Future actual
+operator binding must declare these permissions explicitly; no startup grant repair.
+Historical ADR180's no-VIEW-DEFINITION scope remains historical; this explicit
+reviewed code allowlist is part of the later whole-M0 assignment, not a profile
+selection or permission to silently modify the retained baseline.

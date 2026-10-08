@@ -30,7 +30,7 @@ remains a failure, not a reason to trim the expected manifest or silently add gr
 Any permanent metadata allowlist/guard update needs its own concrete reviewed scope.
 Same backend/review/routing skill versions/overrides as V01Q, complete skills read.
 read_context requirements/E04 runtime/I guard/ReadCatalog/ExpectedCatalog/baseline.
-Status IN PROGRESS; skill_verification pending actual SQL/catalog/rollback checks.
+Status feasibility review PASS; skill_verification actual SQL/catalog/rollback checks complete.
 
 First candidate PASS:880/880 exact facts, rollback/user absence/baseline equality.
 One additional ablation case is authorized for independent least-privilege review:
@@ -38,3 +38,15 @@ same per-case owned rollback transaction/user/queries, omit explicit VIEW SECURI
 DEFINITION only. R-ablation-script.sql/R-ablation-catalog.txt/R-ablation-after.txt
 ignored outputs. Determine whether database VIEW DEFINITION already supplies that
 metadata visibility; do not recommend a redundant grant. No permanent apply.
+
+## Independent feasibility review PASS, no permanent deployment
+Candidate and ablation each880expected/880actual facts,0missing/0different/0extra.
+Exact key/value comparison and original module header/newline normalization used.
+Both rollback markers and fixture-user absence verified; D07 byte-identical digest
+10CD3407CE5986394703A9BEC2EE3E42314080809DDABE26906B1F14B593FC8E before/after.
+Explicit VIEW SECURITY DEFINITION unnecessary: do not recommend it alongside
+VIEW DEFINITION plus the two history-column reads. Metadata only, not actual login.
+SQLCMD initial incompatible -h/-y options rejected before executing the first
+transaction; retried without -h, with JSON fact rows, no predicate/manifest change.
+Skill verification: no external sharing, exact fixed catalog queries and rollback
+scopes honored; source module contents remain ignored/local. See QRS summary.

@@ -28,8 +28,8 @@ business limit to make a descriptor validate.
 Required operational closure after selection:
 1. Materialize dedicated runtime/schema/maintenance identities and protected stores
    in a separately reviewed concrete operator contract; keys never enter Git/chat.
-2. Resolve runtime-only catalog visibility against exact D12 grants without owner
-   fallback, hidden VIEW DEFINITION or weakening expected-manifest verification.
+2. Bind the declared R/S metadata candidate against exact D12 role grants without owner
+   fallback, undeclared permissions or weakening expected-manifest verification. R/S verified VIEW DEFINITION plus two history-column reads; no permanent grant applied.
 3. Validate web and SQL certificate trust independently; TrustServerCertificate=False
    remains mandatory for the transport/maintenance probes.
 4. Register all9 essential probes, mount explicit M0 adapters only after startup

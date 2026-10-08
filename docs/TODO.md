@@ -10,9 +10,9 @@
 
 ## Next
 
-- Finish owner-assigned M0; N/O/P components applied/reverified PASS (1169tests, buildclean).
+- Finish owner-assigned M0; Q/S components applied/reverified PASS (1197tests, buildclean); R catalog feasibility880/880.
 - Select concrete M0_LOCAL_DEV_PROPOSAL actual values already asked; do not infer fixture
-  values or re-ask accepted decisions. Resolve runtime identity/catalog and PKI bindings,
+  values or re-ask accepted decisions. Resolve actual runtime identity/approved metadata bindings and PKI,
   then actual operator bindings/startup integration and cleanup verification. M0 incomplete.
 - See M0_COMPLETION_TASK_CARD/M0_ENVIRONMENT_INPUTS; preserve owner4files and D07.
 

@@ -125,3 +125,12 @@ Safe completion is not AccountAdminView or historical effect snapshot; lookup404
 is not rollback proof. No automatic write retry/poll or other Admin routes.
 Default App/main and backend API exposure unchanged; real cookie/SQL/runtime
 integration remains unverified. See U05/U06 cards/evidence, ADR176.
+
+2026-10-08 V01-Q supplies an explicit unmounted RuntimeReadinessBoundary. Its
+caller chooses two distinct non-API health paths: GET/HEAD readiness literal
+ready/not_ready200/503, liveness alive200, no-store; HEAD has no body, other methods
+405. Paths are configuration, not new API-155/business routes or auth authority.
+Every /api/v1 request through this installed boundary evaluates a fresh supplied
+profile and all9 essential probes; failure returns existing SERVICE_UNAVAILABLE503
+before downstream. No cached ready stamp, dependency details, idle touch or automatic
+profile/provisioning. Default Program/routes remain unmounted. See V01Q_TASK_CARD.

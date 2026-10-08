@@ -31,8 +31,23 @@ S-after.txt. Record only case outcomes/fact count/baseline hashes, no identities
 Skills backend-clean-code/code-review/routing complete read; hashes from V01Q.
 read_context R evidence/requirements/E04/I guard/expected catalog/baseline.
 applicable_overrides SQL Server actual/nullable-fail-closed/no owner fallback/no
-package/newAPI/config defaults. skill_verification pending actual SQL/full test review.
+package/newAPI/config defaults. skill_verification complete; see final actual SQL/full-test review below.
 No Program/DI/frontend/inspector/schema/expected manifest/permanent grants changed.
 Docs this card, Q/R/S evidence/notes, decisions/current memory/handoffs/closure.
 Manager/main full build --no-restore -warnaserror/tests; existing opt-in read-only
 DatabaseReadinessSql tests diagnostic denial rerun; owner4hashes preserved.
+
+## Independent component review PASS/applied/reverified
+S maina6b4828/manager41b166d, exact1SQL file12insertions/1deletion.
+Three SQL cases8facts each: metadata approved(exclusion0), direct Account SELECT
+denied(exclusion1), metadata WITH GRANT OPTION denied(exclusion1). Each transaction
+rolled back with fixture-user absence; D07 before/after byte-identical digest
+10CD3407CE5986394703A9BEC2EE3E42314080809DDABE26906B1F14B593FC8E.
+Manager/main1197PASS/58intentional opt-in SKIP/build0warnings0errors, plus3actual
+readonly diagnostic denial tests PASS each. No permanent grant or positive runtime
+authority claimed; strict7facts/Express/mandatory inspector preserved. Source/tests
+trees b4b552ec5c9638fead0ab5d81166f6bad30a2cda /
+ab39300509baafcef4f4d4a1dd3747931e2704e0 identical on both checkouts.
+skill_verification complete: actual SQL semantics, whitelist state/object/column/
+unknown-ID behavior, authority source/scope and full regression reviewed. Notes/
+V01RS/QRS evidence/ADR184 updated. No business route/DTO/schema change (N/A).
