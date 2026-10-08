@@ -76,13 +76,15 @@ public sealed class SqlMaintenanceService : BackgroundService
         await using var transaction = (SqlTransaction)await connection.BeginTransactionAsync(IsolationLevel.ReadCommitted, deadline.Token);
         await using var command = connection.CreateCommand(); command.Transaction = transaction; command.CommandTimeout = Execution.SqlSeconds;
         command.CommandText = audit
-            ? "UPDATE dbo.AuditLog SET ip_address=NULL,ip_expires_at=NULL WHERE ip_expires_at<=@now; DELETE FROM dbo.AuditLog WHERE audit_category='SECURITY' AND security_expires_at<=@now;"
-            : "DELETE FROM dbo.ReplayOperation WHERE expires_at<=@now;";
+            ? AuditCleanupSql
+            : ReplayCleanupSql;
         var now = clock.GetUtcNow(); var ticks = now.UtcTicks - now.UtcTicks % TimeSpan.TicksPerMillisecond;
         command.Parameters.Add("@now", SqlDbType.DateTime2).Value = new DateTime(ticks, DateTimeKind.Utc);
         await command.ExecuteNonQueryAsync(deadline.Token); await transaction.CommitAsync(deadline.Token);
         // Disposal rolls back any uncommitted transaction; no automatic retry after unknown COMMIT.
     }
+    private const string AuditCleanupSql = "UPDATE dbo.AuditLog SET ip_address=NULL,ip_expires_at=NULL WHERE ip_expires_at<=@now; DELETE FROM dbo.AuditLog WHERE audit_category='SECURITY' AND security_expires_at<=@now;";
+    private const string ReplayCleanupSql = "DELETE FROM dbo.ReplayOperation WHERE expires_at<=@now;";
     private const string PrincipalSql = """
         SELECT CASE WHEN USER_NAME()='dbo' THEN 1 ELSE 0 END,
           IS_SRVROLEMEMBER('sysadmin'), HAS_PERMS_BY_NAME(DB_NAME(),'DATABASE','CONTROL'),
@@ -95,13 +97,13 @@ public sealed class SqlMaintenanceService : BackgroundService
               EXISTS(SELECT 1 FROM sys.user_token WHERE type='DATABASE ROLE' AND name<>'public') OR
               EXISTS(SELECT 1 FROM sys.database_permissions p JOIN sys.user_token t ON p.grantee_principal_id=t.principal_id
                 WHERE t.name<>'public' AND p.state IN('G','W') AND NOT
-                  ((p.class=0 AND p.permission_name='CONNECT') OR
+                  (p.state='G' AND ((p.class=0 AND p.permission_name='CONNECT') OR
                    (p.class=1 AND p.major_id=OBJECT_ID('dbo.ReplayOperation') AND ((p.minor_id=0 AND p.permission_name='DELETE') OR (p.permission_name='SELECT' AND p.minor_id=COLUMNPROPERTY(OBJECT_ID('dbo.ReplayOperation'),'expires_at','ColumnId')))) OR
                    (p.class=1 AND p.major_id=OBJECT_ID('dbo.AuditLog') AND
                       ((p.minor_id=0 AND p.permission_name='DELETE') OR
                        (p.permission_name='SELECT' AND p.minor_id IN (COLUMNPROPERTY(OBJECT_ID('dbo.AuditLog'),'audit_category','ColumnId'), COLUMNPROPERTY(OBJECT_ID('dbo.AuditLog'),'security_expires_at','ColumnId'), COLUMNPROPERTY(OBJECT_ID('dbo.AuditLog'),'ip_expires_at','ColumnId'))) OR (p.permission_name='UPDATE' AND p.minor_id IN
                          (COLUMNPROPERTY(OBJECT_ID('dbo.AuditLog'),'ip_address','ColumnId'),
-                          COLUMNPROPERTY(OBJECT_ID('dbo.AuditLog'),'ip_expires_at','ColumnId')))))))
+                          COLUMNPROPERTY(OBJECT_ID('dbo.AuditLog'),'ip_expires_at','ColumnId'))))))))
             THEN 1 ELSE 0 END,
           CASE WHEN HAS_PERMS_BY_NAME('dbo.AuditLog','OBJECT','DELETE')=1 AND HAS_PERMS_BY_NAME('dbo.AuditLog','OBJECT','SELECT','audit_category','COLUMN')=1 AND HAS_PERMS_BY_NAME('dbo.AuditLog','OBJECT','SELECT','security_expires_at','COLUMN')=1 THEN 1 ELSE 0 END,
           CASE WHEN HAS_PERMS_BY_NAME('dbo.ReplayOperation','OBJECT','DELETE')=1 AND HAS_PERMS_BY_NAME('dbo.ReplayOperation','OBJECT','SELECT','expires_at','COLUMN')=1 THEN 1 ELSE 0 END,
