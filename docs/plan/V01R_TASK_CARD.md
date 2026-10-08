@@ -31,3 +31,10 @@ Any permanent metadata allowlist/guard update needs its own concrete reviewed sc
 Same backend/review/routing skill versions/overrides as V01Q, complete skills read.
 read_context requirements/E04 runtime/I guard/ReadCatalog/ExpectedCatalog/baseline.
 Status IN PROGRESS; skill_verification pending actual SQL/catalog/rollback checks.
+
+First candidate PASS:880/880 exact facts, rollback/user absence/baseline equality.
+One additional ablation case is authorized for independent least-privilege review:
+same per-case owned rollback transaction/user/queries, omit explicit VIEW SECURITY
+DEFINITION only. R-ablation-script.sql/R-ablation-catalog.txt/R-ablation-after.txt
+ignored outputs. Determine whether database VIEW DEFINITION already supplies that
+metadata visibility; do not recommend a redundant grant. No permanent apply.
