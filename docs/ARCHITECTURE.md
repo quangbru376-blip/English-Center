@@ -1,5 +1,17 @@
 # Architecture
 
+V01-G applied/reverified2026-10-08 main233a274 adds Infrastructure/Readiness:
+immutable essential profile references/typed slots, validation and finite deadline
+helpers, unmounted fresh all-category readiness gate. There is no config loader,
+actual probe implementation/registration/DI/health route or startup mounting.
+Only future concrete read-only checks can provide runtime evidence; owner/diagnostic
+SQL compatibility mode cannot count. Result literal ready/not_ready200/503; enum
+causes and redacted descriptor ToString avoid value/exception dumps. Async waits
+have an overall deadline, propagate caller cancellation and observe late faults;
+probe resource cleanup and prompt task return remain adapter obligations.
+F already proves bounded browser→owned SQL effects; G adds pure core tests only.
+Actual active profile/principal/PKI and full V01/M0 remain incomplete (ADR179).
+
 U05/U06 applied/reverified2026-10-08 mainf83a7d6. IdentityApp explicitly composes
 own-password page for NORMAL/all roles and PASSWORD_CHANGE;204 invalidates all
 local RAM, signals tabs and returns login, never upgrades scope. Local confirmation

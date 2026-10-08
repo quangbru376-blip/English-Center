@@ -4608,3 +4608,22 @@ bounded two-client races. This complements D browser/caller-rollback evidence;
 it does not establish a combined browser→owned COMMIT or least-privileged runtime
 profile/principal/production PKI. Full V01/M0 remains incomplete. Test-only changes,
 no production/default entry/package change. See V01E_TASK_CARD and E evidence.
+
+## ADR-179 — unmounted essential profile/readiness core (2026-10-08)
+
+V01-G implements immutable typed essential descriptors and reference-only static
+validation without choosing D12/D13/DF01–03 environment values. Fixed160/snapshot,
+UTC+7/HTTPS/CSV capacity and finite deadline ordering are enforced; no defaults or
+loaded secrets. SQL timeout conversion must fit int milliseconds; lock<SQL<request,
+CSV/readiness<=request, actual remaining lock budgets strictly larger than lock.
+Nine mandatory fresh probe categories gate readiness; missing/duplicate/unknown,
+false/exception/timeout fail closed, no cached-ready fallback. Public result remains
+literal ready/not_ready200/503, internal diagnostics fixed enums. Caller cancellation
+propagates; late async faults observed, concrete probes own cancellation/resource
+cleanup and must return tasks promptly. Future probes must prove real dependencies,
+including non-dbo/ec_app_runtime authority and exact catalog/snapshot; owner-mode
+SQL inspection or descriptor presence cannot establish readiness. No probes/DI/health
+routes/config loader/Program mounting supplied. Backup/recovery values remain gated
+before those operations. G manager/main983PASS/55opt-in SKIP/buildclean; no SQL run,
+frontend/schema/package/default entry changes. Full V01/M0 incomplete. Next bounded
+concrete probe contract; accepted owner deferrals preserved, no repeat questions.

@@ -1,6 +1,6 @@
 # V01 readiness closure matrix — 2026-10-08
 
-Source audit at main3f649db; E code95bb665; F code652e48a applied/reverified. This separates executed M0 evidence
+Source audit at main3f649db; E code95bb665; F code652e48a; G code233a274 applied/reverified. This separates executed M0 evidence
 from active environment readiness. ADR177 authorizes assigned bounded work;
 accepted owner D12/D13 deferrals remain decisions, not repeat permission gates.
 No operator secrets/configuration were read or shared. Production Program and
@@ -17,11 +17,11 @@ frontend App/main remain unmounted; SQL structural inspection is not full readin
 | Actual SNAPSHOT/final authority | E3distinct context/isolation trace + committed revoke | Already bounded PASS; no generic report/remaining module claim |
 | Bounded races | E signup/sameUUID/differentUUID/password-logout | PASS for4two-client cases; no50-user load claim |
 | Exact schema/grants | D07–D13 exact catalog and permissions; A–E baseline unchanged | Runtime login binding/owner context health and catalog visibility not proved |
-| Active typed profile | E04_RUNTIME_PROFILE accepted contract; no implementation wiring | Missing startup slots/validation/health orchestration; do not label diagnostic fixture LOCAL_DEV-ready |
+| Active typed profile | G immutable essential descriptors/static validation/fresh bounded readiness core983tests PASS | Concrete probes, secret/config loader and startup/health wiring absent; synthetic evidence is not LOCAL_DEV-ready |
 | Runtime identity | Current local diagnostic Windows connection; runtime grants exist | Runtime must be non-dbo/ec_app_runtime/no sysadmin/CONTROL; no configured login inferred |
 | HTTPS/proxy/IP | D exact-pin transient TLS/private nonce and negative checks | Fixture only; production origin/listen/trust/known-hop values remain DF02/D13 deferred |
 | JWT/CSRF keys | Fixtures RAM-only signer/validator + ephemeral framework protection | Production secret refs, rotation, protected persisted store/issuer/audience unconfigured |
-| Timezone/deadline/body/buffer | Accepted fixed UTC+7/timers; finite fixture10s/1s lock | Full active typed slots/order/fail-closed; fixture budgets not owner SLO/DF01 choice |
+| Timezone/deadline/body/buffer | G typed UTC+7/finite ordering/overflow/remaining-budget/body/CSV-buffer validation | Actual OS resolution/applied middleware budgets not proved; fixture values not owner SLO/DF01 |
 | Offline dependencies/blocklist | Pins/licenses/manifest/loader PASS; unchanged src/packages | Scheduled servicing/provenance review before real exposure; no install inferred |
 | Cleanup/expiry/recovery | Scratch ownership cleanup PASS; design90d/24h/backup policy | Maintenance jobs/key/media/restore/load remain later operational prerequisites; no runtime deletion role |
 
@@ -29,7 +29,7 @@ F6browser→owned COMMIT+E12regression PASS on manager/main;54Fscratch DBs clean
 Read-only local probe confirms Windows-only/sysadmin diagnostic identity; no runtime
 principal binding inferred. Original D07 baseline unchanged.
 Full V01/M0 remains INCOMPLETE. Completed bounded family F closes combined
-browser→owned COMMIT only. Next prepare unmounted fail-closed typed profile/readiness contract. F leaves operator profile/principal/PKI and DF01–03
+browser→owned COMMIT only. G closes unmounted core only (92new tests), no concrete probes registered. Next bounded concrete read-only dependency-probe contract. F leaves operator profile/principal/PKI and DF01–03
 explicitly unresolved; no LAN/Internet bind, server login, real Admin, backup,
 production entry mounting, extra business family, packages, push or deploy.
 Canonical sources: requirements4.10/identity verification, E04_RUNTIME_PROFILE,

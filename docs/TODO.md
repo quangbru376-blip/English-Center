@@ -10,6 +10,13 @@
 
 ## Next
 
+- V01-G applied/reverified main233a274:92new/983defaultPASS/55opt-in SKIP/buildclean.
+  Unmounted typed profile/readiness core only; next bounded concrete read-only probes.
+  Actual principal/catalog visibility/protected stores/PKI/DF01–03 remain unresolved.
+  Full V01/M0 incomplete; see V01G_TASK_CARD/closure matrix; preserve owner files.
+
+Historical V01-F checkpoint:
+
 - V01-F applied/reverified main652e48a: F6browser→ownedCOMMIT +E12 =18PASS,
   default891PASS/55opt-in SKIP/buildclean.54scratch DBs cleaned; D07/owner files unchanged.
   Next bounded unmounted fail-closed profile/readiness contract; runtime identity,

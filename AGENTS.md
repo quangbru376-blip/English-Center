@@ -224,6 +224,21 @@ Default entries/production src/packages/schema unchanged; test listeners stopped
 Full V01/M0 incomplete: next V01-E owned COMMIT/cleanup/SNAPSHOT/security-audit/race
 contract. Standing owner completion authority ADR177 applies; no repeat permission
 questions for assigned aspects. See V01D_TASK_CARD/D-verification-summary.json.
+V01-G completed/reviewed PASS/applied ADR163/reverified2026-10-08 code main233a274,
+managerd497384; identical backend src aa437f569dfef69b392f0f88fd9a0e225b7b046c,
+tests7c3b3d2afb6c29c9602f9f308005edb9d726fde6. Unmounted immutable essential
+profile descriptors, fail-closed validation/remaining deadline gates and fresh
+nine-category readiness orchestration; missing/ambiguous/failed/timed-out probes
+return not_ready/503, caller cancellation propagates, fixed secret-free diagnostics.
+Manager/main92new+891existing=983PASS/55opt-in SKIP/build0warnings0errors.
+AGY2b90a6c8-151 SUCCESS/full3reads/sole37line deadline helper/zero observed scope
+violations; Codex independent fixes/review/tests. No concrete probes registered,
+secret/config loading, Program/DI/route/frontend/SQL/schema/grant/package changes.
+Four owner files hash-identical/unshared/untracked/unstaged; SQL not rerun.
+See V01G_TASK_CARD/G-verification-summary/notes/V01G.md, ADR179 and closure matrix.
+Full V01/M0 incomplete: next prepare bounded concrete read-only dependency-probe
+contract; runtime principal/catalog visibility, protected stores/PKI and accepted
+D12/D13/DF01–03 environment values remain unresolved/deferred. No repeat questions.
 Historical initial scope is retained in
 FIRST_CODE_HANDOFF; latest checkpoint and explicit current owner scope govern.
 Owner expanded standing task authority2026-10-08 (ADR-177): each assigned task

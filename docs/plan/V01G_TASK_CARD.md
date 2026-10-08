@@ -2,7 +2,7 @@
 
 2026-10-08; base main a1bbea1. Assigned continuation of F readiness closure.
 Authority ADR177 covers bounded implementation/context sharing; ADR163 PASS apply.
-Status: PREPARED, not runtime readiness or full V01/M0 completion.
+Status: completed/reviewed PASS/applied ADR163/reverified manager and main.
 
 Implement immutable typed descriptors for essential startup groups: explicit
 profile kind, runtime/patch manifest reference, database secret/schema references
@@ -35,6 +35,19 @@ No actual probes registered or fabricated production evidence; database adapter
 deferred until bound least-privileged principal can prove exact catalog/snapshot.
 Inspector diagnostic requireRuntimePrincipal=false must never count as readiness.
 
+Future concrete probe obligations (G implements orchestration only): runtime probe
+must verify compatible actual patch/lock manifest; timezone probe must resolve OS
+equivalent UTC+7 without host fallback; database probe must prove least-privileged
+principal AND exact schema/modules/results/DB160/snapshot ON; transport probe must
+prove actual origin/listen/trust/known-hop and secure cookie/CSRF policy; key probes
+must verify usable cryptographic material/rotation/issuer/audience/session lifetime
+and actual protected persistent framework store; blocklist probe must check shipped
+manifest/integrity/encoding/provenance; execution probe must verify applied budgets/
+limits/fixed timers/EC-C1/CSV; maintenance probe must verify configured separate
+principal/jobs/retention. Descriptor strings alone are never positive evidence.
+Probes must return an asynchronous task promptly; this gate bounds async waiting,
+not arbitrary synchronous blocking or forced termination of third-party code.
+
 Manager allowed code: Infrastructure/Readiness/RuntimeProfile.cs,
 RuntimeProfileValidator.cs, RuntimeReadinessGate.cs and tests/Readiness/*.cs.
 Worker sole DeadlineBudgets.cs <=65 lines. Docs G card/brief/contract/evidence/notes,
@@ -52,7 +65,12 @@ read_context: ordered Project Memory, NEXT/HANDOFF, requirements4.10,
 E04_RUNTIME_PROFILE, V01_READINESS_CLOSURE, inspector/Program and E/F evidence.
 Worker context exact G_WORKER +backend skill+routing; complete reads before write;
 no source/owner/secrets/commands/network/SQL. Standing ADR177 covers exact payload.
-skill_verification: pending receipt/tools/diff plus independent Codex checks.
+skill_verification: AGY2b90a6c8-151 SUCCESS/exit0; observed complete18/46/101-line
+authorized reads in order before sole write, own37-line read, no other tools/reads
+or commands/network/SQL/observed scope violations. Original helper retained; only
+trailing blank EOF normalized (integrated36lines), no semantic manager change.
+Receipt/events hashes in G evidence. Tool events are not an OS-enforced read
+sandbox or proof of complete understanding. Codex independently reviewed/tested.
 
 Checks: missing/unknown/unsafe slots, immutable/redacted descriptors, finite and
 overflow/equality/remaining deadline boundaries; missing/duplicate/unknown probe,
@@ -60,3 +78,20 @@ all fresh success, failure/exception/sanitized cause, timeout/uncooperative prob
 caller cancellation and no stale success. Build --no-restore -warnaserror;
 default full non-SQL tests on manager and main. Existing55 SQL/browser opt-in cases
 remain skipped; G supplies no new SQL/HTTPS/operator-readiness evidence.
+
+Manager final:92new +891existing =983PASS/55intentional opt-in SKIP/0fail;
+solution build --no-restore -warnaserror0warnings0errors. Initial90 targeted PASS;
+full run982PASS/1new-test array-covariance error/55SKIP; fixed interface array
+construction, then full final983PASS. Earlier xUnit cancellation analyzer errors
+fixed without suppression. Core review fixes recheck mutable probe descriptors,
+sanitize throwing descriptor, reject whitespace origin, propagate caller cancel
+even when a probe throws, and recheck overall deadline before ready.
+Review: PASS for bounded G core, no unresolved checks in assigned code scope.
+API/DTO/UI/business/money/migration/SQL checks N/A: none changed. Full V01/runtime
+remains incomplete until actual dependency adapters and active environment evidence.
+
+Main reverified:983PASS/55intentional opt-in SKIP/0fail; solution build0warnings0errors.
+Initial sandbox compiler process cancellation resolved by authorized normal build;
+no test/code waiver. Code main233a274/managerd497384; src and test trees identical.
+Default entries/frontend/package/schema/grants unchanged; SQL not rerun.
+Four owner hashes verified/untracked/unshared/unstaged. Originals/receipts retained.
