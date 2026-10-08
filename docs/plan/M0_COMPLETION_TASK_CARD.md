@@ -79,3 +79,26 @@ inputs fail. No StoreElement during checks. Temp deletes restricted to exact own
 Guid/root; raw key/token/connection contents never evidence or external context.
 Four owner files baseline hashes preserved/unshared/untracked/unstaged.
 This scope supplies probes, not active environment or full-M0 acceptance.
+
+## V01-M — explicit profile reader, next independent code scope
+
+2026-10-08: J/K/L manager47new+1061=1108PASS/58opt-in SKIP/buildclean;
+review PASS and code applied main47c9c7f from manager4ff6f12; main recheck pending.
+AGY82e61f9f-153 SUCCESS/sole96line policy/full28+46+101 context reads then write,
+only own output reread, zero observed violations; EOF normalized only. Raw original
+retained. L uses local Windows current-user DPAPI store only, explicit positive
+file count/byte limits and exact framework decryptor; no generic vault provisioning.
+
+M manager-only exact code scope Infrastructure/Readiness/RuntimeProfileReader.cs
+and tests/EnglishCenter.Tests/Readiness/RuntimeProfileReaderTests.cs. No delegation
+needed for this small strict-boundary implementation. Same skills/versions/overrides.
+Explicit absolute local file and positive byte bound, fresh bounded async read;
+no current-directory/env/default file discovery. Strict camelCase existing typed
+record shape; JSON duplicates/unknown fields/stringified numbers/integer or case-
+variant enums/depth>8 invalid. Deserialize only reference descriptors, validate
+through existing RuntimeProfileValidator. Fixed enum failures, redacted result;
+caller cancellation propagates, deadline supplied finite explicit bound. A valid
+parse is never ready, does not resolve keys/SQL or mount Program. Preserve runtime
+versions/owner deferrals; no new activeprofile values. Verify real Guid-owned
+Temp profile files, exact roundtrip and malformed/refused/fresh/cancel cases, full
+manager/main suites/build. Update affected docs after verification/apply PASS.
