@@ -21,9 +21,27 @@ routingADB7938FE69E00C991AEFB4EB114854F124EB3E2AC3963763937225646D3E915.
 read_context ordered memory/handoffs, requirements ADR116, E04 runtime, T card,
 actual service/maintenance tests/profile fixture. applicable_overrides unchanged
 cookie transport/SQL-specific evidence/90d-IP mandatory-retained/24h-replay; no SQLite.
-skill_verification pending actual diff/build/tests/review.
+skill_verification complete: exact147line sole test diff, actual service lifecycle,
+manual timer controls and cleanup/cancellation reviewed; no auth/SQL bypass.
 
 Manager/main build --no-restore -warnaserror, targeted new tests and full default
 suite, exact source/test trees, owner4hash preservation. No SQL rerun for test-only
 change. Docs this card/notes/U summary, affected CURRENT_STATE/TODO/handoffs/closure
 and M0 completion/environment status. Full M0 remains incomplete until real bindings.
+
+## Independent review PASS/applied/reverified
+
+Main8bc6a1a / manager942403b. Six targeted cases PASS; manager/main1203defaultPASS/
+63intentional opt-in SKIP/build0warnings0errors. Initial compile caught array Count
+usage; corrected to Length before tests, no suppression or production fix needed.
+Explicit distinct timer periods/no initial run/fresh failure attempts PASS; blocked
+resolvers prove both loops proceed independently and20ticks per timer coalesce to
+one pending run per job. Shutdown completes despite uncooperative resolvers without
+incrementing failure count; late synthetic fault supplied after stop, production
+ProbeWait observer preserved. Invalid0/-1/overflow schedule fails before any timer.
+All timers disposed after stop and later pulses cause no resolver calls.
+Source unchanged b0b7af270d28330541615436e298b462364f35dd; tests identical
+70ace516246f1e500232657b8242a08cb186d194. Four owner hashes unchanged/untracked/
+unstaged/unshared. No SQL rerun, production/API/DTO/migration/default entry changes
+(review N/A). Notes13lines. Actual authenticated/TLS SQL scheduler and owned COMMIT
+still open; synthetic lifecycle results do not authorize readiness/full M0 claims.

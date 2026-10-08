@@ -141,3 +141,10 @@ Maintenance SQL effects/authority main1f0f0e9/manager7dbcb4d applied/reverified:
 loophole fixed; exact90d/24h expiry effects/mandatory retention/IP cleanup/future/
 idempotence/rollback verified,10scratch DBs removed, D07/owner unchanged. Actual
 principal/TLS/scheduler and profile/custody/startup remain open; see T card/summary.
+
+## V01-U PASS — whole M0 still IN PROGRESS
+2026-10-09 main8bc6a1a/manager942403b,6scheduler lifecycle cases PASS,
+1203defaultPASS/63opt-in SKIP/buildclean each. Actual loops with synthetic timers/
+RAM resolvers prove independent periods/non-overlap/coalescing/stop/refusal. Source/
+SQL/owner unchanged; actual scheduled SQL authentication/TLS/owned COMMIT and
+profile/custody/startup still open. See U card/summary.

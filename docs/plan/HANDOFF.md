@@ -1,25 +1,26 @@
 # Handoff — E01–E05 và complete design baseline đã Accepted
 
-Full M0 remains IN PROGRESS. V01-T maintenance SQL effects/authority reviewed
-PASS/applied ADR163/reverified: main1f0f0e9 / manager7dbcb4d.
-Only SqlMaintenanceService and its new SQL tests changed; narrow database grants
-now require state G, denying WITH GRANT OPTION. Existing cleanup statements are
-private constants used by production and tested directly, without auth/TLS bypass.
-Manager/main1197defaultPASS/63intentional opt-in SKIP/build0warnings0errors;
-5actual SQL cases PASS each: narrow rights versus delegation/business SELECT/runtime
-role, exact expiry boundary, mandatory retention/IP clearing, future rows, separate
-replay cleanup, repeat idempotence and savepoint/full rollback restoration.
-All10GUID-owned scratch DBs identity-cleaned. D07 baseline byte-identical
-10CD3407CE5986394703A9BEC2EE3E42314080809DDABE26906B1F14B593FC8E;
-owner4hashes unchanged/unshared/untracked/unstaged. No permanent grants or runtime activation.
-Exact src b0b7af270d28330541615436e298b462364f35dd,
-tests e825ccea3a4247e0c58c57914d5f07e5e21e6275; frontend unchanged.
-Actual maintenance login/TLS/scheduler, profile selection, protected key custody and
-startup integration remain unverified/unbound. Concrete LOCAL_DEV proposal pending;
-no fixture promotion, M1–M4/install/push/deploy. See V01T_TASK_CARD/T summary/notes.
+Full M0 remains IN PROGRESS. V01-U scheduler lifecycle reviewed PASS/applied
+ADR163/reverified2026-10-09: main8bc6a1a / manager942403b.
+One test file only; actual BackgroundService/PeriodicTimer loops exercised using
+manual test clock and missing/pending RAM resolvers. Six new cases prove explicit
+independent periods/no initial run, fresh later attempts/error counts, per-job
+non-overlap/coalesced ticks, shutdown with uncooperative resolver, disposed timers,
+and invalid-schedule refusal. No SQL/connection/network or production changes.
+Manager/main1203PASS/63intentional opt-in SKIP/build0warnings0errors.
+Source unchanged b0b7af270d28330541615436e298b462364f35dd;
+test tree70ace516246f1e500232657b8242a08cb186d194 identical; frontend unchanged.
+Owner4hashes unchanged/unshared/untracked/unstaged. Actual maintenance login/TLS/
+scheduler with SQL and service-owned COMMIT remain unverified; U is synthetic lifecycle evidence.
+Next actual profile selection/custody/runtime authentication/TLS/startup integration.
+LOCAL_DEV proposal remains pending; owner deferrals preserved, no fixture promotion,
+M1–M4/install/push/deploy. See V01U_TASK_CARD/U summary/notes.
 
-Historical Q/R/S: Q HTTP readiness and S exact metadata whitelist applied PASS;
-R candidate/ablation880/880facts. See Q/R/S cards/QRS summary/ADR183–184.
+Historical T: main1f0f0e9/manager7dbcb4d,5SQL PASS each, database-grant-option
+guard fixed,90d/24h effects/rollback verified,10scratch databases identity-cleaned.
+D07 baseline byte-identical10CD3407CE5986394703A9BEC2EE3E42314080809DDABE26906B1F14B593FC8E;
+24empty tables/4roles102permissions unchanged; SQL not rerun for U.
+Historical Q/R/S: HTTP readiness/metadata whitelist PASS,880/880catalog feasibility.
 
 
 Historical N/O/P: see V01NOP_TASK_CARD/NOP evidence/ADR182.
