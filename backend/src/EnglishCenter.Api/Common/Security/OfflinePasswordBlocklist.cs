@@ -45,35 +45,7 @@ public sealed class OfflinePasswordBlocklist
             byte[] top10kBytes = ReadAndValidateBytes(directory, Top10kFileName, Top10kSha256);
             byte[] top12kBytes = ReadAndValidateBytes(directory, Top12kFileName, Top12kSha256);
 
-            var top10kRecords = ParseRecords(top10kBytes);
-            if (top10kRecords.Count != Top10kRecordCount)
-            {
-                throw new InvalidOperationException(FailureMessage);
-            }
-
-            var top12kRecords = ParseRecords(top12kBytes);
-            if (top12kRecords.Count != Top12kRecordCount)
-            {
-                throw new InvalidOperationException(FailureMessage);
-            }
-
-            var merged = new HashSet<string>(top10kRecords.Count + top12kRecords.Count, StringComparer.Ordinal);
-            for (int i = 0; i < top10kRecords.Count; i++)
-            {
-                merged.Add(top10kRecords[i]);
-            }
-
-            for (int i = 0; i < top12kRecords.Count; i++)
-            {
-                merged.Add(top12kRecords[i]);
-            }
-
-            if (merged.Count != MergedRecordCount)
-            {
-                throw new InvalidOperationException(FailureMessage);
-            }
-
-            return new OfflinePasswordBlocklist(merged);
+            return Create(top10kBytes, top12kBytes);
         }
         catch (InvalidOperationException)
         {
@@ -83,6 +55,75 @@ public sealed class OfflinePasswordBlocklist
         {
             throw new InvalidOperationException(FailureMessage);
         }
+    }
+
+    public static async Task<OfflinePasswordBlocklist> LoadAsync(string directory, CancellationToken cancellationToken)
+    {
+        cancellationToken.ThrowIfCancellationRequested();
+        try
+        {
+            await ReadPinnedAsync(directory, LicenseFileName, LicenseSha256, 1072, cancellationToken);
+            var top10k = await ReadPinnedAsync(directory, Top10kFileName, Top10kSha256, 73026, cancellationToken);
+            var top12k = await ReadPinnedAsync(directory, Top12kFileName, Top12kSha256, 100206, cancellationToken);
+            cancellationToken.ThrowIfCancellationRequested();
+            var result = Create(top10k, top12k);
+            cancellationToken.ThrowIfCancellationRequested();
+            return result;
+        }
+        catch (OperationCanceledException) { throw; }
+        catch (Exception)
+        {
+            cancellationToken.ThrowIfCancellationRequested();
+            throw new InvalidOperationException(FailureMessage);
+        }
+    }
+
+    private static async Task<byte[]> ReadPinnedAsync(string directory, string fileName,
+        string expectedHash, int expectedLength, CancellationToken cancellationToken)
+    {
+        await using var stream = new FileStream(Path.Combine(directory, fileName), FileMode.Open,
+            FileAccess.Read, FileShare.Read, 4096, FileOptions.Asynchronous | FileOptions.SequentialScan);
+        // These are the exact approved artifact lengths, not an operator budget or business cap.
+        if (stream.Length != expectedLength) throw new InvalidOperationException(FailureMessage);
+        var bytes = new byte[expectedLength];
+        await stream.ReadExactlyAsync(bytes, cancellationToken);
+        if (await stream.ReadAsync(new byte[1], cancellationToken) != 0 ||
+            !Convert.ToHexString(SHA256.HashData(bytes)).Equals(expectedHash, StringComparison.Ordinal))
+            throw new InvalidOperationException(FailureMessage);
+        return bytes;
+    }
+
+    private static OfflinePasswordBlocklist Create(byte[] top10kBytes, byte[] top12kBytes)
+    {
+        var top10kRecords = ParseRecords(top10kBytes);
+        if (top10kRecords.Count != Top10kRecordCount)
+        {
+            throw new InvalidOperationException(FailureMessage);
+        }
+
+        var top12kRecords = ParseRecords(top12kBytes);
+        if (top12kRecords.Count != Top12kRecordCount)
+        {
+            throw new InvalidOperationException(FailureMessage);
+        }
+
+        var merged = new HashSet<string>(top10kRecords.Count + top12kRecords.Count, StringComparer.Ordinal);
+        for (int i = 0; i < top10kRecords.Count; i++)
+        {
+            merged.Add(top10kRecords[i]);
+        }
+
+        for (int i = 0; i < top12kRecords.Count; i++)
+        {
+            merged.Add(top12kRecords[i]);
+        }
+
+        if (merged.Count != MergedRecordCount)
+        {
+            throw new InvalidOperationException(FailureMessage);
+        }
+
+        return new OfflinePasswordBlocklist(merged);
     }
 
     private static byte[] ReadAndValidateBytes(string directory, string fileName, string expectedSha256Hex)
