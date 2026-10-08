@@ -17,8 +17,11 @@
 - U05→U06 complete/reviewed PASS/applied ADR163/reverified2026-10-08 mainf83a7d6.
   48frontend tests/types/lint/build/Edge3widths PASS; bounded AGY reviewed independently.
   Exact password change and Admin detail/lock/manual lookup seams; App unmounted.
-- Next V01 unstarted; requires scoped integrated evidence/operator/runtime/SQL authority.
-  No restM0/runtime/SQL/packages/push/deploy opened. Read NEXT_CHAT_HANDOFF.
+- V01 preflight/V01-A reviewed PASS2026-10-08:891non-SQL+120approved SQL tests.
+  Exact5classes/rollback; before/after catalog/profile/102permissions unchanged,
+  0retained rows/users/members. Integrated V01 incomplete; next combined host
+  needs a concrete scope; runtime/owned COMMIT/packages/push/deploy unopened.
+  See V01_TASK_CARD/NEXT_CHAT_HANDOFF; SQL permission applies only executed V01-A.
 - R02→R03 owner-approved scope reviewed PASS2026-10-06:1386tests/buildclean.
   Applied/reverified code mainfcdd21e under ADR163. Explicit Admin007/010/014 plus
   completion protocol; default Program unmounted. See cards/evidence.

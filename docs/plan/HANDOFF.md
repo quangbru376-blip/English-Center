@@ -1,5 +1,15 @@
 # Handoff — E01–E05 và complete design baseline đã Accepted
 
+## V01 preflight — 2026-10-08
+
+Manager source audit and integrated evidence matrix prepared in V01_TASK_CARD.
+Default entries unmounted; fixture HTTP/browser evidence is separate from SQL.
+Owner approved exact V01-A five-class rollback SQL:120PASS; backend non-SQL891PASS.
+Before/after catalog/profile/102permissions digest identical,24empty tables/
+0fixture users/members. No runtime/owned COMMIT/external worker dispatched.
+Next combined host needs concrete scope. Current run results/limits in
+V01-evidence/preflight-summary.json. V01 incomplete; U05/U06 checkpoint unchanged.
+
 ## Latest U05/U06 checkpoint — applied and reverified PASS
 
 Owner-authorized U05→U06 complete/reviewed PASS/applied ADR163/reverified2026-10-08.

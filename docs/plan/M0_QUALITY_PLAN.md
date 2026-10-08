@@ -15,7 +15,10 @@ All6other roles/restricted Admin blocked; stale identity response clears preview
 Default App/main unmounted; backend10ecb75c6fbd6e7155d8ed4b6a4723e74112e88a unchanged.
 SQL not rerun; real cookie/HTTPS/profile/keys/principals/runtime proof unverified.
 Four owner files unchanged/unshared/untracked/unstaged. See U05/U06 cards/evidence,
-notes and ADR176. Next V01 unstarted; no restM0/runtime/SQL/packages/push/deploy scope.
+notes and ADR176. V01 preflight/V01-A reviewed PASS2026-10-08:891non-SQL+120SQL.
+Owner-approved exact5classes rollback; catalog/profile/102permissions digest unchanged,
+24empty tables/0fixture users/members. Integrated V01 incomplete; see V01_TASK_CARD.
+No runtime/owned COMMIT/restM0/new external context/packages/push/deploy scope.
 
 ## Latest R02/R03 checkpoint — applied and reverified PASS
 

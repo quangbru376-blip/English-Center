@@ -4,6 +4,17 @@ Last updated: 2026-10-08
 
 ## Current task
 
+V01 manager preflight/V01-A reviewed PASS2026-10-08; integrated V01 incomplete.
+Default entries remain unmounted, no runtime/packages opened.
+Verified source separates fixture HTTP/browser evidence from real SQL integration.
+Owner approved exact V01-A five-class rollback SQL scope:120PASS/0fail/0skip;
+before/after catalog/profile/permissions digest identical,24empty business tables,
+0fixture users/members,4roles102permissions6migrations unchanged. No AGY/new external
+context dispatched. Current non-SQL test
+attempts/results and limits are in V01-evidence/preflight-summary.json.
+Fresh backend unit/HTTP891PASS/0fail/0skip after testhost connection retry;
+no integrated runtime/browser or owned COMMIT claim. See V01_TASK_CARD.
+
 Owner-authorized U05→U06 complete/reviewed PASS/applied ADR163/reverified2026-10-08.
 Code mainf83a7d6 / manager0ff2ae7; identical frontend4050338d256ad268fe11cc1de7180e39f08a1458.
 48frontend tests/0fail0skip, typecheck/lint/build and Edge375/768/1280 PASS on both.

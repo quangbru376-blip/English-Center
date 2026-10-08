@@ -1,0 +1,109 @@
+# V01 — integrated M0 verification
+
+2026-10-08. Status: manager preflight/V01-A reviewed PASS; integrated acceptance incomplete.
+Base main76b40449e1fad7719e00820e0d3000ed66151659; U05/U06 codef83a7d6.
+Owner continuation opens preparation/review, not the previously excluded SQL/runtime.
+ADR163 remains applicable to authorized implementation reviewed PASS.
+
+## Scope and skills
+
+V01 is verification, not generation of remaining product features. Codex owns
+this preflight, privileged operations and final review. No AGY dispatched:
+SKILL_ROUTING section4 does not require every task to use AGY; this small,
+operator-sensitive preflight stays with the manager. Future useful delegation
+uses antigravity-worker with a concrete contract and exact new sharing consent.
+Prior U05/U06 external payload permission is not reused for source audit.
+
+implementation_skills: backend-clean-code/frontend-ui as verification checklists.
+review_skills: code-review (Codex).
+skill_sources (SHA256):
+- backend-clean-code:726586298710499cd9e5ce7a1e3a2a9fcfd00c07c1f73dfce34cf58e7da8ee3b
+- frontend-ui:448079d6ef3b5b514bbcba4f2a8d5aaf0fc6cc8063f79798f28a6dbbe5128f90
+- code-review:04b72a9627a717bbdf017a3275974b62bbe41f23440e86e5341954e8863a7e70
+- SKILL_ROUTING:adb7938fe69e00c991aefb4eb114854f124eb3e2ac3963763937225646d3e915
+Complete selected skills/policy read; antigravity-worker and contract reference
+read without starting a connection. Overrides: accepted requirements/E03/E04,
+JWT cookie/live session/framework CSRF, RAM-only browser state, exact DTOs,
+SQL Server160, native shared controls/system font/44px targets; no added packages.
+read_context: ordered Project Memory, NEXT_CHAT_HANDOFF/HANDOFF, requirements
+identity security, M0_QUALITY_PLAN/M0_LOCAL_PROFILE/E04_RUNTIME_PROFILE,
+WORKFLOW_SPEC W01–03, existing host fixtures/SQL fixture helpers/default entries.
+skill_verification: actual source paths reviewed; acceptance limits below remain
+explicit. Build/test results are recorded separately, not inferred from history.
+
+## Verified preflight findings
+
+| Obligation | Existing evidence | Missing integrated evidence |
+| --- | --- | --- |
+| W01 Student signup | A03 SQL core and HTTP fixture; U03 browser fake API | One real HTTP signup transaction creates Account/Profile/audit; no session/cookie; unique race and audit failure rollback |
+| W02 login/me/logout | A05–A07 SQL core and HTTP fixture; U04 browser fake API | Browser Secure cookie/CSRF against same-origin HTTPS; real session read/revoke; shared-profile tabs and separate-profile sessions |
+| W02 password change | A08 SQL core and HTTP fixture; U05 browser fake API | Real HTTP/SQL atomic hash/version/temp clear/all-own-session revoke/audit; old cookies rejected; fresh deliberate login |
+| W03 lock pilot | R02/R03 SQL core and HTTP fixture; U06 browser fake API | Real actor authority/detail/one UUID/RV mutation/audit/completion; stale RV, self/last Admin and unknown-response reconciliation |
+| Seven roles | Host/browser fixture scope matrices | Fresh login/session proof for each role and restricted denial on the integrated host |
+| Readiness | D13 structural diagnostic | Approved complete profile/keys/principals/HTTPS/deadlines and actual least-privileged compatibility probe |
+| Race/commit | Rollback SQL contention and HTTP commit seams | Persisted owned-executor COMMIT, multi-client races and lost acknowledgements; needs separate explicit authority |
+
+Default backend Program only registers credential primitives/error middleware;
+it maps no auth/Admin endpoints or runtime DB bindings. Frontend main mounts
+app/App (unavailable text), not IdentityApp. These are accepted stage boundaries,
+not defects to bypass by silently mounting privileged operations.
+AuthOperationHostingTests/CurrentSessionHostingTests/AdminPilotHostingTests use
+fixture executors/repositories; browser checks intercept API. Their success does
+not constitute a browser→API→SQL chain. No other Admin commands or later callers
+are included; W01 staff provisioning and remaining W03 commands remain deferred.
+
+## Concrete bounded step — V01-A, authorized2026-10-08
+
+Owner explicitly approved the exact five-class SQL rollback scope below via
+the V01-A permission question. No runtime/owned COMMIT/new AGY sharing opened.
+Read-only baseline verified24empty business tables/6migrations/102permissions/
+compatibility160/snapshotON/no fixture users/no members before dispatch.
+
+Manager-only fresh regression of five existing classes, no source changes:
+StudentSignupTests, LoginTests, CurrentSessionSqlTests, PasswordChangeSqlTests,
+ReplayAdminSqlTests in backend/tests/EnglishCenter.SqlTests.
+Use only local .\\SQLEXPRESS/EnglishCenter_D07_20261005, current Windows diagnostic
+connection and existing compatibility160. This connection is diagnostic evidence,
+not proof of a configured login-based runtime principal or production TLS.
+
+Approved command from backend:
+
+```powershell
+dotnet test tests/EnglishCenter.SqlTests/EnglishCenter.SqlTests.csproj --no-restore --filter "FullyQualifiedName~EnglishCenter.SqlTests.StudentSignupTests|FullyQualifiedName~EnglishCenter.SqlTests.LoginTests|FullyQualifiedName~EnglishCenter.SqlTests.CurrentSessionSqlTests|FullyQualifiedName~EnglishCenter.SqlTests.PasswordChangeSqlTests|FullyQualifiedName~EnglishCenter.SqlTests.ReplayAdminSqlTests" --logger "trx;LogFileName=V01-A.trx" --results-directory C:/Study/SOEN/main_workplace/docs/plan/V01-evidence/test-results
+```
+
+Exact SQL scope includes synthetic Role/Account/Profile/AuthSession/AuditLog/
+ReplayOperation and the existing SqlFixture academic/admissions scaffold rows;
+all transaction rollback. Existing permission-failure cases temporarily CREATE
+USER D12_fixture_user_0 WITHOUT LOGIN, add ec_app_runtime membership and DENY
+within their rollback transaction. No retained user/membership/DENY, no server
+LOGIN, migration/schema/module changes, owned business COMMIT, keys or real Admin.
+Read-only before/after checks must assert designated DB, empty retained business
+rows, no fixture user/members and unchanged catalog/permissions/profile; unexpected
+baseline stops execution. No other database, SQL full suite, runtime listening
+host, certificate/proxy/firewall configuration, packages, push or deploy.
+
+After V01-A, prepare the isolated combined HTTP/SQL host contract. Actual browser
+proof requires a separately authorized HTTPS/profile/principal scope. Do not
+guess environment slots, weaken cookies/CSRF or report full V01/M0 PASS early.
+
+## Evidence and verdict
+
+V01-A exact five classes120PASS/0fail/0skip, owner-approved rollback scope.
+Before/after catalog/profile/permissions digest identical:
+0DE381587B6706797C2F38FB3C64DE20A3E19083E391E4684EF3820CEE6FBEF7.
+24business tables/0retained rows/0fixture users/0ec role members;4roles,
+102permissions/6migrations/compatibility160/snapshotON unchanged.
+Read-only baseline.sql asserts designated DB and empty state; local ignored TRX
+class list confirms only the five authorized classes executed. No new caller,
+owned COMMIT, browser→real API→SQL or runtime-principal evidence claimed.
+
+See V01-evidence/preflight-summary.json for current non-SQL test counts/hashes.
+Current backend build and non-SQL unit/HTTP suite:891PASS/0fail/0skip.
+First VSTest sandbox attempt timed out connecting to testhost before tests ran;
+no-build/no-restore elevated retry passed. Raw TRX retained locally/ignored,
+only sanitized outcome/counts/hashes shared in memory. No SQL connection used.
+Historical frontend48/browser3widths PASS is referenced, not rerun this preflight.
+Preflight document review may PASS; integrated V01 remains INCOMPLETE until the
+matrix obligations have actual scoped evidence. Four owner files remain protected
+as listed in NEXT_CHAT_HANDOFF; no source/owner files shared or staged by this task.

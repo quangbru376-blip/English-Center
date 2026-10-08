@@ -2,6 +2,16 @@
 
 ## Checkpoint hiện tại
 
+V01 manager preflight/V01-A reviewed PASS2026-10-08: see V01_TASK_CARD and
+V01-evidence/preflight-summary.json. Source audit confirms default entries
+unmounted and existing HTTP/browser fixtures do not prove real SQL integration.
+Owner approved exact V01-A five SQL classes:120PASS/0fail/0skip; rollback baseline
+digest identical,24empty tables/0fixture users/members/4roles102permissions6migrations.
+Fresh non-SQL backend891PASS after sandbox testhost connection retry.
+No AGY/new external sharing/runtime/packages/push/deploy; SQL permission only V01-A.
+Next combined host/profile scope must be prepared; owned COMMIT remains unopened.
+Integrated V01 remains incomplete; U05/U06 applied checkpoint below unchanged.
+
 U05→U06 hoàn tất/review PASS/apply ADR163/reverify main2026-10-08. Code main
 f83a7d6e8af5b4ea5ac56579da2b951ad7fb088b, manager0ff2ae74b192e6ab00eef44d0673349cff0fc70b;
 frontend4050338d256ad268fe11cc1de7180e39f08a1458 giống nhau. Backend vẫn

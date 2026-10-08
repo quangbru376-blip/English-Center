@@ -170,8 +170,11 @@ full3contexts before writes/zero observed scope violations; Codex independent fi
 U05 raw own password/RV/204->login/no upgrade; U06 Admin NORMAL detail/lock/frozen
 UUID/manual safe lookup/no polling or replay. Stale/role/restricted/unknown verified.
 Default App/main/backend unchanged; SQL not rerun; owner files preserved untracked.
-See U05/U06 cards/evidence, ADR176. V01 unstarted; no restM0/runtime/SQL/packages/
-push/deploy authority or production readiness claim.
+See U05/U06 cards/evidence, ADR176. V01 preflight/V01-A2026-10-08 reviewed PASS:
+891non-SQL+120SQL/0fail0skip. Owner approved exact five existing SQL classes/
+rollback only; before/after catalog/profile/102permissions identical,24empty
+tables/0fixture users/members. See V01_TASK_CARD. Integrated V01 incomplete;
+no runtime/owned COMMIT/restM0/new worker sharing/packages/push/deploy authority.
 Historical initial scope is retained in
 FIRST_CODE_HANDOFF; latest checkpoint and explicit current owner scope govern.
 Standing owner authority ADR-163: apply Codex-reviewed PASS stages already
