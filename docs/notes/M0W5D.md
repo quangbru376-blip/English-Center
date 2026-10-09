@@ -1,0 +1,11 @@
+# M0 W5D bootstrap
+- Explicit operator branch uses genuine nonadmin EcM0Schema only.
+- Exact owned M0 catalog ID/GUID and existing6 migrations; strict TLS.
+- Initial canonical7roles/Admin plus mandatory audit share SERIALIZABLE transaction.
+- Current operator escrow DPAPI is flushed/roundtrip verified before child COMMIT.
+- Secret travels only redirected stdin RAM, never args/env/source/log/worker.
+- Bounded4096-character parser rejects unknown/duplicate/trailing/invalid fields.
+- Existing escrow refuses fresh initialization; VerifyExisting performs readonly proof.
+- Existing Admin credential/status cannot be reset by this wrapper.
+- Unknown result retains escrow, no automatic retry or compensation delete.
+- Full M0/browser/scheduled maintenance acceptance remains separate.

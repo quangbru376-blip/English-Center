@@ -22,6 +22,13 @@ if (args.FirstOrDefault() == "--m0-local-runtime")
     Environment.ExitCode = code;
     return;
 }
+if (args.FirstOrDefault() == "--m0-bootstrap")
+{
+    var outcome = args.Length == 1 ? await EnglishCenter.Api.Infrastructure.Operator.LocalAdminBootstrap.RunAsync(Console.In, CancellationToken.None) : EnglishCenter.Api.Infrastructure.Operator.LocalAdminBootstrap.Outcome.Refused;
+    Console.WriteLine(System.Text.Json.JsonSerializer.Serialize(new { phase = "W5-bootstrap", success = outcome != EnglishCenter.Api.Infrastructure.Operator.LocalAdminBootstrap.Outcome.Refused, created = outcome == EnglishCenter.Api.Infrastructure.Operator.LocalAdminBootstrap.Outcome.Created, verified = outcome == EnglishCenter.Api.Infrastructure.Operator.LocalAdminBootstrap.Outcome.Verified }));
+    Environment.ExitCode = outcome == EnglishCenter.Api.Infrastructure.Operator.LocalAdminBootstrap.Outcome.Refused ? 1 : 0;
+    return;
+}
 var builder = WebApplication.CreateBuilder(args);
 var blocklist = OfflinePasswordBlocklist.Load(Path.Combine(AppContext.BaseDirectory, "Resources", "PasswordBlocklist"));
 builder.Services.AddSingleton(blocklist);
