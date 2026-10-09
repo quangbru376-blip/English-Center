@@ -67,3 +67,13 @@ connection/catalog/migrations/credential/freshness/bootstrap/commit); only liter
 allowlist forwarded by CLI/helper, no exception/SQL/secret diagnostics. This enables
 readonly verification to locate refusal while no write retry is authorized by a
 refusal alone. Existing parser/identity tests retained, source review checks literals.
+Actual readonly schema facts id/GUID/name/user/db_owner/sysadmin/CONTROL and original
+login all matched; actual SQL_VARIANT_PROPERTY(DB_ID(),'BaseType') reports smallint
+on this SQL17 instance despite primary DB_ID docs listing int. Direct GetInt32
+projection refused. Fix SELECT CONVERT(int,DB_ID()) preserves strict identity checks;
+no permissions broadened. Derived explicit -RecoverPrepared reuses only existing
+owned escrow_prepared credential/marker/same DBid+GUID; conflicting VerifyExisting
+refuses. No fresh random password/overwrites/reset; child still requires zero Role/
+Account/Audit/Profile/Session under SERIALIZABLE before A02. This exact recovery is
+assigned operational completion ADR177, manually dispatched after reviewed fix and
+zero-count evidence; never automatic retry. Existing wrong/occupied Admin refused.

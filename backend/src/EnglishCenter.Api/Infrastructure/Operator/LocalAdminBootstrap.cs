@@ -79,7 +79,7 @@ public static class LocalAdminBootstrap
             await using (var command = connection.CreateCommand())
             {
                 command.CommandTimeout = 10;
-                command.CommandText = "SELECT DB_ID(),r.database_guid,CASE WHEN DB_NAME()=N'EnglishCenter_M0_LOCALDEV' AND USER_NAME()=N'M0SchemaUser' AND ORIGINAL_LOGIN()=@login AND IS_ROLEMEMBER('db_owner')=1 AND IS_SRVROLEMEMBER('sysadmin')=0 AND HAS_PERMS_BY_NAME(NULL,NULL,'CONTROL SERVER')=0 THEN 1 ELSE 0 END FROM sys.database_recovery_status r WHERE r.database_id=DB_ID()";
+                command.CommandText = "SELECT CONVERT(int,DB_ID()),r.database_guid,CASE WHEN DB_NAME()=N'EnglishCenter_M0_LOCALDEV' AND USER_NAME()=N'M0SchemaUser' AND ORIGINAL_LOGIN()=@login AND IS_ROLEMEMBER('db_owner')=1 AND IS_SRVROLEMEMBER('sysadmin')=0 AND HAS_PERMS_BY_NAME(NULL,NULL,'CONTROL SERVER')=0 THEN 1 ELSE 0 END FROM sys.database_recovery_status r WHERE r.database_id=DB_ID()";
                 command.Parameters.Add(new SqlParameter("@login", System.Data.SqlDbType.NVarChar, 256) { Value = identity.Name });
                 await using var reader = await command.ExecuteReaderAsync(deadline.Token);
                 if (!await reader.ReadAsync(deadline.Token) || reader.GetInt32(0) != envelope.DatabaseId || reader.GetGuid(1) != envelope.DatabaseGuid ||

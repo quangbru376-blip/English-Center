@@ -1,5 +1,5 @@
 [CmdletBinding()]
-param([switch]$VerifyExisting,[Parameter(Mandatory=$true)][string]$ReceiptPath)
+param([switch]$VerifyExisting,[switch]$RecoverPrepared,[Parameter(Mandatory=$true)][string]$ReceiptPath)
 $ErrorActionPreference='Stop'
 Set-StrictMode -Version Latest
 $root='C:\ProgramData\EnglishCenter\M0'
@@ -20,6 +20,7 @@ function Assert-OwnedPath([string]$path,[string]$operatorSid){
     foreach($rule in $acl.Access){$sid=$rule.IdentityReference.Translate([Security.Principal.SecurityIdentifier]).Value;if(-not $seen.Add($sid) -or $sid -notin @($operatorSid,'S-1-5-18','S-1-5-32-544') -or $rule.FileSystemRights -ne 'FullControl' -or $rule.AccessControlType -ne 'Allow'){throw 'Invalid custody access'}}
 }
 try{
+    if($VerifyExisting -and $RecoverPrepared){throw 'Conflicting modes'}
     $operatorSid=[Security.Principal.WindowsIdentity]::GetCurrent().User.Value
     Assert-OwnedPath $root $operatorSid
     $candidate=[IO.Path]::GetFullPath($ReceiptPath)
@@ -32,10 +33,11 @@ try{
     $schema=@($ownership.identities|Where-Object {$_.name -ceq 'EcM0Schema'})
     if($schema.Count -ne 1 -or (Get-LocalUser -Name 'EcM0Schema').SID.Value -ne $schema[0].sid){throw 'Invalid schema identity'}
     $secretPath=Join-Path $root 'admin.credential.clixml';$markerPath=Join-Path $root 'admin.json'
-    if($VerifyExisting){
+    if($VerifyExisting -or $RecoverPrepared){
         Assert-OwnedPath $secretPath $operatorSid;Assert-OwnedPath $markerPath $operatorSid
         $marker=Get-Content -LiteralPath $markerPath -Raw|ConvertFrom-Json
         if($marker.ownerId -ne $ownership.ownerId -or $marker.databaseId -ne $catalog.databaseId -or $marker.databaseGuid -ne $catalog.databaseGuid -or $marker.email -cne 'admin@englishcenter.local' -or $marker.phase -notin @('escrow_prepared','committed','verified')){throw 'Invalid Admin custody'}
+        if($RecoverPrepared -and $marker.phase -cne 'escrow_prepared'){throw 'Recovery requires exact prepared escrow'}
         $appCredential=Import-Clixml -LiteralPath $secretPath
     }else{
         if((Test-Path -LiteralPath $secretPath) -or (Test-Path -LiteralPath $markerPath)){throw 'Admin custody already exists'}
