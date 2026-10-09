@@ -1,5 +1,19 @@
 # Handoff cho chat tiếp theo — 2026-10-09
 
+W1 actual Windows identity/custody PASS2026-10-09: EcM0Runtime/EcM0Maint/
+EcM0Schema created, matchingSids3, DPAPIReadable3, protected root/file ACLs,
+no Administrator membership. Reviewed helper managerb5b40cb/mainbbff42b ADR163.
+Per-operation UAC helper works; ordinary manager remains unelevated. No need to
+restart Codex merely to obtain bounded provisioning authority. Each helper must
+recheck actual token. No SQL login/grant/DDL/TLS changes in W1. D07 read-only
+baseline byte-identical10CD3407CE5986394703A9BEC2EE3E42314080809DDABE26906B1F14B593FC8E.
+Owner4 files unchanged/unshared/untracked/unstaged. Full M0 remains IN PROGRESS.
+Next exact W2 dedicated operational catalog/authentication contract, then SQL TLS,
+protected runtime keys/all9 startup/API/UI/actual maintenance proof. LOCAL_DEV/
+WeeklyPreviewBudget10000 fixed ADR186; no repeat questions or M1 expansion.
+See M0_W1_IDENTITY_CARD. Backend/frontend/tests unchanged; no build rerun for W1.
+
+
 ## Checkpoint hiện tại
 
 LOCAL_DEV environment selected by owner2026-10-09: proposal table values and
@@ -9,8 +23,7 @@ Read-only operational preflight: manager Windows AdministratorToken=false,
 SQL Windows-only/current diagnostic sysadmin=true, strict encrypted SQL fails
 untrusted certificate chain;8443free, one existing localhost key candidate.
 No provisioning/SQL writes/registry/auth-mode/certificate/trust/key changes.
-Required operator action: reopen Codex as Administrator and resume this chat for
-bounded Windows identity/SQL TLS provisioning; runtime identities still non-admin.
+Superseded elevation note: bounded UAC helpers now verified (W1); runtime identities remain non-admin.
 Full M0 remains incomplete. See M0_OPERATOR_CLOSURE/M0_ENVIRONMENT_INPUTS.
 Production code/tests unchanged from V; no tests rerun for these docs/settings.
 

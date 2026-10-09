@@ -41,3 +41,7 @@ After elevation, prepare/review exact identity/custody/SQL-certificate contract
 before writes. Preserve D07 baseline; prefer a dedicated operational catalog with
 existing migrations rather than changing the retained verification baseline.
 No service/auth-mode/global trust changes were made by this preflight. Full M0 open.
+
+W1 supersedes the restart-as-administrator blocker above: bounded per-operation
+UAC proven and W1 identities/custody actually PASS; see M0_W1_IDENTITY_CARD.
+Actual runtime SQL/SQL TLS/key stores/host binding still pending, not ready.

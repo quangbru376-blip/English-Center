@@ -39,3 +39,12 @@ and guarded credential disposal/per-user cleanup. SHA256 script
 75B52281C37A077C138F9B2695E9B483796AB2B2CF5BBDED7328F36FD830CC18.
 Operational acceptance remains pending actual provisioning; source-only PASS is
 not W1 completion. No backend/frontend build needed for operator-only PowerShell.
+
+Actual W1 PASS2026-10-09: UAC administratorToken true; createdUsers3,
+compensated0, noAdministratorMembership true, credentialsProtected true.
+Independent post-run matchingSids3/dpapiReadable3/rootAclProtected true.
+Manager b5b40cb/main bbff42b; Git blob identical, working-byte SHA differs only
+checkout CRLF: main7601C77C6F88603BBB35DE13CDF16325BDE94353493E630309F04FA598D98FD9.
+D07 readonly baseline output SHA25610CD3407CE5986394703A9BEC2EE3E42314080809DDABE26906B1F14B593FC8E
+unchanged; owner4 hashes/untracked/unstaged unchanged. Real SQL authentication,
+TLS/custody/runtime integration still pending; full M0 incomplete.
