@@ -1,0 +1,30 @@
+{
+  "mode": "edit",
+  "objective": "Read ONLY docs/plan/W5B_WORKER.md, .agents/skills/backend-clean-code/SKILL.md and docs/plan/SKILL_ROUTING.md completely before writing. Implement the exact pure maintenance proof codec described in the brief. One file <=130 lines. Do not read other source/links/AGENTS, list/search files, run commands/network/SQL/Git/tests, access keys/config/user files or write reports. Codex is manager and validates.",
+  "allowed_paths": [
+    "backend/src/EnglishCenter.Api/Infrastructure/Maintenance/MaintenanceProofCodec.cs"
+  ],
+  "forbidden_paths": [
+    ".env",
+    "AGENTS.md",
+    "docs/**",
+    ".agents/**",
+    "frontend/**",
+    "backend/tests/**",
+    "**/packages.lock.json",
+    "**/package-lock.json"
+  ],
+  "acceptance_criteria": [
+    "Full three authorized context reads before sole write; no other reads beyond own output.",
+    "Exact68request/325response/domain-bound RSA2048 PSS SHA256 behavior from brief, fail closed verification.",
+    "One file <=130source lines, no secrets/key generation/storage/logs/commands/network/SQL/Git/tests."
+  ],
+  "context_files": [
+    "docs/plan/W5B_WORKER.md",
+    ".agents/skills/backend-clean-code/SKILL.md",
+    "docs/plan/SKILL_ROUTING.md"
+  ],
+  "max_changed_files": 1,
+  "max_diff_lines": 130,
+  "timeout": "10m"
+}
