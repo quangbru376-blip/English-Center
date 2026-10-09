@@ -62,3 +62,23 @@ read_context ordered memory/handoffs/requirements/E04/W1–W4/probe APIs/actual
 identity/custody isolation. applicable_overrides JWT-cookie/current-user DPAPI,
 real SQL/readonly readiness/finite profile/no packages/default key generation.
 skill_verification pending actual codec event review/manager checks/real host proof.
+
+AGY33a468d7-0f5 SUCCESS sole codec final120lines; exact3full reads before first
+write, only own output subsequent reads, no observed commands/outside context.
+Interim139 self-corrected to final120 within final contract cap. Original retained.
+Manager fixed provider ArgumentException rethrow leaking details; tests compare
+independent PSS/domain, refusal, tampered fields/replay/wrong key/length/flag and
+provider-detail redaction. Protocol unit acceptance pending; no native/SQL/host claim.
+
+A/B derived exact test files: LocalRuntimeBindingTests.cs, ActualM0RuntimeBindingTests.cs,
+MaintenanceProofCodecTests.cs. Synthetic selection/parser/protocol negatives; actual
+runtime key reader only, no mutations/SQL/listener/grants. Other identities refuse.
+Manager corrected codec provider exception redaction and fresh file ACL/disposal checks.
+
+Intermediate A+codec source review PASS2026-10-09 after manager fixes: strict selected
+profile/fresh parser rejects duplicate UTF8/unknown descriptors; per-file custody
+ACL/hash drift and disposal refusal; sole final codec120lines/14independent RSA
+cases PASS. Overall manager1250PASS73intentionalSKIP/build0warnings0errors.
+W5 B host/pipe and C not implemented. A operator helper/profile/actual binding
+verification pending; this intermediate source PASS is not full W5/M0 closure.
+Patch review pins main-workspace byte artifacts (CRLF), no security/latest claim.

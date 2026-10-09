@@ -1,0 +1,17 @@
+{
+  "runId": "33a468d7-0f5",
+  "agyStatus": "SUCCESS",
+  "review": "PASS_WITH_MANAGER_FIX_PENDING_TESTS",
+  "authorizedContextReads": 3,
+  "fullContextBeforeWrite": true,
+  "outsideObservedReadScope": 0,
+  "observedCommands": 0,
+  "writes": [
+    "backend/src/EnglishCenter.Api/Infrastructure/Maintenance/MaintenanceProofCodec.cs"
+  ],
+  "interimSourceLines": 139,
+  "finalWorkerSourceLines": 120,
+  "finalScopeViolations": 0,
+  "managerFix": "Sanitize signer ArgumentException rather than rethrow provider detail",
+  "originalSha256": "D6B53D599BC51BECFF4DF7A56384C9D65C2C45ACE1BEAF9F8E90BF0D1D099649"
+}
