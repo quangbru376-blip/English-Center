@@ -49,3 +49,9 @@ No M1–M4/install/push/deploy/D07 business writes/owner4 changes or sharing.
 Root helper pre-execution review PASS: AST0, fixed new path/no reparse ancestor,
 W1/current owner/runtime SID/non-admin checks, protected owner runtime ACL allowlist,
 no credential copying/key generation. Actual root acceptance pending.
+
+Actual root PASS2026-10-09: admin/runtimeOwned/ACLprotected true; runtime/SYSTEM/
+Administrators only. Key script source review PASS AST0: genuine runtime/SID/ACL/
+fresh fixed files, CreateNew artifacts, DPAPI32-byte exact RAM round trip/zeroing,
+no private export, CNG ExportPolicyNone verified, sole own certificate/public export,
+owned-manifest-only failure updates. Actual keys acceptance pending run.
