@@ -4732,3 +4732,14 @@ operator binding must declare these permissions explicitly; no startup grant rep
 Historical ADR180's no-VIEW-DEFINITION scope remains historical; this explicit
 reviewed code allowlist is part of the later whole-M0 assignment, not a profile
 selection or permission to silently modify the retained baseline.
+
+## ADR-185 — post-listener startup check retains fresh request authority
+
+Accepted bounded M0 implementation2026-10-09, V01-V main4daa2e2/manager22ed355.
+Explicit StartupReadinessService waits ApplicationStarted so transport proof has
+a listener, then evaluates existing Q all9 gate. Unavailable requests graceful
+StopApplication with fixed refusal diagnostic; host/application stop cancels waits.
+Startup success grants no cached API authority: each request still passes Q.
+No default registration, profile values, principal/PKI/key provisioning or readiness
+claim.14synthetic lifecycle cases with actual TestServer PASS; manager/main1217PASS/
+63opt-in SKIP/buildclean. Actual full M0 operational bindings remain unresolved.

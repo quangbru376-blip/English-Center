@@ -1,0 +1,16 @@
+{
+  "task": "V01-V",
+  "date": "2026-10-09",
+  "review": "PASS",
+  "mainCode": "4daa2e2",
+  "managerCode": "22ed355",
+  "sourceTree": "871e83635832a8e337035bb725ea7f8991d0164a",
+  "testTree": "632c1f97b5aa7133cb56a413f2bd4791a663b13b",
+  "managerTargetedPassed": 14,
+  "eachCheckout": { "defaultPassed": 1217, "intentionalOptInSkipped": 63, "failed": 0, "buildWarnings": 0, "buildErrors": 0 },
+  "sqlRerun": false,
+  "externalSharing": false,
+  "ownerFourHashesUnchanged": true,
+  "verified": ["all nine dependency failures refuse actual TestServer host after ApplicationStarted", "startup success does not cache API authority", "stop before startup or during pending source", "finite source deadline and fixed redacted refusal"],
+  "unverified": ["actual operator profile/HTTPS/SQL/key custody", "operational registration/default entry/M0 adapter wiring", "particular process exit code or full M0 readiness"]
+}

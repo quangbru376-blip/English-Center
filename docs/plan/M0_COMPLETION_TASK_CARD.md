@@ -148,3 +148,9 @@ principal/TLS/scheduler and profile/custody/startup remain open; see T card/summ
 RAM resolvers prove independent periods/non-overlap/coalescing/stop/refusal. Source/
 SQL/owner unchanged; actual scheduled SQL authentication/TLS/owned COMMIT and
 profile/custody/startup still open. See U card/summary.
+
+## V01-V PASS — whole M0 still IN PROGRESS
+2026-10-09 main4daa2e2/manager22ed355,14startup lifecycle cases PASS,
+1217defaultPASS/63opt-in SKIP/buildclean each. Explicit post-listener Q check
+requests host stop if unavailable; no cached request authority/default registration.
+Actual environment/all9 wiring/principals/TLS/custody/scheduled SQL still open.

@@ -4,27 +4,27 @@ Last updated: 2026-10-09
 
 ## Current task
 
-Full M0 remains IN PROGRESS. V01-U scheduler lifecycle reviewed PASS/applied
-ADR163/reverified2026-10-09: main8bc6a1a / manager942403b.
-One test file only; actual BackgroundService/PeriodicTimer loops exercised using
-manual test clock and missing/pending RAM resolvers. Six new cases prove explicit
-independent periods/no initial run, fresh later attempts/error counts, per-job
-non-overlap/coalesced ticks, shutdown with uncooperative resolver, disposed timers,
-and invalid-schedule refusal. No SQL/connection/network or production changes.
-Manager/main1203PASS/63intentional opt-in SKIP/build0warnings0errors.
-Source unchanged b0b7af270d28330541615436e298b462364f35dd;
-test tree70ace516246f1e500232657b8242a08cb186d194 identical; frontend unchanged.
-Owner4hashes unchanged/unshared/untracked/unstaged. Actual maintenance login/TLS/
-scheduler with SQL and service-owned COMMIT remain unverified; U is synthetic lifecycle evidence.
-Next actual profile selection/custody/runtime authentication/TLS/startup integration.
-LOCAL_DEV proposal remains pending; owner deferrals preserved, no fixture promotion,
-M1–M4/install/push/deploy. See V01U_TASK_CARD/U summary/notes.
+Full M0 remains IN PROGRESS. V01-V explicit startup lifecycle reviewed PASS/applied
+ADR163/reverified2026-10-09: main4daa2e2 / manager22ed355.
+StartupReadinessService waits ApplicationStarted before fresh all9 Q evaluation,
+requests StopApplication on failure and links host/application stop cancellation.
+Only fixed refusal diagnostic; startup success never bypasses later per-request Q gate.
+Explicit registration only, default Program/DI/routes/profile/principals/keys unchanged.
+14new actual WebApplication/TestServer/lifecycle cases PASS; manager/main1217PASS/
+63intentional opt-in SKIP/build0warnings0errors. Synthetic probes prove lifecycle,
+not actual HTTPS/SQL authentication/custody/readiness.
+Identical src871e83635832a8e337035bb725ea7f8991d0164a /
+tests632c1f97b5aa7133cb56a413f2bd4791a663b13b; frontend/owner4 unchanged.
+SQL not rerun. Actual profile/environment selection and operational bindings remain
+pending; LOCAL_DEV proposal not active. Next real principal/PKI/protected custody/
+all9 registration/M0 adapters/scheduled SQL and integrated proof. No fixture promotion,
+M1–M4/packages/install/push/deploy. See V01V_TASK_CARD/V summary/notes/ADR185.
 
-Historical T: main1f0f0e9/manager7dbcb4d,5SQL PASS each, database-grant-option
-guard fixed,90d/24h effects/rollback verified,10scratch databases identity-cleaned.
-D07 baseline byte-identical10CD3407CE5986394703A9BEC2EE3E42314080809DDABE26906B1F14B593FC8E;
-24empty tables/4roles102permissions unchanged; SQL not rerun for U.
-Historical Q/R/S: HTTP readiness/metadata whitelist PASS,880/880catalog feasibility.
+Historical U: scheduler lifecycle6synthetic cases PASS main8bc6a1a/manager942403b.
+Historical T:5SQL PASS each, database-grant-option guard fixed,90d/24h effects/
+rollback verified,10scratch databases removed. D07 baseline byte-identical
+10CD3407CE5986394703A9BEC2EE3E42314080809DDABE26906B1F14B593FC8E.
+Historical Q/R/S: fresh HTTP readiness/metadata whitelist PASS,880/880catalog feasibility.
 
 
 Historical N/O/P: see V01NOP_TASK_CARD/NOP evidence/ADR182.

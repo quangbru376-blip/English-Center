@@ -10,7 +10,7 @@
 
 ## Next
 
-- Finish owner-assigned M0; U scheduler lifecycle PASS/reverified (1203defaultPASS/buildclean), T SQL effects/grants PASS; Q/S and R880/880 retained.
+- Finish owner-assigned M0; V explicit post-listener startup PASS/reverified (1217defaultPASS/buildclean), U/T/Q/S and R880/880 retained.
 - Select concrete M0_LOCAL_DEV_PROPOSAL actual values already asked; do not infer fixture
   values or re-ask accepted decisions. Resolve actual runtime identity/approved metadata bindings and PKI,
   then actual operator bindings/startup and scheduled SQL verification. T closes SQL cleanup effects, U closes synthetic lifecycle, actual maintenance-login/TLS/service-owned COMMIT remains. M0 incomplete.

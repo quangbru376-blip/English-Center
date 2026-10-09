@@ -1,6 +1,11 @@
 # V01 readiness closure matrix — 2026-10-08
 
-Latest U2026-10-09: main8bc6a1a/manager942403b reviewed PASS/applied/reverified;
+Latest V2026-10-09: main4daa2e2/manager22ed355 reviewed PASS/applied/reverified;
+1217defaultPASS/63opt-in SKIP/buildclean each,14startup cases. Explicit hosted Q
+check after ApplicationStarted/failure host-stop/cancellation/no cached API authority;
+default unmounted, actual profile/all9 operational dependencies still open. ADR185.
+
+Historical U2026-10-09: main8bc6a1a/manager942403b reviewed PASS/applied/reverified;
 1203defaultPASS/63opt-in SKIP/buildclean each. Six synthetic lifecycle cases exercise
 actual service loops/independent timers/no overlap/coalescing/shutdown/refusal.
 No SQL rerun or production changes; actual operational scheduled SQL remains open.
@@ -37,7 +42,7 @@ frontend App/main remain unmounted; SQL structural inspection is not full readin
 | Actual SNAPSHOT/final authority | E3distinct context/isolation trace + committed revoke | Already bounded PASS; no generic report/remaining module claim |
 | Bounded races | E signup/sameUUID/differentUUID/password-logout | PASS for4two-client cases; no50-user load claim |
 | Exact schema/grants | D07–D13 exact catalog and permissions; A–E baseline unchanged | I mandatory runtime/effective-privilege wrapper +3real diagnostic denial cases PASS; R proves exact880facts via rollback-only metadata reads; S declares grant allowlist; genuine positive runtime login still unproved |
-| Active typed profile | G descriptors/gate; M strict explicit local reference-profile reader,24new tests PASS | All9 probes unregistered; Q explicit HTTP/startup check implemented; actual secret binding/default startup mounting absent; no LOCAL_DEV-ready claim |
+| Active typed profile | G descriptors/gate; M strict reader; Q HTTP boundary; V explicit post-listener startup lifecycle14PASS | All9 probes operationally unregistered; actual secret binding/default startup mounting absent; no LOCAL_DEV-ready claim |
 | Runtime identity | Current local diagnostic Windows connection; runtime grants exist | Runtime must be non-dbo/ec_app_runtime/no sysadmin/CONTROL plus declared S metadata reads; no configured login inferred |
 | HTTPS/proxy/IP | D exact-pin transient TLS/private nonce and negative checks | Fixture only; production origin/listen/trust/known-hop values remain DF02/D13 deferred |
 | JWT/CSRF keys | K actual RAM HMAC/RSA/ECDSA/active-key rotation proof; L fresh existing DPAPI XML/restart decryption/read-only challenge PASS | Actual secret refs/issuer/audience/rotation/store/application custody still unconfigured; fixture keys are not production bindings |

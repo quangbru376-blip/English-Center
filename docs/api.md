@@ -1,5 +1,10 @@
 # Implemented API exposure
 
+2026-10-09 V01-V adds an optional StartupReadinessService, explicitly registered
+alongside Q. It waits ApplicationStarted then performs fresh all9 evaluation;
+failure requests host stop. Startup success never bypasses per-request Q checks.
+No new route/DTO/default registration or active profile is supplied by this hook.
+
 2026-10-05 A04: API-001 GET /api/v1/auth/csrf is available as explicit MapCsrfContext
 integration only; unchanged default Program does not expose it. No other business
 route is activated by A02/A04. Accepted full contracts remain in E04_DTO_SPEC.md.

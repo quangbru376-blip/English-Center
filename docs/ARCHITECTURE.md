@@ -1,24 +1,27 @@
 # Architecture
 
-Full M0 remains IN PROGRESS. V01-Q HTTP readiness component and V01-S explicit
-catalog metadata allowlist reviewed PASS/applied ADR163/reverified2026-10-08:
-Q main7ef2ce6/manager e18eddc; S maina6b4828/manager41b166d.
-Both1197PASS/58intentional opt-in SKIP/build0warnings0errors; Q adds28HTTP tests.
-Three readonly runtime-diagnostic denial tests PASS on each checkout; three S
-rollback grant cases PASS. R candidate and ablation each880/880 exact catalog
-facts, zero missing/extra/different; explicit VIEW SECURITY DEFINITION is redundant.
-S permits only state-G database VIEW DEFINITION and two migration-history SELECT
-columns besides CONNECT; extra business/table/grant-option rights still deny.
-No permanent grants/provisioning/role-definition/manifest/default entry changes.
-Exact src b4b552ec5c9638fead0ab5d81166f6bad30a2cda,
-tests ab39300509baafcef4f4d4a1dd3747931e2704e0; frontend unchanged.
-D07 before/after byte-identical10CD3407CE5986394703A9BEC2EE3E42314080809DDABE26906B1F14B593FC8E;
-fixture users/members/grants rolled back; owner4hashes unchanged/unshared/untracked.
-Q supplies explicit fresh-profile/all9-probe HTTP gate and minimal non-renewing
-health/startup check, unmounted. User impersonation is not real runtime login proof.
-Next actual profile selection/custody/runtime authentication/TLS/maintenance/startup
-integration; concrete LOCAL_DEV proposal remains pending, no fixture values guessed.
-No M1–M4/packages/install/push/deploy. See Q/R/S cards/QRS evidence/ADR183–184.
+Full M0 remains IN PROGRESS. V01-V explicit startup lifecycle reviewed PASS/applied
+ADR163/reverified2026-10-09: main4daa2e2 / manager22ed355.
+StartupReadinessService waits ApplicationStarted before fresh all9 Q evaluation,
+requests StopApplication on failure and links host/application stop cancellation.
+Only fixed refusal diagnostic; startup success never bypasses later per-request Q gate.
+Explicit registration only, default Program/DI/routes/profile/principals/keys unchanged.
+14new actual WebApplication/TestServer/lifecycle cases PASS; manager/main1217PASS/
+63intentional opt-in SKIP/build0warnings0errors. Synthetic probes prove lifecycle,
+not actual HTTPS/SQL authentication/custody/readiness.
+Identical src871e83635832a8e337035bb725ea7f8991d0164a /
+tests632c1f97b5aa7133cb56a413f2bd4791a663b13b; frontend/owner4 unchanged.
+SQL not rerun. Actual profile/environment selection and operational bindings remain
+pending; LOCAL_DEV proposal not active. Next real principal/PKI/protected custody/
+all9 registration/M0 adapters/scheduled SQL and integrated proof. No fixture promotion,
+M1–M4/packages/install/push/deploy. See V01V_TASK_CARD/V summary/notes/ADR185.
+
+Historical U: scheduler lifecycle6synthetic cases PASS main8bc6a1a/manager942403b.
+Historical T:5SQL PASS each, database-grant-option guard fixed,90d/24h effects/
+rollback verified,10scratch databases removed. D07 baseline byte-identical
+10CD3407CE5986394703A9BEC2EE3E42314080809DDABE26906B1F14B593FC8E.
+Historical Q/R/S: fresh HTTP readiness/metadata whitelist PASS,880/880catalog feasibility.
+
 
 Historical N/O/P: see V01NOP_TASK_CARD/NOP evidence/ADR182.
 
