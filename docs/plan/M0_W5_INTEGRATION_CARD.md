@@ -87,3 +87,11 @@ Actual A helper Runtime success/5pins/noSecrets confirmed from owned receipt;
 actual readonly binding runtime1+maintenance1+schema1PASS post-process restart.
 Derived same ActualM0RuntimeBindingTests fresh actual profile+manifest loaded NET/ASP/EF,
 main artifact pins and strict SQL version assertion; no SQL mutation or overall ready claim.
+
+Actual profile assertion correctly refused installed descriptor: operator helper had
+left corpus UNBOUND. No readiness claim/host start. Manager fixed corpus assignment;
+exact -RepairBlocklistBinding recovery permits Runtime only, every old profile field
+must equal generated reviewed profile except this one known UNBOUND value, manifest
+must be identical/fivepins still verified. Only public profile overwritten, no keys,
+SQL/ACL changes. Source review PASS; actual recheck pending. Fresh install stays
+fail-if-existing. Invalid/other drift cannot invoke recovery.

@@ -1,5 +1,5 @@
 [CmdletBinding()]
-param([ValidateSet('Runtime','Maintenance')][string]$Target='Runtime',[Parameter(Mandatory=$true)][string]$ReceiptPath)
+param([ValidateSet('Runtime','Maintenance')][string]$Target='Runtime',[switch]$RepairBlocklistBinding,[Parameter(Mandatory=$true)][string]$ReceiptPath)
 $ErrorActionPreference='Stop'
 Set-StrictMode -Version Latest
 $resolved=$null;$root=$null;$created=[Collections.Generic.List[string]]::new()
@@ -60,13 +60,27 @@ try{
     $profile.auth.jwtKeySecretReferences=@('m0-jwt-v1');$profile.auth.protectedPersistedCsrfStoreReference='m0-csrf-current-user'
     $profile.maintenance.replayCleanupJobReference='m0-replay-cleanup';$profile.maintenance.securityAuditCleanupJobReference='m0-audit-cleanup'
     $profile.maintenance.maintenancePrincipalReference='m0-local-maintenance'
+    $profile.blocklistManifestReference='m0-password-corpus'
     $outputs=@(@{Name='profile.json';Json=($profile|ConvertTo-Json -Depth 8)},@{Name='patch-manifest.json';Json=$match.Groups[1].Value})
-    foreach($output in $outputs){if(Test-Path -LiteralPath (Join-Path $root $output.Name)){throw 'Descriptor already exists'}}
-    foreach($output in $outputs){
-        $path=Join-Path $root $output.Name
-        $stream=[IO.File]::Open($path,[IO.FileMode]::CreateNew,[IO.FileAccess]::Write,[IO.FileShare]::None)
-        $created.Add($path)
-        try{$bytes=[Text.UTF8Encoding]::new($false).GetBytes($output.Json);$stream.Write($bytes,0,$bytes.Length)}finally{$stream.Dispose()}
+    if($RepairBlocklistBinding){
+        if($Target -cne 'Runtime'){throw 'Recovery target refused'}
+        $profilePath=Join-Path $root 'profile.json'
+        $installed=Get-Content -LiteralPath $profilePath -Raw|ConvertFrom-Json
+        $expectedOld=$profile|ConvertTo-Json -Depth 8|ConvertFrom-Json
+        $expectedOld.blocklistManifestReference='UNBOUND_OPERATOR_BLOCKLIST_MANIFEST'
+        $manifestPath=Join-Path $root 'patch-manifest.json'
+        foreach($path in @($profilePath,$manifestPath)){if(((Get-Item -LiteralPath $path).Attributes -band [IO.FileAttributes]::ReparsePoint) -ne 0){throw 'Reparse recovery descriptor'}}
+        if(($installed|ConvertTo-Json -Depth 8) -cne ($expectedOld|ConvertTo-Json -Depth 8) -or
+           (Get-Content -LiteralPath $manifestPath -Raw).Trim() -cne $match.Groups[1].Value.Trim()){throw 'Unexpected recovery descriptor'}
+        [IO.File]::WriteAllText($profilePath,$outputs[0].Json,[Text.UTF8Encoding]::new($false))
+    }else{
+        foreach($output in $outputs){if(Test-Path -LiteralPath (Join-Path $root $output.Name)){throw 'Descriptor already exists'}}
+        foreach($output in $outputs){
+            $path=Join-Path $root $output.Name
+            $stream=[IO.File]::Open($path,[IO.FileMode]::CreateNew,[IO.FileAccess]::Write,[IO.FileShare]::None)
+            $created.Add($path)
+            try{$bytes=[Text.UTF8Encoding]::new($false).GetBytes($output.Json);$stream.Write($bytes,0,$bytes.Length)}finally{$stream.Dispose()}
+        }
     }
     $receipt.success=$true
 }catch{
