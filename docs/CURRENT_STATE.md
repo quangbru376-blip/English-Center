@@ -1,17 +1,23 @@
 # Current State
 
-W1 actual Windows identity/custody PASS2026-10-09: EcM0Runtime/EcM0Maint/
-EcM0Schema created, matchingSids3, DPAPIReadable3, protected root/file ACLs,
-no Administrator membership. Reviewed helper managerb5b40cb/mainbbff42b ADR163.
-Per-operation UAC helper works; ordinary manager remains unelevated. No need to
-restart Codex merely to obtain bounded provisioning authority. Each helper must
-recheck actual token. No SQL login/grant/DDL/TLS changes in W1. D07 read-only
-baseline byte-identical10CD3407CE5986394703A9BEC2EE3E42314080809DDABE26906B1F14B593FC8E.
-Owner4 files unchanged/unshared/untracked/unstaged. Full M0 remains IN PROGRESS.
-Next exact W2 dedicated operational catalog/authentication contract, then SQL TLS,
-protected runtime keys/all9 startup/API/UI/actual maintenance proof. LOCAL_DEV/
-WeeklyPreviewBudget10000 fixed ADR186; no repeat questions or M1 expansion.
-See M0_W1_IDENTITY_CARD. Backend/frontend/tests unchanged; no build rerun for W1.
+W1/W2 actual operational identity/catalog PASS2026-10-09. Three non-admin
+Windows users + operator-DPAPI protected custody created; owned separate
+EnglishCenter_M0_LOCALDEV profile160/snapshotON/AUTO_CLOSEOFF and existing6migrations.
+Three FROM WINDOWS logins/users; runtime ec_app_runtime + exact metadata/history
+reads, maintenance narrow cleanup/no roles, offline schema db_owner only new DB.
+Genuine processes under all3credentials PASS: runtime safe7facts/880matched,
+maintenance safe9facts/AccountSELECT229, schema separate/non-sysadmin. Diagnostic
+TrustServerCertificate true in W2: SQL TLS/readiness still unverified.
+Production guard bug fixed: server HAS_PERMS_BY_NAME class must NULL, not SERVER.
+Reviewed/applied ADR163 managerbdcc715/maind816a77; both1217PASS/64opt-inSKIP +
+4actual readonly SQL regressions PASS/build0warnings0errors. Sourceab1c82b45ab140f99d44427cf4bd47871aa1e3bf;
+testsac206f9590ea2a41fedaa5b3c59f43a1c29e6f8c; frontend unchanged.
+D07 output10CD3407CE5986394703A9BEC2EE3E42314080809DDABE26906B1F14B593FC8E
+byte-identical; owner4unchanged/unshared/untracked/unstaged. Per-operation UAC
+works; each bounded helper rechecks elevation. Full M0 still IN PROGRESS.
+Next W3 SQL TLS/key custody/all9/host/UI/actual scheduled maintenance integration.
+LOCAL_DEV/WeeklyPreviewBudget10000 fixed ADR186; no repeat questions/M1–M4.
+See M0_W1_IDENTITY_CARD/M0_W2_CATALOG_CARD, ADR187.
 
 
 Last updated: 2026-10-09

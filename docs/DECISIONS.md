@@ -4758,3 +4758,17 @@ Owner subsequently selected WeeklyPreviewBudget10000 work units per preview,
 resource exhaustion503; not a hidden lesson/date cap. M0 weekly route remains
 unmounted; precise work-unit accounting/normal-use verification belongs to its later
 implementation. All table scalar values now selected, operational bindings not ready.
+
+## ADR-187 — actual LOCAL_DEV identity/catalog and correct server authority fact
+2026-10-09 accepted under assigned M0 ADR177 and reviewed apply ADR163.
+Provisioning owner retains DPAPI credentials; three dedicated non-admin Windows
+identities map to separate runtime/maintenance/offline schema SQL contexts on
+owned EnglishCenter_M0_LOCALDEV. Existing6migrations only; D07 stays baseline.
+Runtime gets ec_app_runtime and exact VIEW DEFINITION/history-column reads;
+maintenance only fixed cleanup rights/no roles; schema db_owner only new catalog.
+Genuine SSPI verification safe runtime880facts/maintenance229 denial PASS.
+Correct HAS_PERMS_BY_NAME server securable class is NULL; SERVER returned NULL
+for actual sysadmin and wrongly prevented concrete readiness. Fix preserves deny
+for elevated/unknown/extra permissions, no grants expanded. Actual4SQL regression
+plus1217default PASS. Diagnostic TLS bypass in provisioning is not ready; W3 must
+prove Encrypt required/TrustServerCertificate false before actual host activation.

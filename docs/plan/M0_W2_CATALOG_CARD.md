@@ -77,3 +77,10 @@ Guard fix review PASS: manager build0warnings0errors/default1217PASS64opt-inSKIP
 4actual read-only SQL regression PASS (new1 + existing3 diagnostic denials),
 source query still denies privileged/unknown/extra roles and grants. No authority
 expanded; actual Windows auth verifier acceptance must follow main apply.
+
+Actual W2 authentication/catalog PASS: genuine Windows process per credential,
+runtime principalSafe/880matched, maintenance principalSafe/AccountSELECT229,
+schema principalSafe. TLSVerified false on all; diagnostic bypass never runtime
+readiness. Main/manager buildclean/default1217PASS64SKIP/readonly4SQL PASS.
+D07 byteSHA10CD3407CE5986394703A9BEC2EE3E42314080809DDABE26906B1F14B593FC8E
+identical; owner4hashes/untracked/unstaged preserved. Next W3 concrete PKI contract.
