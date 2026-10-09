@@ -82,3 +82,8 @@ cases PASS. Overall manager1250PASS73intentionalSKIP/build0warnings0errors.
 W5 B host/pipe and C not implemented. A operator helper/profile/actual binding
 verification pending; this intermediate source PASS is not full W5/M0 closure.
 Patch review pins main-workspace byte artifacts (CRLF), no security/latest claim.
+
+Actual A helper Runtime success/5pins/noSecrets confirmed from owned receipt;
+actual readonly binding runtime1+maintenance1+schema1PASS post-process restart.
+Derived same ActualM0RuntimeBindingTests fresh actual profile+manifest loaded NET/ASP/EF,
+main artifact pins and strict SQL version assertion; no SQL mutation or overall ready claim.
