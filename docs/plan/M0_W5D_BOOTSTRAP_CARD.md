@@ -57,3 +57,8 @@ trusted file-owner operator/SYSTEM/Administrators; root still exact operator and
 protected3rules. No ACL change/widening, new principals or COMMIT occurred. Source
 review PASS for this compatibility fix, AST0errors; initial mode may run again
 because both Admin files absent and child was never launched, no unknown COMMIT.
+Second attempt created durable escrow but result refused; readonly VerifyExisting
+also refused. Independent readonly owned-catalog counts Role/Account/Audit/Profile/
+Session all0, so no retained bootstrap effects. Keep escrow; no fresh retry/reset.
+Derived safe helper diagnostic numeric failureLine/childExited/exitCode only, never
+raw exception/stdout/stderr/secret. Next readonly verification only until cause fixed.

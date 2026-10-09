@@ -76,7 +76,7 @@ try{
     $marker.phase=if($VerifyExisting){'verified'}else{'committed'}
     [IO.File]::WriteAllText($markerPath,($marker|ConvertTo-Json),$encoding)
     $receipt.success=$true;$receipt.created=[bool]$result.created;$receipt.verified=[bool]$result.verified
-}catch{$receipt.errorCategory='bootstrap_refused_or_result_unknown'}
+}catch{$receipt.errorCategory='bootstrap_refused_or_result_unknown';$receipt.failureLine=$_.InvocationInfo.ScriptLineNumber;$receipt.childExited=($null -ne $process -and $process.HasExited);if($receipt.childExited){$receipt.childExitCode=$process.ExitCode}}
 finally{
     if($process){if(-not $process.HasExited){$process.Kill();[void]$process.WaitForExit(5000)};$process.Dispose()}
     if($appCredential){$appCredential.Password.Dispose()};if($schemaCredential){$schemaCredential.Password.Dispose()}
