@@ -56,3 +56,11 @@ W2-B helper source review PASS: AST0, fixed catalog identity, W1/local/SQL login
 SID byte equality, existing exact role baseline, one TX all3users/grants, no
 server grants/business rows. Schema db_owner solely offline new catalog; runtime
 and maintenance cannot borrow it. Operational/grant verification still pending.
+
+W2-B actual provision receipt success/committed/users3/TLSVerified false.
+Derived readonly tools/operator/Test-M0Principal.ps1 exact modes Runtime/Maint/Schema,
+run genuine Windows process with W1 in-RAM PSCredential and LoadUserProfile;
+no credential args/output. Fixed new catalog, production principal queries and
+880catalog ordinal comparison/accepted module normalization. Maint forbidden Account
+column SELECT must229; runtime purge authority denied. Diagnostic-C only; no TLS
+or readiness claim. AST0errors/source review PASS, actual acceptance pending.
