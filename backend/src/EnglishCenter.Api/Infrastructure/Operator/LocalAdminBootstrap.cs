@@ -56,9 +56,9 @@ public static class LocalAdminBootstrap
         catch (Exception) { return null; }
         finally { Array.Clear(chars); }
     }
-    public static async Task<Outcome> RunAsync(TextReader input, CancellationToken token)
+    public static async Task<Outcome> RunAsync(TextReader input, CancellationToken token, Action<string>? checkpoint = null)
     {
-        token.ThrowIfCancellationRequested();
+        token.ThrowIfCancellationRequested(); checkpoint?.Invoke("identity");
         if (!OperatingSystem.IsWindows()) return Outcome.Refused;
         using var identity = WindowsIdentity.GetCurrent();
         if (identity.Name != Environment.MachineName + @"\EcM0Schema" ||
@@ -66,13 +66,16 @@ public static class LocalAdminBootstrap
         using var deadline = CancellationTokenSource.CreateLinkedTokenSource(token); deadline.CancelAfter(30000);
         try
         {
+            checkpoint?.Invoke("input");
             var envelope = await ReadEnvelopeAsync(input, deadline.Token);
             if (envelope is null) return Outcome.Refused;
             var options = new DbContextOptionsBuilder<EnglishCenterDbContext>().UseSqlServer(LocalRuntimeReferences.SqlConnection,
                 sql => sql.UseCompatibilityLevel(160).CommandTimeout(10)).Options;
             await using var db = new EnglishCenterDbContext(options);
+            checkpoint?.Invoke("connection");
             await db.Database.OpenConnectionAsync(deadline.Token);
             var connection = (SqlConnection)db.Database.GetDbConnection();
+            checkpoint?.Invoke("catalog");
             await using (var command = connection.CreateCommand())
             {
                 command.CommandTimeout = 10;
@@ -82,16 +85,21 @@ public static class LocalAdminBootstrap
                 if (!await reader.ReadAsync(deadline.Token) || reader.GetInt32(0) != envelope.DatabaseId || reader.GetGuid(1) != envelope.DatabaseGuid ||
                     reader.GetInt32(2) != 1 || await reader.ReadAsync(deadline.Token)) return Outcome.Refused;
             }
+            checkpoint?.Invoke("migrations");
             var migrations = db.Database.GetMigrations().ToArray();
             if (migrations.Length != 6 || !(await db.Database.GetAppliedMigrationsAsync(deadline.Token)).SequenceEqual(migrations, StringComparer.Ordinal)) return Outcome.Refused;
+            checkpoint?.Invoke("credential");
             var hasher = new CredentialHasher(new PasswordPolicy(OfflinePasswordBlocklist.Load(Path.Combine(AppContext.BaseDirectory, "Resources", "PasswordBlocklist"))));
             if (envelope.VerifyOnly) return await MatchesAsync(db, hasher, envelope.Password, deadline.Token) ? Outcome.Verified : Outcome.Refused;
+            checkpoint?.Invoke("freshness");
             await using var transaction = await db.Database.BeginTransactionAsync(IsolationLevel.Serializable, deadline.Token);
             if (await db.Accounts.AnyAsync(deadline.Token) || await db.Roles.AnyAsync(deadline.Token) || await db.AuditLogs.AnyAsync(deadline.Token) ||
                 await db.AuthSessions.AnyAsync(deadline.Token) || await db.StudentProfiles.AnyAsync(deadline.Token)) return Outcome.Refused;
+            checkpoint?.Invoke("bootstrap");
             var service = new BootstrapService(new SqlBootstrapRepository(db, 10, 3000), hasher);
             if (await service.EnsureAdminAsync(Email, FullName, envelope.Password, DateTimeOffset.UtcNow, deadline.Token) != BootstrapOutcome.Created ||
                 !await MatchesAsync(db, hasher, envelope.Password, deadline.Token) || await db.AuditLogs.CountAsync(deadline.Token) != 1) return Outcome.Refused;
+            checkpoint?.Invoke("commit");
             await transaction.CommitAsync(deadline.Token);
             return Outcome.Created;
         }

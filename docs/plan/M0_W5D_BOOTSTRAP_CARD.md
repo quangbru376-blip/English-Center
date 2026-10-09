@@ -62,3 +62,8 @@ also refused. Independent readonly owned-catalog counts Role/Account/Audit/Profi
 Session all0, so no retained bootstrap effects. Keep escrow; no fresh retry/reset.
 Derived safe helper diagnostic numeric failureLine/childExited/exitCode only, never
 raw exception/stdout/stderr/secret. Next readonly verification only until cause fixed.
+Derived fixed code-stage checkpoint callback before operations (identity/input/
+connection/catalog/migrations/credential/freshness/bootstrap/commit); only literal
+allowlist forwarded by CLI/helper, no exception/SQL/secret diagnostics. This enables
+readonly verification to locate refusal while no write retry is authorized by a
+refusal alone. Existing parser/identity tests retained, source review checks literals.

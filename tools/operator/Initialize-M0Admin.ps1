@@ -70,6 +70,7 @@ try{
     $process.StandardInput.Write($payload);$process.StandardInput.Close();$password=$null;$payload=$null
     if(-not $process.WaitForExit(45000)){throw 'Bootstrap deadline'}
     $output=$stdout.GetAwaiter().GetResult();$discarded=$stderr.GetAwaiter().GetResult();$discarded=$null
+    if($output.Length -le 512){try{$safeResult=$output|ConvertFrom-Json;if($safeResult.phase -ceq 'W5-bootstrap' -and $safeResult.checkpoint -cin @('arguments','identity','input','connection','catalog','migrations','credential','freshness','bootstrap','commit')){$receipt.checkpoint=$safeResult.checkpoint}}catch{}}
     if($process.ExitCode -ne 0 -or $output.Length -gt 512){throw 'Bootstrap refused or result unknown'}
     $result=$output|ConvertFrom-Json
     if($result.phase -cne 'W5-bootstrap' -or $result.success -ne $true -or ($VerifyExisting -and ($result.verified -ne $true -or $result.created -ne $false)) -or (-not $VerifyExisting -and ($result.created -ne $true -or $result.verified -ne $false))){throw 'Invalid bootstrap result'}
