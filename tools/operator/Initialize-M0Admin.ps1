@@ -13,7 +13,9 @@ function Assert-OwnedPath([string]$path,[string]$operatorSid){
     while($ancestor){if(($ancestor.Attributes -band [IO.FileAttributes]::ReparsePoint) -ne 0){throw 'Reparse custody'};if($ancestor -is [IO.FileInfo]){$ancestor=$ancestor.Directory}else{$ancestor=$ancestor.Parent}}
     if($item -is [IO.FileInfo] -and ($item.Length -le 0 -or $item.Length -gt 65536)){throw 'Invalid custody size'}
     $acl=Get-Acl -LiteralPath $path
-    if($acl.Owner -ne ([Security.Principal.SecurityIdentifier]::new($operatorSid)).Translate([Security.Principal.NTAccount]).Value -or $acl.Access.Count -ne 3 -or ($item -is [IO.DirectoryInfo] -and -not $acl.AreAccessRulesProtected)){throw 'Invalid custody'}
+    $ownerSid=([Security.Principal.NTAccount]::new($acl.Owner)).Translate([Security.Principal.SecurityIdentifier]).Value
+    if(($item -is [IO.DirectoryInfo] -and ($ownerSid -ne $operatorSid -or -not $acl.AreAccessRulesProtected)) -or
+       ($item -is [IO.FileInfo] -and $ownerSid -notin @($operatorSid,'S-1-5-18','S-1-5-32-544')) -or $acl.Access.Count -ne 3){throw 'Invalid custody'}
     $seen=[Collections.Generic.HashSet[string]]::new()
     foreach($rule in $acl.Access){$sid=$rule.IdentityReference.Translate([Security.Principal.SecurityIdentifier]).Value;if(-not $seen.Add($sid) -or $sid -notin @($operatorSid,'S-1-5-18','S-1-5-32-544') -or $rule.FileSystemRights -ne 'FullControl' -or $rule.AccessControlType -ne 'Allow'){throw 'Invalid custody access'}}
 }

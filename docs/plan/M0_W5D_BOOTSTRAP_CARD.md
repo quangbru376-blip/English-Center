@@ -50,3 +50,10 @@ strict TLS/migrations, no startup bootstrap; existing A02 owns roles/Admin/audit
 build0warnings0errors. PowerShell AST0errors; explicit protected escrow Flush(true)
 and DPAPI roundtrip before stdin/COMMIT, bounded child45s/kill wait5s. No secret
 literal/source/log/external context or SQL concatenation. Operational proof pending.
+First operational attempt refused before escrow/child/SQL: W1 UAC-created vault
+files owner Administrators, protected root owner provisioning operator. Verified
+all3 ACL entries unchanged. Derived custody compatibility accepts only existing
+trusted file-owner operator/SYSTEM/Administrators; root still exact operator and
+protected3rules. No ACL change/widening, new principals or COMMIT occurred. Source
+review PASS for this compatibility fix, AST0errors; initial mode may run again
+because both Admin files absent and child was never launched, no unknown COMMIT.
