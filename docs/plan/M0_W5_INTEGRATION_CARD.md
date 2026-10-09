@@ -146,3 +146,11 @@ No automatic key refresh/TLS trust import/cleanup RPC/credential sharing. Progra
 no-arg behavior preserved, explicit maintenance-only branch. Scheduled service
 retains original60s/3600s/no initial tick/fresh strict9facts/owned COMMIT behavior.
 Full W5/M0 not complete until genuine process proof and C real host/API/UI evidence.
+
+Final A/B actual review PASS/applied ADR163 mainab06ab8/managercda4394;
+source e7488345d01f4b151df5a22151ef5e912c9b518f, tests41e29656434be653a1e2003a301731e8c42bfb18.
+Both1256PASS77intentionalSKIP/buildclean. Actual A4+B3 cases PASS on main binaries
+under genuine Windows identities (manager checkout correctly inaccessible to them).
+All host test processes exited/canceled. No initial cleanup reached/no SQL mutations;
+D07 not rerun, last W3 unchanged baseline retained. Owner4 hashes/scope preserved.
+Full W5C/M0 IN PROGRESS, next exact API/UI/all9 host contract before code/delegation.

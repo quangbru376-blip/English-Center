@@ -1,5 +1,26 @@
 # English Center Management System — Project Memory
 
+W5 A/B actual profile/maintenance proof PASS2026-10-09. Mainab06ab8 / managercda4394:
+identical srce7488345d01f4b151df5a22151ef5e912c9b518f /
+tests41e29656434be653a1e2003a301731e8c42bfb18. Both1256defaultPASS/
+77intentionalopt-inSKIP/build0warnings0errors; frontend unchanged.
+A actual4PASS: runtime key/disposal and fresh installed LOCAL_DEV profile/5artifact
+pins/loaded NET+ASP+EF/strict SQL version; maintenance/schema runtime binding denial.
+Operator corpus UNBOUND defect correctly refused, exact guarded one-field recovery
+then actual recheck PASS. Existing main artifact versions pinned, no latest/security claim.
+B actual3PASS across two genuine identities: bounded20s EcM0Maint host/live jobs,
+runtime3fresh nonce/profile/RSA-PSS signed readonly SQL-guard proofs, stopped-worker
+5s refusal. Own nonexportable maintenance proof key, public-only runtime ACL, native
+remote-reject/FirstInstance/identification-only SID/one handle+bounded ACK reuse.
+No runtime maintenance credential/private key/cleanup RPC. No initial60s tick in
+bounded20s host: actual scheduled SQL COMMIT/data effects still pending, no such claim.
+Owner4hashes unchanged/unshared/untracked/unstaged; no D07 mutation/rerun in W5.
+Last W3 strict D07 baseline byteSHA10CD3407CE5986394703A9BEC2EE3E42314080809DDABE26906B1F14B593FC8E.
+Full M0 IN PROGRESS. Next W5C exact all9 Kestrel/API/UI host contract, actual runtime
+routes/owned COMMIT/scheduled maintenance/final walkthrough. No M1–M4/install/push/deploy.
+LOCAL_DEV/10000preview fixed ADR186; no repeat decisions. See W5 card/notes/ADR189.
+
+
 W4 actual runtime custody PASS2026-10-09: separate M0Runtime root owner runtime,
 ACL runtime/SYSTEM/Admin only. Genuine EcM0Runtime provisions32-byte JWT HS256
 current-user DPAPI encrypted, 90d metadata; non-exportable CurrentUser/My HTTPS

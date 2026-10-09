@@ -4784,3 +4784,20 @@ branch/fresh custody; default host/readiness never generate or repair keys.
 Refresh/rotation remains explicit operator action, missing/expired keys fail closed.
 Actual restarted process JWT/CSRF/HTTPS use PASS; maintenance/schema store reads
 denied. Branch does not start HTTP/SQL; full M0 readiness/mounted UI/jobs pending.
+
+## ADR-189 — exact LOCAL_DEV bindings and separate live maintenance proof
+2026-10-09, implemented/reviewed PASS under whole M0 ADR177 and apply ADR163.
+Installed profile accepts only ADR186 values/exact operator references. Existing
+32-byte DPAPI JWT/private HTTPS key custody is readonly; file ACL/hash drift and
+disposal fail closed. Reviewed existing installed versions/five main byte artifact
+pins expire2027-01-09, no latest/security-release claim or package updates.
+EcM0Maint owns proof-only RSA2048 CNG nonexportable private key in CurrentUser/My;
+runtime reads only pinned public certificate/descriptors in separate protected root.
+Native local-only FirstInstance pipe persists across sessions; identification SID
+capture immediately reverts before fresh maintenance SQL9fact probe. Domain-bound
+nonce/profile/status RSA-PSS proof additionally requires actual hosted jobs live;
+client verifies then sends bounded ACK, no cleanup RPC/credentials/private sharing.
+Actual profile/key/separation4 and host/live-proof/stopped3 cases PASS, native6 and
+codec14 independent cases PASS. No cleanup at startup;20s proof window never reaches
+first60s scheduled tick. Full scheduled SQL COMMIT and API/UI integration remain
+required M0 acceptance, not established by this stage.
