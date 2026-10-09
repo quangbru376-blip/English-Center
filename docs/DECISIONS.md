@@ -4743,3 +4743,13 @@ Startup success grants no cached API authority: each request still passes Q.
 No default registration, profile values, principal/PKI/key provisioning or readiness
 claim.14synthetic lifecycle cases with actual TestServer PASS; manager/main1217PASS/
 63opt-in SKIP/buildclean. Actual full M0 operational bindings remain unresolved.
+
+## ADR-186 — owner selects the concrete LOCAL_DEV environment
+
+2026-10-09 owner selected LOCAL_DEV according to M0_LOCAL_DEV_PROPOSAL.md:
+laptop loopback127.0.0.1:8443/same-originhttps://localhost:8443/no forwarding,
+lock3000ms/SQL10s/request30000ms/CSV25000ms/readiness5000ms/body262144bytes/
+buffer5000000bytes/replay60s/audit3600s, explicit listed JWT issuer/audience.
+Do not ask these decisions again. This selects values, not runtime readiness or
+production exposure. WeeklyPreviewBudget/custody/principal/PKI bindings remain
+explicit prerequisites; no historical fixture silently promoted or global grants.

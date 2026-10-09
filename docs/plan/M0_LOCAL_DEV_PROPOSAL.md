@@ -1,10 +1,12 @@
-# M0 LOCAL_DEV — concrete environment proposal
+# M0 LOCAL_DEV — selected environment
 
-2026-10-08. Proposal awaiting owner's environment decision, not an active profile.
+Owner selected LOCAL_DEV according to this proposal2026-10-09. Table values below
+are selected environment values, not proof of an active operational profile.
 ADR177 already authorizes implementation/checks; this is selection of previously
-deferred E04 D12/D13 values, not renewed task/delegation permission.
+deferred E04 D12/D13 values, not renewed task/delegation permission. Do not re-ask
+LOCAL_DEV versus LAN_DEMO or these accepted table values.
 
-| Slot | Proposed value |
+| Slot | Selected value |
 | --- | --- |
 | Kind / exposure | LOCAL_DEV, this laptop only |
 | Same UI/API origin | https://localhost:8443 |
