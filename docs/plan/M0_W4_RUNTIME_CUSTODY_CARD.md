@@ -55,3 +55,18 @@ Administrators only. Key script source review PASS AST0: genuine runtime/SID/ACL
 fresh fixed files, CreateNew artifacts, DPAPI32-byte exact RAM round trip/zeroing,
 no private export, CNG ExportPolicyNone verified, sole own certificate/public export,
 owned-manifest-only failure updates. Actual keys acceptance pending run.
+
+Actual runtime native key helper PASS: genuine identity/JWT DPAPI roundtrip/HTTPS
+private key true, privateExportPerformed false. Subsequent exact Program operator
+branch + RuntimeCsrfProvisioner.cs implemented, fixed root/genuine runtime marker/
+owned key manifest/fresh directory checks, one framework current-user DPAPI key,
+disable auto-generation, no listener/SQL. Added one refusal test under manager
+identity; actual runtime creation/probe/restart still pending. No default host mount.
+
+HTTPS leaf trust helper source PASS AST0: actual W1/operator/owned public leaf SHA,
+CN/SAN/validity/serverEKU/noPrivateKey guards, exact new leaf MachineRoot add only.
+No private store/key changes, no SQL/service mutation. Actual trust pending UAC.
+
+CSRF operator branch source review PASS/buildclean/default1218PASS67SKIP.
+No-arg host regression remains unchanged; actual runtime encrypted-store acceptance
+not yet done. Trust helper compensates only just-added owned leaf on exception.

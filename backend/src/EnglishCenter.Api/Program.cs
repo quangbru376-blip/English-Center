@@ -1,6 +1,13 @@
 using EnglishCenter.Api.Common.Security;
 using EnglishCenter.Api.Common.Errors;
 
+if (args.FirstOrDefault() == "--m0-provision-csrf")
+{
+    var code = args.Length == 1 ? EnglishCenter.Api.Infrastructure.Operator.RuntimeCsrfProvisioner.Run(CancellationToken.None) : 1;
+    Console.WriteLine(System.Text.Json.JsonSerializer.Serialize(new { phase = "W4-CSRF", success = code == 0 }));
+    Environment.ExitCode = code;
+    return;
+}
 var builder = WebApplication.CreateBuilder(args);
 var blocklist = OfflinePasswordBlocklist.Load(Path.Combine(AppContext.BaseDirectory, "Resources", "PasswordBlocklist"));
 builder.Services.AddSingleton(blocklist);
