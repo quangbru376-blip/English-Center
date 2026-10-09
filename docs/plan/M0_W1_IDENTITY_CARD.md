@@ -31,3 +31,11 @@ only after exact source hash checked. Verify actual owner/SID/ACL/readable DPAPI
 credentials without exposing material, no Administrator group membership. D07 remains
 untouched and owner4files hash-identical/unshared/untracked. No readiness claim from
 provisioning users; separate authenticated SQL/TLS and operational host still needed.
+
+Pre-execution script review PASS2026-10-09: AST0errors, exact three users/root,
+DPAPI credential exports, root/file allowlist ACLs, matching-SID compensation,
+CreateNew receipt prevents overwrite. Fixed uninitialized receipt/invalid-path write
+and guarded credential disposal/per-user cleanup. SHA256 script
+75B52281C37A077C138F9B2695E9B483796AB2B2CF5BBDED7328F36FD830CC18.
+Operational acceptance remains pending actual provisioning; source-only PASS is
+not W1 completion. No backend/frontend build needed for operator-only PowerShell.
