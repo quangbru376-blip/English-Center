@@ -123,3 +123,26 @@ B helper-only source review PASS: exact fresh maintenance root/4ACLs/non-admin S
 proof private key under real maint/non-exportable/sign-verify test/no trust import.
 No actual provisioning yet; native/host source remains manager pending integrated
 review. Six native/proxy tests PASS/build0warnings0errors after peer SID fix.
+
+Actual B root/proof-key/profile helper receipts success: separate non-admin owner,
+4ACLs/public-only runtime access, CNG RSA2048 nonexportable sign/verify, no trust
+import, 5pins same profile copy. Derived exact ActualM0MaintenanceProofTests.cs:
+real EcM0Maint bounded20s host/cancel, real runtime3fresh signed checks while live,
+then runtime missing/stopped worker refusal. Opt-in per-role/LIVE or STOPPED only;
+no fixtures or cleanup request, job first60s tick outside bounded20s proof window.
+This proves actual authenticated readonly maintenance dependency/live loops only;
+scheduled SQL COMMIT/data effects and whole M0 remain pending C acceptance.
+
+B final transport contract refinement before review: retain one native FirstInstance
+handle for service lifetime, reuse via Disconnect/reconnect. Client reads/verifies
+325byte proof then sends one 0xAC acknowledgment before server disconnect; ACK has
+no business effect/command. Bounded5s protects missing/invalid ACK/shutdown, avoids
+closing/recreating pipe while prior client still holds its handle and avoids any
+blocking FlushFileBuffers. Request remains68bytes, response325bytes; codec unchanged.
+
+B source integrated review PASS after custody/peer/ACK corrections: buildclean,
+6native/proxy checks PASS; bounded actual two-process verification still pending.
+No automatic key refresh/TLS trust import/cleanup RPC/credential sharing. Program
+no-arg behavior preserved, explicit maintenance-only branch. Scheduled service
+retains original60s/3600s/no initial tick/fresh strict9facts/owned COMMIT behavior.
+Full W5/M0 not complete until genuine process proof and C real host/API/UI evidence.

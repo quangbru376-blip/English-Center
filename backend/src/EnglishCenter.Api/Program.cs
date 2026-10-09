@@ -8,6 +8,13 @@ if (args.FirstOrDefault() == "--m0-provision-csrf")
     Environment.ExitCode = code;
     return;
 }
+if (args.FirstOrDefault() == "--m0-maintenance")
+{
+    var code = args.Length == 1 ? await EnglishCenter.Api.Infrastructure.Operator.LocalMaintenanceHost.RunAsync(CancellationToken.None) : 1;
+    Console.WriteLine(System.Text.Json.JsonSerializer.Serialize(new { phase = "W5-maintenance", success = code == 0 }));
+    Environment.ExitCode = code;
+    return;
+}
 var builder = WebApplication.CreateBuilder(args);
 var blocklist = OfflinePasswordBlocklist.Load(Path.Combine(AppContext.BaseDirectory, "Resources", "PasswordBlocklist"));
 builder.Services.AddSingleton(blocklist);
