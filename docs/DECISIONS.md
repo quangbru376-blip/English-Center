@@ -4889,3 +4889,17 @@ AGY two bounded outputs rejected133>130diffLines; no worker source applied, Code
 independent implementation retained accepted skill policies and passed review/tests.
 Owner4 preserved; no fake operational data/default exposure/schema/grant/package change.
 Whole M1 IN PROGRESS; package5/later, install/push/deploy remain unassigned.
+
+## ADR-195 — assigned M1 Student and Teacher entry workflow batch (2026-10-09)
+Owner assigned the next two packages after completed M1 packages1–4. Current scope
+is Student APIs019–037 and Teacher APIs066–073 under M1_05_06_TASK_CARD.
+ADR177 authorizes necessary bounded delegation/verification aspects; ADR163
+permits apply after full reviewed PASS. Batch implementation remains IN PROGRESS.
+Do not interpret earlier package5-unassigned checkpoint text as a new veto.
+Own Profile audit records changed field names only, not name/phone/DOB/address
+values; full two-RV update keeps securityVersion/session authority and has no T23.
+Teacher commands establish current assignment before binding body versions;
+correction also requires original grader. No Teacher Invoice/Class SQL projection.
+Foundation source6963500 is retained in .worktrees/m1-student-teacher; no source
+applied/main mounting. Full review is incomplete; finish documented remaining work.
+No Admissions038–044/Invoice UI046–047/Classes/M2–M4/schema/grants/install/push/deploy.

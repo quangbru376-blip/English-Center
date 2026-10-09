@@ -1,4 +1,32 @@
-# M1 packages3–4 complete — next chat handoff
+# M1 packages5–6 IN PROGRESS — resume existing manager
+
+M1 packages5–6 assigned2026-10-09 IN PROGRESS. Resume retained manager
+.worktrees/m1-student-teacher; WIP source6963500fd3ff795af7e358b1895dc3b7bf571c3f,
+contract1d7eb57, based on mainf764b87. Source is not applied/mounted on main.
+Main product remains packages1–4/code564343b. Full-batch review FAIL/incomplete;
+not a full PASS/apply claim. Owner ADR177/163 still covers completion without
+new permission questions. See docs/plan/M1_05_06_TASK_CARD.md and review.
+Unmounted foundation: two-RV own Profile/audit/no revoke, Teacher current task/
+manifests/zero/absence/correction/provenance/FN02/atomic audit+T23/replay.
+Manager1341defaultPASS133intentional opt-inSKIP/35new RAM contracts/buildclean;
+69frontend tests/types/lint/build PASS. Seven final owned scratch SQL PASS;
+19total scratch databases ID/GUID-paired dropped, live remaining0.
+AGYe1112347-32d/09ee3daa-93d sole96/88diffLine pure forms; exact3full context reads
+and sole allowed writes each, no observed scope violations. Codex import/token fixes
+and six form tests; original worker evidence retained detached. Owner4 hashes
+unchanged/unshared/untracked/unstaged. D07/runtime/default entries/packages unchanged.
+Next implement Student Registration/create/book/rebook/reschedule/cancel/confirm
+and coherent home/options/calendar/results; complete Teacher reads/SP02/lookup,
+cookie/CSRF HTTP adapters, typed role pages/RAM/manual recovery, HTTP/Edge/runtime
+verification, full independent review/PASS then apply/reverify main. No broadening
+to Admissions038–044/Invoice UI046–047/Classes/M2–M4/schema/grants/install/push/deploy.
+
+Current foundation evidence: M1_05_06_FOUNDATION.json; exact remaining items in
+M1_05_06_REVIEW.md. No owner decision pending. Do not start a new manager or redo
+completed M0/packages1–4. Keep original four owner files and all prior deferrals.
+The following historical main checkpoint does not undo the new assignment.
+
+## Previously applied packages3–4
 
 M1 packages3–4 COMPLETE/reviewed PASS/applied ADR163/reverified2026-10-09.
 Main code564343b / manager2c6fef7 (ADR194/177); identical src

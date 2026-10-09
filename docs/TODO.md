@@ -1,10 +1,13 @@
 # TODO
 
-M0 COMPLETE; M1 packages1–4 COMPLETE/PASS/applied. Latest main code564343b,
-1306defaultPASS/126opt-inSKIP,24new integration cases,frontend63PASS.
-No remaining implementation work in assigned Program/entry-session packages3–4.
-Whole M1 IN PROGRESS; package5/later awaits owner assignment. Do not open Teacher
-entry grading/Student booking/Admissions decisions/Classes/payment/report families.
+M0 COMPLETE; M1 packages1–4 COMPLETE/PASS/applied, main code564343b.
+Packages5–6 now assigned IN PROGRESS; use .worktrees/m1-student-teacher and
+M1_05_06_TASK_CARD/REVIEW. WIP source6963500 stays detached from main.
+Finish Student Registration/booking/confirmation and own coherent reads, Teacher
+reads/roster/lookup, HTTP adapters and typed UI. Then HTTP/Edge/runtime coverage,
+independent full review/PASS, ADR163 apply and main reverify.
+Foundation1341defaultPASS133opt-inSKIP/7ownedSQL/69frontend PASS;19scratch cleaned.
+No Admissions decisions/Invoice UI/Classes/payment/report/M2–M4 families assigned.
 Launch tools/operator/Start-M0Local.ps1; https://localhost:8443. Admin issues real
 staff only when intended; AcademicAffairs manages Course/Band/Program/entry sessions.
 Do not promote synthetic fixture rows or return temporary credentials from replay.

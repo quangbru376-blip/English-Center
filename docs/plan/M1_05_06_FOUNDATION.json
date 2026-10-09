@@ -1,0 +1,46 @@
+{
+  "date": "2026-10-09",
+  "status": "IN_PROGRESS",
+  "fullBatchReview": "FAIL_INCOMPLETE",
+  "sourceAppliedToMain": false,
+  "mainProductCode": "564343bd00a61580dd7074c85d29995fb3a4aee7",
+  "startingMain": "f764b87e365e2df054a4c3cdc426e423536dadfa",
+  "manager": "C:/Study/SOEN/main_workplace/.worktrees/m1-student-teacher",
+  "managerSourceCommit": "6963500fd3ff795af7e358b1895dc3b7bf571c3f",
+  "managerSourceTrees": {
+    "backendSrc": "88fbdb709466a96adf404ece5b7b1f79cc91fd05",
+    "backendTests": "f3bde7958c1703e8f30fc19c408142632d1f7acf",
+    "frontend": "e22114496c5ecc137239e0884668937d0103e62d"
+  },
+  "verification": {
+    "defaultBackend": { "passed": 1341, "failed": 0, "intentionalOptInSkipped": 133 },
+    "newRamContracts": { "passed": 35, "failed": 0 },
+    "finalOwnedScratchSql": { "passed": 7, "failed": 0, "skipped": 0 },
+    "frontend": { "passed": 69, "failed": 0, "newFormTests": 6 },
+    "build": "PASS",
+    "frontendTypecheck": "PASS",
+    "frontendLint": "PASS",
+    "frontendBuild": "PASS",
+    "newWorkflowHttp": "NOT_IMPLEMENTED",
+    "newWorkflowBrowser": "NOT_IMPLEMENTED",
+    "actualLocalDevReverification": "NOT_RUN"
+  },
+  "scratch": {
+    "created": 19,
+    "dropped": 19,
+    "badIdentityPairs": 0,
+    "liveRemainingAfterFinalRun": 0,
+    "scope": "EnglishCenter_V01E_20261008_GUID only; existing six migrations"
+  },
+  "workers": [
+    { "run": "e1112347-32d", "status": "SUCCESS", "observedFullReads": 3, "diffLines": 96, "soleWrite": "frontend/src/features/enrollment/components/StudentProfileForm.tsx", "observedScopeViolations": 0 },
+    { "run": "09ee3daa-93d", "status": "SUCCESS", "observedFullReads": 3, "diffLines": 88, "soleWrite": "frontend/src/features/entryTasks/components/EntryScoreForm.tsx", "observedScopeViolations": 0 }
+  ],
+  "managerFixes": ["named UI imports", "design-token paragraph", "invalid profile RV to400", "Teacher excludes Invoice/Class SQL reads", "fresh final/replay authority"],
+  "ownerFiles": "four original files hash-identical, unshared, untracked, unstaged",
+  "d07Touched": false,
+  "runtimeTouched": false,
+  "packagesInstalled": false,
+  "next": "Finish Student workflow/read models and Teacher reads/roster/lookup; mount exact HTTP/UI; complete HTTP/Edge/runtime tests, full review/PASS, ADR163 apply and main reverify.",
+  "rawEvidence": "manager/backend/TestResults/M1-enrollment-foundation and M1-enrollment-preflight; original worker user Temp runs retained"
+}
