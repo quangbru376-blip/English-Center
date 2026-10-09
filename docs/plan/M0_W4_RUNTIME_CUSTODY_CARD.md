@@ -70,3 +70,15 @@ No private store/key changes, no SQL/service mutation. Actual trust pending UAC.
 CSRF operator branch source review PASS/buildclean/default1218PASS67SKIP.
 No-arg host regression remains unchanged; actual runtime encrypted-store acceptance
 not yet done. Trust helper compensates only just-added owned leaf on exception.
+
+Actual CSRF operator success true after process exit; no listener/API/SQL.
+Derived exact ActualM0RuntimeCustodyTests.cs4readonly opt-in checks, same genuine
+Windows gates: persisted DPAPI JWT sign/validate/fresh resolution with RAM zeroing,
+existing CSRF decrypt/restart/no writes, own HTTPS persisted non-exportable key
+sign/public verify/local chain/no downloads, maintenance root JWT/CSRF read denial.
+Tests reference other7probe slots synthetic/unverified; not overall readiness.
+No private/tokens/XML output or copying runtime material to other identities.
+
+Custody readonly test source review PASS/build0warnings0errors; fixed Windows guard
+inside deferred DPAPI resolver. Actual run pending main workspace; dedicated users
+cannot read manager .codex checkout. No access grants/secret copy to bypass isolation.
