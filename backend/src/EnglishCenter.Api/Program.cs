@@ -30,6 +30,12 @@ if (args.FirstOrDefault() == "--m0-local-runtime")
     Environment.ExitCode = code;
     return;
 }
+if(args.FirstOrDefault()=="--m1-seed-bands")
+{
+    var valid=args.Length==3&&int.TryParse(args[1],out _)&&Guid.TryParseExact(args[2],"D",out _);
+    var success=valid&&await EnglishCenter.Api.Infrastructure.Operator.LocalBandReferenceSeed.RunAsync(int.Parse(args[1],System.Globalization.CultureInfo.InvariantCulture),Guid.Parse(args[2]),CancellationToken.None);
+    Console.WriteLine(System.Text.Json.JsonSerializer.Serialize(new{phase="M1-band-reference",success}));Environment.ExitCode=success?0:1;return;
+}
 if (args.FirstOrDefault() == "--m0-bootstrap")
 {
     var checkpoint = "arguments";

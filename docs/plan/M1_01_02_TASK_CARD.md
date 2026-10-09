@@ -1,6 +1,7 @@
 # M1 packages 1 and 2 — assigned 2026-10-09
 
-Status: implementation in progress; no PASS or main application yet.
+Status: Codex implementation review PASS; main apply and genuine LOCAL_DEV
+verification are next. This card will record their actual results separately.
 Owner assigns full code/review/tests/PASS application; ADR177/163 apply.
 Manager checkout .worktrees/m1-packages starts at d46ff8a; owner4 absent here.
 
@@ -25,7 +26,8 @@ applicable_overrides: SKILL_ROUTING §2; accepted E04/requirements override gene
 REST/bearer/SQLite/pagination/money rules. No new packages or business limits.
 read_context: ordered memory, requirements, E04 DTO/catalog/final/replay/SQL,
 W01/W03/W13, existing identity/admin/SQL/UI code and relevant test fixtures.
-skill_verification: pending diff/read-event review and independent validation.
+skill_verification: complete Codex diff/contract/security/read-event review and
+independent build/tests. See verification below; canonical overrides retained.
 
 AGY: sole pure Course form, <=130 lines/one file; read only M1_COURSE_FORM_WORKER,
 frontend-ui/SKILL.md and SKILL_ROUTING; no source/owner/private files/commands/network/
@@ -36,6 +38,85 @@ Verification: full existing backend/frontend regression; meaningful parser and
 service guards; real isolated owned-COMMIT SQL/API tests (existing scratch fixture
 with ID/GUID checked cleanup, never D07/operational fake data), rollback/audit/replay/
 stale/role/session/self/last-admin/races, actual Edge 375/768/1280 UI checks.
-LOCAL_DEV mounting and explicit reviewed artifact re-pin after source build needed
-for usable host; no automatic drift repair. Protected keys/credentials never shared.
+Explicit LOCAL_DEV host mounts these two modules; no-argument host stays unmounted.
+Existing five manifest pins cover package/global.json files and remain unchanged;
+no re-pin is needed. Built UI files are freshly pinned by the existing host lifetime.
+Band reference initialization is an explicit schema-identity operator command,
+never GET/default startup repair. Protected keys/credentials never shared.
 Owner4 metadata hashes before/after and exact staging allowlists mandatory.
+
+## Review and independent verification
+Codex verdict PASS2026-10-09 for implementation; no outstanding must-fix finding.
+No migration is applicable: existing24-table model/constraints/grants unchanged.
+Thin adapters, service authority/deadline/RV/lock/replay guards, exact DTOs, decimal
+internal money/string wire, caller-owned mandatory audit+T23 and post-COMMIT first
+credentials reviewed. Secrets are absent from replay/audit/ToString/log/storage.
+Independent periods/profile/keys/CSRF/cookies remain existing accepted M0 behavior.
+Frontend reuses native/shared UI; Vietnamese/3widths/keyboard/clear/no-auto-retry.
+Review fixes: exact audit numeric/status whitelist, blank query400, accepted first-F
+landing preserved, UTC/target credential decoder, stale-command detail clearing,
+deep-link detail and self-reset post-handoff session check, EC tokens/focus/pending.
+Seed accepts only empty or exact5Bands; partial set refuses. Same TX stores5 secret-
+free mandatory SYSTEM.BAND.SEED rows; audit failure rolls back all reference rows.
+
+Manager build0warnings0errors;1291defaultPASS/102intentional opt-inSKIP.
+Frontend56PASS/0fail0skip;lint/types/build PASS. Owned verification:20 SQL cases,
+2 HTTP→ownedSQL cases and8 Edge→ownedSQL groups all PASS (30 unique cases).
+Last aggregate29PASS/1test-assertionFAIL was corrected to exact pre-existing
+MandatoryAuditException; final individual audit case PASS including seed rollback.
+The two final M1 Edge groups were rerun against final assets:2PASS; all3widths.
+96 scratch databases created/ID+GUID-matched dropped,0unmatched; never operational
+fake staff/Course or D07 mutation. Original failed receipts remain evidence.
+SQL races cover mutually disabling Admins and duplicate Course code; mandatory
+failure, stale RV, wrong roles, secret replay and status-preserving reset verified.
+Whole future M1/product55 routes, LAN/load/backup/deploy are outside this verdict.
+
+AGY18075799-be1 SUCCESS129diffLines/soleCourseForm; exact3full reads/solewrite,
+no observed out-of-scope read/command/network/SQL. Codex changed pending/style.
+Receipt SHA256 6A6B1472430E746C8B37683B19D0CFD86F3C5D31946A06ABA99D4ECA2CC11BEF;
+events FC8802460135A9E3CC95D40F3201C2293757D2A721C4DDC3A1D66F8A50A1B4E2.
+Skill SHA256: backend76ACEC868ED4D918DC1C6616904F78FF2710737D6A06CCF605DA783BC914DD23;
+frontend54EFB0F14763ACA58DD1BDADC8B5276DA082E0668244335C7B8C48E0521402DF;
+review1DDED1E6699F97C7657C27D2B923992D07AC88BD9642FB74EBE4D93A28BE2125;
+routingADB7938FE69E00C991AEFB4EB114854F124EB3E2AC3963763937225646D3E915.
+
+## Reviewed write allowlist
+backend/src/EnglishCenter.Api/Api/Administration/AdminAccountEndpoints.cs
+backend/src/EnglishCenter.Api/Api/Administration/StaffAccountEndpoints.cs
+backend/src/EnglishCenter.Api/Api/Catalogue/CourseEndpoints.cs
+backend/src/EnglishCenter.Api/Common/Auditing/AuditEntry.cs
+backend/src/EnglishCenter.Api/Common/Auditing/AuditPolicy.cs
+backend/src/EnglishCenter.Api/Infrastructure/Administration/SqlAdminAccountRepository.cs
+backend/src/EnglishCenter.Api/Infrastructure/Administration/SqlStaffAccountExecutor.cs
+backend/src/EnglishCenter.Api/Infrastructure/Catalogue/SqlCourseExecutor.cs
+backend/src/EnglishCenter.Api/Infrastructure/Catalogue/SqlCourseRepository.cs
+backend/src/EnglishCenter.Api/Infrastructure/Operator/LocalBandReferenceSeed.cs
+backend/src/EnglishCenter.Api/Infrastructure/Operator/LocalRuntimeServices.cs
+backend/src/EnglishCenter.Api/Program.cs
+backend/src/EnglishCenter.Api/Services/Administration/AdminAccountService.cs
+backend/src/EnglishCenter.Api/Services/Administration/StaffAccountInput.cs
+backend/src/EnglishCenter.Api/Services/Administration/StaffAccountService.cs
+backend/src/EnglishCenter.Api/Services/Catalogue/CourseModels.cs
+backend/src/EnglishCenter.Api/Services/Catalogue/CourseService.cs
+backend/tests/EnglishCenter.Tests/Api/Integration/M1HttpSqlTests.cs
+backend/tests/EnglishCenter.Tests/Api/Integration/M1StaffCourseSqlTests.cs
+backend/tests/EnglishCenter.Tests/Api/Integration/OwnedBrowserSqlHostingTests.cs
+backend/tests/EnglishCenter.Tests/Common/M1InputTests.cs
+docs/notes/M1_01_02.md
+docs/plan/M1_01_02_TASK_CARD.md
+frontend/src/app/IdentityApp.tsx
+frontend/src/app/identityNavigation.ts
+frontend/src/features/administration/components/StaffCreateForm.tsx
+frontend/src/features/administration/pages/StaffAdminPage.tsx
+frontend/src/features/administration/staffApi.ts
+frontend/src/features/catalogue/catalogueApi.ts
+frontend/src/features/catalogue/components/CourseForm.tsx
+frontend/src/features/catalogue/pages/CataloguePage.tsx
+frontend/src/lib/http.ts
+frontend/src/lib/m1Wire.ts
+frontend/src/lib/useOwnedTask.ts
+frontend/tests/browser/verify-identity.cjs
+frontend/tests/browser/verify-m1.cjs
+frontend/tests/m1.test.mjs
+tools/operator/Initialize-M1Bands.ps1
+tools/operator/Verify-M0Browser.cjs

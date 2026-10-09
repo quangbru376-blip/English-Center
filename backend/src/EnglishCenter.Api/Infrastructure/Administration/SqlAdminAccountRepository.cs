@@ -8,10 +8,23 @@ using EnglishCenter.Api.Infrastructure.Identity;
 using EnglishCenter.Api.Services.Administration;
 using Microsoft.EntityFrameworkCore;
 
-public sealed class SqlAdminAccountRepository(SqlAuthDeadlineScope scope) : IAdminAccountRepository
+public sealed class SqlAdminAccountRepository(SqlAuthDeadlineScope scope) : IStaffAccountRepository
 {
     private readonly SqlPasswordChangeRepository _password=new(scope,new());
     private readonly SqlCurrentSessionRepository _current=new(scope);
+    public async Task<int> StaffRoleAsync(string role,CancellationToken ct)
+    {
+        scope.RequireActive();
+        if(role=="Student"||!Common.Security.FixedRoleCodes.All.Contains(role))throw ApiErrorException.Validation("role");
+        return await scope.Context.Roles.Where(r=>r.RoleCode==role).Select(r=>r.RoleId).SingleOrDefaultAsync(ct) is var id&&id>0?id:throw new ApiErrorException(ApiErrorCode.SERVICE_UNAVAILABLE);
+    }
+    public Task<bool> ContactExistsAsync(string email,string? phone,CancellationToken ct)
+    {
+        scope.RequireActive();
+        return scope.Context.Accounts.FromSqlInterpolated($"SELECT * FROM dbo.Account WITH(UPDLOCK,HOLDLOCK) WHERE email={email} OR (phone={phone} AND phone IS NOT NULL)").AsNoTracking().AnyAsync(ct);
+    }
+    public async Task InsertAsync(Account account,CancellationToken ct)
+    {scope.RequireActive();scope.Context.Accounts.Add(account);await scope.Context.SaveChangesAsync(ct);}
     public Task<Account?> LockAccountAsync(int id,CancellationToken ct)=>_current.LockAccountAsync(id,ct);
     public Task<AuthSession?> LockSessionAsync(byte[] sid,CancellationToken ct)=>_current.LockSessionAsync(sid,ct);
     public Task<string?> RoleCodeAsync(int id,CancellationToken ct)=>_current.RoleCodeAsync(id,ct);

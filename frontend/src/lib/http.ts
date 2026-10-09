@@ -12,6 +12,21 @@ const endpoints = {
   adminDetail: { path: '/api/v1/admin/accounts', method: 'GET', intent: 'read', access: 'admin' },
   adminLock: { path: '/api/v1/admin/accounts', method: 'POST', intent: 'write', access: 'admin' },
   adminLockResult: { path: '/api/v1/admin/command-results', method: 'GET', intent: 'read', access: 'admin' },
+  adminSearch: { path: '/api/v1/admin/accounts/search', method: 'POST', intent: 'read', access: 'admin' },
+  staffCreate: { path: '/api/v1/admin/staff-accounts', method: 'POST', intent: 'write', access: 'admin' },
+  adminReset: { path: '/api/v1/admin/accounts', method: 'POST', intent: 'write', access: 'admin' },
+  adminUnlock: { path: '/api/v1/admin/accounts', method: 'POST', intent: 'write', access: 'admin' },
+  adminDisable: { path: '/api/v1/admin/accounts', method: 'POST', intent: 'write', access: 'admin' },
+  adminRestore: { path: '/api/v1/admin/accounts', method: 'POST', intent: 'write', access: 'admin' },
+  adminResult: { path: '/api/v1/admin/command-results', method: 'GET', intent: 'read', access: 'admin' },
+  courseSearch: { path: '/api/v1/academics/courses', method: 'GET', intent: 'read', access: 'academic' },
+  courseDetail: { path: '/api/v1/academics/courses', method: 'GET', intent: 'read', access: 'academic' },
+  courseCreate: { path: '/api/v1/academics/courses', method: 'POST', intent: 'write', access: 'academic' },
+  courseUpdate: { path: '/api/v1/academics/courses', method: 'PUT', intent: 'write', access: 'academic' },
+  courseDeactivate: { path: '/api/v1/academics/courses', method: 'POST', intent: 'write', access: 'academic' },
+  courseActivate: { path: '/api/v1/academics/courses', method: 'POST', intent: 'write', access: 'academic' },
+  bands: { path: '/api/v1/academics/bands', method: 'GET', intent: 'read', access: 'academic' },
+  courseResult: { path: '/api/v1/academics/command-results', method: 'GET', intent: 'read', access: 'academic' },
 } as const;
 export type Endpoint = keyof typeof endpoints;
 export type HttpResult<T> =
@@ -22,6 +37,7 @@ export type RequestOptions<T> = {
   endpoint: Endpoint; slot: string; decode: (value: unknown) => T;
   body?: unknown; signal?: AbortSignal;
   targetId?: number; requestId?: string;
+  query?: Readonly<Record<string,string>>;
 };
 
 // No automatic dispatch, retry, UUID generation, storage, token parsing or logging.
@@ -30,21 +46,28 @@ export class HttpClient {
   async request<T>(options: RequestOptions<T>): Promise<HttpResult<T>> {
     if (!Object.hasOwn(endpoints, options.endpoint)) return { kind: 'blocked' };
     const endpoint = endpoints[options.endpoint];
-    if (!endpoint || (endpoint.intent === 'read' && options.body !== undefined)) return { kind: 'blocked' };
+    if (!endpoint || (endpoint.intent === 'read' && options.endpoint !== 'adminSearch' && options.body !== undefined)) return { kind: 'blocked' };
     if (endpoint.access === 'session' && !this.auth.context) return { kind: 'blocked' };
     if (endpoint.access === 'admin' && (this.auth.context?.role !== 'Admin' || this.auth.context.scope !== 'NORMAL')) return { kind: 'blocked' };
-    const needsTarget = options.endpoint === 'adminDetail' || options.endpoint === 'adminLock';
-    const needsKey = options.endpoint === 'adminLock' || options.endpoint === 'adminLockResult';
+    if (endpoint.access === 'academic' && (this.auth.context?.role !== 'AcademicAffairs' || this.auth.context.scope !== 'NORMAL')) return { kind:'blocked' };
+    const suffixes:Partial<Record<Endpoint,string>>={adminLock:'lock',adminReset:'reset-password',adminUnlock:'unlock',adminDisable:'disable',adminRestore:'restore',courseUpdate:'details',courseDeactivate:'deactivate',courseActivate:'activate'};
+    const lookup=['adminLockResult','adminResult','courseResult'].includes(options.endpoint);
+    const needsTarget = options.endpoint === 'adminDetail' || options.endpoint === 'courseDetail' || Object.hasOwn(suffixes,options.endpoint);
+    const needsKey = lookup || endpoint.intent==='write' && (endpoint.access==='admin'||endpoint.access==='academic');
     if (needsTarget && (!Number.isInteger(options.targetId) || options.targetId! < 1 || options.targetId! > 2147483647) ||
         !needsTarget && options.targetId !== undefined ||
         needsKey && (typeof options.requestId !== 'string' || !/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/.test(options.requestId)) ||
         !needsKey && options.requestId !== undefined) return { kind: 'blocked' };
-    const path = options.endpoint === 'adminLockResult' ? `${endpoint.path}/${options.requestId}?action=ADMIN.ACCOUNT.LOCK`
-      : needsTarget ? `${endpoint.path}/${options.targetId}${options.endpoint === 'adminLock' ? '/lock' : ''}` : endpoint.path;
+    const allowedQuery=options.endpoint==='courseSearch'?['code','name','status','sort','page','pageSize']:['adminResult','courseResult'].includes(options.endpoint)?['action']:[];
+    if(options.query&&Object.keys(options.query).some(key=>!allowedQuery.includes(key)))return {kind:'blocked'};
+    const action=options.query?.action;
+    if(options.endpoint==='adminResult'&&(!action||!['ADMIN.STAFF.CREATE','ADMIN.ACCOUNT.RESET_PASSWORD','ADMIN.ACCOUNT.LOCK','ADMIN.ACCOUNT.UNLOCK','ADMIN.ACCOUNT.DISABLE','ADMIN.ACCOUNT.RESTORE'].includes(action))||options.endpoint==='courseResult'&&(!action||!['ACADEMIC.COURSE.CREATE','ACADEMIC.COURSE.UPDATE_DETAILS','ACADEMIC.COURSE.DEACTIVATE','ACADEMIC.COURSE.ACTIVATE'].includes(action)))return {kind:'blocked'};
+    const query=options.endpoint==='adminLockResult'?'action=ADMIN.ACCOUNT.LOCK':new URLSearchParams(options.query).toString();
+    const path=(lookup?`${endpoint.path}/${options.requestId}`:needsTarget?`${endpoint.path}/${options.targetId}${suffixes[options.endpoint]?'/'+suffixes[options.endpoint]:''}`:endpoint.path)+(query?'?'+query:'');
     if (options.endpoint === 'login' && this.auth.context?.scope === 'PASSWORD_CHANGE') return { kind: 'blocked' };
     if (options.endpoint === 'register' && this.auth.context) return { kind: 'blocked' };
     const token = this.auth.csrf;
-    if (endpoint.intent === 'write' && !token) return { kind: 'blocked' };
+    if (endpoint.method !== 'GET' && !token) return { kind: 'blocked' };
     const ticket = this.auth.requests.begin(options.slot);
     const controller = new AbortController();
     const abort = () => controller.abort();
@@ -59,8 +82,8 @@ export class HttpClient {
     try {
       if (controller.signal.aborted) return { kind: 'discarded' };
       const headers: Record<string, string> = { Accept: 'application/json' };
-      if (endpoint.intent === 'write') headers['X-CSRF-TOKEN'] = token!;
-      if (options.endpoint === 'adminLock') headers['Idempotency-Key'] = options.requestId!;
+      if (endpoint.method !== 'GET') headers['X-CSRF-TOKEN'] = token!;
+      if (needsKey && !lookup) headers['Idempotency-Key'] = options.requestId!;
       let body: string | undefined;
       if (options.body !== undefined) { body = JSON.stringify(options.body); headers['Content-Type'] = 'application/json'; }
       sent = true;
@@ -82,7 +105,7 @@ export class HttpClient {
       if (response.ok) {
         const expectedStatus = options.endpoint === 'register' ? 201 :
           options.endpoint === 'logout' || options.endpoint === 'password' ? 204 : 200;
-        if (response.status !== expectedStatus) return endpoint.intent === 'write' ? uncertainWrite() : { kind: 'unavailable' };
+        if (response.status !== expectedStatus && !(response.status===201&&['staffCreate','courseCreate'].includes(options.endpoint))) return endpoint.intent === 'write' ? uncertainWrite() : { kind: 'unavailable' };
         let value: T;
         try { value = options.decode(payload); }
         catch {

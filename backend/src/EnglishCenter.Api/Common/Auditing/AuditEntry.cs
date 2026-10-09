@@ -43,6 +43,13 @@ public sealed class AuditEntry
     }
 
     // Bootstrap has no pre-existing Account actor; no operator/email/credential snapshot.
+    internal static AuditEntry InitialBand(int id,string code,decimal minimum,Guid operation,DateTimeOffset at)
+    {
+        if(id<=0||code.Length==0||minimum<0||minimum>100)throw new ArgumentException("Invalid reference seed.");
+        var details=new JsonObject{["new"]=new JsonObject{["bandCode"]=code,["minScore"]=minimum}}.ToJsonString();
+        return new(null,"SYSTEM.BAND.SEED","Band",id.ToString(System.Globalization.CultureInfo.InvariantCulture),"SUCCESS",details,at,operation,"MANDATORY",null);
+    }
+
     internal static AuditEntry InitialAdmin(int accountId,int roleId,Guid operation,DateTimeOffset occurredAt)
     {
         if (accountId<=0 || roleId<=0) throw new ArgumentException("Invalid bootstrap reference.");

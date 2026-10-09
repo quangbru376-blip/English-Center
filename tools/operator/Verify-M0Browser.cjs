@@ -41,10 +41,10 @@ process.on('unhandledRejection',()=>{failed=true;});
  };
  for(const width of [375,768,1280]){
   checkpoint='width-'+width;const page=await open(width);await login(page);
-  await page.getByLabel('ID tài khoản',{exact:true}).fill(String(adminId));
-  await page.getByRole('button',{name:'Xem tài khoản',exact:true}).click();
-  await page.getByRole('button',{name:'Khóa tài khoản',exact:true}).waitFor();
-  assert.equal(await page.getByRole('button',{name:'Khóa tài khoản',exact:true}).isDisabled(),true);
+  await page.getByLabel('Tìm theo email',{exact:true}).fill(input.email);
+  await page.getByRole('button',{name:'Tìm kiếm',exact:true}).click(); await page.getByRole('button',{name:'Xem #'+adminId,exact:true}).click();
+  await page.getByRole('button',{name:'Khóa',exact:true}).waitFor();
+  assert.equal(await page.getByRole('button',{name:'Khóa',exact:true}).isDisabled(),true);
   assert.equal((await api(page,'/api/v1/admin/command-results/'+randomUUID()+'?action=ADMIN.ACCOUNT.LOCK')).status,404);
   if(width===375){
    checkpoint='tabs';const shared=await page.context().newPage();await shared.goto('https://localhost:8443');await shared.getByRole('button',{name:'Đăng xuất',exact:true}).waitFor();

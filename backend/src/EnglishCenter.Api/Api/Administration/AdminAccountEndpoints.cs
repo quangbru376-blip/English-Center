@@ -21,6 +21,7 @@ public static class AdminAccountEndpoints
         }).WithMetadata(policy).AllowAnonymous();
         endpoints.MapPost("/api/v1/admin/accounts/{id}/lock",async (HttpContext context,string id)=>{
             var proof=RequireAdmin(context);
+            RequireNoQuery(context);
             var request=HeaderKey(context);
             var input=AdminLockInput.Parse(Id(id),request,AuthJsonBoundary.Read(context),maxBodyBytes);
             return Results.Ok(await executor.LockAsync(proof,input,context.RequestAborted));
@@ -32,27 +33,27 @@ public static class AdminAccountEndpoints
             return Results.Ok(await executor.LookupAsync(proof,actions[0]!,Uuid(requestId),context.RequestAborted));
         }).WithMetadata(policy).AllowAnonymous();
     }
-    private static VerifiedSessionToken RequireAdmin(HttpContext context)
+    internal static VerifiedSessionToken RequireAdmin(HttpContext context)
     {
         var proof=CurrentSessionRequest.Require(context);
         if(!context.User.IsInRole("Admin"))throw new ApiErrorException(ApiErrorCode.FORBIDDEN);
         return proof;
     }
-    private static void RequireEmptyBody(HttpContext context)
+    internal static void RequireEmptyBody(HttpContext context)
     {
         if((context.Features.Get<Microsoft.AspNetCore.Http.Features.IHttpRequestBodyDetectionFeature>()?.CanHaveBody ?? context.Request.ContentLength is > 0))throw ApiErrorException.Validation();
     }
-    private static void RequireNoQuery(HttpContext context)
+    internal static void RequireNoQuery(HttpContext context)
     { if(context.Request.Query.Count!=0)throw ApiErrorException.Validation(); }
-    private static int Id(string text)
+    internal static int Id(string text)
     {
         if(string.IsNullOrEmpty(text)||text[0]=='0'||text.Any(c=>c<'0'||c>'9')||
             !int.TryParse(text,NumberStyles.None,CultureInfo.InvariantCulture,out var id)||id<=0)throw ApiErrorException.Validation("accountId");
         return id;
     }
-    private static Guid Uuid(string text)
+    internal static Guid Uuid(string text)
     { try{return Guid.Parse(StrictScalars.NormalizeUuid(text));}catch(ArgumentException){throw ApiErrorException.Validation("requestId");} }
-    private static Guid HeaderKey(HttpContext context)
+    internal static Guid HeaderKey(HttpContext context)
     {
         try { return Guid.Parse(StrictScalars.NormalizeUuidHeader(context.Request.Headers["Idempotency-Key"].Select(v=>v!).ToArray())); }
         catch(ArgumentException){throw ApiErrorException.Validation("requestId");}

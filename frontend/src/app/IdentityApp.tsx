@@ -10,7 +10,8 @@ import { SignupPage } from '../features/identity/pages/SignupPage';
 import { LoginPage } from '../features/identity/pages/LoginPage';
 import { SessionPage } from '../features/identity/pages/SessionPage';
 import { PasswordChangePage } from '../features/identity/pages/PasswordChangePage';
-import { AdminAccountPage } from '../features/administration/pages/AdminAccountPage';
+import { StaffAdminPage } from '../features/administration/pages/StaffAdminPage';
+import { CataloguePage } from '../features/catalogue/pages/CataloguePage';
 
 function Routes({ controller, initialPath }: { controller: SessionController; initialPath?: string }) {
   const subscribe = useCallback((listener: () => void) => controller.subscribe(listener), [controller]);
@@ -37,9 +38,9 @@ function Routes({ controller, initialPath }: { controller: SessionController; in
     <Button className="ml-3 mt-4" variant="secondary" onClick={() => { navigate('/login'); void controller.prepare(); }}>Đến đăng nhập</Button>
   </>;
   if (snapshot.context && effectivePath === '/account/change-password') return <PasswordChangePage controller={controller} snapshot={snapshot} onBack={() => navigate('/')} />;
-  if (snapshot.context?.role === 'Admin' && snapshot.context.scope === 'NORMAL') return <AdminAccountPage controller={controller}
-    initialId={effectivePath.startsWith('/admin/accounts/') ? Number(effectivePath.split('/').at(-1)) : undefined}
-    onDetail={id=>navigate(`/admin/accounts/${id}`)} onPassword={()=>navigate('/account/change-password')} />;
+  if (snapshot.context?.role === 'Admin' && snapshot.context.scope === 'NORMAL') return <StaffAdminPage controller={controller} initialId={effectivePath.startsWith('/admin/accounts/')?Number(effectivePath.split('/').at(-1)):undefined} onPassword={()=>navigate('/account/change-password')} />;
+  if (snapshot.context?.role === 'AcademicAffairs' && snapshot.context.scope === 'NORMAL' && effectivePath === '/academics/courses') return <CataloguePage controller={controller} onPassword={()=>navigate('/account/change-password')} />;
+  if (snapshot.context?.role === 'AcademicAffairs' && snapshot.context.scope === 'NORMAL') return <><Button className="mb-4" onClick={()=>navigate('/academics/courses')}>Khóa học và Band</Button><SessionPage controller={controller} snapshot={snapshot} onPassword={()=>navigate('/account/change-password')} /></>;
   if (snapshot.context) return <SessionPage controller={controller} snapshot={snapshot} onPassword={() => navigate('/account/change-password')} />;
   if (effectivePath === '/register') return <SignupPage client={controller.client}
     onCreated={() => { navigate('/login'); void controller.prepare(); }} onLogin={() => navigate('/login')} />;

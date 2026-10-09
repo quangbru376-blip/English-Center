@@ -42,7 +42,7 @@ public interface IAdminAccountExecutor
     Task<AdminAccountCommandResult> LockAsync(VerifiedSessionToken token,AdminLockInput input,CancellationToken ct);
     Task<SafeCommandCompletion> LookupAsync(VerifiedSessionToken token,string action,Guid request,CancellationToken ct);
 }
-public sealed class AdminAccountService(IAdminAccountRepository repository,IReplayRepository markers,BusinessClock clock)
+public sealed partial class AdminAccountService(IAdminAccountRepository repository,IReplayRepository markers,BusinessClock clock)
 {
     private async Task<CurrentSessionSnapshot> RequireAdmin(VerifiedSessionToken token,CancellationToken ct)
     {
