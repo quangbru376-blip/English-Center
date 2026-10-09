@@ -1,5 +1,5 @@
 [CmdletBinding()]
-param([Parameter(Mandatory=$true)][string]$ReceiptPath)
+param([Parameter(Mandatory=$true)][string]$ReceiptPath,[switch]$RecoverOwnedPrebindingFailure)
 $ErrorActionPreference='Stop'
 Set-StrictMode -Version Latest
 $root='C:\ProgramData\EnglishCenter\M0'
@@ -19,7 +19,16 @@ try{
     $ownership=Get-Content (Join-Path $root 'ownership.json') -Raw|ConvertFrom-Json
     $catalog=Get-Content (Join-Path $root 'catalog.json') -Raw|ConvertFrom-Json
     if($ownership.operatorSid -ne [Security.Principal.WindowsIdentity]::GetCurrent().User.Value -or $catalog.ownerId -ne $ownership.ownerId -or
-       $catalog.phase -ne 'principals_ready' -or (Test-Path (Join-Path $root 'sql-tls.json'))){throw 'Invalid custody'}
+       $catalog.phase -ne 'principals_ready'){throw 'Invalid custody'}
+    $recordExists=Test-Path (Join-Path $root 'sql-tls.json')
+    if($recordExists -ne [bool]$RecoverOwnedPrebindingFailure){throw 'Recovery mode mismatch'}
+    if($RecoverOwnedPrebindingFailure){
+        $previous=Get-Content (Join-Path $root 'sql-tls.json') -Raw|ConvertFrom-Json
+        if($previous.ownerId -ne $ownership.ownerId -or $previous.phase -cne 'failed_owned_artifacts_retained' -or $previous.oldCertificate -ne '' -or $previous.forceEncryption -ne 0 -or $previous.thumbprint){throw 'Invalid owned recovery'}
+        $candidates=@(Get-ChildItem Cert:\LocalMachine\My | Where-Object {$_.FriendlyName -ceq ('EnglishCenter M0 SQL '+$ownership.ownerId) -and $_.Subject -ceq ('CN='+$env:COMPUTERNAME)})
+        if($candidates.Count -ne 1){throw 'Ambiguous owned certificate'}
+        $certificate=$candidates[0]
+    }
     $instance=(Get-ItemProperty 'HKLM:\SOFTWARE\Microsoft\Microsoft SQL Server\Instance Names\SQL').SQLEXPRESS
     $service=Get-CimInstance Win32_Service -Filter "Name='MSSQL`$SQLEXPRESS'"
     $settings=Get-ItemProperty -LiteralPath $registry
@@ -28,8 +37,12 @@ try{
        $oldCertificate.Length -ne 0 -or $oldEncryption -ne 0 -or $env:COMPUTERNAME -notmatch '^[A-Za-z0-9_-]+$'){throw 'SQL TLS preflight drift'}
     $record=[ordered]@{ownerId=$ownership.ownerId;phase='preparing';oldCertificate=$oldCertificate;forceEncryption=$oldEncryption;serviceWasRunning=$true;thumbprint=$null;privateKeyFile=$null}
     [IO.File]::WriteAllText((Join-Path $root 'sql-tls.json'),($record|ConvertTo-Json),[Text.UTF8Encoding]::new($false))
+    if(-not $RecoverOwnedPrebindingFailure){
     $certificate=New-SelfSignedCertificate -Type SSLServerAuthentication -Subject ('CN='+$env:COMPUTERNAME) -DnsName @($env:COMPUTERNAME,'localhost') -CertStoreLocation 'Cert:\LocalMachine\My' -KeyAlgorithm RSA -KeyLength 2048 -HashAlgorithm SHA256 -Provider 'Microsoft RSA SChannel Cryptographic Provider' -KeySpec KeyExchange -KeyExportPolicy NonExportable -NotBefore (Get-Date).AddMinutes(-5) -NotAfter (Get-Date).AddYears(1) -FriendlyName ('EnglishCenter M0 SQL '+$ownership.ownerId)
-    if(-not $certificate.HasPrivateKey -or @($certificate.EnhancedKeyUsageList | Where-Object {$_.ObjectId.Value -eq '1.3.6.1.5.5.7.3.1'}).Count -ne 1){throw 'Invalid server-auth certificate'}
+    }
+    $record.thumbprint=$certificate.Thumbprint
+    [IO.File]::WriteAllText((Join-Path $root 'sql-tls.json'),($record|ConvertTo-Json),[Text.UTF8Encoding]::new($false))
+    if(-not $certificate.HasPrivateKey -or @($certificate.EnhancedKeyUsageList | Where-Object {[string]$_.ObjectId -eq '1.3.6.1.5.5.7.3.1'}).Count -ne 1){throw 'Invalid server-auth certificate'}
     $record.thumbprint=$certificate.Thumbprint
     $key=$certificate.PrivateKey
     if($key -isnot [Security.Cryptography.RSACryptoServiceProvider] -or $key.CspKeyContainerInfo.KeyNumber -ne [Security.Cryptography.KeyNumber]::Exchange -or $key.CspKeyContainerInfo.Exportable){throw 'Invalid SQL key provider'}
@@ -51,7 +64,7 @@ try{
     foreach($rule in $actual.Access){
         $ruleSid=$rule.IdentityReference.Translate([Security.Principal.SecurityIdentifier]).Value
         if($rule.AccessControlType -ne 'Allow' -or $ruleSid -notin @($adminSid.Value,$systemSid.Value,$sqlSid.Value)){throw 'Unexpected key access'}
-        if($ruleSid -eq $sqlSid.Value -and $rule.FileSystemRights -ne [Security.AccessControl.FileSystemRights]::Read){throw 'SQL key write authority'}
+        if($ruleSid -eq $sqlSid.Value -and $rule.FileSystemRights -ne ([Security.AccessControl.FileSystemRights]::Read -bor [Security.AccessControl.FileSystemRights]::Synchronize)){throw 'SQL key write authority'}
     }
     $receipt.keyAclProtected=$true
     $store=[Security.Cryptography.X509Certificates.X509Store]::new('Root','LocalMachine')
@@ -68,6 +81,8 @@ try{
     $receipt.success=$true
 }catch{
     $receipt.errorCategory='sql_tls_provisioning_failed'
+    $receipt.errorType=$_.Exception.GetType().FullName
+    $receipt.errorHResult=$_.Exception.HResult
     if($bindingChanged){
         try{
             Set-ItemProperty -LiteralPath $registry -Name Certificate -Value $oldCertificate

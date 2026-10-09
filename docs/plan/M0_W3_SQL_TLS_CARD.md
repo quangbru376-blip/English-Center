@@ -49,3 +49,14 @@ guards, fixed certificate/key-path checks, exact ACL principals and service Read
 only, public-byte direct leaf trust, snapshot before mutation, bounded exact
 service restart and restore-on-failure. No private exports/secret args or authority
 grants. Actual SQL TLS and baseline acceptance remain pending run.
+
+First W3 failed at server-auth EKU object shape before registry/trust/ACL/service
+mutation; running SQL/config unchanged. Exactly1certificate FriendlyName W1ownerId
+exists in My, previous failed receipt thumb null. Fix ObjectId is string, not
+ObjectId.Value. Recovery exact -RecoverOwnedPrebindingFailure only accepts previous
+failed owned record with null thumb/blank old cert/Force0 and exactly1My certificate
+matching W1ownerId FriendlyName and machineCN; current registry/service guards still
+required. Reuse sole owned certificate, snapshot thumb before validation. No generic
+existing cert/profile reuse. AST0errors/recovery review PASS; actual run pending.
+Service key ACL comparison accepts exact Read|Synchronize Windows Allow semantics,
+no Write/Modify/Delete. Source review correction before recovery execution.
