@@ -1,11 +1,12 @@
-# M0 W5D bootstrap
-- Explicit operator branch uses genuine nonadmin EcM0Schema only.
-- Exact owned M0 catalog ID/GUID and existing6 migrations; strict TLS.
-- Initial canonical7roles/Admin plus mandatory audit share SERIALIZABLE transaction.
-- Current operator escrow DPAPI is flushed/roundtrip verified before child COMMIT.
-- Secret travels only redirected stdin RAM, never args/env/source/log/worker.
-- Bounded4096-character parser rejects unknown/duplicate/trailing/invalid fields.
-- Existing escrow refuses fresh initialization; VerifyExisting performs readonly proof.
-- Existing Admin credential/status cannot be reset by this wrapper.
-- Unknown result retains escrow, no automatic retry or compensation delete.
-- Full M0/browser/scheduled maintenance acceptance remains separate.
+# M0 W5D — PASS
+- Explicit genuine nonadmin schema branch, exact owned M0 ID/GUID/six migrations.
+- Strict TLS; no runtime bootstrap or startup seed.
+- DPAPI operator escrow flushed/roundtrip verified before secret RAM stdin/COMMIT.
+- No secret args/env/source/log/worker; bounded strict envelope/finite30s.
+- Refused UAC ownership and DB_ID typed-reader attempts retained, no committed seed.
+- Explicit int projection and reviewed same prepared escrow recovery fixed integration.
+- Existing Admin/credential/status are never reset; readonly verification cannot create.
+- Actual7roles/oneAdmin/mandatory audit SERIALIZABLE COMMIT PASS.
+- Fresh actual schema escrow/hash verification PASS, including after browser use.
+- No fake staff/student profiles or D07/schema/grant/package changes.
+- W5E closes browser/maintenance/restart; full LOCAL_DEV M0 now complete.

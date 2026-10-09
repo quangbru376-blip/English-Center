@@ -1,10 +1,14 @@
-# M0 W5E acceptance
-- Operator launcher keeps two genuine Windows identities and private custody separate.
-- Managed stdin closure stops owned hosts gracefully; EOF/host-failure tests cover lifetime.
-- Production replay60s/audit3600s periods and no initial default run stay unchanged.
-- Completion metrics increment only after successful SQL COMMIT.
-- Verification flag explicitly runs audit once under genuine maintenance authority.
-- Edge trusts installed public leaf; no TLS bypass/fixture bridge or operational fake rows.
-- Admin password stays escrow/RAM stdin; no screenshot/trace/console payload.
-- Actual login/logout/multi-tab/self-detail proof and scheduled replay acceptance pending.
-- Full M0 can close only after actual proof/restart/operator walkthrough PASS.
+# M0 W5E — PASS
+- Operator launcher starts genuine runtime/maintenance with existing DPAPI credentials.
+- Managed stdin stops own hosts; no shared private keys or runtime SQL elevation.
+- Both1276defaultPASS/78intentionalSKIP/build0warnings0errors.
+- Installed Edge trusts real localhost certificate; no bypass/fixture bridge.
+-375/768/1280/Admin4login4logout/shared+separate tabs/self-detail PASS.
+- Fresh SQL confirms4revoked sessions/LOGIN4/LOGOUT4/Admin unchanged.
+- Only7roles/oneAdmin/no fake staff/student data; bootstrap mandatory audit retained.
+- Actual60s replay COMMIT1 and explicit audit COMMIT1/failure0.
+- Audit3600s unchanged; no claim elapsed-hour/retention-age/live load test.
+- Stop maintenance503; persisted-key/profile restart ready PASS.
+- Graceful shutdown/forced0; no remaining own host/listener8443.
+- Owner4 preserved; D07/packages/grants/schema untouched in this stage.
+- Start tool/runbook make LOCAL_DEV usable; M0 complete, M1–M4 not started.

@@ -4814,3 +4814,30 @@ pins file set/SHA and refuses reparse/private files/directory listing/physical p
 Genuine runtime all9/HTTPS/CSRF/UI isolation readonly case PASS with separate
 actual20s maintenance. No operational Admin/browser mutation/scheduled SQL COMMIT
 proved by this stage; full M0 requires those distinct acceptance obligations.
+## ADR-191 — explicit operational Admin escrow before bootstrap COMMIT
+2026-10-09 implemented/reviewed PASS under full M0 ADR177/apply ADR163.
+Initial canonical7roles/Admin/audit only in owned M0; genuine offline schema user,
+strict TLS/exact catalog ID+GUID/six existing migrations, A02 SERIALIZABLE gate.
+Operator current-user DPAPI escrow flushed/roundtrip verified before RAM stdin to
+child, no secret in args/env/source/log/worker. Existing Admin always preserved;
+readonly verification cannot create/reset. Unknown result retains escrow/no retry.
+Existing trusted UAC file owners accepted without ACL changes. Actual SQL17 DB_ID
+projection observed smallint; explicitly convert int for strict typed reader.
+After zero-count/finished-child evidence, reviewed RecoverPrepared reused same
+escrow and committed initial Admin; fresh actual verify/hash proof PASS.
+
+## ADR-192 — M0 LOCAL_DEV acceptance closure and operator lifetime
+2026-10-09 full assigned M0 integrated review PASS/complete; M1–M4 stay unstarted.
+Existing E/F covers bounded signup/password/lock/T23/7role/races/mandatory audit;
+actual W1–W5 now establishes genuine identities/PKI/custody/profile/all9/startup/
+production M0 mount instead of fixture-only environment assumptions. Installed Edge
+at3widths real trust/no bypass proves Admin4session login/logout/multi-context and
+fresh committed security records; no fake operational business rows. System-clock
+scheduled replay60s COMMIT1 + explicit genuine audit COMMIT1/failures0, historical
+T retention effects/U independent3600 timer semantics remain separate. No elapsed
+hour/live retention-age/load50user/LAN/backup/production servicing assertion.
+Closing managed stdin cancels only own host processes gracefully; real restart
+reuses same protected keys/profile and again all9ready; lost maintenance503.
+Runbook/interactive launcher make selected LOCAL_DEV usable; tests stop listeners.
+Future key/manifest servicing is explicit reviewed operator work, not automatic
+repair/rotation/installation. This closure does not assign later product families.

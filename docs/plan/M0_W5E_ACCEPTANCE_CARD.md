@@ -64,3 +64,24 @@ packages/SQL grants/schema/owner unchanged. Actual trusted browser/scheduled/res
 acceptance pending applied main binaries. No business/API/security writes executed
 by this W5E preflight. No claim audit3600 wall-clock elapsed; actual replay60 and
 explicit audit binding plus prior independently timed U are distinct evidence.
+Final operational acceptance PASS2026-10-09 on mainb43ed99/managerb501cca identical
+srcdf538a0b48dbde06813c137a9404d11edb97cc4a/testsa536d296c63103461e5ec3e71f244084b5639edc/
+frontend36edd7d62432738a21609701da401c0797d32f42. Both1276defaultPASS78intentionalSKIP/
+build0warnings0errors; frontend unchanged since C48tests/lint/types/build evidence.
+Actual installed Edge/trust/no bypass375/768/1280/Admin4login4logout/shared+separate
+profiles/self-detail/self-lock-disabled/missing-completion404 PASS. Fresh SQL sees
+7roles/one unchanged ACTIVE Admin/version1/no Profile/4revoked sessions/mandatory1/
+LOGIN4/LOGOUT4. Genuine schema readonly escrow/hash verification still PASS.
+Actual system-clock scheduled60s replay COMMIT1 plus explicit audit COMMIT1/failures0;
+maintenance stop fresh503, graceful shutdown/forcedStops0. Restart both genuine
+profiles/persisted keys all9ready then stopped-maintenance503 PASS, no new COMMIT.
+Receipts W5E-launch-5ad5dbaecc1e4110a78180d4c7e2f126.json and
+W5E-launch-56aa451251724b17bbff6eb96fd9c259.json ignored/nonsecret. All owned host
+processes/listener8443 gone. Owner4 hashes unchanged/unshared/untracked/unstaged.
+No D07 mutation/rerun; last W3 strict baseline retained. Historical E/F bounded
+functional/race/7role/signup/password/lock evidence remains applicable: those
+production adapters/services unchanged, no fake operational rows promoted. Audit
+3600 elapsed-hour run/load/backup/LAN/production servicing are not claimed.
+Derived owner runbook docs/plan/M0_LOCAL_DEV_RUNBOOK.md before writing; public URL/
+start command/operator-local credential retrieval only, never actual plaintext.
+Integrated M0 LOCAL_DEV completion review PASS; M1–M4 not started/assigned by closure.

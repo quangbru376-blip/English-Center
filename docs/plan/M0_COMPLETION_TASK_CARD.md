@@ -1,3 +1,26 @@
+M0 LOCAL_DEV COMPLETE / integrated review PASS2026-10-09. Mainb43ed99/managerb501cca;
+identical srcdf538a0b48dbde06813c137a9404d11edb97cc4a,
+testsa536d296c63103461e5ec3e71f244084b5639edc,
+frontend36edd7d62432738a21609701da401c0797d32f42. Both1276defaultPASS/
+78intentionalopt-inSKIP/build0warnings0errors; C frontend48tests/lint/types/build
+retained, E actual installed Edge375/768/1280 trustedHTTPS PASS/no TLS bypass.
+W1–W5 actual dedicated nonadmin Windows/SQL identities, strict SQL/HTTPS trust,
+DPAPI/nonexportable key custody, exact profile/5pins/all9 fresh/startup gates PASS.
+D exact7roles/oneAdmin/mandatory audit COMMIT + protected escrow/read-only verify PASS.
+E actual4login4logout/shared+separate tabs/self-detail/self-lock-disabled/manual404,
+4sessions all revoked/LOGIN4/LOGOUT4/Admin unchanged/7roles/no fake profiles PASS.
+System-clock60s scheduled replay COMMIT1 + explicit audit COMMIT1/failures0;
+3600s audit period unchanged, no elapsed-hour claim; T/U retention/timer evidence
+retained. Stop maintenance503; persisted-key/profile restart ready PASS; forced0/
+remaining host0/listener0. Historical E/F complete bounded signup/password/lock/
+7role/race/audit/T23 evidence remains, production adapters unchanged by W5.
+Owner4 hashes unchanged/unshared/untracked/unstaged. D07 untouched in W4/W5; last
+W3 strict byteSHA10CD3407CE5986394703A9BEC2EE3E42314080809DDABE26906B1F14B593FC8E.
+LOCAL_DEV/10000preview fixed ADR186; completion authority ADR177/apply ADR163.
+No M1–M4/install/push/deploy/LAN/load/backup claim. See M0_LOCAL_DEV_RUNBOOK,
+W5D/E cards/summary and ADR191–192. No M0 code work pending; M1 not started.
+Historical checkpoints below are superseded; do not re-ask resolved values/gates.
+
 # M0 completion — owner assignment 2026-10-08
 
 Base main663d0a5 / managerb45084a. Owner requests completing M0, not only two packages.

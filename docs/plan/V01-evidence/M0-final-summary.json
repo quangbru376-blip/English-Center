@@ -1,0 +1,124 @@
+{
+  "date": "2026-10-09",
+  "status": "M0 LOCAL_DEV COMPLETE / integrated review PASS",
+  "authority": [
+    "assigned full M0 ADR177",
+    "PASS apply ADR163",
+    "selected LOCAL_DEV/10000 ADR186",
+    "operational decisions ADR191-192"
+  ],
+  "code": {
+    "frontend": "36edd7d62432738a21609701da401c0797d32f42",
+    "src": "df538a0b48dbde06813c137a9404d11edb97cc4a",
+    "manager": "b501cca19e0aaebddabcd3b849cbac64ab8d8442",
+    "tests": "a536d296c63103461e5ec3e71f244084b5639edc",
+    "identical": true,
+    "main": "b43ed999506cfb1876dd7deee7799c9ab817742c"
+  },
+  "checks": {
+    "bootstrap": {
+      "mandatoryAudit": 1,
+      "precommitDpapiEscrow": true,
+      "admins": 1,
+      "roles": 7,
+      "readonlyCredentialReverified": true,
+      "created": true,
+      "refusedAttemptsNotPassed": true
+    },
+    "actualBrowser": {
+      "selfLockUnavailable": true,
+      "logins": 4,
+      "sharedTabs": true,
+      "logouts": 4,
+      "selfDetail": true,
+      "separateContexts": true,
+      "unknownCompletion404": true,
+      "noSecretOutput": true
+    },
+    "restart": {
+      "samePersistedKeysAndProfile": true,
+      "listener8443": 0,
+      "noBusinessWrites": true,
+      "remainingOwnedHosts": 0,
+      "allNineReady": true,
+      "forcedStops": 0
+    },
+    "main": {
+      "buildWarnings": 0,
+      "defaultPassed": 1276,
+      "failed": 0,
+      "intentionalOptInSkipped": 78,
+      "buildErrors": 0
+    },
+    "manager": {
+      "buildWarnings": 0,
+      "defaultPassed": 1276,
+      "failed": 0,
+      "intentionalOptInSkipped": 78,
+      "buildErrors": 0
+    },
+    "freshSql": {
+      "activeSessions": 0,
+      "logoutSuccess": 4,
+      "roles": 7,
+      "loginSuccess": 4,
+      "adminStatusVersionAndHashUnchanged": true,
+      "mandatoryAudits": 1,
+      "sessions": 4,
+      "profiles": 0,
+      "accounts": 1
+    },
+    "frontend": {
+      "codeUnchangedDuringDE": true,
+      "actualInstalledEdgeWidths": [
+        375,
+        768,
+        1280
+      ],
+      "platformTrustedTlsNoBypass": true,
+      "retainedC48TestsTypesLintBuild": "PASS"
+    },
+    "maintenance": {
+      "scheduledReplayCommits": 1,
+      "elapsedHourClaim": false,
+      "failedRuns": 0,
+      "retentionEffectsEvidence": "historical V01-T real SQL",
+      "systemClockReplaySeconds": 60,
+      "auditConfiguredSeconds": 3600,
+      "explicitAuditCommits": 1,
+      "independentTimerEvidence": "historical V01-U",
+      "stoppedMaintenance503": true
+    }
+  },
+  "operationalReceipts": [
+    "W5E-launch-5ad5dbaecc1e4110a78180d4c7e2f126.json",
+    "W5E-launch-56aa451251724b17bbff6eb96fd9c259.json"
+  ],
+  "mainToolByteHashes": {
+    "StartM0Local": "C36E414ACCAF62A65B3B1214BAAA75EC8FB8D7E19F6238DED309CAF126F20BEA",
+    "VerifyM0Browser": "973A9D486C50307ABF1E7A809ABB579B8D18C77E941B82F67EB1582939E80DDD"
+  },
+  "preserved": {
+    "packagesUnchanged": true,
+    "ownerFourUnchangedUnsharedUntrackedUnstaged": true,
+    "noFakeOperationalAccountsOrFixtureKeysPromoted": true,
+    "D07LastW3BaselineByteSha": "10CD3407CE5986394703A9BEC2EE3E42314080809DDABE26906B1F14B593FC8E",
+    "D07NoW4W5MutationOrRerun": true
+  },
+  "evidenceBoundaries": [
+    "historical E/F bounded signup/password/lock/7role/races/audit source-equivalent production adapters",
+    "actual W1-W5 genuine profile/principals/TLS/stores/startup/API/UI/owned session COMMIT/scheduled replay",
+    "no elapsed audit hour/live90day/load50users/LAN/backup/production deployment claim",
+    "M1-M4 not started; no install/push/deploy"
+  ],
+  "skills": {
+    "implementation": [
+      "backend-clean-code",
+      "frontend-ui"
+    ],
+    "review": "code-review",
+    "boundedAgy": "W5B codec only, original run retained and reviewed; no private operator contexts shared"
+  },
+  "runbook": "docs/plan/M0_LOCAL_DEV_RUNBOOK.md",
+  "next": "No remaining M0 implementation; owner can launch selected LOCAL_DEV. Await new milestone assignment."
+}

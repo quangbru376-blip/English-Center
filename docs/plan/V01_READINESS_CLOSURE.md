@@ -1,78 +1,47 @@
-# V01 readiness closure matrix — 2026-10-08
+# V01 / M0 LOCAL_DEV — acceptance closed2026-10-09
 
-2026-10-09 environment closure: owner selected LOCAL_DEV proposal andpreview10000
-work units (ADR186); reference-only template prepared. Current Windows manager
-token not elevated, SQL Windows-only/sysadmin diagnostic, strict encrypted SQL fails
-untrusted chain. No provisioning/config changes. Windows identity and SQL TLS work
-requires elevated Codex process; actual bindings/full M0 still open. See M0_OPERATOR_CLOSURE.
+Full assigned M0 COMPLETE, integrated Codex review PASS/apply ADR163. Main source
+b43ed99/managerb501cca identical;1276defaultPASS78intentionalSKIP/buildclean each.
+Owner LOCAL_DEV/preview10000 fixed ADR186. ADR177 authorizes assigned operational
+aspects; ADR191–192 records closure. Historical pending gates below are superseded
+by exact actual evidence here, not silently dropped. M1–M4 remain unstarted.
 
-Latest V2026-10-09: main4daa2e2/manager22ed355 reviewed PASS/applied/reverified;
-1217defaultPASS/63opt-in SKIP/buildclean each,14startup cases. Explicit hosted Q
-check after ApplicationStarted/failure host-stop/cancellation/no cached API authority;
-default unmounted, actual profile/all9 operational dependencies still open. ADR185.
+| Obligation | Final evidence / scope |
+| --- | --- |
+| Signup201/no auto-login | Historical B/D/E/F real HTTP/SQL/browser source-equivalent adapters; owned Account/Profile/audit and no auto session PASS |
+| Seven roles/login/me | Historical B/D/F all7 browser identities/owned sessions/security LOGIN PASS; actual E uses operational Admin with dedicated runtime signer/custody/profile |
+| Tabs/profiles/logout | F owned revoke plus W5E actual shared/separate contexts,4sessions all revoked/4LOGIN/4LOGOUT fresh SQL PASS |
+| Normal/restricted password | F real browser204/owned hash/version/temp/allSID effects/deliberate login; unchanged adapters/services PASS |
+| Admin lock/manual lost ack | F actual response drop after owned lock/T23/audit COMMIT/manual lookup; unchanged production pilot; W5E real self-detail/self-lock-disabled/manual unknown404 PASS |
+| Mandatory/independent audit | A–F atomic caller audit, E persisted fallback/timeout/race proof; W5D actual bootstrap mandatory1 and W5E independent4LOGIN/4LOGOUT/no incidents PASS |
+| Actual SNAPSHOT/current authority/races | E distinct contexts/isolation/final live revocation and4two-client races PASS; no50user claim |
+| Exact schema/grants | W2 owned M0 existing6migrations/24tables/exact4roles102permissions; genuine runtime880facts/maintenance denial PASS, no diagnostic owner fallback |
+| Runtime identity | W1 nonadmin dedicated Windows runtime/maintenance/schema; W2–W5 actual SSPI safe principal/metadata/effective privilege guards PASS |
+| Active typed profile | W5 exact protected selected LOCAL_DEV refs/finite values/5pins and all9 fresh Q before identity/audit/post-listener startup PASS |
+| HTTPS/SQL trust/IP | W3 actual strict TLS/no TrustServerCertificate; W4 runtime own key/public leaf trust; W5C/E actual HTTPS+installed Edge platform trust/no bypass/loopback/no forwarding PASS |
+| JWT/CSRF/private stores | W4 actual DPAPI/persisted framework key/nonexportable HTTPS/private-access denial/restart; W5 custody drift refusal/current issuer/audience/actual cookie/CSRF PASS |
+| Patch/runtime/offline corpus | W5 five exact main package/artifact pins and installed NET/ASP/EF10.0.4/SQL17.0.1000.7, H real timezone/offline reviewed licensed corpus PASS; no latest/security release claim |
+| Deadlines/body/buffer/preview | G/N typed/actual boundary tests; W5 bound3000/10/30000/25000/5000/262144/5000000/10000 PASS; no later weekly generator implementation claim |
+| Maintenance separation | W5B genuine nonexportable proof key, public-only runtime read, local remote-reject/exact SID/fresh signed nonce/profile/SQL proof; stopped worker refuses PASS |
+| Cleanup/scheduler/COMMIT | T real retention effects/narrow SQL rights; U independent periods/coalescing/cancellation; W5E actual system-clock60s replay COMMIT1 + explicit actual audit COMMIT1/failures0. Audit3600 unchanged; no elapsed-hour claim |
+| Restart / usable owner entry | W5E both processes reuse same protected keys/profile/all9ready, stop maintenance503, graceful stop/forced0/remaining0; interactive Start-M0Local and owner runbook PASS |
 
-Historical U2026-10-09: main8bc6a1a/manager942403b reviewed PASS/applied/reverified;
-1203defaultPASS/63opt-in SKIP/buildclean each. Six synthetic lifecycle cases exercise
-actual service loops/independent timers/no overlap/coalescing/shutdown/refusal.
-No SQL rerun or production changes; actual operational scheduled SQL remains open.
+W01 Student signup/W02 login+password/W03 lock pilot integrated caller/audit/replay
+coverage is complete for implemented M0. Staff provisioning/remaining F32 commands,
+full55 replay callers/audit UI and other product modules remain later milestones.
+All fixture functional evidence stays explicitly synthetic where its context was
+synthetic; actual W1–W5 closes environment assumptions without promoting fake
+accounts/keys. Operational catalog has7roles/oneAdmin/Profile0,4revoked sessions,
+bootstrap mandatory audit1 and persisted independent security history. No fake
+staff/student rows, expired cleanup fixtures or demo passwords were promoted.
 
-Historical T: main1f0f0e9/manager7dbcb4d reviewed PASS/applied/reverified;1197default
-PASS/63opt-in SKIP,5actual maintenance SQL cases PASS each, buildclean. All10scratch
-DBs identity-cleaned, D07/owner unchanged. Cleanup effects and narrow database-grant
-exclusion now verified; actual maintenance authentication/TLS/scheduler still open.
-See V01T_TASK_CARD/T-verification-summary. FULL M0 remains INCOMPLETE.
+D07 retained unchanged, W4/W5 no SQL rerun/mutation; last W3 strict baseline byteSHA
+10CD3407CE5986394703A9BEC2EE3E42314080809DDABE26906B1F14B593FC8E.
+Owner4 unchanged/unshared/untracked/unstaged. No install/packages/push/deploy.
+No LAN/Internet exposure, full load/SLO, backup/restore, elapsed90d retention or
+production key servicing assertion. Key/manifest expiry still refuses; explicit
+future reviewed servicing required, no automatic rotation/repair.
 
-Historical Q/S applied/reverified PASS (main7ef2ce6/
-a6b4828,manager e18eddc/41b166d),1197defaultPASS/58opt-in SKIP/buildclean.
-Q provides explicit HTTP readiness/startup check but is unmounted. R candidate/
-ablation each880/880catalog facts with temporary metadata reads; S declares exact
-G-only whitelist,3rollback grant cases PASS.3read-only diagnostic denials PASS
-on each checkout. No genuine runtime-login/TLS/custody/scheduler evidence yet.
-D07 byte-identical, fixtures rolled back, owner4files unchanged. See Q/R/S cards,
-QRS summary/ADR183–184 and M0_LOCAL_DEV_PROPOSAL; actual profile remains pending.
-
-Source audit at main3f649db; E code95bb665; F code652e48a; G code233a274; H7df8ba8/Id59e905 applied/reverified. This separates executed M0 evidence
-from active environment readiness. ADR177 authorizes assigned bounded work;
-accepted owner D12/D13 deferrals remain decisions, not repeat permission gates.
-No operator secrets/configuration were read or shared. Production Program and
-frontend App/main remain unmounted; SQL structural inspection is not full readiness.
-
-| Obligation | Existing evidence | Remaining action / boundary |
-| --- | --- | --- |
-| Signup201/no auto-login | B/D HTTP/browser rollback; E owned signup COMMIT | CLOSED F browser→real owned signup, fresh connection sees Account/Profile/audit/noSID |
-| Seven roles/login/me | B/D real SQL/browser role matrix; E owned login | CLOSED F all7browser identities→owned session + independent persisted LOGIN audit |
-| Tabs/profiles/logout | D real browser rollback; E current-SID owned revoke | CLOSED F shared tabs and separate browser profile→persisted revoke, LOGIN/LOGOUT history |
-| Normal/restricted password | D browser rollback; E owned atomic audit/revoke | CLOSED F browser204→owned hash/version/temp/allSID effects; fresh deliberate login |
-| Admin lock/unknown ack | D lost-ack/manual lookup rollback; E owned lock UUID/RV races | CLOSED F drop real response after owned COMMIT; safe manual completion/single audit/T23 |
-| Independent audit failure | E real table-lock timeout after COMMIT, incident fallback | Already bounded PASS; not production observability/SLO proof |
-| Actual SNAPSHOT/final authority | E3distinct context/isolation trace + committed revoke | Already bounded PASS; no generic report/remaining module claim |
-| Bounded races | E signup/sameUUID/differentUUID/password-logout | PASS for4two-client cases; no50-user load claim |
-| Exact schema/grants | D07–D13 exact catalog and permissions; A–E baseline unchanged | I mandatory runtime/effective-privilege wrapper +3real diagnostic denial cases PASS; R proves exact880facts via rollback-only metadata reads; S declares grant allowlist; genuine positive runtime login still unproved |
-| Active typed profile | G descriptors/gate; M strict reader; Q HTTP boundary; V explicit post-listener startup lifecycle14PASS | All9 probes operationally unregistered; actual secret binding/default startup mounting absent; no LOCAL_DEV-ready claim |
-| Runtime identity | Current local diagnostic Windows connection; runtime grants exist | Runtime must be non-dbo/ec_app_runtime/no sysadmin/CONTROL plus declared S metadata reads; no configured login inferred |
-| HTTPS/proxy/IP | D exact-pin transient TLS/private nonce and negative checks | Fixture only; production origin/listen/trust/known-hop values remain DF02/D13 deferred |
-| JWT/CSRF keys | K actual RAM HMAC/RSA/ECDSA/active-key rotation proof; L fresh existing DPAPI XML/restart decryption/read-only challenge PASS | Actual secret refs/issuer/audience/rotation/store/application custody still unconfigured; fixture keys are not production bindings |
-| Runtime/patch artifacts | J fresh loaded .NET/ASP.NET/EF versions, exact five-file pins/date/ref policy PASS | Approved actual manifest and bound fresh SQL-version resolver not configured; SQL version tests synthetic |
-| Timezone/deadline/body/buffer | G typed UTC+7/finite ordering/overflow/remaining-budget/body/CSV-buffer validation | H actual BCL UTC+7 resolution PASS; N actual middleware cap/deadline tests PASS; operator budgets still unselected, fixtures not owner SLO/DF01 |
-| Offline dependencies/blocklist | H fresh pinned metadata/review-window/license/corpus/async loader PASS; resources/packages unchanged | Scheduled servicing/provenance review before real exposure; no install inferred |
-| Cleanup/expiry/recovery | T actual narrow SQL authority/90d audit-IP/24h replay effects/rollback PASS,10scratch DBs removed; U actual loop lifecycle with synthetic clock/resolver6PASS | Actual maintenance authentication/TLS/scheduled SQL/service-owned COMMIT unverified; key/media/restore/load remain operational prerequisites; no runtime deletion role |
-
-F6browser→owned COMMIT+E12regression PASS on manager/main;54Fscratch DBs cleaned.
-Read-only local probe confirms Windows-only/sysadmin diagnostic identity; no runtime
-principal binding inferred. Original D07 baseline unchanged.
-Full V01/M0 remains INCOMPLETE. F closes bounded combined browser→owned COMMIT.
-G core, H–P all9 unmounted concrete probes, M explicit reader PASS.
-Concrete LOCAL_DEV proposal values were asked and are pending. Next resolve environment/runtime
-identity/catalog/PKI/custody/maintenance and prepare actual startup plus
-integration contracts. Preserve accepted DF01–03/D12/D13 deferrals; no active
-registration, LAN/Internet bind, server login, real Admin, backup, production entry
-mounting, extra business family, packages, push or deploy performed.
-Canonical sources: requirements4.10/identity verification, E04_RUNTIME_PROFILE,
-E04_FINAL_CONTRACT§7, M0_QUALITY_PLAN§7, DatabaseCompatibilityInspector/Program,
-D/E/F task cards and sanitized evidence. Source and tests outrank historical labels.
-
-W5C supersedes unmounted API/UI/all9 above (ADR190): explicit genuine-runtime
-HTTPS host composes existing M0 adapters/UI and all9 fresh probes; actual readonly
-ready/CSRF/UI isolation PASS with real maintenance counterpart. No browser JS/auth
-mutation/operational Admin or scheduled SQL COMMIT in this case. Full M0 open;
-next scoped bootstrap/browser owned-COMMIT/maintenance/usable operator walkthrough.
+Source/actual receipts outrank older pending labels. Detailed history retained in
+V01 A–V/E/F/T/U cards, M0 W1–W5D/E cards and ADRs186–192. Final summary:
+V01-evidence/M0-final-summary.json. Owner guide: M0_LOCAL_DEV_RUNBOOK.md.

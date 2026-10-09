@@ -77,3 +77,11 @@ refuses. No fresh random password/overwrites/reset; child still requires zero Ro
 Account/Audit/Profile/Session under SERIALIZABLE before A02. This exact recovery is
 assigned operational completion ADR177, manually dispatched after reviewed fix and
 zero-count evidence; never automatic retry. Existing wrong/occupied Admin refused.
+Final W5D actual PASS2026-10-09: guarded same-escrow recovery created exact7roles,
+one operational Admin/mandatory audit in own SERIALIZABLE COMMIT. Fresh connection
+counts7/1/1/Profile0/Session0; subsequent genuine schema readonly VerifyExisting
+matches escrow credential without resetting Admin. Main51abc62/manager665f326 source
+applied ADR163; both1271defaultPASS78intentionalSKIP/buildclean. Original refused
+attempts retain evidence, not PASS; no committed seed before explicit int projection
+fix/recovery. Post-E fresh readonly verification still PASS/Admin remains ACTIVE1.
+No secret in source/Git/worker/tool output/args/env/URL, only DPAPI vault and RAM stdin.

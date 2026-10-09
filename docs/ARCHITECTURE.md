@@ -840,3 +840,13 @@ HTTPS host composes existing M0 adapters/UI and all9 fresh probes; actual readon
 ready/CSRF/UI isolation PASS with real maintenance counterpart. No browser JS/auth
 mutation/operational Admin or scheduled SQL COMMIT in this case. Full M0 open;
 next scoped bootstrap/browser owned-COMMIT/maintenance/usable operator walkthrough.
+M0 LOCAL_DEV operational architecture accepted2026-10-09 ADR191–192. Explicit
+operator launcher uses separate genuine runtime/maintenance Windows/SQL contexts;
+offline schema bootstrap only owned M0 catalog with pre-COMMIT DPAPI escrow. Same
+origin loopback Kestrel real certificate, persisted current-user JWT/CSRF custody,
+existing identity/Admin pilot adapters/UI, fresh9 dependency gates before identity
+or security audit. Independent local maintenance proof public verifier/private
+key separation, system-clock cleanup timers/owned SQL COMMIT. Managed parent stdin
+closure stops own hosts; default no-arg app remains unmounted. Runbook describes
+usable launch; all M0 functional/operational evidence now closed within LOCAL_DEV.
+M1–M4 and non-M0 callers remain deferred. No full production/LAN/load/backup claim.
