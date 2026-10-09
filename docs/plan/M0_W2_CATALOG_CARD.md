@@ -45,3 +45,14 @@ No M1–M4/packages/install/push/deploy or protected owner-file changes.
 W2-A pre-execution review PASS: AST0errors, all fixed SID/login/root guards,
 new catalog only, identity receipt immediately after CREATE, no DROP/DDL reuse,
 no server role grants or secrets exported. Actual catalog/profile acceptance pending.
+
+W2-A actual PASS main e73e40f/manager09ab5a0: new catalog and3Windows logins;
+no server authority grants, TLSVerified false. W2-B existing6migrations applied
+2026-10-09 via pinned offline CLI, no package/source changes. Next exact
+tools/operator/Initialize-M0Principals.ps1 transaction grants under W2-B above,
+verify W1 SIDs and owned DB id/guid/migration/role baseline before DDL.
+
+W2-B helper source review PASS: AST0, fixed catalog identity, W1/local/SQL login
+SID byte equality, existing exact role baseline, one TX all3users/grants, no
+server grants/business rows. Schema db_owner solely offline new catalog; runtime
+and maintenance cannot borrow it. Operational/grant verification still pending.
