@@ -60,3 +60,9 @@ W4 actual key custody/restart verification PASS (ADR188): runtime DPAPI JWT/CSRF
 and own non-exportable HTTPS key/leaf trust; maintenance/schema reads denied.
 Next actual artifact/profile/all9/startup/maintenance identity orchestration/API/UI;
 no positive whole-host readiness yet. Defaults remain unmounted.
+
+W5 A/B supersedes missing profile/maintenance dependency above (ADR189): exact
+installed profile/5pins/strict SQL version and native key reader actual4PASS;
+separate actual maintenance host/3fresh signed proofs/stopped-worker refusal3PASS.
+No cleanup reached before20s cancellation (first tick60s). Full host/API/UI and
+actual scheduled COMMIT remain required. Next exact M0_W5C_HOST_CARD before code.
