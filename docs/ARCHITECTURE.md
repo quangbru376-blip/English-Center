@@ -834,3 +834,9 @@ No Git initialization/scaffolding/migration/code is authorized.
 - Execution planning: `docs/plan/`.
 - Owner-supplied instruction inputs awaiting or supporting adoption:
   `instructions/`.
+
+W5C supersedes unmounted API/UI/all9 above (ADR190): explicit genuine-runtime
+HTTPS host composes existing M0 adapters/UI and all9 fresh probes; actual readonly
+ready/CSRF/UI isolation PASS with real maintenance counterpart. No browser JS/auth
+mutation/operational Admin or scheduled SQL COMMIT in this case. Full M0 open;
+next scoped bootstrap/browser owned-COMMIT/maintenance/usable operator walkthrough.

@@ -66,3 +66,9 @@ installed profile/5pins/strict SQL version and native key reader actual4PASS;
 separate actual maintenance host/3fresh signed proofs/stopped-worker refusal3PASS.
 No cleanup reached before20s cancellation (first tick60s). Full host/API/UI and
 actual scheduled COMMIT remain required. Next exact M0_W5C_HOST_CARD before code.
+
+W5C supersedes unmounted API/UI/all9 above (ADR190): explicit genuine-runtime
+HTTPS host composes existing M0 adapters/UI and all9 fresh probes; actual readonly
+ready/CSRF/UI isolation PASS with real maintenance counterpart. No browser JS/auth
+mutation/operational Admin or scheduled SQL COMMIT in this case. Full M0 open;
+next scoped bootstrap/browser owned-COMMIT/maintenance/usable operator walkthrough.

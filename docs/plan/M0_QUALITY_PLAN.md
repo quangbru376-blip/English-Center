@@ -569,3 +569,9 @@ SQL Agent/native backup encryption. Backup cần scheduler ngoài engine và arc
 mã hóa giữ nguyên ADR-118; media/key/tool/restore còn DF03. Build RTM không mới
 nhất: review compatible17.x patch trước dữ liệu thật/exposure; không tự cài.
 Thứ tự39families, skill/quality gates, D12/D13 owner-deferred không đổi.
+
+W5C supersedes unmounted API/UI/all9 above (ADR190): explicit genuine-runtime
+HTTPS host composes existing M0 adapters/UI and all9 fresh probes; actual readonly
+ready/CSRF/UI isolation PASS with real maintenance counterpart. No browser JS/auth
+mutation/operational Admin or scheduled SQL COMMIT in this case. Full M0 open;
+next scoped bootstrap/browser owned-COMMIT/maintenance/usable operator walkthrough.

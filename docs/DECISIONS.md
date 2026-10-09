@@ -4801,3 +4801,16 @@ Actual profile/key/separation4 and host/live-proof/stopped3 cases PASS, native6 
 codec14 independent cases PASS. No cleanup at startup;20s proof window never reaches
 first60s scheduled tick. Full scheduled SQL COMMIT and API/UI integration remain
 required M0 acceptance, not established by this stage.
+
+## ADR-190 — explicit genuine LOCAL_DEV all-nine HTTPS host
+2026-10-09 reviewed PASS/applied under ADR177/ADR163. Single --m0-local-runtime
+branch requires dedicated EcM0Runtime/current protected profile and keys; default
+no-argument host stays unchanged. Q precedes identity/audit and actual startup
+checks after listener; each API rechecks all9 freshly, no cached ready. Production
+environment/loggers cleared; same-origin existing M0 adapters/identity UI only.
+Existing framework CSRF current-user DPAPI keys cannot auto-generate; profile,
+manifest/CSRF XML custody drift refuses until reviewed restart. Built UI provider
+pins file set/SHA and refuses reparse/private files/directory listing/physical path.
+Genuine runtime all9/HTTPS/CSRF/UI isolation readonly case PASS with separate
+actual20s maintenance. No operational Admin/browser mutation/scheduled SQL COMMIT
+proved by this stage; full M0 requires those distinct acceptance obligations.

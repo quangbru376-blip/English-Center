@@ -1,3 +1,17 @@
+W5C actual readonly host PASS2026-10-09; main3aa6be7/manager03433c8.
+Identical src08eb32173b6e6eee1ea287c581f432aa789bd1bd,
+testsa20ef370d1719d911cf3d16dd89e28411d036334,
+frontend36edd7d62432738a21609701da401c0797d32f42.
+Both1263defaultPASS/78intentionalopt-inSKIP/buildclean; manager frontend48tests/
+lint/types/build PASS, main frontend lint/types/build PASS. Genuine runtime HTTPS
+host all9 fresh ready/CSRF/UI/file isolation and separate20s maintenance PASS.
+Initial test expectation404 mismatch corrected; final full readonly case PASS.
+No business/security-audit writes in this acceptance; first60s cleanup not reached.
+Owner4 hashes unchanged/unshared/untracked/unstaged; no D07 mutations/reruns.
+Full M0 IN PROGRESS. Next exact operator bootstrap/actual browser owned-COMMIT/
+scheduled maintenance/usable launch+walkthrough contract. LOCAL_DEV/10000 fixed;
+no repeated decisions/M1–M4/install/push/deploy. See W5C card and ADR190.
+
 # English Center Management System — Project Memory
 
 W5 A/B actual profile/maintenance proof PASS2026-10-09. Mainab06ab8 / managercda4394:

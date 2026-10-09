@@ -98,3 +98,9 @@ First actual runtime attempt proved all9 ready/HTTPS/CSRF/UI before a test expec
 mismatch: /docs/PROJECT_CONTEXT.md correctly404(empty), not SPA HTML (fallback
 excludes file-extension paths). Corrected isolation assertion to404/empty; no source
 exposure/production fix/SQL mutation. Whole actual C test remains pending recheck.
+
+W5C supersedes unmounted API/UI/all9 above (ADR190): explicit genuine-runtime
+HTTPS host composes existing M0 adapters/UI and all9 fresh probes; actual readonly
+ready/CSRF/UI isolation PASS with real maintenance counterpart. No browser JS/auth
+mutation/operational Admin or scheduled SQL COMMIT in this case. Full M0 open;
+next scoped bootstrap/browser owned-COMMIT/maintenance/usable operator walkthrough.
