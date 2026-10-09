@@ -154,3 +154,13 @@ profile/custody/startup still open. See U card/summary.
 1217defaultPASS/63opt-in SKIP/buildclean each. Explicit post-listener Q check
 requests host stop if unavailable; no cached request authority/default registration.
 Actual environment/all9 wiring/principals/TLS/custody/scheduled SQL still open.
+
+## LOCAL_DEV selected — actual OS authority blocks provisioning
+2026-10-09 owner selected proposal table and10000preview work units, ADR186.
+Reference-only M0_LOCAL_DEV_PROFILE_TEMPLATE.json prepared; UNBOUND refs are not
+secrets or ready evidence, not loaded by Program. Read-only preflight manager
+Windows AdministratorToken=false; SQL Windows-only/sysadmin diagnostic; strict
+encrypted SQL chain untrusted. One existing localhost key candidate,8443free.
+No provisioning/SQL/config/key/trust changes. Operator must restart Codex elevated
+to prepare/apply bounded Windows identity/server TLS contract. See M0_OPERATOR_CLOSURE;
+do not replace true authentication or certificate trust with fixture/owner bypass.

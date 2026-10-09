@@ -1,5 +1,19 @@
 # Architecture
 
+LOCAL_DEV environment selected by owner2026-10-09: proposal table values and
+WeeklyPreviewBudget10000 work units (ADR186). Do not ask these values again.
+Reference-only profile template prepared, UNBOUND refs not active configuration.
+Read-only operational preflight: manager Windows AdministratorToken=false,
+SQL Windows-only/current diagnostic sysadmin=true, strict encrypted SQL fails
+untrusted certificate chain;8443free, one existing localhost key candidate.
+No provisioning/SQL writes/registry/auth-mode/certificate/trust/key changes.
+Required operator action: reopen Codex as Administrator and resume this chat for
+bounded Windows identity/SQL TLS provisioning; runtime identities still non-admin.
+Full M0 remains incomplete. See M0_OPERATOR_CLOSURE/M0_ENVIRONMENT_INPUTS.
+Production code/tests unchanged from V; no tests rerun for these docs/settings.
+
+
+Historical V checkpoint before ADR186 (environment now selected above):
 Full M0 remains IN PROGRESS. V01-V explicit startup lifecycle reviewed PASS/applied
 ADR163/reverified2026-10-09: main4daa2e2 / manager22ed355.
 StartupReadinessService waits ApplicationStarted before fresh all9 Q evaluation,

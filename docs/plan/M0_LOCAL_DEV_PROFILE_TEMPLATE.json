@@ -1,0 +1,51 @@
+{
+  "kind": "LOCAL_DEV",
+  "runtime": {
+    "dotNetMajor": 10,
+    "efMajor": 10,
+    "sqlMajor": 17,
+    "sqlEdition": "Express",
+    "patchManifestReference": "UNBOUND_OPERATOR_PATCH_MANIFEST"
+  },
+  "database": {
+    "connectionSecretReference": "UNBOUND_OPERATOR_RUNTIME_CONNECTION",
+    "schemaManifestReference": "UNBOUND_OPERATOR_SCHEMA_MANIFEST",
+    "databaseCompatibility": 160,
+    "efCompatibility": 160,
+    "snapshotRequired": true
+  },
+  "web": {
+    "origin": "https://localhost:8443",
+    "listenAddress": "127.0.0.1",
+    "listenPort": 8443,
+    "forwardingEnabled": false,
+    "knownProxies": [],
+    "knownNetworks": [],
+    "certificateSecretReference": "UNBOUND_OPERATOR_HTTPS_CERTIFICATE",
+    "clientTrustReference": "UNBOUND_OPERATOR_CLIENT_TRUST"
+  },
+  "auth": {
+    "jwtKeySecretReferences": ["UNBOUND_OPERATOR_JWT_SIGNING_KEY"],
+    "issuer": "english-center-m0-local",
+    "audience": "english-center-m0-local-ui",
+    "protectedPersistedCsrfStoreReference": "UNBOUND_OPERATOR_CSRF_STORE"
+  },
+  "execution": {
+    "lockMs": 3000,
+    "sqlSeconds": 10,
+    "requestMs": 30000,
+    "csvMs": 25000,
+    "readinessMs": 5000,
+    "requestBodyBytes": 262144,
+    "responseBufferBytes": 5000000,
+    "weeklyPreviewBudget": 10000
+  },
+  "maintenance": {
+    "replayCleanupJobReference": "UNBOUND_OPERATOR_REPLAY_JOB",
+    "replayCleanupIntervalSeconds": 60,
+    "securityAuditCleanupJobReference": "UNBOUND_OPERATOR_AUDIT_JOB",
+    "maintenancePrincipalReference": "UNBOUND_OPERATOR_MAINTENANCE_CONNECTION"
+  },
+  "businessTimeZone": "Asia/Ho_Chi_Minh",
+  "blocklistManifestReference": "UNBOUND_OPERATOR_BLOCKLIST_MANIFEST"
+}

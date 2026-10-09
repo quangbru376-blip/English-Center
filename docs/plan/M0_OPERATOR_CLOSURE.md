@@ -19,3 +19,25 @@ grants, HTTPS and independent SQL trust, protected JWT/current-user DPAPI CSRF s
 approved artifact manifest, finite preview resource budget and actual host/UI wiring.
 Do not generate operational keys before identity/custody is bound. Missing values/
 authority keep business requests closed. No positive readiness inferred from fixtures.
+
+## Verified read-only preflight
+Outside sandbox, current manager process AdministratorToken=false; SQL service
+running, Windows-only authentication, current diagnostic SQL sysadmin=true.
+No-C/encrypted SQL certificate validation fails with untrusted certificate-chain
+category. Port8443 has no listener. One current-user localhost/server-auth-EKU
+private-key certificate candidate exists; no key exported/opened, custody/trust
+not proved. Initial sandbox certificate/service observation was restricted and is
+not the authoritative outside-sandbox result. No provisioning/configuration changes.
+Raw fixed SQL outputs in ignored test-results/operator-*.txt; no identity listing.
+
+Actual Windows account provisioning and SQL server certificate/private-key ACL/
+service configuration need an elevated Windows manager process. Current process
+cannot supply that authority; no permission question substitutes for Windows UAC.
+Required operator action: restart Codex with Run as administrator, reopen this
+workspace/chat and resume. Runtime/maintenance application identities must still
+be non-administrative, separate from the elevated provisioning manager.
+
+After elevation, prepare/review exact identity/custody/SQL-certificate contract
+before writes. Preserve D07 baseline; prefer a dedicated operational catalog with
+existing migrations rather than changing the retained verification baseline.
+No service/auth-mode/global trust changes were made by this preflight. Full M0 open.

@@ -4753,3 +4753,8 @@ buffer5000000bytes/replay60s/audit3600s, explicit listed JWT issuer/audience.
 Do not ask these decisions again. This selects values, not runtime readiness or
 production exposure. WeeklyPreviewBudget/custody/principal/PKI bindings remain
 explicit prerequisites; no historical fixture silently promoted or global grants.
+
+Owner subsequently selected WeeklyPreviewBudget10000 work units per preview,
+resource exhaustion503; not a hidden lesson/date cap. M0 weekly route remains
+unmounted; precise work-unit accounting/normal-use verification belongs to its later
+implementation. All table scalar values now selected, operational bindings not ready.

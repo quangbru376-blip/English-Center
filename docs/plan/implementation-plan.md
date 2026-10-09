@@ -1,5 +1,10 @@
 # Implementation planning — discussion draft
 
+Latest2026-10-09: V startup lifecycle PASS1217tests; LOCAL_DEV and10000preview
+units selected ADR186. Actual Windows/SQL TLS provisioning needs an elevated
+manager process, currently unavailable. See M0_OPERATOR_CLOSURE/current memory.
+Historical checkpoints below; M0 incomplete, selected values are not asked again.
+
 Full M0 remains IN PROGRESS. V01-Q HTTP readiness component and V01-S explicit
 catalog metadata allowlist reviewed PASS/applied ADR163/reverified2026-10-08:
 Q main7ef2ce6/manager e18eddc; S maina6b4828/manager41b166d.

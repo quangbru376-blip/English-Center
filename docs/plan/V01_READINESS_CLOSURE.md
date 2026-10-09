@@ -1,5 +1,11 @@
 # V01 readiness closure matrix — 2026-10-08
 
+2026-10-09 environment closure: owner selected LOCAL_DEV proposal andpreview10000
+work units (ADR186); reference-only template prepared. Current Windows manager
+token not elevated, SQL Windows-only/sysadmin diagnostic, strict encrypted SQL fails
+untrusted chain. No provisioning/config changes. Windows identity and SQL TLS work
+requires elevated Codex process; actual bindings/full M0 still open. See M0_OPERATOR_CLOSURE.
+
 Latest V2026-10-09: main4daa2e2/manager22ed355 reviewed PASS/applied/reverified;
 1217defaultPASS/63opt-in SKIP/buildclean each,14startup cases. Explicit hosted Q
 check after ApplicationStarted/failure host-stop/cancellation/no cached API authority;

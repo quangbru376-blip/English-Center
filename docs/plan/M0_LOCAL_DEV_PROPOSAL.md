@@ -14,6 +14,7 @@ LOCAL_DEV versus LAN_DEMO or these accepted table values.
 | Lock / SQL / request | 3000 ms / 10 seconds / 30000 ms |
 | CSV / readiness | 25000 ms / 5000 ms |
 | Request body / response buffer | 262144 bytes / 5000000 bytes |
+| WeeklyPreviewBudget | 10000 work units per weekly preview; owner selected2026-10-09 |
 | Replay / audit job intervals | 60 seconds / 3600 seconds, separate maintenance identity |
 | JWT issuer / audience | english-center-m0-local / english-center-m0-local-ui |
 | Timezone / database-provider compatibility | Asia/Ho_Chi_Minh / explicit160, fixed accepted values |
@@ -22,10 +23,10 @@ Port8443 was not listening at the read-only observation; not reserved or promise
 available at startup. No SQL login, OS identity, certificate trust, secret directory,
 listener, grants or active configuration was created by preparing this proposal.
 
-WeeklyPreviewBudget remains unresolved: it is a resource budget, not a hidden lesson
-or date cap. M0 has no weekly generator; its normal-use envelope/unit belongs to the
-accepted runtime profile review before that caller is mounted. Do not invent a
-business limit to make a descriptor validate.
+WeeklyPreviewBudget is now selected:10000 work units, resource exhaustion503, not
+a business lesson/date cap. M0 does not mount a weekly generator. The later weekly
+implementation must explicitly define/count work units and verify the normal-use
+envelope before mounting; selecting a positive descriptor does not implement it.
 
 Required operational closure after selection:
 1. Materialize dedicated runtime/schema/maintenance identities and protected stores
@@ -37,6 +38,5 @@ Required operational closure after selection:
 4. Register all9 essential probes, mount explicit M0 adapters only after startup
    gates, then rerun fresh runtime/browser/owned-commit evidence and restart checks.
 
-E04_RUNTIME_PROFILE explicitly says missing slots fail closed and Codex does not
-choose timeout/body/weekly caps in place of the owner. Thus existing fixture numbers
-are not promoted to approved operational values by passing tests.
+E04_RUNTIME_PROFILE missing slots still fail closed. Values here were selected by
+the owner; operational references and actual dependency proof remain required.
