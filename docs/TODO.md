@@ -1,21 +1,20 @@
 # TODO
 
-M0 LOCAL_DEV complete/reviewed PASS2026-10-09; main codeb43ed99/managerb501cca.
-Both1276defaultPASS78intentionalSKIP/buildclean; actual all9 HTTPS/identity/keys/
-bootstrap/browser/owned COMMIT/scheduled replay/restart acceptance PASS.
+M0 COMPLETE. M1 packages1–2 COMPLETE/PASS/applied2026-10-09 main8ef95cc;
+1291defaultPASS/102intentionalSKIP,24new ownedSQL/HTTP/Edge PASS,frontend56PASS.
+Full staff management and Course/read-only Band are usable in explicit LOCAL_DEV.
+Actual all9/strict TLS/browser/maintenance acceptance and5Band reference seed PASS.
 
-No remaining M0 coding or repeated permission/environment questions.
-Owner can launch tools/operator/Start-M0Local.ps1 from PowerShell7 and use
-https://localhost:8443; see M0_LOCAL_DEV_RUNBOOK. Hosts currently stopped.
-Initial Admin credential remains only current-operator DPAPI vault; never share it.
-
-M1–M4 remain unstarted. Await new milestone assignment before product expansion.
-Retain accepted later-module deferrals/full55 command coverage boundaries.
-Future operator servicing must review expiry/profile/keys/installed artifact pins;
-no automatic rotation/package updates. Next patch review2027-01-09; JWT/CSRF90d.
-No LAN/Internet/load50user/backup/deploy/push scope opened by M0 closure.
+No remaining implementation task in assigned packages1–2. Whole M1 IN PROGRESS;
+await owner assignment before package3 (TrainingProgram) or other product families.
+Launch tools/operator/Start-M0Local.ps1; use https://localhost:8443.
+Admin can issue a real staff account when intended; do not promote synthetic fixtures.
+No fake Course/student/staff retained; actual catalog7roles/oneAdmin/Band5/Profile0/Course0.
+Use current credential after any deliberate password change; escrow does not auto-update.
 
 Preserve owner4 untracked/unshared/unstaged/hash-identical and source Word report.
-D07 retained untouched; operational catalog separate EnglishCenter_M0_LOCALDEV.
-Detailed scope/evidence/limitations: W5D/E cards, V01_READINESS_CLOSURE and
-V01-evidence/M0-final-summary.json; history remains in individual cards/AGENTS.
+D07 untouched; operational catalog separate EnglishCenter_M0_LOCALDEV.
+No repeated permission/environment decisions; ADR177/163 and LOCAL_DEV/10000 fixed.
+No install/update/push/deploy/LAN/load/backup task assigned. Future keys/profile/pins
+servicing requires review; existing patch review2027-01-09 andJWT/CSRF90d remain.
+See M1_01_02_TASK_CARD/M1-summary/runbook; raw receipt paths are recorded there.

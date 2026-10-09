@@ -1,0 +1,106 @@
+{
+  "date": "2026-10-09",
+  "scope": "M1 packages 1 and 2",
+  "status": "COMPLETE",
+  "review": "PASS",
+  "mainCode": "8ef95ccce6a3a8790ae27cc2845f0dc8551ae542",
+  "managerCode": "6315b097754ad23715ee7785c3e66142312e03af",
+  "trees": {
+    "backendSrc": "b51b8ef26989cd3d86973d42b7854c633e1379fe",
+    "backendTests": "8a1c7de8717342da8377f2cb0c1c42ff9cef1693",
+    "frontend": "6cc7baf922f49e56e69c14bda5235ee85140f418"
+  },
+  "default": {
+    "managerPass": 1291,
+    "errors": 0,
+    "warnings": 0,
+    "mainPass": 1291,
+    "intentionalOptInSkip": 102
+  },
+  "frontend": {
+    "build": "PASS",
+    "managerPass": 56,
+    "lint": "PASS",
+    "types": "PASS",
+    "mainPass": 56,
+    "widths": [
+      375,
+      768,
+      1280
+    ]
+  },
+  "owned": {
+    "newBrowserGroups": 2,
+    "sql": 20,
+    "managerBrowserGroups": 8,
+    "finalFailures": 0,
+    "http": 2,
+    "initialFailuresRetained": true,
+    "managerUniquePass": 30,
+    "mainNewPass": 24
+  },
+  "scratch": {
+    "managerDropped": 96,
+    "mainCreated": 24,
+    "mainDropped": 24,
+    "managerCreated": 96,
+    "unmatched": 0
+  },
+  "actualLocalDev": {
+    "courses": 0,
+    "bandOperations": 1,
+    "failedRuns": 0,
+    "strictSqlTls": true,
+    "freshReadinessCategories": 9,
+    "unchangedActiveAdmin": 1,
+    "forcedStops": 0,
+    "auditCommits": 1,
+    "seed": "PASS",
+    "migrations": 6,
+    "bands": 5,
+    "idempotentReadonlyRecheck": "PASS",
+    "roles": 7,
+    "stoppedMaintenanceRefused": true,
+    "accounts": 1,
+    "replayCommits": 1,
+    "activeSessions": 0,
+    "logouts": 4,
+    "strictBrowserTls": true,
+    "bandAudits": 5,
+    "logins": 4,
+    "profiles": 0,
+    "remainingHosts": 0,
+    "listener8443": 0
+  },
+  "agy": {
+    "readFiles": 3,
+    "eventsSha256": "FC8802460135A9E3CC95D40F3201C2293757D2A721C4DDC3A1D66F8A50A1B4E2",
+    "receiptSha256": "6A6B1472430E746C8B37683B19D0CFD86F3C5D31946A06ABA99D4ECA2CC11BEF",
+    "runId": "18075799-be1",
+    "observedViolations": 0,
+    "diffLines": 129,
+    "status": "SUCCESS",
+    "writtenFiles": 1
+  },
+  "rawEvidence": [
+    "backend/TestResults/M1/M1-main-default.trx",
+    "backend/TestResults/M1/M1-main-owned.trx",
+    "backend/TestResults/M1/M1-operational-counts.json",
+    "docs/plan/V01-evidence/test-results/M1-bands-initialize-20261009.json",
+    "docs/plan/V01-evidence/test-results/M1-bands-readonly-20261009.json",
+    "docs/plan/V01-evidence/test-results/M1-localdev-browser-20261009.json"
+  ],
+  "ownerFiles": "hash-identical/unshared/untracked/unstaged",
+  "d07": "untouched/not rerun",
+  "schemaGrantsPackages": "unchanged",
+  "unassigned": [
+    "M1 package3 and later",
+    "M2-M4",
+    "install",
+    "push",
+    "deploy",
+    "LAN",
+    "load50user",
+    "backup"
+  ]
+}

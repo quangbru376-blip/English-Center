@@ -1,7 +1,8 @@
 # Chạy M0 LOCAL_DEV
 
 M0 đã nghiệm thu2026-10-09. Code chính: C:\Study\SOEN\main_workplace.
-Chỉ chạy trên laptop này tại https://localhost:8443; M1–M4 chưa triển khai.
+Chỉ chạy trên laptop này tại https://localhost:8443. M1 gói1–2 đã hoàn tất;
+gói3 và các milestone sau chưa được giao trong lượt này.
 
 Mở PowerShell7 bằng tài khoản Windows operator đã provision môi trường:
 
@@ -28,9 +29,20 @@ không tự cập nhật và tool kiểm credential ban đầu sẽ từ chối.
 lại để khôi phục một phản hồi chưa rõ. Role/Account/Audit bootstrap đã tạo một lần.
 
 M0 hỗ trợ đăng ký học viên, login/me/logout, đổi password thường/hạn chế và Admin
-xem/khóa/tra kết quả khóa theo ID. Các chức năng nghiệp vụ khác thuộc milestone sau.
+xem/khóa/tra kết quả khóa theo ID. M1 bổ sung Admin tìm/tạo nhân sự/reset/mở khóa/
+ngừng dùng/kích hoạt lại, và AcademicAffairs quản lý Course/đọc bộ Band.
 Đăng ký201 không tự login; đổi password thành công phải login lại. Không có fake
-staff/student/demo data trong catalog vận hành, chỉ7roles/Admin/audit/session lịch sử.
+staff/student/demo data trong catalog vận hành, chỉ7roles/Admin/5Band tham chiếu/
+audit/session lịch sử. Dữ liệu thử được kiểm tra trong scratch DB đã xóa riêng.
+
+Admin vào “Quản trị tài khoản”, tìm theo tên/email/điện thoại/vai trò/trạng thái rồi
+“Xem” để xử lý tài khoản. “Thêm nhân sự” cấp một trong sáu vai trò nhân sự; chỉ tạo
+tài khoản thật khi có người nhận. Bàn giao mật khẩu tạm trực tiếp, không gửi qua chat;
+đóng hộp thoại sẽ xóa mật khẩu khỏi giao diện, tra kết quả không lấy lại bí mật.
+Người nhận login, đổi mật khẩu tạm, rồi login lại. AcademicAffairs chọn “Khóa học
+và Band” để quản lý khóa học và xem đủ5Band. Giá VND giữ nguyên chính xác.
+Khi lệnh chưa rõ kết quả, dùng “Kiểm tra kết quả”/đối chiếu; không tự gửi lại.
+Band đã khởi tạo và xác minh; không cần chạy lại initializer hoặc seed lúc startup.
 
 GET /health/ready trả ready chỉ khi đủ9 dependency thật; mất maintenance/SQL/key/
 profile/custody hoặc hết hạn thì503. Stop/restart helper dùng lại keys đã bảo vệ.

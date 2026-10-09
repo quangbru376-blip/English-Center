@@ -1,7 +1,7 @@
 # M1 packages 1 and 2 — assigned 2026-10-09
 
-Status: Codex implementation review PASS; main apply and genuine LOCAL_DEV
-verification are next. This card will record their actual results separately.
+Status: COMPLETE; Codex review PASS/applied ADR163/reverified2026-10-09.
+Main code8ef95cc / manager6315b09; genuine LOCAL_DEV acceptance PASS.
 Owner assigns full code/review/tests/PASS application; ADR177/163 apply.
 Manager checkout .worktrees/m1-packages starts at d46ff8a; owner4 absent here.
 
@@ -79,6 +79,29 @@ Skill SHA256: backend76ACEC868ED4D918DC1C6616904F78FF2710737D6A06CCF605DA783BC91
 frontend54EFB0F14763ACA58DD1BDADC8B5276DA082E0668244335C7B8C48E0521402DF;
 review1DDED1E6699F97C7657C27D2B923992D07AC88BD9642FB74EBE4D93A28BE2125;
 routingADB7938FE69E00C991AEFB4EB114854F124EB3E2AC3963763937225646D3E915.
+
+## Main application and actual LOCAL_DEV
+ADR163 apply main8ef95cc; manager6315b09 identical backend src
+b51b8ef26989cd3d86973d42b7854c633e1379fe / tests
+8a1c7de8717342da8377f2cb0c1c42ff9cef1693 / frontend
+6cc7baf922f49e56e69c14bda5235ee85140f418.
+Main1291defaultPASS/102intentional opt-inSKIP/build0warnings0errors;
+24new ownedSQL/HTTP/Edge cases PASS0fail0skip; frontend56/lint/types/build PASS.
+Actual EcM0Schema strict TLS/catalog identity/M1-band-reference initialization PASS;
+second invocation verifies exact set readonly, no repeat DML/audit. Fresh SQL proves
+7roles/oneunchangedACTIVEAdmin/Profile0/Band5/Course0/6migrations/activeSID0,
+5Band mandatory audits/exact1operation. No operational fake staff/student/Course.
+Actual genuine runtime+maintenance fresh all9/strict HTTPS Edge3widths/Admin4login/
+4logout/self-detail/self-lock-disabled/multi-context/manual404 PASS. ReplayCOMMIT1,
+explicit auditCOMMIT1/failed0; maintenance stop503/forcedStops0; listener stopped.
+Readonly diagnostic initially refused legacy hostname/reference/native driver
+loading; final existing Windows SqlClient/SNI with canonical strict hostname PASS.
+No trust bypass/driver installation or runtime configuration change was made.
+All new24 main scratch databases identity-cleaned. Manager96+main24=120created/
+120dropped,0unmatched. Owner4 hashes unchanged/unshared/untracked/unstaged.
+D07 untouched, no rerun baseline claim. No schema/grants/packages/push/deploy.
+Whole M1 remains IN PROGRESS; package3 and later require a new owner assignment.
+Evidence: M1-evidence/M1-summary.json; raw TRX/ownership receipts remain ignored.
 
 ## Reviewed write allowlist
 backend/src/EnglishCenter.Api/Api/Administration/AdminAccountEndpoints.cs

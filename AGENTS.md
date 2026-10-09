@@ -1,3 +1,26 @@
+M1 packages1–2 COMPLETE/reviewed PASS/applied ADR163/reverified2026-10-09.
+Main code8ef95cc / manager6315b09; identical srcb51b8ef26989cd3d86973d42b7854c633e1379fe,
+tests8a1c7de8717342da8377f2cb0c1c42ff9cef1693,
+frontend6cc7baf922f49e56e69c14bda5235ee85140f418.
+Both1291defaultPASS/102intentional opt-inSKIP/build0warnings0errors;
+frontend56/lint/types/build PASS. Manager30unique ownedSQL/HTTP/Edge cases PASS;
+main24new cases PASS, including all3widths. 120scratch DBs identity-cleaned.
+API006–014 full staff account management and API074–080 Course/read-only Band,
+API090 restricted4Course actions mounted by explicit LOCAL_DEV host only.
+First credential after COMMIT/no secret replay; Admin guards/revocation/RV/audit/
+T23/races and exact money/immutable Course/lifecycle verified. One bounded AGY
+CourseForm129lines/3fullreads/SUCCESS/no observed violation; Codex fixed/reviewed.
+Actual genuine schema seeded5accepted Bands/5mandatory audits/1operation then
+readonly reverified; no GET/default repair. Actual runtime/maintenance all9/strict
+HTTPS Edge3widths/4login4logout/replayCOMMIT1/auditCOMMIT1/failed0/stop503 PASS.
+Operational7roles/oneunchangedACTIVEAdmin/Profile0/Course0/Band5/6migrations/
+activeSID0. No fake operational staff/student/Course. All own hosts/listener stopped.
+Owner4 hashes unchanged/unshared/untracked/unstaged; D07 untouched, no schema/grant/
+package/install/push/deploy. M0 remains COMPLETE; whole M1 is IN PROGRESS.
+Package3/later not assigned; do not open them or repeat settled LOCAL_DEV/10000/
+ADR177/163 gates. See M1_01_02_TASK_CARD/M1-evidence/M1-summary/notes/M1_01_02.
+
+Historical checkpoints below are retained as provenance, not current scope.
 M0 LOCAL_DEV COMPLETE / integrated review PASS2026-10-09. Mainb43ed99/managerb501cca;
 identical srcdf538a0b48dbde06813c137a9404d11edb97cc4a,
 testsa536d296c63103461e5ec3e71f244084b5639edc,

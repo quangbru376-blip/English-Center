@@ -4841,3 +4841,25 @@ reuses same protected keys/profile and again all9ready; lost maintenance503.
 Runbook/interactive launcher make selected LOCAL_DEV usable; tests stop listeners.
 Future key/manifest servicing is explicit reviewed operator work, not automatic
 repair/rotation/installation. This closure does not assign later product families.
+## ADR-193 — M1 staff and Course/Band, assigned two-package completion
+2026-10-09 reviewed PASS/applied ADR163 under ADR177; scope API006–014 and
+074–080 plus090 fourCourse actions only. Reuse existing24-table schema/roles/
+permissions6migrations/EC-C1/T23; no new dependencies. Explicit LOCAL_DEV mounts
+full staff account service and Course catalogue; default no-argument host unchanged.
+Staff temporary credential first7fieldresponse only after owned COMMIT,32random
+characters/24h/must-change; replay only SECRET_RESULT_UNAVAILABLE. Reset preserves
+status and may target self: captured live deadline bounds COMMIT after own SID
+revocation, UI verifies session after credential handoff. ADMINSET→sortedAccount→SID
+protects Admin invariants; status effects and mandatory audit/T23 remain atomic.
+Course immutable unique code/exact decimal internal/string wire/no-op400; target
+lock coordinates lifecycle/details and future invoice readers, no historical cascade.
+Full fiveBand query refuses malformed set, frozen predicate scoreISNOTNULL plus
+completed_booking_idISNOTNULL including score0. No Band mutation API/GET repair.
+Explicit genuine schema/catalog-identity initializer seeds accepted five references
+and5SYSTEM.BAND.SEED mandatory rows in one SERIALIZABLE BANDSET TX/oneoperation;
+exact existing set readonly, partial/inconsistent set refuses; audit failure rollback.
+Manager30unique/main24new ownedSQL/HTTP/Edge PASS; default1291PASS102opt-inSKIP,
+frontend56PASS;120scratch databases identity-cleaned. Actual strictTLS/genuine
+identities/5Band+audit/all9/Edge3widths/4login4logout/maintenance acceptance PASS.
+No fake operational staff/Course/student, owner4 untouched/unshared/untracked.
+No schema/grant/package/install/push/deploy; package3/restM1/M2–M4 remain unassigned.

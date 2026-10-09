@@ -1,3 +1,19 @@
+2026-10-09 current exposure: explicit LOCAL_DEV adds full Admin API006–014 and
+AcademicAffairs Course074–079/Band080/lookup090 restricted to fourCourse actions.
+Search accounts POST /api/v1/admin/accounts/search: PII body/read intent/CSRF/no-store.
+POST /api/v1/admin/staff-accounts: first201 exact7credential fields, replay200 safe
+SECRET_RESULT_UNAVAILABLE; no password storage/retrieval endpoint. POST accounts/{id}/
+reset-password,unlock,disable,restore plus existinglock: RV/UUID/liveNORMALAdmin;
+search/detail/lookup read without idle renewal. API015–017 not mounted.
+GET /api/v1/academics/courses with exact filters/sort/page/pageSize; POST create201,
+replay200; GET {id}; PUT {id}/details; POST {id}/deactivate oractivate. Exact positive
+VND string, immutablecode, no-op400, fouractionT23/audit/liveAcademicAffairsNORMAL.
+GET /api/v1/academics/bands full exact5set/frozenflag, no write/GETrepair; malformed503.
+GET academics/command-results/{requestId}?action= onlyCourse75/77/78/79 actions.
+All private responses no-store; owned COMMIT before first output; wrongrole403,
+restricted/currentinvalid401, malformed400, stale409; no automatic write retry.
+No-argument host remains unmounted; LOCAL_DEV runbook/currenttaskcard governs.
+Older entries below are historical exposure checkpoints.
 # Implemented API exposure
 
 2026-10-09 V01-V adds an optional StartupReadinessService, explicitly registered

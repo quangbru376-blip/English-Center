@@ -1,41 +1,34 @@
 # Current State
 
-M0 LOCAL_DEV is COMPLETE, integrated Codex review PASS2026-10-09; ADR191–192.
-Main codeb43ed99/managerb501cca identical backend srcdf538a0b48dbde06813c137a9404d11edb97cc4a,
-testsa536d296c63103461e5ec3e71f244084b5639edc/frontend36edd7d62432738a21609701da401c0797d32f42.
-Both1276defaultPASS/78intentionalopt-inSKIP/build0warnings0errors. Frontend C48tests/
-lint/types/build evidence retained; E actual installed Edge375/768/1280 PASS.
+M0 LOCAL_DEV COMPLETE; M1 packages1–2 COMPLETE/review PASS/applied/reverified
+2026-10-09, main code8ef95cc/manager6315b09 (ADR193/163/177).
+Identical srcb51b8ef26989cd3d86973d42b7854c633e1379fe,
+tests8a1c7de8717342da8377f2cb0c1c42ff9cef1693,
+frontend6cc7baf922f49e56e69c14bda5235ee85140f418.
+Both1291defaultPASS/102intentionalopt-inSKIP/build0warnings0errors;
+frontend56/lint/types/build PASS. Manager30unique ownedSQL/HTTP/Edge cases PASS,
+main24new cases PASS. All3widths;120scratch DBs ID/GUID-matched cleaned.
 
-Operational LOCAL_DEV:127.0.0.1:8443/https://localhost:8443, actual nonadmin
-EcM0Runtime/EcM0Maint/EcM0Schema, owned EnglishCenter_M0_LOCALDEV with existing6
-migrations/exact4roles102permissions and declared metadata reads. Strict SQL/HTTPS
-trust; protected current-user DPAPI JWT/CSRF and nonexportable HTTPS/maintenance
-proof keys. Runtime cannot read maintenance private credential/key; maintenance
-cannot read runtime key store. All9 fresh probes + post-listener startup refusal
-and Q-before-identity/audit actual PASS. Source/default no-argument host remains
-unmounted; explicit operator launcher mounts only accepted M0 adapters/identity UI.
+Admin API006–014 supports search/create/reset/lock/unlock/disable/restore and safe
+completion lookup. First secret after COMMIT only; temp32chars/24h/mustchange;
+reset preserves status, securityVersion/session revocation and self/lastAdmin guards.
+AcademicAffairs API074–080 manages Course and reads full Band; API090 only4Course
+lookup actions. Immutable unique code/exact VND/no-op400/lifecycle no historical cascade.
+Reads live authority→separate SNAPSHOT→final authority; audit/T23 caller transaction.
+UI Vietnamese, native/shared controls, explicit sensitive confirmation/secret RAM
+clear/manual unknown lookup/no automatic retry, deep links and stale-intent clearing.
 
-Actual bootstrap7roles/oneAdmin/mandatory audit COMMIT and credential escrow/read-only
-verification PASS. Refused attempts were corrected/retained, not called PASS.
-Actual Edge4login4logout/shared+separate contexts/self-detail/self-lock-disabled/
-manual unknown completion404 PASS; fresh SQL4revoked sessions/LOGIN4/LOGOUT4 and
-unchanged ACTIVE Admin/version1/hash verified, Profile0. No synthetic operational
-staff/student or fixture keys promoted. Historical E/F independently closes bounded
-signup/password/lock/T23/full7role/race/audit functionality; production adapters unchanged.
-Actual wall-clock replay60s COMMIT1 + explicit audit COMMIT1/failures0; audit3600s
-unchanged, no elapsed-hour claim. T real retention/U independent timer evidence retained.
-Maintenance stop fresh503 and persisted-key/profile restart ready PASS. All own
-host processes and listener8443 stopped; runbook shows interactive launch/Enter stop.
+Explicit genuine LOCAL_DEV host mounts both packages; no-argument host unmounted.
+Schema operator seeded5accepted Bands with5mandatory audits/1operation, readonly
+recheck PASS. Genuine runtime/maintenance all9/strictSQL+HTTPS/Edge3widths/Admin
+4login4logout/multi-context/maintenance-stop503/replayCOMMIT1/auditCOMMIT1/failed0 PASS.
+Operational7roles/oneunchangedACTIVEAdmin/Profile0/Course0/Band5/6migrations/activeSID0.
+No fixture identity/key or fake operational staff/student/Course promoted.
+Hosts/listener stopped; launch tools/operator/Start-M0Local.ps1, localhost:8443.
+Existing protected DPAPI/PKI/profile5pins unchanged; explicit future servicing remains.
 
-Owner4 hash-identical/unshared/untracked/unstaged. D07 untouched W4/W5, last W3
-strict byteSHA10CD3407CE5986394703A9BEC2EE3E42314080809DDABE26906B1F14B593FC8E.
-No package/schema/grant change in W5D/E; no install/push/deploy/M1–M4.
-LOCAL_DEV/preview10000 fixed ADR186; standing task authority ADR177/PASS apply ADR163.
-Next owner can use M0_LOCAL_DEV_RUNBOOK. No remaining M0 implementation task;
-M1 needs a new assignment, not opened by closing M0. Future explicit servicing
-needed before key/manifest expiry; no production/LAN/50user/backup assertion.
-
-Evidence: M0_W1_IDENTITY_CARD, W2–W5 cards, M0_W5C_HOST_CARD,
-M0_W5D_BOOTSTRAP_CARD, M0_W5E_ACCEPTANCE_CARD, V01_READINESS_CLOSURE,
-V01-evidence/M0-final-summary.json, docs/notes/M0W5E.md. Historical detailed
-checkpoint provenance is retained in AGENTS/individual task cards/ADRs.
+Owner4 unchanged/unshared/untracked/unstaged. D07 untouched; no baseline rerun claim.
+No schema/grants/packages/install/push/deploy. M1 overall IN PROGRESS; next package3
+requires assignment, not opened by this batch. LOCAL_DEV/preview10000/ADR177/163 fixed.
+Evidence: M1_01_02_TASK_CARD, M1-evidence/M1-summary.json, notes/M1_01_02;
+M0 baseline closure retained in M0-final-summary/W5 cards/ADR191–192.
