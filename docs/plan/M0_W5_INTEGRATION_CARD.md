@@ -95,3 +95,31 @@ must equal generated reviewed profile except this one known UNBOUND value, manif
 must be identical/fivepins still verified. Only public profile overwritten, no keys,
 SQL/ACL changes. Source review PASS; actual recheck pending. Fresh install stays
 fail-if-existing. Invalid/other drift cannot invoke recovery.
+
+A actual corrected-profile readonly recheck PASS: genuine runtime2 (native key
+binding/disposal + loaded profile/fivepins/NET/ASP/EF/fresh strict SQL twice),
+maintenance1/schema1refusal retained. Main1250defaultPASS74intentionalSKIP/buildclean.
+No ready/all9 claim. B helpers source review/AST0, not yet provisioned; private
+key CurrentUserMy/nonexportable proof-only/no machine trust, public root four ACLs.
+Native pipe uses specific runtime client rights excluding CreateNewInstance,
+identification-only client SQOS, remote-reject/first-instance/overlapped server.
+Microsoft primary API/security documentation verified; native actual checks pending.
+
+B derived exact Program.cs explicit --m0-maintenance branch before default builder,
+single argument/genuine EcM0Maint only; no HTTP/default mounting. New tests exact
+LocalMaintenancePipeTests.cs/MaintenanceProxyTests.cs plus actual later derived.
+Read-only proof includes fresh protected marker/manifest/public cert hashes and
+ACLs, no runtime-owned proof file allowed. Peer identification-only token is never
+used for SQL. Existing scheduler SQL guard and actual live ExecuteTask are both
+required; missing/stopped/timed-out/wrong-profile worker cannot return Pass.
+
+Native test found GetImpersonationUserName returns bare local username, not domain
+identity. Revised peer guard: RunAsClient solely captures WindowsIdentity.GetCurrent
+(ifImpersonating:true) SID at identification level, immediately reverts, then exact
+runtime SID match before any probe/SQL. No name ambiguity/no client impersonated
+resource access. Task test now surfaces server exceptions instead of hiding timeout.
+
+B helper-only source review PASS: exact fresh maintenance root/4ACLs/non-admin SIDs,
+proof private key under real maint/non-exportable/sign-verify test/no trust import.
+No actual provisioning yet; native/host source remains manager pending integrated
+review. Six native/proxy tests PASS/build0warnings0errors after peer SID fix.
