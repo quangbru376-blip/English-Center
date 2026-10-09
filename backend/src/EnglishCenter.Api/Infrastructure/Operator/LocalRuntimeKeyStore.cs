@@ -12,7 +12,7 @@ namespace EnglishCenter.Api.Infrastructure.Operator;
 // Binds existing material; every resolution checks custody and file drift, never repairs.
 public sealed class LocalRuntimeKeyStore : IDisposable
 {
-    private static readonly string[] Files = ["prepared.json", "key-manifest.json", "jwt.dpapi", "https.cer"];
+    private static readonly string[] Files = ["prepared.json", "key-manifest.json", "jwt.dpapi", "https.cer", "profile.json", "patch-manifest.json"];
     private readonly Dictionary<string, byte[]> snapshots;
     private readonly byte[] bytes;
     private readonly string sid;
@@ -35,7 +35,7 @@ public sealed class LocalRuntimeKeyStore : IDisposable
         try
         {
             if (!SafeAcl(identity.User.Value)) throw new InvalidOperationException("Invalid runtime custody");
-            var snapshots = Files.ToDictionary(name => name, name => SHA256.HashData(Read(name)), StringComparer.Ordinal);
+            var snapshots = BoundFiles().ToDictionary(name => name, name => SHA256.HashData(Read(name)), StringComparer.Ordinal);
             using var prepared = JsonDocument.Parse(Read("prepared.json"));
             using var metadata = JsonDocument.Parse(Read("key-manifest.json"));
             var marker = prepared.RootElement; var record = metadata.RootElement;
@@ -85,9 +85,16 @@ public sealed class LocalRuntimeKeyStore : IDisposable
     {
         try
         {
-            return !disposed && SafeAcl(sid) && Files.All(name => CryptographicOperations.FixedTimeEquals(snapshots[name], SHA256.HashData(Read(name))));
+            return !disposed && SafeAcl(sid) && BoundFiles().Order(StringComparer.Ordinal).SequenceEqual(snapshots.Keys.Order(StringComparer.Ordinal)) &&
+                snapshots.Keys.All(name => CryptographicOperations.FixedTimeEquals(snapshots[name], SHA256.HashData(Read(name))));
         }
         catch (Exception) { return false; }
+    }
+    private static string[] BoundFiles()
+    {
+        var xml = Directory.GetFiles(Path.Combine(LocalRuntimeReferences.RuntimeRoot, "csrf"), "*.xml");
+        if (xml.Length is < 1 or > 16) throw new InvalidOperationException("Invalid CSRF custody set");
+        return Files.Concat(xml.Select(path => Path.GetRelativePath(LocalRuntimeReferences.RuntimeRoot, path))).ToArray();
     }
     private static byte[] Read(string name)
     {
@@ -105,7 +112,9 @@ public sealed class LocalRuntimeKeyStore : IDisposable
         var directoryAcl = new DirectoryInfo(LocalRuntimeReferences.RuntimeRoot).GetAccessControl();
         if (!directoryAcl.AreAccessRulesProtected || directoryAcl.GetOwner(typeof(SecurityIdentifier))?.Value != sid ||
             !RulesMatch(directoryAcl, allowed)) return false;
-        foreach (var name in Files)
+        var csrf = new DirectoryInfo(Path.Combine(LocalRuntimeReferences.RuntimeRoot, "csrf")).GetAccessControl();
+        if (!allowed.Contains(csrf.GetOwner(typeof(SecurityIdentifier))?.Value ?? "") || !RulesMatch(csrf, allowed)) return false;
+        foreach (var name in BoundFiles())
         {
             var path = LocalReadinessFiles.Resolve(LocalRuntimeReferences.RuntimeRoot, name);
             if (path is null) return false;

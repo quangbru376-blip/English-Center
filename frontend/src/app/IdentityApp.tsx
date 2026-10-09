@@ -46,7 +46,7 @@ function Routes({ controller, initialPath }: { controller: SessionController; in
   return <LoginPage controller={controller} snapshot={snapshot} onRegister={() => navigate('/register')} />;
 }
 
-// Explicit opt-in integration seam. Default App/main do not instantiate this host.
+// Same-origin M0 entry; all identity and CSRF state remains instance-owned RAM.
 export function IdentityApp({ client, initialPath }: { client: HttpClient; initialPath?: string }) {
   const [entry, setEntry] = useState<{ owner: HttpClient; session: SessionController } | null>(null);
   const controller = entry?.owner === client ? entry.session : null;

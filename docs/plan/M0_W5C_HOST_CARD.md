@@ -57,3 +57,39 @@ routingADB7938FE69E00C991AEFB4EB114854F124EB3E2AC3963763937225646D3E915.
 read_context ordered memory/requirements/E04/runtime/W1–W5/M0 adapters/owned executor
 source/earlier synthetic browser fixtures as API wiring reference only.
 skill_verification pending source review/build/tests/actual runtime/browser evidence.
+
+Derived local key-binding integration hardening before C edits: extend existing
+LocalRuntimeKeyStore.cs custody snapshot/ACL checks to installed profile/patch
+manifest and existing CSRF XML set/directory. Reject add/remove/change/broadened
+custody during host lifetime, no automatic key/profile reload. This prevents
+cached framework/signer state diverging from fresh readiness files; operator rotation
+requires explicit reviewed host restart. Existing references/execution unchanged.
+
+Derived exact LocalUiFiles.cs readonly provider: pin only current built files under
+frontend/dist, bounded128files/depth4/selected5MB per file; reject reparse entries
+before recursion, no directory listing/watch/physical-path shortcut. File reads
+verify initial SHA/length under no-write/no-delete handle before serving. Fresh
+runtime-manifest category also checks UI set/hash drift. Prevent workspace/owner
+file exposure through later symlink/file replacement; changes require restart.
+
+Exact LocalUiFilesTests.cs derived before tests: hash drift/add/remove/path escape/
+private extension refusal on disposable local files, no owner contents. Static
+HTML/assets no-store; provider rejects report/docx/md/json/map and reparse entries
+before opening. Both files/directories bounded128. No extra library/test packages.
+
+Initial actual test exact RealHttpsHostChecksAllNineAndServesOnlyBuiltUiReadOnly:
+bounded15s real EcM0Runtime host plus bounded20s actual maint counterpart; HTTPS
+ready/live/CSRF token-cookie/UI/source-path isolation/unmounted API503/query400,
+no auth denial or mutation endpoint (avoids independent security-audit writes).
+Token/cookie only RAM/no sensitive assertion output. No setup seeds/SQL writes.
+
+Runtime composition forces Production environment (no inherited Development
+exception page); cleared logger providers prevent request/key/SQL payload output.
+Existing frontend tests emitted to ignored temporary CJS directory with type marker
+only, no project dependency/package manifest changes or installation.
+
+Intermediate source review PASS after middleware-order/Production/custody/UI-provider
+fixes: manager1263defaultPASS78intentionalSKIP/build0warnings0errors; frontend48tests/
+lint/types/build PASS. No actual all9 host yet; readonly genuine-profile acceptance
+requires applied main binaries/UI build. No operational business writes approved
+by this initial test contract; later separate fixture-free closure scope pending.

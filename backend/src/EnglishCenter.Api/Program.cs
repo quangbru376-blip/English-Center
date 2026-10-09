@@ -15,6 +15,13 @@ if (args.FirstOrDefault() == "--m0-maintenance")
     Environment.ExitCode = code;
     return;
 }
+if (args.FirstOrDefault() == "--m0-local-runtime")
+{
+    var code = args.Length == 1 ? await EnglishCenter.Api.Infrastructure.Operator.LocalRuntimeHost.RunAsync(CancellationToken.None) : 1;
+    Console.WriteLine(System.Text.Json.JsonSerializer.Serialize(new { phase = "W5-runtime", success = code == 0 }));
+    Environment.ExitCode = code;
+    return;
+}
 var builder = WebApplication.CreateBuilder(args);
 var blocklist = OfflinePasswordBlocklist.Load(Path.Combine(AppContext.BaseDirectory, "Resources", "PasswordBlocklist"));
 builder.Services.AddSingleton(blocklist);

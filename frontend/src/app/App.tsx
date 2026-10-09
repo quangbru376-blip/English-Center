@@ -1,11 +1,9 @@
-import { IdentityShell } from './IdentityShell';
-import { PageHeader } from '../components/ui/PageHeader';
+import { useState } from 'react';
+import { IdentityApp } from './IdentityApp';
+import { AuthState } from '../lib/auth';
+import { HttpClient } from '../lib/http';
 
 export default function App() {
-  return (
-    <IdentityShell>
-      <PageHeader title="Quản lý trung tâm tiếng Anh" />
-      <p className="text-[var(--ec-muted)]">Các chức năng hiện chưa khả dụng.</p>
-    </IdentityShell>
-  );
+  const [client] = useState(() => new HttpClient(new AuthState()));
+  return <IdentityApp client={client} />;
 }
