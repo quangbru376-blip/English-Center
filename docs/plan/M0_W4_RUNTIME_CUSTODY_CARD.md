@@ -82,3 +82,7 @@ No private/tokens/XML output or copying runtime material to other identities.
 Custody readonly test source review PASS/build0warnings0errors; fixed Windows guard
 inside deferred DPAPI resolver. Actual run pending main workspace; dedicated users
 cannot read manager .codex checkout. No access grants/secret copy to bypass isolation.
+
+Negative runtime-store case now runs for both genuine maintenance and schema
+Windows identities (SQL db_owner never implies runtime key custody). Same4test
+definitions, expected5actual PASS across runtime3/maint1/schema1; no other SQL.

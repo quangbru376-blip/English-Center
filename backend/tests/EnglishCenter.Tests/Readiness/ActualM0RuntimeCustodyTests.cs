@@ -8,6 +8,8 @@ using Xunit;
 
 namespace EnglishCenter.Tests.Readiness;
 
+public static class M0CustodyGate { public static bool NonRuntime => M0SqlTlsGate.Maintenance || M0SqlTlsGate.Schema; }
+
 // Read-only actual runtime stores; no HTTP/SQL/business effects or key regeneration.
 public sealed class ActualM0RuntimeCustodyTests
 {
@@ -87,8 +89,8 @@ public sealed class ActualM0RuntimeCustodyTests
         CryptographicOperations.ZeroMemory(challenge);
     }
 
-    [Fact(Skip = "Actual M0 maintenance separation opt-in", SkipUnless = nameof(M0SqlTlsGate.Maintenance), SkipType = typeof(M0SqlTlsGate))]
-    public void MaintenanceIdentityCannotReadRuntimeJwtOrCsrfStores()
+    [Fact(Skip = "Actual M0 maintenance separation opt-in", SkipUnless = nameof(M0CustodyGate.NonRuntime), SkipType = typeof(M0CustodyGate))]
+    public void NonRuntimeSqlIdentitiesCannotReadRuntimeJwtOrCsrfStores()
     {
         Assert.Throws<UnauthorizedAccessException>(() => File.ReadAllBytes(Path.Combine(Root, "jwt.dpapi")));
         Assert.Throws<UnauthorizedAccessException>(() => Directory.GetFiles(Path.Combine(Root, "csrf")));

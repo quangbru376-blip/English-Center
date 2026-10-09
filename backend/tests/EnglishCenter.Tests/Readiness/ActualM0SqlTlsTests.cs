@@ -9,6 +9,7 @@ public static class M0SqlTlsGate
 {
     public static bool Runtime => IsIdentity("EcM0Runtime");
     public static bool Maintenance => IsIdentity("EcM0Maint");
+    public static bool Schema => IsIdentity("EcM0Schema");
     private static bool IsIdentity(string name) => OperatingSystem.IsWindows() &&
         Environment.GetEnvironmentVariable("EC_M0_SQL_TLS") == "1" &&
         WindowsIdentity.GetCurrent().Name == Environment.MachineName + "\\" + name;
