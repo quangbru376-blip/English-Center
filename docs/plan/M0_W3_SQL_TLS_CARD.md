@@ -60,3 +60,18 @@ required. Reuse sole owned certificate, snapshot thumb before validation. No gen
 existing cert/profile reuse. AST0errors/recovery review PASS; actual run pending.
 Service key ACL comparison accepts exact Read|Synchronize Windows Allow semantics,
 no Write/Modify/Delete. Source review correction before recovery execution.
+
+W3 actual provisioning success on owned recovery: service running/keyACLprotected/
+leafTrust true. No-C ODBC localhost named instance PASS; '.' spelling fails
+hostname validation as expected. Operational modern SqlClient connection explicitly
+binds HostNameInCertificate=localhost, TrustServerCertificate=false; existing local
+connection preparer preserves this setting while forcing LPC. Derived exact
+ActualM0SqlTlsTests.cs3opt-in readonly production-probe checks under actual Windows
+process identities: runtime fresh880catalog PASS/wrong-hostname denial, maintenance
+fresh9fact PASS/no cleanup. Tests use selected profile numbers; seven other reference
+slots explicitly proof-only/unverified, no whole readiness claim. No packages/SQLwrites.
+
+Readonly test source review PASS/build0warnings0errors; actual acceptance pending.
+Dedicated identities cannot read manager owner-profile checkout (expected isolation).
+Run same reviewed tests from main workspace after ADR163 source apply/build; do
+not grant identities access to owner's .codex/worktree/custody. No workload update.
