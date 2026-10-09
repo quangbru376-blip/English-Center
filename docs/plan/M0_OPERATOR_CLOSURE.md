@@ -49,3 +49,9 @@ Actual runtime SQL/SQL TLS/key stores/host binding still pending, not ready.
 W2 actual catalog/identity PASS (ADR187): existing6migrations/new owned catalog,
 genuine SSPI880runtimefacts/maintenance229denial. TLS still unverified; no runtime
 host or keys mounted. Exact SQL cert contract W3 next.
+
+W3 supersedes strict-SQL trust blocker above. Sole LOCAL_DEV SQL certificate
+bound/trusted with service key Read only, actual modern driver runtime database
+and maintenance probes PASS, schema no-C required-encrypted connection PASS.
+Operational modern LPC connection explicitly HostNameInCertificate=localhost;
+TrustServerCertificate=false. Other7 probes/runtime web keys/mounting still pending.

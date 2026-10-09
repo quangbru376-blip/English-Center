@@ -75,3 +75,13 @@ Readonly test source review PASS/build0warnings0errors; actual acceptance pendin
 Dedicated identities cannot read manager owner-profile checkout (expected isolation).
 Run same reviewed tests from main workspace after ADR163 source apply/build; do
 not grant identities access to owner's .codex/worktree/custody. No workload update.
+
+Actual W3 review PASS2026-10-09: corrected owned recovery provisioned/bound sole
+SQL certificate/service restart, actual modern runtime2PASS/maint1PASS via main
+compiled probes, schema actual no-C/required-encrypted ODBC SELECT1 PASS. Identity
+owned TEMP only; owner .codex profile access stayed denied, no ACL repair/installs.
+Other7probe reference slots explicitly unverified; no overall readiness claim.
+Both buildclean/default1217PASS67SKIP. D07 strict-TLS baseline byteSHA
+10CD3407CE5986394703A9BEC2EE3E42314080809DDABE26906B1F14B593FC8E unchanged;
+owner4hash/untracked/unstaged unchanged. Sourceab1c82b45ab140f99d44427cf4bd47871aa1e3bf;
+tests7fe7270a1e7a4b20905be5181b86905a1aeb11b0 identical main/manager. Next W4.

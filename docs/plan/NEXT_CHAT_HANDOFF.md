@@ -1,23 +1,25 @@
 # Handoff cho chat tiếp theo — 2026-10-09
 
-W1/W2 actual operational identity/catalog PASS2026-10-09. Three non-admin
-Windows users + operator-DPAPI protected custody created; owned separate
-EnglishCenter_M0_LOCALDEV profile160/snapshotON/AUTO_CLOSEOFF and existing6migrations.
-Three FROM WINDOWS logins/users; runtime ec_app_runtime + exact metadata/history
-reads, maintenance narrow cleanup/no roles, offline schema db_owner only new DB.
-Genuine processes under all3credentials PASS: runtime safe7facts/880matched,
-maintenance safe9facts/AccountSELECT229, schema separate/non-sysadmin. Diagnostic
-TrustServerCertificate true in W2: SQL TLS/readiness still unverified.
-Production guard bug fixed: server HAS_PERMS_BY_NAME class must NULL, not SERVER.
-Reviewed/applied ADR163 managerbdcc715/maind816a77; both1217PASS/64opt-inSKIP +
-4actual readonly SQL regressions PASS/build0warnings0errors. Sourceab1c82b45ab140f99d44427cf4bd47871aa1e3bf;
-testsac206f9590ea2a41fedaa5b3c59f43a1c29e6f8c; frontend unchanged.
-D07 output10CD3407CE5986394703A9BEC2EE3E42314080809DDABE26906B1F14B593FC8E
-byte-identical; owner4unchanged/unshared/untracked/unstaged. Per-operation UAC
-works; each bounded helper rechecks elevation. Full M0 still IN PROGRESS.
-Next W3 SQL TLS/key custody/all9/host/UI/actual scheduled maintenance integration.
-LOCAL_DEV/WeeklyPreviewBudget10000 fixed ADR186; no repeat questions/M1–M4.
-See M0_W1_IDENTITY_CARD/M0_W2_CATALOG_CARD, ADR187.
+W3 actual SQL TLS/custody PASS2026-10-09: sole owned SQL certificate bound to
+SQLEXPRESS, legacy RSA CSP/AT_KEYEXCHANGE/non-exportable, protected key ACL
+SYSTEM+Administrators FullControl/SQL service Read, public leaf-only machine trust.
+First run stopped before binding on EKU PowerShell shape; exact owned recovery
+reused sole certificate, SQL service restart succeeded/auth mode/network/Force0
+unchanged. Genuine runtime modern SqlClient fresh7facts/880catalog PASS, wrong
+hostname refused before principal; genuine maintenance9facts PASS/no cleanup.
+Main actual3tests PASS; separate schema SQLCMD -N/no-C connection PASS.
+Use HostNameInCertificate=localhost/TrustServerCertificate=false on operational
+modern LPC connections; '.' spelling without explicit cert hostname fails correctly.
+W1/W2 owned three Windows identities/catalog/grants retained. Both main/manager
+build0warnings0errors/default1217PASS67intentionalopt-inSKIP. Production src remains
+ab1c82b45ab140f99d44427cf4bd47871aa1e3bf; tests7fe7270a1e7a4b20905be5181b86905a1aeb11b0;
+frontend unchanged. Main5589a23/manager115afcd include actual TLS test source.
+D07 strict-trusted readonly baseline byte-identical10CD3407CE5986394703A9BEC2EE3E42314080809DDABE26906B1F14B593FC8E;
+owner4 unchanged/unshared/untracked/unstaged. No installation/new packages/SQL rows.
+Full M0 still IN PROGRESS: next W4 runtime-owned HTTPS/JWT/current-user DPAPI
+CSRF custody, then approved artifact/profile/all9/host/UI/actual scheduled SQL.
+LOCAL_DEV/preview10000 ADR186 fixed, per-operation UAC available, no repeated
+questions/M1–M4/push/deploy. See M0_W3_SQL_TLS_CARD and M0_OPERATOR_CLOSURE.
 
 
 ## Checkpoint hiện tại
