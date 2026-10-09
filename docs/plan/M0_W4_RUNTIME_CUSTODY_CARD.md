@@ -86,3 +86,11 @@ cannot read manager .codex checkout. No access grants/secret copy to bypass isol
 Negative runtime-store case now runs for both genuine maintenance and schema
 Windows identities (SQL db_owner never implies runtime key custody). Same4test
 definitions, expected5actual PASS across runtime3/maint1/schema1; no other SQL.
+
+Actual W4 review PASS: runtime native JWT/HTTPS, CSRF operator and HTTPS public
+leaf trust provision receipts true. Post-process runtime3/maintenance1/schema1 =
+5readonly actual custody PASS, CSRF encrypted key digest unchanged. No secret
+export/sharing/logging; dedicated profile TEMP only. Main/manager buildclean/
+default1218PASS71intentionalSKIP; identical source/test trees in current memory.
+Owner4hashes/untracked/unstaged unchanged. W4 no SQL mutation/rerun; previous W3
+strict baseline unchanged at that checkpoint. Full M0 incomplete; W5 next.

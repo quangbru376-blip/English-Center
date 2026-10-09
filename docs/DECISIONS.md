@@ -4772,3 +4772,15 @@ for actual sysadmin and wrongly prevented concrete readiness. Fix preserves deny
 for elevated/unknown/extra permissions, no grants expanded. Actual4SQL regression
 plus1217default PASS. Diagnostic TLS bypass in provisioning is not ready; W3 must
 prove Encrypt required/TrustServerCertificate false before actual host activation.
+
+## ADR-188 — dedicated current-user runtime custody and explicit provisioning
+2026-10-09 implemented/reviewed under assigned M0 ADR177/ADR163.
+C:\ProgramData\EnglishCenter\M0Runtime belongs to EcM0Runtime, ACL excludes other
+application identities/unelevated operator. JWT HS25632bytes DPAPI current-user
+with fixed application entropy/90d validity; HTTPS non-exportable CurrentUserMy
+RSA2048localhost certificate/one year, only public leaf trusted machine-wide.
+CSRF one90d framework DPAPI current-user key created only exact operator CLI
+branch/fresh custody; default host/readiness never generate or repair keys.
+Refresh/rotation remains explicit operator action, missing/expired keys fail closed.
+Actual restarted process JWT/CSRF/HTTPS use PASS; maintenance/schema store reads
+denied. Branch does not start HTTP/SQL; full M0 readiness/mounted UI/jobs pending.

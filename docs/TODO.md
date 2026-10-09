@@ -1,25 +1,24 @@
 # TODO
 
-W3 actual SQL TLS/custody PASS2026-10-09: sole owned SQL certificate bound to
-SQLEXPRESS, legacy RSA CSP/AT_KEYEXCHANGE/non-exportable, protected key ACL
-SYSTEM+Administrators FullControl/SQL service Read, public leaf-only machine trust.
-First run stopped before binding on EKU PowerShell shape; exact owned recovery
-reused sole certificate, SQL service restart succeeded/auth mode/network/Force0
-unchanged. Genuine runtime modern SqlClient fresh7facts/880catalog PASS, wrong
-hostname refused before principal; genuine maintenance9facts PASS/no cleanup.
-Main actual3tests PASS; separate schema SQLCMD -N/no-C connection PASS.
-Use HostNameInCertificate=localhost/TrustServerCertificate=false on operational
-modern LPC connections; '.' spelling without explicit cert hostname fails correctly.
-W1/W2 owned three Windows identities/catalog/grants retained. Both main/manager
-build0warnings0errors/default1217PASS67intentionalopt-inSKIP. Production src remains
-ab1c82b45ab140f99d44427cf4bd47871aa1e3bf; tests7fe7270a1e7a4b20905be5181b86905a1aeb11b0;
-frontend unchanged. Main5589a23/manager115afcd include actual TLS test source.
-D07 strict-trusted readonly baseline byte-identical10CD3407CE5986394703A9BEC2EE3E42314080809DDABE26906B1F14B593FC8E;
-owner4 unchanged/unshared/untracked/unstaged. No installation/new packages/SQL rows.
-Full M0 still IN PROGRESS: next W4 runtime-owned HTTPS/JWT/current-user DPAPI
-CSRF custody, then approved artifact/profile/all9/host/UI/actual scheduled SQL.
-LOCAL_DEV/preview10000 ADR186 fixed, per-operation UAC available, no repeated
-questions/M1–M4/push/deploy. See M0_W3_SQL_TLS_CARD and M0_OPERATOR_CLOSURE.
+W4 actual runtime custody PASS2026-10-09: separate M0Runtime root owner runtime,
+ACL runtime/SYSTEM/Admin only. Genuine EcM0Runtime provisions32-byte JWT HS256
+current-user DPAPI encrypted, 90d metadata; non-exportable CurrentUser/My HTTPS
+localhost RSA2048 key, one-year certificate; public leaf-only machine trust.
+Explicit --m0-provision-csrf branch genuine runtime/fresh custody only creates one
+90d current-user DPAPI framework key, no listener/SQL/default automatic generation.
+Actual post-provision process restart checks5PASS: runtime JWT signer/validator,
+CSRF read-only decryption/no writes, HTTPS key sign/verify/chain/non-exportable;
+maintenance and offline schema both denied runtime JWT/CSRF store reads.
+Both manager/main1218defaultPASS71intentionalopt-inSKIP/build0warnings0errors.
+Main51d766b/manager23380e6, identical src7b091bedad834d068f7ad4191a64dcb4e068bbf5;
+testse093b8eae81d798acfa583a8e0e724cf3472f2c8. Frontend unchanged/owner4hashes
+unchanged/unshared/untracked/unstaged. No SQL mutations/rerun in W4; last W3 strict
+D07 baseline byteSHA10CD3407CE5986394703A9BEC2EE3E42314080809DDABE26906B1F14B593FC8E.
+W1–W3 actual identities/catalog/strict SQL TLS retained. Full M0 IN PROGRESS.
+Next W5 exact approved artifact/profile/all9 binding and separate-identity
+maintenance orchestration, then M0 API/UI/actual runtime+owned COMMIT verification.
+LOCAL_DEV/10000preview ADR186 fixed; no repeat questions/M1–M4/install/push/deploy.
+See M0_W4_RUNTIME_CUSTODY_CARD, ADR188 and M0_OPERATOR_CLOSURE.
 
 
 ## Current status

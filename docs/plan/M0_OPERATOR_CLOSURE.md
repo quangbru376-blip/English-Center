@@ -55,3 +55,8 @@ bound/trusted with service key Read only, actual modern driver runtime database
 and maintenance probes PASS, schema no-C required-encrypted connection PASS.
 Operational modern LPC connection explicitly HostNameInCertificate=localhost;
 TrustServerCertificate=false. Other7 probes/runtime web keys/mounting still pending.
+
+W4 actual key custody/restart verification PASS (ADR188): runtime DPAPI JWT/CSRF
+and own non-exportable HTTPS key/leaf trust; maintenance/schema reads denied.
+Next actual artifact/profile/all9/startup/maintenance identity orchestration/API/UI;
+no positive whole-host readiness yet. Defaults remain unmounted.
