@@ -1,37 +1,41 @@
-# M1 packages1–2 complete — next chat handoff
+# M1 packages3–4 complete — next chat handoff
 
-2026-10-09: M0 COMPLETE; assigned M1 packages1–2 COMPLETE/review PASS/applied
-ADR163/reverified. Main code8ef95cc/manager6315b09; identical src
-b51b8ef26989cd3d86973d42b7854c633e1379fe / tests
-8a1c7de8717342da8377f2cb0c1c42ff9cef1693 / frontend
-6cc7baf922f49e56e69c14bda5235ee85140f418.
-Both1291defaultPASS/102intentionalSKIP/buildclean;frontend56/lint/types/build PASS.
-Manager30unique ownedSQL/HTTP/Edge cases/main24new cases PASS,all3widths;
-120scratch DBs ID/GUID-matched dropped. Raw failed attempts retained, final corrected PASS.
+M1 packages3–4 COMPLETE/reviewed PASS/applied ADR163/reverified2026-10-09.
+Main code564343b / manager2c6fef7 (ADR194/177); identical src
+c4fa85347f465893aeb09ee4e0e011d86612751a / tests
+6b5b38392c60dc9c8214f1000a1ac48a88637dcb / frontend
+8e9581d7e97944bf06bbc3a47ffee15963febc18.
+Both1306defaultPASS/126intentional opt-inSKIP/build0warnings0errors;
+frontend63/types/lint/build PASS. Manager39focused/main41focused+Edge PASS
+(15shareddefault inputs,24SQL/HTTP incl2prior,2newEdge groups);24new integration
+cases on main. All3widths, postcommit body loss/manual lookup/no resend verified.
+Eight existing Edge groups also PASS in retained manager regression evidence.
+168scratch DBs ID/GUID-matched dropped, live scratch remaining0/hosts0/listener0.
 
-Full Admin API006–014; AcademicAffairs Course074–079/read-only Band080/lookup090
-restricted4actions. First credential only after COMMIT; safe replay/audit/T23/
-versions/self-lastAdmin/session/races/exact money/lifecycle verified. Explicit
-LOCAL_DEV mount only; no-argument host unmounted. AGY18075799-be1 sole129lineform/
-3fullreads/SUCCESS; Codex independent fixes/review/tests; no owner/private sharing.
+AcademicAffairs NORMAL Program081–089/090sixProgram actions and Session054–065/
+045sixSession actions mounted only explicit LOCAL_DEV. Full source/target versions,
+component ID-preserving swaps/saved activation/Class freeze; sorted REG/TIMETABLE/
+Account/SID/domain locks, cross-Class/Session half-open conflicts, full membership
+cancel/grader guards, SP02 contacts/status-onlyInvoice, atomic effects/audit/T23.
+Final-projection cutoff rollback and two-client races verified. Native Vietnamese
+UI/read-only previews/explicit confirmation/RAM cleanup/manual unknown recovery.
+No Teacher grading, Student booking workflow, admissions decisions or Classes API.
+AGY00faca0b-526/be232215-a36 rejected133>130line limit; sole3authorizedreads/sole
+formwrite/no observed extra context or commands. No worker source applied; Codex
+implemented independently then reviewed/tested. Rejected evidence retained detached.
 
-Main code C:\Study\SOEN\main_workplace; retained manager
-C:\Study\SOEN\main_workplace\.worktrees\m1-packages.
-Actual schema identity strictTLS seeded5Bands/5mandatory audit/1operation, then
-readonly exact-set recheck PASS. Actual genuine runtime+maintenance all9/strict
-HTTPS Edge3widths/Admin4login4logout/multi-context/stop503/replayCOMMIT1/auditCOMMIT1/
-failed0/forced0 PASS. Fresh readonly operational counts7roles/oneunchangedACTIVEAdmin/
-Profile0/Course0/Band5/6migrations/activeSID0. No fake operational rows or keys.
-All own hosts/listener stopped. Interactive tools/operator/Start-M0Local.ps1;
-https://localhost:8443; runbook includes staff/Course navigation. Protected DPAPI
-vault/keys unchanged; never print/share actual secrets or send them to a worker.
+Actual genuine runtime/maintenance all9/strictSQL+HTTPS/Edge3widths/Admin4login/
+4logout/new wrongrole route403/replayCOMMIT1/auditCOMMIT1/failed0/stop503/forced0 PASS.
+Fresh operational7roles/oneunchangedACTIVEAdmin/Band5/Profile0/Course0/Program0/
+EntrySession0/6migrations/activeSID0; no synthetic operational data or key promotion.
+No default host/schema/grant/package/install/push/deploy change. Owner4 hashes
+unchanged/unshared/untracked/unstaged; D07 untouched, no fresh baseline claim.
+M0 remains COMPLETE; whole M1 IN PROGRESS. Next package5/later awaits assignment.
+Keep LOCAL_DEV/preview10000/ADR177/163 decisions; do not repeat permission gates.
+Main code C:\Study\SOEN\main_workplace; retained manager .worktrees/m1-next.
+Launch tools/operator/Start-M0Local.ps1; https://localhost:8443; protect real custody.
+Evidence: M1_03_04_TASK_CARD, M1-evidence/M1-next-summary.json, notes/M1_03_04.
 
-Whole M1 IN PROGRESS; package3/later not assigned. Do not open unrelated families,
-install/update/push/deploy, or repeat settled LOCAL_DEV/preview10000/ADR177/163.
-Read ordered memory/requirements, M1_01_02_TASK_CARD/M1-summary and applicable plan.
-Keep owner4 exactly untracked/unshared/unstaged; hashes only:
-- docs/Nhom18_ThietKeXuLy.docx C7DE4DE6338670A94C99280DF89BDDC8E06FAE53A63E3B0405BBFE9DA0149F6C
-- docs/reference/PROCESSING_REPORT_MEMORY_COMPARISON.md 4EFDC55AD820A5E92A9A95A619F875D6191EA74BDCC05AC06BF8CDE1AB65A54C
-- docs/reference/REFERENTIAL_INTEGRITY_IMPACT.md 40466A2B841CF7E5DCC796ACDCC122B20E649B3A9DEA9814C1BECCD733E8CFB0
-- docs/reference/REPORT_REVISION_GUIDE.md D5EA14D09082EB776BE243EABC7E4CD8D375CC1586214417FB3542AB2A138FEA
-D07 untouched by M1; last known baseline10CD3407CE5986394703A9BEC2EE3E42314080809DDABE26906B1F14B593FC8E.
+Read AGENTS and ordered Project Memory, requirements, this handoff and task card.
+Owner file metadata hashes are recorded in M1-next-summary; never read/share/stage contents.
+Protected actual credentials/keys remain operator-only, never send to a worker.

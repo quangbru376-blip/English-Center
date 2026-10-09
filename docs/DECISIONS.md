@@ -4863,3 +4863,29 @@ frontend56PASS;120scratch databases identity-cleaned. Actual strictTLS/genuine
 identities/5Band+audit/all9/Edge3widths/4login4logout/maintenance acceptance PASS.
 No fake operational staff/Course/student, owner4 untouched/unshared/untracked.
 No schema/grant/package/install/push/deploy; package3/restM1/M2–M4 remain unassigned.
+
+## ADR-194 — M1 TrainingProgram and AcademicAffairs entry sessions
+2026-10-09 accepted scope packages3–4, Codex review PASS/apply ADR163/authority177.
+Reuse exact existing schema/grants/6migrations/EC-C1/T23, no new dependencies.
+Source/target Course and Band lock unions ascend before Program/Components;
+BANDSET and Program gates coordinate full-source edit/activation/first Class use.
+Component swaps use transaction-private temporary unique names/kind before final
+whole replacement; existing IDs preserved, effects audit only final logical changes.
+Every Class including CANCELLED freezes core; rename/lifecycle remain separate.
+Ca thi uses sorted REG resources+TIMETABLE then involved Accounts/SID and T09–12;
+trusted discovery reloaded before mutation, mismatch refuses without lock expansion.
+Own completed/absent/scored result blocks grader change; membership manifests bind
+all scheduled Booking/Attempt/Registration IDs/RVs and current/candidate grader.
+Cancellation preserves Registration/Attempt/score/Band, child effects share operation.
+Source/target Account/Session authority and cutoff resampled after final SQL projection;
+manual-clock final query crossing start rolls back session/audit/T23 together.
+Reads live→SNAPSHOT→live without idle renewal; SP02 paged roster uses POST PII filters,
+contacts current and invoice status only. Search batches page projections, no N+1.
+Native forms/confirmation/saved-only preview/manual lostACK lookup; no automatic resend.
+Manager/main1306defaultPASS126opt-inSKIP/frontend63PASS/buildclean; main24new
+integration cases PASS; Edge375/768/1280 incl postcommit truncated response verified.
+168scratch DBs identity-cleaned; actual genuine strictTLS/all9/maintenance/browser PASS.
+AGY two bounded outputs rejected133>130diffLines; no worker source applied, Codex
+independent implementation retained accepted skill policies and passed review/tests.
+Owner4 preserved; no fake operational data/default exposure/schema/grant/package change.
+Whole M1 IN PROGRESS; package5/later, install/push/deploy remain unassigned.
