@@ -8,10 +8,12 @@ public sealed class SqlMaintenanceService : BackgroundService
 {
     private readonly Func<CancellationToken, ValueTask<string?>> resolve;
     private readonly TimeProvider clock;
-    private long failures;
+    private long failures, replayCommits, auditCommits;
     public MaintenanceProfile Configuration { get; }
     public ExecutionProfile Execution { get; }
     public int AuditIntervalSeconds { get; }
+    public long CompletedReplayRuns => Interlocked.Read(ref replayCommits);
+    public long CompletedAuditRuns => Interlocked.Read(ref auditCommits);
     public long FailedRuns => Interlocked.Read(ref failures);
     public bool HasFiniteSchedules => Configuration.ReplayCleanupIntervalSeconds > 0 &&
         Configuration.ReplayCleanupIntervalSeconds * 1000L <= int.MaxValue &&
@@ -81,6 +83,7 @@ public sealed class SqlMaintenanceService : BackgroundService
         var now = clock.GetUtcNow(); var ticks = now.UtcTicks - now.UtcTicks % TimeSpan.TicksPerMillisecond;
         command.Parameters.Add("@now", SqlDbType.DateTime2).Value = new DateTime(ticks, DateTimeKind.Utc);
         await command.ExecuteNonQueryAsync(deadline.Token); await transaction.CommitAsync(deadline.Token);
+        if (audit) Interlocked.Increment(ref auditCommits); else Interlocked.Increment(ref replayCommits);
         // Disposal rolls back any uncommitted transaction; no automatic retry after unknown COMMIT.
     }
     private const string AuditCleanupSql = "UPDATE dbo.AuditLog SET ip_address=NULL,ip_expires_at=NULL WHERE ip_expires_at<=@now; DELETE FROM dbo.AuditLog WHERE audit_category='SECURITY' AND security_expires_at<=@now;";

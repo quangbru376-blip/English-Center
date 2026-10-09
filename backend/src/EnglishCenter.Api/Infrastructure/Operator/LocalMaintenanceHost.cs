@@ -12,7 +12,7 @@ namespace EnglishCenter.Api.Infrastructure.Operator;
 
 public static class LocalMaintenanceHost
 {
-    public static async Task<int> RunAsync(CancellationToken token)
+    public static async Task<int> RunAsync(CancellationToken token, bool verifyAudit = false, Action<SqlMaintenanceService>? summarize = null)
     {
         if (!OperatingSystem.IsWindows()) return 1;
         try
@@ -31,7 +31,14 @@ public static class LocalMaintenanceHost
             builder.Services.AddSingleton(custody);
             builder.Services.AddHostedService<MaintenanceProofService>();
             using var host = builder.Build();
-            await host.RunAsync(token);
+            var jobs = host.Services.GetRequiredService<SqlMaintenanceService>();
+            try
+            {
+                await host.StartAsync(token);
+                if (verifyAudit) await jobs.RunAuditOnceAsync(token);
+                await host.WaitForShutdownAsync(token);
+            }
+            finally { await host.StopAsync(CancellationToken.None); summarize?.Invoke(jobs); }
             return 0;
         }
         catch (OperationCanceledException) when (token.IsCancellationRequested) { return 0; }

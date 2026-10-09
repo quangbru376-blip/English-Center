@@ -10,14 +10,22 @@ if (args.FirstOrDefault() == "--m0-provision-csrf")
 }
 if (args.FirstOrDefault() == "--m0-maintenance")
 {
-    var code = args.Length == 1 ? await EnglishCenter.Api.Infrastructure.Operator.LocalMaintenanceHost.RunAsync(CancellationToken.None) : 1;
-    Console.WriteLine(System.Text.Json.JsonSerializer.Serialize(new { phase = "W5-maintenance", success = code == 0 }));
+    long replay = 0, audit = 0, failures = 0;
+    var managed = args.Length is 2 or 3 && args[1] == "--managed-stdin";
+    var verifyAudit = args.Length == 3 && args[2] == "--verify-audit";
+    Task<int> Run(CancellationToken token) => EnglishCenter.Api.Infrastructure.Operator.LocalMaintenanceHost.RunAsync(token, verifyAudit,
+        jobs => { replay = jobs.CompletedReplayRuns; audit = jobs.CompletedAuditRuns; failures = jobs.FailedRuns; });
+    var valid = args.Length == 1 || managed && (args.Length == 2 || verifyAudit);
+    var code = !valid ? 1 : managed ? await EnglishCenter.Api.Infrastructure.Operator.ManagedOperatorLifetime.RunAsync(Run, Console.In, CancellationToken.None) : await Run(CancellationToken.None);
+    Console.WriteLine(System.Text.Json.JsonSerializer.Serialize(new { phase = "W5-maintenance", success = code == 0, replayCommits = replay, auditCommits = audit, failedRuns = failures }));
     Environment.ExitCode = code;
     return;
 }
 if (args.FirstOrDefault() == "--m0-local-runtime")
 {
-    var code = args.Length == 1 ? await EnglishCenter.Api.Infrastructure.Operator.LocalRuntimeHost.RunAsync(CancellationToken.None) : 1;
+    var managed = args.Length == 2 && args[1] == "--managed-stdin";
+    var code = args.Length == 1 ? await EnglishCenter.Api.Infrastructure.Operator.LocalRuntimeHost.RunAsync(CancellationToken.None) :
+        managed ? await EnglishCenter.Api.Infrastructure.Operator.ManagedOperatorLifetime.RunAsync(EnglishCenter.Api.Infrastructure.Operator.LocalRuntimeHost.RunAsync, Console.In, CancellationToken.None) : 1;
     Console.WriteLine(System.Text.Json.JsonSerializer.Serialize(new { phase = "W5-runtime", success = code == 0 }));
     Environment.ExitCode = code;
     return;
