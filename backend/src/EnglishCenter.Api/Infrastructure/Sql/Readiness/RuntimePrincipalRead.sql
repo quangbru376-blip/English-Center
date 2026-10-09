@@ -3,9 +3,9 @@ SELECT
  CASE WHEN USER_NAME()=N'dbo' THEN 1 WHEN USER_NAME() IS NOT NULL THEN 0 END AS is_dbo,
  IS_SRVROLEMEMBER(N'sysadmin') AS is_sysadmin,
  HAS_PERMS_BY_NAME(DB_NAME(),N'DATABASE',N'CONTROL') AS controls_database,
- CASE WHEN HAS_PERMS_BY_NAME(NULL,N'SERVER',N'CONTROL SERVER') IS NULL
+ CASE WHEN HAS_PERMS_BY_NAME(NULL,NULL,N'CONTROL SERVER') IS NULL
   OR NOT EXISTS (SELECT 1 FROM sys.server_principals WHERE type=N'R' AND name=N'public') THEN NULL
- WHEN HAS_PERMS_BY_NAME(NULL,N'SERVER',N'CONTROL SERVER')=1
+ WHEN HAS_PERMS_BY_NAME(NULL,NULL,N'CONTROL SERVER')=1
   OR EXISTS (SELECT 1 FROM sys.server_principals AS p JOIN sys.login_token AS t
    ON t.principal_id=p.principal_id WHERE p.type=N'R' AND p.name<>N'public')
   OR EXISTS (SELECT 1 FROM sys.server_permissions AS p JOIN sys.login_token AS t

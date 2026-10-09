@@ -53,6 +53,28 @@ public sealed class DatabaseReadinessSqlTests
         Assert.Equal("not_ready", result.Body);
         Assert.Equal(1, database.CompletedPrincipalChecks);
     }
+    [Fact(Skip = "M0 W2 read-only SQL requires opt-in", SkipUnless = nameof(ReadinessSqlGate.Enabled), SkipType = typeof(ReadinessSqlGate))]
+    public async Task ServerAuthorityFactClassifiesActualPrivilegedLoginWithoutNull()
+    {
+        var token = TestContext.Current.CancellationToken;
+        await using var connection = new Microsoft.Data.SqlClient.SqlConnection(
+            "Server=lpc:.\\SQLEXPRESS;Database=EnglishCenter_M0_LOCALDEV;Integrated Security=True;Encrypt=True;TrustServerCertificate=True;Pooling=False");
+        await connection.OpenAsync(token);
+        await using var command = connection.CreateCommand();
+        command.CommandTimeout = 10;
+        command.CommandText = "SELECT IS_SRVROLEMEMBER('sysadmin')";
+        Assert.Equal(1, await command.ExecuteScalarAsync(token));
+        using var resource = typeof(DatabaseReadinessProbe).Assembly.GetManifestResourceStream(
+            "EnglishCenter.Api.Infrastructure.Sql.Readiness.RuntimePrincipalRead.sql")!;
+        using var text = new StreamReader(resource);
+        command.CommandText = await text.ReadToEndAsync(token);
+        await using var reader = await command.ExecuteReaderAsync(token);
+        Assert.True(await reader.ReadAsync(token));
+        Assert.False(reader.IsDBNull(4));
+        Assert.Equal(1, reader.GetInt32(4));
+        Assert.False(await reader.ReadAsync(token));
+        Assert.False(await reader.NextResultAsync(token));
+    }
     // Other categories are explicit synthetic seams; these tests prove diagnostic denial only.
     private sealed class SyntheticPass(ReadinessDependency dependency) : IRuntimeReadinessProbe
     {

@@ -64,3 +64,16 @@ no credential args/output. Fixed new catalog, production principal queries and
 880catalog ordinal comparison/accepted module normalization. Maint forbidden Account
 column SELECT must229; runtime purge authority denied. Diagnostic-C only; no TLS
 or readiness claim. AST0errors/source review PASS, actual acceptance pending.
+
+Actual auth: maintenance PASS/forbidden Account read229, runtime/schema refused.
+Verified real SQL bug: HAS_PERMS_BY_NAME(NULL,'SERVER','CONTROL SERVER') returns
+NULL even for sysadmin; correct SQL server securable class is NULL. Exact scope
+expanded production RuntimePrincipalRead.sql two calls and same operator verifier
+schema query; no privilege grant. DatabaseReadinessSqlTests adds real readonly
+M0 catalog regression requiring actual privileged diagnostic classified unsafe1,
+not NULL. Opt-in gate retained; genuine runtime/catalog checks must rerun.
+
+Guard fix review PASS: manager build0warnings0errors/default1217PASS64opt-inSKIP;
+4actual read-only SQL regression PASS (new1 + existing3 diagnostic denials),
+source query still denies privileged/unknown/extra roles and grants. No authority
+expanded; actual Windows auth verifier acceptance must follow main apply.

@@ -67,7 +67,7 @@ try{
         try{[void]$command.ExecuteScalar()}catch [Data.SqlClient.SqlException]{if($_.Exception.Number -eq 229){$result.forbiddenReadDenied=$true}else{throw}}
         if(-not $result.forbiddenReadDenied){throw 'Maintenance business read allowed'}
     }else{
-        $command.CommandText="SELECT CASE WHEN USER_NAME()='M0SchemaUser' AND IS_ROLEMEMBER('db_owner')=1 AND IS_SRVROLEMEMBER('sysadmin')=0 AND HAS_PERMS_BY_NAME(NULL,'SERVER','CONTROL SERVER')=0 THEN 1 ELSE 0 END"
+        $command.CommandText="SELECT CASE WHEN USER_NAME()='M0SchemaUser' AND IS_ROLEMEMBER('db_owner')=1 AND IS_SRVROLEMEMBER('sysadmin')=0 AND HAS_PERMS_BY_NAME(NULL,NULL,'CONTROL SERVER')=0 THEN 1 ELSE 0 END"
         if([int]$command.ExecuteScalar() -ne 1){throw 'Schema authority mismatch'}
         $result.principalSafe=$true
     }
