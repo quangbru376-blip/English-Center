@@ -1,7 +1,7 @@
 import { exactKeys, record } from './apiError';
 import { validId, validUuid } from '../features/administration/types';
 export type Completion=Readonly<{outcome:'COMPLETED';operationId:string;resultMode:'SAFE_REFERENCE'|'SECRET_RESULT_UNAVAILABLE';target:Readonly<Record<string,number>>}>;
-export function completion(value:unknown,key:'accountId'|'courseId',secret=false):Completion{
+export function completion(value:unknown,key:'accountId'|'courseId'|'programId'|'sessionId',secret=false):Completion{
   if(!record(value)||!exactKeys(value,['outcome','operationId','resultMode','target'])||value.outcome!=='COMPLETED'||!validUuid(value.operationId)||
     value.resultMode!==(secret?'SECRET_RESULT_UNAVAILABLE':'SAFE_REFERENCE')||!record(value.target)||!exactKeys(value.target,[key])||!validId(value.target[key]))throw new Error('Invalid completion');
   return value as Completion;

@@ -50,9 +50,9 @@ internal sealed class OwnedSqlFixture : IAsyncDisposable
         private readonly DateTimeOffset _now = DateTimeOffset.FromUnixTimeSeconds(DateTimeOffset.UtcNow.ToUnixTimeSeconds());
         public override DateTimeOffset GetUtcNow() => _now;
     }
-    private OwnedSqlFixture()
+    private OwnedSqlFixture(TimeProvider? time=null)
     {
-        Clock = new(new FixedClock());
+        Clock = new(time??new FixedClock());
         var policy = new PasswordPolicy(OfflinePasswordBlocklist.Load(Path.Combine(AppContext.BaseDirectory, "Resources", "PasswordBlocklist")));
         Hasher = new(policy); Password = new TemporaryPasswordGenerator(policy).Generate();
         var key = new SymmetricSecurityKey(RandomNumberGenerator.GetBytes(32));
@@ -68,10 +68,10 @@ internal sealed class OwnedSqlFixture : IAsyncDisposable
     internal SqlCurrentSessionLogout Logout => new(() => Db(), Clock, Audit, 10, 1000);
     internal SqlPasswordChangeExecutor Change => new(() => Db(), Hasher, Clock, 10, 1000);
     internal SqlAdminAccountExecutor Admin => new(() => Db(), Clock, 10, 1000);
-    internal static async Task<OwnedSqlFixture> CreateAsync()
+    internal static async Task<OwnedSqlFixture> CreateAsync(TimeProvider? time=null)
     {
         if (!OwnedSqlGate.Enabled) throw new InvalidOperationException("Owned SQL requires both explicit gates.");
-        var f = new OwnedSqlFixture(); f.ValidateName();
+        var f = new OwnedSqlFixture(time); f.ValidateName();
         if (string.IsNullOrWhiteSpace(Environment.GetEnvironmentVariable("EC_V01_E_RESULTS"))) throw new InvalidOperationException("Ownership receipt directory required before creation.");
         try
         {

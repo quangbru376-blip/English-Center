@@ -7,6 +7,8 @@ using EnglishCenter.Api.Api.Administration;
 using EnglishCenter.Api.Api.Auth;
 using EnglishCenter.Api.Api.Catalogue;
 using EnglishCenter.Api.Api.Identity;
+using EnglishCenter.Api.Api.Academics;
+using EnglishCenter.Api.Infrastructure.Academics;
 using EnglishCenter.Api.Common.Errors;
 using EnglishCenter.Api.Common.Security;
 using EnglishCenter.Api.Infrastructure.Administration;
@@ -49,10 +51,10 @@ public sealed class M1HttpSqlTests
         using var list=await host.Send(HttpMethod.Get,"/api/v1/academics/courses?status=INACTIVE");Assert.Equal(HttpStatusCode.OK,list.StatusCode);
         using var malformed=await host.Send(HttpMethod.Get,"/api/v1/academics/courses?name=");Assert.Equal(HttpStatusCode.BadRequest,malformed.StatusCode);
         using var lookup=await host.Send(HttpMethod.Get,$"/api/v1/academics/command-results/{key:D}?action=ACADEMIC.COURSE.CREATE");Assert.Equal(HttpStatusCode.OK,lookup.StatusCode);
-        using var forbidden=await host.Send(HttpMethod.Get,$"/api/v1/academics/command-results/{key:D}?action=ACADEMIC.PROGRAM.CREATE");Assert.Equal(HttpStatusCode.Forbidden,forbidden.StatusCode);
+        using var missingProgram=await host.Send(HttpMethod.Get,$"/api/v1/academics/command-results/{key:D}?action=ACADEMIC.PROGRAM.CREATE");Assert.Equal(HttpStatusCode.NotFound,missingProgram.StatusCode);
         await host.Login("Admin");using var wrongRole=await host.Send(HttpMethod.Get,"/api/v1/academics/courses");Assert.Equal(HttpStatusCode.Forbidden,wrongRole.StatusCode);
     }
-    private sealed class Host(WebApplication app,HttpClient client) : IAsyncDisposable
+    internal sealed class Host(WebApplication app,HttpClient client) : IAsyncDisposable
     {
         private readonly Dictionary<string,string> cookies=[];private string? csrf;
         public static async Task<Host> Create(OwnedSqlFixture f)
@@ -61,7 +63,7 @@ public sealed class M1HttpSqlTests
             var app=builder.Build();app.UseApiErrorMiddleware();app.UseRouting();app.UseAuthJsonBoundary();app.UseCsrfBoundary("https://localhost",new LiveCsrfIdentityResolver(f.Validator,f.Current,f.Audit,f.Clock));
             app.MapCsrfContext();app.MapLogin(f.Login,new LoginIpLimiter(),new Ip(),f.Audit,f.Clock,4096);app.MapCurrentSession(f.Current,f.Clock);
             app.MapAdminAccountPilot(f.Admin,4096);app.MapStaffAccounts(new SqlStaffAccountExecutor(()=>f.Db(),f.Clock,f.Hasher,new TemporaryPasswordGenerator(new PasswordPolicy(OfflinePasswordBlocklist.Load(Path.Combine(AppContext.BaseDirectory,"Resources","PasswordBlocklist")))),10,1000),4096);
-            app.MapCourseCatalogue(new SqlCourseExecutor(()=>f.Db(),f.Clock,10,1000),4096);await app.StartAsync(Ct);var client=app.GetTestClient();client.BaseAddress=new Uri("https://localhost");return new(app,client){fixturePassword=f.Password};
+            app.MapCourseCatalogue(new SqlCourseExecutor(()=>f.Db(),f.Clock,10,1000),4096);app.MapTrainingPrograms(new SqlProgramExecutor(()=>f.Db(),f.Clock,10,1000),4096);app.MapEntrySessions(new SqlEntrySessionExecutor(()=>f.Db(),f.Clock,10,1000),4096);await app.StartAsync(Ct);var client=app.GetTestClient();client.BaseAddress=new Uri("https://localhost");return new(app,client){fixturePassword=f.Password};
         }
         public async Task Login(string role)
         {

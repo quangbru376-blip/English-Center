@@ -41,6 +41,10 @@ tài khoản thật khi có người nhận. Bàn giao mật khẩu tạm trực
 đóng hộp thoại sẽ xóa mật khẩu khỏi giao diện, tra kết quả không lấy lại bí mật.
 Người nhận login, đổi mật khẩu tạm, rồi login lại. AcademicAffairs chọn “Khóa học
 và Band” để quản lý khóa học và xem đủ5Band. Giá VND giữ nguyên chính xác.
+AcademicAffairs chọn “Chương trình đào tạo” để tạo/sửa bản nháp đủ thành phần,
+xem trước rồi kích hoạt cấu hình đã lưu. Lớp đã tham chiếu đóng băng cấu hình lõi.
+“Ca thi đầu vào” là màn hình đầu của AcademicAffairs: lịch/phòng/giáo viên,
+mở/đóng, roster và preview hủy/đổi giáo viên có lý do. Không tự đặt lại booking.
 Khi lệnh chưa rõ kết quả, dùng “Kiểm tra kết quả”/đối chiếu; không tự gửi lại.
 Band đã khởi tạo và xác minh; không cần chạy lại initializer hoặc seed lúc startup.
 

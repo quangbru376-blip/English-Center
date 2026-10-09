@@ -1,3 +1,21 @@
+2026-10-09 M1 packages3–4: explicit LOCAL_DEV adds AcademicAffairs NORMAL
+TrainingProgram API081–089 and six PROGRAM completion actions via API090.
+GET/POST /api/v1/academics/training-programs; GET {id}; PUT {id}/configuration
+or /name; POST {id}/activation-preview,activate,return-to-draft,deactivate.
+Full source component IDs/versions and target Course/Band versions; first201,
+replay200; incomplete DRAFT allowed, saved-only activation/full frozen manifests.
+AcademicAffairs entry sessions API054–065: GET/POST admissions/entry-test-sessions;
+GET {id}; PUT {id}/schedule; POST {id}/open,close,cancellation-preview,cancel,
+grader-change-preview,change-grader,roster/search. GET admissions/entry-test-grader-options;
+GET admissions/command-results/{requestId}?action= six ENTRY_SESSION actions only.
+API090 retains four Course actions; API045 exposes no booking/registration actions.
+Previews and roster are CSRF-protected read intents, no UUID or activity renewal.
+Roster contacts/filters stay POST body/RAM; safe DTO exposes invoice status only.
+Writes require current role/scope, UUID and exact EC-C1/full guards, owned COMMIT
+before output; mandatory effects/audit/T23 atomic. GET uses initial live authority,
+separate SNAPSHOT and final live authority; no entities/secrets/history snapshots.
+Default no-argument host, schema/grants/packages and unrelated APIs unchanged.
+Earlier exposure checkpoints below are historical.
 2026-10-09 current exposure: explicit LOCAL_DEV adds full Admin API006–014 and
 AcademicAffairs Course074–079/Band080/lookup090 restricted to fourCourse actions.
 Search accounts POST /api/v1/admin/accounts/search: PII body/read intent/CSRF/no-store.

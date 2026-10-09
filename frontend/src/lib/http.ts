@@ -27,6 +27,29 @@ const endpoints = {
   courseActivate: { path: '/api/v1/academics/courses', method: 'POST', intent: 'write', access: 'academic' },
   bands: { path: '/api/v1/academics/bands', method: 'GET', intent: 'read', access: 'academic' },
   courseResult: { path: '/api/v1/academics/command-results', method: 'GET', intent: 'read', access: 'academic' },
+  programSearch:{path:'/api/v1/academics/training-programs',method:'GET',intent:'read',access:'academic'},
+  programDetail:{path:'/api/v1/academics/training-programs',method:'GET',intent:'read',access:'academic'},
+  programCreate:{path:'/api/v1/academics/training-programs',method:'POST',intent:'write',access:'academic'},
+  programEdit:{path:'/api/v1/academics/training-programs',method:'PUT',intent:'write',access:'academic'},
+  programRename:{path:'/api/v1/academics/training-programs',method:'PUT',intent:'write',access:'academic'},
+  programPreview:{path:'/api/v1/academics/training-programs',method:'POST',intent:'read',access:'academic'},
+  programActivate:{path:'/api/v1/academics/training-programs',method:'POST',intent:'write',access:'academic'},
+  programDraft:{path:'/api/v1/academics/training-programs',method:'POST',intent:'write',access:'academic'},
+  programDeactivate:{path:'/api/v1/academics/training-programs',method:'POST',intent:'write',access:'academic'},
+  programResult:{path:'/api/v1/academics/command-results',method:'GET',intent:'read',access:'academic'},
+  sessionSearch:{path:'/api/v1/admissions/entry-test-sessions',method:'GET',intent:'read',access:'academic'},
+  sessionDetail:{path:'/api/v1/admissions/entry-test-sessions',method:'GET',intent:'read',access:'academic'},
+  sessionCreate:{path:'/api/v1/admissions/entry-test-sessions',method:'POST',intent:'write',access:'academic'},
+  sessionSchedule:{path:'/api/v1/admissions/entry-test-sessions',method:'PUT',intent:'write',access:'academic'},
+  sessionOpen:{path:'/api/v1/admissions/entry-test-sessions',method:'POST',intent:'write',access:'academic'},
+  sessionClose:{path:'/api/v1/admissions/entry-test-sessions',method:'POST',intent:'write',access:'academic'},
+  sessionCancelPreview:{path:'/api/v1/admissions/entry-test-sessions',method:'POST',intent:'read',access:'academic'},
+  sessionCancel:{path:'/api/v1/admissions/entry-test-sessions',method:'POST',intent:'write',access:'academic'},
+  sessionGraderPreview:{path:'/api/v1/admissions/entry-test-sessions',method:'POST',intent:'read',access:'academic'},
+  sessionGrader:{path:'/api/v1/admissions/entry-test-sessions',method:'POST',intent:'write',access:'academic'},
+  sessionRoster:{path:'/api/v1/admissions/entry-test-sessions',method:'POST',intent:'read',access:'academic'},
+  sessionOptions:{path:'/api/v1/admissions/entry-test-grader-options',method:'GET',intent:'read',access:'academic'},
+  sessionResult:{path:'/api/v1/admissions/command-results',method:'GET',intent:'read',access:'academic'},
 } as const;
 export type Endpoint = keyof typeof endpoints;
 export type HttpResult<T> =
@@ -46,21 +69,23 @@ export class HttpClient {
   async request<T>(options: RequestOptions<T>): Promise<HttpResult<T>> {
     if (!Object.hasOwn(endpoints, options.endpoint)) return { kind: 'blocked' };
     const endpoint = endpoints[options.endpoint];
-    if (!endpoint || (endpoint.intent === 'read' && options.endpoint !== 'adminSearch' && options.body !== undefined)) return { kind: 'blocked' };
+    if (!endpoint || (endpoint.intent === 'read' && !['adminSearch','sessionRoster','sessionGraderPreview'].includes(options.endpoint) && options.body !== undefined)) return { kind: 'blocked' };
     if (endpoint.access === 'session' && !this.auth.context) return { kind: 'blocked' };
     if (endpoint.access === 'admin' && (this.auth.context?.role !== 'Admin' || this.auth.context.scope !== 'NORMAL')) return { kind: 'blocked' };
     if (endpoint.access === 'academic' && (this.auth.context?.role !== 'AcademicAffairs' || this.auth.context.scope !== 'NORMAL')) return { kind:'blocked' };
     const suffixes:Partial<Record<Endpoint,string>>={adminLock:'lock',adminReset:'reset-password',adminUnlock:'unlock',adminDisable:'disable',adminRestore:'restore',courseUpdate:'details',courseDeactivate:'deactivate',courseActivate:'activate'};
-    const lookup=['adminLockResult','adminResult','courseResult'].includes(options.endpoint);
-    const needsTarget = options.endpoint === 'adminDetail' || options.endpoint === 'courseDetail' || Object.hasOwn(suffixes,options.endpoint);
+    Object.assign(suffixes,{programEdit:'configuration',programRename:'name',programPreview:'activation-preview',programActivate:'activate',programDraft:'return-to-draft',programDeactivate:'deactivate',sessionSchedule:'schedule',sessionOpen:'open',sessionClose:'close',sessionCancelPreview:'cancellation-preview',sessionCancel:'cancel',sessionGraderPreview:'grader-change-preview',sessionGrader:'change-grader',sessionRoster:'roster/search'});
+    const lookup=['adminLockResult','adminResult','courseResult','programResult','sessionResult'].includes(options.endpoint);
+    const needsTarget = ['adminDetail','courseDetail','programDetail','sessionDetail'].includes(options.endpoint) || Object.hasOwn(suffixes,options.endpoint);
     const needsKey = lookup || endpoint.intent==='write' && (endpoint.access==='admin'||endpoint.access==='academic');
     if (needsTarget && (!Number.isInteger(options.targetId) || options.targetId! < 1 || options.targetId! > 2147483647) ||
         !needsTarget && options.targetId !== undefined ||
         needsKey && (typeof options.requestId !== 'string' || !/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/.test(options.requestId)) ||
         !needsKey && options.requestId !== undefined) return { kind: 'blocked' };
-    const allowedQuery=options.endpoint==='courseSearch'?['code','name','status','sort','page','pageSize']:['adminResult','courseResult'].includes(options.endpoint)?['action']:[];
+    const allowedQuery=options.endpoint==='courseSearch'?['code','name','status','sort','page','pageSize']:options.endpoint==='programSearch'?['courseId','bandId','name','status','sort','page','pageSize']:options.endpoint==='sessionSearch'?['fromDate','toDate','effectiveStatus','graderId','sort','page','pageSize']:options.endpoint==='sessionOptions'?['date','startTime','endTime','sessionId','page','pageSize']:lookup?['action']:[];
     if(options.query&&Object.keys(options.query).some(key=>!allowedQuery.includes(key)))return {kind:'blocked'};
     const action=options.query?.action;
+    if(options.endpoint==='programResult'&&(!action||!['ACADEMIC.PROGRAM.CREATE','ACADEMIC.PROGRAM.UPDATE_CONFIGURATION','ACADEMIC.PROGRAM.RENAME','ACADEMIC.PROGRAM.ACTIVATE','ACADEMIC.PROGRAM.RETURN_TO_DRAFT','ACADEMIC.PROGRAM.DEACTIVATE'].includes(action))||options.endpoint==='sessionResult'&&(!action||!['ACADEMIC.ENTRY_SESSION.CREATE','ACADEMIC.ENTRY_SESSION.UPDATE_SCHEDULE','ACADEMIC.ENTRY_SESSION.OPEN','ACADEMIC.ENTRY_SESSION.CLOSE','ACADEMIC.ENTRY_SESSION.CANCEL','ACADEMIC.ENTRY_SESSION.CHANGE_GRADER'].includes(action)))return {kind:'blocked'};
     if(options.endpoint==='adminResult'&&(!action||!['ADMIN.STAFF.CREATE','ADMIN.ACCOUNT.RESET_PASSWORD','ADMIN.ACCOUNT.LOCK','ADMIN.ACCOUNT.UNLOCK','ADMIN.ACCOUNT.DISABLE','ADMIN.ACCOUNT.RESTORE'].includes(action))||options.endpoint==='courseResult'&&(!action||!['ACADEMIC.COURSE.CREATE','ACADEMIC.COURSE.UPDATE_DETAILS','ACADEMIC.COURSE.DEACTIVATE','ACADEMIC.COURSE.ACTIVATE'].includes(action)))return {kind:'blocked'};
     const query=options.endpoint==='adminLockResult'?'action=ADMIN.ACCOUNT.LOCK':new URLSearchParams(options.query).toString();
     const path=(lookup?`${endpoint.path}/${options.requestId}`:needsTarget?`${endpoint.path}/${options.targetId}${suffixes[options.endpoint]?'/'+suffixes[options.endpoint]:''}`:endpoint.path)+(query?'?'+query:'');
@@ -105,7 +130,7 @@ export class HttpClient {
       if (response.ok) {
         const expectedStatus = options.endpoint === 'register' ? 201 :
           options.endpoint === 'logout' || options.endpoint === 'password' ? 204 : 200;
-        if (response.status !== expectedStatus && !(response.status===201&&['staffCreate','courseCreate'].includes(options.endpoint))) return endpoint.intent === 'write' ? uncertainWrite() : { kind: 'unavailable' };
+        if (response.status !== expectedStatus && !(response.status===201&&['staffCreate','courseCreate','programCreate','sessionCreate'].includes(options.endpoint))) return endpoint.intent === 'write' ? uncertainWrite() : { kind: 'unavailable' };
         let value: T;
         try { value = options.decode(payload); }
         catch {

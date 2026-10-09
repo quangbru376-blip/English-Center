@@ -1,0 +1,25 @@
+namespace EnglishCenter.Api.Api.Academics;
+
+using System.Text.Json;
+using EnglishCenter.Api.Api.Administration;
+using EnglishCenter.Api.Api.Auth;
+using EnglishCenter.Api.Api.Identity;
+using EnglishCenter.Api.Common.Errors;
+using EnglishCenter.Api.Common.Security;
+using EnglishCenter.Api.Infrastructure.Academics;
+public static class EntrySessionEndpoints
+{
+    public static void MapEntrySessions(this IEndpointRouteBuilder routes, SqlEntrySessionExecutor executor, int bytes)
+    {
+        const string root = "/api/v1/admissions/entry-test-sessions"; var policy = new CsrfRoutePolicy(CsrfAccess.Authenticated, true);
+        routes.MapGet(root, async (HttpContext context) => { var token = ProgramEndpoints.RequireAcademic(context); AdminAccountEndpoints.RequireEmptyBody(context); return Results.Ok(await executor.SearchAsync(token, context.Request.Query, context.RequestAborted)); }).WithMetadata(policy).AllowAnonymous();
+        routes.MapGet(root + "/{id}", async (HttpContext context, string id) => { var token = ProgramEndpoints.RequireAcademic(context); AdminAccountEndpoints.RequireEmptyBody(context); AdminAccountEndpoints.RequireNoQuery(context); return Results.Ok(await executor.DetailAsync(token, AdminAccountEndpoints.Id(id), context.RequestAborted)); }).WithMetadata(policy).AllowAnonymous();
+        routes.MapPost(root, async (HttpContext context) => { var token = ProgramEndpoints.RequireAcademic(context); AdminAccountEndpoints.RequireNoQuery(context); var input = Services.Academics.AcademicInput.Parse(55, 0, AdminAccountEndpoints.HeaderKey(context), AuthJsonBoundary.Read(context), bytes); var result = await executor.CommandAsync(token, input, context.RequestAborted); return Results.Json(result, statusCode: result.Replayed ? 200 : 201); }).WithMetadata(policy, new AuthBodyPolicy(bytes)).AllowAnonymous();
+        foreach (var (api, verb, path) in new[] { (57, "PUT", "schedule"), (58, "POST", "open"), (59, "POST", "close"), (61, "POST", "cancel"), (64, "POST", "change-grader") }) routes.MapMethods(root + "/{id}/" + path, [verb], async (HttpContext context, string id) => { var token = ProgramEndpoints.RequireAcademic(context); AdminAccountEndpoints.RequireNoQuery(context); return Results.Ok(await executor.CommandAsync(token, Services.Academics.AcademicInput.Parse(api, AdminAccountEndpoints.Id(id), AdminAccountEndpoints.HeaderKey(context), AuthJsonBoundary.Read(context), bytes), context.RequestAborted)); }).WithMetadata(policy, new AuthBodyPolicy(bytes)).AllowAnonymous();
+        routes.MapPost(root + "/{id}/cancellation-preview", async (HttpContext context, string id) => { var token = ProgramEndpoints.RequireAcademic(context); AdminAccountEndpoints.RequireNoQuery(context); AdminAccountEndpoints.RequireEmptyBody(context); return Results.Ok(await executor.CancellationAsync(token, AdminAccountEndpoints.Id(id), context.RequestAborted)); }).WithMetadata(policy).AllowAnonymous();
+        routes.MapPost(root + "/{id}/grader-change-preview", async (HttpContext context, string id) => { var token = ProgramEndpoints.RequireAcademic(context); AdminAccountEndpoints.RequireNoQuery(context); using var json = JsonDocument.Parse(AuthJsonBoundary.Read(context)); var body = json.RootElement; if (body.ValueKind != JsonValueKind.Object || body.EnumerateObject().Count() != 1 || !body.TryGetProperty("graderId", out var value) || value.ValueKind != JsonValueKind.Number || !value.TryGetInt32(out var grader) || grader < 1) throw ApiErrorException.Validation("graderId"); return Results.Ok(await executor.GraderPreviewAsync(token, AdminAccountEndpoints.Id(id), grader, context.RequestAborted)); }).WithMetadata(policy, new AuthBodyPolicy(bytes)).AllowAnonymous();
+        routes.MapGet("/api/v1/admissions/entry-test-grader-options", async (HttpContext context) => { var token = ProgramEndpoints.RequireAcademic(context); AdminAccountEndpoints.RequireEmptyBody(context); return Results.Ok(await executor.OptionsAsync(token, context.Request.Query, context.RequestAborted)); }).WithMetadata(policy).AllowAnonymous();
+        routes.MapPost(root + "/{id}/roster/search", async (HttpContext context, string id) => { var token = ProgramEndpoints.RequireAcademic(context); AdminAccountEndpoints.RequireNoQuery(context); return Results.Ok(await executor.RosterAsync(token, AdminAccountEndpoints.Id(id), SessionRosterFilter.Parse(AuthJsonBoundary.Read(context)), context.RequestAborted)); }).WithMetadata(policy, new AuthBodyPolicy(bytes)).AllowAnonymous();
+        routes.MapGet("/api/v1/admissions/command-results/{requestId}", async (HttpContext context, string requestId) => { var token = ProgramEndpoints.RequireAcademic(context); AdminAccountEndpoints.RequireEmptyBody(context); if (context.Request.Query.Count != 1 || !context.Request.Query.TryGetValue("action", out var action) || action.Count != 1 || string.IsNullOrEmpty(action[0])) throw ApiErrorException.Validation("action"); return Results.Ok(await executor.LookupAsync(token, action[0]!, AdminAccountEndpoints.Uuid(requestId), context.RequestAborted)); }).WithMetadata(policy).AllowAnonymous();
+    }
+}

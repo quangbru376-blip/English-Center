@@ -9,6 +9,8 @@ using EnglishCenter.Api.Infrastructure.Administration;
 using EnglishCenter.Api.Infrastructure.Auditing;
 using EnglishCenter.Api.Infrastructure.Auth;
 using EnglishCenter.Api.Infrastructure.Identity;
+using EnglishCenter.Api.Api.Academics;
+using EnglishCenter.Api.Infrastructure.Academics;
 using EnglishCenter.Api.Api.Catalogue;
 using EnglishCenter.Api.Infrastructure.Catalogue;
 using EnglishCenter.Api.Infrastructure.Readiness;
@@ -31,6 +33,8 @@ internal sealed class LocalRuntimeServices : ITrustedLoginIpResolver, IDisposabl
     private readonly SqlAdminAccountExecutor admin;
     private readonly SqlStaffAccountExecutor staff;
     private readonly SqlCourseExecutor courses;
+    private readonly SqlProgramExecutor programs;
+    private readonly SqlEntrySessionExecutor entrySessions;
     public LiveCsrfIdentityResolver Identity { get; }
     public LocalRuntimeServices(RuntimeProfile profile, LocalRuntimeKeyStore keys, string corpusDirectory)
     {
@@ -48,6 +52,8 @@ internal sealed class LocalRuntimeServices : ITrustedLoginIpResolver, IDisposabl
         admin = new(Context, clock, limits.SqlSeconds, limits.LockMs);
         staff = new(Context, clock, hasher, new TemporaryPasswordGenerator(new PasswordPolicy(OfflinePasswordBlocklist.Load(corpusDirectory))), limits.SqlSeconds, limits.LockMs);
         courses = new(Context, clock, limits.SqlSeconds, limits.LockMs);
+        programs = new(Context, clock, limits.SqlSeconds, limits.LockMs);
+        entrySessions = new(Context, clock, limits.SqlSeconds, limits.LockMs);
         Identity = new(validator, current, audit, clock);
     }
     private static EnglishCenterDbContext Context() => new(new DbContextOptionsBuilder<EnglishCenterDbContext>()
@@ -69,6 +75,8 @@ internal sealed class LocalRuntimeServices : ITrustedLoginIpResolver, IDisposabl
         routes.MapCurrentSession(current, clock); routes.MapCurrentSessionLogout(logout);
         routes.MapPasswordChange(password, bodyBytes); routes.MapAdminAccountPilot(admin, bodyBytes);
         routes.MapStaffAccounts(staff, bodyBytes); routes.MapCourseCatalogue(courses, bodyBytes);
+        routes.MapTrainingPrograms(programs,bodyBytes);
+        routes.MapEntrySessions(entrySessions,bodyBytes);
     }
     public IPAddress? Resolve(HttpContext context) => context.Connection.RemoteIpAddress is { } address && IPAddress.IsLoopback(address) ? address : null;
     public void Dispose() => limiter.Dispose();

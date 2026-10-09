@@ -15,7 +15,7 @@ using Microsoft.EntityFrameworkCore;
 public sealed class SqlCourseExecutor(Func<EnglishCenterDbContext> factory,BusinessClock clock,int sqlSeconds,int lockMs) : ICourseExecutor
 {
     public Task<CourseResult> CommandAsync(VerifiedSessionToken token,CourseInput input,CancellationToken ct)=>Live((s,c)=>s.CommandAsync(token,input,c),ct);
-    public Task<SafeCommandCompletion> LookupAsync(VerifiedSessionToken token,string action,Guid request,CancellationToken ct)=>Live((s,c)=>s.LookupAsync(token,action,request,c),ct);
+    public Task<SafeCommandCompletion> LookupAsync(VerifiedSessionToken token,string action,Guid request,CancellationToken ct)=>action.StartsWith("ACADEMIC.PROGRAM.",StringComparison.Ordinal)?new Academics.SqlProgramExecutor(factory,clock,sqlSeconds,lockMs).LookupAsync(token,action,request,ct):Live((s,c)=>s.LookupAsync(token,action,request,c),ct);
     public Task<CourseView> DetailAsync(VerifiedSessionToken token,int id,CancellationToken ct)=>Read(token,async(db,c)=>{
         var row=await db.Courses.AsNoTracking().SingleOrDefaultAsync(x=>x.CourseId==id,c)??throw new ApiErrorException(ApiErrorCode.NOT_FOUND);return CourseView.Map(row);
     },ct);
