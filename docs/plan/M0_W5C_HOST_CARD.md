@@ -93,3 +93,8 @@ fixes: manager1263defaultPASS78intentionalSKIP/build0warnings0errors; frontend48
 lint/types/build PASS. No actual all9 host yet; readonly genuine-profile acceptance
 requires applied main binaries/UI build. No operational business writes approved
 by this initial test contract; later separate fixture-free closure scope pending.
+
+First actual runtime attempt proved all9 ready/HTTPS/CSRF/UI before a test expectation
+mismatch: /docs/PROJECT_CONTEXT.md correctly404(empty), not SPA HTML (fallback
+excludes file-extension paths). Corrected isolation assertion to404/empty; no source
+exposure/production fix/SQL mutation. Whole actual C test remains pending recheck.

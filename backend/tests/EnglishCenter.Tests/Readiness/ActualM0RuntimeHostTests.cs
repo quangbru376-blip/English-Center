@@ -35,7 +35,8 @@ public sealed class ActualM0RuntimeHostTests
             Assert.Equal(HttpStatusCode.OK, html.StatusCode); Assert.Equal("text/html", html.Content.Headers.ContentType?.MediaType);
             Assert.True(html.Headers.CacheControl?.NoStore == true);
             using var sourceAttempt = await client.GetAsync("/docs/PROJECT_CONTEXT.md", deadline.Token);
-            Assert.Equal("text/html", sourceAttempt.Content.Headers.ContentType?.MediaType);
+            Assert.Equal(HttpStatusCode.NotFound, sourceAttempt.StatusCode);
+            Assert.True((await sourceAttempt.Content.ReadAsStringAsync(deadline.Token)).Length == 0, "Source path must not be served");
             using var unknownApi = await client.GetAsync("/api/v1/unmounted", deadline.Token);
             Assert.Equal(HttpStatusCode.ServiceUnavailable, unknownApi.StatusCode);
             Assert.Equal("application/json", unknownApi.Content.Headers.ContentType?.MediaType);
