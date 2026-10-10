@@ -1,0 +1,7 @@
+# Public pure AdmissionReasonForm contract
+Read exactly this complete file, .agents/skills/frontend-ui/SKILL.md and docs/plan/SKILL_ROUTING.md fully before writing. Do not follow links/read any other file.
+Write ONLY frontend/src/features/admissions/components/AdmissionReasonForm.tsx, ≤90lines and≤150diffLines. No commands/network/SQL/Git/validation.
+Import Button from ../../../components/ui/Button without reading it. Use React controlled native textarea and shared Button, Vietnamese copy/native44px/design tokens, no dependency/fetch/storage/auth/UUID/permission logic. Canonical contract overrides stale ReactQuery/Router defaults.
+Export function AdmissionReasonForm({value,disabled,actionLabel,onChange,onSubmit,onCancel}:{value:string;disabled:boolean;actionLabel:string;onChange:(value:string)=>void;onSubmit:()=>void;onCancel:()=>void}).
+One visible Lý do label linked to textarea id admission-reason, required rows4 maxLength2000, preserve raw value/codepoints/newlines. Hint: Lý do bắt buộc, tối đa 1.000 ký tự. Parent owns actual codepoint validation/NFC/trimming/server errors.
+Form submit preventDefault and call onSubmit once only if !disabled. Textarea/all buttons disabled while disabled. ActionLabel submit button; Hủy button type button calls onCancel. No modal, auto-save/confirm, hiddenIDs, page/capability decisions or extra file/tests/docs. Use min-h-11 targets and existing semantic design tokens only.
