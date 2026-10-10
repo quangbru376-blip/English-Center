@@ -31,16 +31,17 @@ public static class OwnedBrowserSqlGate
 public sealed class OwnedBrowserSqlHostingTests
 {
     [Theory(Skip = "V01-F requires SQL/owned/browser gates and temporary assets.", SkipUnless = nameof(OwnedBrowserSqlGate.Enabled), SkipType = typeof(OwnedBrowserSqlGate))]
-    [InlineData(1)][InlineData(2)][InlineData(4)][InlineData(5)][InlineData(6)][InlineData(9)][InlineData(81)][InlineData(82)][InlineData(83)][InlineData(84)][InlineData(85)][InlineData(86)][InlineData(87)]
+    [InlineData(1)][InlineData(2)][InlineData(4)][InlineData(5)][InlineData(6)][InlineData(9)][InlineData(81)][InlineData(82)][InlineData(83)][InlineData(84)][InlineData(85)][InlineData(86)][InlineData(87)][InlineData(88)]
     public async Task RealBrowserHttpsToOwnedCommit(int group)
     {
         var ct = OwnedSqlFixture.Ct;
         var assets = Environment.GetEnvironmentVariable("EC_V01_ASSETS") ?? throw new InvalidOperationException("Temporary assets required.");
-        var driver = Environment.GetEnvironmentVariable(group is >=81 and <=87 ? "EC_M1_DRIVER" : "EC_V01_DRIVER") ?? throw new InvalidOperationException("Browser driver required.");
+        var driver = Environment.GetEnvironmentVariable(group is >=81 and <=88 ? "EC_M1_DRIVER" : "EC_V01_DRIVER") ?? throw new InvalidOperationException("Browser driver required.");
         Assert.StartsWith(Path.GetFullPath(Path.GetTempPath()), Path.GetFullPath(assets), StringComparison.OrdinalIgnoreCase);
         await using var f = await OwnedSqlFixture.CreateAsync();
         if (group == 6) await f.Restricted("Teacher");
-        if (group is 85 or 86 or 87) await SeedEnrollmentBrowser(f, group, ct);
+        if (group is 85 or 86 or 87 or 88) await SeedEnrollmentBrowser(f, group, ct);
+        if(group==88) await SeedConfirmedAdmissions(f,ct);
         if(group==83){await using var seed=f.Db();await EnglishCenter.Api.Infrastructure.Operator.LocalBandReferenceSeed.SeedAsync(seed,ct);seed.Courses.Add(new EnglishCenter.Api.Domain.Academics.Course{CourseCode="BROWSER",CourseName="Synthetic browser",BasePrice=1000,Status="INACTIVE"});await seed.SaveChangesAsync(ct);}
         if(group==84){await using var seed=f.Db();var teacher=await seed.Accounts.SingleAsync(x=>x.AccountId==f.Accounts["Teacher"],ct);seed.Accounts.Add(new EnglishCenter.Api.Domain.Identity.Account{RoleId=teacher.RoleId,FullName="Synthetic second",Email="second@example.invalid",PasswordHash=teacher.PasswordHash,Status="ACTIVE",SecurityVersion=1,CreatedAt=f.Clock.GetUtcNow().UtcDateTime});await seed.SaveChangesAsync(ct);}
         if(group==82){await using var seed=f.Db();await using var tx=await seed.Database.BeginTransactionAsync(ct);await seed.Database.ExecuteSqlRawAsync("EXEC sys.sp_getapplock @Resource=N'EC:BANDSET',@LockMode=N'Exclusive',@LockOwner=N'Transaction',@DbPrincipal=N'public';",ct);seed.Bands.AddRange(new[]{0m,25m,45m,65m,85m}.Select((score,i)=>new EnglishCenter.Api.Domain.Academics.Band{BandCode="Band"+(i+1),MinScore=score}));await seed.SaveChangesAsync(ct);await tx.CommitAsync(ct);}
@@ -116,7 +117,7 @@ public sealed class OwnedBrowserSqlHostingTests
             }
             else
             {
-                var expectedLogins = group switch { 2 => 7, 4 => 2, 5 or 6 => 3, 9 => 2, 81 => 4, 82 or 83 or 84 or 85 or 86 => 3, 87 => 6, _ => throw new InvalidOperationException("Invalid owned browser group.") };
+                var expectedLogins = group switch { 2 => 7, 4 => 2, 5 or 6 => 3, 9 => 2, 81 => 4, 82 or 83 or 84 or 85 or 86 => 3, 87 or 88 => 6, _ => throw new InvalidOperationException("Invalid owned browser group.") };
                 Assert.Equal(expectedLogins, security.Count(a => a.Action == "AUTH.LOGIN" && a.Result == "SUCCESS"));
                 Assert.Equal(0, f.Incidents.GetFailureCount(EnglishCenter.Api.Common.Auditing.SecurityAuditKind.Login));
             }
@@ -127,6 +128,7 @@ public sealed class OwnedBrowserSqlHostingTests
             if(group==85){Assert.Equal(3,await db.Registrations.CountAsync(ct));Assert.All(await db.Registrations.ToListAsync(ct),r=>{Assert.Equal("CANCELLED",r.Status);Assert.False(r.IsUnfinished);});Assert.Equal(3,await db.EntryTestAttempts.CountAsync(ct));Assert.Equal(6,await db.EntryTestBookings.CountAsync(ct));Assert.Equal(15,await db.ReplayOperations.CountAsync(ct));Assert.Equal(3,await db.AuditLogs.CountAsync(a=>a.Action=="STUDENT.PROFILE.UPDATE",ct));Assert.Equal(0,await db.AuthSessions.CountAsync(s=>s.RevokedAt==null,ct));}
             if(group==86){Assert.Equal(6,await db.EntryTestAttempts.CountAsync(ct));Assert.Equal(3,await db.EntryTestBookings.CountAsync(b=>b.Status=="COMPLETED",ct));Assert.Equal(3,await db.EntryTestBookings.CountAsync(b=>b.Status=="ABSENT",ct));Assert.Equal(3,await db.BandAssignments.CountAsync(ct));Assert.Equal(9,await db.ReplayOperations.CountAsync(ct));Assert.Equal(24,await db.AuditLogs.CountAsync(a=>a.Action.StartsWith("TEACHER.")&&a.AuditCategory=="MANDATORY",ct));Assert.Equal(0,await db.AuthSessions.CountAsync(s=>s.RevokedAt==null,ct));}
             if(group==87){Assert.Equal(3,await db.Registrations.CountAsync(r=>r.Status=="CONFIRMED",ct));Assert.Equal(3,await db.EntryTestBookings.CountAsync(b=>b.Status=="COMPLETED",ct));Assert.Equal(3,await db.BandAssignments.CountAsync(ct));Assert.Equal(6,await db.ReplayOperations.CountAsync(ct));Assert.Equal(3,await db.AuditLogs.CountAsync(a=>a.Action=="STUDENT.REGISTRATION.CONFIRM",ct));Assert.Equal(0,await db.Invoices.CountAsync(ct));Assert.Equal(0,await db.AuthSessions.CountAsync(s=>s.RevokedAt==null,ct));}
+            if(group==88){Assert.Equal(3,await db.Registrations.CountAsync(r=>r.Status=="REJECTED",ct));Assert.Equal(6,await db.Registrations.CountAsync(r=>r.Status=="CANCELLED",ct));Assert.Equal(3,await db.Invoices.CountAsync(i=>i.Status=="CANCELLED",ct));Assert.Equal(12,await db.ReplayOperations.CountAsync(ct));Assert.Empty(await db.Payments.ToListAsync(ct));Assert.Equal(0,await db.AuthSessions.CountAsync(s=>s.RevokedAt==null,ct));}
             if (group == 2) { Assert.Equal(7, await db.AuthSessions.CountAsync(s => s.RevokedAt == null, ct)); Assert.Equal(0, await db.AuditLogs.CountAsync(a => a.AuditCategory == "MANDATORY", ct));
                 Assert.Equal(f.Accounts.Where(p => p.Key != "Admin2").Select(p => (int?)p.Value).Order().ToArray(), security.Where(a => a.Action == "AUTH.LOGIN").Select(a => a.ActorAccountId).Order().ToArray()); }
             if (group == 4)
@@ -170,13 +172,33 @@ public sealed class OwnedBrowserSqlHostingTests
             e.MapStaffAccounts(new EnglishCenter.Api.Infrastructure.Administration.SqlStaffAccountExecutor(()=>f.Db(),f.Clock,f.Hasher,new EnglishCenter.Api.Common.Security.TemporaryPasswordGenerator(new EnglishCenter.Api.Common.Security.PasswordPolicy(EnglishCenter.Api.Common.Security.OfflinePasswordBlocklist.Load(Path.Combine(AppContext.BaseDirectory,"Resources","PasswordBlocklist")))),10,1000),4096);
             e.MapCourseCatalogue(new EnglishCenter.Api.Infrastructure.Catalogue.SqlCourseExecutor(()=>f.Db(),f.Clock,10,1000),4096);
             e.MapTrainingPrograms(new EnglishCenter.Api.Infrastructure.Academics.SqlProgramExecutor(()=>f.Db(),f.Clock,10,1000),4096);
-            e.MapEntrySessions(new EnglishCenter.Api.Infrastructure.Academics.SqlEntrySessionExecutor(()=>f.Db(),f.Clock,10,1000),4096);
+            e.MapEntrySessions(new EnglishCenter.Api.Infrastructure.Academics.SqlEntrySessionExecutor(()=>f.Db(),f.Clock,10,1000),4096,new(()=>f.Db(),f.Clock,10,1000));
             e.MapStudentEnrollment(new(()=>f.Db(),f.Clock,10,1000),new(()=>f.Db(),f.Clock,10,1000),new(()=>f.Db(),f.Clock,10,1000),4096);
             e.MapTeacherEntry(new(()=>f.Db(),f.Clock,10,1000),new(()=>f.Db(),f.Clock,10,1000),4096);
+            EnglishCenter.Api.Api.Admissions.AdmissionsEndpoints.MapAdmissions(e,new(()=>f.Db(),f.Clock,10,1000),4096);
+            EnglishCenter.Api.Api.StudentInvoices.StudentInvoiceEndpoints.MapStudentInvoices(e,new(()=>f.Db(),f.Clock,10,1000));
         });
     }
     private sealed class TrustedIp : EnglishCenter.Api.Api.Auth.ITrustedLoginIpResolver
     { public IPAddress? Resolve(HttpContext context) => IPAddress.Loopback; }
+    private static async Task SeedConfirmedAdmissions(OwnedSqlFixture f, CancellationToken ct)
+    {
+        // Synthetic owned fixture only; business actions under test start CONFIRMED.
+        await using var db = f.Db(); await using var tx = await db.Database.BeginTransactionAsync(ct);
+        await db.Database.ExecuteSqlRawAsync("EXEC sys.sp_getapplock @Resource=N'EC:BANDSET',@LockMode=N'Exclusive',@LockOwner=N'Transaction',@DbPrincipal=N'public';", ct);
+        var band = await db.Bands.SingleAsync(b => b.MinScore == 0, ct);
+        var now = f.Clock.GetUtcNow().UtcDateTime;
+        foreach (var r in await db.Registrations.OrderBy(r => r.RegistrationId).ToListAsync(ct))
+        {
+            await db.Database.ExecuteSqlInterpolatedAsync($"EXEC sys.sp_getapplock @Resource={"EC:REG:" + r.RegistrationId},@LockMode=N'Exclusive',@LockOwner=N'Transaction',@DbPrincipal=N'public';", ct);
+            var a = await db.EntryTestAttempts.SingleAsync(a => a.RegistrationId == r.RegistrationId, ct);
+            var b = await db.EntryTestBookings.SingleAsync(b => b.AttemptId == a.AttemptId, ct);
+            a.Score = 0; a.CompletedBookingId = b.BookingId; a.GradedBy = f.Accounts["Teacher"]; a.GradedAt = now; b.Status = "COMPLETED";
+            r.Status = "CONFIRMED"; r.AdmissionConfirmedAt = now;
+            db.BandAssignments.Add(new() { RegistrationId = r.RegistrationId, BestAttemptId = a.AttemptId, BandId = band.BandId, AssignedAt = now });
+        }
+        await db.SaveChangesAsync(ct); await tx.CommitAsync(ct);
+    }
     private static async Task SeedEnrollmentBrowser(OwnedSqlFixture f, int group, CancellationToken ct)
     {
         await using var db=f.Db(); await EnglishCenter.Api.Infrastructure.Operator.LocalBandReferenceSeed.SeedAsync(db,ct);
@@ -184,7 +206,7 @@ public sealed class OwnedBrowserSqlHostingTests
         var today=f.Clock.GetToday();var start=EnglishCenter.Api.Common.Time.VietnamTime.ToUtc(group==85?today.AddDays(1):today.AddDays(-1),new TimeOnly(9,0)).UtcDateTime;
         var session=new EnglishCenter.Api.Domain.Admissions.EntryTestSession{StartAt=start,EndAt=start.AddHours(1),Room="ENROLL",Capacity=20,GraderId=f.Accounts["Teacher"],Status=group==85?"OPEN":"CLOSED"};db.EntryTestSessions.Add(session);
         if(group==85)db.EntryTestSessions.Add(new(){StartAt=start.AddHours(2),EndAt=start.AddHours(3),Room="REPLACEMENT",Capacity=20,GraderId=f.Accounts["Teacher"],Status="OPEN"});
-        for(var i=0;i<(group==86?6:3);i++)db.Courses.Add(new(){CourseCode="ENROLL_"+i,CourseName="Synthetic enrollment "+i,BasePrice=123456789012345678m,Status="ACTIVE"});await db.SaveChangesAsync(ct);
+        for(var i=0;i<(group==86?6:group==88?9:3);i++)db.Courses.Add(new(){CourseCode="ENROLL_"+i,CourseName="Synthetic enrollment "+i,BasePrice=123456789012345678m,Status="ACTIVE"});await db.SaveChangesAsync(ct);
         if(group==85)return;
         foreach(var course in await db.Courses.OrderBy(x=>x.CourseId).ToListAsync(ct))
         {

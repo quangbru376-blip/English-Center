@@ -16,6 +16,10 @@ using EnglishCenter.Api.Infrastructure.Catalogue;
 using EnglishCenter.Api.Infrastructure.Readiness;
 using EnglishCenter.Api.Api.Enrollment;
 using EnglishCenter.Api.Infrastructure.Enrollment;
+using EnglishCenter.Api.Api.Admissions;
+using EnglishCenter.Api.Infrastructure.Admissions;
+using EnglishCenter.Api.Api.StudentInvoices;
+using EnglishCenter.Api.Infrastructure.StudentInvoices;
 using Microsoft.AspNetCore.DataProtection;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
@@ -42,6 +46,8 @@ internal sealed class LocalRuntimeServices : ITrustedLoginIpResolver, IDisposabl
     private readonly SqlStudentEnrollmentReader studentReads;
     private readonly SqlTeacherEntryExecutor teacherEntry;
     private readonly SqlTeacherEntryReader teacherReads;
+    private readonly SqlAdmissionsExecutor admissions;
+    private readonly SqlStudentInvoiceReader studentInvoices;
     public LiveCsrfIdentityResolver Identity { get; }
     public LocalRuntimeServices(RuntimeProfile profile, LocalRuntimeKeyStore keys, string corpusDirectory)
     {
@@ -66,6 +72,8 @@ internal sealed class LocalRuntimeServices : ITrustedLoginIpResolver, IDisposabl
         studentReads = new(Context, clock, limits.SqlSeconds, limits.LockMs);
         teacherEntry = new(Context, clock, limits.SqlSeconds, limits.LockMs);
         teacherReads = new(Context, clock, limits.SqlSeconds, limits.LockMs);
+        admissions = new(Context, clock, limits.SqlSeconds, limits.LockMs);
+        studentInvoices = new(Context, clock, limits.SqlSeconds, limits.LockMs);
         Identity = new(validator, current, audit, clock);
     }
     private static EnglishCenterDbContext Context() => new(new DbContextOptionsBuilder<EnglishCenterDbContext>()
@@ -88,9 +96,11 @@ internal sealed class LocalRuntimeServices : ITrustedLoginIpResolver, IDisposabl
         routes.MapPasswordChange(password, bodyBytes); routes.MapAdminAccountPilot(admin, bodyBytes);
         routes.MapStaffAccounts(staff, bodyBytes); routes.MapCourseCatalogue(courses, bodyBytes);
         routes.MapTrainingPrograms(programs,bodyBytes);
-        routes.MapEntrySessions(entrySessions,bodyBytes);
+        routes.MapEntrySessions(entrySessions,bodyBytes,admissions);
         routes.MapStudentEnrollment(profiles, studentReads, studentEnrollment, bodyBytes);
         routes.MapTeacherEntry(teacherReads, teacherEntry, bodyBytes);
+        routes.MapAdmissions(admissions, bodyBytes);
+        routes.MapStudentInvoices(studentInvoices);
     }
     public IPAddress? Resolve(HttpContext context) => context.Connection.RemoteIpAddress is { } address && IPAddress.IsLoopback(address) ? address : null;
     public void Dispose() => limiter.Dispose();

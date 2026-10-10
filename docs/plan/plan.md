@@ -1,3 +1,12 @@
+2026-10-10 current checkpoint: packages5–6 COMPLETE/applied main e92ef6b,
+reverified main39913bf and genuine LOCAL_DEV. Packages7–8 manager COMPLETE/review
+PASS; main apply/reverification pending under existing ADR177/163.
+Remaining M1 scope is implemented: Admissions038–045 plus Student Invoice046–047,
+including native pages/fresh print and full M1 regression. Whole M1 closure waits
+for applying this PASS source and the required main/LOCAL_DEV rechecks.
+See M1_07_08_TASK_CARD.md, M1_07_08_REVIEW.md and M1-admissions-evidence/summary.json.
+Historical status below is provenance, not the current checkpoint.
+
 M1 packages3–4 COMPLETE/reviewed PASS/applied ADR163/reverified2026-10-09.
 Main code564343b / manager2c6fef7 (ADR194/177); identical src
 c4fa85347f465893aeb09ee4e0e011d86612751a / tests

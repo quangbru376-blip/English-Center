@@ -56,6 +56,45 @@ public sealed class M1HttpSqlTests
         using var missingProgram=await host.Send(HttpMethod.Get,$"/api/v1/academics/command-results/{key:D}?action=ACADEMIC.PROGRAM.CREATE");Assert.Equal(HttpStatusCode.NotFound,missingProgram.StatusCode);
         await host.Login("Admin");using var wrongRole=await host.Send(HttpMethod.Get,"/api/v1/academics/courses");Assert.Equal(HttpStatusCode.Forbidden,wrongRole.StatusCode);
     }
+    [Fact(Skip=OptIn,SkipUnless=nameof(OwnedSqlGate.Enabled),SkipType=typeof(OwnedSqlGate))]
+    public async Task AdmissionsHttp_ApprovalReplayCsrfExactViewsAndRoleSplit045()
+    {
+        await using var f=await OwnedSqlFixture.CreateAsync(new M1AdmissionsSqlTests.Clock());var id=await M1AdmissionsSqlTests.Confirmed(f);await using var host=await Host.Create(f);await host.Login("Admissions");
+        using var preview=await host.Send(HttpMethod.Post,$"/api/v1/admissions/registrations/{id}/approval-preview");Assert.Equal(HttpStatusCode.OK,preview.StatusCode);
+        var body=(await preview.Content.ReadFromJsonAsync<JsonElement>(Ct)).GetProperty("manifest");var key=Guid.NewGuid();
+        using var csrf=await host.Send(HttpMethod.Post,$"/api/v1/admissions/registrations/{id}/approve",body,key,csrf:false);Assert.Equal(HttpStatusCode.Forbidden,csrf.StatusCode);
+        using var first=await host.Send(HttpMethod.Post,$"/api/v1/admissions/registrations/{id}/approve",body,key);Assert.Equal(HttpStatusCode.OK,first.StatusCode);
+        var result=await first.Content.ReadFromJsonAsync<JsonElement>(Ct);Assert.Equal(2,result.EnumerateObject().Count());Assert.Equal(16,result.GetProperty("registration").EnumerateObject().Count());
+        var invoice=result.GetProperty("registration").GetProperty("invoice");Assert.Equal(4,invoice.EnumerateObject().Count());
+        using var repeated=await host.Send(HttpMethod.Post,$"/api/v1/admissions/registrations/{id}/approve",body,key);Assert.Equal(HttpStatusCode.OK,repeated.StatusCode);Assert.Equal(result.GetProperty("operationId").GetGuid(),(await repeated.Content.ReadFromJsonAsync<JsonElement>(Ct)).GetProperty("operationId").GetGuid());
+        using var lookup=await host.Send(HttpMethod.Get,$"/api/v1/admissions/command-results/{key:D}?action=ADMISSIONS.REGISTRATION.APPROVE");Assert.Equal(HttpStatusCode.OK,lookup.StatusCode);Assert.Equal(2,(await lookup.Content.ReadFromJsonAsync<JsonElement>(Ct)).GetProperty("target").EnumerateObject().Count());
+        using var otherFamily=await host.Send(HttpMethod.Get,$"/api/v1/admissions/command-results/{key:D}?action=ACADEMIC.ENTRY_SESSION.CREATE");Assert.Equal(HttpStatusCode.Forbidden,otherFamily.StatusCode);
+        await host.Login("AcademicAffairs");using var academicFamily=await host.Send(HttpMethod.Get,$"/api/v1/admissions/command-results/{key:D}?action=ADMISSIONS.REGISTRATION.APPROVE");Assert.Equal(HttpStatusCode.Forbidden,academicFamily.StatusCode);
+        await host.Login("Teacher");using var wrongRoleMalformed=await host.Send(HttpMethod.Get,"/api/v1/admissions/command-results/not-a-uuid");Assert.Equal(HttpStatusCode.Forbidden,wrongRoleMalformed.StatusCode);
+        await host.Login("Student");using var own=await host.Send(HttpMethod.Get,$"/api/v1/students/me/invoices/{invoice.GetProperty("id").GetInt32()}");Assert.Equal(HttpStatusCode.OK,own.StatusCode);Assert.Equal(12,(await own.Content.ReadFromJsonAsync<JsonElement>(Ct)).EnumerateObject().Count());
+    }
+    [Fact(Skip=OptIn,SkipUnless=nameof(OwnedSqlGate.Enabled),SkipType=typeof(OwnedSqlGate))]
+    public async Task AdmissionsHttp_SearchPIIOnlyBodyAndFreshTargetBeforeMalformedBusinessBody()
+    {
+        await using var f=await OwnedSqlFixture.CreateAsync(new M1AdmissionsSqlTests.Clock());var id=await M1AdmissionsSqlTests.Confirmed(f);await using var host=await Host.Create(f);await host.Login("Admissions");
+        using var query=await host.Send(HttpMethod.Post,"/api/v1/admissions/registrations/search?email=private",new{});Assert.Equal(HttpStatusCode.BadRequest,query.StatusCode);
+        using var search=await host.Send(HttpMethod.Post,"/api/v1/admissions/registrations/search",new{phone="+84 912-345-678",status="CONFIRMED"});Assert.Equal(HttpStatusCode.OK,search.StatusCode);var page=await search.Content.ReadFromJsonAsync<JsonElement>(Ct);Assert.Equal(1,page.GetProperty("totalCount").GetInt32());Assert.Equal(11,page.GetProperty("items")[0].EnumerateObject().Count());
+        using var missing=await host.Send(HttpMethod.Post,"/api/v1/admissions/registrations/2147483647/reject",new{},Guid.NewGuid());Assert.Equal(HttpStatusCode.NotFound,missing.StatusCode);
+        using var noReason=await host.Send(HttpMethod.Post,$"/api/v1/admissions/registrations/{id}/reject",new{},Guid.NewGuid());Assert.Equal(HttpStatusCode.BadRequest,noReason.StatusCode);
+        await host.Login("Admin");using var wrongRole=await host.Send(HttpMethod.Post,$"/api/v1/admissions/registrations/{id}/reject",new{},Guid.NewGuid());Assert.Equal(HttpStatusCode.Forbidden,wrongRole.StatusCode);
+    }
+    [Fact(Skip=OptIn,SkipUnless=nameof(OwnedSqlGate.Enabled),SkipType=typeof(OwnedSqlGate))]
+    public async Task StudentInvoiceHttp_ForeignOwn404Restricted403AndNoPaymentFields()
+    {
+        await using var f=await OwnedSqlFixture.CreateAsync(new M1AdmissionsSqlTests.Clock());var id=await M1AdmissionsSqlTests.Confirmed(f);var token=f.Token(await f.Grant("Admissions"));var ex=new EnglishCenter.Api.Infrastructure.Admissions.SqlAdmissionsExecutor(()=>f.Db(),f.Clock,10,1000);
+        var p=await ex.ApprovalAsync(token,id,Ct);var approved=await ex.CommandAsync(token,41,id,Guid.NewGuid(),JsonSerializer.Serialize(p.Manifest),65536,Ct);var invoice=approved.Registration.Invoice!.Id;
+        var input=EnglishCenter.Api.Services.Identity.StudentSignupInput.Parse(JsonSerializer.Serialize(new{fullName="Other Student",dateOfBirth="2000-01-01",email="signup@example.invalid",phone="0987654321",password=f.Password,address=(string?)null}));await f.Signup.ExecuteAsync(input,Ct);
+        await using var host=await Host.Create(f);await host.Login("signup");
+        using var foreign=await host.Send(HttpMethod.Get,$"/api/v1/students/me/invoices/{invoice}");using var absent=await host.Send(HttpMethod.Get,"/api/v1/students/me/invoices/2147483647");Assert.Equal(HttpStatusCode.NotFound,foreign.StatusCode);Assert.Equal(HttpStatusCode.NotFound,absent.StatusCode);var absentError=await absent.Content.ReadFromJsonAsync<JsonElement>(Ct);var foreignError=await foreign.Content.ReadFromJsonAsync<JsonElement>(Ct);foreach(var field in new[]{"code","message","fieldErrors"})Assert.Equal(absentError.GetProperty(field).GetRawText(),foreignError.GetProperty(field).GetRawText());Assert.True(Guid.TryParse(foreignError.GetProperty("traceId").GetString(),out _));
+        using var filter=await host.Send(HttpMethod.Get,$"/api/v1/students/me/invoices?registrationId={id}");Assert.Equal(HttpStatusCode.NotFound,filter.StatusCode);
+        using var empty=await host.Send(HttpMethod.Get,"/api/v1/students/me/invoices");Assert.Equal(HttpStatusCode.OK,empty.StatusCode);Assert.Equal(0,(await empty.Content.ReadFromJsonAsync<JsonElement>(Ct)).GetProperty("totalCount").GetInt32());
+        await f.Restricted();await host.Login("Student");using var restricted=await host.Send(HttpMethod.Get,$"/api/v1/students/me/invoices/{invoice}");Assert.Equal(HttpStatusCode.Forbidden,restricted.StatusCode);
+    }
     internal sealed class Host(WebApplication app,HttpClient client) : IAsyncDisposable
     {
         private readonly Dictionary<string,string> cookies=[];private string? csrf;
@@ -65,9 +104,11 @@ public sealed class M1HttpSqlTests
             var app=builder.Build();app.UseApiErrorMiddleware();app.UseRouting();app.UseAuthJsonBoundary();app.UseCsrfBoundary("https://localhost",new LiveCsrfIdentityResolver(f.Validator,f.Current,f.Audit,f.Clock));
             app.MapCsrfContext();app.MapLogin(f.Login,new LoginIpLimiter(),new Ip(),f.Audit,f.Clock,4096);app.MapCurrentSession(f.Current,f.Clock);
             app.MapAdminAccountPilot(f.Admin,4096);app.MapStaffAccounts(new SqlStaffAccountExecutor(()=>f.Db(),f.Clock,f.Hasher,new TemporaryPasswordGenerator(new PasswordPolicy(OfflinePasswordBlocklist.Load(Path.Combine(AppContext.BaseDirectory,"Resources","PasswordBlocklist")))),10,1000),4096);
-            app.MapCourseCatalogue(new SqlCourseExecutor(()=>f.Db(),f.Clock,10,1000),4096);app.MapTrainingPrograms(new SqlProgramExecutor(()=>f.Db(),f.Clock,10,1000),4096);app.MapEntrySessions(new SqlEntrySessionExecutor(()=>f.Db(),f.Clock,10,1000),4096);
+            app.MapCourseCatalogue(new SqlCourseExecutor(()=>f.Db(),f.Clock,10,1000),4096);app.MapTrainingPrograms(new SqlProgramExecutor(()=>f.Db(),f.Clock,10,1000),4096);app.MapEntrySessions(new SqlEntrySessionExecutor(()=>f.Db(),f.Clock,10,1000),4096,new(()=>f.Db(),f.Clock,10,1000));
             app.MapStudentEnrollment(new(()=>f.Db(),f.Clock,10,1000),new(()=>f.Db(),f.Clock,10,1000),new(()=>f.Db(),f.Clock,10,1000),4096);
             app.MapTeacherEntry(new(()=>f.Db(),f.Clock,10,1000),new(()=>f.Db(),f.Clock,10,1000),4096);
+            EnglishCenter.Api.Api.Admissions.AdmissionsEndpoints.MapAdmissions(app,new(()=>f.Db(),f.Clock,10,1000),4096);
+            EnglishCenter.Api.Api.StudentInvoices.StudentInvoiceEndpoints.MapStudentInvoices(app,new(()=>f.Db(),f.Clock,10,1000));
             await app.StartAsync(Ct);var client=app.GetTestClient();client.BaseAddress=new Uri("https://localhost");return new(app,client){fixturePassword=f.Password};
         }
         public async Task Login(string role)

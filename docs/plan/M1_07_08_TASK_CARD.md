@@ -1,5 +1,6 @@
 # M1 packages7–8 — remaining M1 completion assigned2026-10-10
-Status IN PROGRESS; baseline main39913bf/sourcee92ef6b, manager .worktrees/m1-admissions.
+Status manager COMPLETE/review PASS2026-10-10; main apply/reverification pending.
+Baseline main39913bf/sourcee92ef6b, manager .worktrees/m1-admissions.
 Owner asked apply completed5–6 and continue the remainder; ADR177 completion and
 ADR163 apply after Codex PASS remain active, without repeated permission gates.
 Package7 Admissions APIs038–044 + own role/action branch of shared045: current
@@ -47,7 +48,7 @@ Services/StudentInvoices, Infrastructure/StudentInvoices, Api/StudentInvoices;
 minimal existing Enrollment shared helpers/audit allowlists/EntrySessionEndpoints
 shared045/LocalRuntimeServices; frontend features/admissions, features/invoices,
 app IdentityApp/identityNavigation, lib/http; isolated test families/fixture/browser
-verify-m1; operator wrong-role reads only; api/notes/taskcard/review/evidence.
+verify-m1; operator wrong-role reads only; api/notes/plan.md/taskcard/review/evidence.
 Final exact paths recorded before review; no instruction/Project Memory edits.
 
 External sharing contract BEFORE delegation: ONLY M1_ADMISSION_REASON_WORKER.md,
@@ -65,3 +66,8 @@ StudentInvoice privacy/debt-date/fresh print/unknown manual recovery/RAMlogout.
 Manager/main default+frontend types/lint/build, ownedID/GUID SQL/HTTP/Edge widths
 375/768/1280, prior regression and actual existing LOCAL_DEV all9/strictTLS/route
 refusals/maintenance; no fake operational data, owner4 hashes metadata-only preserved.
+
+Manager final:1345defaultPASS/177intentionalSKIP;160M1PASS(91SQLHTTP+69RAM);
+93frontend/types/lint/buildPASS/buildclean;14Edgegroups+final88PASS all3widths.
+169owned scratch ID/GUID-paired dropped/live0; owner4 unchanged/unshared/untracked.
+See M1_07_08_REVIEW.md, exact allowlist and M1-admissions-evidence/summary.json.

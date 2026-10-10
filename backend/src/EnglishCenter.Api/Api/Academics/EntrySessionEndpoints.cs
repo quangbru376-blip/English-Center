@@ -9,7 +9,7 @@ using EnglishCenter.Api.Common.Security;
 using EnglishCenter.Api.Infrastructure.Academics;
 public static class EntrySessionEndpoints
 {
-    public static void MapEntrySessions(this IEndpointRouteBuilder routes, SqlEntrySessionExecutor executor, int bytes)
+    public static void MapEntrySessions(this IEndpointRouteBuilder routes, SqlEntrySessionExecutor executor, int bytes, Infrastructure.Admissions.SqlAdmissionsExecutor? admissions = null)
     {
         const string root = "/api/v1/admissions/entry-test-sessions"; var policy = new CsrfRoutePolicy(CsrfAccess.Authenticated, true);
         routes.MapGet(root, async (HttpContext context) => { var token = ProgramEndpoints.RequireAcademic(context); AdminAccountEndpoints.RequireEmptyBody(context); return Results.Ok(await executor.SearchAsync(token, context.Request.Query, context.RequestAborted)); }).WithMetadata(policy).AllowAnonymous();
@@ -20,6 +20,15 @@ public static class EntrySessionEndpoints
         routes.MapPost(root + "/{id}/grader-change-preview", async (HttpContext context, string id) => { var token = ProgramEndpoints.RequireAcademic(context); AdminAccountEndpoints.RequireNoQuery(context); using var json = JsonDocument.Parse(AuthJsonBoundary.Read(context)); var body = json.RootElement; if (body.ValueKind != JsonValueKind.Object || body.EnumerateObject().Count() != 1 || !body.TryGetProperty("graderId", out var value) || value.ValueKind != JsonValueKind.Number || !value.TryGetInt32(out var grader) || grader < 1) throw ApiErrorException.Validation("graderId"); return Results.Ok(await executor.GraderPreviewAsync(token, AdminAccountEndpoints.Id(id), grader, context.RequestAborted)); }).WithMetadata(policy, new AuthBodyPolicy(bytes)).AllowAnonymous();
         routes.MapGet("/api/v1/admissions/entry-test-grader-options", async (HttpContext context) => { var token = ProgramEndpoints.RequireAcademic(context); AdminAccountEndpoints.RequireEmptyBody(context); return Results.Ok(await executor.OptionsAsync(token, context.Request.Query, context.RequestAborted)); }).WithMetadata(policy).AllowAnonymous();
         routes.MapPost(root + "/{id}/roster/search", async (HttpContext context, string id) => { var token = ProgramEndpoints.RequireAcademic(context); AdminAccountEndpoints.RequireNoQuery(context); return Results.Ok(await executor.RosterAsync(token, AdminAccountEndpoints.Id(id), SessionRosterFilter.Parse(AuthJsonBoundary.Read(context)), context.RequestAborted)); }).WithMetadata(policy, new AuthBodyPolicy(bytes)).AllowAnonymous();
-        routes.MapGet("/api/v1/admissions/command-results/{requestId}", async (HttpContext context, string requestId) => { var token = ProgramEndpoints.RequireAcademic(context); AdminAccountEndpoints.RequireEmptyBody(context); if (context.Request.Query.Count != 1 || !context.Request.Query.TryGetValue("action", out var action) || action.Count != 1 || string.IsNullOrEmpty(action[0])) throw ApiErrorException.Validation("action"); return Results.Ok(await executor.LookupAsync(token, action[0]!, AdminAccountEndpoints.Uuid(requestId), context.RequestAborted)); }).WithMetadata(policy).AllowAnonymous();
+        routes.MapGet("/api/v1/admissions/command-results/{requestId}", async (HttpContext context, string requestId) =>
+        {
+            var isAdmissions = context.User.IsInRole("Admissions") && admissions is not null;
+            var token = isAdmissions ? Enrollment.EnrollmentEndpoints.RequireRole(context, "Admissions") : ProgramEndpoints.RequireAcademic(context);
+            AdminAccountEndpoints.RequireEmptyBody(context);
+            if (context.Request.Query.Count != 1 || !context.Request.Query.TryGetValue("action", out var action) || action.Count != 1 || string.IsNullOrEmpty(action[0])) throw ApiErrorException.Validation("action");
+            var request = AdminAccountEndpoints.Uuid(requestId);
+            if (isAdmissions) return Results.Ok(await admissions!.LookupAsync(token, action[0]!, request, context.RequestAborted));
+            return Results.Ok(await executor.LookupAsync(token, action[0]!, request, context.RequestAborted));
+        }).WithMetadata(policy).AllowAnonymous();
     }
 }

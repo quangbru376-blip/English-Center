@@ -1,3 +1,18 @@
+2026-10-10 packages7–8 manager review PASS; main application pending.
+Admissions NORMAL API038–044: POST /api/v1/admissions/registrations/search;
+GET /{id}; POST /{id}/approval-preview, /approve, /reject,
+/cancellation-preview, /cancel. PII body-only; exact current contact/detail DTOs.
+Shared API045 /api/v1/admissions/command-results/{requestId}?action= dispatches
+Admissions three Registration families or AcademicAffairs six Session families,
+never union rights. All three commands return current Registration/operationId.
+Approve atomically issues SP07 Invoice/current positive tuition/due VN+7;
+reject/cancel require normalized reason/full manifests/audit/T23. No Payment API.
+Student NORMAL API046–047 GET /api/v1/students/me/invoices and /{id} own scope,
+current names/Course plus immutable snapshot amount; actual FN06 debt flags.
+Native list/detail/A4 fresh-print; failed GET never prints cached data.
+Explicit existing LOCAL_DEV only; no new default routes/packages/schema/grants.
+Manager1345default/160M1/93frontend/14Edge+final88 PASS; see M1_07_08_REVIEW.
+
 2026-10-10 packages5–6 reviewed PASS/applied main e92ef6b/reverified LOCAL_DEV:
 Student NORMAL own API019–037 adapters under /api/v1/students/me implement
 GET/PUT profile; GET home/courses/courses/{id}/registrations/registrations/{id};
@@ -11,7 +26,7 @@ API029 optional bookingId reads targets for an own current SCHEDULED source;
 OPEN/future/pre-confirmation/source and other-overlap guards remain unchanged.
 No query preserves book/rebook context with literal-null currentBookingId. The
 bounded technical refinement completes accepted W07 under owner completion scope;
-API030/C1/command actions/count154 remain unchanged. Review/testing still pending.
+API030/C1/command actions/count154 remain unchanged;5–6 review/apply/reverification PASS.
 Teacher NORMAL current assignment API066–073 adapters under
 /api/v1/admissions/teachers/me implement GET entry-test-sessions, GET {id},
 POST entry-test-sessions/{id}/roster/search, GET entry-test-bookings/{id},
