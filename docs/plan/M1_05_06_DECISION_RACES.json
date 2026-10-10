@@ -1,0 +1,32 @@
+{
+  "newCases": [
+    "Confirmation versus original-grader score correction",
+    "Registration cancellation versus initial grading"
+  ],
+  "date": "2026-10-10",
+  "scope": "Only tests in retained packages5-6 manager, no business contract changes",
+  "build": {
+    "warnings": 0,
+    "errors": 0
+  },
+  "default": {
+    "passed": 1345,
+    "trx": "backend/TestResults/M1-post-decision-races-default/M1-post-decision-races-default.trx",
+    "skippedIntentional": 157,
+    "failed": 0
+  },
+  "parentManagerSource": "1888b0a023348e59fed4d82c1e93f260de51cf3b",
+  "ownedSql": {
+    "passed": 2,
+    "trx": "backend/TestResults/M1-decision-races-reviewed/M1-decision-races-reviewed.trx",
+    "failed": 0
+  },
+  "scratchCumulative": {
+    "droppedIdGuidPaired": 98,
+    "created": 98,
+    "pairFailures": 0,
+    "liveRemaining": 0
+  },
+  "pending": "Owner selection: finish5-6 with proposed API029 bookingId refinement or open7-8 while preserving5-6WIP. No refinement/new package implementation before selection.",
+  "status": "IN_PROGRESS_NO_MAIN_APPLY"
+}
