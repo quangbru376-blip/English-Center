@@ -2,7 +2,7 @@
   "review": "PASS",
   "date": "2026-10-10",
   "managerBase": "db0ae748db0fcf0187702f6cd75e0aa44e37ade3",
-  "mainApplied": false,
+  "mainApplied": true,
   "default": {
     "passed": 1345,
     "failed": 0,
@@ -39,6 +39,33 @@
     "idGuidPairedDropped": 151,
     "created": 151
   },
-  "operational": "PENDING_AFTER_MAIN_APPLY",
-  "ownerFiles": "unchanged/unshared/untracked/unstaged"
+  "operational": "PASS: genuine identities/all9/strict SQL+HTTPS/Edge widths/Admin4login4logout/StudentTeacher403/replayCOMMIT1/auditCOMMIT1/failed0/stop503/forced0",
+  "ownerFiles": "unchanged/unshared/untracked/unstaged",
+  "mainCode": "e92ef6b905d1e981166d2bff546e0a0d91f3b580",
+  "managerCode": "84c9ff93b3f455bd5f969d01fb23cc4601c607b3",
+  "mainReverified": {
+    "edgePASS": 13,
+    "frontendPASS": 85,
+    "warnings": 0,
+    "intentionalOptInSKIP": 160,
+    "errors": 0,
+    "defaultPASS": 1345,
+    "lint": "PASS",
+    "sqlHttpPASS": 31,
+    "build": "PASS",
+    "types": "PASS"
+  },
+  "treeHashes": {
+    "tests": "4025c31ba7cdf680f9bc050a2180383dce682572",
+    "src": "96e982e09a25def15c234649f3f5f762d5fef40d",
+    "frontend": "fb5a3e32f4d726faabab95f9409709246ee869ce",
+    "identical": true
+  },
+  "mainScratch": {
+    "idGuidPairedDropped": 44,
+    "liveRemaining": 0,
+    "created": 44
+  },
+  "operationalReceipt": "docs/plan/V01-evidence/test-results/M1-05-06-main-operational-20261010.json",
+  "stage": "M0 COMPLETE; M1 packages1–6 COMPLETE; remaining M1 assigned for continuation"
 }

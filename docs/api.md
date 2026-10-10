@@ -1,4 +1,4 @@
-2026-10-10 manager WIP ONLY, packages5–6 not applied to main and no full PASS claim:
+2026-10-10 packages5–6 reviewed PASS/applied main e92ef6b/reverified LOCAL_DEV:
 Student NORMAL own API019–037 adapters under /api/v1/students/me implement
 GET/PUT profile; GET home/courses/courses/{id}/registrations/registrations/{id};
 POST registrations; POST registrations/{id}/cancellation-preview or /cancel;

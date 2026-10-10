@@ -1,3 +1,6 @@
+CURRENT: packages5–6 COMPLETE/review PASS/applied ADR163/main and actual reverified.
+Main code e92ef6b; manager84c9ff9; see FINAL_REVIEW.json for exact current evidence.
+Historical pending/foundation text below is superseded; M1 remaining now assigned.
 2026-10-10 final manager review PASS; see M1_05_06_REVIEW.md and FINAL_REVIEW.json.
 Main apply/main and operational recheck pending. Historical checkpoints below.
 # M1 packages5–6 — assigned2026-10-09

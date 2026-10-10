@@ -1,3 +1,8 @@
+Main applied e92ef6b under ADR163; main default1345/160opt-inSKIP,31SQL/HTTP,
+13Edgegroups,85frontend/types/lint/build and genuine LOCAL_DEV reverify PASS.
+Manager/main source/test/frontend trees identical;44main scratch paired dropped/live0.
+Owner4 hashes unchanged/unshared/untracked/unstaged; operational empty business tables.
+
 # M1 packages 5–6 — final independent Codex review 2026-10-10
 Verdict: PASS for the complete assigned Student/Teacher source; eligible for ADR163 apply.
 Main application and genuine operational recheck are subsequent verification steps,
