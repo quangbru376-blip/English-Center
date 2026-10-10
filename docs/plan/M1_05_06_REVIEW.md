@@ -1,3 +1,27 @@
+# M1 packages5–6 — integration checkpoint 2026-10-10
+
+Verdict: FAIL/incomplete for full-batch completion and ADR163 apply. Source stays
+in retained manager; main product remains packages1–4/code564343b.
+Codex inspected Student command/read/manifest, Teacher read/SP02/scope, cookie/CSRF
+adapters and RAM-only typed pages; fixed future DOB, final projection clock checks,
+response target binding, zero UUID and accessible calendar selector.
+Implemented Student create/book/rebook/reschedule API/cancel/confirm/home/options/
+calendar/results/profile and Teacher list/detail/SP02/task/commands/lookup.
+Manager1345defaultPASS/155intentionalSKIP;83frontend/types/lint/buildPASS;buildclean.
+Final combined27SQL/HTTP PASS; focused retake/confirm PASS; four race/clock cases
+PASS retained; both Edge85/86 at375/768/1280 PASS with manual lost-ACK lookup.
+All96scratch databases ID/GUID-paired dropped; live remaining0. Owner4 unchanged.
+
+Remaining before full PASS/apply:
+1. Newly found canonical API029 gap: current SCHEDULED blocks all target options,
+   yet API032 requires a target RV. Owner selection is pending on the bounded
+   bookingId refinement. See M1_05_06_RESCHEDULE_CONTRACT_PROPOSAL.md. This new
+   business-contract question does not reopen standing permission decisions.
+2. Implement selected reschedule UI/contract and scoped SQL/HTTP/Edge verification.
+3. Complete final independent review and remaining confirmation/correction/cancel
+   race coverage; then PASS, apply ADR163, main and actual LOCAL_DEV reverify.
+
+Historical foundation-only review below is superseded by this checkpoint.
 # M1 packages5–6 — foundation checkpoint review
 
 Verdict: FAIL for completion/apply of the full assigned batch. Status IN PROGRESS.

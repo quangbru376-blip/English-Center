@@ -1,0 +1,60 @@
+{
+  "fullBatchReview": "FAIL_INCOMPLETE",
+  "build": {
+    "errors": 0,
+    "warnings": 0
+  },
+  "frontend": {
+    "lint": "PASS",
+    "failed": 0,
+    "types": "PASS",
+    "build": "PASS",
+    "passed": 83
+  },
+  "default": {
+    "skippedIntentional": 155,
+    "failed": 0,
+    "passed": 1345
+  },
+  "status": "IN_PROGRESS",
+  "mainApplied": false,
+  "ownerFiles": "Four hashes unchanged, unshared, untracked and unstaged",
+  "edge": {
+    "lostResponseManualLookup": true,
+    "widths": [
+      375,
+      768,
+      1280
+    ],
+    "failed": 0,
+    "groups": [
+      85,
+      86
+    ],
+    "passed": 2
+  },
+  "pending": [
+    "Owner selection for newly identified API029 reschedule target-picker contract gap",
+    "Implement accepted reschedule picker and verification",
+    "Remaining independent review/race coverage closure",
+    "ADR163 PASS apply and main/actualLOCAL_DEV reverify"
+  ],
+  "scratch": {
+    "liveRemaining": 0,
+    "droppedIdentityPaired": 96,
+    "pairFailures": 0,
+    "created": 96
+  },
+  "evidence": [
+    "backend/TestResults/M1-enrollment-default-reviewed/M1-enrollment-default-reviewed.trx",
+    "backend/TestResults/M1-enrollment-sql-final-current/M1-enrollment-sql-final-current.trx",
+    "backend/TestResults/M1-retake-confirm-reviewed/M1-retake-confirm-reviewed.trx",
+    "backend/TestResults/M1-enrollment-edge-final-current/M1-enrollment-edge-final-current.trx"
+  ],
+  "sqlHttp": {
+    "failed": 0,
+    "finalCombinedPassed": 27,
+    "retakeConfirmationFocusedPassed": 1
+  },
+  "prohibitedScopes": "No Admissions/Invoice UI/Classes/M2-M4/schema/grants/install/push/deploy; D07 untouched"
+}
