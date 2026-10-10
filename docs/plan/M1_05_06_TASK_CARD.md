@@ -1,4 +1,17 @@
+2026-10-10 final manager review PASS; see M1_05_06_REVIEW.md and FINAL_REVIEW.json.
+Main apply/main and operational recheck pending. Historical checkpoints below.
 # M1 packages5–6 — assigned2026-10-09
+2026-10-10 completion continuation: manager resolves API029 technical omission
+under standing ADR177 and owner's instruction to finish/apply then continue.
+Optional bookingId supplies target options for the already accepted W07 reschedule;
+no new business policy/action/endpoint/schema/role. Keep API030 literal-null context.
+Additional exact documentation paths: docs/design/E04_DTO_SPEC.md,
+docs/design/E04_CONTRACT_CATALOG.md and docs/api.md; existing code families include
+frontend/src/lib/enrollmentDisplay.ts and M1StudentRescheduleOptionsSqlTests.cs.
+Verification adds own-current-source options, replaced-source overlap exclusion,
+other conflicts/full-seat rollback, scoped HTTP, strict frontend binding and
+three-width Edge reschedule/lost-ACK manual lookup. Full PASS/apply remains pending.
+
 Status IN PROGRESS. Start mainf764b87; manager .worktrees/m1-student-teacher.
 Package5 Student own profile/home/course selection/Registration/entry booking,
 calendar/results/confirmation APIs019–037. Package6 Teacher current entry tasks
@@ -80,3 +93,15 @@ two audit primitives; tests only M1EnrollmentContractTests/M1EnrollmentFoundatio
 m1-enrollment-forms.test.mjs; frontend only two pure components. Docs/evidence only.
 Next continue Student Enrollment service and repository within this contract,
 then complete Teacher reads/lookup/HTTP/UI and full verification/apply main.
+
+Integration checkpoint2026-10-10: source remains manager-only, full-batchFAIL/incomplete.
+Student APIs019–037 except reschedule picker contract refinement, Teacher066–073,
+explicit LOCAL_DEV adapters and typed role pages implemented. Current evidence:
+M1_05_06_INTEGRATION_CHECKPOINT.json and M1_05_06_CURRENT_ALLOWLIST.txt.
+1345defaultPASS/155intentionalSKIP;83frontend/types/lint/buildPASS/buildclean;
+27finalSQL/HTTP +retake-confirm focused PASS; Edge85/86 three widths PASS.
+96scratch created/ID-GUID-paired dropped/live0; owner4 hash-identical/unshared.
+New business-contract gap API029 target options while already booked awaits owner
+selection; proposal documents exact bounded refinement before implementation.
+No repeat permission gate; standing ADR177/163 applies after full reviewPASS.
+Historical foundation-only statements below do not describe current manager source.

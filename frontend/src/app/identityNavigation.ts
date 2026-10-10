@@ -13,6 +13,7 @@ export function identityPath(context: AuthContext | null, requested: string): st
   if (context.scope === 'PASSWORD_CHANGE') return '/account/change-password';
   if (requested === '/account/change-password') return requested;
   if (context.role === 'AcademicAffairs' && ['/academics/courses','/academics/training-programs'].includes(requested)) return requested;
+  if (context.role === 'Teacher' && requested === '/teacher/entry-test-sessions') return requested;
   if (context.role === 'Admin' && /^\/admin\/accounts\/[1-9]\d{0,9}$/.test(requested) && Number(requested.split('/').at(-1)) <= 2147483647) return requested;
   return normalLandings[context.role].path;
 }

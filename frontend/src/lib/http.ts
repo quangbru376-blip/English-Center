@@ -50,6 +50,33 @@ const endpoints = {
   sessionRoster:{path:'/api/v1/admissions/entry-test-sessions',method:'POST',intent:'read',access:'academic'},
   sessionOptions:{path:'/api/v1/admissions/entry-test-grader-options',method:'GET',intent:'read',access:'academic'},
   sessionResult:{path:'/api/v1/admissions/command-results',method:'GET',intent:'read',access:'academic'},
+  studentProfile:{path:'/api/v1/students/me/profile',method:'GET',intent:'read',access:'student'},
+  studentProfileUpdate:{path:'/api/v1/students/me/profile',method:'PUT',intent:'write',access:'student'},
+  studentHome:{path:'/api/v1/students/me/home',method:'GET',intent:'read',access:'student'},
+  studentCourses:{path:'/api/v1/students/me/courses',method:'GET',intent:'read',access:'student'},
+  studentCourse:{path:'/api/v1/students/me/courses',method:'GET',intent:'read',access:'student'},
+  studentRegistrations:{path:'/api/v1/students/me/registrations',method:'GET',intent:'read',access:'student'},
+  studentRegistration:{path:'/api/v1/students/me/registrations',method:'GET',intent:'read',access:'student'},
+  studentCreate:{path:'/api/v1/students/me/registrations',method:'POST',intent:'write',access:'student'},
+  studentCancelPreview:{path:'/api/v1/students/me/registrations',method:'POST',intent:'read',access:'student'},
+  studentCancel:{path:'/api/v1/students/me/registrations',method:'POST',intent:'write',access:'student'},
+  studentOptions:{path:'/api/v1/students/me/registrations',method:'GET',intent:'read',access:'student'},
+  studentBook:{path:'/api/v1/students/me/registrations',method:'POST',intent:'write',access:'student'},
+  studentCancelBooking:{path:'/api/v1/students/me/registrations',method:'POST',intent:'write',access:'student'},
+  studentReschedule:{path:'/api/v1/students/me/registrations',method:'POST',intent:'write',access:'student'},
+  studentCalendar:{path:'/api/v1/students/me/entry-test-bookings',method:'GET',intent:'read',access:'student'},
+  studentResults:{path:'/api/v1/students/me/registrations',method:'GET',intent:'read',access:'student'},
+  studentConfirmPreview:{path:'/api/v1/students/me/registrations',method:'POST',intent:'read',access:'student'},
+  studentConfirm:{path:'/api/v1/students/me/registrations',method:'POST',intent:'write',access:'student'},
+  studentResult:{path:'/api/v1/students/me/command-results',method:'GET',intent:'read',access:'student'},
+  teacherSessions:{path:'/api/v1/admissions/teachers/me/entry-test-sessions',method:'GET',intent:'read',access:'teacher'},
+  teacherSession:{path:'/api/v1/admissions/teachers/me/entry-test-sessions',method:'GET',intent:'read',access:'teacher'},
+  teacherRoster:{path:'/api/v1/admissions/teachers/me/entry-test-sessions',method:'POST',intent:'read',access:'teacher'},
+  teacherTask:{path:'/api/v1/admissions/teachers/me/entry-test-bookings',method:'GET',intent:'read',access:'teacher'},
+  teacherGrade:{path:'/api/v1/admissions/teachers/me/entry-test-bookings',method:'POST',intent:'write',access:'teacher'},
+  teacherAbsence:{path:'/api/v1/admissions/teachers/me/entry-test-bookings',method:'POST',intent:'write',access:'teacher'},
+  teacherCorrect:{path:'/api/v1/admissions/teachers/me/entry-test-attempts',method:'PUT',intent:'write',access:'teacher'},
+  teacherResult:{path:'/api/v1/admissions/teachers/me/command-results',method:'GET',intent:'read',access:'teacher'},
 } as const;
 export type Endpoint = keyof typeof endpoints;
 export type HttpResult<T> =
@@ -60,6 +87,7 @@ export type RequestOptions<T> = {
   endpoint: Endpoint; slot: string; decode: (value: unknown) => T;
   body?: unknown; signal?: AbortSignal;
   targetId?: number; requestId?: string;
+  registrationId?: number;
   query?: Readonly<Record<string,string>>;
 };
 
@@ -69,26 +97,31 @@ export class HttpClient {
   async request<T>(options: RequestOptions<T>): Promise<HttpResult<T>> {
     if (!Object.hasOwn(endpoints, options.endpoint)) return { kind: 'blocked' };
     const endpoint = endpoints[options.endpoint];
-    if (!endpoint || (endpoint.intent === 'read' && !['adminSearch','sessionRoster','sessionGraderPreview'].includes(options.endpoint) && options.body !== undefined)) return { kind: 'blocked' };
+    if (!endpoint || (endpoint.intent === 'read' && !['adminSearch','sessionRoster','sessionGraderPreview','teacherRoster'].includes(options.endpoint) && options.body !== undefined)) return { kind: 'blocked' };
     if (endpoint.access === 'session' && !this.auth.context) return { kind: 'blocked' };
     if (endpoint.access === 'admin' && (this.auth.context?.role !== 'Admin' || this.auth.context.scope !== 'NORMAL')) return { kind: 'blocked' };
     if (endpoint.access === 'academic' && (this.auth.context?.role !== 'AcademicAffairs' || this.auth.context.scope !== 'NORMAL')) return { kind:'blocked' };
+    if (endpoint.access === 'student' && (this.auth.context?.role !== 'Student' || this.auth.context.scope !== 'NORMAL') || endpoint.access === 'teacher' && (this.auth.context?.role !== 'Teacher' || this.auth.context.scope !== 'NORMAL')) return {kind:'blocked'};
     const suffixes:Partial<Record<Endpoint,string>>={adminLock:'lock',adminReset:'reset-password',adminUnlock:'unlock',adminDisable:'disable',adminRestore:'restore',courseUpdate:'details',courseDeactivate:'deactivate',courseActivate:'activate'};
     Object.assign(suffixes,{programEdit:'configuration',programRename:'name',programPreview:'activation-preview',programActivate:'activate',programDraft:'return-to-draft',programDeactivate:'deactivate',sessionSchedule:'schedule',sessionOpen:'open',sessionClose:'close',sessionCancelPreview:'cancellation-preview',sessionCancel:'cancel',sessionGraderPreview:'grader-change-preview',sessionGrader:'change-grader',sessionRoster:'roster/search'});
-    const lookup=['adminLockResult','adminResult','courseResult','programResult','sessionResult'].includes(options.endpoint);
-    const needsTarget = ['adminDetail','courseDetail','programDetail','sessionDetail'].includes(options.endpoint) || Object.hasOwn(suffixes,options.endpoint);
-    const needsKey = lookup || endpoint.intent==='write' && (endpoint.access==='admin'||endpoint.access==='academic');
+    Object.assign(suffixes,{studentCancelPreview:'cancellation-preview',studentCancel:'cancel',studentOptions:'entry-test-options',studentBook:'entry-test-bookings',studentCancelBooking:'cancel',studentReschedule:'reschedule',studentResults:'entry-results',studentConfirmPreview:'confirmation-preview',studentConfirm:'confirm',teacherRoster:'roster/search',teacherGrade:'score',teacherAbsence:'absence',teacherCorrect:'score'});
+    const lookup=['adminLockResult','adminResult','courseResult','programResult','sessionResult','studentResult','teacherResult'].includes(options.endpoint);
+    const nested=['studentCancelBooking','studentReschedule'].includes(options.endpoint);
+    const needsTarget = ['adminDetail','courseDetail','programDetail','sessionDetail','studentCourse','studentRegistration','teacherSession','teacherTask'].includes(options.endpoint) || Object.hasOwn(suffixes,options.endpoint);
+    const needsKey = lookup || endpoint.intent==='write' && (endpoint.access==='admin'||endpoint.access==='academic'||endpoint.access==='teacher'||endpoint.access==='student'&&options.endpoint!=='studentProfileUpdate');
+    if(nested&&(!Number.isInteger(options.registrationId)||options.registrationId!<1||options.registrationId!>2147483647)||!nested&&options.registrationId!==undefined)return {kind:'blocked'};
     if (needsTarget && (!Number.isInteger(options.targetId) || options.targetId! < 1 || options.targetId! > 2147483647) ||
         !needsTarget && options.targetId !== undefined ||
-        needsKey && (typeof options.requestId !== 'string' || !/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/.test(options.requestId)) ||
+        needsKey && (typeof options.requestId !== 'string' || options.requestId==='00000000-0000-0000-0000-000000000000' || !/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/.test(options.requestId)) ||
         !needsKey && options.requestId !== undefined) return { kind: 'blocked' };
-    const allowedQuery=options.endpoint==='courseSearch'?['code','name','status','sort','page','pageSize']:options.endpoint==='programSearch'?['courseId','bandId','name','status','sort','page','pageSize']:options.endpoint==='sessionSearch'?['fromDate','toDate','effectiveStatus','graderId','sort','page','pageSize']:options.endpoint==='sessionOptions'?['date','startTime','endTime','sessionId','page','pageSize']:lookup?['action']:[];
+    const allowedQuery=options.endpoint==='courseSearch'?['code','name','status','sort','page','pageSize']:options.endpoint==='programSearch'?['courseId','bandId','name','status','sort','page','pageSize']:options.endpoint==='sessionSearch'?['fromDate','toDate','effectiveStatus','graderId','sort','page','pageSize']:options.endpoint==='sessionOptions'?['date','startTime','endTime','sessionId','page','pageSize']:['studentHome','studentCourses'].includes(options.endpoint)?['page','pageSize']:options.endpoint==='studentRegistrations'?['courseId','status','page','pageSize']:options.endpoint==='studentOptions'?['fromDate','toDate','bookingId','page','pageSize']:options.endpoint==='studentCalendar'?['fromDate','toDate','registrationId','view','page','pageSize']:options.endpoint==='teacherSessions'?['fromDate','toDate','effectiveStatus','sort','page','pageSize']:lookup?['action']:[];
     if(options.query&&Object.keys(options.query).some(key=>!allowedQuery.includes(key)))return {kind:'blocked'};
     const action=options.query?.action;
+    if(options.endpoint==='studentResult'&&(!action||!['STUDENT.REGISTRATION.CREATE','STUDENT.REGISTRATION.CANCEL','STUDENT.ENTRY_BOOKING.CREATE','STUDENT.ENTRY_BOOKING.CANCEL','STUDENT.ENTRY_BOOKING.RESCHEDULE','STUDENT.REGISTRATION.CONFIRM'].includes(action))||options.endpoint==='teacherResult'&&(!action||!['TEACHER.ENTRY_RESULT.CREATE','TEACHER.ENTRY_BOOKING.ABSENCE','TEACHER.ENTRY_RESULT.CORRECT'].includes(action)))return {kind:'blocked'};
     if(options.endpoint==='programResult'&&(!action||!['ACADEMIC.PROGRAM.CREATE','ACADEMIC.PROGRAM.UPDATE_CONFIGURATION','ACADEMIC.PROGRAM.RENAME','ACADEMIC.PROGRAM.ACTIVATE','ACADEMIC.PROGRAM.RETURN_TO_DRAFT','ACADEMIC.PROGRAM.DEACTIVATE'].includes(action))||options.endpoint==='sessionResult'&&(!action||!['ACADEMIC.ENTRY_SESSION.CREATE','ACADEMIC.ENTRY_SESSION.UPDATE_SCHEDULE','ACADEMIC.ENTRY_SESSION.OPEN','ACADEMIC.ENTRY_SESSION.CLOSE','ACADEMIC.ENTRY_SESSION.CANCEL','ACADEMIC.ENTRY_SESSION.CHANGE_GRADER'].includes(action)))return {kind:'blocked'};
     if(options.endpoint==='adminResult'&&(!action||!['ADMIN.STAFF.CREATE','ADMIN.ACCOUNT.RESET_PASSWORD','ADMIN.ACCOUNT.LOCK','ADMIN.ACCOUNT.UNLOCK','ADMIN.ACCOUNT.DISABLE','ADMIN.ACCOUNT.RESTORE'].includes(action))||options.endpoint==='courseResult'&&(!action||!['ACADEMIC.COURSE.CREATE','ACADEMIC.COURSE.UPDATE_DETAILS','ACADEMIC.COURSE.DEACTIVATE','ACADEMIC.COURSE.ACTIVATE'].includes(action)))return {kind:'blocked'};
     const query=options.endpoint==='adminLockResult'?'action=ADMIN.ACCOUNT.LOCK':new URLSearchParams(options.query).toString();
-    const path=(lookup?`${endpoint.path}/${options.requestId}`:needsTarget?`${endpoint.path}/${options.targetId}${suffixes[options.endpoint]?'/'+suffixes[options.endpoint]:''}`:endpoint.path)+(query?'?'+query:'');
+    const path=(lookup?`${endpoint.path}/${options.requestId}`:nested?`${endpoint.path}/${options.registrationId}/entry-test-bookings/${options.targetId}/${suffixes[options.endpoint]}`:needsTarget?`${endpoint.path}/${options.targetId}${suffixes[options.endpoint]?'/'+suffixes[options.endpoint]:''}`:endpoint.path)+(query?'?'+query:'');
     if (options.endpoint === 'login' && this.auth.context?.scope === 'PASSWORD_CHANGE') return { kind: 'blocked' };
     if (options.endpoint === 'register' && this.auth.context) return { kind: 'blocked' };
     const token = this.auth.csrf;
@@ -130,7 +163,7 @@ export class HttpClient {
       if (response.ok) {
         const expectedStatus = options.endpoint === 'register' ? 201 :
           options.endpoint === 'logout' || options.endpoint === 'password' ? 204 : 200;
-        if (response.status !== expectedStatus && !(response.status===201&&['staffCreate','courseCreate','programCreate','sessionCreate'].includes(options.endpoint))) return endpoint.intent === 'write' ? uncertainWrite() : { kind: 'unavailable' };
+        if (response.status !== expectedStatus && !(response.status===201&&['staffCreate','courseCreate','programCreate','sessionCreate','studentCreate','studentBook'].includes(options.endpoint))) return endpoint.intent === 'write' ? uncertainWrite() : { kind: 'unavailable' };
         let value: T;
         try { value = options.decode(payload); }
         catch {

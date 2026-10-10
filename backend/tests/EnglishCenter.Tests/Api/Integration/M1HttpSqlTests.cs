@@ -9,6 +9,8 @@ using EnglishCenter.Api.Api.Catalogue;
 using EnglishCenter.Api.Api.Identity;
 using EnglishCenter.Api.Api.Academics;
 using EnglishCenter.Api.Infrastructure.Academics;
+using EnglishCenter.Api.Infrastructure.Enrollment;
+using EnglishCenter.Api.Api.Enrollment;
 using EnglishCenter.Api.Common.Errors;
 using EnglishCenter.Api.Common.Security;
 using EnglishCenter.Api.Infrastructure.Administration;
@@ -63,7 +65,10 @@ public sealed class M1HttpSqlTests
             var app=builder.Build();app.UseApiErrorMiddleware();app.UseRouting();app.UseAuthJsonBoundary();app.UseCsrfBoundary("https://localhost",new LiveCsrfIdentityResolver(f.Validator,f.Current,f.Audit,f.Clock));
             app.MapCsrfContext();app.MapLogin(f.Login,new LoginIpLimiter(),new Ip(),f.Audit,f.Clock,4096);app.MapCurrentSession(f.Current,f.Clock);
             app.MapAdminAccountPilot(f.Admin,4096);app.MapStaffAccounts(new SqlStaffAccountExecutor(()=>f.Db(),f.Clock,f.Hasher,new TemporaryPasswordGenerator(new PasswordPolicy(OfflinePasswordBlocklist.Load(Path.Combine(AppContext.BaseDirectory,"Resources","PasswordBlocklist")))),10,1000),4096);
-            app.MapCourseCatalogue(new SqlCourseExecutor(()=>f.Db(),f.Clock,10,1000),4096);app.MapTrainingPrograms(new SqlProgramExecutor(()=>f.Db(),f.Clock,10,1000),4096);app.MapEntrySessions(new SqlEntrySessionExecutor(()=>f.Db(),f.Clock,10,1000),4096);await app.StartAsync(Ct);var client=app.GetTestClient();client.BaseAddress=new Uri("https://localhost");return new(app,client){fixturePassword=f.Password};
+            app.MapCourseCatalogue(new SqlCourseExecutor(()=>f.Db(),f.Clock,10,1000),4096);app.MapTrainingPrograms(new SqlProgramExecutor(()=>f.Db(),f.Clock,10,1000),4096);app.MapEntrySessions(new SqlEntrySessionExecutor(()=>f.Db(),f.Clock,10,1000),4096);
+            app.MapStudentEnrollment(new(()=>f.Db(),f.Clock,10,1000),new(()=>f.Db(),f.Clock,10,1000),new(()=>f.Db(),f.Clock,10,1000),4096);
+            app.MapTeacherEntry(new(()=>f.Db(),f.Clock,10,1000),new(()=>f.Db(),f.Clock,10,1000),4096);
+            await app.StartAsync(Ct);var client=app.GetTestClient();client.BaseAddress=new Uri("https://localhost");return new(app,client){fixturePassword=f.Password};
         }
         public async Task Login(string role)
         {

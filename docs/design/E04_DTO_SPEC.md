@@ -616,7 +616,14 @@ cho reuse như Registration mới; completed replay không chạy cancellation l
 ### 9.4. Options và đặt/rebook — API-029–030 / TX02
 
 API-029 GET /registrations/{rId}/entry-test-options query fromDate/toDate O
-LocalDate theo ngày VN inclusive, from>to400; page/pageSize mục1.2.
+LocalDate theo ngày VN inclusive, from>to400; bookingId O BusinessId; page/pageSize mục1.2.
+Refinement kỹ thuật 10/10/2026 trong phạm vi hoàn tất W07: khi có bookingId,
+chỉ đọc ca đích cho Booking thuộc own Registration này, SCHEDULED/current,
+Attempt chưa có điểm và source OPEN/chưa bắt đầu/trước CONFIRMED. Khác parent
+hoặc Booking không tồn tại404; source bị chặn trả blocked workflow như dưới.
+Loại source Session khỏi ca đích; bỏ riêng Booking được thay khỏi overlap guard,
+vẫn kiểm mọi Booking/lịch học khác, Teacher ACTIVE/capacity/time như đặt ca.
+Không giữ chỗ; API032 kiểm lại toàn bộ source/target guards atomic.
 Ca eligible OPEN/chưa start/còn chỗ và Student conflict guards; sort startAt ASC/
 id ASC.200 EntryOptions: registrationId R BusinessId, registrationVersion R
 RowVersion, eligible R boolean, blockedReasons R `array<string>`, attemptContext
@@ -629,11 +636,16 @@ không ca phù hợp→eligible=true/items=[], không tự đổi Course/lượt
 date/read-consistency là refinement draft, không thêm query cap bắt buộc mới.
 
 BookAttemptContext properties R: attemptNumber integer1–2, attemptId BusinessId
-hoặc null, attemptVersion RowVersion hoặc null, currentBookingId literal null.
+hoặc null, attemptVersion RowVersion hoặc null, currentBookingId literal null
+trong luồng book/rebook không có query bookingId. Trong options đổi lịch,
+currentBookingId R BusinessId bằng bookingId, attemptId/version phải cùng có
+và thuộc logical Attempt của Booking nguồn. Không tạo logical Attempt mới.
 attemptId/version cùng null khi cần tạo logical attempt; existing cùng có.
 Lượt server xác định: rebook ABSENT/CANCELLED cùng lượt, lượt2 cần score
 COMPLETED lượt1; không cho arbitrary attempt3/replace current Booking bằng book.
 Presence/no-current-booking luôn kiểm lại dưới guards/filtered unique.
+API030 luôn yêu cầu currentBookingId literal null; options đổi lịch chỉ dùng
+để chọn target cho API032, không cho thay Booking qua API030.
 
 API-030 POST /registrations/{rId}/entry-test-bookings: body targetSessionId R
 BusinessId, attemptContext R BookAttemptContext đúng context đã đọc,

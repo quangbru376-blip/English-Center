@@ -14,6 +14,8 @@ import { StaffAdminPage } from '../features/administration/pages/StaffAdminPage'
 import { CataloguePage } from '../features/catalogue/pages/CataloguePage';
 import { ProgramPage } from '../features/programs/pages/ProgramPage';
 import { EntrySessionPage } from '../features/entrySessions/pages/EntrySessionPage';
+import { StudentEnrollmentPage } from '../features/enrollment/StudentEnrollmentPage';
+import { TeacherEntryPage } from '../features/entryTasks/TeacherEntryPage';
 
 function Routes({ controller, initialPath }: { controller: SessionController; initialPath?: string }) {
   const subscribe = useCallback((listener: () => void) => controller.subscribe(listener), [controller]);
@@ -42,6 +44,8 @@ function Routes({ controller, initialPath }: { controller: SessionController; in
   if (snapshot.context && effectivePath === '/account/change-password') return <PasswordChangePage controller={controller} snapshot={snapshot} onBack={() => navigate('/')} />;
   if (snapshot.context?.role === 'Admin' && snapshot.context.scope === 'NORMAL') return <StaffAdminPage controller={controller} initialId={effectivePath.startsWith('/admin/accounts/')?Number(effectivePath.split('/').at(-1)):undefined} onPassword={()=>navigate('/account/change-password')} />;
   if (snapshot.context?.role === 'AcademicAffairs' && snapshot.context.scope === 'NORMAL') return <><nav aria-label="Giáo vụ" className="mb-4 flex flex-wrap gap-3"><Button onClick={()=>navigate('/academics/entry-test-sessions')}>Ca thi đầu vào</Button><Button onClick={()=>navigate('/academics/courses')}>Khóa học và Band</Button><Button onClick={()=>navigate('/academics/training-programs')}>Chương trình đào tạo</Button></nav>{effectivePath==='/academics/courses'?<CataloguePage controller={controller} onPassword={()=>navigate('/account/change-password')}/>:effectivePath==='/academics/training-programs'?<ProgramPage controller={controller} onPassword={()=>navigate('/account/change-password')}/>:<EntrySessionPage controller={controller} onPassword={()=>navigate('/account/change-password')}/>}</>;
+  if (snapshot.context?.role === 'Student' && snapshot.context.scope === 'NORMAL') return <StudentEnrollmentPage controller={controller} onPassword={()=>navigate('/account/change-password')}/>;
+  if (snapshot.context?.role === 'Teacher' && snapshot.context.scope === 'NORMAL') return <><nav aria-label="Giáo viên" className="mb-4 flex flex-wrap gap-3"><Button onClick={()=>navigate('/teacher/entry-test-sessions')}>Kiểm tra đầu vào</Button><Button onClick={()=>navigate('/teacher/classes')}>Lớp và lịch dạy</Button></nav>{effectivePath==='/teacher/entry-test-sessions'?<TeacherEntryPage controller={controller} onPassword={()=>navigate('/account/change-password')}/>:<SessionPage controller={controller} snapshot={snapshot} onPassword={()=>navigate('/account/change-password')}/>}</>;
   if (snapshot.context) return <SessionPage controller={controller} snapshot={snapshot} onPassword={() => navigate('/account/change-password')} />;
   if (effectivePath === '/register') return <SignupPage client={controller.client}
     onCreated={() => { navigate('/login'); void controller.prepare(); }} onLogin={() => navigate('/login')} />;

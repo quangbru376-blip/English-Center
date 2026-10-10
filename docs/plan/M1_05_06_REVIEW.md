@@ -1,61 +1,43 @@
-# M1 packages5–6 — integration checkpoint 2026-10-10
+# M1 packages 5–6 — final independent Codex review 2026-10-10
+Verdict: PASS for the complete assigned Student/Teacher source; eligible for ADR163 apply.
+Main application and genuine operational recheck are subsequent verification steps,
+not evidence claimed by this manager verdict. Historical incomplete reviews remain
+in Git history and checkpoint receipts; this review supersedes their pending scope.
 
-Verdict: FAIL/incomplete for full-batch completion and ADR163 apply. Source stays
-in retained manager; main product remains packages1–4/code564343b.
-Codex inspected Student command/read/manifest, Teacher read/SP02/scope, cookie/CSRF
-adapters and RAM-only typed pages; fixed future DOB, final projection clock checks,
-response target binding, zero UUID and accessible calendar selector.
-Implemented Student create/book/rebook/reschedule API/cancel/confirm/home/options/
-calendar/results/profile and Teacher list/detail/SP02/task/commands/lookup.
-Manager1345defaultPASS/155intentionalSKIP;83frontend/types/lint/buildPASS;buildclean.
-Final combined27SQL/HTTP PASS; focused retake/confirm PASS; four race/clock cases
-PASS retained; both Edge85/86 at375/768/1280 PASS with manual lost-ACK lookup.
-All96scratch databases ID/GUID-paired dropped; live remaining0. Owner4 unchanged.
+Scope: exact M1_05_06_CURRENT_ALLOWLIST.txt, Student APIs019–037 and Teacher066–073,
+explicit LOCAL_DEV mount only. No schema/grants/install/default host/Classes/M2–M4.
+The optional API029 bookingId resolves accepted W07's technical options omission;
+API030 null context, existing32 mutation/C1/replay/actions/count154 stay unchanged.
 
-Remaining before full PASS/apply:
-1. Newly found canonical API029 gap: current SCHEDULED blocks all target options,
-   yet API032 requires a target RV. Owner selection is pending on the bounded
-   bookingId refinement. See M1_05_06_RESCHEDULE_CONTRACT_PROPOSAL.md. This new
-   business-contract question does not reopen standing permission decisions.
-2. Implement selected reschedule UI/contract and scoped SQL/HTTP/Edge verification.
-3. Complete final independent review and remaining confirmation/correction/cancel
-   race coverage; then PASS, apply ADR163, main and actual LOCAL_DEV reverify.
+Reviewed services, projections, repositories, DTO boundaries, cookie/CSRF adapters,
+role pages, RAM lifecycle, manual recovery and affected audit policy independently.
+Own/nested ownership and fresh normal role precede client manifests. Commands use
+request, sorted business gates, Account/SID and domain locks, trusted resource union,
+full RV/membership checks and final live clock/authority before owned COMMIT.
+Student unfinished uniqueness, capacity/half-open conflict, same-attempt reschedule,
+cancel full future effects, completed-score retake, FN02 confirmation/no Invoice,
+profile two-RV/no securityVersion or revoke are enforced. Teacher current assignment,
+SP02 exact role projection, score zero/absence distinction, original correction
+provenance/reason, ties, atomic mandatory audit/T23 and replay are enforced.
+Reads use SNAPSHOT plus final authority/current Teacher assignment. Lists page and
+batch projections; no entities/extra financial Teacher fields or secret logging.
+Native Vietnamese controls/date/score formats use existing UI components/libraries;
+auth epochs clear RAM; rejected options/roster reads clear stale context. Unknown
+postcommit ACK uses manual lookup and fresh read without automatic command resend.
 
-Historical foundation-only review below is superseded by this checkpoint.
-# M1 packages5–6 — foundation checkpoint review
+Executed: 1345 default PASS/160 intentional opt-in skips; build0warnings0errors.
+31 owned SQL/HTTP PASS, including audit rollback, full-set/time guards, races,
+confirmation versus correction and cancellation versus grade, reschedule source
+scope/target full-seat rollback. 13 actual trusted HTTPS Edge groups PASS at
+375/768/1280, including prior M0/M1 regression and book/reschedule/cancel/grade/
+correction/absence/confirmation/manual lost-ACK recovery. 85 frontend tests PASS;
+types/lint/build PASS. Exact receipts under backend/TestResults/M1-final-manager-*.
+151 cumulative manager scratch databases created/dropped with paired ID/GUID,
+live remaining0. Four owner untracked files remain unshared/unstaged/unchanged.
 
-Verdict: FAIL for completion/apply of the full assigned batch. Status IN PROGRESS.
-Codex independently inspected worker tool metadata/source and implemented, tested
-and reviewed the manager changes. No full-batch PASS or main application.
-
-Verified foundation:
-- Own Profile full input/two copied RVs/normalization, Account+Profile owned COMMIT,
-  unique phone rollback, mandatory changed-field-name-only audit, no security
-  version increment/revocation/T23. No Profile HTTP route mounted.
-- Teacher full manifests/current assignment/original correction scope, inclusive
-  end time and completed zero versus absence, best tie attempt1, FN02/BANDSET,
-  atomic result/Band/Registration/audit/T23, original provenance and equal-value
-  refusal, replay no repeat effects, mandatory audit rollback and two-client race.
-- Review fixed invalid RV mapping to400, worker named imports/design token,
-  removed Teacher Invoice/Class SQL loads and rechecked final/replay authority.
-- Manager35 new RAM contracts,69 frontend tests/types/lint/build PASS;
-  manager1341 default PASS/133 intentional opt-in SKIP. Seven current scratch SQL
-  cases PASS, earlier5+7 runs retained;19 databases ID/GUID-paired dropped.
-
-Must finish before full PASS/apply:
-1. P1 Services/Enrollment: implement Student Registration/create/book/rebook/
-   reschedule/cancel/confirm, full coherent Home including FINALIZED-only refs,
-   options/calendar/results and all canonical/time/conflict/full-set guards.
-2. P1 Infrastructure/Enrollment +Api/Enrollment: Teacher list/detail/SP02 exact
-   Teacher projection/lookup and all thin cookie/CSRF/current task adapters;
-   additional read scopes must be checked again against fresh final authority.
-3. P1 frontend/features/enrollment,entryTasks and app/lib: typed exact decoding,
-   role landing/pages/previews and manual unknown recovery/context RAM cleanup.
-   Two pure forms alone are not either complete workflow.
-4. P1 tests and LocalRuntimeServices: HTTP→SQL and strict HTTPS Edge375/768/1280,
-   missing clock/session/retake/cancel/confirm/reassignment races, actual LOCAL_DEV
-   all9/strictTLS/principal closure, review final diff, apply ADR163 and reverify main.
-
-No owner decision/permission remains pending for these assigned aspects (ADR177).
-No Admissions038–044/Invoice UI046–047/Classes/M2–M4/schema/grants/install/push/deploy.
-Original worker outputs remain detached evidence; source is only in manager.
+Worker provenance: retained sole bounded pure forms e1112347-32d/09ee3daa-93d,
+three authorized full reads and sole writes each; no observed scope violation.
+Codex independently integrated/fixed/reviewed/tested; worker success alone is not PASS.
+Limit: real operational Student/Teacher data is intentionally not fabricated. Their
+business COMMIT proof uses owned scratch; existing operational profile/principals/
+strict SQL+HTTPS/all9/Admin route-denial verification follows apply on main.

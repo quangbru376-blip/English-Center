@@ -132,7 +132,7 @@ Nguồn contract: bản chính mục7; các paths lookup được hợp nhất �
 | API-026 | GET /registrations/{rId} | Student NORMAL, own; W05 | ID → own RegistrationDetail/version/allowedActions | READ; —; không UUID |
 | API-027 | POST /registrations/{rId}/cancellation-preview | Student NORMAL, own; W05 | Không business input → eligible/effects/guard manifest | PREVIEW; —; không UUID |
 | API-028 | POST /registrations/{rId}/cancel | Student NORMAL, own; W05 | expectedVersions/expectedSet từ preview →200 detail/operationId | COMMAND; TX06; UUID |
-| API-029 | GET /registrations/{rId}/entry-test-options | Student NORMAL, own; W07 | fromDate/toDate/page/pageSize → attempt context/eligible session page | READ; —; không UUID |
+| API-029 | GET /registrations/{rId}/entry-test-options | Student NORMAL, own; W07 | fromDate/toDate/optional bookingId/page/pageSize → book or own-current reschedule context/eligible session page | READ; —; không UUID |
 | API-030 | POST /registrations/{rId}/entry-test-bookings | Student NORMAL, own; W07 | targetSessionId/attemptContext/expectedVersions →201 own Booking/operationId | COMMAND; TX02; UUID |
 | API-031 | POST /registrations/{rId}/entry-test-bookings/{bId}/cancel | Student NORMAL, own; W07 | expectedVersions →200 updated own entry context/operationId | COMMAND; TX02; UUID |
 | API-032 | POST /registrations/{rId}/entry-test-bookings/{bId}/reschedule | Student NORMAL, own; W07 | targetSessionId/expectedVersions →200 old-new Booking refs/operationId | COMMAND; TX02; UUID |

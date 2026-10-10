@@ -34,6 +34,8 @@ process.on('unhandledRejection',()=>{failed=true;});
   const me=await api(page,'/api/v1/auth/me');assert.equal(me.status,200);assert.equal(me.body.role,'Admin');assert.equal(me.body.scope,'NORMAL');
   assert.equal((await api(page,'/api/v1/academics/training-programs')).status,403);
   assert.equal((await api(page,'/api/v1/admissions/entry-test-sessions')).status,403);
+  assert.equal((await api(page,'/api/v1/students/me/home')).status,403);
+  assert.equal((await api(page,'/api/v1/admissions/teachers/me/entry-test-sessions')).status,403);
   if(adminId===undefined)adminId=me.body.accountId;assert.equal(me.body.accountId,adminId);await policy(page,true);
  };
  const logout=async page=>{

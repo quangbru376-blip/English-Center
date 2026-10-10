@@ -79,6 +79,15 @@ public sealed class AuditEntry
             "SUCCESS", details, at, operation, "MANDATORY", null);
     }
 
+    internal static AuditEntry OwnProfileChange(int actor, int student, IReadOnlyList<string> changedFields, Guid operation, DateTimeOffset at)
+    {
+        var allowed = new[] { "fullName", "dateOfBirth", "phone", "address" };
+        if (actor <= 0 || student <= 0 || changedFields.Distinct(StringComparer.Ordinal).Count() != changedFields.Count || changedFields.Any(f => !allowed.Contains(f)))
+            throw new ArgumentException("Invalid profile audit.");
+        var details = new JsonObject { ["changedFields"] = new JsonArray(changedFields.Order(StringComparer.Ordinal).Select(f => (JsonNode?)JsonValue.Create(f)).ToArray()) }.ToJsonString();
+        return new(actor, "STUDENT.PROFILE.UPDATE", "StudentProfile", student.ToString(System.Globalization.CultureInfo.InvariantCulture), "SUCCESS", details, at, operation, "MANDATORY", null);
+    }
+
     public static AuditEntry Security(SecurityAuditKind kind,int? verifiedActorAccountId,bool success,
         Guid operation,DateTimeOffset occurredAt,string? ipAddress = null)
     {

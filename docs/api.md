@@ -1,3 +1,31 @@
+2026-10-10 manager WIP ONLY, packages5–6 not applied to main and no full PASS claim:
+Student NORMAL own API019–037 adapters under /api/v1/students/me implement
+GET/PUT profile; GET home/courses/courses/{id}/registrations/registrations/{id};
+POST registrations; POST registrations/{id}/cancellation-preview or /cancel;
+GET registrations/{id}/entry-test-options; POST registrations/{id}/entry-test-bookings;
+POST registrations/{id}/entry-test-bookings/{booking}/cancel or /reschedule;
+GET entry-test-bookings and registrations/{id}/entry-results;
+POST registrations/{id}/confirmation-preview or /confirm;
+GET command-results/{requestId}?action= one of the six Student command families.
+API029 optional bookingId reads targets for an own current SCHEDULED source;
+OPEN/future/pre-confirmation/source and other-overlap guards remain unchanged.
+No query preserves book/rebook context with literal-null currentBookingId. The
+bounded technical refinement completes accepted W07 under owner completion scope;
+API030/C1/command actions/count154 remain unchanged. Review/testing still pending.
+Teacher NORMAL current assignment API066–073 adapters under
+/api/v1/admissions/teachers/me implement GET entry-test-sessions, GET {id},
+POST entry-test-sessions/{id}/roster/search, GET entry-test-bookings/{id},
+POST entry-test-bookings/{id}/score or /absence,
+PUT entry-test-attempts/{id}/score, GET command-results/{requestId}?action= one
+of the three Teacher command families. Roster excludes financial fields entirely.
+Only explicit LOCAL_DEV manager mount; unchanged default no-argument host.
+Cookie/CSRF, own/current assignment, two Profile RVs, full command manifests,
+mandatory audit/T23 atomicity and manual unknown-result lookup remain required.
+Profile PUT has no UUID/T23/securityVersion increment/session revocation; preview
+and roster POST are read intents, no UUID or activity renewal. Owned writes finish
+before output, first registration/booking201 and replay200, no automatic resend.
+Historical main exposure checkpoints below remain the applied product baseline.
+
 2026-10-09 M1 packages3–4: explicit LOCAL_DEV adds AcademicAffairs NORMAL
 TrainingProgram API081–089 and six PROGRAM completion actions via API090.
 GET/POST /api/v1/academics/training-programs; GET {id}; PUT {id}/configuration

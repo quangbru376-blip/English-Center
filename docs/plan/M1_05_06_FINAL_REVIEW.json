@@ -1,0 +1,44 @@
+{
+  "review": "PASS",
+  "date": "2026-10-10",
+  "managerBase": "db0ae748db0fcf0187702f6cd75e0aa44e37ade3",
+  "mainApplied": false,
+  "default": {
+    "passed": 1345,
+    "failed": 0,
+    "intentionalOptInSkipped": 160
+  },
+  "frontend": {
+    "lint": "PASS",
+    "passed": 85,
+    "build": "PASS",
+    "types": "PASS",
+    "failed": 0
+  },
+  "build": {
+    "warnings": 0,
+    "errors": 0
+  },
+  "sqlHttp": {
+    "receipt": "backend/TestResults/M1-final-manager-sql/M1-final-manager-sql.trx",
+    "passed": 31,
+    "failed": 0
+  },
+  "edge": {
+    "receipt": "backend/TestResults/M1-final-manager-edge/M1-final-manager-edge.trx",
+    "passed": 13,
+    "widths": [
+      375,
+      768,
+      1280
+    ],
+    "failed": 0
+  },
+  "scratch": {
+    "liveRemaining": 0,
+    "idGuidPairedDropped": 151,
+    "created": 151
+  },
+  "operational": "PENDING_AFTER_MAIN_APPLY",
+  "ownerFiles": "unchanged/unshared/untracked/unstaged"
+}

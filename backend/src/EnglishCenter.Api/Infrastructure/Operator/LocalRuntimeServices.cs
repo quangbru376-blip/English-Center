@@ -14,6 +14,8 @@ using EnglishCenter.Api.Infrastructure.Academics;
 using EnglishCenter.Api.Api.Catalogue;
 using EnglishCenter.Api.Infrastructure.Catalogue;
 using EnglishCenter.Api.Infrastructure.Readiness;
+using EnglishCenter.Api.Api.Enrollment;
+using EnglishCenter.Api.Infrastructure.Enrollment;
 using Microsoft.AspNetCore.DataProtection;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
@@ -35,6 +37,11 @@ internal sealed class LocalRuntimeServices : ITrustedLoginIpResolver, IDisposabl
     private readonly SqlCourseExecutor courses;
     private readonly SqlProgramExecutor programs;
     private readonly SqlEntrySessionExecutor entrySessions;
+    private readonly SqlOwnProfileExecutor profiles;
+    private readonly SqlStudentEnrollmentExecutor studentEnrollment;
+    private readonly SqlStudentEnrollmentReader studentReads;
+    private readonly SqlTeacherEntryExecutor teacherEntry;
+    private readonly SqlTeacherEntryReader teacherReads;
     public LiveCsrfIdentityResolver Identity { get; }
     public LocalRuntimeServices(RuntimeProfile profile, LocalRuntimeKeyStore keys, string corpusDirectory)
     {
@@ -54,6 +61,11 @@ internal sealed class LocalRuntimeServices : ITrustedLoginIpResolver, IDisposabl
         courses = new(Context, clock, limits.SqlSeconds, limits.LockMs);
         programs = new(Context, clock, limits.SqlSeconds, limits.LockMs);
         entrySessions = new(Context, clock, limits.SqlSeconds, limits.LockMs);
+        profiles = new(Context, clock, limits.SqlSeconds, limits.LockMs);
+        studentEnrollment = new(Context, clock, limits.SqlSeconds, limits.LockMs);
+        studentReads = new(Context, clock, limits.SqlSeconds, limits.LockMs);
+        teacherEntry = new(Context, clock, limits.SqlSeconds, limits.LockMs);
+        teacherReads = new(Context, clock, limits.SqlSeconds, limits.LockMs);
         Identity = new(validator, current, audit, clock);
     }
     private static EnglishCenterDbContext Context() => new(new DbContextOptionsBuilder<EnglishCenterDbContext>()
@@ -77,6 +89,8 @@ internal sealed class LocalRuntimeServices : ITrustedLoginIpResolver, IDisposabl
         routes.MapStaffAccounts(staff, bodyBytes); routes.MapCourseCatalogue(courses, bodyBytes);
         routes.MapTrainingPrograms(programs,bodyBytes);
         routes.MapEntrySessions(entrySessions,bodyBytes);
+        routes.MapStudentEnrollment(profiles, studentReads, studentEnrollment, bodyBytes);
+        routes.MapTeacherEntry(teacherReads, teacherEntry, bodyBytes);
     }
     public IPAddress? Resolve(HttpContext context) => context.Connection.RemoteIpAddress is { } address && IPAddress.IsLoopback(address) ? address : null;
     public void Dispose() => limiter.Dispose();
