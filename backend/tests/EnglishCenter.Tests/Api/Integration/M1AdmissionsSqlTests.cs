@@ -146,6 +146,13 @@ public sealed class M1AdmissionsSqlTests
         Assert.Empty((await ex.SearchAsync(token,AdmissionsSearchFilter.Parse("{\"name\":\"%not-a-wildcard\"}"),Ct)).Items);
         Assert.Empty((await ex.SearchAsync(token,AdmissionsSearchFilter.Parse("{\"createdToDate\":\"2026-10-09\"}"),Ct)).Items);
         Assert.Empty((await ex.SearchAsync(token,AdmissionsSearchFilter.Parse("{\"page\":2147483647}"),Ct)).Items);
+        // VN inclusive final representable day ends at17:00 UTC, not an omitted bound.
+        var lastDate=AdmissionsSearchFilter.Parse("{\"createdToDate\":\"9999-12-31\"}");
+        await using(var db=f.Db()){var r=await db.Registrations.SingleAsync(Ct);r.CreatedAt=new DateTime(9999,12,31,16,59,59,DateTimeKind.Utc);await db.SaveChangesAsync(Ct);}
+        Assert.Single((await ex.SearchAsync(token,lastDate,Ct)).Items);
+        await using(var db=f.Db()){var r=await db.Registrations.SingleAsync(Ct);r.CreatedAt=new DateTime(9999,12,31,17,0,0,DateTimeKind.Utc);await db.SaveChangesAsync(Ct);}
+        Assert.Empty((await ex.SearchAsync(token,lastDate,Ct)).Items);
+        await using(var db=f.Db()){var r=await db.Registrations.SingleAsync(Ct);r.CreatedAt=f.Clock.GetUtcNow().UtcDateTime;await db.SaveChangesAsync(Ct);}
         var body=Reject(await Read(f,id));await ex.CommandAsync(token,42,id,Guid.NewGuid(),body,65536,Ct);Assert.Equal("REJECTED",(await ex.SearchAsync(token,AdmissionsSearchFilter.Parse("{}"),Ct)).Items.Single().Status);
     }
     [Fact(Skip=OptIn,SkipUnless=nameof(OwnedSqlGate.Enabled),SkipType=typeof(OwnedSqlGate))]

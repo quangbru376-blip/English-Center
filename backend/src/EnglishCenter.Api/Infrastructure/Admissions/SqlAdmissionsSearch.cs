@@ -46,9 +46,10 @@ public sealed record AdmissionsSearchFilter(string? Name, string? Email, string?
         var sort = Text("sort", 16) ?? "CREATED_DESC"; if (sort is not ("CREATED_ASC" or "CREATED_DESC")) throw ApiErrorException.Validation("sort");
         var email = Text("email", 254); if (email?.Any(c => c > 127) == true) throw ApiErrorException.Validation("email");
         var phone = Text("phone", 30); try { if (phone is not null) phone = ContactNormalizer.NormalizePhone(phone); } catch (ArgumentException) { throw ApiErrorException.Validation("phone"); }
+        // Inclusive VN day ends at17:00 UTC on that date, also valid at9999-12-31.
         return new(Text("name", 100), email, phone, body.TryGetProperty("courseId", out _) ? Number("courseId", 1, int.MaxValue) : null, status,
             from is { } f ? f == DateOnly.MinValue ? DateTime.MinValue : VietnamTime.ToUtc(f, TimeOnly.MinValue).UtcDateTime : null,
-            to is { } t && t != DateOnly.MaxValue ? VietnamTime.ToUtc(t.AddDays(1), TimeOnly.MinValue).UtcDateTime : null, sort, Number("page", 1, int.MaxValue), Number("pageSize", 20, 100));
+            to is { } t ? t.ToDateTime(TimeOnly.MinValue).AddHours(17) : null, sort, Number("page", 1, int.MaxValue), Number("pageSize", 20, 100));
     }
     public override string ToString() => nameof(AdmissionsSearchFilter);
 }
