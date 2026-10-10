@@ -1,5 +1,5 @@
 {
-  "status": "manager REVIEW PASS; main apply/reverification pending",
+  "status": "COMPLETE / Codex review PASS / applied ADR163 / main reverified; whole M1 COMPLETE",
   "date": "2026-10-10",
   "baselineMain": "39913bf2dc90c6feba2b74a267fd1514ca9cd54c",
   "contractCommit": "abae972",
@@ -119,68 +119,232 @@
         "inProgress": "0",
         "pending": "0"
       }
+    },
+    "managerFinalDefault": {
+      "path": "C:\\Study\\SOEN\\main_workplace\\.worktrees\\m1-admissions\\backend\\TestResults\\M1-admissions-final-default\\M1-manager-final-default.trx",
+      "sha256": "063A4F24C7B2DF8C2DC9DC510A181C70778905FFDDBD853ECD074B5BFA35FD09",
+      "counters": {
+        "total": "1522",
+        "executed": "1345",
+        "passed": "1345",
+        "failed": "0",
+        "error": "0",
+        "timeout": "0",
+        "aborted": "0",
+        "inconclusive": "0",
+        "passedButRunAborted": "0",
+        "notRunnable": "0",
+        "notExecuted": "0",
+        "disconnected": "0",
+        "warning": "0",
+        "completed": "0",
+        "inProgress": "0",
+        "pending": "0"
+      }
+    },
+    "managerFinalDate": {
+      "path": "C:\\Study\\SOEN\\main_workplace\\.worktrees\\m1-admissions\\backend\\TestResults\\M1-admissions-final-date\\M1-final-date.trx",
+      "sha256": "B0F67F13B6D13354C06F4A27B61C646C85EB68F461D76501AED0DC4B92CDD170",
+      "counters": {
+        "total": "1",
+        "executed": "1",
+        "passed": "1",
+        "failed": "0",
+        "error": "0",
+        "timeout": "0",
+        "aborted": "0",
+        "inconclusive": "0",
+        "passedButRunAborted": "0",
+        "notRunnable": "0",
+        "notExecuted": "0",
+        "disconnected": "0",
+        "warning": "0",
+        "completed": "0",
+        "inProgress": "0",
+        "pending": "0"
+      }
+    },
+    "mainFinalDefault": {
+      "path": "C:\\Study\\SOEN\\main_workplace\\backend\\TestResults\\M1-admissions-main-final-default\\M1-main-final-default.trx",
+      "sha256": "B8ED214C8BE818C31A956A781F9C5A7988BAA209D176CB875DFE987CA3CA9151",
+      "counters": {
+        "total": "1522",
+        "executed": "1345",
+        "passed": "1345",
+        "failed": "0",
+        "error": "0",
+        "timeout": "0",
+        "aborted": "0",
+        "inconclusive": "0",
+        "passedButRunAborted": "0",
+        "notRunnable": "0",
+        "notExecuted": "0",
+        "disconnected": "0",
+        "warning": "0",
+        "completed": "0",
+        "inProgress": "0",
+        "pending": "0"
+      }
+    },
+    "mainSqlHttp": {
+      "path": "C:\\Study\\SOEN\\main_workplace\\backend\\TestResults\\M1-admissions-main-sql-http\\M1-main-sql-http.trx",
+      "sha256": "83D17135276A692545D5B80EEDAD3844F588D97F188AFDA65150C9530D8079E3",
+      "counters": {
+        "total": "20",
+        "executed": "20",
+        "passed": "20",
+        "failed": "0",
+        "error": "0",
+        "timeout": "0",
+        "aborted": "0",
+        "inconclusive": "0",
+        "passedButRunAborted": "0",
+        "notRunnable": "0",
+        "notExecuted": "0",
+        "disconnected": "0",
+        "warning": "0",
+        "completed": "0",
+        "inProgress": "0",
+        "pending": "0"
+      }
+    },
+    "mainFinalDate": {
+      "path": "C:\\Study\\SOEN\\main_workplace\\backend\\TestResults\\M1-admissions-main-final-date\\M1-main-final-date.trx",
+      "sha256": "9C15FCF1684B751E90E8A2774F81AFA525EDBA1FDB2CDD108C560C756FF5D20F",
+      "counters": {
+        "total": "2",
+        "executed": "2",
+        "passed": "2",
+        "failed": "0",
+        "error": "0",
+        "timeout": "0",
+        "aborted": "0",
+        "inconclusive": "0",
+        "passedButRunAborted": "0",
+        "notRunnable": "0",
+        "notExecuted": "0",
+        "disconnected": "0",
+        "warning": "0",
+        "completed": "0",
+        "inProgress": "0",
+        "pending": "0"
+      }
+    },
+    "mainEdge": {
+      "path": "C:\\Study\\SOEN\\main_workplace\\backend\\TestResults\\M1-admissions-main-Edge\\M1-main-Edge.trx",
+      "sha256": "B1434BA7573A38E96B7D3B9CA54A7C677818AF76891FF2B5298A89D51087F82A",
+      "counters": {
+        "total": "3",
+        "executed": "3",
+        "passed": "3",
+        "failed": "0",
+        "error": "0",
+        "timeout": "0",
+        "aborted": "0",
+        "inconclusive": "0",
+        "passedButRunAborted": "0",
+        "notRunnable": "0",
+        "notExecuted": "0",
+        "disconnected": "0",
+        "warning": "0",
+        "completed": "0",
+        "inProgress": "0",
+        "pending": "0"
+      }
     }
   },
   "scratch": {
-    "created": 169,
-    "identityPairedDropped": 169,
-    "liveRemaining": 0,
-    "receipts": [
-      {
-        "path": "C:\\Study\\SOEN\\main_workplace\\.worktrees\\m1-admissions\\backend\\TestResults\\M1-admissions-expanded-sql-http\\E-scratch-ownership.jsonl",
-        "sha256": "12196A8E5DDDA8142DB1FC57DDFC59F1C0C28E17382EDC49305708A4D2046B4A",
-        "created": 15,
-        "dropped": 15
-      },
-      {
-        "path": "C:\\Study\\SOEN\\main_workplace\\.worktrees\\m1-admissions\\backend\\TestResults\\M1-admissions-final-Edge88\\E-scratch-ownership.jsonl",
-        "sha256": "F0BB28265BC28F344BE1525D8A6E117185E4DD0CFF69FFC0015B3731B6D6E8F3",
-        "created": 1,
-        "dropped": 1
-      },
-      {
-        "path": "C:\\Study\\SOEN\\main_workplace\\.worktrees\\m1-admissions\\backend\\TestResults\\M1-admissions-final-sql-http\\E-scratch-ownership.jsonl",
-        "sha256": "FE22D643E46A200CC33603B9C80414BB50F536806192CFC036F4F0DDEC60483C",
-        "created": 17,
-        "dropped": 17
-      },
-      {
-        "path": "C:\\Study\\SOEN\\main_workplace\\.worktrees\\m1-admissions\\backend\\TestResults\\M1-admissions-first-edge\\E-scratch-ownership.jsonl",
-        "sha256": "20623ECD907AFD4175B4021E809641A4C9AF49A0D406C913187E5892C784229D",
-        "created": 1,
-        "dropped": 1
-      },
-      {
-        "path": "C:\\Study\\SOEN\\main_workplace\\.worktrees\\m1-admissions\\backend\\TestResults\\M1-admissions-first-sql\\E-scratch-ownership.jsonl",
-        "sha256": "C0ED33A9C0FCBAD42E13BF6D22DD9C667B56353CCDBF948F5F4E06786E3434F2",
-        "created": 6,
-        "dropped": 6
-      },
-      {
-        "path": "C:\\Study\\SOEN\\main_workplace\\.worktrees\\m1-admissions\\backend\\TestResults\\M1-admissions-fixed-sql\\E-scratch-ownership.jsonl",
-        "sha256": "4D6050D6529104B473FB99607E52ED13E33C69F5EEDB95AB8AC528004BE2B988",
-        "created": 6,
-        "dropped": 6
-      },
-      {
-        "path": "C:\\Study\\SOEN\\main_workplace\\.worktrees\\m1-admissions\\backend\\TestResults\\M1-admissions-full-Edge\\E-scratch-ownership.jsonl",
-        "sha256": "52B7237E024C8A27768593423CC838463AF85DF272661381C7A91E5215DB6020",
-        "created": 14,
-        "dropped": 14
-      },
-      {
-        "path": "C:\\Study\\SOEN\\main_workplace\\.worktrees\\m1-admissions\\backend\\TestResults\\M1-admissions-full-M1\\E-scratch-ownership.jsonl",
-        "sha256": "A477FFE7AB6398FA3E50F2E00F5A6CB0CC073CCC6092D2573279811A37A3F97D",
-        "created": 91,
-        "dropped": 91
-      },
-      {
-        "path": "C:\\Study\\SOEN\\main_workplace\\.worktrees\\m1-admissions\\backend\\TestResults\\M1-admissions-reviewed-sql-http\\E-scratch-ownership.jsonl",
-        "sha256": "8A201D0865E7CEFFBC0EF650A046E4C727EB45FE9B6A4009A0EDAAADA4320426",
-        "created": 18,
-        "dropped": 18
-      }
-    ]
+    "manager": {
+      "created": 170,
+      "identityPairedDropped": 170,
+      "receipts": [
+        {
+          "path": "C:\\Study\\SOEN\\main_workplace\\.worktrees\\m1-admissions\\backend\\TestResults\\M1-admissions-expanded-sql-http\\E-scratch-ownership.jsonl",
+          "sha256": "12196A8E5DDDA8142DB1FC57DDFC59F1C0C28E17382EDC49305708A4D2046B4A",
+          "created": 15,
+          "dropped": 15
+        },
+        {
+          "path": "C:\\Study\\SOEN\\main_workplace\\.worktrees\\m1-admissions\\backend\\TestResults\\M1-admissions-final-date\\E-scratch-ownership.jsonl",
+          "sha256": "CCF3C4064CA7CF33E1342A7412D747FD0091E1133D52F8A6DFCF636FB6878876",
+          "created": 1,
+          "dropped": 1
+        },
+        {
+          "path": "C:\\Study\\SOEN\\main_workplace\\.worktrees\\m1-admissions\\backend\\TestResults\\M1-admissions-final-Edge88\\E-scratch-ownership.jsonl",
+          "sha256": "F0BB28265BC28F344BE1525D8A6E117185E4DD0CFF69FFC0015B3731B6D6E8F3",
+          "created": 1,
+          "dropped": 1
+        },
+        {
+          "path": "C:\\Study\\SOEN\\main_workplace\\.worktrees\\m1-admissions\\backend\\TestResults\\M1-admissions-final-sql-http\\E-scratch-ownership.jsonl",
+          "sha256": "FE22D643E46A200CC33603B9C80414BB50F536806192CFC036F4F0DDEC60483C",
+          "created": 17,
+          "dropped": 17
+        },
+        {
+          "path": "C:\\Study\\SOEN\\main_workplace\\.worktrees\\m1-admissions\\backend\\TestResults\\M1-admissions-first-edge\\E-scratch-ownership.jsonl",
+          "sha256": "20623ECD907AFD4175B4021E809641A4C9AF49A0D406C913187E5892C784229D",
+          "created": 1,
+          "dropped": 1
+        },
+        {
+          "path": "C:\\Study\\SOEN\\main_workplace\\.worktrees\\m1-admissions\\backend\\TestResults\\M1-admissions-first-sql\\E-scratch-ownership.jsonl",
+          "sha256": "C0ED33A9C0FCBAD42E13BF6D22DD9C667B56353CCDBF948F5F4E06786E3434F2",
+          "created": 6,
+          "dropped": 6
+        },
+        {
+          "path": "C:\\Study\\SOEN\\main_workplace\\.worktrees\\m1-admissions\\backend\\TestResults\\M1-admissions-fixed-sql\\E-scratch-ownership.jsonl",
+          "sha256": "4D6050D6529104B473FB99607E52ED13E33C69F5EEDB95AB8AC528004BE2B988",
+          "created": 6,
+          "dropped": 6
+        },
+        {
+          "path": "C:\\Study\\SOEN\\main_workplace\\.worktrees\\m1-admissions\\backend\\TestResults\\M1-admissions-full-Edge\\E-scratch-ownership.jsonl",
+          "sha256": "52B7237E024C8A27768593423CC838463AF85DF272661381C7A91E5215DB6020",
+          "created": 14,
+          "dropped": 14
+        },
+        {
+          "path": "C:\\Study\\SOEN\\main_workplace\\.worktrees\\m1-admissions\\backend\\TestResults\\M1-admissions-full-M1\\E-scratch-ownership.jsonl",
+          "sha256": "A477FFE7AB6398FA3E50F2E00F5A6CB0CC073CCC6092D2573279811A37A3F97D",
+          "created": 91,
+          "dropped": 91
+        },
+        {
+          "path": "C:\\Study\\SOEN\\main_workplace\\.worktrees\\m1-admissions\\backend\\TestResults\\M1-admissions-reviewed-sql-http\\E-scratch-ownership.jsonl",
+          "sha256": "8A201D0865E7CEFFBC0EF650A046E4C727EB45FE9B6A4009A0EDAAADA4320426",
+          "created": 18,
+          "dropped": 18
+        }
+      ]
+    },
+    "main": {
+      "created": 25,
+      "identityPairedDropped": 25,
+      "receipts": [
+        {
+          "path": "C:\\Study\\SOEN\\main_workplace\\backend\\TestResults\\M1-admissions-main-Edge\\E-scratch-ownership.jsonl",
+          "sha256": "8CE58A15F7A548F79AA93FB0AA430EC661B16BBF01AF33CFA4526E5F864FBC02",
+          "created": 3,
+          "dropped": 3
+        },
+        {
+          "path": "C:\\Study\\SOEN\\main_workplace\\backend\\TestResults\\M1-admissions-main-final-date\\E-scratch-ownership.jsonl",
+          "sha256": "00A20AC121FEEEB45E86CFABD9327BE117A261F5B9A3D2621429F4D333B7CD6E",
+          "created": 2,
+          "dropped": 2
+        },
+        {
+          "path": "C:\\Study\\SOEN\\main_workplace\\backend\\TestResults\\M1-admissions-main-sql-http\\E-scratch-ownership.jsonl",
+          "sha256": "617AA50A924748CA3D13513F172B706D0C2653626EF9B3FB3FE334DECDDEEEAB",
+          "created": 20,
+          "dropped": 20
+        }
+      ]
+    },
+    "liveRemaining": 0
   },
   "worker": {
     "run": "fa862f1a-5e3",
@@ -202,7 +366,8 @@
       "verified role precedes API045 query parsing",
       "reject live FN02 consistency",
       "frozen modal displays price/effects",
-      "bounded role-scoped deep links with no automatic printing"
+      "bounded role-scoped deep links with no automatic printing",
+      "inclusive VN final date keeps17:00UTC exclusive bound; actual SP01 boundary assertions PASS on manager/main"
     ],
     "syntheticFixtureFixes": [
       "same-VN-day fixed clock",
@@ -232,8 +397,89 @@
     "live operational Admissions/Student data"
   ],
   "managerSourceTrees": {
+    "src": "19be7ef1c98ee6d8c9e7c1910c288a793e060c20",
+    "tests": "ea9b95d7c9ac32353efa25458429cd48fa23e972",
+    "frontend": "a24f77675383180cd13c52e6837269a98788c55d"
+  },
+  "mainSourceCommit": "ada4a7cdf7493eba47628c388557fa31c6034e0e",
+  "initialMainSourceCommit": "c6197395ebdd1aed0a0d925f6112c08c416bfc76",
+  "managerSourceCommit": "9b8f1b8b6a6fa01cd2c0df8c6b75ce82c4d3db32",
+  "preDateSourceTrees": {
     "src": "0858a6f1ee0732c65058981f86645f75fa28675f",
     "tests": "9f1aabf9f5c1c80e3262b2535cd9e324390468dc",
     "frontend": "a24f77675383180cd13c52e6837269a98788c55d"
+  },
+  "mainSourceTrees": {
+    "src": "19be7ef1c98ee6d8c9e7c1910c288a793e060c20",
+    "tests": "ea9b95d7c9ac32353efa25458429cd48fa23e972",
+    "frontend": "a24f77675383180cd13c52e6837269a98788c55d"
+  },
+  "verificationSequence": "Manager full160M1/14Edge regression, final focused88 and semantic token/deep-link checks; after final date upper-bound fix, manager targeted actual SP01 boundary+default and main targeted SQL/HTTP date checks+default. Unaffected regression retained; no fresh full160/14 claim after date-only delta.",
+  "mainReverification": {
+    "defaultPassed": 1345,
+    "intentionalOptInSkipped": 177,
+    "ownedSqlHttpPassed": 20,
+    "finalDateSqlHttpPassed": 2,
+    "EdgeGroupsPassed": [
+      84,
+      87,
+      88
+    ],
+    "widths": [
+      375,
+      768,
+      1280
+    ],
+    "frontendPassed": 93,
+    "frontendTypes": "PASS",
+    "frontendLint": "PASS",
+    "frontendBuild": "PASS",
+    "buildWarnings": 0,
+    "buildErrors": 0
+  },
+  "mainFrontendReceipt": {
+    "path": "C:\\Study\\SOEN\\main_workplace\\backend\\TestResults\\M1-admissions-main-frontend\\frontend-tests.tap",
+    "sha256": "A73D60F676AAC051800BE263FBDA924A5E72AC295A3DECC6825822831ED1E738"
+  },
+  "actualLocalDev": {
+    "receiptPath": "C:\\Study\\SOEN\\main_workplace\\docs\\plan\\V01-evidence\\test-results\\M1-07-08-main-operational-20261010-final.json",
+    "receiptSha256": "04A61F558F9F15CB6C0D78E40F1B41453C6D47F28E188327C511BC81D43F7623",
+    "receiptIgnoredNotCommitted": true,
+    "result": {
+      "phase": "W5-launch",
+      "success": true,
+      "ready": true,
+      "browserPassed": true,
+      "replayCommits": 1,
+      "auditCommits": 1,
+      "failedRuns": 0,
+      "stoppedMaintenanceRefused": true,
+      "forcedStops": 0
+    },
+    "strictSqlAndHttps": true,
+    "genuineWindowsRuntimeAndMaintenanceIdentities": true,
+    "adminLogins": 4,
+    "adminLogouts": 4,
+    "newWrongRoleReads403": [
+      "Admissions Registration",
+      "Student Invoice"
+    ],
+    "remainingHosts": 0,
+    "remaining8443Listeners": 0,
+    "readonlyPostCounts": {
+      "roles": 7,
+      "accounts": 1,
+      "activeAdmins": 1,
+      "bands": 5,
+      "profiles": 0,
+      "courses": 0,
+      "programs": 0,
+      "entrySessions": 0,
+      "registrations": 0,
+      "invoices": 0,
+      "payments": 0,
+      "activeSid": 0,
+      "migrations": 6
+    }
   }
 }

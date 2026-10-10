@@ -1,4 +1,4 @@
-2026-10-10 packages7–8 manager review PASS; main application pending.
+2026-10-10 packages7–8 COMPLETE/review PASS/applied main ada4a7c/reverified.
 Admissions NORMAL API038–044: POST /api/v1/admissions/registrations/search;
 GET /{id}; POST /{id}/approval-preview, /approve, /reject,
 /cancellation-preview, /cancel. PII body-only; exact current contact/detail DTOs.
@@ -11,7 +11,8 @@ Student NORMAL API046–047 GET /api/v1/students/me/invoices and /{id} own scope
 current names/Course plus immutable snapshot amount; actual FN06 debt flags.
 Native list/detail/A4 fresh-print; failed GET never prints cached data.
 Explicit existing LOCAL_DEV only; no new default routes/packages/schema/grants.
-Manager1345default/160M1/93frontend/14Edge+final88 PASS; see M1_07_08_REVIEW.
+Manager160M1/14Edge+final88 and finaldate PASS; main1345default/93frontend/
+20SQLHTTP+2finaldate/3Edge+genuineLOCALDEV PASS. Whole M1 COMPLETE; see M1_07_08_REVIEW.
 
 2026-10-10 packages5–6 reviewed PASS/applied main e92ef6b/reverified LOCAL_DEV:
 Student NORMAL own API019–037 adapters under /api/v1/students/me implement

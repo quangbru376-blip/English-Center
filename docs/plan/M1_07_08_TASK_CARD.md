@@ -1,5 +1,6 @@
 # M1 packages7–8 — remaining M1 completion assigned2026-10-10
-Status manager COMPLETE/review PASS2026-10-10; main apply/reverification pending.
+Status COMPLETE/review PASS/applied ADR163/main reverified2026-10-10.
+Whole M1 COMPLETE; final main sourceada4a7c / manager9b8f1b8.
 Baseline main39913bf/sourcee92ef6b, manager .worktrees/m1-admissions.
 Owner asked apply completed5–6 and continue the remainder; ADR177 completion and
 ADR163 apply after Codex PASS remain active, without repeated permission gates.
@@ -69,5 +70,16 @@ refusals/maintenance; no fake operational data, owner4 hashes metadata-only pres
 
 Manager final:1345defaultPASS/177intentionalSKIP;160M1PASS(91SQLHTTP+69RAM);
 93frontend/types/lint/buildPASS/buildclean;14Edgegroups+final88PASS all3widths.
-169owned scratch ID/GUID-paired dropped/live0; owner4 unchanged/unshared/untracked.
+170manager/25main owned scratch ID/GUID-paired dropped/live0; owner4 unchanged/unshared/untracked.
 See M1_07_08_REVIEW.md, exact allowlist and M1-admissions-evidence/summary.json.
+
+Main1345defaultPASS177intentionalSKIP;93frontend/types/lint/buildPASS;20owned
+SQLHTTP+2final date cases and3Edgegroups84/87/88PASS at375/768/1280.
+Genuine LOCAL_DEV all9/strictSQL+HTTPS/Admin4login4logout/newwrongrole403/
+replayCOMMIT1/auditCOMMIT1/failures0/stopped-maintenance503/forced0/host0/listener0.
+Fresh readonly operational7roles/oneACTIVEAdmin/Band5/Profile0/Course0/Program0/
+EntrySession0/Registration0/Invoice0/Payment0/activeSID0/sixmigrations.
+Finalsrc19be7ef1c98ee6d8c9e7c1910c288a793e060c20;
+testsea9b95d7c9ac32353efa25458429cd48fa23e972;
+frontenda24f77675383180cd13c52e6837269a98788c55d identical both checkouts.
+No M1 package remains in this assigned closure; do not infer M2 authorization.

@@ -1,9 +1,11 @@
-2026-10-10 current checkpoint: packages5–6 COMPLETE/applied main e92ef6b,
-reverified main39913bf and genuine LOCAL_DEV. Packages7–8 manager COMPLETE/review
-PASS; main apply/reverification pending under existing ADR177/163.
-Remaining M1 scope is implemented: Admissions038–045 plus Student Invoice046–047,
-including native pages/fresh print and full M1 regression. Whole M1 closure waits
-for applying this PASS source and the required main/LOCAL_DEV rechecks.
+2026-10-10 current checkpoint: whole M1 COMPLETE/review PASS/applied ADR163
+and main reverified. Packages1–6 retained; packages7–8 source mainada4a7c /
+manager9b8f1b8; identical src/tests/frontend. Admissions038–045 and Student
+Invoice046–047 native pages/fresh print complete the assigned remaining M1 scope.
+Manager160M1/14Edge+final delta, both1345default/93frontend; main20SQLHTTP+
+2finaldate/3Edge and genuine LOCAL_DEV all9/strictTLS/maintenance PASS.
+Manager170/main25 scratch ID/GUID-paired dropped/live0; owner4 unchanged.
+M2 is the next phase, unstarted; no payment/Class/schema/install/push/deploy claim.
 See M1_07_08_TASK_CARD.md, M1_07_08_REVIEW.md and M1-admissions-evidence/summary.json.
 Historical status below is provenance, not the current checkpoint.
 
