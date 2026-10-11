@@ -5,7 +5,7 @@ Baseline main dd82008; whole M1 COMPLETE. Prior instruction headers are historic
 
 | Batch | Proposed packages | Reviewable outcome |
 | --- | --- | --- |
-| 1 (assigned) | 1–2 | Accountant invoice search/detail/collection preview, full payment confirmation, metadata correction and manual result recovery (API048–053). |
+| 1 (COMPLETE/PASS/applied main) | 1–2 | Accountant invoice search/detail/collection preview, full payment confirmation, metadata correction and manual result recovery (API048–053). |
 | 2 (planning only) | 3–5 | Class preparation/open/cancel, eligible placement, concrete LESSON/FINAL_EXAM schedules. |
 | 3 (planning only) | 6–8 | Weekly preview/atomic save, move/non-held replacement, role calendars and full M2 closure. |
 

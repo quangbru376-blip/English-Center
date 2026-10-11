@@ -1,4 +1,4 @@
-2026-10-11 current checkpoint: M2 split into three batches; batch1 assigned and implementation reviewed PASS in .worktrees/m2-finance. Main apply/reverification pending.
+2026-10-11 current checkpoint: M2 split into three batches; batch1 COMPLETE/review PASS/applied ADR163/main reverified source05c3a96 / manager7eb9d23.
 Batch1 packages1–2 Accountant invoices/payments API048–053; batch2 packages3–5 Class/placement/concrete schedules; batch3 packages6–8 weekly/move/replacement/calendars and M2 closure.
 Manager1360defaultPASS/190intentionalSKIP;45focusedPASS(15RAM+12financeSQLHTTP+18M1regression);104frontend/types/lint/build; final Edge89 three widths PASS.
 Whole M1 remains COMPLETE. Batch2/3 planning only. See M2_BATCH_PLAN.md, M2_01_TASK_CARD.md, M2_01_REVIEW.md and M2-finance-evidence/summary.json.
@@ -173,3 +173,5 @@ for proposed39family default order and Mermaid diagram; sections4–7 hold actua
 dependencies. Current next task=P01 planning/preflight. M0–M4 remain coverage
 proposals; no code/installation/worker edit activated. CURRENT_STATE/TODO/HANDOFF
 must reference this order rather than replacing it with a chat-only shorthand.
+
+M2 batch1 final integration: main1360default/190intentionalSKIP/45focused+Edge89/104frontend/types/lint/build PASS; genuine LOCAL_DEV readiness/TLS/Finance403/maintenance PASS; live scratch0/hosts0/listener0. Batch2/3 await assignment. Evidence M2-finance-evidence/summary.json.

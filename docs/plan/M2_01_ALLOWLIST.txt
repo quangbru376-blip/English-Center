@@ -27,3 +27,4 @@ frontend/tests/browser/verify-m1.cjs
 frontend/tests/m2-finance.test.mjs
 frontend/tests/session.test.mjs
 tools/operator/Verify-M0Browser.cjs
+docs/plan/M2_BATCH_PLAN.md

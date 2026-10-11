@@ -1,6 +1,6 @@
 # M2 batch1 — Accountant invoices and payments
 
-Status implementation/review PASS; main apply/reverification pending; assigned2026-10-11. Codex manager; isolated .worktrees/m2-finance based on main dd82008. ADR177 completion authority and ADR163 reviewed-PASS apply remain effective.
+Status COMPLETE/review PASS/applied ADR163/main reverified; assigned2026-10-11. Codex manager; isolated .worktrees/m2-finance based on main dd82008. ADR177 completion authority and ADR163 reviewed-PASS apply remain effective.
 
 ## Contract and scope
 Implement F28/F29, W11/W12, API048–053, DTO§11, TX05/metadata atomic, EC-C1/T23 existing two finance actions. Exact digit-string VND; current contact; one Invoice/one Payment; live Accountant NORMAL/cookie/CSRF; no authority from browser. Search/count/projection one SNAPSHOT using VW06/FN06; final fresh session check. Request gate then sorted REG/INVOICE gates, ascending Accounts/SID, locked Registration/Invoice/Payment absence. Collect full positive snapshot amount only; preview full two-RV manifest with explicit paymentId null; stale context409 precedes contextual amount400. Correction changes only method/reference/latest reason bundle with full invoice/payment RV; mandatory old/new audit; immutable amount/link/time/confirmer. Same-TX effects/audit/T23, matched replay current authorized result/no duplicate effects. Own caller lookup SAFE_REFERENCE only; manual unknown recovery/no automatic resend or storage.
