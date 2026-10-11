@@ -20,6 +20,8 @@ using EnglishCenter.Api.Api.Admissions;
 using EnglishCenter.Api.Infrastructure.Admissions;
 using EnglishCenter.Api.Api.StudentInvoices;
 using EnglishCenter.Api.Infrastructure.StudentInvoices;
+using EnglishCenter.Api.Api.Finance;
+using EnglishCenter.Api.Infrastructure.Finance;
 using Microsoft.AspNetCore.DataProtection;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
@@ -48,6 +50,7 @@ internal sealed class LocalRuntimeServices : ITrustedLoginIpResolver, IDisposabl
     private readonly SqlTeacherEntryReader teacherReads;
     private readonly SqlAdmissionsExecutor admissions;
     private readonly SqlStudentInvoiceReader studentInvoices;
+    private readonly SqlFinanceExecutor finance;
     public LiveCsrfIdentityResolver Identity { get; }
     public LocalRuntimeServices(RuntimeProfile profile, LocalRuntimeKeyStore keys, string corpusDirectory)
     {
@@ -74,6 +77,7 @@ internal sealed class LocalRuntimeServices : ITrustedLoginIpResolver, IDisposabl
         teacherReads = new(Context, clock, limits.SqlSeconds, limits.LockMs);
         admissions = new(Context, clock, limits.SqlSeconds, limits.LockMs);
         studentInvoices = new(Context, clock, limits.SqlSeconds, limits.LockMs);
+        finance = new(Context, clock, limits.SqlSeconds, limits.LockMs);
         Identity = new(validator, current, audit, clock);
     }
     private static EnglishCenterDbContext Context() => new(new DbContextOptionsBuilder<EnglishCenterDbContext>()
@@ -101,6 +105,7 @@ internal sealed class LocalRuntimeServices : ITrustedLoginIpResolver, IDisposabl
         routes.MapTeacherEntry(teacherReads, teacherEntry, bodyBytes);
         routes.MapAdmissions(admissions, bodyBytes);
         routes.MapStudentInvoices(studentInvoices);
+        routes.MapFinance(finance, bodyBytes);
     }
     public IPAddress? Resolve(HttpContext context) => context.Connection.RemoteIpAddress is { } address && IPAddress.IsLoopback(address) ? address : null;
     public void Dispose() => limiter.Dispose();

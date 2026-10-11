@@ -76,7 +76,7 @@ test('equal/past deadline fails closed without zero timer loop; disposed and hid
  }
 });
 test('all normal first-F destinations and restricted/anonymous navigation are fixed',()=>{
- for(const [role,path] of Object.entries({Student:'/student/home',Admissions:'/admissions/registrations',AcademicAffairs:'/academics/entry-test-sessions',Teacher:'/teacher/classes',Accountant:'/finance/invoices',Director:'/reports',Admin:'/admin/accounts'}))assert.equal(identityPath(context({role}),'/register'),path);
+ for(const [role,path] of Object.entries({Student:'/student/home',Admissions:'/admissions/registrations',AcademicAffairs:'/academics/entry-test-sessions',Teacher:'/teacher/classes',Accountant:'/accountant/invoices',Director:'/reports',Admin:'/admin/accounts'}))assert.equal(identityPath(context({role}),'/register'),path);
  assert.equal(identityPath(context({scope:'PASSWORD_CHANGE'}),'/admin/accounts'),'/account/change-password');
  assert.equal(identityPath(null,'/admin/accounts'),'/login');assert.equal(identityPath(null,'/register'),'/register');
 });

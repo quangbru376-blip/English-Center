@@ -38,6 +38,7 @@ process.on('unhandledRejection',()=>{failed=true;});
   assert.equal((await api(page,'/api/v1/students/me/invoices')).status,403);
   assert.equal((await api(page,'/api/v1/admissions/registrations/1')).status,403);
   assert.equal((await api(page,'/api/v1/admissions/teachers/me/entry-test-sessions')).status,403);
+  assert.equal((await api(page,'/api/v1/finance/invoices/1')).status,403);
   if(adminId===undefined)adminId=me.body.accountId;assert.equal(me.body.accountId,adminId);await policy(page,true);
  };
  const logout=async page=>{

@@ -1,3 +1,13 @@
+2026-10-11 M2 batch1 Accountant API048–053 implemented/reviewed PASS; main integration receipts in docs/plan/M2-finance-evidence/summary.json.
+Mounted only in the explicit existing LOCAL_DEV host. All require live Accountant NORMAL authority/no-store; unsafe POST/PUT require same-origin framework CSRF.
+POST /api/v1/finance/invoices/search accepts exact DTO11.3 paged filters in RAM/body; real VW06/FN06 count/items share SNAPSHOT and final live authority.
+GET /api/v1/finance/invoices/{id} returns exact16field InvoiceAccountantView; POST /{id}/collection-preview returns6fields/full two-RV+Registration/paymentId:null manifest or blocked/null.
+POST /api/v1/finance/invoices/{id}/collect requires UUID and full positive digit-string amount/method/reference/manifest;201 first,200 matched replay.
+PUT /api/v1/finance/payments/{id}/metadata requires UUID/method/explicit nullable reference/reason/payment+invoice versions;200, immutable amount/link/paidAt/confirmer.
+GET /api/v1/finance/command-results/{requestId}?action=FINANCE.INVOICE.COLLECT or FINANCE.PAYMENT.UPDATE_METADATA returns caller-scoped SAFE_REFERENCE invoiceId/paymentId only;404 is not rollback proof.
+Collect/correction share owned atomic effects+mandatory audit+T23; current authority/link before replay digest; stale409 precedes contextual amount400; no automatic retry.
+Student invoice/print API046–047 privacy retained. No Class/schedules/report/export/partial payment/refund/gateway or new schema/dependencies.
+Historical checkpoints below are provenance.
 2026-10-10 packages7–8 COMPLETE/review PASS/applied main ada4a7c/reverified.
 Admissions NORMAL API038–044: POST /api/v1/admissions/registrations/search;
 GET /{id}; POST /{id}/approval-preview, /approve, /reject,

@@ -1,0 +1,88 @@
+{
+  "status": "Implementation review PASS; apply/main/runtime revalidation pending",
+  "date": "2026-10-11",
+  "baselineMain": "dd820084c78173f1d37235f98d2ac9811bca91c3",
+  "contractCommit": "05e6871",
+  "manager": "C:/Study/SOEN/main_workplace/.worktrees/m2-finance",
+  "default": {
+    "failed": 0,
+    "passed": 1360,
+    "path": "C:\\Study\\SOEN\\main_workplace\\.worktrees\\m2-finance\\backend\\TestResults\\M2-default-final\\M2-default-final.trx",
+    "sha256": "BB439BA0C55530AD3DF29410219D0B95B9F243DF5E6F5F90E02ED445832C871A"
+  },
+  "intentionalOptInSkipped": 190,
+  "focused": {
+    "failed": 0,
+    "passed": 45,
+    "path": "C:\\Study\\SOEN\\main_workplace\\.worktrees\\m2-finance\\backend\\TestResults\\M2-finance-final\\M2-final.trx",
+    "sha256": "19266E1C207B8F271C1A2AF542DF3B52ADB810DC76EF4A422D64200720A59366"
+  },
+  "focusedCounts": {
+    "newRam": 15,
+    "financeSqlHttp": 12,
+    "affectedM1SqlHttp": 18,
+    "edgeIntentionallySkipped": 1
+  },
+  "Edge": {
+    "failed": 0,
+    "passed": 1,
+    "path": "C:\\Study\\SOEN\\main_workplace\\.worktrees\\m2-finance\\backend\\TestResults\\M2-finance-edge-reviewed\\M2-edge-reviewed.trx",
+    "sha256": "57B8B39FFF230AFB8920967C8D23BA2380660D42C94EBB32C0699697415604B1"
+  },
+  "widths": [
+    375,
+    768,
+    1280
+  ],
+  "frontend": {
+    "passed": 104,
+    "lint": "PASS",
+    "receipt": "C:\\Study\\SOEN\\main_workplace\\.worktrees\\m2-finance\\backend\\TestResults\\M2-frontend-reviewed\\frontend-tests.tap",
+    "build": "PASS",
+    "sha256": "C605965A77EE0285A0E1363FE2E06656BD645F1C4F01C880B52373E716491F9C",
+    "types": "PASS"
+  },
+  "worker": {
+    "diffLines": 89,
+    "observedScopeViolations": 0,
+    "soleWrite": "frontend/src/features/finance/components/PaymentFields.tsx",
+    "originalDetachedEvidenceRetained": true,
+    "status": "SUCCESS",
+    "receiptSha256": "A6CFFD99E57F3EDA82FBE50BAB72BC195F06118F42700B4830C766359816F3BB",
+    "completeContextReads": 3,
+    "run": "552212eb-53f"
+  },
+  "scratch": {
+    "managerIdentityPairedDropped": 63,
+    "liveRemaining": "Pending final read-only check",
+    "managerCreated": 63
+  },
+  "ownerMetadata": [
+    {
+      "sha256": "C7DE4DE6338670A94C99280DF89BDDC8E06FAE53A63E3B0405BBFE9DA0149F6C",
+      "path": "docs/Nhom18_ThietKeXuLy.docx"
+    },
+    {
+      "sha256": "4EFDC55AD820A5E92A9A95A619F875D6191EA74BDCC05AC06BF8CDE1AB65A54C",
+      "path": "docs/reference/PROCESSING_REPORT_MEMORY_COMPARISON.md"
+    },
+    {
+      "sha256": "40466A2B841CF7E5DCC796ACDCC122B20E649B3A9DEA9814C1BECCD733E8CFB0",
+      "path": "docs/reference/REFERENTIAL_INTEGRITY_IMPACT.md"
+    },
+    {
+      "sha256": "D5EA14D09082EB776BE243EABC7E4CD8D375CC1586214417FB3542AB2A138FEA",
+      "path": "docs/reference/REPORT_REVISION_GUIDE.md"
+    }
+  ],
+  "noChanges": [
+    "schema/migrations/grants",
+    "dependencies/install",
+    "default host",
+    "D07",
+    "owner files",
+    "batch2/3",
+    "M3/M4",
+    "push/deploy"
+  ]
+}

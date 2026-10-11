@@ -1,13 +1,13 @@
 # M2 batch1 — Accountant invoices and payments
 
-Status IN PROGRESS; assigned2026-10-11. Codex manager; isolated .worktrees/m2-finance based on main dd82008. ADR177 completion authority and ADR163 reviewed-PASS apply remain effective.
+Status implementation/review PASS; main apply/reverification pending; assigned2026-10-11. Codex manager; isolated .worktrees/m2-finance based on main dd82008. ADR177 completion authority and ADR163 reviewed-PASS apply remain effective.
 
 ## Contract and scope
 Implement F28/F29, W11/W12, API048–053, DTO§11, TX05/metadata atomic, EC-C1/T23 existing two finance actions. Exact digit-string VND; current contact; one Invoice/one Payment; live Accountant NORMAL/cookie/CSRF; no authority from browser. Search/count/projection one SNAPSHOT using VW06/FN06; final fresh session check. Request gate then sorted REG/INVOICE gates, ascending Accounts/SID, locked Registration/Invoice/Payment absence. Collect full positive snapshot amount only; preview full two-RV manifest with explicit paymentId null; stale context409 precedes contextual amount400. Correction changes only method/reference/latest reason bundle with full invoice/payment RV; mandatory old/new audit; immutable amount/link/time/confirmer. Same-TX effects/audit/T23, matched replay current authorized result/no duplicate effects. Own caller lookup SAFE_REFERENCE only; manual unknown recovery/no automatic resend or storage.
 
 Mount only explicit existing LOCAL_DEV. Preserve Student invoice privacy/fresh print. No Class/placement/schedules/report/CSV/refund/gateway/partial payment, schema/migration/grant/install/package/default-host/push/deploy changes. D07 and genuine custody untouched; synthetic data only owned scratch databases, ID/GUID checked cleanup. Actual existing runtime readonly readiness/wrong-role routes and maintenance acceptance after code integration; no fake operational data.
 
-Manager paths: backend/src/EnglishCenter.Api/{Api,Services,Infrastructure}/Finance/**; Infrastructure/Operator/LocalRuntimeServices.cs; frontend/src/features/finance/**; frontend/src/lib/http.ts; frontend/src/app/{IdentityApp,identityNavigation}.tsx or .ts; backend/tests/EnglishCenter.Tests/{Api/Integration,Common}/M2*; frontend/tests/*finance*; scoped existing HTTP/Edge host registration; docs/api.md, docs/plan/{M2*,plan.md}, docs/notes/M2_01.md. Record exact final allowlist before apply.
+Manager paths: backend/src/EnglishCenter.Api/{Api,Services,Infrastructure}/Finance/**; Infrastructure/Operator/LocalRuntimeServices.cs; frontend/src/features/finance/**; frontend/src/lib/http.ts; frontend/src/app/{IdentityApp,identityNavigation}.tsx or .ts; backend/tests/EnglishCenter.Tests/{Api/Integration,Common}/M2*; frontend/tests/*finance*; scoped existing HTTP/Edge host registration and tools/operator/Verify-M0Browser.cjs finance wrong-role assertion; docs/api.md, docs/plan/{M2*,plan.md}, docs/notes/M2_01.md. Record exact final allowlist before apply.
 
 ## Skill policy and bounded external context
 implementation_skills: backend-clean-code,frontend-ui; review_skills: code-review; delegation_protocol: antigravity-worker.
@@ -18,4 +18,4 @@ Worker reads ONLY docs/plan/M2_PAYMENT_FORM_WORKER.md, .agents/skills/frontend-u
 ## Required evidence
 Build/default backend; frontend tests/types/lint/build; owned SQL success/replay/conflict/stale/absence/amount/roles/session/restricted/audit rollback/metadata immutable/races/cancellation/current contact/date filters/overdue and Student no-payment projection. Real cookie/CSRF HTTP pipeline; real Edge at375/768/1280, confirmation/manual lost-response recovery and no resend, cleanup on authority change. Full review and unresolved checks recorded before any PASS/apply claim. Main focused revalidation and identical source trees; owner hashes unchanged and scratch/live hosts cleanup.
 
-skill_verification: complete skills read before implementation; worker event verification pending; integrated review pending.
+skill_verification: complete skills read before implementation; AGY552212eb-53f exact3full reads/sole89diffLine form/no observed violations; Codex independent integration review PASS in M2_01_REVIEW.md.

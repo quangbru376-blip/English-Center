@@ -1,3 +1,8 @@
+2026-10-11 current checkpoint: M2 split into three batches; batch1 assigned and implementation reviewed PASS in .worktrees/m2-finance. Main apply/reverification pending.
+Batch1 packages1–2 Accountant invoices/payments API048–053; batch2 packages3–5 Class/placement/concrete schedules; batch3 packages6–8 weekly/move/replacement/calendars and M2 closure.
+Manager1360defaultPASS/190intentionalSKIP;45focusedPASS(15RAM+12financeSQLHTTP+18M1regression);104frontend/types/lint/build; final Edge89 three widths PASS.
+Whole M1 remains COMPLETE. Batch2/3 planning only. See M2_BATCH_PLAN.md, M2_01_TASK_CARD.md, M2_01_REVIEW.md and M2-finance-evidence/summary.json.
+Historical status below is provenance, not the current checkpoint.
 2026-10-10 current checkpoint: whole M1 COMPLETE/review PASS/applied ADR163
 and main reverified. Packages1–6 retained; packages7–8 source mainada4a7c /
 manager9b8f1b8; identical src/tests/frontend. Admissions038–045 and Student
