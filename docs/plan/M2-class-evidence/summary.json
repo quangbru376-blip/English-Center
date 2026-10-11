@@ -1,5 +1,5 @@
 {
-  "status": "Manager review PASS; main apply and revalidation pending",
+  "status": "COMPLETE / Codex review PASS / applied ADR163 / main reverified; M2 batch2 only",
   "date": "2026-10-11",
   "baselineMain": "7b07155",
   "contractCommit": "31a3634",
@@ -73,5 +73,92 @@
   "ownerFourUntrackedUnstagedUnsharedUnchanged": true,
   "D07NotOpenedOrRerun": true,
   "noSchemaGrantsPackagesDefaultProgramProvisioningPushDeploy": true,
-  "batch3Unassigned": true
+  "batch3Unassigned": true,
+  "managerSourceCommit": "af160a3",
+  "mainSourceCommit": "a7b7ca3",
+  "identicalSourceTrees": {
+    "backend/src": "b80c75fef039b23f44419d8fa0bc360e0bea2979",
+    "backend/tests": "5dff608a5e90be1efaa8a8d93ce924e7df6c10e6",
+    "frontend": "f2e347149d9b73af5b2e82bd82d2d385bebd30df"
+  },
+  "main": {
+    "default": {
+      "passed": 1374,
+      "failed": 0,
+      "notExecuted": 0,
+      "path": "C:\\Study\\SOEN\\main_workplace\\backend\\tests\\EnglishCenter.Tests\\TestResults\\M2-02-main-default.trx",
+      "sha256": "667C6DD895AEB8628AAA20B1FB11C4824A4F69F5735EE8E2AE9D066D981B99F5"
+    },
+    "focused": {
+      "passed": 55,
+      "failed": 0,
+      "notExecuted": 0,
+      "path": "C:\\Study\\SOEN\\main_workplace\\backend\\tests\\EnglishCenter.Tests\\TestResults\\M2-02-main-focused.trx",
+      "sha256": "F977E16BE378484804385B801456CB17AA11E0B5AF45434EE0661E0BD142808E"
+    },
+    "edge": {
+      "passed": 2,
+      "failed": 0,
+      "notExecuted": 0,
+      "path": "C:\\Study\\SOEN\\main_workplace\\backend\\tests\\EnglishCenter.Tests\\TestResults\\M2-02-main-edge-exact-assets.trx",
+      "sha256": "D43F1336B04C5B0572D2DC90EFC667096C6F6CC78B27CCB8A5E05E7655017952"
+    },
+    "frontend": {
+      "passed": 117,
+      "failed": 0,
+      "types": "PASS",
+      "lint": "PASS",
+      "build": "PASS"
+    },
+    "build": {
+      "warnings": 0,
+      "errors": 0
+    },
+    "scratchCreatedAndIdentityPairedDropped": 59,
+    "scratchOwnershipReceipt": "C:\\Study\\SOEN\\main_workplace\\docs\\plan\\V01-evidence\\test-results\\M2-02-main-scratch\\E-scratch-ownership.jsonl",
+    "genuineLocalDev": {
+      "phase": "W5-launch",
+      "success": true,
+      "ready": true,
+      "browserPassed": true,
+      "replayCommits": 1,
+      "auditCommits": 1,
+      "failedRuns": 0,
+      "stoppedMaintenanceRefused": true,
+      "forcedStops": 0
+    },
+    "genuineLocalDevReceipt": "C:\\Study\\SOEN\\main_workplace\\docs\\plan\\V01-evidence\\test-results\\M2-02-main-operational-20261011.json",
+    "diagnosticReadonlyCounts": {
+      "roles": 7,
+      "accounts": 1,
+      "activeAdmins": 1,
+      "bands": 5,
+      "profiles": 0,
+      "courses": 0,
+      "programs": 0,
+      "entrySessions": 0,
+      "registrations": 0,
+      "invoices": 0,
+      "payments": 0,
+      "classes": 0,
+      "schedules": 0,
+      "classAssignments": 0,
+      "gradeReports": 0,
+      "activeSid": 0,
+      "migrations": 6
+    },
+    "liveScratchRemaining": 0,
+    "cleanup": {
+      "remainingOperationalHosts": 0,
+      "remaining8443Listeners": 0
+    },
+    "genuineRuntimeAndMaintenanceIdentities": true,
+    "trustedSqlAndHttps": true,
+    "adminLoginsAndLogouts": 4,
+    "widths": [
+      375,
+      768,
+      1280
+    ]
+  }
 }
