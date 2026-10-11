@@ -8,6 +8,7 @@ const input = async () => { let text = ''; for await (const chunk of process.std
 (async () => {
  const f = await input(), roles = ['Student','Admissions','AcademicAffairs','Teacher','Accountant','Director','Admin'];
  let lostProgramAck=false,lostSessionAck=false,lostStudentAck=false,lostTeacherAck=false,lostRescheduleAck=false,lostConfirmAck=false,lostApprovalAck=false,nameRequests=0,cancelRequests=0,bookRequests=0,gradeRequests=0,rescheduleRequests=0,confirmRequests=0,approveRequests=0;
+ let lostClassAck=false,classCreateRequests=0;
  let lostCollectAck=false,lostCorrectionAck=false,collectRequests=0,correctionRequests=0;
  const cert = new X509Certificate(f.certificate);
  assert.equal(createHash('sha256').update(cert.raw).digest('hex').toUpperCase(), f.fingerprint);
@@ -21,6 +22,8 @@ const input = async () => { let text = ''; for await (const chunk of process.std
   const headers={...req.headers}; for(const name of Object.keys(headers))if(name==='forwarded'||name.startsWith('x-forwarded-')||name==='x-v01-bridge')delete headers[name];
   headers['x-v01-bridge']=f.bridge;
   if(f.group===83&&req.url.endsWith('/name'))nameRequests++;if(f.group===84&&req.url.endsWith('/cancel'))cancelRequests++;
+  const classCreate=f.group===90&&req.method==='POST'&&req.url==='/api/v1/academics/classes';if(classCreate)classCreateRequests++;
+  if(classCreate&&!lostClassAck){lostClassAck=true;const upstream=http.request(f.backend+req.url,{method:req.method,headers},reply=>{res.writeHead(reply.statusCode,{'content-type':'application/json','content-length':'100000'});res.flushHeaders();res.write('{');reply.resume();reply.on('end',()=>res.destroy());});upstream.on('error',()=>res.destroy());req.pipe(upstream);return;}
   const studentBook=f.group===85&&req.method==='POST'&&req.url.startsWith('/api/v1/students/me/registrations/')&&req.url.endsWith('/entry-test-bookings');if(studentBook)bookRequests++;
   const studentReschedule=f.group===85&&req.method==='POST'&&req.url.startsWith('/api/v1/students/me/registrations/')&&req.url.endsWith('/reschedule');if(studentReschedule)rescheduleRequests++;
   const teacherGrade=f.group===86&&req.method==='POST'&&req.url.startsWith('/api/v1/admissions/teachers/me/entry-test-bookings/')&&req.url.endsWith('/score');if(teacherGrade)gradeRequests++;
@@ -70,7 +73,7 @@ const input = async () => { let text = ''; for await (const chunk of process.std
   checkpoint='group-'+f.group;
 
   const widthCheck=async p=>assert.equal(await p.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),true);
-  if(f.group===89){
+  if(f.group===90){await require('./m2-classes.cjs')({f,newPage,login,logout,api,csrf,policy,widthCheck,setCheckpoint:value=>{checkpoint=value;}});assert.equal(classCreateRequests,3);}else if(f.group===89){
     for(const [index,width] of [375,768,1280].entries()){
       checkpoint='finance-search-'+width;const p=await newPage();await p.setViewportSize({width,height:900});await login(p,'Accountant');
       const found=await api(p,'/api/v1/finance/invoices/search','POST',{},await csrf(p));assert.equal(found.status,200);assert.equal(found.body.totalCount,3);const invoice=found.body.items.find(x=>x.course.code==='ENROLL_'+index);assert.ok(invoice);

@@ -9,7 +9,7 @@ using EnglishCenter.Api.Common.Security;
 using EnglishCenter.Api.Infrastructure.Academics;
 public static class EntrySessionEndpoints
 {
-    public static void MapEntrySessions(this IEndpointRouteBuilder routes, SqlEntrySessionExecutor executor, int bytes, Infrastructure.Admissions.SqlAdmissionsExecutor? admissions = null)
+    public static void MapEntrySessions(this IEndpointRouteBuilder routes, SqlEntrySessionExecutor executor, int bytes, Infrastructure.Admissions.SqlAdmissionsExecutor? admissions = null, Infrastructure.Classes.SqlClassExecutor? classes = null)
     {
         const string root = "/api/v1/admissions/entry-test-sessions"; var policy = new CsrfRoutePolicy(CsrfAccess.Authenticated, true);
         routes.MapGet(root, async (HttpContext context) => { var token = ProgramEndpoints.RequireAcademic(context); AdminAccountEndpoints.RequireEmptyBody(context); return Results.Ok(await executor.SearchAsync(token, context.Request.Query, context.RequestAborted)); }).WithMetadata(policy).AllowAnonymous();
@@ -28,6 +28,7 @@ public static class EntrySessionEndpoints
             if (context.Request.Query.Count != 1 || !context.Request.Query.TryGetValue("action", out var action) || action.Count != 1 || string.IsNullOrEmpty(action[0])) throw ApiErrorException.Validation("action");
             var request = AdminAccountEndpoints.Uuid(requestId);
             if (isAdmissions) return Results.Ok(await admissions!.LookupAsync(token, action[0]!, request, context.RequestAborted));
+            if(classes is not null && EnglishCenter.Api.Common.Replay.CanonicalActionRegistry.All.Any(x=>x.Code==action[0]&&x.ApiId is 92 or 94 or 97 or 99 or 102 or 108 or 118))return Results.Ok(await classes.Lookup(token,action[0]!,request,context.RequestAborted));
             return Results.Ok(await executor.LookupAsync(token, action[0]!, request, context.RequestAborted));
         }).WithMetadata(policy).AllowAnonymous();
     }

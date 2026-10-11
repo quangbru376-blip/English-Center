@@ -101,8 +101,8 @@ internal static class AuditPolicy
         if (canonical == "FINANCE.PAYMENT.UPDATE_METADATA") allowed = "method transactionReference";
         if (canonical == "TEACHER.ENTRY_BOOKING.ABSENCE") allowed = "status absentBy absentAt absentOperationId";
         var details = new JsonObject();
-        if (changes.Old is not null) details["old"] = ProjectFields(changes.Old,allowed);
-        if (changes.New is not null) details["new"] = ProjectFields(changes.New,allowed);
+        if (changes.Old is not null) details["old"] = ProjectFields(changes.Old,allowed,allowPlannedClass:entity == "Class");
+        if (changes.New is not null) details["new"] = ProjectFields(changes.New,allowed,allowPlannedClass:entity == "Class");
         if (changes.Parent is not null)
         {
             var parentAllowed = rule.Entities switch
@@ -130,7 +130,7 @@ internal static class AuditPolicy
         return details.ToJsonString();
     }
 
-    private static JsonObject ProjectFields(JsonObject source,string allowed,bool parent = false)
+    private static JsonObject ProjectFields(JsonObject source,string allowed,bool parent = false,bool allowPlannedClass = false)
     {
         var result = new JsonObject();
         var names = allowed.Split(' ',StringSplitOptions.RemoveEmptyEntries).ToHashSet(StringComparer.Ordinal);
@@ -147,7 +147,7 @@ internal static class AuditPolicy
             else if (key is "isUnfinished" or "mustChangePassword" or "isCurrent") valid = value.TryGetValue<bool>(out _);
             else if (key is "score" or "scoreValue" or "finalScore" or "minScore" or "weight" or "basePrice" or "amount" or "amountPaid") valid = value.TryGetValue<decimal>(out _);
             else if (key.EndsWith("At",StringComparison.Ordinal)) valid = value.TryGetValue<string>(out var instant) && DateTimeOffset.TryParse(instant,CultureInfo.InvariantCulture,DateTimeStyles.None,out var at) && at.Offset == TimeSpan.Zero && at.Ticks % TimeSpan.TicksPerMillisecond == 0;
-            else if (key == "status" || key == "cancelledFromStatus") valid = value.TryGetValue<string>(out var status) && "ACTIVE INACTIVE LOCKED DISABLED PENDING TESTING BAND_ASSIGNED ADMITTED REJECTED CANCELLED CONFIRMED BOOKED SCHEDULED COMPLETED ABSENT UNPAID PAID DRAFT OPEN CLOSED ONGOING ENDED SUBMITTED RETURNED FINALIZED".Split(' ').Contains(status,StringComparer.Ordinal);
+            else if (key == "status" || key == "cancelledFromStatus") valid = value.TryGetValue<string>(out var status) && "ACTIVE INACTIVE LOCKED DISABLED PENDING TESTING BAND_ASSIGNED ADMITTED REJECTED CANCELLED CONFIRMED BOOKED SCHEDULED COMPLETED ABSENT UNPAID PAID DRAFT OPEN CLOSED ONGOING ENDED SUBMITTED RETURNED FINALIZED".Split(' ').Contains(status,StringComparer.Ordinal) || allowPlannedClass && status == "PLANNED";
             else if (key == "kind") valid = value.TryGetValue<string>(out var kind) && "GENERAL LESSON FINAL_EXAM".Split(' ').Contains(kind,StringComparer.Ordinal);
             else if (key == "method") valid = value.TryGetValue<string>(out var method) && "CASH TRANSFER".Split(' ').Contains(method,StringComparer.Ordinal);
             else if (key == "sessionType") valid = value.TryGetValue<string>(out var sessionType) && "LESSON FINAL_EXAM".Split(' ').Contains(sessionType,StringComparer.Ordinal);

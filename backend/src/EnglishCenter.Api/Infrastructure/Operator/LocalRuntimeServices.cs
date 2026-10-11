@@ -51,6 +51,7 @@ internal sealed class LocalRuntimeServices : ITrustedLoginIpResolver, IDisposabl
     private readonly SqlAdmissionsExecutor admissions;
     private readonly SqlStudentInvoiceReader studentInvoices;
     private readonly SqlFinanceExecutor finance;
+    private readonly Classes.SqlClassExecutor classes;
     public LiveCsrfIdentityResolver Identity { get; }
     public LocalRuntimeServices(RuntimeProfile profile, LocalRuntimeKeyStore keys, string corpusDirectory)
     {
@@ -78,6 +79,7 @@ internal sealed class LocalRuntimeServices : ITrustedLoginIpResolver, IDisposabl
         admissions = new(Context, clock, limits.SqlSeconds, limits.LockMs);
         studentInvoices = new(Context, clock, limits.SqlSeconds, limits.LockMs);
         finance = new(Context, clock, limits.SqlSeconds, limits.LockMs);
+        classes = new(Context, clock, limits.SqlSeconds, limits.LockMs);
         Identity = new(validator, current, audit, clock);
     }
     private static EnglishCenterDbContext Context() => new(new DbContextOptionsBuilder<EnglishCenterDbContext>()
@@ -100,12 +102,13 @@ internal sealed class LocalRuntimeServices : ITrustedLoginIpResolver, IDisposabl
         routes.MapPasswordChange(password, bodyBytes); routes.MapAdminAccountPilot(admin, bodyBytes);
         routes.MapStaffAccounts(staff, bodyBytes); routes.MapCourseCatalogue(courses, bodyBytes);
         routes.MapTrainingPrograms(programs,bodyBytes);
-        routes.MapEntrySessions(entrySessions,bodyBytes,admissions);
+        routes.MapEntrySessions(entrySessions,bodyBytes,admissions,classes);
         routes.MapStudentEnrollment(profiles, studentReads, studentEnrollment, bodyBytes);
         routes.MapTeacherEntry(teacherReads, teacherEntry, bodyBytes);
         routes.MapAdmissions(admissions, bodyBytes);
         routes.MapStudentInvoices(studentInvoices);
         routes.MapFinance(finance, bodyBytes);
+        EnglishCenter.Api.Api.Classes.ClassEndpoints.MapClasses(routes,classes,bodyBytes);
     }
     public IPAddress? Resolve(HttpContext context) => context.Connection.RemoteIpAddress is { } address && IPAddress.IsLoopback(address) ? address : null;
     public void Dispose() => limiter.Dispose();

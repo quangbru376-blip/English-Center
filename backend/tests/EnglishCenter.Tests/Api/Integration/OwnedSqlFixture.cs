@@ -77,7 +77,7 @@ internal sealed class OwnedSqlFixture : IAsyncDisposable
         {
             await using var master = new SqlConnection(Master); await master.OpenAsync(Ct);
             await using var create = master.CreateCommand(); create.CommandTimeout = 30;
-            create.CommandText = $"IF DB_ID(@name) IS NOT NULL THROW 51000,'Scratch already exists',1; CREATE DATABASE [{f._name}] COLLATE Latin1_General_100_CI_AS_SC;";
+            create.CommandText = $"IF DB_ID(@name) IS NOT NULL THROW 51000,'Scratch already exists',1; CREATE DATABASE [{f._name}] COLLATE Latin1_General_100_CI_AS_SC; ALTER DATABASE [{f._name}] SET AUTO_CLOSE OFF;";
             create.Parameters.AddWithValue("@name", f._name); await create.ExecuteNonQueryAsync(Ct); f._created = true;
             (f._databaseId, f._databaseGuid) = await f.Identity(master);
             await f.Receipt("created");

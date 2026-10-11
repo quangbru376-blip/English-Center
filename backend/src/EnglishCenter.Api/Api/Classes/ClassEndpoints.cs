@@ -1,0 +1,33 @@
+namespace EnglishCenter.Api.Api.Classes;
+using EnglishCenter.Api.Api.Administration;
+using EnglishCenter.Api.Api.Auth;
+using EnglishCenter.Api.Api.Enrollment;
+using EnglishCenter.Api.Api.Identity;
+using EnglishCenter.Api.Infrastructure.Classes;
+public static class ClassEndpoints
+{
+    public static void MapClasses(this IEndpointRouteBuilder routes,SqlClassExecutor executor,int bytes)
+    {
+        const string root="/api/v1/academics/classes";
+        var policy=new CsrfRoutePolicy(CsrfAccess.Authenticated,true);
+        foreach(var (role,path) in new[]{("AcademicAffairs",root),("Teacher","/api/v1/academics/teachers/me/classes"),("Student","/api/v1/students/me/classes")})
+        {
+            routes.MapGet(path,async(HttpContext c)=>{var t=EnrollmentEndpoints.RequireRole(c,role);AdminAccountEndpoints.RequireEmptyBody(c);return Results.Ok(await executor.Search(t,c.Request.Query,role,c.RequestAborted));}).WithMetadata(policy).AllowAnonymous();
+            routes.MapGet(path+"/{id}",async(HttpContext c,string id)=>{var t=EnrollmentEndpoints.RequireRole(c,role);AdminAccountEndpoints.RequireEmptyBody(c);AdminAccountEndpoints.RequireNoQuery(c);return Results.Ok(await executor.Detail(t,AdminAccountEndpoints.Id(id),role,c.RequestAborted));}).WithMetadata(policy).AllowAnonymous();
+            if(role!="Student")routes.MapPost(path+"/{id}/roster/search",async(HttpContext c,string id)=>{var t=EnrollmentEndpoints.RequireRole(c,role);AdminAccountEndpoints.RequireNoQuery(c);return Results.Ok(await executor.Roster(t,AdminAccountEndpoints.Id(id),ClassContactFilter.Parse(AuthJsonBoundary.Read(c),false),role,c.RequestAborted));}).WithMetadata(policy,new AuthBodyPolicy(bytes)).AllowAnonymous();
+        }
+        routes.MapPost(root,async(HttpContext c)=>{var t=EnrollmentEndpoints.RequireRole(c,"AcademicAffairs");AdminAccountEndpoints.RequireNoQuery(c);var result=await executor.Command(t,92,0,AdminAccountEndpoints.HeaderKey(c),AuthJsonBoundary.Read(c),bytes,c.RequestAborted);return Results.Json(result.Result,statusCode:result.Replayed?200:201);}).WithMetadata(policy,new AuthBodyPolicy(bytes)).AllowAnonymous();
+        foreach(var (api,verb,suffix) in new[]{(94,"PUT","capacity"),(97,"POST","change-teacher"),(99,"POST","open"),(102,"POST","cancel"),(108,"POST","assignments"),(118,"POST","schedules")})
+            routes.MapMethods(root+"/{id}/"+suffix,[verb],async(HttpContext c,string id)=>{var t=EnrollmentEndpoints.RequireRole(c,"AcademicAffairs");AdminAccountEndpoints.RequireNoQuery(c);var result=await executor.Command(t,api,AdminAccountEndpoints.Id(id),AdminAccountEndpoints.HeaderKey(c),AuthJsonBoundary.Read(c),bytes,c.RequestAborted);return Results.Json(result.Result,statusCode:!result.Replayed&&api is 108 or 118?201:200);}).WithMetadata(policy,new AuthBodyPolicy(bytes)).AllowAnonymous();
+        foreach(var (kind,suffix) in new[]{("teacher","teacher-change-preview"),("transition","transition-preview"),("placement","placement-preview"),("schedule","schedule-preview")})
+            routes.MapPost(root+"/{id}/"+suffix,async(HttpContext c,string id)=>{var t=EnrollmentEndpoints.RequireRole(c,"AcademicAffairs");AdminAccountEndpoints.RequireNoQuery(c);return Results.Ok(await executor.Preview(t,AdminAccountEndpoints.Id(id),kind,AuthJsonBoundary.Read(c),c.RequestAborted));}).WithMetadata(policy,new AuthBodyPolicy(bytes)).AllowAnonymous();
+        routes.MapGet("/api/v1/academics/class-teacher-options",async(HttpContext c)=>{var t=EnrollmentEndpoints.RequireRole(c,"AcademicAffairs");AdminAccountEndpoints.RequireEmptyBody(c);return Results.Ok(await executor.TeacherOptions(t,c.Request.Query,c.RequestAborted));}).WithMetadata(policy).AllowAnonymous();
+        routes.MapGet(root+"/{id}/scheduling-context",async(HttpContext c,string id)=>{var t=EnrollmentEndpoints.RequireRole(c,"AcademicAffairs");AdminAccountEndpoints.RequireEmptyBody(c);AdminAccountEndpoints.RequireNoQuery(c);return Results.Ok(await executor.Scheduling(t,AdminAccountEndpoints.Id(id),c.RequestAborted));}).WithMetadata(policy).AllowAnonymous();
+        const string candidates="/api/v1/academics/placement-candidates";
+        routes.MapPost(candidates+"/search",async(HttpContext c)=>{var t=EnrollmentEndpoints.RequireRole(c,"AcademicAffairs");AdminAccountEndpoints.RequireNoQuery(c);return Results.Ok(await executor.CandidateSearch(t,ClassContactFilter.Parse(AuthJsonBoundary.Read(c),true),c.RequestAborted));}).WithMetadata(policy,new AuthBodyPolicy(bytes)).AllowAnonymous();
+        routes.MapGet(candidates+"/{id}",async(HttpContext c,string id)=>{var t=EnrollmentEndpoints.RequireRole(c,"AcademicAffairs");AdminAccountEndpoints.RequireEmptyBody(c);AdminAccountEndpoints.RequireNoQuery(c);return Results.Ok(await executor.Candidate(t,AdminAccountEndpoints.Id(id),c.RequestAborted));}).WithMetadata(policy).AllowAnonymous();
+        routes.MapGet(candidates+"/{id}/classes",async(HttpContext c,string id)=>{var t=EnrollmentEndpoints.RequireRole(c,"AcademicAffairs");AdminAccountEndpoints.RequireEmptyBody(c);return Results.Ok(await executor.Options(t,AdminAccountEndpoints.Id(id),c.Request.Query,c.RequestAborted));}).WithMetadata(policy).AllowAnonymous();
+        routes.MapGet("/api/v1/academics/schedules",async(HttpContext c)=>{var t=EnrollmentEndpoints.RequireRole(c,"AcademicAffairs");AdminAccountEndpoints.RequireEmptyBody(c);return Results.Ok(await executor.Calendar(t,c.Request.Query,c.RequestAborted));}).WithMetadata(policy).AllowAnonymous();
+        routes.MapGet("/api/v1/academics/schedules/{id}",async(HttpContext c,string id)=>{var t=EnrollmentEndpoints.RequireRole(c,"AcademicAffairs");AdminAccountEndpoints.RequireEmptyBody(c);AdminAccountEndpoints.RequireNoQuery(c);return Results.Ok(await executor.ScheduleDetail(t,AdminAccountEndpoints.Id(id),c.RequestAborted));}).WithMetadata(policy).AllowAnonymous();
+    }
+}

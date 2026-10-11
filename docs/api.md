@@ -227,3 +227,12 @@ Every /api/v1 request through this installed boundary evaluates a fresh supplied
 profile and all9 essential probes; failure returns existing SERVICE_UNAVAILABLE503
 before downstream. No cached ready stamp, dependency details, idle touch or automatic
 profile/provisioning. Default Program/routes remain unmounted. See V01Q_TASK_CARD.
+
+2026-10-11 M2 batch2 assigned API091–099/102–118 (excluding100/101), mounted only by the existing explicit LOCAL_DEV profile:
+- AcademicAffairs: GET/POST `/api/v1/academics/classes`, GET `/{id}`, PUT `/{id}/capacity`; POST `/{id}/teacher-change-preview`, `/change-teacher`, `/transition-preview`, `/open`, `/cancel`, `/roster/search`, `/placement-preview`, `/assignments`, `/schedule-preview`, `/schedules`; GET `/{id}/scheduling-context`. GET `/api/v1/academics/class-teacher-options` optionally `classId`.
+- AcademicAffairs: POST `/api/v1/academics/placement-candidates/search` with contact/paging/course/band filters in body; GET `/api/v1/academics/placement-candidates/{id}` and `/{id}/classes`. GET `/api/v1/academics/schedules` with inclusive local dates/current-history/paging filters and `/{id}` provenance/detail.
+- Teacher: GET `/api/v1/academics/teachers/me/classes` and `/{id}`, POST `/{id}/roster/search`; current Teacher assignment only, no invoice/entry-score/management tokens.
+- Student: GET `/api/v1/students/me/classes` current/history and `/{id}`; own assignment only, Teacher display name only, no peer/cohort/management data.
+ClassCreate/ClassAssignment/ScheduleCreate first201; replay200, capacity/Teacher/open/cancel200. All reads200/no-store; cookie/CSRF/live NORMAL role, strict query/body/header UUID and canonical manifests remain mandatory. Preview never writes or dispatches a UUID.
+Shared GET `/api/v1/admissions/command-results/{requestId}?action=...` adds only ACADEMIC.CLASS.{CREATE,UPDATE_CAPACITY,CHANGE_TEACHER,OPEN,CANCEL,PLACE_REGISTRATION} and ACADEMIC.SCHEDULE.CREATE to the retained Program actions. SAFE_REFERENCE only; lookup404 is not rollback proof.
+All previews return canonical full retained membership/RVs plus minimal scoped timetable/resource guards. Mutations reload locks and check final authority/deadline/business cutoff; mandatory effects/audits/T23 commit atomically. No START/COMPLETE/weekly/move/replacement routes or automatic teaching-state/attendance/score effects.

@@ -1,3 +1,4 @@
+2026-10-11 M2 batch2 packages3–5 IN PROGRESS; owner continuation assigned API091–099/102–118, shared090 seven Class actions. Retained manager .worktrees/m2-finance; main7b07155 still batch1 only. See M2_02_TASK_CARD/REVIEW; review/apply/main revalidation pending. Batch3 remains unassigned.
 2026-10-11 current checkpoint: M2 split into three batches; batch1 COMPLETE/review PASS/applied ADR163/main reverified source05c3a96 / manager7eb9d23.
 Batch1 packages1–2 Accountant invoices/payments API048–053; batch2 packages3–5 Class/placement/concrete schedules; batch3 packages6–8 weekly/move/replacement/calendars and M2 closure.
 Manager1360defaultPASS/190intentionalSKIP;45focusedPASS(15RAM+12financeSQLHTTP+18M1regression);104frontend/types/lint/build; final Edge89 three widths PASS.
