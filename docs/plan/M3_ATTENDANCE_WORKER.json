@@ -1,0 +1,12 @@
+{
+  "mode":"edit",
+  "objective":"Create the pure controlled AttendanceFields form specified in docs/plan/M3_ATTENDANCE_FORM_WORKER.md. Read exactly the three context files in full and apply frontend-ui with SKILL_ROUTING canonical overrides before writing. No other reads, links, commands, tests, Git, SQL or network. Only write the allowed file; keep within 120 source lines and 160 diff lines.",
+  "allowed_paths":["frontend/src/features/classes/components/AttendanceFields.tsx"],
+  "forbidden_paths":["docs/**",".agents/**","backend/**","package*.json","**/package*.json",".env*","**/*.docx"],
+  "acceptance_criteria":["Exactly three complete authorized context reads and sole allowed write, no commands or other reads.","Exact controlled props and Vietnamese null/0/1 states, no defaults or business/network logic.","Accessible native controls with disabled behavior/system tokens/44px, at most120 source160 diff lines."],
+  "context_files":["docs/plan/M3_ATTENDANCE_FORM_WORKER.md",".agents/skills/frontend-ui/SKILL.md","docs/plan/SKILL_ROUTING.md"],
+  "max_changed_files":1,
+  "max_diff_lines":160,
+  "model":"",
+  "timeout":"15m"
+}
