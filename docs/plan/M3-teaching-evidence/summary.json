@@ -1,5 +1,5 @@
 {
-  "status": "Manager reviewed PASS; main apply/reverification pending",
+  "status": "COMPLETE / Codex review PASS / applied ADR163 / main reverified; M3 whole IN PROGRESS",
   "date": "2026-10-12",
   "baselineMain": "9a17820",
   "contractCommit": "0067a26",
@@ -88,7 +88,7 @@
     "observedScopeViolations": 0,
     "integration": "Codex reused existing shared Buttons; original worker/events remain detached."
   },
-  "limits": "M3 batch1 only; no grades136+, whole-M3 closure, D07, schema/grants/packages/default-host/provisioning/push/deploy. Positive business acceptance is owned scratch; genuine operational main acceptance remains pending without synthetic seed.",
+  "limits": "M3 batch1/packages1–3 only; whole M3 IN PROGRESS, batches2–3 unassigned. Positive business acceptance uses owned scratch; genuine operational acceptance has no synthetic business seed. No D07/schema/grants/packages/default Program/custody/provisioning/install/push/deploy/latestsecurity/load claim.",
   "baselineDefault": {
     "path": "C:\\Study\\SOEN\\main_workplace\\.worktrees\\m2-finance\\backend\\tests\\EnglishCenter.Tests\\TestResults\\M3-01-manager-default-verified.trx",
     "sha256": "06AD2CF1DFF56BAA38C97F16EF95EEB2F5CDD9D58DA5CB8226A3BC04C7BC3425",
@@ -103,5 +103,114 @@
     "failed": 0,
     "intentionalOptInSkip": 0
   },
-  "focusedUniqueSqlHttpPassed": 96
+  "focusedUniqueSqlHttpPassed": 96,
+  "mainSource": "04ba2a5",
+  "mainAppliedReview": "627bd71",
+  "main": {
+    "default": {
+      "path": "C:\\Study\\SOEN\\main_workplace\\backend\\tests\\EnglishCenter.Tests\\TestResults\\M3-01-main-default-final.trx",
+      "sha256": "8AA14FEB4DAB33E889934100238697E47641918C840CF1B04A62FFBBA56EF246",
+      "passed": 1391,
+      "failed": 0,
+      "intentionalOptInSkip": 0
+    },
+    "focusedBaseline": {
+      "path": "C:\\Study\\SOEN\\main_workplace\\backend\\tests\\EnglishCenter.Tests\\TestResults\\M3-01-main-focused.trx",
+      "sha256": "DCD7AFAA39701818EEC199514AA163F0521A3503D6D7F25F76966C8A8923E1B4",
+      "passed": 94,
+      "failed": 0,
+      "intentionalOptInSkip": 0
+    },
+    "teachingFinal": {
+      "path": "C:\\Study\\SOEN\\main_workplace\\backend\\tests\\EnglishCenter.Tests\\TestResults\\M3-01-main-teaching-final.trx",
+      "sha256": "2EE56815E03911EF1AB6D9B491AC58F245A73EAB1416044871E3BC381F3F28E7",
+      "passed": 17,
+      "failed": 0,
+      "intentionalOptInSkip": 0
+    },
+    "focusedUniqueSqlHttpPassed": 96,
+    "edge": {
+      "path": "C:\\Study\\SOEN\\main_workplace\\backend\\tests\\EnglishCenter.Tests\\TestResults\\M3-01-main-edge.trx",
+      "sha256": "FFA4C7139A978086DF3692587D5CE22C59D5FF83DFAC0313085C1527DA11178A",
+      "passed": 7,
+      "failed": 0,
+      "intentionalOptInSkip": 0
+    },
+    "edgeFinalClock": {
+      "path": "C:\\Study\\SOEN\\main_workplace\\backend\\tests\\EnglishCenter.Tests\\TestResults\\M3-01-main-edge-final-clock.trx",
+      "sha256": "BE3BAA9818E3EAB88EBF925B919AA80313014E7A9D1C7823640488C251911B66",
+      "passed": 1,
+      "failed": 0,
+      "intentionalOptInSkip": 0
+    },
+    "edgeGroups": [
+      92,
+      91,
+      90,
+      89,
+      83,
+      84,
+      86
+    ],
+    "frontend": {
+      "passed": 136,
+      "types": "PASS",
+      "lint": "PASS",
+      "build": "PASS",
+      "log": "C:\\Study\\SOEN\\main_workplace\\frontend\\TestResults\\M3-01-main-tests.log",
+      "sha256": "9076956C2CD47B689D5C19B64D737FC04E874D1269352A066A05B71A4E3B3ED6"
+    },
+    "backendBuild": {
+      "warnings": 0,
+      "errors": 0
+    }
+  },
+  "mainScratch": {
+    "created": 119,
+    "droppedWithMatchingIdGuid": 119,
+    "liveRemaining": 0
+  },
+  "genuineLocalDev": {
+    "receipt": "C:\\Study\\SOEN\\main_workplace\\docs\\plan\\V01-evidence\\test-results\\M3-01-main-final-operational-20261012.json",
+    "sha256": "04A61F558F9F15CB6C0D78E40F1B41453C6D47F28E188327C511BC81D43F7623",
+    "result": {
+      "phase": "W5-launch",
+      "success": true,
+      "ready": true,
+      "browserPassed": true,
+      "replayCommits": 1,
+      "auditCommits": 1,
+      "failedRuns": 0,
+      "stoppedMaintenanceRefused": true,
+      "forcedStops": 0
+    },
+    "widths": [
+      375,
+      768,
+      1280
+    ],
+    "adminLogins": 4,
+    "adminLogouts": 4,
+    "strictSqlAndHttps": "PASS",
+    "all9Fresh": "PASS",
+    "newAttendanceRoleRefusal": "403 PASS"
+  },
+  "operationalCounts": {
+    "roles": 7,
+    "accounts": 1,
+    "activeAdmins": 1,
+    "bands": 5,
+    "profiles": 0,
+    "courses": 0,
+    "programs": 0,
+    "classes": 0,
+    "attendance": 0,
+    "gradeReports": 0,
+    "registrations": 0,
+    "entrySessions": 0,
+    "migrations": 6,
+    "activeSids": 0
+  },
+  "remainingHosts": 0,
+  "listener8443": 0
 }

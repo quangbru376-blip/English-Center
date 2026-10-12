@@ -1,6 +1,6 @@
 # M3 batch 1 — teaching, attendance and Class completion
 
-Status IN PROGRESS, assigned by owner 2026-10-12. Codex manager; retained checkout `.worktrees/m2-finance`, baseline main9a17820/managerf40238b. M0–M2 closure is retained; old M1 headers are historical. ADR177 completion/ADR163 reviewed apply, LOCAL_DEV/weekly10000 fixed.
+Status COMPLETE/review PASS/applied ADR163/main reverified2026-10-12, assigned by owner 2026-10-12. Codex manager; retained checkout `.worktrees/m2-finance`, baseline main9a17820/managerf40238b. M0–M2 closure is retained; old M1 headers are historical. ADR177 completion/ADR163 reviewed apply, LOCAL_DEV/weekly10000 fixed.
 
 Scope API100/101/125/126/131–135; extend098 START/COMPLETE and090 only these commands. Reuse24tables/6migrations/TG04/TX10/FN04/EC-C1/T23/current M2 Classes/schedules. No grades136+, M4, schema/grants/packages/default Program/provisioning/install/push/deploy/D07. Owner4 metadata hashes only, unchanged/unshared/untracked/unstaged.
 
@@ -21,3 +21,5 @@ Required checks defaults/build/frontend/types/lint/build; real owned scratch SQL
 skill_verification PASS; Codex independent manager review PASS in M3_01_REVIEW.md, source432dc49.1391default/248opt-inSKIP/94SQLHTTP/136frontend/buildclean/7Edge plus final92 shared-control check PASS.244scratch ID/GUID-paired dropped/live0; owners preserved. Main apply and reverify/genuine LOCAL_DEV pending; whole M3 remains IN PROGRESS. Exact source/file/skill hashes and evidence in M3-teaching-evidence/summary.json and M3_01_ALLOWLIST.txt.
 
 Final source4beba2b includes resampled START/HELD lower clock cutoffs; independent addendum PASS,2ownedSQL rollback cases/1391default/250SKIP,96unique focused.246manager scratch cleaned. No new scope/decision/permission gate. Main delta apply and reverify pending.
+
+Closure: main source04ba2a5/manager4beba2b identical trees;1391default/250opt-inSKIP/96uniqueSQLHTTP/136frontend/buildclean/7Edge plus final92/genuine LOCAL_DEV PASS. Manager246/main119 scratch ID/GUID-paired dropped/live0;hosts0/listener0;owner4 unchanged/unshared/untracked/unstaged. Whole M3 IN PROGRESS; batches2–3 unassigned. See final summary/review; historical pending lines above record intermediate checkpoints.

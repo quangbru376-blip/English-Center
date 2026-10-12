@@ -21,8 +21,12 @@ backend/tests/EnglishCenter.Tests/Api/Integration/M2ScheduleSqlTests.cs
 backend/tests/EnglishCenter.Tests/Api/Integration/M3TeachingSqlTests.cs
 backend/tests/EnglishCenter.Tests/Api/Integration/OwnedBrowserSqlHostingTests.cs
 backend/tests/EnglishCenter.Tests/Common/M3TeachingContractTests.cs
+docs/ARCHITECTURE.md
+docs/CURRENT_STATE.md
+docs/TODO.md
 docs/api.md
 docs/notes/M3_01.md
+docs/plan/HANDOFF.md
 docs/plan/M3-teaching-evidence/summary.json
 docs/plan/M3-teaching-evidence/worker-receipt.json
 docs/plan/M3_01_ALLOWLIST.txt
@@ -30,6 +34,9 @@ docs/plan/M3_01_REVIEW.md
 docs/plan/M3_01_TASK_CARD.md
 docs/plan/M3_ATTENDANCE_FORM_WORKER.md
 docs/plan/M3_ATTENDANCE_WORKER.json
+docs/plan/M3_BATCH_PLAN.md
+docs/plan/NEXT_CHAT_HANDOFF.md
+docs/plan/plan.md
 frontend/src/app/IdentityApp.tsx
 frontend/src/app/identityNavigation.ts
 frontend/src/features/classes/AttendancePanel.tsx

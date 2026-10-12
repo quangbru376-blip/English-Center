@@ -1,60 +1,13 @@
 # Current State
 
-M1 packages5–6 assigned2026-10-09 IN PROGRESS. Resume retained manager
-.worktrees/m1-student-teacher; WIP source6963500fd3ff795af7e358b1895dc3b7bf571c3f,
-contract1d7eb57, based on mainf764b87. Source is not applied/mounted on main.
-Main product remains packages1–4/code564343b. Full-batch review FAIL/incomplete;
-not a full PASS/apply claim. Owner ADR177/163 still covers completion without
-new permission questions. See docs/plan/M1_05_06_TASK_CARD.md and review.
-Unmounted foundation: two-RV own Profile/audit/no revoke, Teacher current task/
-manifests/zero/absence/correction/provenance/FN02/atomic audit+T23/replay.
-Manager1341defaultPASS133intentional opt-inSKIP/35new RAM contracts/buildclean;
-69frontend tests/types/lint/build PASS. Seven final owned scratch SQL PASS;
-19total scratch databases ID/GUID-paired dropped, live remaining0.
-AGYe1112347-32d/09ee3daa-93d sole96/88diffLine pure forms; exact3full context reads
-and sole allowed writes each, no observed scope violations. Codex import/token fixes
-and six form tests; original worker evidence retained detached. Owner4 hashes
-unchanged/unshared/untracked/unstaged. D07/runtime/default entries/packages unchanged.
-Next implement Student Registration/create/book/rebook/reschedule/cancel/confirm
-and coherent home/options/calendar/results; complete Teacher reads/SP02/lookup,
-cookie/CSRF HTTP adapters, typed role pages/RAM/manual recovery, HTTP/Edge/runtime
-verification, full independent review/PASS then apply/reverify main. No broadening
-to Admissions038–044/Invoice UI046–047/Classes/M2–M4/schema/grants/install/push/deploy.
+2026-10-12: M3 đợt1/gói1–3 COMPLETE, Codex review PASS, applied ADR163/main reverified. Whole M3 IN PROGRESS; đợt2–3 chưa giao. M0/M1/M2 COMPLETE, không làm lại các WIP lịch sử trong AGENTS.
 
-Previously applied main baseline:
+Main source04ba2a5 / manager4beba2b retained `.worktrees/m2-finance`; identical backend/src bb54c6b28f127387c791c22c4b491efaa16796ec, tests6f1f3c74b0aca6513ae602b51f8200abc1e2aae9, frontend10fb8bfc5e7c09f49a85cdd3d249b8dbcf825997.
+START100/COMPLETE101, HELD125/126 và Teacher Attendance131–133/Academic read-only134–135 mounted only explicit LOCAL_DEV;098/090 extended. START đủ LESSON+cohort/first-start, không exam prerequisite. HELD explicit/from end/ONGOING, không attendance prerequisite. Attendance missing≠absent, exact delta/full cohort/existing RV+absence/all-or-none; COMPLETE full current HELD obligations+LESSON attendance, không exam Attendance/grades/unfinished clear. Latest provenance/T23, không thêm mandatory Attendance history audit. Final current Teacher/session/deadline và START/HELD clock rollback verified.
 
-M1 packages3–4 COMPLETE/reviewed PASS/applied ADR163/reverified2026-10-09.
-Main code564343b / manager2c6fef7 (ADR194/177); identical src
-c4fa85347f465893aeb09ee4e0e011d86612751a / tests
-6b5b38392c60dc9c8214f1000a1ac48a88637dcb / frontend
-8e9581d7e97944bf06bbc3a47ffee15963febc18.
-Both1306defaultPASS/126intentional opt-inSKIP/build0warnings0errors;
-frontend63/types/lint/build PASS. Manager39focused/main41focused+Edge PASS
-(15shareddefault inputs,24SQL/HTTP incl2prior,2newEdge groups);24new integration
-cases on main. All3widths, postcommit body loss/manual lookup/no resend verified.
-Eight existing Edge groups also PASS in retained manager regression evidence.
-168scratch DBs ID/GUID-matched dropped, live scratch remaining0/hosts0/listener0.
+Both1391defaultPASS/250intentional opt-inSKIP/build0warnings0errors,96unique ownedSQLHTTP PASS,136frontend/types/lint/build PASS. Edge7 groups92/91/90/89/83/84/86 at375/768/1280 PASS, final92 clock/shared-controls checks PASS. Postcommit lostACK→manual090/no resend; races/absence/mixed-delta/mandatory audit+T23 rollback/current Teacher/account lock/session cutoff verified.
+Manager246/main119 scratch databases ID/GUID-paired dropped; independent liveScratch0/hosts0/listener8443=0. Genuine final main LOCAL_DEV all9/strictSQL+HTTPS/Admin4login4logout/new Attendance wrongrole403/replayCOMMIT1/auditCOMMIT1/failed0/stop503/forced0 PASS. Operational7roles/oneunchangedACTIVEAdmin/Band5/6migrations/all business0/activeSID0, no synthetic operational seed. D07 not opened/rerun; no fresh D07 baseline claim.
 
-AcademicAffairs NORMAL Program081–089/090sixProgram actions and Session054–065/
-045sixSession actions mounted only explicit LOCAL_DEV. Full source/target versions,
-component ID-preserving swaps/saved activation/Class freeze; sorted REG/TIMETABLE/
-Account/SID/domain locks, cross-Class/Session half-open conflicts, full membership
-cancel/grader guards, SP02 contacts/status-onlyInvoice, atomic effects/audit/T23.
-Final-projection cutoff rollback and two-client races verified. Native Vietnamese
-UI/read-only previews/explicit confirmation/RAM cleanup/manual unknown recovery.
-No Teacher grading, Student booking workflow, admissions decisions or Classes API.
-AGY00faca0b-526/be232215-a36 rejected133>130line limit; sole3authorizedreads/sole
-formwrite/no observed extra context or commands. No worker source applied; Codex
-implemented independently then reviewed/tested. Rejected evidence retained detached.
+AGY42c1c954-93a observed exactly3 full authorized reads/sole AttendanceFields write110diffLines/no observed violations; original/events retained detached. Codex integrated shared Buttons, implemented/reviewed/tested all business code. Owner4 hashes unchanged/unshared/untracked/unstaged, source Word untouched. No schema/grants/packages/default Program/custody/provisioning/install/push/deploy/LAN/load/backup claim. LOCAL_DEV/10000/ADR177/163 decisions retained.
 
-Actual genuine runtime/maintenance all9/strictSQL+HTTPS/Edge3widths/Admin4login/
-4logout/new wrongrole route403/replayCOMMIT1/auditCOMMIT1/failed0/stop503/forced0 PASS.
-Fresh operational7roles/oneunchangedACTIVEAdmin/Band5/Profile0/Course0/Program0/
-EntrySession0/6migrations/activeSID0; no synthetic operational data or key promotion.
-No default host/schema/grant/package/install/push/deploy change. Owner4 hashes
-unchanged/unshared/untracked/unstaged; D07 untouched, no fresh baseline claim.
-M0 remains COMPLETE; whole M1 IN PROGRESS. Next package5/later awaits assignment.
-Keep LOCAL_DEV/preview10000/ADR177/163 decisions; do not repeat permission gates.
-Main code C:\Study\SOEN\main_workplace; retained manager .worktrees/m1-next.
-Launch tools/operator/Start-M0Local.ps1; https://localhost:8443; protect real custody.
-Evidence: M1_03_04_TASK_CARD, M1-evidence/M1-next-summary.json, notes/M1_03_04.
+Evidence M3_01_TASK_CARD/REVIEW/ALLOWLIST, M3-teaching-evidence/summary.json, notes/M3_01.md. Launcher tools/operator/Start-M0Local.ps1; https://localhost:8443. Next per M3_BATCH_PLAN: planned đợt2/gói4–5 draft136–139 +whole-Class submit/return/edit/resubmit140–146 (RETURN only145), no finalize yet; prepare its exact contract/sharing scope when assigned.

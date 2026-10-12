@@ -1,6 +1,6 @@
 # M3 — ba đợt giảng dạy và công bố kết quả
 
-Ngày chia: 2026-10-12. Owner yêu cầu chia M3; đây là kế hoạch, chưa giao triển khai đợt nào.
+Ngày chia: 2026-10-12. Owner đã giao đợt1/gói1–3 vào2026-10-12; đợt1 COMPLETE/review PASS/applied ADR163/main reverified (source04ba2a5), đợt2–3 vẫn PLANNED/chưa giao.
 Baseline main e239951 / source050d5d9: M0/M1/M2 COMPLETE, M2 review PASS/applied ADR163/main reverified. Các header M1 cũ trong Memory/handoff là provenance; checkpoint hiện tại ở plan.md và M2-schedule-evidence/summary.json.
 
 ## Phân chia 8 gói
@@ -36,4 +36,4 @@ Nguồn canonical: requirements.md (ADR024/025/028/033/034/087/124/125), E04_CON
 
 Tái sử dụng24-table schema/6migrations/grants/EC-C1/T23 và existing SQL objects; không mặc định cần migration/package mới. M4 reports/CSV/audit viewer nằm ngoài M3; không thêm auto HELD/auto submit, import Excel, autosave/durable drafts, Student attendance API, score deletion, chuyển lớp, mở chốt, runtime provisioning, install/push/deploy. Owner4 untracked giữ nguyên, không đọc/share/stage; D07 không chạy lại. LOCAL_DEV/preview10000/custody decisions giữ nguyên.
 
-Trạng thái hiện tại: PLANNED ONLY. Bước triển khai tiếp theo khi được giao: chuẩn bị M3_01_TASK_CARD cho đợt1; không chạy SQL/runtime hoặc dispatch worker chỉ để lập kế hoạch này.
+Trạng thái hiện tại: đợt1 COMPLETE/PASS/applied/main reverified, whole M3 IN PROGRESS. M3_01_TASK_CARD/REVIEW và M3-teaching-evidence/summary.json giữ proof1391default/96uniqueSQLHTTP/136frontend/7Edge+final92/genuine LOCAL_DEV PASS. Bước tiếp theo khi được giao đợt2: chuẩn bị exact contract/sharing scope cho gói4–5; không tự mở finalize/M4 hoặc dispatch worker chỉ để lập kế hoạch.

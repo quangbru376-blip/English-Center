@@ -1,3 +1,16 @@
+# Current handoff — M3 batch1 complete, batches2–3 planned
+
+2026-10-12 owner-assigned M3 đợt1/gói1–3 COMPLETE: Codex manager→bounded antigravity-worker→independent tests/review PASS→ADR163 apply→main reverify complete. Whole M3 IN PROGRESS; do not start batches2–3/M4 without assignment. No worker/test/runtime remains running.
+Main source04ba2a5 / manager4beba2b retained `.worktrees/m2-finance`; identical src bb54c6b28f127387c791c22c4b491efaa16796ec/tests6f1f3c74b0aca6513ae602b51f8200abc1e2aae9/frontend10fb8bfc5e7c09f49a85cdd3d249b8dbcf825997. Main only owner4 untracked; protected actual custody and default host unchanged.
+Both1391defaultPASS/250intentionalSKIP/buildclean/96uniqueSQLHTTP/136frontend/types/lint/build PASS. Edge92/91/90/89/83/84/86 at375/768/1280 +final92 PASS; START/HELD/Attendance/COMPLETE, lostACK/manual090/no resend, absence/cohort/RV/races/audit/T23/current Teacher/account lock/final deadline+lower-clock rollback verified.
+Genuine final main LOCAL_DEV all9/strictSQL+HTTPS/Admin4login4logout/Attendance wrongrole403/replayCOMMIT1/auditCOMMIT1/failed0/stop503/forced0 PASS. Operational7roles/oneunchangedACTIVEAdmin/Band5/6migrations/business0/activeSID0; no fake operational seed. Manager246/main119 scratch ID/GUID-paired dropped, liveScratch0/hosts0/listener8443=0; D07 not opened/rerun.
+AGY42c1c954-93a exactly3 observed full context reads/sole form write110diffLines/no observed violations; original/events detached, Codex shared-button integration and all business implementation/review/testing. Do not redispatch completed helper. Owner4 hashes unchanged/unshared/untracked/unstaged; hashes and exact receipts in M3-teaching-evidence/summary.json.
+Read AGENTS then ordered Project Memory, this handoff/HANDOFF, M3_BATCH_PLAN and applicable canonical contracts/skills. Historical M1 headers do not reverse current Git/proof. Evidence M3_01_TASK_CARD/REVIEW/ALLOWLIST, summary and notes/M3_01.md. Launcher tools/operator/Start-M0Local.ps1; https://localhost:8443.
+Next per agreed plan when assigned: đợt2/gói4–5 draft136–139 +whole-Class Teacher submit/resubmit140–142 and Academic review143–144/RETURN145–146. Closed return→edit→resubmit loop, no finalize yet. Prepare exact contract/minimal sharing/allowlist before bounded AGY; Codex owns SQL/HTTP/Edge/tests/review/apply. Batches2–3 planned only, no whole-M3 COMPLETE claim. Keep LOCAL_DEV/preview10000/ADR177/163/custody, no repeated permission gates or schema/grants/packages/install/push/deploy/D07/owner changes.
+
+---
+# Historical checkpoints below — superseded by the current header
+
 # Handoff hiện tại — M2 hoàn tất, tiếp tục M3 đợt1
 
 Cập nhật2026-10-12 theo owner: đồng ý chia M3 rồi yêu cầu handoff để chat tiếp theo tiếp tục. Chưa viết code M3; không có worker/test/runtime đang chạy. Đây là checkpoint hiện tại; các phần M1/M0 bên dưới là lịch sử, không phải WIP phải làm lại.
