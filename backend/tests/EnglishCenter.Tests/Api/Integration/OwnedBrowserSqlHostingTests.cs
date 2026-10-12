@@ -56,6 +56,7 @@ public sealed class OwnedBrowserSqlHostingTests
         await using var f = await OwnedSqlFixture.CreateAsync(group is 92 or 93 or 94 or 95?teachingClock:group is 90 or 91?new M1AdmissionsSqlTests.Clock(DateTimeOffset.FromUnixTimeSeconds(DateTimeOffset.UtcNow.ToUnixTimeSeconds()/60*60)):null);
         if(group==92){await M3TeachingSqlTests.Seed(f);teachingClock!.Now=DateTimeOffset.FromUnixTimeSeconds(DateTimeOffset.UtcNow.ToUnixTimeSeconds());}
         if(group is 93 or 94 or 95){await M3GradingSqlTests.Seed(f,teachingClock!);teachingClock!.Now=DateTimeOffset.FromUnixTimeSeconds(DateTimeOffset.UtcNow.ToUnixTimeSeconds());}
+        if(group==95){await using var csvSeed=f.Db();(await csvSeed.Courses.SingleAsync(ct)).CourseName=" =SUM(1,2),\"Tiếng Việt\"\nKhóa";await csvSeed.SaveChangesAsync(ct);}
         if (group == 6) await f.Restricted("Teacher");
         if (group is 85 or 86 or 87 or 88) await SeedEnrollmentBrowser(f, group, ct);
         if(group==88) await SeedConfirmedAdmissions(f,ct);
