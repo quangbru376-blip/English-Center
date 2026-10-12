@@ -1,5 +1,5 @@
 {
-  "status": "MANAGER_CODE_REVIEW_PASS_MAIN_PENDING",
+  "status": "COMPLETE_REVIEW_PASS_APPLIED_MAIN_REVERIFIED",
   "assigned": "M3 batch3 packages6-8 owner continuation2026-10-12",
   "baseline": {
     "main": "ebc82c5",
@@ -111,16 +111,73 @@
       83,
       84,
       86
-    ]
+    ],
+    "mainDefault": {
+      "pass": 1391,
+      "skip": 301,
+      "fail": 0
+    },
+    "mainFrontend": {
+      "pass": 152,
+      "fail": 0,
+      "typesLintBuild": "PASS"
+    },
+    "mainBuild": {
+      "warnings": 0,
+      "errors": 0
+    },
+    "mainEdge": {
+      "pass": 9,
+      "fail": 0,
+      "widths": [
+        375,
+        768,
+        1280
+      ],
+      "groups": [
+        94,
+        93,
+        92,
+        91,
+        90,
+        89,
+        83,
+        84,
+        86
+      ],
+      "trx": "backend/tests/EnglishCenter.Tests/TestResults/M3-03-main-edge.trx"
+    },
+    "mainFocused": {
+      "pass": 145,
+      "fail": 0,
+      "skip": 0,
+      "newPublicationCases": 28,
+      "trx": "backend/tests/EnglishCenter.Tests/TestResults/M3-03-main-focused.trx"
+    },
+    "genuineLocalDev": {
+      "phase": "W5-launch",
+      "success": true,
+      "ready": true,
+      "browserPassed": true,
+      "replayCommits": 1,
+      "auditCommits": 1,
+      "failedRuns": 0,
+      "stoppedMaintenanceRefused": true,
+      "forcedStops": 0,
+      "receipt": "docs/plan/V01-evidence/test-results/M3-03-main-operational-20261012.json",
+      "sha256": "04a61f558f9f15cb6c0d78e40f1b41453c6d47f28e188327c511bc81d43f7623",
+      "scope": "genuine EcM0Runtime/EcM0Maint nonadmin identities, all9fresh, strict SQL+HTTPS, installed Edge trusted HTTPS/Admin4login4logout/new Student-grade wrongrole403, real60s replay+explicit audit commits; no elapsed-hour audit claim/no synthetic operational business data"
+    }
   },
-  "mainApplied": false,
-  "mainReverified": false,
-  "wholeM3": "IN_PROGRESS",
+  "mainApplied": true,
+  "mainReverified": true,
+  "wholeM3": "COMPLETE",
   "managerScratch": {
     "created": 317,
     "dropped": 317,
     "exactIdGuidMultisetsEqual": true,
-    "receipt": "backend/tests/EnglishCenter.Tests/TestResults/M3-03-manager-owned/E-scratch-ownership.jsonl",
+    "receipt": "C:\\Study\\SOEN\\main_workplace\\.worktrees\\m2-finance\\backend\\tests\\EnglishCenter.Tests\\TestResults\\M3-03-manager-owned\\E-scratch-ownership.jsonl",
+    "sha256": "dc40126d660ed73968f3e4b4ed9beacf8f8bb3d81c3efb72935a3f5dc94cd5a8",
     "independentLiveOwnedCount": 0
   },
   "managerEvidenceHashes": {
@@ -136,5 +193,44 @@
     "tests": "6cba0c43be0aa6bc751943fd427ada72ed572772",
     "frontend": "b5070ce3a5cf08af91ab617c7edde6028128d27d"
   },
-  "review": "M3_03_REVIEW.md verdictPASS (main pending)"
+  "review": "PASS independent manager941b197 + final integrated main closure",
+  "mainSource": "b32a8e34ff3c3c606f39793a91797fcba22d4d9a",
+  "managerReview": "941b197cb14b03d46b1e2b893a80799f6d277a9c",
+  "sourceTreesMatchMain": true,
+  "mainEvidenceHashes": {
+    "M3-03-main-default.trx": "712f1b1e0c01e2a8ee62023d0e999260520af66ac45b8e04cfb29a67852055e2",
+    "M3-03-main-focused.trx": "561157cf4b7fdb36e901fbbdd4abf09a72b9c717fb7eab6805b6306291bf2361",
+    "M3-03-main-edge.trx": "65d4e99aa820419053ce9fe1db6a9e789d1b6380368315421524590ba80f8304"
+  },
+  "mainScratch": {
+    "created": 154,
+    "dropped": 154,
+    "exactIdGuidMultisetsEqual": true,
+    "receipt": "C:\\Study\\SOEN\\main_workplace\\backend\\tests\\EnglishCenter.Tests\\TestResults\\M3-03-main-owned\\E-scratch-ownership.jsonl",
+    "sha256": "7ebc365898205353fec8efa46739b39291c05869ba3a9d373f751db12733958a",
+    "independentLiveOwnedCount": 0
+  },
+  "operationalReadonlyCounts": {
+    "roles": 7,
+    "accounts": 1,
+    "activeAdmin": 1,
+    "bands": 5,
+    "migrations": 6,
+    "profiles": 0,
+    "courses": 0,
+    "programs": 0,
+    "entrySessions": 0,
+    "registrations": 0,
+    "classes": 0,
+    "attendance": 0,
+    "scores": 0,
+    "reports": 0,
+    "invoices": 0,
+    "payments": 0,
+    "unrevokedSids": 0
+  },
+  "remainingOwnedOperationalHosts": 0,
+  "listeners8443": 0,
+  "currentWorkRunning": false,
+  "closureDocumentation": "CURRENT_STATE/TODO/ARCHITECTURE/DECISIONS/plan/NEXT_CHAT_HANDOFF/HANDOFF/M3_BATCH_PLAN updated; historical checkpoints retained"
 }

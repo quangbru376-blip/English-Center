@@ -4906,3 +4906,8 @@ No Admissions038–044/Invoice UI046–047/Classes/M2–M4/schema/grants/install
 
 ## Implementation checkpoint — M3 batch2 (2026-10-12)
 Owner continuation assigned packages4–5 under existing ADR177/163 and M3_BATCH_PLAN. Reviewed PASS/applied main d289f60/manager bf7a6a8/reverified. Canonical drafts/whole-cohort submit-return-resubmit, FN05/SP03, audit/T23 and current authority/clock/original deadline semantics implemented without changing accepted business decisions.1391default/117SQLHTTP/144frontend/8Edge/genuine LOCAL_DEV PASS; detailed evidence M3_02 card/review/summary. Whole M3 IN PROGRESS;147/finalize/Student148–149 reserved for planned batch3. No schema/grants/packages/default host/custody/owner/D07 changes or new permission gates.
+
+
+## M3 publication completion checkpoint — 2026-10-12
+
+Owner continuation assigned batch3/packages6–8. Whole M3 COMPLETE/review PASS/applied ADR163/main reverified sourceb32a8e3/manager961c6f4/review941b197. Existing accepted decisions retained; this is an implementation checkpoint, not a new business/precision/custody/schema decision. Canonical DTO28.5/FN05 uses two decimal places half-up once; correct the old batch-plan one-decimal typo without changing ADR028. Full147/FN03 atomic finalization/148149 own publication and integrated23M3 APIs/9commands verified. Both1391default/301SKIP/145SQLHTTP/152frontend/9Edge/genuine LOCAL_DEV PASS.317+154 scratch exact ID/GUID-cleaned/live0/hosts0/listener0/owner4 unchanged/unshared/untracked/unstaged/D07 untouched. M4 remains unassigned; no schema/grants/packages/default host/provisioning/install/push/deploy or fake operational data. Exact evidence M3-publication-evidence/summary.json and M3_03_REVIEW.

@@ -1,6 +1,6 @@
 # M3 — ba đợt giảng dạy và công bố kết quả
 
-Ngày chia: 2026-10-12. Owner đã giao đợt1/gói1–3 vào2026-10-12; đợt1 COMPLETE/review PASS/applied ADR163/main reverified (source04ba2a5), owner continuation đã giao đợt2/gói4–5, nay COMPLETE/PASS/applied/main reverified (source d289f60); đợt3 vẫn PLANNED/chưa giao.
+Ngày chia: 2026-10-12. Owner đã giao đợt1/gói1–3 vào2026-10-12; đợt1 COMPLETE/review PASS/applied ADR163/main reverified (source04ba2a5), owner continuation đã giao đợt2/gói4–5, nay COMPLETE/PASS/applied/main reverified (source d289f60); owner continuation giao đợt3/gói6–8, nay COMPLETE/PASS/applied/main reverified (sourceb32a8e3); whole M3 COMPLETE.
 Baseline main e239951 / source050d5d9: M0/M1/M2 COMPLETE, M2 review PASS/applied ADR163/main reverified. Các header M1 cũ trong Memory/handoff là provenance; checkpoint hiện tại ở plan.md và M2-schedule-evidence/summary.json.
 
 ## Phân chia 8 gói
@@ -22,7 +22,7 @@ Thứ tự phụ thuộc: gói1→2→3, gói4→5, gói6→7→8; đợt2 dùng
 
 - Đợt1: START cần đầy đủ LESSON theo Program và ít nhất một placement; không tự yêu cầu exam trước START. HELD từ scheduled end, Class ONGOING/current PLANNED, không đòi điểm danh đủ. Điểm danh từ lesson start tới trước COMPLETED, không thêm prerequisite ONGOING hoặc hạn24/48h. COMPLETE cần đủ LESSON và một FINAL_EXAM hiện hành HELD, đầy đủ điểm danh LESSON toàn cohort; Vắng là recorded hợp lệ, FINAL_EXAM không có điểm danh mới. Chưa kết thúc Registration hoặc gửi/chốt điểm.
 - Đợt2: thiếu điểm/blank khác0, omitted giữ nguyên, không xóa Score; GENERAL không schedule, LESSON/FINAL_EXAM đúng current Class/type và từ start. Score-only save touch GradeReport RV; scores/comment rollback cùng nhau. DRAFT/RETURNED editable, SUBMITTED khóa; Attendance vẫn khóa khi Class COMPLETED. Unsaved edits phải được xử lý trước whole-Class preview. Submit/return/resubmit toàn bộ cohort hoặc không ai; return có lý do/giữ scores-comment, Giáo vụ không đọc DRAFT values, Student chưa đọc grades.
-- Đợt3: finalize full live cohort, decimal/half-up một lần/max2 decimals input, thiếu≠0, ngưỡng đạt50 sau rounding; lưu final_score và giải phóng unfinished enrollment atomic. Không reopen/override FINALIZED. Student chỉ own FINALIZED, current assignment/session/privacy đúng đến cuối response. Luồng nhiều khóa/học lại không lẫn kết quả.
+- Đợt3: finalize full live cohort, decimal/half-up hai chữ số một lần/max2 decimals input, thiếu≠0, ngưỡng đạt50 sau rounding; lưu final_score và giải phóng unfinished enrollment atomic. Không reopen/override FINALIZED. Student chỉ own FINALIZED, current assignment/session/privacy đúng đến cuối response. Luồng nhiều khóa/học lại không lẫn kết quả.
 
 Mỗi đợt sau khi được giao phải có task card/contract/phạm vi chia sẻ và allowlist cụ thể trước delegation. Codex là manager; antigravity-worker chỉ pure bounded helper/form với context tối thiểu đã định, không tự gửi toàn source/report/owner/secrets. Codex kiểm evidence/scope, tự tích hợp và review; ADR177/163 giữ nguyên, không hỏi lại các quyết định đã chốt.
 
@@ -39,3 +39,5 @@ Tái sử dụng24-table schema/6migrations/grants/EC-C1/T23 và existing SQL ob
 Trạng thái hiện tại: đợt1 COMPLETE/PASS/applied/main reverified, whole M3 IN PROGRESS. M3_01_TASK_CARD/REVIEW và M3-teaching-evidence/summary.json giữ proof1391default/96uniqueSQLHTTP/136frontend/7Edge+final92/genuine LOCAL_DEV PASS. Bước tiếp theo khi được giao đợt2: chuẩn bị exact contract/sharing scope cho gói4–5; không tự mở finalize/M4 hoặc dispatch worker chỉ để lập kế hoạch.
 
 Closure2026-10-12: đợt2 COMPLETE/Codex independent review PASS/applied ADR163/main reverified. Source main d289f60/manager bf7a6a8;1391default/272SKIP/117SQLHTTP/144frontend/8Edge+final93/genuine LOCAL_DEV PASS. M3_02_TASK_CARD/REVIEW/summary giữ proof. Đợt3/gói6–8 vẫn planned/unassigned;147/Student publication/unfinished clear chưa implement. Historical assignment descriptions above retain their original checkpoint.
+
+Final closure2026-10-12: owner assignedbatch3/packages6–8 COMPLETE/Codex independent review PASS/applied ADR163/main sourceb32a8e3 reverified. Whole M3 COMPLETE (all23 APIs/9commands), canonical two-decimal FN05/FN03 atomic publication/Student148149. Both1391default+301SKIP/145SQLHTTP/152frontend/9Edge/genuine LOCAL_DEV PASS;317manager+154main owned scratch ID/GUID-cleaned/live0/hosts0/listener0/owner4 preserved. M4 unassigned. Earlier planned/unassigned or IN PROGRESS paragraphs are historical checkpoints, superseded by this closure; see M3_03_TASK_CARD/REVIEW/summary.
