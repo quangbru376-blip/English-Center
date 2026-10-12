@@ -4903,3 +4903,6 @@ correction also requires original grader. No Teacher Invoice/Class SQL projectio
 Foundation source6963500 is retained in .worktrees/m1-student-teacher; no source
 applied/main mounting. Full review is incomplete; finish documented remaining work.
 No Admissions038–044/Invoice UI046–047/Classes/M2–M4/schema/grants/install/push/deploy.
+
+## Implementation checkpoint — M3 batch2 (2026-10-12)
+Owner continuation assigned packages4–5 under existing ADR177/163 and M3_BATCH_PLAN. Reviewed PASS/applied main d289f60/manager bf7a6a8/reverified. Canonical drafts/whole-cohort submit-return-resubmit, FN05/SP03, audit/T23 and current authority/clock/original deadline semantics implemented without changing accepted business decisions.1391default/117SQLHTTP/144frontend/8Edge/genuine LOCAL_DEV PASS; detailed evidence M3_02 card/review/summary. Whole M3 IN PROGRESS;147/finalize/Student148–149 reserved for planned batch3. No schema/grants/packages/default host/custody/owner/D07 changes or new permission gates.

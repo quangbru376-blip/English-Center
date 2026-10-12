@@ -1,7 +1,7 @@
 # TODO
 
-M0/M1/M2 COMPLETE; M3 đợt1/gói1–3 COMPLETE/review PASS/applied ADR163/main reverified2026-10-12, source04ba2a5/manager4beba2b. Whole M3 IN PROGRESS.
-Both1391default/250opt-inSKIP/96unique SQLHTTP/136frontend/buildclean PASS;7Edge groups +final92 at3widths/genuine LOCAL_DEV PASS. Exact evidence M3-teaching-evidence/summary.json and M3_01_TASK_CARD/REVIEW/ALLOWLIST.
-Next planned đợt2/gói4–5: draft136–139, Teacher submit/resubmit140–142, Academic review143–144/RETURN145–146, closed return→edit→resubmit loop. Not assigned by batch1; no147/finalize/Student publication/M4. Prepare contract/minimal shared context/allowlist before future bounded AGY.
-Keep retained manager `.worktrees/m2-finance`; do not resume historical M1 WIP or redo completed M0–M2. Launcher tools/operator/Start-M0Local.ps1, https://localhost:8443. No synthetic operational seed or default host/schema/grant/package/provisioning/install/push/deploy change.
-Owner4 unchanged/unshared/untracked/unstaged; D07 untouched, no fresh baseline claim.246manager/119main own scratch ID/GUID-cleaned, live0/hosts0/listener0. LOCAL_DEV/preview10000/custody/ADR177/163 fixed, no repeated gates.
+M0/M1/M2 COMPLETE. M3 batches1–2 COMPLETE/review PASS/applied ADR163/main reverified2026-10-12, latest source main d289f60/manager bf7a6a8. Whole M3 IN PROGRESS.
+Both1391default/272intentional opt-inSKIP/117unique SQLHTTP/144frontend/buildclean/8Edge groups+final93/genuine LOCAL_DEV PASS. Exact proof M3-grading-evidence/summary.json and M3_02_TASK_CARD/REVIEW/ALLOWLIST.
+Next planned/unassigned batch3/gói6–8:145 FINALIZE/147 whole-Class finalization +Registration.is_unfinished atomic through FN03;148–149 own Student FINALIZED reads; integrated M3 regression/closure. Prepare bounded contract/sharing scope before delegation when assigned. No M4 or reopen FINALIZED.
+Reuse manager `.worktrees/m2-finance`, preserve LOCAL_DEV/preview10000/ADR177/163/custody and owner4 unchanged/unshared/untracked/unstaged. D07 untouched, no schema/grants/packages/provisioning/install/push/deploy or fake operational business seed.
+Manager198/main125 own scratch ID/GUID-cleaned/live0, hosts0/listener0. Operational7roles/oneACTIVEAdmin/Band5/6migrations/business0/activeSID0; no work running.

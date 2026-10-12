@@ -1,5 +1,5 @@
 {
-  "status": "MANAGER_PASS_MAIN_PENDING",
+  "status": "COMPLETE_REVIEW_PASS_APPLIED_MAIN_REVERIFIED",
   "assigned": "M3 batch2 packages4-5, owner continuation2026-10-12",
   "baseline": {
     "main": "54c07dc",
@@ -88,10 +88,34 @@
       "pass": 1,
       "fail": 0
     },
-    "managerFocusedUnique": 117
+    "managerFocusedUnique": 117,
+    "mainDefault": {
+      "pass": 1391,
+      "skip": 272,
+      "fail": 0
+    },
+    "mainFocusedSqlHttp": {
+      "pass": 117,
+      "fail": 0,
+      "skip": 0
+    },
+    "mainEdgeRegression": {
+      "pass": 8,
+      "fail": 0,
+      "widths": [
+        375,
+        768,
+        1280
+      ]
+    },
+    "mainFrontend": {
+      "pass": 144,
+      "fail": 0,
+      "typesLintBuild": "PASS"
+    }
   },
   "review": "PASS M3_02_REVIEW.md",
-  "mainApplied": false,
+  "mainApplied": true,
   "ownerHashes": {
     "docs/Nhom18_ThietKeXuLy.docx": "C7DE4DE6338670A94C99280DF89BDDC8E06FAE53A63E3B0405BBFE9DA0149F6C",
     "docs/reference/PROCESSING_REPORT_MEMORY_COMPARISON.md": "4EFDC55AD820A5E92A9A95A619F875D6191EA74BDCC05AC06BF8CDE1AB65A54C",
@@ -134,9 +158,87 @@
     "M3-02-manager-frontend-tests.log": {
       "path": "C:\\Study\\SOEN\\main_workplace\\.worktrees\\m2-finance\\frontend\\TestResults\\M3-02-manager-frontend-tests.log",
       "sha256": "1c3b22d5a007f61ff7477ac0babd43e9d63877c838db568833554d6498fff11e"
+    },
+    "M3-02-main-default.trx": {
+      "path": "C:\\Study\\SOEN\\main_workplace\\backend\\tests\\EnglishCenter.Tests\\TestResults\\M3-02-main-default.trx",
+      "sha256": "46cb974a2c08a32639ab67e706db76bb3be1e9a35ed04d1c5ac061f300b87e79",
+      "counters": {
+        "total": "1663",
+        "executed": "1391",
+        "passed": "1391",
+        "failed": "0",
+        "error": "0",
+        "timeout": "0",
+        "aborted": "0",
+        "inconclusive": "0",
+        "passedButRunAborted": "0",
+        "notRunnable": "0",
+        "notExecuted": "0",
+        "disconnected": "0",
+        "warning": "0",
+        "completed": "0",
+        "inProgress": "0",
+        "pending": "0"
+      }
+    },
+    "M3-02-main-focused.trx": {
+      "path": "C:\\Study\\SOEN\\main_workplace\\backend\\tests\\EnglishCenter.Tests\\TestResults\\M3-02-main-focused.trx",
+      "sha256": "52c13e091c2481334b9e9b32b71c22e1ba8e71a0e10a7152677dc6d5753d86ec",
+      "counters": {
+        "total": "117",
+        "executed": "117",
+        "passed": "117",
+        "failed": "0",
+        "error": "0",
+        "timeout": "0",
+        "aborted": "0",
+        "inconclusive": "0",
+        "passedButRunAborted": "0",
+        "notRunnable": "0",
+        "notExecuted": "0",
+        "disconnected": "0",
+        "warning": "0",
+        "completed": "0",
+        "inProgress": "0",
+        "pending": "0"
+      }
+    },
+    "M3-02-main-edge-regression.trx": {
+      "path": "C:\\Study\\SOEN\\main_workplace\\backend\\tests\\EnglishCenter.Tests\\TestResults\\M3-02-main-edge-regression.trx",
+      "sha256": "cab2409dfa5a6f70da294113298e40506071284d71483e7b38bbe6b325ea1ee5",
+      "counters": {
+        "total": "8",
+        "executed": "8",
+        "passed": "8",
+        "failed": "0",
+        "error": "0",
+        "timeout": "0",
+        "aborted": "0",
+        "inconclusive": "0",
+        "passedButRunAborted": "0",
+        "notRunnable": "0",
+        "notExecuted": "0",
+        "disconnected": "0",
+        "warning": "0",
+        "completed": "0",
+        "inProgress": "0",
+        "pending": "0"
+      }
+    },
+    "M3-02-main-build.log": {
+      "path": "C:\\Study\\SOEN\\main_workplace\\frontend\\TestResults\\M3-02-main-build.log",
+      "sha256": "65f1f8291089ec983c045670b1b8c34c63a4b04a44566271b22e6056ce243277"
+    },
+    "M3-02-main-lint.log": {
+      "path": "C:\\Study\\SOEN\\main_workplace\\frontend\\TestResults\\M3-02-main-lint.log",
+      "sha256": "3a6544fa8a6d0c90add99898d9cd8827cff3252c5525bdcb2fe1173e73498769"
+    },
+    "M3-02-main-frontend-tests.log": {
+      "path": "C:\\Study\\SOEN\\main_workplace\\frontend\\TestResults\\M3-02-main-frontend-tests.log",
+      "sha256": "2be458d96345c6d86d105a102769f32c930976ce559f70c1ad2e8fe331f31a25"
     }
   },
-  "managerSource": "bf7a6a8e2cdf6f1e233c954a44de18e188ce6b4d",
+  "managerSource": "bf7a6a8",
   "treeHashes": {
     "src": "29f5f97be8b573f1d69bcba310df0b1e6ec68188",
     "tests": "569356438debe50306ea20fc8a6faed01dbdadda",
@@ -149,5 +251,62 @@
     "independentLiveRemaining": 0,
     "receiptPath": "C:\\Study\\SOEN\\main_workplace\\.worktrees\\m2-finance\\backend\\tests\\EnglishCenter.Tests\\TestResults\\M3-02-manager-owned\\E-scratch-ownership.jsonl",
     "receiptSha256": "d627f8712bf7c4ae42b8a66e7b5a2b3fc7a8f270b125847b65eee0b9ed936fef"
-  }
+  },
+  "mainSource": "d289f60",
+  "managerReviewCommit": "8eb6842",
+  "mainReverified": true,
+  "scratchMain": {
+    "created": 125,
+    "identityPairedDropped": 125,
+    "unpaired": 0,
+    "independentLiveRemaining": 0,
+    "receiptPath": "C:\\Study\\SOEN\\main_workplace\\backend\\tests\\EnglishCenter.Tests\\TestResults\\M3-02-main-owned\\E-scratch-ownership.jsonl",
+    "receiptSha256": "108e629f073f4190ccf48f96562b48ec50499bbc381403f7e463a4fdc7b545a6"
+  },
+  "genuineLocalDev": {
+    "receipt": "C:\\Study\\SOEN\\main_workplace\\docs\\plan\\V01-evidence\\test-results\\M3-02-main-operational-20261012.json",
+    "sha256": "04a61f558f9f15cb6c0d78e40f1b41453c6d47f28e188327c511bc81d43f7623",
+    "result": {
+      "phase": "W5-launch",
+      "success": true,
+      "ready": true,
+      "browserPassed": true,
+      "replayCommits": 1,
+      "auditCommits": 1,
+      "failedRuns": 0,
+      "stoppedMaintenanceRefused": true,
+      "forcedStops": 0
+    },
+    "installedEdgeWidths": [
+      375,
+      768,
+      1280
+    ],
+    "adminLogins": 4,
+    "adminLogouts": 4,
+    "tls": "strict SQL/HTTPS, no operational TLS bypass",
+    "newGradingWrongRole403": true
+  },
+  "operationalCounts": {
+    "roles": 7,
+    "accounts": 1,
+    "activeAdmins": 1,
+    "bands": 5,
+    "migrations": 6,
+    "profiles": 0,
+    "courses": 0,
+    "programs": 0,
+    "entrySessions": 0,
+    "registrations": 0,
+    "classes": 0,
+    "attendance": 0,
+    "scores": 0,
+    "reports": 0,
+    "invoices": 0,
+    "payments": 0,
+    "activeSids": 0
+  },
+  "remainingHosts": 0,
+  "listener8443": 0,
+  "limits": "M3 batch2/packages4–5 COMPLETE only; whole M3 IN_PROGRESS, batch3 planned/unassigned. No147/finalize/Student publication/M4/schema/grants/packages/default host/custody/provisioning/install/push/deploy/D07 or synthetic operational business seed."
 }

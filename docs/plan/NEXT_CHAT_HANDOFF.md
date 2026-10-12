@@ -1,3 +1,17 @@
+# Current checkpoint — M3 batch2 complete
+
+2026-10-12: owner continuation assigned M3 đợt2/gói4–5; COMPLETE/Codex independent review PASS/applied ADR163/main reverified. M0/M1/M2 and M3 batch1 remain COMPLETE. Whole M3 IN PROGRESS; batch3/gói6–8 planned/unassigned.
+Main source d289f60 / manager source bf7a6a8 (review8eb6842), retained `.worktrees/m2-finance`. Identical src29f5f97be8b573f1d69bcba310df0b1e6ec68188/tests569356438debe50306ea20fc8a6faed01dbdadda/frontend680853edc8e7a13768f36c869e2ce4dac441ce79.
+Teacher136–139 per-Student drafts/FN05/report RV touch +whole-Class140–142 submit/resubmit; Academic143–144 SP03 non-DRAFT review/145 RETURN only/146 reasoned whole-cohort return;090 exact role/action pairs. Missing≠0/no deletion/partial drafts, exact current links/full manifests, mandatory audit+T23/effects atomic, final authority/clock/original deadline cap. Return retains score/comment/reason; no147/finalize/Student148–149/publication/unfinished clear.
+Both1391defaultPASS/272intentional opt-inSKIP/117unique ownedSQLHTTP/144frontend/types/lint/build PASS. Eight installed Edge groups93/92/91/90/89/83/84/86 at375/768/1280 PASS; final93/1000-character wrap/three lostACK draft+submit+return→manual090/no resend verified. All cohort/absence/RV/duplicate/race/audit rollback/current Teacher/account lock/final clock+idle deadline guards PASS.
+Genuine main LOCAL_DEV all9/strictSQL+HTTPS/Admin4login4logout/new gradebook/review wrongrole403/replayCOMMIT1/auditCOMMIT1/failed0/stoppedmaintenance503/forced0 PASS. Operational7roles/oneunchangedACTIVEAdmin/Band5/6migrations/business0/activeSID0; no fake operational seed. Manager198/main125 own scratch ID/GUID-paired dropped, independent live0/hosts0/listener8443=0.
+AGY829b2352-dba SUCCESS/sole123diffLines/exact3 observed full context reads/no observed extra reads or commands. Original/events retained detached; Codex shared controls/tokens and all business implementation/tests/review. Owner4 unchanged/unshared/untracked/unstaged; D07 not opened/rerun. No schema/grants/packages/default host/custody/provisioning/install/push/deploy or latest/security/load/LAN/backup claim. LOCAL_DEV/preview10000/ADR177/163 decisions retained.
+Evidence M3_02_TASK_CARD/REVIEW/ALLOWLIST, M3-grading-evidence/summary.json, notes/M3_02.md; prior batch1 evidence retained. Launcher tools/operator/Start-M0Local.ps1; https://localhost:8443. No worker/test/runtime remains running.
+Next when assigned: M3_BATCH_PLAN batch3/gói6–8 — FINALIZE145/147 +own Student FINALIZED148–149 +integrated M3 closure. Prepare exact contract/minimal shared context/allowlist before AGY; Codex owns source/tests/review/PASS/apply/main reverify. Do not redo historical M1 WIP or broaden M4/schema/grants/install/push/deploy.
+
+---
+# Historical checkpoints below
+
 # Current handoff — M3 batch1 complete, batches2–3 planned
 
 2026-10-12 owner-assigned M3 đợt1/gói1–3 COMPLETE: Codex manager→bounded antigravity-worker→independent tests/review PASS→ADR163 apply→main reverify complete. Whole M3 IN PROGRESS; do not start batches2–3/M4 without assignment. No worker/test/runtime remains running.
