@@ -104,6 +104,7 @@ public sealed class ScheduleService(SqlClassRepository repository, IReplayReposi
         await new CurrentSessionService(repository, clock).TouchApprovedInteractiveActivityAsync(token, ct);
         var result = await Result(token, input.Api, target, operation, ct);
         var finalNow = clock.GetUtcNow().UtcDateTime;
+        if(input.Api==126&&ClassWire.Window(state.Schedules.Single(x=>x.ScheduleId==input.Id)).EndAt>finalNow)throw AcademicGuard.Conflict();
         if (windows.Any(x => x.StartAt <= finalNow) || input.Api == 122 && oldStart <= finalNow) throw AcademicGuard.Conflict();
         return new(result, false);
     }

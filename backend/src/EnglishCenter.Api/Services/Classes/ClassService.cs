@@ -70,6 +70,7 @@ public sealed class ClassService(SqlClassRepository repository,IReplayRepository
         }
         target["classId"]=entity.ClassId;await replay.CompleteAsync(token.AccountId,input.Request,input.Intent,operation,target,ct);await new CurrentSessionService(repository,clock).TouchApprovedInteractiveActivityAsync(token,ct);var result=await Result(token,target,operation,api,ct);
         var finalNow=clock.GetUtcNow().UtcDateTime;
+        if(api==100&&state!.Schedules.Where(x=>x.IsCurrent&&x.SessionType=="LESSON").Min(x=>ClassWire.Window(x).StartAt)>finalNow)throw AcademicGuard.Conflict();
         if(api==118&&ScheduleCandidate.Parse(b.GetProperty("candidate")).StartAt<=finalNow)throw AcademicGuard.Conflict();
         if(state is not null&&api is 94 or 97 or 99 or 102 or 108&&state.Schedules.Any(x=>x.IsCurrent&&x.SessionType=="LESSON"&&ClassWire.Window(x).StartAt<=finalNow))throw AcademicGuard.Conflict();
         return new(result,false);

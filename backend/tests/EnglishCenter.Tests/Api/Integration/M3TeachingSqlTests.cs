@@ -186,4 +186,21 @@ public sealed class M3TeachingSqlTests
         Assert.Equal(ApiErrorCode.AUTHENTICATION_REQUIRED,await Error(()=>ex.AttendanceSheet(t,id,lessons[0],"Teacher",Ct)));
         await using var db=f.Db();Assert.Equal("LOCKED",(await db.Accounts.SingleAsync(x=>x.AccountId==f.Accounts["Teacher"],Ct)).Status);Assert.Equal(persisted?1:0,await db.Attendances.CountAsync(Ct));Assert.Equal(persisted?1:0,await db.ReplayOperations.CountAsync(x=>x.ActionCode=="TEACHER.ATTENDANCE.SAVE_DELTA",Ct));Assert.False(await db.AuthSessions.AnyAsync(x=>x.AccountId==f.Accounts["Teacher"]&&x.RevokedAt==null,Ct));
     }
+    [Theory(Skip=OptIn,SkipUnless=nameof(OwnedSqlGate.Enabled),SkipType=typeof(OwnedSqlGate))]
+    [InlineData(false)][InlineData(true)]
+    public async Task FinalLowerClockBoundaryRollsBackStartOrHeldEvenWithValidActorDeadline(bool held)
+    {
+        var time=new M1AdmissionsSqlTests.Clock();await using var f=await OwnedSqlFixture.CreateAsync(time);var(t,_,id,lessons,_)=await Seed(f);time.Now=time.Now.AddMinutes(10);var ex=M2ClassSqlTests.Ex(f);
+        if(held){await Start(f,t,id);time.Now=time.Now.AddMinutes(10);}
+        var preview=held?await ex.HeldPreview(t,lessons[0],Ct):await ex.Preview(t,id,"transition","{\"action\":\"START\"}",Ct);
+        var rewind=new RewindAfterUpdate(time,time.Now.AddMinutes(-1),held?"[Schedule]":"[Class]");var bounded=new SqlClassExecutor(()=>f.Db(rewind),f.Clock,10,1000);var key=Guid.NewGuid();
+        Assert.Equal(ApiErrorCode.STATE_CONFLICT,await Error(()=>held?bounded.ScheduleCommand(t,126,lessons[0],key,preview["manifest"]!.ToJsonString(),65536,Ct):bounded.Command(t,100,id,key,preview["manifest"]!.ToJsonString(),65536,Ct)));
+        Assert.True(rewind.Fired);await using var db=f.Db();Assert.Equal(held?"ONGOING":"OPEN",(await db.Classes.SingleAsync(Ct)).Status);Assert.Equal("PLANNED",(await db.Schedules.SingleAsync(x=>x.ScheduleId==lessons[0],Ct)).OccurrenceState);Assert.False(await db.ReplayOperations.AnyAsync(x=>x.RequestId==key,Ct));Assert.False(await db.AuditLogs.AnyAsync(x=>x.Action==(held?"ACADEMIC.SCHEDULE.CONFIRM_HELD":"ACADEMIC.CLASS.START"),Ct));
+    }
+    private sealed class RewindAfterUpdate(M1AdmissionsSqlTests.Clock clock,DateTimeOffset target,string table):Microsoft.EntityFrameworkCore.Diagnostics.DbCommandInterceptor
+    {
+        public bool Fired{get;private set;}
+        public override ValueTask<System.Data.Common.DbDataReader> ReaderExecutedAsync(System.Data.Common.DbCommand command,Microsoft.EntityFrameworkCore.Diagnostics.CommandExecutedEventData data,System.Data.Common.DbDataReader reader,CancellationToken ct=default)
+        {if(!Fired&&command.CommandText.Contains(table,StringComparison.Ordinal)&&command.CommandText.Contains("UPDATE",StringComparison.Ordinal)){Fired=true;clock.Now=target;}return ValueTask.FromResult(reader);}
+    }
 }
