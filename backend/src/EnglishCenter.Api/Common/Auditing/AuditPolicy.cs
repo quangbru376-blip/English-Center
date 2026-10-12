@@ -130,7 +130,16 @@ internal static class AuditPolicy
         return details.ToJsonString();
     }
 
-    private static JsonObject ProjectFields(JsonObject source,string allowed,bool parent = false,bool allowPlannedClass = false)
+    internal static string ViewerFields(string action,string entity)
+    {
+        var canonical=action.EndsWith(".EFFECT",StringComparison.Ordinal)?action[..^7]:action;
+        if(!Actions.TryGetValue(canonical,out var rule)||!rule.Entities.Split(' ').Contains(entity,StringComparer.Ordinal))return "";
+        if(entity=="Account")return canonical=="ADMIN.STAFF.CREATE"?"roleId status mustChangePassword tempIssuedAt tempExpiresAt":"status mustChangePassword tempIssuedAt tempExpiresAt securityVersion revokedSessionCount";
+        if(canonical=="FINANCE.PAYMENT.UPDATE_METADATA")return "method transactionReference";
+        if(canonical=="TEACHER.ENTRY_BOOKING.ABSENCE")return "status absentBy absentAt absentOperationId";
+        return Fields.GetValueOrDefault(entity,"");
+    }
+    internal static JsonObject ProjectFields(JsonObject source,string allowed,bool parent = false,bool allowPlannedClass = false)
     {
         var result = new JsonObject();
         var names = allowed.Split(' ',StringSplitOptions.RemoveEmptyEntries).ToHashSet(StringComparer.Ordinal);

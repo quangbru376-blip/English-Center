@@ -12,6 +12,8 @@ export function identityPath(context: AuthContext | null, requested: string): st
   if (!context) return requested === '/register' ? '/register' : '/login';
   if (context.scope === 'PASSWORD_CHANGE') return '/account/change-password';
   if (requested === '/account/change-password') return requested;
+  if(context.role==='Accountant'&&requested==='/accountant/reports')return requested;
+  if(context.role==='Admin'&&(requested==='/admin/audit-events'||/^\/admin\/audit-events\/[1-9]\d{0,9}$/.test(requested)&&Number(requested.split('/')[3])<=2147483647||/^\/admin\/operations\/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}\/audit-events$/.test(requested)&&requested.split('/')[3]!=='00000000-0000-0000-0000-000000000000'))return requested;
   if (context.role === 'AcademicAffairs' && ['/academics/grade-reviews','/academics/classes','/academics/courses','/academics/training-programs'].includes(requested)) return requested;
   if(context.role==='Teacher'&&/^\/teacher\/classes\/[1-9]\d{0,9}(?:\/gradebook|\/assignments\/[1-9]\d{0,9}\/grade-draft|\/attendance|\/lessons\/[1-9]\d{0,9}\/attendance)$/.test(requested)&&requested.split('/').filter(x=>/^\d+$/.test(x)).every(x=>Number(x)<=2147483647))return requested;
   if (context.role === 'Teacher' && requested === '/teacher/entry-test-sessions') return requested;

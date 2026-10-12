@@ -48,6 +48,8 @@ process.on('unhandledRejection',()=>{failed=true;});
   assert.equal((await api(page,'/api/v1/academics/grade-reviews')).status,403);
   assert.equal((await api(page,'/api/v1/students/me/grade-reports')).status,403);
   assert.equal((await api(page,'/api/v1/students/me/grade-reports/1')).status,403);
+  for(const path of ['/api/v1/reports/accountant/finance','/api/v1/reports/accountant/finance/csv','/api/v1/reports/director/finance','/api/v1/reports/director/admissions','/api/v1/reports/director/training'])assert.equal((await api(page,path)).status,403);
+  const audit=await api(page,'/api/v1/admin/audit-events');assert.equal(audit.status,200);assert.ok(audit.body.totalCount>0);const event=audit.body.items[0];const detail=await api(page,'/api/v1/admin/audit-events/'+event.id);assert.equal(detail.status,200);assert.deepEqual(Object.keys(detail.body).sort(),['id','occurredAt','actorId','action','entityType','entityId','result','operationId','reason','changes','ipAddress'].sort());assert.equal((await api(page,'/api/v1/admin/operations/'+event.operationId+'/audit-events')).status,200);
   assert.equal((await api(page,'/api/v1/students/me/classes')).status,403);
   assert.equal((await api(page,'/api/v1/academics/teachers/me/schedules')).status,403);
   assert.equal((await api(page,'/api/v1/students/me/schedules')).status,403);
@@ -60,6 +62,7 @@ process.on('unhandledRejection',()=>{failed=true;});
  };
  for(const width of [375,768,1280]){
   checkpoint='width-'+width;const page=await open(width);await login(page);
+  await page.getByRole('button',{name:'Nhật ký kiểm toán',exact:true}).click();await page.getByRole('button',{name:'Đọc lịch sử kiểm toán',exact:true}).click();await page.getByText(/Bộ lọc đã áp dụng:/).waitFor();assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),true);await page.getByRole('button',{name:'Tài khoản',exact:true}).click();
   await page.getByLabel('Tìm theo email',{exact:true}).fill(input.email);
   await page.getByRole('button',{name:'Tìm kiếm',exact:true}).click(); await page.getByRole('button',{name:'Xem #'+adminId,exact:true}).click();
   await page.getByRole('button',{name:'Khóa',exact:true}).waitFor();

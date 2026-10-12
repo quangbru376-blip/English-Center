@@ -67,6 +67,14 @@ const endpoints = {
   teacherClassRoster:{path:'/api/v1/academics/teachers/me/classes',method:'POST',intent:'read',access:'teacher'},
   studentClasses:{path:'/api/v1/students/me/classes',method:'GET',intent:'read',access:'student'},
   studentClass:{path:'/api/v1/students/me/classes',method:'GET',intent:'read',access:'student'},
+  reportAccountantFinance:{path:'/api/v1/reports/accountant/finance',method:'GET',intent:'read',access:'accountant'},
+  reportDirectorFinance:{path:'/api/v1/reports/director/finance',method:'GET',intent:'read',access:'director'},
+  reportDirectorAdmissions:{path:'/api/v1/reports/director/admissions',method:'GET',intent:'read',access:'director'},
+  reportDirectorTraining:{path:'/api/v1/reports/director/training',method:'GET',intent:'read',access:'director'},
+  reportFinanceCsv:{path:'/api/v1/reports/accountant/finance/csv',method:'GET',intent:'read',access:'accountant'},
+  auditEvents:{path:'/api/v1/admin/audit-events',method:'GET',intent:'read',access:'admin'},
+  auditEvent:{path:'/api/v1/admin/audit-events',method:'GET',intent:'read',access:'admin'},
+  auditOperation:{path:'/api/v1/admin/operations',method:'GET',intent:'read',access:'admin'},
   csrf: { path: '/api/v1/auth/csrf', method: 'GET', intent: 'read', access: 'public' },
   me: { path: '/api/v1/auth/me', method: 'GET', intent: 'read', access: 'public' },
   register: { path: '/api/v1/auth/register', method: 'POST', intent: 'write', access: 'public' },
@@ -172,6 +180,8 @@ export type RequestOptions<T> = {
   assignmentId?:number;
   componentId?:number;
   query?: Readonly<Record<string,string>>;
+  operationId?: string;
+  decodeResponse?: (response: Response) => Promise<T>;
 };
 
 // No automatic dispatch, retry, UUID generation, storage, token parsing or logging.
@@ -187,6 +197,10 @@ export class HttpClient {
     if (endpoint.access === 'student' && (this.auth.context?.role !== 'Student' || this.auth.context.scope !== 'NORMAL') || endpoint.access === 'teacher' && (this.auth.context?.role !== 'Teacher' || this.auth.context.scope !== 'NORMAL')) return {kind:'blocked'};
     if (endpoint.access === 'admissions' && (this.auth.context?.role !== 'Admissions' || this.auth.context.scope !== 'NORMAL')) return {kind:'blocked'};
     if (endpoint.access === 'accountant' && (this.auth.context?.role !== 'Accountant' || this.auth.context.scope !== 'NORMAL')) return {kind:'blocked'};
+    if(endpoint.access==='director'&&(this.auth.context?.role!=='Director'||this.auth.context.scope!=='NORMAL'))return {kind:'blocked'};
+    const auditGroup=options.endpoint==='auditOperation';
+    if(auditGroup?(!options.operationId||! /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/.test(options.operationId)||options.operationId==='00000000-0000-0000-0000-000000000000'):options.operationId!==undefined)return {kind:'blocked'};
+    if(options.decodeResponse&&options.endpoint!=='reportFinanceCsv')return {kind:'blocked'};
     const suffixes:Partial<Record<Endpoint,string>>={adminLock:'lock',adminReset:'reset-password',adminUnlock:'unlock',adminDisable:'disable',adminRestore:'restore',courseUpdate:'details',courseDeactivate:'deactivate',courseActivate:'activate'};
     Object.assign(suffixes,{programEdit:'configuration',programRename:'name',programPreview:'activation-preview',programActivate:'activate',programDraft:'return-to-draft',programDeactivate:'deactivate',sessionSchedule:'schedule',sessionOpen:'open',sessionClose:'close',sessionCancelPreview:'cancellation-preview',sessionCancel:'cancel',sessionGraderPreview:'grader-change-preview',sessionGrader:'change-grader',sessionRoster:'roster/search'});
     Object.assign(suffixes,{studentCancelPreview:'cancellation-preview',studentCancel:'cancel',studentOptions:'entry-test-options',studentBook:'entry-test-bookings',studentCancelBooking:'cancel',studentReschedule:'reschedule',studentResults:'entry-results',studentConfirmPreview:'confirmation-preview',studentConfirm:'confirm',teacherRoster:'roster/search',teacherGrade:'score',teacherAbsence:'absence',teacherCorrect:'score'});
@@ -204,14 +218,15 @@ export class HttpClient {
     if(attendanceNested?(!Number.isInteger(options.scheduleId)||options.scheduleId!<1||options.scheduleId!>2147483647):options.scheduleId!==undefined)return {kind:'blocked'};
     const lookup=['gradeResult','gradeReviewResult','attendanceResult','classResult','financeResult','admissionsResult','adminLockResult','adminResult','courseResult','programResult','sessionResult','studentResult','teacherResult'].includes(options.endpoint);
     const nested=['studentCancelBooking','studentReschedule'].includes(options.endpoint);
-    const needsTarget = ['studentGrade','gradeReview','teacherSchedule','studentSchedule','classDetail','classCandidate','academicSchedule','teacherClass','studentClass','financeDetail','admissionsDetail','studentInvoice','adminDetail','courseDetail','programDetail','sessionDetail','studentCourse','studentRegistration','teacherSession','teacherTask'].includes(options.endpoint) || Object.hasOwn(suffixes,options.endpoint);
+    const needsTarget = ['auditEvent','studentGrade','gradeReview','teacherSchedule','studentSchedule','classDetail','classCandidate','academicSchedule','teacherClass','studentClass','financeDetail','admissionsDetail','studentInvoice','adminDetail','courseDetail','programDetail','sessionDetail','studentCourse','studentRegistration','teacherSession','teacherTask'].includes(options.endpoint) || Object.hasOwn(suffixes,options.endpoint);
     const needsKey = lookup || endpoint.intent==='write' && (endpoint.access==='accountant'||endpoint.access==='admissions'||endpoint.access==='admin'||endpoint.access==='academic'||endpoint.access==='teacher'||endpoint.access==='student'&&options.endpoint!=='studentProfileUpdate');
     if(nested&&(!Number.isInteger(options.registrationId)||options.registrationId!<1||options.registrationId!>2147483647)||!nested&&options.registrationId!==undefined)return {kind:'blocked'};
     if (needsTarget && (!Number.isInteger(options.targetId) || options.targetId! < 1 || options.targetId! > 2147483647) ||
         !needsTarget && options.targetId !== undefined ||
         needsKey && (typeof options.requestId !== 'string' || options.requestId==='00000000-0000-0000-0000-000000000000' || !/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/.test(options.requestId)) ||
         !needsKey && options.requestId !== undefined) return { kind: 'blocked' };
-    const allowedQuery=options.endpoint==='studentGrades'?['courseId','classId','fromDate','toDate','sort','page','pageSize']:options.endpoint==='gradeReviews'?['reviewStatus','courseId','classId','teacherId','sort','page','pageSize']:['attendanceSummary','academicAttendanceSummary'].includes(options.endpoint)?['view','sort','page','pageSize']:['teacherSchedules','studentSchedules'].includes(options.endpoint)?['fromDate','toDate','classId','view','sort','page','pageSize']:options.endpoint==='classSearch'?['classCode','courseId','bandId','programId','teacherId','status','sort','page','pageSize']:options.endpoint==='classTeachers'?['classId']:options.endpoint==='classOptions'?['page','pageSize','sort']:options.endpoint==='teacherClasses'?['status','courseId','sort','page','pageSize']:options.endpoint==='studentClasses'?['view','courseId','sort','page','pageSize']:options.endpoint==='academicSchedules'?['fromDate','toDate','classId','courseId','teacherId','view','sort','page','pageSize']:options.endpoint==='courseSearch'?['code','name','status','sort','page','pageSize']:options.endpoint==='programSearch'?['courseId','bandId','name','status','sort','page','pageSize']:options.endpoint==='sessionSearch'?['fromDate','toDate','effectiveStatus','graderId','sort','page','pageSize']:options.endpoint==='sessionOptions'?['date','startTime','endTime','sessionId','page','pageSize']:['studentHome','studentCourses'].includes(options.endpoint)?['page','pageSize']:options.endpoint==='studentRegistrations'?['courseId','status','page','pageSize']:options.endpoint==='studentOptions'?['fromDate','toDate','bookingId','page','pageSize']:options.endpoint==='studentCalendar'?['fromDate','toDate','registrationId','view','page','pageSize']:options.endpoint==='teacherSessions'?['fromDate','toDate','effectiveStatus','sort','page','pageSize']:options.endpoint==='studentInvoices'?['registrationId','status','page','pageSize']:lookup?['action']:[];
+    const reportQuery:Partial<Record<Endpoint,readonly string[]>>={reportAccountantFinance:['fromDate','toDate','courseId','overdueOnly','page','pageSize'],reportDirectorFinance:['fromDate','toDate','courseId','overdueOnly','page','pageSize'],reportDirectorAdmissions:['fromDate','toDate','courseId','status','page','pageSize'],reportDirectorTraining:['courseId','bandId','classId','teacherId','status','finalizedFromDate','finalizedToDate','page','pageSize'],reportFinanceCsv:['fromDate','toDate','courseId','overdueOnly'],auditEvents:['fromDate','toDate','actorId','action','entityType','entityId','result','page','pageSize'],auditOperation:['page','pageSize']};
+    const allowedQuery=reportQuery[options.endpoint]??(options.endpoint==='studentGrades'?['courseId','classId','fromDate','toDate','sort','page','pageSize']:options.endpoint==='gradeReviews'?['reviewStatus','courseId','classId','teacherId','sort','page','pageSize']:['attendanceSummary','academicAttendanceSummary'].includes(options.endpoint)?['view','sort','page','pageSize']:['teacherSchedules','studentSchedules'].includes(options.endpoint)?['fromDate','toDate','classId','view','sort','page','pageSize']:options.endpoint==='classSearch'?['classCode','courseId','bandId','programId','teacherId','status','sort','page','pageSize']:options.endpoint==='classTeachers'?['classId']:options.endpoint==='classOptions'?['page','pageSize','sort']:options.endpoint==='teacherClasses'?['status','courseId','sort','page','pageSize']:options.endpoint==='studentClasses'?['view','courseId','sort','page','pageSize']:options.endpoint==='academicSchedules'?['fromDate','toDate','classId','courseId','teacherId','view','sort','page','pageSize']:options.endpoint==='courseSearch'?['code','name','status','sort','page','pageSize']:options.endpoint==='programSearch'?['courseId','bandId','name','status','sort','page','pageSize']:options.endpoint==='sessionSearch'?['fromDate','toDate','effectiveStatus','graderId','sort','page','pageSize']:options.endpoint==='sessionOptions'?['date','startTime','endTime','sessionId','page','pageSize']:['studentHome','studentCourses'].includes(options.endpoint)?['page','pageSize']:options.endpoint==='studentRegistrations'?['courseId','status','page','pageSize']:options.endpoint==='studentOptions'?['fromDate','toDate','bookingId','page','pageSize']:options.endpoint==='studentCalendar'?['fromDate','toDate','registrationId','view','page','pageSize']:options.endpoint==='teacherSessions'?['fromDate','toDate','effectiveStatus','sort','page','pageSize']:options.endpoint==='studentInvoices'?['registrationId','status','page','pageSize']:lookup?['action']:[]);
     if(options.query&&Object.keys(options.query).some(key=>!allowedQuery.includes(key)))return {kind:'blocked'};
     const action=options.query?.action;
     if(options.endpoint==='classResult'&&(!action||!['ACADEMIC.CLASS.CREATE','ACADEMIC.CLASS.UPDATE_CAPACITY','ACADEMIC.CLASS.CHANGE_TEACHER','ACADEMIC.CLASS.OPEN','ACADEMIC.CLASS.START','ACADEMIC.CLASS.COMPLETE','ACADEMIC.CLASS.CANCEL','ACADEMIC.CLASS.PLACE_REGISTRATION','ACADEMIC.SCHEDULE.CREATE','ACADEMIC.SCHEDULE.CREATE_WEEKLY','ACADEMIC.SCHEDULE.MOVE','ACADEMIC.SCHEDULE.REPLACE','ACADEMIC.SCHEDULE.CONFIRM_HELD'].includes(action)))return {kind:'blocked'};
@@ -223,7 +238,7 @@ export class HttpClient {
     if(options.endpoint==='attendanceResult'&&action!=='TEACHER.ATTENDANCE.SAVE_DELTA')return {kind:'blocked'};
     if(options.endpoint==='gradeResult'&&(!action||!['TEACHER.GRADE_DRAFT.SAVE_DELTA','TEACHER.CLASS.SUBMIT_GRADES','TEACHER.CLASS.RESUBMIT_GRADES'].includes(action))||options.endpoint==='gradeReviewResult'&&(!action||!['ACADEMIC.CLASS.RETURN_GRADES','ACADEMIC.CLASS.FINALIZE_GRADES'].includes(action)))return {kind:'blocked'};
     const query=options.endpoint==='adminLockResult'?'action=ADMIN.ACCOUNT.LOCK':new URLSearchParams(options.query).toString();
-    const path=(lookup?`${endpoint.path}/${options.requestId}`:nested?`${endpoint.path}/${options.registrationId}/entry-test-bookings/${options.targetId}/${suffixes[options.endpoint]}`:gradeNested?`${endpoint.path}/${options.targetId}/assignments/${options.assignmentId}/grade-draft`:gradeComponent?`${endpoint.path}/${options.targetId}/components/${options.componentId}/schedule-options`:attendanceNested?`${endpoint.path}/${options.targetId}/lessons/${options.scheduleId}/attendance`:needsTarget?`${endpoint.path}/${options.targetId}${suffixes[options.endpoint]?'/'+suffixes[options.endpoint]:''}`:endpoint.path)+(query?'?'+query:'');
+    const path=(auditGroup?`${endpoint.path}/${options.operationId}/audit-events`:lookup?`${endpoint.path}/${options.requestId}`:nested?`${endpoint.path}/${options.registrationId}/entry-test-bookings/${options.targetId}/${suffixes[options.endpoint]}`:gradeNested?`${endpoint.path}/${options.targetId}/assignments/${options.assignmentId}/grade-draft`:gradeComponent?`${endpoint.path}/${options.targetId}/components/${options.componentId}/schedule-options`:attendanceNested?`${endpoint.path}/${options.targetId}/lessons/${options.scheduleId}/attendance`:needsTarget?`${endpoint.path}/${options.targetId}${suffixes[options.endpoint]?'/'+suffixes[options.endpoint]:''}`:endpoint.path)+(query?'?'+query:'');
     if (options.endpoint === 'login' && this.auth.context?.scope === 'PASSWORD_CHANGE') return { kind: 'blocked' };
     if (options.endpoint === 'register' && this.auth.context) return { kind: 'blocked' };
     const token = this.auth.csrf;
@@ -241,7 +256,7 @@ export class HttpClient {
     };
     try {
       if (controller.signal.aborted) return { kind: 'discarded' };
-      const headers: Record<string, string> = { Accept: 'application/json' };
+      const headers: Record<string, string> = { Accept: options.endpoint==='reportFinanceCsv'?'text/csv':'application/json' };
       if (endpoint.method !== 'GET') headers['X-CSRF-TOKEN'] = token!;
       if (needsKey && !lookup) headers['Idempotency-Key'] = options.requestId!;
       let body: string | undefined;
@@ -253,6 +268,10 @@ export class HttpClient {
       });
       body = undefined;
       if (!ticket.isCurrent() || controller.signal.aborted) return endpoint.intent === 'write' ? uncertainWrite() : { kind: 'discarded' };
+      if(response.status===200&&options.endpoint==='reportFinanceCsv'){
+        if(!options.decodeResponse)return {kind:'unavailable'};
+        try{const value=await options.decodeResponse(response);if(!ticket.isCurrent()||controller.signal.aborted)return {kind:'discarded'};return {kind:'success',value};}catch{return !ticket.isCurrent()||controller.signal.aborted?{kind:'discarded'}:{kind:'unavailable'};}
+      }
       let payload: unknown;
       try { payload = response.status === 204 ? undefined : await response.json(); }
       catch {

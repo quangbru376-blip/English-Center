@@ -109,6 +109,8 @@ public sealed class M1HttpSqlTests
             app.MapTeacherEntry(new(()=>f.Db(),f.Clock,10,1000),new(()=>f.Db(),f.Clock,10,1000),4096);
             EnglishCenter.Api.Api.Finance.FinanceEndpoints.MapFinance(app,new(()=>f.Db(),f.Clock,10,1000),4096);
             EnglishCenter.Api.Api.Classes.ClassEndpoints.MapClasses(app,new(()=>f.Db(),f.Clock,10,1000),65536);
+            EnglishCenter.Api.Api.Reports.ReportEndpoints.MapReports(app,new(()=>f.Db(),f.Clock,10,1000));
+            EnglishCenter.Api.Api.Administration.AuditEndpoints.MapAuditViewer(app,new EnglishCenter.Api.Infrastructure.Administration.SqlAuditViewerExecutor(()=>f.Db(),f.Clock,10,1000));
             EnglishCenter.Api.Api.Admissions.AdmissionsEndpoints.MapAdmissions(app,new(()=>f.Db(),f.Clock,10,1000),4096);
             EnglishCenter.Api.Api.StudentInvoices.StudentInvoiceEndpoints.MapStudentInvoices(app,new(()=>f.Db(),f.Clock,10,1000));
             await app.StartAsync(Ct);var client=app.GetTestClient();client.BaseAddress=new Uri("https://localhost");return new(app,client){fixturePassword=f.Password};

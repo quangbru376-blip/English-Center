@@ -52,6 +52,8 @@ internal sealed class LocalRuntimeServices : ITrustedLoginIpResolver, IDisposabl
     private readonly SqlStudentInvoiceReader studentInvoices;
     private readonly SqlFinanceExecutor finance;
     private readonly Classes.SqlClassExecutor classes;
+    private readonly Reports.SqlReportsExecutor reports;
+    private readonly Administration.SqlAuditViewerExecutor auditViewer;
     public LiveCsrfIdentityResolver Identity { get; }
     public LocalRuntimeServices(RuntimeProfile profile, LocalRuntimeKeyStore keys, string corpusDirectory)
     {
@@ -80,6 +82,8 @@ internal sealed class LocalRuntimeServices : ITrustedLoginIpResolver, IDisposabl
         studentInvoices = new(Context, clock, limits.SqlSeconds, limits.LockMs);
         finance = new(Context, clock, limits.SqlSeconds, limits.LockMs);
         classes = new(Context, clock, limits.SqlSeconds, limits.LockMs, limits.WeeklyPreviewBudget);
+        reports = new(Context, clock, limits.SqlSeconds, limits.LockMs);
+        auditViewer = new(Context, clock, limits.SqlSeconds, limits.LockMs);
         Identity = new(validator, current, audit, clock);
     }
     private static EnglishCenterDbContext Context() => new(new DbContextOptionsBuilder<EnglishCenterDbContext>()
@@ -108,6 +112,8 @@ internal sealed class LocalRuntimeServices : ITrustedLoginIpResolver, IDisposabl
         routes.MapAdmissions(admissions, bodyBytes);
         routes.MapStudentInvoices(studentInvoices);
         routes.MapFinance(finance, bodyBytes);
+        EnglishCenter.Api.Api.Reports.ReportEndpoints.MapReports(routes,reports);
+        EnglishCenter.Api.Api.Administration.AuditEndpoints.MapAuditViewer(routes,auditViewer);
         EnglishCenter.Api.Api.Classes.ClassEndpoints.MapClasses(routes,classes,bodyBytes);
     }
     public IPAddress? Resolve(HttpContext context) => context.Connection.RemoteIpAddress is { } address && IPAddress.IsLoopback(address) ? address : null;
