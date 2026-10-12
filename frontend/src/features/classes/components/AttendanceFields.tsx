@@ -1,3 +1,5 @@
+import { Button } from '../../../components/ui/Button';
+
 export type AttendanceFieldsProps = {
   rows: readonly {
     classAssignmentId: number;
@@ -77,32 +79,8 @@ export function AttendanceFields({
       )}
 
       <div className="flex flex-wrap items-center gap-3 pt-2">
-        <button
-          type="button"
-          disabled={disabled}
-          onClick={onSave}
-          className="min-h-11 rounded border px-4 py-2 text-sm font-medium focus:outline-none focus:ring-2 disabled:cursor-not-allowed disabled:opacity-50"
-          style={{
-            borderColor: 'var(--ec-border)',
-            backgroundColor: 'var(--ec-surface)',
-            color: 'var(--ec-text)',
-          }}
-        >
-          Lưu điểm danh
-        </button>
-        <button
-          type="button"
-          disabled={disabled}
-          onClick={onCancel}
-          className="min-h-11 rounded border px-4 py-2 text-sm font-medium focus:outline-none focus:ring-2 disabled:cursor-not-allowed disabled:opacity-50"
-          style={{
-            borderColor: 'var(--ec-border)',
-            backgroundColor: 'var(--ec-surface)',
-            color: 'var(--ec-text)',
-          }}
-        >
-          Bỏ thay đổi
-        </button>
+        <Button disabled={disabled} onClick={onSave}>Lưu điểm danh</Button>
+        <Button variant="secondary" disabled={disabled} onClick={onCancel}>Bỏ thay đổi</Button>
       </div>
     </div>
   );
