@@ -1,3 +1,4 @@
+AGENTS.md
 backend/src/EnglishCenter.Api/Api/Administration/AuditEndpoints.cs
 backend/src/EnglishCenter.Api/Api/Reports/ReportEndpoints.cs
 backend/src/EnglishCenter.Api/Common/Auditing/AuditPolicy.cs
@@ -18,8 +19,15 @@ backend/tests/EnglishCenter.Tests/M4AuditSqlTests.cs
 backend/tests/EnglishCenter.Tests/M4ReportsManagerSqlTests.cs
 backend/tests/EnglishCenter.Tests/M4ReportsSqlTests.cs
 backend/tests/EnglishCenter.Tests/M4ReportsTests.cs
+docs/ARCHITECTURE.md
+docs/CURRENT_STATE.md
+docs/DECISIONS.md
+docs/TODO.md
 docs/api.md
 docs/notes/M4.md
+docs/plan/HANDOFF.md
+docs/plan/M4-evidence/summary.json
+docs/plan/M4_03_RECOVERY_TASK_CARD.md
 docs/plan/M4_ALLOWLIST.txt
 docs/plan/M4_BATCH_PLAN.md
 docs/plan/M4_CLOSURE_MATRIX.md
@@ -27,6 +35,8 @@ docs/plan/M4_REVIEW.md
 docs/plan/M4_TASK_CARD.md
 docs/plan/M4_WORKER.json
 docs/plan/M4_WORKER.md
+docs/plan/NEXT_CHAT_HANDOFF.md
+docs/plan/plan.md
 frontend/src/app/IdentityApp.tsx
 frontend/src/app/identityNavigation.ts
 frontend/src/features/audit/AuditPage.tsx
