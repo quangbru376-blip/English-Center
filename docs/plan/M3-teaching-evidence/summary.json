@@ -3,11 +3,11 @@
   "date": "2026-10-12",
   "baselineMain": "9a17820",
   "contractCommit": "0067a26",
-  "managerSource": "432dc491a3609a18ba8ef37c36122542928fe135",
+  "managerSource": "4beba2b9b157d68647bb956db6a0c68493cd8930",
   "manager": "C:\\Study\\SOEN\\main_workplace\\.worktrees\\m2-finance",
   "default": {
-    "path": "C:\\Study\\SOEN\\main_workplace\\.worktrees\\m2-finance\\backend\\tests\\EnglishCenter.Tests\\TestResults\\M3-01-manager-default-verified.trx",
-    "sha256": "06AD2CF1DFF56BAA38C97F16EF95EEB2F5CDD9D58DA5CB8226A3BC04C7BC3425",
+    "path": "C:\\Study\\SOEN\\main_workplace\\.worktrees\\m2-finance\\backend\\tests\\EnglishCenter.Tests\\TestResults\\M3-01-manager-default-final-clock.trx",
+    "sha256": "3BC24678E7949FC818F9C2FC08C25D80EA523E9F0A5AED643F051A7555B91D9F",
     "passed": 1391,
     "failed": 0,
     "intentionalOptInSkip": 0
@@ -55,15 +55,17 @@
     "errors": 0
   },
   "managerScratch": {
-    "created": 244,
-    "droppedWithMatchingIdGuid": 244,
+    "created": 246,
+    "droppedWithMatchingIdGuid": 246,
     "liveRemaining": 0
   },
   "skillSourcesSha256": {
     ".agents/skills/backend-clean-code/SKILL.md": "76ACEC868ED4D918DC1C6616904F78FF2710737D6A06CCF605DA783BC914DD23",
     ".agents/skills/frontend-ui/SKILL.md": "54EFB0F14763ACA58DD1BDADC8B5276DA082E0668244335C7B8C48E0521402DF",
     ".agents/skills/code-review/SKILL.md": "1DDED1E6699F97C7657C27D2B923992D07AC88BD9642FB74EBE4D93A28BE2125",
-    "docs/plan/SKILL_ROUTING.md": "ADB7938FE69E00C991AEFB4EB114854F124EB3E2AC3963763937225646D3E915"
+    "docs/plan/SKILL_ROUTING.md": "ADB7938FE69E00C991AEFB4EB114854F124EB3E2AC3963763937225646D3E915",
+    "C:/Users/asus/.codex/skills/antigravity-worker/SKILL.md": "EB6DC1064B48EC44754406EE804CF287BE7B3B9243E2D5C80FDACBDD3364C54B",
+    "C:/Users/asus/.codex/skills/antigravity-worker/references/contract.md": "1AC0F548A07D677F688262E11ED2AACC6296FF222D32C5A2856D7D9747A28658"
   },
   "ownerFilesSha256": {
     "docs/Nhom18_ThietKeXuLy.docx": "C7DE4DE6338670A94C99280DF89BDDC8E06FAE53A63E3B0405BBFE9DA0149F6C",
@@ -72,8 +74,8 @@
     "docs/reference/REPORT_REVISION_GUIDE.md": "D5EA14D09082EB776BE243EABC7E4CD8D375CC1586214417FB3542AB2A138FEA"
   },
   "sourceTrees": {
-    "backend/src": "068501d26baf2be5dad2db6b29436e432a93f959",
-    "backend/tests": "dc0afce6af802d0743cf541bf11d53b49c955f54",
+    "backend/src": "bb54c6b28f127387c791c22c4b491efaa16796ec",
+    "backend/tests": "6f1f3c74b0aca6513ae602b51f8200abc1e2aae9",
     "frontend": "10fb8bfc5e7c09f49a85cdd3d249b8dbcf825997"
   },
   "worker": {
@@ -86,5 +88,20 @@
     "observedScopeViolations": 0,
     "integration": "Codex reused existing shared Buttons; original worker/events remain detached."
   },
-  "limits": "M3 batch1 only; no grades136+, whole-M3 closure, D07, schema/grants/packages/default-host/provisioning/push/deploy. Positive business acceptance is owned scratch; genuine operational main acceptance remains pending without synthetic seed."
+  "limits": "M3 batch1 only; no grades136+, whole-M3 closure, D07, schema/grants/packages/default-host/provisioning/push/deploy. Positive business acceptance is owned scratch; genuine operational main acceptance remains pending without synthetic seed.",
+  "baselineDefault": {
+    "path": "C:\\Study\\SOEN\\main_workplace\\.worktrees\\m2-finance\\backend\\tests\\EnglishCenter.Tests\\TestResults\\M3-01-manager-default-verified.trx",
+    "sha256": "06AD2CF1DFF56BAA38C97F16EF95EEB2F5CDD9D58DA5CB8226A3BC04C7BC3425",
+    "passed": 1391,
+    "failed": 0,
+    "intentionalOptInSkip": 0
+  },
+  "finalClock": {
+    "path": "C:\\Study\\SOEN\\main_workplace\\.worktrees\\m2-finance\\backend\\tests\\EnglishCenter.Tests\\TestResults\\M3-01-manager-final-clock.trx",
+    "sha256": "B0071498BC3639D0D3192FB0BB7BC25C9FAFA1D2EE7B37872390F231B60150C2",
+    "passed": 2,
+    "failed": 0,
+    "intentionalOptInSkip": 0
+  },
+  "focusedUniqueSqlHttpPassed": 96
 }
