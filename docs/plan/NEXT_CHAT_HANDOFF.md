@@ -1,3 +1,46 @@
+# Handoff hiện tại — M2 hoàn tất, tiếp tục M3 đợt1
+
+Cập nhật2026-10-12 theo owner: đồng ý chia M3 rồi yêu cầu handoff để chat tiếp theo tiếp tục. Chưa viết code M3; không có worker/test/runtime đang chạy. Đây là checkpoint hiện tại; các phần M1/M0 bên dưới là lịch sử, không phải WIP phải làm lại.
+
+## Trạng thái và Git
+- Main C:\Study\SOEN\main_workplace, branch main, HEAD trước commit handoff3aba844 (M3 planning); M2 closuree239951/source050d5d9.
+- M0/M1/M2 COMPLETE. M2 cả3đợt review PASS/applied ADR163/main reverified. Không có M3 source/task-card/worker dispatch nào.
+- Retained manager .worktrees/m2-finance, branch codex/m2-finance, HEAD1260c28/sourceac06b49, clean. Có thể tái sử dụng checkout này; đọc/đồng bộ các commit docs main thiếu bằng cách chính xác trước làm M3. Không cần quay lại .worktrees/m1-student-teacher WIP lịch sử hoặc tạo lại M0/M1/M2.
+- Main/manager identical trees: backend/src22991e2bb5f2a0a665618119c3f4b4b8483eb4fd; backend/tests80d705871145ab3205a67259a356ee5ca1a286cd; frontend50a72b00744d044513180d95d1816a4517e8b4b2.
+- Main không có tracked changes; chỉ owner4 untracked giữ nguyên. Không push/deploy/install hoặc đổi default Program/schema/grants.
+
+## Bằng chứng M2 đã đóng
+- Manager/main1387defaultPASS/232intentional opt-inSKIP/build0warnings0errors;79unique focusedSQLHTTP PASS;128frontend/types/lint/build PASS.
+- Edge91 schedules +90 Class +89 Finance +83/84/86 Program/Session/Teacher ở375/768/1280 PASS trên cảmanager/main. Weekly/move/replacement lost postcommitACK→manual090/no resend, scoped current Teacher/own Student/history/full replacement chain verified.
+- Genuine LOCAL_DEV main all9/strictSQL+HTTPS/Admin4login4logout/3widths/scoped Schedule wrongrole403/replayCOMMIT1/auditCOMMIT1/failures0/stoppedmaintenance503/forced0 PASS.
+- Manager125/main85 scratch databases ID/GUID-paired dropped; liveScratch0/hosts0/listener8443=0. Operational7roles/oneunchangedACTIVEAdmin/Band5/6migrations/business0/activeSID0; no fake operational seed. D07 not opened/rerun; no fresh D07 baseline claim.
+- Evidence docs/plan/M2-schedule-evidence/summary.json, M2_03_TASK_CARD/REVIEW/ALLOWLIST, M2_BATCH_PLAN; prior batches M2_01/M2_02 evidence retained. SQL/Edge TRX and operational receipt paths+hashes are in summary.
+- AGY0e275518-fc7 pure WeeklyFields: exactly3fullreads/sole120source121diffLines/no observed violations. Detached original/events retained; Codex import/type-only/token fixes and business tests independently done. Do not redispatch completed M2 helper.
+
+## M3 kế hoạch đã thống nhất — 3đợt/8gói
+Canonical split docs/plan/M3_BATCH_PLAN.md, main planning commit3aba844:
+1. Gói1–3: START API100 +HELD125/126; Attendance131–135; COMPLETE101, extend existing098 START/COMPLETE previews and090 only relevant commands.
+2. Gói4–5: draft136–139; Teacher140–142 +Academic review143–144/RETURN145–146. Closed submit→return→edit→resubmit loop, no finalize yet.
+3. Gói6–8: FINALIZE145/147; own Student FINALIZED148–149; integrated M3 closure/regression/runtime.
+
+Next chat tiếp tục từ chuẩn bị M3_01_TASK_CARD cho đợt1 theo kế hoạch đã thống nhất, không hiểu handoff là mở toàn M3/M4. Chốt exact routes/DTO/lock/version/full membership/absence/audit/T23/UI/checks/managerallowlist và bounded shared worker files trước delegation. Sau contract, luồng completion giữ Codex manager→antigravity-worker bounded helper→Codex integration/review/tests→PASS→apply main ADR163→main/runtime reverify. Không bỏ dở ở foundation hoặc tuyên bố COMPLETE từ subset tests.
+
+Guard đợt1: START đủ required LESSON +≥1 placed Student, không tự đòi FINAL_EXAM trước START. HELD chỉ Giáo vụ/from scheduled end/ONGOING/current PLANNED, không cần đủ Attendance và không tự suy từ clock/attendance. Teacher Attendance from LESSON start tới trước COMPLETED, current assignment/no before-start/history/NOT_HELD writes; không thêm ONGOING prerequisite/24–48h deadline/default present/absent. Một LESSON changed-values batch all-or-none, Chưa ghi≠Vắng. COMPLETE đủ current required LESSON và1FINAL_EXAM HELD +full LESSON cohort attendance; Vắng recorded hợp lệ, exam không Attendance mới, chưa submit/finalize/clear Registration.is_unfinished.
+
+Review/tests bắt buộc: exact cookie/CSRF/roles/scoped DTO, current Teacher trước/cuối response; canonical full manifests/absence without invented Assignment RV; request→domain gates→Account/SID→rows; audit+T23/effects atomic; current replay refs/rights before stale new-write guards; final server clock/deadline. Actual owned SQL races Attendance↔COMPLETE, HELD↔move/replacement, concurrent absent insert, Teacher reassignment/block/session expiry, audit rollback; Edge all3widths/unknown/manual lookup/no resend. Reuse existing24table/6migrations/TG04/TX10/FN04/grants and M2 Class/calendar code. No packages/schema/grants/runtime provisioning/D07/fake operational business seed.
+
+## Read order, authority và bảo vệ owner
+Đọc AGENTS.md rồi Project Memory theo docs/PROJECT_CONTEXT.md→ARCHITECTURE.md→CURRENT_STATE.md→DECISIONS.md→TODO.md; sau đó handoff này/HANDOFF.md, plan.md/M3_BATCH_PLAN, requirements.md và canonical E04_FINAL_CONTRACT/CONTRACT_CATALOG/DTO_SPEC §§16,22,24–29/SQL_INTEGRATION_SPEC/REPLAY_SPEC. Historical header M1 không phủ định checkpoint Git+M2 proof+owner continuation này. Không đọc/share source Word hoặc owner report files.
+Relevant skills khi implementation: backend-clean-code/frontend-ui; code-review; antigravity-worker global skill+references/contract and SKILL_ROUTING. Chuẩn bị scope trước external sharing; không tự gửi toàn source/report/secrets. ADR177 standing completion authority/ADR163 reviewed apply và các quyết định LOCAL_DEV/WeeklyPreviewBudget10000 đã chốt, không hỏi lại. Giữ DPAPI/nonexportablePKI/protected credentials/profile pins; operational launcher tools/operator/Start-M0Local.ps1, https://localhost:8443. Không khởi động runtime để chỉ đọc handoff.
+Owner4 hashes (metadata only), luôn unchanged/unshared/untracked/unstaged:
+- docs/Nhom18_ThietKeXuLy.docx: C7DE4DE6338670A94C99280DF89BDDC8E06FAE53A63E3B0405BBFE9DA0149F6C
+- docs/reference/PROCESSING_REPORT_MEMORY_COMPARISON.md: 4EFDC55AD820A5E92A9A95A619F875D6191EA74BDCC05AC06BF8CDE1AB65A54C
+- docs/reference/REFERENTIAL_INTEGRITY_IMPACT.md: 40466A2B841CF7E5DCC796ACDCC122B20E649B3A9DEA9814C1BECCD733E8CFB0
+- docs/reference/REPORT_REVISION_GUIDE.md: D5EA14D09082EB776BE243EABC7E4CD8D375CC1586214417FB3542AB2A138FEA
+
+---
+# Checkpoints lịch sử bên dưới — không phải trạng thái hiện tại
+
 # M1 packages5–6 IN PROGRESS — resume existing manager
 
 M1 packages5–6 assigned2026-10-09 IN PROGRESS. Resume retained manager
