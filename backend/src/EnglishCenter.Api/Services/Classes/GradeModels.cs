@@ -15,7 +15,7 @@ public sealed class GradeInput
     public int Api {get;} public int ClassId {get;} public int AssignmentId {get;} public Guid Request {get;} public CanonicalIntent Intent {get;} public JsonElement Body {get;}
     public GradeInput(int api,int classId,int assignmentId,Guid request,string json,int bytes)
     {
-        if(api is not(139 or 141 or 142 or 146)||request==Guid.Empty)throw ApiErrorException.Validation();
+        if(api is not(139 or 141 or 142 or 146 or 147)||request==Guid.Empty)throw ApiErrorException.Validation();
         Api=api;ClassId=classId;AssignmentId=assignmentId;Request=request;
         Intent=CanonicalIntent.Bind(api,json,Route(),bytes);
         using var doc=JsonDocument.Parse(Intent.CopyBytes());Body=doc.RootElement.GetProperty("body").Clone();
@@ -91,11 +91,13 @@ public static class GradeWire
         var issues=g.Computations.SelectMany(x=>x.Value["missingComponentIds"]!.AsArray().Select(v=>new{classAssignmentId=(int?)x.Key,componentId=(int?)v!.GetValue<int>(),message="Chưa nhập điểm thành phần."}));
         return ClassWire.Object(new{@class=TeacherSummary(g.Class),action,cohortSize=g.Class.Assignments.Length,states=new{draft=g.Reports.Count(x=>x.Status=="DRAFT"),submitted=g.Reports.Count(x=>x.Status=="SUBMITTED"),returned=g.Reports.Count(x=>x.Status=="RETURNED"),finalized=g.Reports.Count(x=>x.Status=="FINALIZED")},items,eligible,blockedReasons=eligible?Array.Empty<string>():new[]{"Lớp phải hoàn thành, cả lớp ở trạng thái nháp/trả lại và đủ điểm hợp lệ."},issues,effects=new[]{"Gửi bảng điểm cả lớp; khóa sửa điểm, chưa công bố cho học viên."},manifest=eligible?WorkflowManifest(g):null});
     }
-    public static JsonObject ReviewDetail(GradeState g,DateTime now)
+    public static JsonObject ReviewDetail(GradeState g,DateTime now,bool publicationEligible=true)
     {
         var visible=g.Reports.Where(x=>x.Status!="DRAFT").ToArray();if(visible.Length==0)throw new ApiErrorException(ApiErrorCode.NOT_FOUND);
-        var eligible=WorkflowEligible(g,true,now);
-        return ClassWire.Object(new{@class=ClassWire.Summary(g.Class),components=Components(g.Class),cohortSize=g.Class.Assignments.Length,visibleReportCount=visible.Length,hasCompleteVisibleCohort=visible.Length==g.Class.Assignments.Length,items=visible.OrderBy(x=>x.ClassAssignmentId).Select(x=>Student(g,x,false)),allowedActions=eligible?new[]{"RETURN"}:Array.Empty<string>(),disabledReasons=eligible?new Dictionary<string,string>():new(){{"RETURN","Chỉ trả lại toàn lớp đã gửi và đủ điểm hợp lệ."}}});
+        var eligible=WorkflowEligible(g,true,now);var actions=new List<string>();var reasons=new Dictionary<string,string>();
+        if(eligible)actions.Add("RETURN");else reasons["RETURN"]="Chỉ trả lại toàn lớp đã gửi và đủ điểm hợp lệ.";
+        if(eligible&&publicationEligible)actions.Add("FINALIZE");else reasons["FINALIZE"]="Cả lớp phải đã gửi, đủ điểm và lượt học hiện hành hợp lệ để chốt.";
+        return ClassWire.Object(new{@class=ClassWire.Summary(g.Class),components=Components(g.Class),cohortSize=g.Class.Assignments.Length,visibleReportCount=visible.Length,hasCompleteVisibleCohort=visible.Length==g.Class.Assignments.Length,items=visible.OrderBy(x=>x.ClassAssignmentId).Select(x=>Student(g,x,false)),allowedActions=actions,disabledReasons=reasons});
     }
     public static JsonObject WorkflowResult(GradeState g,Guid operation)=>ClassWire.Object(new{classId=g.Class.Class.ClassId,reportIds=g.Reports.Select(x=>x.ReportId).Order(),reportCount=g.Reports.Length,status=g.Reports.Select(x=>x.Status).Distinct().Single(),operationId=operation});
 }

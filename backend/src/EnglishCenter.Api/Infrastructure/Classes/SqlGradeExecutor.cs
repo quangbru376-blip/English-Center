@@ -23,11 +23,11 @@ public sealed partial class SqlClassExecutor
         using var doc=JsonDocument.Parse(json);var action=Single(doc.RootElement,"action");if(action.ValueKind!=JsonValueKind.String||action.GetString() is not("SUBMIT" or "RESUBMIT"))throw ApiErrorException.Validation("action");var selected=action.GetString()!;
         return ScopedRead(t,id,"Teacher",async(db,c)=>GradeWire.SubmissionPreview(await SqlGradeRepository.Read(db,id,c),selected,Now),ct);
     }
-    public Task<JsonObject> ReviewDetail(VerifiedSessionToken t,int id,CancellationToken ct)=>ScopedRead(t,id,"AcademicAffairs",async(db,c)=>GradeWire.ReviewDetail(await SqlGradeReviewReads.Read(db,id,t.AccountId,sqlSeconds,c),Now),ct);
+    public Task<JsonObject> ReviewDetail(VerifiedSessionToken t,int id,CancellationToken ct)=>ScopedRead(t,id,"AcademicAffairs",async(db,c)=>{var g=await SqlGradeReviewReads.Read(db,id,t.AccountId,sqlSeconds,c);return GradeWire.ReviewDetail(g,Now,!GradeWire.WorkflowEligible(g,true,Now)||await SqlGradeRepository.PublicationEligible(db,g,c));},ct);
     public Task<JsonObject> ReviewPreview(VerifiedSessionToken t,int id,string json,CancellationToken ct)
     {
-        using var doc=JsonDocument.Parse(json);var action=Single(doc.RootElement,"action");if(action.ValueKind!=JsonValueKind.String||action.GetString()!="RETURN")throw ApiErrorException.Validation("action");
-        return ScopedRead(t,id,"AcademicAffairs",async(db,c)=>{var g=await SqlGradeReviewReads.Read(db,id,t.AccountId,sqlSeconds,c);var eligible=GradeWire.WorkflowEligible(g,true,Now);return ClassWire.Object(new{detail=GradeWire.ReviewDetail(g,Now),action="RETURN",eligible,blockedReasons=eligible?Array.Empty<string>():new[]{"Cần cả lớp đã gửi, đủ điểm và báo cáo hợp lệ."},effects=new[]{"Trả lại cả lớp để giáo viên sửa; giữ nguyên điểm và nhận xét."},manifest=eligible?GradeWire.WorkflowManifest(g):null});},ct);
+        using var doc=JsonDocument.Parse(json);var action=Single(doc.RootElement,"action");if(action.ValueKind!=JsonValueKind.String||action.GetString() is not("RETURN" or "FINALIZE"))throw ApiErrorException.Validation("action");var selectedAction=action.GetString()!;
+        return ScopedRead(t,id,"AcademicAffairs",async(db,c)=>{var g=await SqlGradeReviewReads.Read(db,id,t.AccountId,sqlSeconds,c);var publication=!GradeWire.WorkflowEligible(g,true,Now)||await SqlGradeRepository.PublicationEligible(db,g,c);var eligible=GradeWire.WorkflowEligible(g,true,Now)&&(selectedAction!="FINALIZE"||publication);return ClassWire.Object(new{detail=GradeWire.ReviewDetail(g,Now,publication),action=selectedAction,eligible,blockedReasons=eligible?Array.Empty<string>():new[]{"Cần cả lớp đã gửi, đủ điểm và báo cáo hợp lệ."},effects=new[]{selectedAction=="RETURN"?"Trả lại cả lớp để giáo viên sửa; giữ nguyên điểm và nhận xét.":"Chốt điểm cả lớp, công bố cho học viên và cập nhật lượt học đã hoàn tất."},manifest=eligible?(selectedAction=="FINALIZE"?await SqlGradeRepository.FinalizeManifest(db,g,c):GradeWire.WorkflowManifest(g)):null});},ct);
     }
     public Task<JsonObject> ReviewList(VerifiedSessionToken t,IQueryCollection query,CancellationToken ct)
     {
@@ -42,7 +42,7 @@ public sealed partial class SqlClassExecutor
     }
     public async Task<ClassCommandOutcome> GradeCommand(VerifiedSessionToken t,int api,int id,int assignment,Guid request,string json,int bytes,CancellationToken ct)
     {
-        var role=api==146?"AcademicAffairs":"Teacher";
+        var role=api is 146 or 147?"AcademicAffairs":"Teacher";
         await ScopedRead(t,id,role,async(db,c)=>{if(api==139&&!await db.StudentClassAssignments.AnyAsync(x=>x.ClassId==id&&x.ClassAssignmentId==assignment,c))throw new ApiErrorException(ApiErrorCode.NOT_FOUND);return true;},ct);
         var input=new GradeInput(api,id,assignment,request,json,bytes);
         return await tx.Write((s,c)=>{var classes=new SqlClassRepository(s);return new GradeService(classes,new(classes),new Infrastructure.Replay.SqlReplayRepository(s,lockMs),clock).Command(t,input,c);},ct);

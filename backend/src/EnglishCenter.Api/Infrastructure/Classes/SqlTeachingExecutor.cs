@@ -34,7 +34,7 @@ public sealed partial class SqlClassExecutor
     public Task<SafeCommandCompletion> TeachingLookup(VerifiedSessionToken token,string role,string action,Guid request,CancellationToken ct)=>tx.Write(async(s,c)=>
     {
         CanonicalAction selected;try{selected=CanonicalActionRegistry.ForCode(action);}catch(ArgumentException){throw ApiErrorException.Validation("action");}
-        if(selected.ApiId is not(100 or 101 or 126 or 133 or 139 or 141 or 142 or 146)||selected.Role!=role)throw new ApiErrorException(ApiErrorCode.FORBIDDEN);
+        if(selected.ApiId is not(100 or 101 or 126 or 133 or 139 or 141 or 142 or 146 or 147)||selected.Role!=role)throw new ApiErrorException(ApiErrorCode.FORBIDDEN);
         var markers=new SqlReplayRepository(s,lockMs);
         await markers.AcquireAsync(ReplayService.RequestResource(token.AccountId,selected,request),c);
         // Completion targets are discovered before domain gates, never treated as current rights.
@@ -45,7 +45,7 @@ public sealed partial class SqlClassExecutor
         var result=await new ReplayService(markers,clock).LookupAsync(90,role,token.AccountId,action,request,async(found,cancel)=>
         {
             await Scope(s.Context,found.Target["classId"],role,token.AccountId,cancel);
-            if(selected.ApiId==146&&!await repo.ReviewTask(found.Target["classId"],cancel))return false;
+            if(selected.ApiId is 146 or 147&&!await repo.ReviewTask(found.Target["classId"],cancel))return false;
             return await SqlClassRepository.Matches(s.Context,found.Target,cancel);
         },c);
         var live=await EnrollmentAuthority.RequireAsync(repo,token,clock,role,c);

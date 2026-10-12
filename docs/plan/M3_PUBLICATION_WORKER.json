@@ -1,0 +1,9 @@
+{
+  "mode":"edit",
+  "objective":"Implement only the pure read-only StudentGradeResults.tsx with exact exported types/props described in the authorized context. Fully read exactly the three context_files before the sole write. No other reads, links, commands, Git, SQL, network or validation. No business calculations, state, effects, fetching, storage, UUID or editable fields. Max125 source lines.",
+  "allowed_paths":["frontend/src/features/classes/components/StudentGradeResults.tsx"],
+  "forbidden_paths":[".env","**/*lock*","docs/Nhom18_ThietKeXuLy.docx","docs/reference/**","backend/**",".git/**","tools/**"],
+  "acceptance_criteria":["Exactly three full context reads before sole write, no extra reads or commands.","Exact pure exported component/props, server-owned passed boolean and decimal strings rendered without calculation.","Vietnamese accessible responsive semantic read-only results, escaped comment, <=125 source/165 diff lines."],
+  "context_files":["docs/plan/M3_PUBLICATION_WORKER.md",".agents/skills/frontend-ui/SKILL.md","docs/plan/SKILL_ROUTING.md"],
+  "max_changed_files":1,"max_diff_lines":165,"model":"","timeout":"15m"
+}

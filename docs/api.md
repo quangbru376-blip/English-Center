@@ -1,3 +1,5 @@
+M3 batch3 implementation in manager (IN PROGRESS; no main apply claim). API145 adds FINALIZE whole-Class preview, API147 POST /api/v1/academics/grade-reviews/classes/{id}/finalize (AcademicAffairs NORMAL/CSRF/UUID/full grade+Registration manifest); stored FN05 two-decimal final totals +FN03 unfinished +audit/T23 atomic. API148 GET /api/v1/students/me/grade-reports own FINALIZED paged filters courseId/classId/fromDate/toDate/sort/page/pageSize; API149 GET .../{id} exact minimal published components/comment. Student NORMAL/private no-store, unpublished/foreign404, no grade provenance/RV. No schema/default host/package change.
+
 2026-10-11 M2 batch1 Accountant API048–053 implemented/reviewed PASS; main integration receipts in docs/plan/M2-finance-evidence/summary.json.
 Mounted only in the explicit existing LOCAL_DEV host. All require live Accountant NORMAL authority/no-store; unsafe POST/PUT require same-origin framework CSRF.
 POST /api/v1/finance/invoices/search accepts exact DTO11.3 paged filters in RAM/body; real VW06/FN06 count/items share SNAPSHOT and final live authority.

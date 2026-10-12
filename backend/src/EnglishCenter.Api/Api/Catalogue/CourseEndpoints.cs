@@ -42,7 +42,7 @@ public static class CourseEndpoints
             if(context.Request.Query.Count!=1||!context.Request.Query.TryGetValue("action",out var action)||action.Count!=1||string.IsNullOrEmpty(action[0]))throw ApiErrorException.Validation("action");
             if(!Common.Replay.CanonicalActionRegistry.All.Any(x=>x.Code==action[0]))throw ApiErrorException.Validation("action");
             var request=AdminAccountEndpoints.Uuid(requestId);
-            if(classes is not null&&Common.Replay.CanonicalActionRegistry.All.Any(x=>x.Code==action[0]&&x.ApiId is 100 or 101 or 126 or 133 or 139 or 141 or 142 or 146))return Results.Ok(await classes.TeachingLookup(token,role,action[0]!,request,context.RequestAborted));
+            if(classes is not null&&Common.Replay.CanonicalActionRegistry.All.Any(x=>x.Code==action[0]&&x.ApiId is 100 or 101 or 126 or 133 or 139 or 141 or 142 or 146 or 147))return Results.Ok(await classes.TeachingLookup(token,role,action[0]!,request,context.RequestAborted));
             if(role=="Teacher")throw new ApiErrorException(ApiErrorCode.FORBIDDEN);
             if(classes is not null&&Common.Replay.CanonicalActionRegistry.All.Any(x=>x.Code==action[0]&&x.ApiId is 92 or 94 or 97 or 99 or 102 or 108 or 118 or 120 or 122 or 124))return Results.Ok(await classes.Lookup(token,action[0]!,request,context.RequestAborted));
             return Results.Ok(await executor.LookupAsync(token,action[0]!,request,context.RequestAborted));

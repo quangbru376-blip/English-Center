@@ -17,7 +17,7 @@ public sealed class GradeService(SqlClassRepository classes,SqlGradeRepository g
 {
     public async Task<ClassCommandOutcome> Command(VerifiedSessionToken token,GradeInput input,CancellationToken ct)
     {
-        var role=input.Api==146?"AcademicAffairs":"Teacher";
+        var role=input.Api is 146 or 147?"AcademicAffairs":"Teacher";
         await markers.AcquireAsync(ReplayService.RequestResource(token.AccountId,input.Intent.Action,input.Request),ct);
         var reference=await classes.Discover(input.ClassId,ct)??throw new ApiErrorException(ApiErrorCode.NOT_FOUND);
         var registrations=await classes.Registrations(input.ClassId,null,ct);
@@ -76,22 +76,25 @@ public sealed class GradeService(SqlClassRepository classes,SqlGradeRepository g
     }
     private async Task Transition(VerifiedSessionToken token,GradeInput input,GradeState state,Guid operation,DateTimeOffset now,CancellationToken ct)
     {
-        input.RequireManifest(GradeWire.WorkflowManifest(state));if(!GradeWire.WorkflowEligible(state,input.Api==146,now.UtcDateTime))throw AcademicGuard.Conflict();
+        input.RequireManifest(input.Api==147?await grades.FinalizeManifest(state,ct):GradeWire.WorkflowManifest(state));if(!GradeWire.WorkflowEligible(state,input.Api is 146 or 147,now.UtcDateTime))throw AcademicGuard.Conflict();
+        if(input.Api==147)await grades.ValidatePublication(state,ct);
         var reason=input.Api==146?input.Body.GetProperty("reason").GetString():null;
         foreach(var report in state.Reports)
         {
             var before=ReportSnapshot(report);
-            if(input.Api==146){report.Status="RETURNED";report.ReviewedBy=token.AccountId;report.ReviewedAt=now.UtcDateTime;report.ReviewOperationId=operation;report.ReturnedReason=reason;}
+            if(input.Api==147){report.Status="FINALIZED";report.FinalScore=decimal.Parse(state.Computations[report.ClassAssignmentId]["total"]!.GetValue<string>(),CultureInfo.InvariantCulture);report.FinalizedAt=now.UtcDateTime;report.ReviewedBy=token.AccountId;report.ReviewedAt=now.UtcDateTime;report.ReviewOperationId=operation;}
+            else if(input.Api==146){report.Status="RETURNED";report.ReviewedBy=token.AccountId;report.ReviewedAt=now.UtcDateTime;report.ReviewOperationId=operation;report.ReturnedReason=reason;}
             else{report.Status="SUBMITTED";report.SubmittedBy=token.AccountId;report.SubmittedAt=now.UtcDateTime;report.SubmittedOperationId=operation;}
             await classes.SaveAsync(ct);
             var assignment=state.Class.Assignments.Single(x=>x.ClassAssignmentId==report.ClassAssignmentId);
             await Audit(input,token,"GradeReport",report.ReportId,before,ReportSnapshot(report),ClassWire.Object(new{classId=input.ClassId,classAssignmentId=assignment.ClassAssignmentId,registrationId=assignment.RegistrationId}),reason,operation,now,ct);
         }
+        if(input.Api==147)foreach(var change in await grades.ApplyUnfinished(state,ct))await Audit(input,token,"Registration",change.Id,ClassWire.Object(new{status=change.Status,isUnfinished=change.Before}),ClassWire.Object(new{status=change.Status,isUnfinished=change.After}),ClassWire.Object(new{classId=input.ClassId,registrationId=change.Id,classAssignmentId=change.Assignment}),null,operation,now,ct);
         await Audit(input,token,"Class",input.ClassId,new(){["status"]="COMPLETED"},new(){["status"]="COMPLETED"},new(){["classId"]=input.ClassId},reason,operation,now,ct);
     }
     private Task Audit(GradeInput input,VerifiedSessionToken token,string entity,int id,JsonObject? old,JsonObject next,JsonObject parent,string? reason,Guid operation,DateTimeOffset now,CancellationToken ct)=>classes.AuditAsync(AuditEntry.Mandatory(input.Intent.Action.Code+(entity==(input.Api==139?"GradeReport":"Class")?"":".EFFECT"),token.AccountId,entity,id,operation,now,new(old,next,parent,reason)),ct);
     private static JsonObject ScoreSnapshot(Score s)=>ClassWire.Object(new{componentId=s.ComponentId,scheduleId=s.ScheduleId,scoreValue=s.ScoreValue,enteredBy=s.EnteredBy,enteredAt=ClassWire.At(s.EnteredAt)});
-    private static JsonObject ReportSnapshot(GradeReport r)=>ClassWire.Object(new{status=r.Status,submittedBy=r.SubmittedBy,submittedAt=r.SubmittedAt is {} a?ClassWire.At(a):null,submittedOperationId=r.SubmittedOperationId,reviewedBy=r.ReviewedBy,reviewedAt=r.ReviewedAt is {} b?ClassWire.At(b):null,reviewOperationId=r.ReviewOperationId});
+    private static JsonObject ReportSnapshot(GradeReport r)=>ClassWire.Object(new{status=r.Status,submittedBy=r.SubmittedBy,submittedAt=r.SubmittedAt is {} a?ClassWire.At(a):null,submittedOperationId=r.SubmittedOperationId,reviewedBy=r.ReviewedBy,reviewedAt=r.ReviewedAt is {} b?ClassWire.At(b):null,reviewOperationId=r.ReviewOperationId,finalScore=r.FinalScore,finalizedAt=r.FinalizedAt is {} f?ClassWire.At(f):null});
     private async Task<DateTimeOffset> Require(VerifiedSessionToken token,int id,string role,CancellationToken ct)
     {
         var live=await EnrollmentAuthority.RequireAsync(classes,token,clock,role,ct);

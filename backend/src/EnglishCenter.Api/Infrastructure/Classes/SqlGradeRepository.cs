@@ -6,6 +6,7 @@ using EnglishCenter.Api.Common.Serialization;
 using EnglishCenter.Api.Domain.Training;
 using EnglishCenter.Api.Infrastructure.Identity;
 using EnglishCenter.Api.Services.Classes;
+using EnglishCenter.Api.Services.Academics;
 using Microsoft.EntityFrameworkCore;
 
 public sealed class SqlGradeRepository(SqlClassRepository classes)
@@ -29,6 +30,40 @@ public sealed class SqlGradeRepository(SqlClassRepository classes)
         if(!reports.Select(x=>x.ClassAssignmentId).Order().SequenceEqual(ids.Order()))throw new ApiErrorException(ApiErrorCode.INTERNAL_ERROR);
         var scores=await db.Scores.AsNoTracking().Where(x=>ids.Contains(x.ClassAssignmentId)).OrderBy(x=>x.ScoreId).ToArrayAsync(ct);
         return await Finish(db,state,reports,scores,ct);
+    }
+    public Task<JsonObject> FinalizeManifest(GradeState g,CancellationToken ct)=>FinalizeManifest(Db,g,ct);
+    public static async Task<JsonObject> FinalizeManifest(EnglishCenterDbContext db,GradeState g,CancellationToken ct)
+    {
+        var ids=g.Class.Assignments.Select(x=>x.RegistrationId).ToArray();
+        var rows=await db.Registrations.AsNoTracking().Where(x=>ids.Contains(x.RegistrationId)).OrderBy(x=>x.RegistrationId).ToArrayAsync(ct);
+        if(rows.Length!=ids.Length)throw new ApiErrorException(ApiErrorCode.INTERNAL_ERROR);
+        var m=GradeWire.WorkflowManifest(g);
+        m["expectedVersions"]!["registrations"]=ClassWire.Array(rows.Select(x=>ClassWire.Object(new{id=x.RegistrationId,version=ClassWire.Rv(x.RowVersion)})));
+        m["expectedSet"]!["registrationBindings"]=ClassWire.Array(g.Class.Assignments.Select(x=>ClassWire.Object(new{classAssignmentId=x.ClassAssignmentId,registrationId=x.RegistrationId})));
+        return m;
+    }
+    public async Task ValidatePublication(GradeState g,CancellationToken ct)
+    {if(!await PublicationEligible(Db,g,ct))throw AcademicGuard.Conflict();}
+    public static async Task<bool> PublicationEligible(EnglishCenterDbContext db,GradeState g,CancellationToken ct)
+    {
+        var ids=g.Class.Assignments.Select(x=>x.RegistrationId).ToArray();
+        var rows=await db.Registrations.AsNoTracking().Where(x=>ids.Contains(x.RegistrationId)).ToArrayAsync(ct);
+        var values=await db.Database.SqlQuery<UnfinishedRow>($"SELECT a.registration_id AS RegistrationId,f.isUnfinished AS IsUnfinished FROM dbo.StudentClassAssignment a CROSS APPLY dbo.ufn_RegistrationUnfinished(a.registration_id) f WHERE a.class_id={g.Class.Class.ClassId}").ToArrayAsync(ct);
+        return rows.Length==ids.Length&&values.Length==ids.Length&&rows.All(x=>x.Status=="ADMITTED"&&x.IsUnfinished&&x.CourseId==g.Class.Program.Course.CourseId)&&values.All(x=>x.IsUnfinished);
+    }
+    private sealed class UnfinishedRow{public int RegistrationId{get;set;}public bool IsUnfinished{get;set;}}
+    public async Task<(int Id,int Assignment,string Status,bool Before,bool After)[]> ApplyUnfinished(GradeState g,CancellationToken ct)
+    {
+        var values=await Db.Database.SqlQuery<UnfinishedRow>($"SELECT a.registration_id AS RegistrationId,f.isUnfinished AS IsUnfinished FROM dbo.StudentClassAssignment a CROSS APPLY dbo.ufn_RegistrationUnfinished(a.registration_id) f WHERE a.class_id={g.Class.Class.ClassId}").ToArrayAsync(ct);
+        if(values.Length!=g.Class.Assignments.Length||values.Any(x=>x.IsUnfinished))throw AcademicGuard.Conflict();
+        var changes=new List<(int,int,string,bool,bool)>();
+        foreach(var a in g.Class.Assignments.OrderBy(x=>x.RegistrationId))
+        {
+            var row=await Db.Registrations.SingleAsync(x=>x.RegistrationId==a.RegistrationId,ct);
+            if(row.Status!="ADMITTED")throw AcademicGuard.Conflict();
+            if(row.IsUnfinished){changes.Add((row.RegistrationId,a.ClassAssignmentId,row.Status,true,false));row.IsUnfinished=false;}
+        }
+        await classes.SaveAsync(ct);return changes.ToArray();
     }
     internal sealed class TotalRow
     {
