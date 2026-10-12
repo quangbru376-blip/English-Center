@@ -10,6 +10,7 @@ public static class ClassEndpoints
     {
         const string root="/api/v1/academics/classes";
         var policy=new CsrfRoutePolicy(CsrfAccess.Authenticated,true);
+        routes.MapGrades(executor,bytes);
         routes.MapPost("/api/v1/academics/schedules/{id}/held-preview",async(HttpContext c,string id)=>{var t=EnrollmentEndpoints.RequireRole(c,"AcademicAffairs");AdminAccountEndpoints.RequireNoQuery(c);AdminAccountEndpoints.RequireEmptyBody(c);return Results.Ok(await executor.HeldPreview(t,AdminAccountEndpoints.Id(id),c.RequestAborted));}).WithMetadata(policy).AllowAnonymous();
         routes.MapPost("/api/v1/academics/schedules/{id}/confirm-held",async(HttpContext c,string id)=>{var t=EnrollmentEndpoints.RequireRole(c,"AcademicAffairs");AdminAccountEndpoints.RequireNoQuery(c);var r=await executor.ScheduleCommand(t,126,AdminAccountEndpoints.Id(id),AdminAccountEndpoints.HeaderKey(c),AuthJsonBoundary.Read(c),bytes,c.RequestAborted);return Results.Ok(r.Result);}).WithMetadata(policy,new AuthBodyPolicy(bytes)).AllowAnonymous();
         foreach(var(role,path) in new[]{("Teacher","/api/v1/academics/teachers/me/classes"),("AcademicAffairs",root)})

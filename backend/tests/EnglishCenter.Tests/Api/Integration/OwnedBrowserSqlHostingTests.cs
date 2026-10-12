@@ -38,17 +38,20 @@ public sealed class OwnedBrowserSqlHostingTests
     public Task M2SchedulesRealEdgeThreeWidths() => RealBrowserHttpsToOwnedCommit(91);
     [Fact(Skip = "M3 owned Edge requires SQL/browser gates and temporary assets.", SkipUnless = nameof(OwnedBrowserSqlGate.Enabled), SkipType = typeof(OwnedBrowserSqlGate))]
     public Task M3TeachingRealEdgeThreeWidths() => RealBrowserHttpsToOwnedCommit(92);
+    [Fact(Skip = "M3 grading requires owned SQL/browser gates.", SkipUnless = nameof(OwnedBrowserSqlGate.Enabled), SkipType = typeof(OwnedBrowserSqlGate))]
+    public Task M3GradingRealEdgeThreeWidths() => RealBrowserHttpsToOwnedCommit(93);
     [Theory(Skip = "V01-F requires SQL/owned/browser gates and temporary assets.", SkipUnless = nameof(OwnedBrowserSqlGate.Enabled), SkipType = typeof(OwnedBrowserSqlGate))]
     [InlineData(1)][InlineData(2)][InlineData(4)][InlineData(5)][InlineData(6)][InlineData(9)][InlineData(81)][InlineData(82)][InlineData(83)][InlineData(84)][InlineData(85)][InlineData(86)][InlineData(87)][InlineData(88)]
     public async Task RealBrowserHttpsToOwnedCommit(int group)
     {
         var ct = OwnedSqlFixture.Ct;
         var assets = Environment.GetEnvironmentVariable("EC_V01_ASSETS") ?? throw new InvalidOperationException("Temporary assets required.");
-        var driver = Environment.GetEnvironmentVariable(group is >=81 and <=92 ? "EC_M1_DRIVER" : "EC_V01_DRIVER") ?? throw new InvalidOperationException("Browser driver required.");
+        var driver = Environment.GetEnvironmentVariable(group is >=81 and <=93 ? "EC_M1_DRIVER" : "EC_V01_DRIVER") ?? throw new InvalidOperationException("Browser driver required.");
         Assert.StartsWith(Path.GetFullPath(Path.GetTempPath()), Path.GetFullPath(assets), StringComparison.OrdinalIgnoreCase);
-        var teachingNow=DateTimeOffset.FromUnixTimeSeconds(DateTimeOffset.UtcNow.ToUnixTimeSeconds()/3600*3600);var teachingClock=group==92?new M1AdmissionsSqlTests.Clock(teachingNow.AddHours(-2)):null;
-        await using var f = await OwnedSqlFixture.CreateAsync(group==92?teachingClock:group is 90 or 91?new M1AdmissionsSqlTests.Clock(DateTimeOffset.FromUnixTimeSeconds(DateTimeOffset.UtcNow.ToUnixTimeSeconds()/60*60)):null);
+        var teachingNow=DateTimeOffset.FromUnixTimeSeconds(DateTimeOffset.UtcNow.ToUnixTimeSeconds()/3600*3600);var teachingClock=group is 92 or 93?new M1AdmissionsSqlTests.Clock(teachingNow.AddHours(-2)):null;
+        await using var f = await OwnedSqlFixture.CreateAsync(group is 92 or 93?teachingClock:group is 90 or 91?new M1AdmissionsSqlTests.Clock(DateTimeOffset.FromUnixTimeSeconds(DateTimeOffset.UtcNow.ToUnixTimeSeconds()/60*60)):null);
         if(group==92){await M3TeachingSqlTests.Seed(f);teachingClock!.Now=DateTimeOffset.FromUnixTimeSeconds(DateTimeOffset.UtcNow.ToUnixTimeSeconds());}
+        if(group==93){await M3GradingSqlTests.Seed(f,teachingClock!);teachingClock!.Now=DateTimeOffset.FromUnixTimeSeconds(DateTimeOffset.UtcNow.ToUnixTimeSeconds());}
         if (group == 6) await f.Restricted("Teacher");
         if (group is 85 or 86 or 87 or 88) await SeedEnrollmentBrowser(f, group, ct);
         if(group==88) await SeedConfirmedAdmissions(f,ct);
@@ -138,7 +141,7 @@ public sealed class OwnedBrowserSqlHostingTests
             Assert.All(security, a => {
                 Assert.Contains(a.Action, new[] { "AUTH.LOGIN", "AUTH.LOGOUT", "AUTH.ACCESS_DENIED" });
                 Assert.True(a.ActorAccountId is null || f.Accounts.Values.Contains(a.ActorAccountId.Value), "Security actor must be verified fixture identity.");
-                OwnedAuditAssertions.Security(a, a.Action, a.ActorAccountId, a.Action != "AUTH.ACCESS_DENIED", group==92&&a.OccurredAt<teachingNow.UtcDateTime?teachingNow.AddHours(-2).UtcDateTime:f.Clock.GetUtcNow().UtcDateTime);
+                OwnedAuditAssertions.Security(a, a.Action, a.ActorAccountId, a.Action != "AUTH.ACCESS_DENIED", group is 92 or 93&&a.OccurredAt<teachingNow.UtcDateTime?(group==93&&a.OccurredAt>=teachingNow.AddHours(-1).UtcDateTime?teachingNow.AddHours(-1).UtcDateTime:teachingNow.AddHours(-2).UtcDateTime):f.Clock.GetUtcNow().UtcDateTime);
             });
             if (group == 1)
             {
@@ -149,7 +152,7 @@ public sealed class OwnedBrowserSqlHostingTests
             }
             else
             {
-                var expectedLogins = group switch { 2 => 7, 4 => 2, 5 or 6 => 3, 9 => 2, 81 => 4, 82 or 83 or 84 or 85 or 86 => 3, 87 or 88 => 6, 89=>7,90 or 91=>seedLoginCount+9,92=>seedLoginCount+7, _ => throw new InvalidOperationException("Invalid owned browser group.") };
+                var expectedLogins = group switch { 2 => 7, 4 => 2, 5 or 6 => 3, 9 => 2, 81 => 4, 82 or 83 or 84 or 85 or 86 => 3, 87 or 88 => 6, 89=>7,90 or 91=>seedLoginCount+9,92=>seedLoginCount+7,93=>seedLoginCount+6, _ => throw new InvalidOperationException("Invalid owned browser group.") };
                 Assert.Equal(expectedLogins, security.Count(a => a.Action == "AUTH.LOGIN" && a.Result == "SUCCESS"));
                 Assert.Equal(0, f.Incidents.GetFailureCount(EnglishCenter.Api.Common.Auditing.SecurityAuditKind.Login));
             }
@@ -162,6 +165,7 @@ public sealed class OwnedBrowserSqlHostingTests
             if(group==87){Assert.Equal(3,await db.Registrations.CountAsync(r=>r.Status=="CONFIRMED",ct));Assert.Equal(3,await db.EntryTestBookings.CountAsync(b=>b.Status=="COMPLETED",ct));Assert.Equal(3,await db.BandAssignments.CountAsync(ct));Assert.Equal(6,await db.ReplayOperations.CountAsync(ct));Assert.Equal(3,await db.AuditLogs.CountAsync(a=>a.Action=="STUDENT.REGISTRATION.CONFIRM",ct));Assert.Equal(0,await db.Invoices.CountAsync(ct));Assert.Equal(0,await db.AuthSessions.CountAsync(s=>s.RevokedAt==null,ct));}
             if(group==88){Assert.Equal(3,await db.Registrations.CountAsync(r=>r.Status=="REJECTED",ct));Assert.Equal(6,await db.Registrations.CountAsync(r=>r.Status=="CANCELLED",ct));Assert.Equal(3,await db.Invoices.CountAsync(i=>i.Status=="CANCELLED",ct));Assert.Equal(12,await db.ReplayOperations.CountAsync(ct));Assert.Empty(await db.Payments.ToListAsync(ct));Assert.Equal(0,await db.AuthSessions.CountAsync(s=>s.RevokedAt==null,ct));}
             if(group==89){Assert.Equal(3,await db.Invoices.CountAsync(i=>i.Status=="PAID",ct));Assert.Equal(3,await db.Payments.CountAsync(ct));Assert.All(await db.Payments.ToListAsync(ct),p=>{Assert.Equal("TRANSFER",p.Method);Assert.NotNull(p.LastCorrectedAt);Assert.Equal(123456789012345678m,p.AmountPaid);});Assert.Equal(6,await db.ReplayOperations.CountAsync(r=>r.ActionCode.StartsWith("FINANCE."),ct));Assert.Equal(9,await db.AuditLogs.CountAsync(a=>a.Action.StartsWith("FINANCE."),ct));Assert.Equal(0,await db.AuthSessions.CountAsync(s=>s.AccountId!=f.Accounts["Admissions"]&&s.RevokedAt==null,ct));}
+            if(group==93){Assert.Equal("COMPLETED",(await db.Classes.SingleAsync(ct)).Status);Assert.Equal("SUBMITTED",(await db.GradeReports.SingleAsync(ct)).Status);Assert.Null((await db.GradeReports.SingleAsync(ct)).FinalScore);Assert.Equal(52m,(await db.Scores.SingleAsync(ct)).ScoreValue);Assert.True((await db.Registrations.SingleAsync(ct)).IsUnfinished);Assert.Equal(3,await db.ReplayOperations.CountAsync(x=>x.ActionCode=="TEACHER.GRADE_DRAFT.SAVE_DELTA",ct));Assert.Equal(1,await db.ReplayOperations.CountAsync(x=>x.ActionCode=="TEACHER.CLASS.SUBMIT_GRADES",ct));Assert.Equal(2,await db.ReplayOperations.CountAsync(x=>x.ActionCode=="TEACHER.CLASS.RESUBMIT_GRADES",ct));Assert.Equal(2,await db.ReplayOperations.CountAsync(x=>x.ActionCode=="ACADEMIC.CLASS.RETURN_GRADES",ct));}
             if(group==92){Assert.Equal("COMPLETED",(await db.Classes.SingleAsync(ct)).Status);Assert.Equal(2,await db.Attendances.CountAsync(ct));Assert.All(await db.Schedules.ToListAsync(ct),x=>Assert.Equal("HELD",x.OccurrenceState));Assert.Equal(1,await db.AuditLogs.CountAsync(x=>x.Action=="ACADEMIC.CLASS.START",ct));Assert.Equal(1,await db.AuditLogs.CountAsync(x=>x.Action=="ACADEMIC.CLASS.COMPLETE",ct));Assert.Equal(3,await db.AuditLogs.CountAsync(x=>x.Action=="ACADEMIC.SCHEDULE.CONFIRM_HELD",ct));Assert.False(await db.AuditLogs.AnyAsync(x=>x.EntityType=="Attendance",ct));Assert.True((await db.Registrations.SingleAsync(ct)).IsUnfinished);Assert.Equal("DRAFT",(await db.GradeReports.SingleAsync(ct)).Status);}
             if(group==91){Assert.Equal(3,await db.Classes.CountAsync(ct));Assert.Equal(9,await db.Schedules.CountAsync(ct));Assert.Equal(6,await db.Schedules.CountAsync(x=>x.IsCurrent,ct));Assert.Equal(3,await db.Schedules.CountAsync(x=>x.OccurrenceState=="NOT_HELD",ct));Assert.Equal(3,await db.ReplayOperations.CountAsync(x=>x.ActionCode=="ACADEMIC.SCHEDULE.CREATE_WEEKLY",ct));Assert.Equal(3,await db.ReplayOperations.CountAsync(x=>x.ActionCode=="ACADEMIC.SCHEDULE.MOVE",ct));Assert.Equal(3,await db.ReplayOperations.CountAsync(x=>x.ActionCode=="ACADEMIC.SCHEDULE.REPLACE",ct));Assert.Equal(6,await db.AuditLogs.CountAsync(x=>x.Action.StartsWith("ACADEMIC.SCHEDULE.REPLACE"),ct));Assert.Empty(await db.Attendances.ToArrayAsync(ct));Assert.Empty(await db.Scores.ToArrayAsync(ct));}
             if(group==90){Assert.Equal(3,await db.Classes.CountAsync(ct));Assert.Equal(1,await db.Classes.CountAsync(x=>x.Status=="OPEN",ct));Assert.Equal(2,await db.Classes.CountAsync(x=>x.Status=="CANCELLED",ct));Assert.Equal(3,await db.Schedules.CountAsync(ct));Assert.Equal(1,await db.StudentClassAssignments.CountAsync(ct));Assert.Equal("DRAFT",(await db.GradeReports.SingleAsync(ct)).Status);Assert.Equal(3,await db.ReplayOperations.CountAsync(x=>x.ActionCode=="ACADEMIC.CLASS.CREATE",ct));Assert.Equal(1,await db.ReplayOperations.CountAsync(x=>x.ActionCode=="ACADEMIC.CLASS.PLACE_REGISTRATION",ct));Assert.Equal(2,await db.AuditLogs.CountAsync(x=>x.Action.StartsWith("ACADEMIC.CLASS.PLACE_REGISTRATION"),ct));Assert.Empty(await db.Attendances.ToArrayAsync(ct));Assert.Empty(await db.Scores.ToArrayAsync(ct));}

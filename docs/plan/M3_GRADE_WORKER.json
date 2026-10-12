@@ -1,0 +1,12 @@
+{
+  "mode":"edit",
+  "objective":"Implement only the pure controlled GradeDraftFields.tsx described in the sole authorized context. Fully read exactly the three context_files before writing; do not read any other file or links and do not run commands, Git, SQL, network or validation. Follow frontend-ui with canonical SKILL_ROUTING overrides. No state, effects, calculation, normalization, fetching, storage, UUID or business workflow. Use the exact exported props/types from the context, max125 source lines.",
+  "allowed_paths":["frontend/src/features/classes/components/GradeDraftFields.tsx"],
+  "forbidden_paths":[".env","**/*lock*","docs/Nhom18_ThietKeXuLy.docx","docs/reference/**","backend/**",".git/**","tools/**"],
+  "acceptance_criteria":["Exactly three complete authorized context reads before sole file write; no extra reads or commands.","Exact controlled field and form props; native labelled text decimal input and applicable schedule selector; no defaults, validation or calculations.","Vietnamese accessible responsive44px controls and disabled/dirty/error states; <=125 source lines and <=165 diff lines."],
+  "context_files":["docs/plan/M3_GRADE_FORM_WORKER.md",".agents/skills/frontend-ui/SKILL.md","docs/plan/SKILL_ROUTING.md"],
+  "max_changed_files":1,
+  "max_diff_lines":165,
+  "model":"",
+  "timeout":"15m"
+}

@@ -13,7 +13,8 @@ import { Modal } from '../../components/ui/Modal';
 import { vietnamDateTime } from '../../lib/enrollmentDisplay';
 import { searchPrograms, loadProgram } from '../programs/programApi';
 import type { Program, ProgramSummary } from '../programs/programApi';
-import { AttendancePanel } from './AttendancePanel';
+import { GradebookPanel } from './GradePanels';
+import { AttendancePanel } from './GradePanels';
 import { SchedulesPanel } from './SchedulesPanel';
 import { ClassFields } from './components/ClassFields';
 import { classList, classDetail, classPreview, classCommand, classLookup, decodeCandidate, decodeClass, decodeScheduling } from './classApi';
@@ -67,7 +68,7 @@ export function ClassesPage({ controller, role, onPassword }: {
         eligible: boolean;
         blockedReasons: string[];
     }> | null>(null);
-    const [scheduleLocked,setScheduleLocked]=useState(false),[attendanceLocked,setAttendanceLocked]=useState(false);
+    const [scheduleLocked,setScheduleLocked]=useState(false),[attendanceLocked,setAttendanceLocked]=useState(false),[gradeLocked,setGradeLocked]=useState(false);
     const [scheduling, setScheduling] = useState<{
         assignments: unknown[];
         schedules: unknown[];
@@ -76,7 +77,7 @@ export function ClassesPage({ controller, role, onPassword }: {
     const resetDraft = () => { setPreview(null); setPreviewAction(null); setIntent(null); setReason(''); };
     const clear = useCallback(() => { setList(null); setDetail(null); setCourseId(''); setClassCode(''); setView('current'); setClassStatus(''); setCode(''); setProgramId(''); setTeacherId(''); setSize('15'); setPrograms(null); setProgram(null); setTeachers([]); setCreating(false); setPreview(null); setPreviewAction(null); setReason(''); setWindow(emptyWindow); setIntent(null); setUnknown(null); setContact({ name: '', email: '', phone: '' }); setRoster(null); setCandidates(null); setCandidate(null); setOptions(null);      setScheduling(null); }, []);
     const task = useOwnedTask(c, clear);
-    const disabled = task.pending || !!unknown || scheduleLocked || attendanceLocked;
+    const disabled = task.pending || !!unknown || scheduleLocked || attendanceLocked || gradeLocked;
     function search(number = 1) { if (courseId && !id(courseId)) {
         task.setNotice('Mã khóa phải là số nguyên dương.');
         return;
@@ -153,8 +154,9 @@ export function ClassesPage({ controller, role, onPassword }: {
     {preview && <div className="my-4 border border-[var(--ec-border)] p-3"><h3>Xem trước {previewAction ? labels[previewAction].toLowerCase() : ''}</h3>{preview.blockedReasons.map(x => <p key={x}>{x}</p>)}{preview.conflicts?.map((x, i) => <p key={i}>{x.message} · {vietnamDateTime(x.startAt)}–{vietnamDateTime(x.endAt)}</p>)}{preview.effects?.map(x => <p key={x}>{x}</p>)}{preview.eligible && previewAction && <Button disabled={disabled} onClick={() => propose(previewAction)}>Chuẩn bị xác nhận</Button>}</div>}
     {role === 'AcademicAffairs' && <div className="my-4 border-t border-[var(--ec-border)] pt-4"><h2 className="text-lg font-semibold">Hồ sơ chờ xếp lớp</h2>{!detail && <div className="grid gap-3 sm:grid-cols-3">{(['name', 'email', 'phone'] as const).map((k, i) => <TextField key={k} label={['Tên học viên', 'Email học viên', 'Số điện thoại'][i]} value={contact[k]} disabled={disabled} onChange={e => setContact({ ...contact, [k]: e.target.value })}/>)}</div>}<Button disabled={disabled} onClick={() => findCandidates()}>Tìm hồ sơ đã thanh toán</Button>{candidates && <div>{!candidates.items.length && <Feedback kind="empty" message="Không có hồ sơ chờ xếp lớp."/>}{candidates.items.map(x => <article className="my-3" key={x.registrationId}><p>{x.student.fullName} · {x.student.email} · {x.course.name} · {x.band.code} · Đã thanh toán</p><Button disabled={disabled} onClick={() => void task.run(s => c.request({ endpoint: 'classCandidate', targetId: x.registrationId, signal: s, slot: 'class-candidate', decode: v => { const row = decodeCandidate(v, true); requireWire(row.registrationId === x.registrationId); return row; } }), setCandidate, undefined, () => setCandidate(null))}>Xem hồ sơ {x.registrationId}</Button><Button disabled={disabled} onClick={() => candidateOptions(x)}>Lớp phù hợp cho hồ sơ {x.registrationId}</Button></article>)}{paging(candidates, findCandidates)}</div>}{options && <div>{!options.items.length && <Feedback kind="empty" message="Đang chờ lớp phù hợp."/>}{options.items.map(x => <article key={x.class.id} className="my-3"><p>{x.class.code} · {x.class.placedCount}/{x.class.maxSize}</p>{x.blockedReasons.map(r => <p key={r}>{r}</p>)}<Button disabled={disabled} onClick={() => read(x.class.id)}>Chọn lớp {x.class.code} để xem trước</Button></article>)}{candidate && paging(options, n => candidateOptions(candidate, n))}</div>}
     </div>}
-    {role!=='Student'&&detail&&<AttendancePanel key={detail.id} controller={controller} role={role} classId={detail.id} parentBusy={task.pending||unknown!==null} onLock={setAttendanceLocked}/> }
-    <SchedulesPanel controller={controller} role={role} classId={detail?.id} parentBusy={task.pending || unknown!==null || attendanceLocked} onLock={setScheduleLocked} onClass={read}/>
+    {role==='Teacher'&&detail&&<GradebookPanel key={'grade-'+detail.id} controller={controller} classId={detail.id} parentBusy={task.pending||unknown!==null||attendanceLocked||scheduleLocked} onLock={setGradeLocked}/>}
+    {role!=='Student'&&detail&&<AttendancePanel key={detail.id} controller={controller} role={role} classId={detail.id} parentBusy={task.pending||unknown!==null||gradeLocked} onLock={setAttendanceLocked}/> }
+    <SchedulesPanel controller={controller} role={role} classId={detail?.id} parentBusy={task.pending || unknown!==null || attendanceLocked || gradeLocked} onLock={setScheduleLocked} onClass={read}/>
     <Modal open={intent !== null} title={intent ? labels[intent.action] : 'Xác nhận'} onRequestClose={() => setIntent(null)}><p className="whitespace-pre-wrap">{intent?.description}</p><p>Kiểm tra thông tin trước khi xác nhận. Máy chủ kiểm tra lại quyền, lịch và dữ liệu hiện tại.</p><Button disabled={disabled} onClick={submit}>Xác nhận thao tác</Button></Modal>
   </section>;
 }
