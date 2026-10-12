@@ -1,0 +1,120 @@
+import type { FormEvent } from 'react';
+import { Button } from '../../../components/ui/Button';
+import { TextField } from '../../../components/ui/TextField';
+
+export interface WeeklyFieldsProps {
+  fromDate: string;
+  toDate: string;
+  startTime: string;
+  endTime: string;
+  room: string;
+  weekdays: readonly number[];
+  disabled: boolean;
+  onFromDate: (value: string) => void;
+  onToDate: (value: string) => void;
+  onStartTime: (value: string) => void;
+  onEndTime: (value: string) => void;
+  onRoom: (value: string) => void;
+  onWeekdays: (value: number[]) => void;
+  onPreview: () => void;
+  onCancel: () => void;
+}
+
+const WEEKDAYS = [
+  { day: 1, label: 'Thứ hai' },
+  { day: 2, label: 'Thứ ba' },
+  { day: 3, label: 'Thứ tư' },
+  { day: 4, label: 'Thứ năm' },
+  { day: 5, label: 'Thứ sáu' },
+  { day: 6, label: 'Thứ bảy' },
+  { day: 7, label: 'Chủ nhật' },
+] as const;
+
+export function WeeklyFields(props: WeeklyFieldsProps) {
+  const handleSubmit = (event: FormEvent) => {
+    event.preventDefault();
+    if (!props.disabled) {
+      props.onPreview();
+    }
+  };
+
+  const handleWeekdayToggle = (day: number) => {
+    if (props.disabled) return;
+    const next = props.weekdays.includes(day)
+      ? props.weekdays.filter((d) => d !== day)
+      : [...props.weekdays, day].sort((a, b) => a - b);
+    props.onWeekdays(next);
+  };
+
+  return (
+    <form onSubmit={handleSubmit} className="space-y-4">
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <TextField
+          label="Từ ngày tạo lịch"
+          type="date"
+          value={props.fromDate}
+          onChange={(e) => props.onFromDate(e.target.value)}
+          disabled={props.disabled}
+        />
+        <TextField
+          label="Đến ngày tạo lịch"
+          type="date"
+          value={props.toDate}
+          onChange={(e) => props.onToDate(e.target.value)}
+          disabled={props.disabled}
+        />
+        <TextField
+          label="Giờ bắt đầu"
+          type="time"
+          value={props.startTime}
+          onChange={(e) => props.onStartTime(e.target.value)}
+          disabled={props.disabled}
+        />
+        <TextField
+          label="Giờ kết thúc"
+          type="time"
+          value={props.endTime}
+          onChange={(e) => props.onEndTime(e.target.value)}
+          disabled={props.disabled}
+        />
+        <TextField
+          label="Phòng học"
+          type="text"
+          value={props.room}
+          onChange={(e) => props.onRoom(e.target.value)}
+          disabled={props.disabled}
+        />
+      </div>
+
+      <fieldset className="space-y-2">
+        <legend className="text-sm font-medium text-[var(--ec-text)]">Các thứ trong tuần</legend>
+        <div className="grid grid-cols-2 gap-2 sm:grid-cols-4 md:grid-cols-7">
+          {WEEKDAYS.map(({ day, label }) => (
+            <label
+              key={day}
+              className="flex min-h-[44px] cursor-pointer items-center gap-2 text-sm text-[var(--ec-text)]"
+            >
+              <input
+                type="checkbox"
+                checked={props.weekdays.includes(day)}
+                disabled={props.disabled}
+                onChange={() => handleWeekdayToggle(day)}
+                className="h-4 w-4 rounded border-[var(--ec-border)] text-[var(--ec-primary)] focus:ring-[var(--ec-primary)]"
+              />
+              <span>{label}</span>
+            </label>
+          ))}
+        </div>
+      </fieldset>
+
+      <div className="flex flex-wrap items-center gap-3">
+        <Button type="submit" disabled={props.disabled}>
+          Xem trước lịch tuần
+        </Button>
+        <Button type="button" disabled={props.disabled} onClick={props.onCancel}>
+          Hủy nhập lịch tuần
+        </Button>
+      </div>
+    </form>
+  );
+}

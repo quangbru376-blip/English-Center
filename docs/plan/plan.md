@@ -1,3 +1,4 @@
+2026-10-12 M2 final batch packages6–8 manager review PASS; apply ADR163/main/runtime revalidation pending. API119–124/127–130 complete on retained manager; whole M2 IN PROGRESS until main proof. See M2_03_TASK_CARD/REVIEW and M2-schedule-evidence/summary.json.
 2026-10-11 M2 batch2 packages3�5 COMPLETE/review PASS/applied ADR163/main reverified sourcea7b7ca3 / manageraf160a3. Both1374default/207opt-inSKIP/55focused/117frontend PASS; Edge Class/Finance and genuine LOCAL_DEV PASS. Owner4 unchanged; scratch/hosts/listener0. Whole M2 IN PROGRESS: batch3 packages6�8 unassigned. See M2_02_TASK_CARD/REVIEW and M2-class-evidence/summary.json.
 2026-10-11 current checkpoint: M2 split into three batches; batch1 COMPLETE/review PASS/applied ADR163/main reverified source05c3a96 / manager7eb9d23.
 Batch1 packages1–2 Accountant invoices/payments API048–053; batch2 packages3–5 Class/placement/concrete schedules; batch3 packages6–8 weekly/move/replacement/calendars and M2 closure.

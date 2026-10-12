@@ -79,7 +79,7 @@ internal sealed class LocalRuntimeServices : ITrustedLoginIpResolver, IDisposabl
         admissions = new(Context, clock, limits.SqlSeconds, limits.LockMs);
         studentInvoices = new(Context, clock, limits.SqlSeconds, limits.LockMs);
         finance = new(Context, clock, limits.SqlSeconds, limits.LockMs);
-        classes = new(Context, clock, limits.SqlSeconds, limits.LockMs);
+        classes = new(Context, clock, limits.SqlSeconds, limits.LockMs, limits.WeeklyPreviewBudget);
         Identity = new(validator, current, audit, clock);
     }
     private static EnglishCenterDbContext Context() => new(new DbContextOptionsBuilder<EnglishCenterDbContext>()

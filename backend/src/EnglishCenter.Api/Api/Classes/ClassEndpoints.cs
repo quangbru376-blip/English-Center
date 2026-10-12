@@ -10,6 +10,17 @@ public static class ClassEndpoints
     {
         const string root="/api/v1/academics/classes";
         var policy=new CsrfRoutePolicy(CsrfAccess.Authenticated,true);
+        routes.MapPost(root+"/{id}/weekly-schedule-preview",async(HttpContext c,string id)=>{var t=EnrollmentEndpoints.RequireRole(c,"AcademicAffairs");AdminAccountEndpoints.RequireNoQuery(c);return Results.Ok(await executor.WeeklyPreview(t,AdminAccountEndpoints.Id(id),AuthJsonBoundary.Read(c),c.RequestAborted));}).WithMetadata(policy,new AuthBodyPolicy(bytes)).AllowAnonymous();
+        routes.MapPost(root+"/{id}/weekly-schedules",async(HttpContext c,string id)=>{var t=EnrollmentEndpoints.RequireRole(c,"AcademicAffairs");AdminAccountEndpoints.RequireNoQuery(c);var r=await executor.ScheduleCommand(t,120,AdminAccountEndpoints.Id(id),AdminAccountEndpoints.HeaderKey(c),AuthJsonBoundary.Read(c),bytes,c.RequestAborted);return Results.Json(r.Result,statusCode:r.Replayed?200:201);}).WithMetadata(policy,new AuthBodyPolicy(bytes)).AllowAnonymous();
+        foreach(var (replacement,path) in new[]{(false,"move-preview"),(true,"replacement-preview")})
+            routes.MapPost("/api/v1/academics/schedules/{id}/"+path,async(HttpContext c,string id)=>{var t=EnrollmentEndpoints.RequireRole(c,"AcademicAffairs");AdminAccountEndpoints.RequireNoQuery(c);return Results.Ok(await executor.EditPreview(t,AdminAccountEndpoints.Id(id),AuthJsonBoundary.Read(c),replacement,c.RequestAborted));}).WithMetadata(policy,new AuthBodyPolicy(bytes)).AllowAnonymous();
+        foreach(var (api,verb,path) in new[]{(122,"PUT","time-room"),(124,"POST","replace")})
+            routes.MapMethods("/api/v1/academics/schedules/{id}/"+path,[verb],async(HttpContext c,string id)=>{var t=EnrollmentEndpoints.RequireRole(c,"AcademicAffairs");AdminAccountEndpoints.RequireNoQuery(c);var r=await executor.ScheduleCommand(t,api,AdminAccountEndpoints.Id(id),AdminAccountEndpoints.HeaderKey(c),AuthJsonBoundary.Read(c),bytes,c.RequestAborted);return Results.Json(r.Result,statusCode:!r.Replayed&&api==124?201:200);}).WithMetadata(policy,new AuthBodyPolicy(bytes)).AllowAnonymous();
+        foreach(var (role,path) in new[]{("Teacher","/api/v1/academics/teachers/me/schedules"),("Student","/api/v1/students/me/schedules")})
+        {
+            routes.MapGet(path,async(HttpContext c)=>{var t=EnrollmentEndpoints.RequireRole(c,role);AdminAccountEndpoints.RequireEmptyBody(c);return Results.Ok(await executor.OwnCalendar(t,c.Request.Query,role,c.RequestAborted));}).WithMetadata(policy).AllowAnonymous();
+            routes.MapGet(path+"/{id}",async(HttpContext c,string id)=>{var t=EnrollmentEndpoints.RequireRole(c,role);AdminAccountEndpoints.RequireEmptyBody(c);AdminAccountEndpoints.RequireNoQuery(c);return Results.Ok(await executor.OwnScheduleDetail(t,AdminAccountEndpoints.Id(id),role,c.RequestAborted));}).WithMetadata(policy).AllowAnonymous();
+        }
         foreach(var (role,path) in new[]{("AcademicAffairs",root),("Teacher","/api/v1/academics/teachers/me/classes"),("Student","/api/v1/students/me/classes")})
         {
             routes.MapGet(path,async(HttpContext c)=>{var t=EnrollmentEndpoints.RequireRole(c,role);AdminAccountEndpoints.RequireEmptyBody(c);return Results.Ok(await executor.Search(t,c.Request.Query,role,c.RequestAborted));}).WithMetadata(policy).AllowAnonymous();

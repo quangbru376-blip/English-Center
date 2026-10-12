@@ -1,0 +1,73 @@
+{
+  "status": "Manager review PASS; main apply/reverification pending",
+  "date": "2026-10-12",
+  "baselineMain": "3da250e",
+  "contractCommit": "c6d751f",
+  "manager": "C:\\Study\\SOEN\\main_workplace\\.worktrees\\m2-finance",
+  "default": {
+    "path": "C:\\Study\\SOEN\\main_workplace\\.worktrees\\m2-finance\\backend\\tests\\EnglishCenter.Tests\\TestResults\\M2-03-manager-default.trx",
+    "sha256": "E366A3E81B11B2FB45881F945FA88AA24992BEE23336BC103046E05E0B536646",
+    "passed": 1387,
+    "failed": 0,
+    "intentionalOptInSkip": 232
+  },
+  "focused": {
+    "path": "C:\\Study\\SOEN\\main_workplace\\.worktrees\\m2-finance\\backend\\tests\\EnglishCenter.Tests\\TestResults\\M2-03-manager-focused.trx",
+    "sha256": "DCDE5EF29C4913CC45FE302D087196A809E78C2B9476A65AFBDE3EF71175E501",
+    "passed": 77,
+    "failed": 0,
+    "intentionalOptInSkip": 0
+  },
+  "additionalHttpAndEdgeClassFinance": {
+    "path": "C:\\Study\\SOEN\\main_workplace\\.worktrees\\m2-finance\\backend\\tests\\EnglishCenter.Tests\\TestResults\\M2-03-manager-regression.trx",
+    "sha256": "E1F0638813FB64AE5D384EA4EA19E6E5D435CA5B585B1F94A67478A380813827",
+    "passed": 4,
+    "failed": 0,
+    "intentionalOptInSkip": 0
+  },
+  "finalEdgeScheduleProgramSessionTeacher": {
+    "path": "C:\\Study\\SOEN\\main_workplace\\.worktrees\\m2-finance\\backend\\tests\\EnglishCenter.Tests\\TestResults\\M2-03-manager-final-edge-valid.trx",
+    "sha256": "514F0B4FB37769955F15B4776C884E2526C025853C61D8798E14E73F1806B872",
+    "passed": 4,
+    "failed": 0,
+    "intentionalOptInSkip": 0
+  },
+  "focusedUniqueSqlHttpPassed": 79,
+  "edgeGroupsPassed": [
+    91,
+    90,
+    89,
+    83,
+    84,
+    86
+  ],
+  "frontend": {
+    "passed": 128,
+    "types": "PASS",
+    "lint": "PASS",
+    "build": "PASS"
+  },
+  "backendBuild": {
+    "warnings": 0,
+    "errors": 0
+  },
+  "worker": {
+    "run": "0e275518-fc7",
+    "fullReads": 3,
+    "sourceLines": 120,
+    "diffLines": 121,
+    "observedScopeViolations": [],
+    "originalRetained": true,
+    "managerFixes": [
+      "type-only import",
+      "existing CSS tokens"
+    ]
+  },
+  "managerScratch": {
+    "created": 125,
+    "droppedWithMatchingIdGuid": 125,
+    "liveRemaining": 0
+  },
+  "mainVerification": "pending",
+  "limits": "Positive business acceptance uses owned scratch; operational acceptance is dedicated identity/strict trust/readonly role refusal/maintenance without synthetic seed. No load/push/deploy claim."
+}

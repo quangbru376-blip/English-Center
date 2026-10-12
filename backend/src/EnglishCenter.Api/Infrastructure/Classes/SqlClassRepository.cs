@@ -26,7 +26,18 @@ public sealed class SqlClassRepository:SqlAcademicRepository
     private readonly SqlAuthDeadlineScope scope;
     public SqlClassRepository(SqlAuthDeadlineScope scope):base(scope){this.scope=scope;}
     internal SqlAuthDeadlineScope Scope=>scope;
+    public async Task<object[]> WeeklyCreated(Guid operation,CancellationToken ct)
+    {
+        var ids=await Db.AuditLogs.AsNoTracking().Where(x=>x.OperationId==operation&&x.Action=="ACADEMIC.SCHEDULE.CREATE_WEEKLY"&&x.EntityType=="Schedule").OrderBy(x=>x.AuditId).Select(x=>x.EntityId).ToArrayAsync(ct);
+        var keys=ids.Select(x=>int.Parse(x!,System.Globalization.CultureInfo.InvariantCulture)).ToArray();
+        var rows=await Db.Schedules.AsNoTracking().Where(x=>keys.Contains(x.ScheduleId)).ToDictionaryAsync(x=>x.ScheduleId,ct);
+        return keys.Select(id=>(object)new{scheduleId=id,obligationKey=rows[id].ObligationKey}).ToArray();
+    }
 
+    public Task<Schedule?> DiscoverSchedule(int id,CancellationToken ct)=>Db.Schedules.AsNoTracking().SingleOrDefaultAsync(x=>x.ScheduleId==id,ct);
+    public Task CheckWeeklySize(int id,int budget,CancellationToken ct)=>SqlSchedulePreviews.CheckStateSize(Db,id,budget,ct);
+    public Task<System.Text.Json.Nodes.JsonObject> WeeklyPreview(ClassState state,WeeklyRule rule,DateTime now,int budget,CancellationToken ct)=>SqlSchedulePreviews.Weekly(Db,state,rule,now,budget,ct);
+    public Task<System.Text.Json.Nodes.JsonObject> EditPreview(ClassState state,Schedule old,ScheduleCandidate proposed,string? reason,DateTime now,CancellationToken ct)=>SqlSchedulePreviews.Edit(Db,state,old,proposed,reason,now,ct);
     public Task<Class?> Discover(int id,CancellationToken ct)=>Db.Classes.AsNoTracking().SingleOrDefaultAsync(x=>x.ClassId==id,ct);
     public Task<int?> InvoiceId(int registration,CancellationToken ct)=>Db.Invoices.Where(x=>x.RegistrationId==registration).Select(x=>(int?)x.InvoiceId).SingleOrDefaultAsync(ct);
     public Task<ProgramState> Program(int id,CancellationToken ct)=>new SqlProgramRepository(scope).StateAsync(id,ct);
@@ -42,7 +53,7 @@ public sealed class SqlClassRepository:SqlAcademicRepository
     public Task<System.Text.Json.Nodes.JsonObject> SchedulePreview(ClassState s,ScheduleCandidate candidate,DateTime now,CancellationToken ct)=>SqlClassPreviewQueries.Schedule(Db,s,candidate,now,ct);
     public Task<bool> Matches(IReadOnlyDictionary<string,int> target,CancellationToken ct)=>Matches(Db,target,ct);
     public static async Task<bool> Matches(EnglishCenterDbContext db,IReadOnlyDictionary<string,int> target,CancellationToken ct)
-    {if(!await db.Classes.AnyAsync(x=>x.ClassId==target["classId"],ct))return false;if(target.TryGetValue("scheduleId",out var sid)&&!await db.Schedules.AnyAsync(x=>x.ScheduleId==sid&&x.ClassId==target["classId"],ct))return false;if(target.TryGetValue("classAssignmentId",out var aid)&&!await db.StudentClassAssignments.AnyAsync(x=>x.ClassAssignmentId==aid&&x.ClassId==target["classId"]&&x.RegistrationId==target["registrationId"],ct))return false;return true;}
+    {if(!await db.Classes.AnyAsync(x=>x.ClassId==target["classId"],ct))return false;if(target.TryGetValue("scheduleId",out var sid)&&!await db.Schedules.AnyAsync(x=>x.ScheduleId==sid&&x.ClassId==target["classId"],ct))return false;if(target.TryGetValue("classAssignmentId",out var aid)&&!await db.StudentClassAssignments.AnyAsync(x=>x.ClassAssignmentId==aid&&x.ClassId==target["classId"]&&x.RegistrationId==target["registrationId"],ct))return false;if(target.TryGetValue("oldScheduleId",out var oldId)){var old=await db.Schedules.AsNoTracking().SingleOrDefaultAsync(x=>x.ScheduleId==oldId&&x.ClassId==target["classId"],ct);var next=await db.Schedules.AsNoTracking().SingleOrDefaultAsync(x=>x.ScheduleId==target["newScheduleId"]&&x.ClassId==target["classId"],ct);if(old is null||next is null||next.ReplacesScheduleId!=oldId||old.ObligationKey!=next.ObligationKey||old.SessionType!=next.SessionType)return false;}return true;}
     public async Task<int[]> Registrations(int id,int? candidate,CancellationToken ct)=>await Db.StudentClassAssignments.Where(x=>x.ClassId==id).Select(x=>x.RegistrationId).Concat(candidate is null?Db.Registrations.Where(x=>false).Select(x=>x.RegistrationId):Db.Registrations.Where(x=>x.RegistrationId==candidate).Select(x=>x.RegistrationId)).Distinct().Order().ToArrayAsync(ct);
     public async Task<int[]> Accounts(int[] registrations,int teacher,int? proposed,CancellationToken ct){var students=await Db.StudentProfiles.Where(x=>Db.Registrations.Where(r=>registrations.Contains(r.RegistrationId)).Select(r=>r.StudentId).Contains(x.StudentId)).Select(x=>x.AccountId).ToArrayAsync(ct);return students.Concat(new[]{teacher,proposed??teacher}).Distinct().ToArray();}
     public async Task<ClassState> LockState(int id,int[] registrations,int? candidate,CancellationToken ct)

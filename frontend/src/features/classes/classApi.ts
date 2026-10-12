@@ -156,9 +156,13 @@ export type ScheduleDetail = {
     allowedActions: string[];
     disabledReasons: Record<string, string>;
 };
+export type ScopedScheduleDetail = Omit<ScheduleDetail, 'version' | 'held' | 'notHeld' | 'dependencies' | 'allowedActions' | 'disabledReasons' | 'class'> & { class: Omit<ScheduleDetail['class'], 'teacher'> & { teacher: Teacher | Pick<Teacher, 'displayName'> } };
+export type ScheduleRead = ScheduleDetail | ScopedScheduleDetail;
 export const classCodes = { CREATE: 'ACADEMIC.CLASS.CREATE', CAPACITY: 'ACADEMIC.CLASS.UPDATE_CAPACITY', TEACHER: 'ACADEMIC.CLASS.CHANGE_TEACHER', OPEN: 'ACADEMIC.CLASS.OPEN', CANCEL: 'ACADEMIC.CLASS.CANCEL', ASSIGN: 'ACADEMIC.CLASS.PLACE_REGISTRATION', SCHEDULE: 'ACADEMIC.SCHEDULE.CREATE' };
 export type ClassAction = keyof typeof classCodes;
 const summaryKeys = ['id', 'code', 'program', 'teacher', 'status', 'maxSize', 'placedCount', 'createdAt', 'version'];
+const localDate = (v: unknown): v is string => typeof v === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(v) && Number.isFinite(Date.parse(v)) && new Date(v).toISOString().slice(0,10) === v;
+const minuteTime = (v: unknown): v is string => typeof v === 'string' && /^(?:[01]\d|2[0-3]):[0-5]\d$/.test(v);
 const status = (s: unknown) => ['PLANNED', 'OPEN', 'ONGOING', 'COMPLETED', 'CANCELLED'].includes(s as string);
 const count = (v: unknown) => Number.isInteger(v) && (v as number) >= 0;
 function program(v: unknown) { const p = object(v, ['id', 'name', 'course', 'band', 'status', 'expectedLessonCount']); requireWire(validId(p.id) && text(p.name) && validId(p.expectedLessonCount) && ['DRAFT', 'ACTIVE', 'INACTIVE'].includes(p.status as string)); course(p.course); band(p.band); }
@@ -306,27 +310,35 @@ export function decodePreview(v: unknown, kind: 'teacher' | 'transition' | 'plac
     }
     return r as unknown as Preview;
 }
-function progress(v: unknown) { const r = object(v, ['expectedLessonCount', 'lessonObligationCount', 'heldLessonObligationCount', 'remainingLessonObligationCount', 'finalExamScheduleId', 'heldFinalExamCount']); requireWire(validId(r.expectedLessonCount) && Object.entries(r).filter(([k]) => k !== 'finalExamScheduleId').every(([, v]) => count(v)) && (r.finalExamScheduleId === null || validId(r.finalExamScheduleId))); }
-function scheduleCandidate(v: unknown) { const r = object(v, ['type', 'date', 'startTime', 'endTime', 'room']); requireWire(['LESSON', 'FINAL_EXAM'].includes(r.type as string) && typeof r.date === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(r.date) && typeof r.startTime === 'string' && /^\d{2}:\d{2}$/.test(r.startTime) && typeof r.endTime === 'string' && /^\d{2}:\d{2}$/.test(r.endTime) && r.startTime < r.endTime && text(r.room)); }
+export function progress(v: unknown) { const r = object(v, ['expectedLessonCount', 'lessonObligationCount', 'heldLessonObligationCount', 'remainingLessonObligationCount', 'finalExamScheduleId', 'heldFinalExamCount']); requireWire(validId(r.expectedLessonCount) && Object.entries(r).filter(([k]) => k !== 'finalExamScheduleId').every(([, v]) => count(v)) && (r.finalExamScheduleId === null || validId(r.finalExamScheduleId))); }
+export function scheduleCandidate(v: unknown) { const r = object(v, ['type', 'date', 'startTime', 'endTime', 'room']); requireWire(['LESSON', 'FINAL_EXAM'].includes(r.type as string) && localDate(r.date) && minuteTime(r.startTime) && minuteTime(r.endTime) && r.startTime < r.endTime && typeof r.room === 'string' && /^[A-Z0-9_-]{1,30}$/.test(r.room)); }
 function provenance(value: unknown, keys: string[]) { if (value === null)
     return; const r = object(value, keys); requireWire(validId(r.actorAccountId) && instant(r.at) && (!keys.includes('reason') || text(r.reason))); }
-export function decodeSchedule(v: unknown, detail = true): ScheduleDetail { const r = object(v, ['id', 'class', 'type', 'date', 'startTime', 'endTime', 'startAt', 'endAt', 'room', 'occurrenceState', 'isCurrent', 'obligationKey', 'replacesScheduleId', 'replacementScheduleId', 'currentScheduleId', 'version', ...detail ? ['held', 'notHeld', 'replacementChain', 'dependencies', 'allowedActions', 'disabledReasons'] : []]); const c = object(r.class, ['id', 'code', 'status', 'program', 'teacher']); requireWire(validId(c.id) && text(c.code) && status(c.status)); program(c.program); teacher(c.teacher); scheduleCandidate(Object.fromEntries(['type', 'date', 'startTime', 'endTime', 'room'].map(k => [k, r[k]]))); requireWire(validId(r.id) && instant(r.startAt) && instant(r.endAt) && version(r.version) && validUuid(r.obligationKey) && typeof r.isCurrent === 'boolean' && ['PLANNED', 'HELD', 'NOT_HELD', 'CANCELLED'].includes(r.occurrenceState as string) && validId(r.currentScheduleId) && [r.replacesScheduleId, r.replacementScheduleId].every(v => v === null || validId(v))); if (detail) {
+export function decodeSchedule(v: unknown, detail?: boolean, role?: 'AcademicAffairs'): ScheduleDetail;
+export function decodeSchedule(v: unknown, detail: boolean, role: ClassRole): ScheduleRead;
+export function decodeSchedule(v: unknown, detail = true, role: ClassRole = 'AcademicAffairs'): ScheduleRead { const r = object(v, ['id', 'class', 'type', 'date', 'startTime', 'endTime', 'startAt', 'endAt', 'room', 'occurrenceState', 'isCurrent', 'obligationKey', 'replacesScheduleId', 'replacementScheduleId', 'currentScheduleId', ...role === 'AcademicAffairs' ? ['version'] : [], ...detail ? role === 'AcademicAffairs' ? ['held', 'notHeld', 'replacementChain', 'dependencies', 'allowedActions', 'disabledReasons'] : ['replacementChain'] : []]); const c = object(r.class, ['id', 'code', 'status', 'program', 'teacher']); requireWire(validId(c.id) && text(c.code) && status(c.status)); program(c.program); if(role === 'Student') requireWire(text(object(c.teacher,['displayName']).displayName)); else teacher(c.teacher); scheduleCandidate(Object.fromEntries(['type', 'date', 'startTime', 'endTime', 'room'].map(k => [k, r[k]]))); requireWire(validId(r.id) && instant(r.startAt) && instant(r.endAt) && (role !== 'AcademicAffairs' || version(r.version)) && validUuid(r.obligationKey) && typeof r.isCurrent === 'boolean' && ['PLANNED', 'HELD', 'NOT_HELD'].includes(r.occurrenceState as string) && validId(r.currentScheduleId) && [r.replacesScheduleId, r.replacementScheduleId].every(v => v === null || validId(v))); requireWire(r.startAt === new Date(`${r.date}T${r.startTime}:00+07:00`).toISOString() && r.endAt === new Date(`${r.date}T${r.endTime}:00+07:00`).toISOString() && (!r.isCurrent || r.id === r.currentScheduleId) && (r.occurrenceState !== 'NOT_HELD' || r.isCurrent === false)); if (detail) {
+    if(role === 'AcademicAffairs') {
     const d = object(r.dependencies, ['hasAttendance', 'hasLinkedScore']);
     requireWire(typeof d.hasAttendance === 'boolean' && typeof d.hasLinkedScore === 'boolean' && Array.isArray(r.replacementChain));
-    capabilities(r, ['VIEW_CLASS']);
+    capabilities(r, ['VIEW_CLASS','MOVE','REPLACE']);
     provenance(r.held, ['actorAccountId', 'at']);
     provenance(r.notHeld, ['actorAccountId', 'at', 'reason']);
+    }
+    requireWire(Array.isArray(r.replacementChain));
     let previous: number | null = null;
     const chainIds = new Set<number>();
     for (const value of r.replacementChain) {
         const link = object(value, ['scheduleId', 'replacesScheduleId', 'date', 'startTime', 'endTime', 'occurrenceState', 'isCurrent']);
-        requireWire(validId(link.scheduleId) && !chainIds.has(link.scheduleId) && link.replacesScheduleId === previous && typeof link.isCurrent === 'boolean' && ['PLANNED', 'HELD', 'NOT_HELD', 'CANCELLED'].includes(link.occurrenceState as string));
+        requireWire(validId(link.scheduleId) && !chainIds.has(link.scheduleId) && link.replacesScheduleId === previous && typeof link.isCurrent === 'boolean' && ['PLANNED', 'HELD', 'NOT_HELD'].includes(link.occurrenceState as string));
         scheduleCandidate({ type: r.type, date: link.date, startTime: link.startTime, endTime: link.endTime, room: r.room });
         chainIds.add(link.scheduleId);
         previous = link.scheduleId;
     }
-    requireWire(chainIds.has(r.id as number) && chainIds.has(r.currentScheduleId as number));
-} return r as unknown as ScheduleDetail; }
+    requireWire(chainIds.has(r.id as number) && previous === r.currentScheduleId);
+    const chain = r.replacementChain as {scheduleId:number;replacesScheduleId:number|null;isCurrent:boolean;occurrenceState:string}[];
+    requireWire(chain.filter(x=>x.isCurrent).length === 1 && chain.at(-1)!.isCurrent && chain.slice(0,-1).every(x=>!x.isCurrent && x.occurrenceState === 'NOT_HELD'));
+    const index = chain.findIndex(x=>x.scheduleId === r.id);requireWire(chain[index].replacesScheduleId === r.replacesScheduleId && (chain[index+1]?.scheduleId ?? null) === r.replacementScheduleId);
+} return r as unknown as ScheduleRead; }
 const root = (role: ClassRole) => role === 'AcademicAffairs' ? 'class' : role === 'Teacher' ? 'teacherClass' : 'studentClass';
 export const classList = (c: HttpClient, role: ClassRole, query: Record<string, string>, signal: AbortSignal) => c.request({ endpoint: role === 'AcademicAffairs' ? 'classSearch' : role === 'Teacher' ? 'teacherClasses' : 'studentClasses', query, signal, slot: 'classes-list', decode: v => page(v, x => decodeClass(x, role)) });
 export const classDetail = (c: HttpClient, role: ClassRole, id: number, signal: AbortSignal) => c.request({ endpoint: (root(role) + (role === 'AcademicAffairs' ? 'Detail' : '')) as Endpoint, targetId: id, signal, slot: 'class-detail', decode: v => { const r = decodeClass(v, role, true); requireWire(r.id === id); return r; } });
