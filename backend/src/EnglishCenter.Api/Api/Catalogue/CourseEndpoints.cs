@@ -9,7 +9,7 @@ using EnglishCenter.Api.Services.Catalogue;
 
 public static class CourseEndpoints
 {
-    public static void MapCourseCatalogue(this IEndpointRouteBuilder routes,ICourseExecutor executor,int maxBytes)
+    public static void MapCourseCatalogue(this IEndpointRouteBuilder routes,ICourseExecutor executor,int maxBytes,Infrastructure.Classes.SqlClassExecutor? classes=null)
     {
         var policy=new CsrfRoutePolicy(CsrfAccess.Authenticated,true);
         routes.MapGet("/api/v1/academics/courses",async(HttpContext context)=>{
@@ -38,9 +38,14 @@ public static class CourseEndpoints
                 return Results.Ok(await executor.CommandAsync(token,input,context.RequestAborted));
             }).WithMetadata(policy,new AuthBodyPolicy(maxBytes)).AllowAnonymous();
         routes.MapGet("/api/v1/academics/command-results/{requestId}",async(HttpContext context,string requestId)=>{
-            var token=RequireAcademic(context);AdminAccountEndpoints.RequireEmptyBody(context);
+            var role=context.User.IsInRole("Teacher")?"Teacher":"AcademicAffairs";var token=role=="Teacher"?Enrollment.EnrollmentEndpoints.RequireRole(context,role):RequireAcademic(context);AdminAccountEndpoints.RequireEmptyBody(context);
             if(context.Request.Query.Count!=1||!context.Request.Query.TryGetValue("action",out var action)||action.Count!=1||string.IsNullOrEmpty(action[0]))throw ApiErrorException.Validation("action");
-            return Results.Ok(await executor.LookupAsync(token,action[0]!,AdminAccountEndpoints.Uuid(requestId),context.RequestAborted));
+            if(!Common.Replay.CanonicalActionRegistry.All.Any(x=>x.Code==action[0]))throw ApiErrorException.Validation("action");
+            var request=AdminAccountEndpoints.Uuid(requestId);
+            if(classes is not null&&Common.Replay.CanonicalActionRegistry.All.Any(x=>x.Code==action[0]&&x.ApiId is 100 or 101 or 126 or 133))return Results.Ok(await classes.TeachingLookup(token,role,action[0]!,request,context.RequestAborted));
+            if(role=="Teacher")throw new ApiErrorException(ApiErrorCode.FORBIDDEN);
+            if(classes is not null&&Common.Replay.CanonicalActionRegistry.All.Any(x=>x.Code==action[0]&&x.ApiId is 92 or 94 or 97 or 99 or 102 or 108 or 118 or 120 or 122 or 124))return Results.Ok(await classes.Lookup(token,action[0]!,request,context.RequestAborted));
+            return Results.Ok(await executor.LookupAsync(token,action[0]!,request,context.RequestAborted));
         }).WithMetadata(policy).AllowAnonymous();
     }
     private static VerifiedSessionToken RequireAcademic(HttpContext context)

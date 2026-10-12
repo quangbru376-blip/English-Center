@@ -3,6 +3,16 @@ import type { ApiError, ErrorAction } from './apiError';
 import { AuthState } from './auth';
 
 const endpoints = {
+  attendanceSummary:{path:'/api/v1/academics/teachers/me/classes',method:'GET',intent:'read',access:'teacher'},
+  attendanceSheet:{path:'/api/v1/academics/teachers/me/classes',method:'GET',intent:'read',access:'teacher'},
+  attendanceSave:{path:'/api/v1/academics/teachers/me/classes',method:'PUT',intent:'write',access:'teacher'},
+  academicAttendanceSummary:{path:'/api/v1/academics/classes',method:'GET',intent:'read',access:'academic'},
+  academicAttendanceSheet:{path:'/api/v1/academics/classes',method:'GET',intent:'read',access:'academic'},
+  attendanceResult:{path:'/api/v1/academics/command-results',method:'GET',intent:'read',access:'teacher'},
+  heldPreview:{path:'/api/v1/academics/schedules',method:'POST',intent:'read',access:'academic'},
+  heldConfirm:{path:'/api/v1/academics/schedules',method:'POST',intent:'write',access:'academic'},
+  classStart:{path:'/api/v1/academics/classes',method:'POST',intent:'write',access:'academic'},
+  classComplete:{path:'/api/v1/academics/classes',method:'POST',intent:'write',access:'academic'},
   weeklyPreview:{path:'/api/v1/academics/classes',method:'POST',intent:'read',access:'academic'},
   weeklyCreate:{path:'/api/v1/academics/classes',method:'POST',intent:'write',access:'academic'},
   scheduleMovePreview:{path:'/api/v1/academics/schedules',method:'POST',intent:'read',access:'academic'},
@@ -32,7 +42,7 @@ const endpoints = {
   classScheduling:{path:'/api/v1/academics/classes',method:'GET',intent:'read',access:'academic'},
   classSchedulePreview:{path:'/api/v1/academics/classes',method:'POST',intent:'read',access:'academic'},
   classSchedule:{path:'/api/v1/academics/classes',method:'POST',intent:'write',access:'academic'},
-  classResult:{path:'/api/v1/admissions/command-results',method:'GET',intent:'read',access:'academic'},
+  classResult:{path:'/api/v1/academics/command-results',method:'GET',intent:'read',access:'academic'},
   academicSchedules:{path:'/api/v1/academics/schedules',method:'GET',intent:'read',access:'academic'},
   academicSchedule:{path:'/api/v1/academics/schedules',method:'GET',intent:'read',access:'academic'},
   teacherClasses:{path:'/api/v1/academics/teachers/me/classes',method:'GET',intent:'read',access:'teacher'},
@@ -141,6 +151,7 @@ export type RequestOptions<T> = {
   body?: unknown; signal?: AbortSignal;
   targetId?: number; requestId?: string;
   registrationId?: number;
+  scheduleId?: number;
   query?: Readonly<Record<string,string>>;
 };
 
@@ -164,7 +175,10 @@ export class HttpClient {
     Object.assign(suffixes,{financePreview:'collection-preview',financeCollect:'collect',financeCorrect:'metadata'});
     Object.assign(suffixes,{weeklyPreview:'weekly-schedule-preview',weeklyCreate:'weekly-schedules',scheduleMovePreview:'move-preview',scheduleMove:'time-room',scheduleReplacePreview:'replacement-preview',scheduleReplace:'replace'});
     Object.assign(suffixes,{classCapacity:'capacity',classTeacherPreview:'teacher-change-preview',classTeacher:'change-teacher',classTransition:'transition-preview',classOpen:'open',classCancel:'cancel',classRoster:'roster/search',teacherClassRoster:'roster/search',classOptions:'classes',classPlacement:'placement-preview',classAssign:'assignments',classScheduling:'scheduling-context',classSchedulePreview:'schedule-preview',classSchedule:'schedules'});
-    const lookup=['classResult','financeResult','admissionsResult','adminLockResult','adminResult','courseResult','programResult','sessionResult','studentResult','teacherResult'].includes(options.endpoint);
+    Object.assign(suffixes,{classStart:'start',classComplete:'complete',heldPreview:'held-preview',heldConfirm:'confirm-held',attendanceSummary:'attendance',academicAttendanceSummary:'attendance',attendanceSheet:'attendance',academicAttendanceSheet:'attendance',attendanceSave:'attendance'});
+    const attendanceNested=['attendanceSheet','academicAttendanceSheet','attendanceSave'].includes(options.endpoint);
+    if(attendanceNested?(!Number.isInteger(options.scheduleId)||options.scheduleId!<1||options.scheduleId!>2147483647):options.scheduleId!==undefined)return {kind:'blocked'};
+    const lookup=['attendanceResult','classResult','financeResult','admissionsResult','adminLockResult','adminResult','courseResult','programResult','sessionResult','studentResult','teacherResult'].includes(options.endpoint);
     const nested=['studentCancelBooking','studentReschedule'].includes(options.endpoint);
     const needsTarget = ['teacherSchedule','studentSchedule','classDetail','classCandidate','academicSchedule','teacherClass','studentClass','financeDetail','admissionsDetail','studentInvoice','adminDetail','courseDetail','programDetail','sessionDetail','studentCourse','studentRegistration','teacherSession','teacherTask'].includes(options.endpoint) || Object.hasOwn(suffixes,options.endpoint);
     const needsKey = lookup || endpoint.intent==='write' && (endpoint.access==='accountant'||endpoint.access==='admissions'||endpoint.access==='admin'||endpoint.access==='academic'||endpoint.access==='teacher'||endpoint.access==='student'&&options.endpoint!=='studentProfileUpdate');
@@ -173,17 +187,18 @@ export class HttpClient {
         !needsTarget && options.targetId !== undefined ||
         needsKey && (typeof options.requestId !== 'string' || options.requestId==='00000000-0000-0000-0000-000000000000' || !/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/.test(options.requestId)) ||
         !needsKey && options.requestId !== undefined) return { kind: 'blocked' };
-    const allowedQuery=['teacherSchedules','studentSchedules'].includes(options.endpoint)?['fromDate','toDate','classId','view','sort','page','pageSize']:options.endpoint==='classSearch'?['classCode','courseId','bandId','programId','teacherId','status','sort','page','pageSize']:options.endpoint==='classTeachers'?['classId']:options.endpoint==='classOptions'?['page','pageSize','sort']:options.endpoint==='teacherClasses'?['status','courseId','sort','page','pageSize']:options.endpoint==='studentClasses'?['view','courseId','sort','page','pageSize']:options.endpoint==='academicSchedules'?['fromDate','toDate','classId','courseId','teacherId','view','sort','page','pageSize']:options.endpoint==='courseSearch'?['code','name','status','sort','page','pageSize']:options.endpoint==='programSearch'?['courseId','bandId','name','status','sort','page','pageSize']:options.endpoint==='sessionSearch'?['fromDate','toDate','effectiveStatus','graderId','sort','page','pageSize']:options.endpoint==='sessionOptions'?['date','startTime','endTime','sessionId','page','pageSize']:['studentHome','studentCourses'].includes(options.endpoint)?['page','pageSize']:options.endpoint==='studentRegistrations'?['courseId','status','page','pageSize']:options.endpoint==='studentOptions'?['fromDate','toDate','bookingId','page','pageSize']:options.endpoint==='studentCalendar'?['fromDate','toDate','registrationId','view','page','pageSize']:options.endpoint==='teacherSessions'?['fromDate','toDate','effectiveStatus','sort','page','pageSize']:options.endpoint==='studentInvoices'?['registrationId','status','page','pageSize']:lookup?['action']:[];
+    const allowedQuery=['attendanceSummary','academicAttendanceSummary'].includes(options.endpoint)?['view','sort','page','pageSize']:['teacherSchedules','studentSchedules'].includes(options.endpoint)?['fromDate','toDate','classId','view','sort','page','pageSize']:options.endpoint==='classSearch'?['classCode','courseId','bandId','programId','teacherId','status','sort','page','pageSize']:options.endpoint==='classTeachers'?['classId']:options.endpoint==='classOptions'?['page','pageSize','sort']:options.endpoint==='teacherClasses'?['status','courseId','sort','page','pageSize']:options.endpoint==='studentClasses'?['view','courseId','sort','page','pageSize']:options.endpoint==='academicSchedules'?['fromDate','toDate','classId','courseId','teacherId','view','sort','page','pageSize']:options.endpoint==='courseSearch'?['code','name','status','sort','page','pageSize']:options.endpoint==='programSearch'?['courseId','bandId','name','status','sort','page','pageSize']:options.endpoint==='sessionSearch'?['fromDate','toDate','effectiveStatus','graderId','sort','page','pageSize']:options.endpoint==='sessionOptions'?['date','startTime','endTime','sessionId','page','pageSize']:['studentHome','studentCourses'].includes(options.endpoint)?['page','pageSize']:options.endpoint==='studentRegistrations'?['courseId','status','page','pageSize']:options.endpoint==='studentOptions'?['fromDate','toDate','bookingId','page','pageSize']:options.endpoint==='studentCalendar'?['fromDate','toDate','registrationId','view','page','pageSize']:options.endpoint==='teacherSessions'?['fromDate','toDate','effectiveStatus','sort','page','pageSize']:options.endpoint==='studentInvoices'?['registrationId','status','page','pageSize']:lookup?['action']:[];
     if(options.query&&Object.keys(options.query).some(key=>!allowedQuery.includes(key)))return {kind:'blocked'};
     const action=options.query?.action;
-    if(options.endpoint==='classResult'&&(!action||!['ACADEMIC.CLASS.CREATE','ACADEMIC.CLASS.UPDATE_CAPACITY','ACADEMIC.CLASS.CHANGE_TEACHER','ACADEMIC.CLASS.OPEN','ACADEMIC.CLASS.CANCEL','ACADEMIC.CLASS.PLACE_REGISTRATION','ACADEMIC.SCHEDULE.CREATE','ACADEMIC.SCHEDULE.CREATE_WEEKLY','ACADEMIC.SCHEDULE.MOVE','ACADEMIC.SCHEDULE.REPLACE'].includes(action)))return {kind:'blocked'};
+    if(options.endpoint==='classResult'&&(!action||!['ACADEMIC.CLASS.CREATE','ACADEMIC.CLASS.UPDATE_CAPACITY','ACADEMIC.CLASS.CHANGE_TEACHER','ACADEMIC.CLASS.OPEN','ACADEMIC.CLASS.START','ACADEMIC.CLASS.COMPLETE','ACADEMIC.CLASS.CANCEL','ACADEMIC.CLASS.PLACE_REGISTRATION','ACADEMIC.SCHEDULE.CREATE','ACADEMIC.SCHEDULE.CREATE_WEEKLY','ACADEMIC.SCHEDULE.MOVE','ACADEMIC.SCHEDULE.REPLACE','ACADEMIC.SCHEDULE.CONFIRM_HELD'].includes(action)))return {kind:'blocked'};
     if(options.endpoint==='financeResult'&&(!action||!['FINANCE.INVOICE.COLLECT','FINANCE.PAYMENT.UPDATE_METADATA'].includes(action)))return {kind:'blocked'};
     if(options.endpoint==='admissionsResult'&&(!action||!['ADMISSIONS.REGISTRATION.APPROVE','ADMISSIONS.REGISTRATION.REJECT','ADMISSIONS.REGISTRATION.CANCEL'].includes(action)))return {kind:'blocked'};
     if(options.endpoint==='studentResult'&&(!action||!['STUDENT.REGISTRATION.CREATE','STUDENT.REGISTRATION.CANCEL','STUDENT.ENTRY_BOOKING.CREATE','STUDENT.ENTRY_BOOKING.CANCEL','STUDENT.ENTRY_BOOKING.RESCHEDULE','STUDENT.REGISTRATION.CONFIRM'].includes(action))||options.endpoint==='teacherResult'&&(!action||!['TEACHER.ENTRY_RESULT.CREATE','TEACHER.ENTRY_BOOKING.ABSENCE','TEACHER.ENTRY_RESULT.CORRECT'].includes(action)))return {kind:'blocked'};
     if(options.endpoint==='programResult'&&(!action||!['ACADEMIC.PROGRAM.CREATE','ACADEMIC.PROGRAM.UPDATE_CONFIGURATION','ACADEMIC.PROGRAM.RENAME','ACADEMIC.PROGRAM.ACTIVATE','ACADEMIC.PROGRAM.RETURN_TO_DRAFT','ACADEMIC.PROGRAM.DEACTIVATE'].includes(action))||options.endpoint==='sessionResult'&&(!action||!['ACADEMIC.ENTRY_SESSION.CREATE','ACADEMIC.ENTRY_SESSION.UPDATE_SCHEDULE','ACADEMIC.ENTRY_SESSION.OPEN','ACADEMIC.ENTRY_SESSION.CLOSE','ACADEMIC.ENTRY_SESSION.CANCEL','ACADEMIC.ENTRY_SESSION.CHANGE_GRADER'].includes(action)))return {kind:'blocked'};
     if(options.endpoint==='adminResult'&&(!action||!['ADMIN.STAFF.CREATE','ADMIN.ACCOUNT.RESET_PASSWORD','ADMIN.ACCOUNT.LOCK','ADMIN.ACCOUNT.UNLOCK','ADMIN.ACCOUNT.DISABLE','ADMIN.ACCOUNT.RESTORE'].includes(action))||options.endpoint==='courseResult'&&(!action||!['ACADEMIC.COURSE.CREATE','ACADEMIC.COURSE.UPDATE_DETAILS','ACADEMIC.COURSE.DEACTIVATE','ACADEMIC.COURSE.ACTIVATE'].includes(action)))return {kind:'blocked'};
+    if(options.endpoint==='attendanceResult'&&action!=='TEACHER.ATTENDANCE.SAVE_DELTA')return {kind:'blocked'};
     const query=options.endpoint==='adminLockResult'?'action=ADMIN.ACCOUNT.LOCK':new URLSearchParams(options.query).toString();
-    const path=(lookup?`${endpoint.path}/${options.requestId}`:nested?`${endpoint.path}/${options.registrationId}/entry-test-bookings/${options.targetId}/${suffixes[options.endpoint]}`:needsTarget?`${endpoint.path}/${options.targetId}${suffixes[options.endpoint]?'/'+suffixes[options.endpoint]:''}`:endpoint.path)+(query?'?'+query:'');
+    const path=(lookup?`${endpoint.path}/${options.requestId}`:nested?`${endpoint.path}/${options.registrationId}/entry-test-bookings/${options.targetId}/${suffixes[options.endpoint]}`:attendanceNested?`${endpoint.path}/${options.targetId}/lessons/${options.scheduleId}/attendance`:needsTarget?`${endpoint.path}/${options.targetId}${suffixes[options.endpoint]?'/'+suffixes[options.endpoint]:''}`:endpoint.path)+(query?'?'+query:'');
     if (options.endpoint === 'login' && this.auth.context?.scope === 'PASSWORD_CHANGE') return { kind: 'blocked' };
     if (options.endpoint === 'register' && this.auth.context) return { kind: 'blocked' };
     const token = this.auth.csrf;

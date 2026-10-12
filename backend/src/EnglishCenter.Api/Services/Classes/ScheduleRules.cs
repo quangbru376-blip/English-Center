@@ -69,7 +69,7 @@ public sealed class ScheduleInput
     public JsonElement Body { get; }
     public ScheduleInput(int api, int id, Guid request, string json, int bytes, int weeklyBudget=10000)
     {
-        if (api is not (120 or 122 or 124) || request == Guid.Empty || id <= 0) throw ApiErrorException.Validation();
+        if (api is not (120 or 122 or 124 or 126) || request == Guid.Empty || id <= 0) throw ApiErrorException.Validation();
         Api = api; Id = id; Request = request;
         if(api==120)
         {

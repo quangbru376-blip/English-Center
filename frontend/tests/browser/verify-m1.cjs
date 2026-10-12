@@ -8,6 +8,7 @@ const input = async () => { let text = ''; for await (const chunk of process.std
 (async () => {
  const f = await input(), roles = ['Student','Admissions','AcademicAffairs','Teacher','Accountant','Director','Admin'];
  let lostProgramAck=false,lostSessionAck=false,lostStudentAck=false,lostTeacherAck=false,lostRescheduleAck=false,lostConfirmAck=false,lostApprovalAck=false,nameRequests=0,cancelRequests=0,bookRequests=0,gradeRequests=0,rescheduleRequests=0,confirmRequests=0,approveRequests=0;
+ let lostTeachingAck=false,teachingWrites=0;
  let lostClassAck=false,classCreateRequests=0;
  let lostWeeklyAck=false,lostMoveAck=false,lostReplacementAck=false,weeklyRequests=0,moveRequests=0,replacementRequests=0;
  let lostCollectAck=false,lostCorrectionAck=false,collectRequests=0,correctionRequests=0;
@@ -26,6 +27,8 @@ const input = async () => { let text = ''; for await (const chunk of process.std
   const weekly=f.group===91&&req.method==='POST'&&req.url.endsWith('/weekly-schedules'), move=f.group===91&&req.method==='PUT'&&req.url.endsWith('/time-room'), replacement=f.group===91&&req.method==='POST'&&req.url.endsWith('/replace');
   if(weekly)weeklyRequests++;if(move)moveRequests++;if(replacement)replacementRequests++;
   if(weekly&&!lostWeeklyAck||move&&!lostMoveAck||replacement&&!lostReplacementAck){if(weekly)lostWeeklyAck=true;if(move)lostMoveAck=true;if(replacement)lostReplacementAck=true;const upstream=http.request(f.backend+req.url,{method:req.method,headers},reply=>{res.writeHead(reply.statusCode,{'content-type':'application/json','content-length':'100000'});res.flushHeaders();res.write('{');reply.resume();reply.on('end',()=>res.destroy());});upstream.on('error',()=>res.destroy());req.pipe(upstream);return;}
+  const attendance=f.group===92&&req.method==='PUT'&&req.url.endsWith('/attendance');if(attendance)teachingWrites++;
+  if(attendance&&!lostTeachingAck){lostTeachingAck=true;const upstream=http.request(f.backend+req.url,{method:req.method,headers},reply=>{res.writeHead(reply.statusCode,{'content-type':'application/json','content-length':'100000'});res.flushHeaders();res.write('{');reply.resume();reply.on('end',()=>res.destroy());});upstream.on('error',()=>res.destroy());req.pipe(upstream);return;}
   const classCreate=f.group===90&&req.method==='POST'&&req.url==='/api/v1/academics/classes';if(classCreate)classCreateRequests++;
   if(classCreate&&!lostClassAck){lostClassAck=true;const upstream=http.request(f.backend+req.url,{method:req.method,headers},reply=>{res.writeHead(reply.statusCode,{'content-type':'application/json','content-length':'100000'});res.flushHeaders();res.write('{');reply.resume();reply.on('end',()=>res.destroy());});upstream.on('error',()=>res.destroy());req.pipe(upstream);return;}
   const studentBook=f.group===85&&req.method==='POST'&&req.url.startsWith('/api/v1/students/me/registrations/')&&req.url.endsWith('/entry-test-bookings');if(studentBook)bookRequests++;
@@ -77,7 +80,7 @@ const input = async () => { let text = ''; for await (const chunk of process.std
   checkpoint='group-'+f.group;
 
   const widthCheck=async p=>assert.equal(await p.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),true);
-  if(f.group===91){await require('./m2-schedules.cjs')({f,newPage,login,logout,api,csrf,policy,widthCheck,setCheckpoint:value=>{checkpoint=value;}});checkpoint="m2-weekly-dispatch-count";assert.equal(weeklyRequests,3);checkpoint="m2-move-dispatch-count";assert.equal(moveRequests,3);checkpoint="m2-replacement-dispatch-count";assert.equal(replacementRequests,9); /* 3 authorized UI writes + exactly 6 explicit wrong-role 403 probes. */}else if(f.group===90){await require('./m2-classes.cjs')({f,newPage,login,logout,api,csrf,policy,widthCheck,setCheckpoint:value=>{checkpoint=value;}});assert.equal(classCreateRequests,3);}else if(f.group===89){
+  if(f.group===92){await require('./m3-teaching.cjs')({f,newPage,login,logout,api,csrf,policy,widthCheck,setCheckpoint:value=>{checkpoint=value;}});checkpoint='m3-one-intent-count';assert.equal(teachingWrites,6);}else if(f.group===91){await require('./m2-schedules.cjs')({f,newPage,login,logout,api,csrf,policy,widthCheck,setCheckpoint:value=>{checkpoint=value;}});checkpoint="m2-weekly-dispatch-count";assert.equal(weeklyRequests,3);checkpoint="m2-move-dispatch-count";assert.equal(moveRequests,3);checkpoint="m2-replacement-dispatch-count";assert.equal(replacementRequests,9); /* 3 authorized UI writes + exactly 6 explicit wrong-role 403 probes. */}else if(f.group===90){await require('./m2-classes.cjs')({f,newPage,login,logout,api,csrf,policy,widthCheck,setCheckpoint:value=>{checkpoint=value;}});assert.equal(classCreateRequests,3);}else if(f.group===89){
     for(const [index,width] of [375,768,1280].entries()){
       checkpoint='finance-search-'+width;const p=await newPage();await p.setViewportSize({width,height:900});await login(p,'Accountant');
       const found=await api(p,'/api/v1/finance/invoices/search','POST',{},await csrf(p));assert.equal(found.status,200);assert.equal(found.body.totalCount,3);const invoice=found.body.items.find(x=>x.course.code==='ENROLL_'+index);assert.ok(invoice);

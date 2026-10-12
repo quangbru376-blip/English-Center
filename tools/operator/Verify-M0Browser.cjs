@@ -42,6 +42,8 @@ process.on('unhandledRejection',()=>{failed=true;});
   assert.equal((await api(page,'/api/v1/academics/classes')).status,403);
   assert.equal((await api(page,'/api/v1/academics/schedules')).status,403);
   assert.equal((await api(page,'/api/v1/academics/teachers/me/classes')).status,403);
+  assert.equal((await api(page,'/api/v1/academics/teachers/me/classes/1/attendance')).status,403);
+  assert.equal((await api(page,'/api/v1/academics/classes/1/attendance')).status,403);
   assert.equal((await api(page,'/api/v1/students/me/classes')).status,403);
   assert.equal((await api(page,'/api/v1/academics/teachers/me/schedules')).status,403);
   assert.equal((await api(page,'/api/v1/students/me/schedules')).status,403);

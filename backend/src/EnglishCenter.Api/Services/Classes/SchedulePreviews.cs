@@ -12,6 +12,7 @@ public static class SchedulePreviews
         var common=row.IsCurrent&&row.OccurrenceState=="PLANNED"&&!attendance&&!score&&state.Class.Status is not("COMPLETED" or "CANCELLED")&&ClassWire.TeacherValid(state);
         foreach(var action in new[]{"MOVE","REPLACE"})
         {if(common&&(action=="MOVE"?now<ClassWire.Window(row).StartAt:now>=ClassWire.Window(row).StartAt))allowed.Add(action);else disabled[action]="Thời điểm, trạng thái hoặc dữ liệu phụ thuộc chưa cho phép; cần xem trước lịch mới.";}
+        if(TeachingHeld.CanConfirm(state,row,now))allowed.Add("CONFIRM_HELD");else disabled["CONFIRM_HELD"]="Chỉ xác nhận buổi hiện hành từ giờ kết thúc khi lớp đang dạy.";
         detail["allowedActions"]=allowed;detail["disabledReasons"]=disabled;
     }
     public static JsonObject Weekly(ClassState state,WeeklyRule rule,ScheduleCandidate[] candidates,DateTime now,TimetableResult resources,TimetableResult cohort)

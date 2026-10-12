@@ -43,6 +43,7 @@ public sealed class SqlClassRepository:SqlAcademicRepository
     public Task<ProgramState> Program(int id,CancellationToken ct)=>new SqlProgramRepository(scope).StateAsync(id,ct);
     public async Task<Account> Teacher(int id,CancellationToken ct)
     {var a=await Db.Accounts.SingleOrDefaultAsync(x=>x.AccountId==id,ct)??throw new ApiErrorException(ApiErrorCode.NOT_FOUND);if(!await Db.Roles.AnyAsync(x=>x.RoleId==a.RoleId&&x.RoleCode=="Teacher",ct))throw new ApiErrorException(ApiErrorCode.NOT_FOUND);return a;}
+    public Task<bool> TeacherTask(int id,int account,CancellationToken ct)=>Db.Classes.AnyAsync(x=>x.ClassId==id&&x.TeacherId==account,ct);
     public Task<ClassState> State(int id,CancellationToken ct)=>ReadState(Db,id,ct);
     public Task<StudentClassAssignment> Assignment(int id,CancellationToken ct)=>Db.StudentClassAssignments.AsNoTracking().SingleAsync(x=>x.ClassAssignmentId==id,ct);
     public Task<System.Text.Json.Nodes.JsonObject> ScheduleDetail(int id,DateTime now,CancellationToken ct)=>SqlClassReads.ScheduleDetail(Db,id,now,ct);
@@ -68,6 +69,7 @@ public sealed class SqlClassRepository:SqlAcademicRepository
         if(candidate is { } placement)await Db.StudentClassAssignments.FromSqlInterpolated($"SELECT * FROM dbo.StudentClassAssignment WITH(UPDLOCK,HOLDLOCK) WHERE registration_id={placement}").ToArrayAsync(ct);
         var schedules=await Db.Schedules.FromSqlInterpolated($"SELECT * FROM dbo.Schedule WITH(UPDLOCK,HOLDLOCK) WHERE class_id={id}").OrderBy(x=>x.ScheduleId).ToArrayAsync(ct);
         if(candidate is { } invoice)await Db.Invoices.FromSqlInterpolated($"SELECT * FROM dbo.Invoice WITH(UPDLOCK,HOLDLOCK) WHERE registration_id={invoice}").SingleAsync(ct);
+        await Db.Attendances.FromSqlInterpolated($"SELECT t.* FROM dbo.Attendance t WITH(UPDLOCK,HOLDLOCK) JOIN dbo.Schedule s ON s.schedule_id=t.schedule_id WHERE s.class_id={id}").OrderBy(x=>x.AttendanceId).ToArrayAsync(ct);
         return await Finish(Db,source,program,assignments,schedules,ct);
     }
     public static async Task<ClassState> ReadState(EnglishCenterDbContext db,int id,CancellationToken ct)
@@ -79,7 +81,8 @@ public sealed class SqlClassRepository:SqlAcademicRepository
         var count=await db.Attendances.CountAsync(x=>ids.Contains(x.ClassAssignmentId)&&currentLessons.Contains(x.ScheduleId),ct);var hasAnyAttendance=await db.Attendances.AnyAsync(x=>ids.Contains(x.ClassAssignmentId),ct);var scores=await db.Scores.AnyAsync(x=>ids.Contains(x.ClassAssignmentId),ct);
         var progress=await db.Database.SqlQuery<ProgressRow>($"SELECT expectedLessonCount AS ExpectedLessonCount,currentLessonCount AS CurrentLessonCount,heldLessonCount AS HeldLessonCount,currentFinalExamCount AS CurrentFinalExamCount,heldFinalExamCount AS HeldFinalExamCount FROM dbo.ufn_ClassObligationProgress({c.ClassId})").SingleAsync(ct);
         if(progress.ExpectedLessonCount!=p.Program.ExpectedLessonCount||progress.CurrentLessonCount!=currentLessons.Length||progress.CurrentFinalExamCount!=schedules.Count(x=>x.IsCurrent&&x.SessionType=="FINAL_EXAM"))throw new ApiErrorException(ApiErrorCode.INTERNAL_ERROR);
-        return new(c,p,teacher,role,a,schedules,count,scores,hasAnyAttendance);
+        var attendanceRows=await db.Attendances.Where(x=>ids.Contains(x.ClassAssignmentId)).OrderBy(x=>x.AttendanceId).ToArrayAsync(ct);
+        return new(c,p,teacher,role,a,schedules,count,scores,hasAnyAttendance,attendanceRows);
     }
     public static async Task<PlacementSource> Candidate(EnglishCenterDbContext db,int id,bool requireEligible,CancellationToken ct)
     {
@@ -89,5 +92,5 @@ public sealed class SqlClassRepository:SqlAcademicRepository
         var best=await db.EntryTestAttempts.AsNoTracking().SingleAsync(x=>x.AttemptId==b.BestAttemptId,ct);if(best.RegistrationId!=r.RegistrationId||best.Score is null)throw new ApiErrorException(ApiErrorCode.INTERNAL_ERROR);
         return new(r,b,i,account,await db.Courses.AsNoTracking().SingleAsync(x=>x.CourseId==r.CourseId,ct),await db.Bands.AsNoTracking().SingleAsync(x=>x.BandId==b.BandId,ct),best);
     }
-    public void Add(Class c)=>Db.Classes.Add(c);public void Add(Schedule s)=>Db.Schedules.Add(s);public void Add(StudentClassAssignment a)=>Db.StudentClassAssignments.Add(a);public void Add(GradeReport r)=>Db.GradeReports.Add(r);
+    public void Add(Attendance a)=>Db.Attendances.Add(a);public void Add(Class c)=>Db.Classes.Add(c);public void Add(Schedule s)=>Db.Schedules.Add(s);public void Add(StudentClassAssignment a)=>Db.StudentClassAssignments.Add(a);public void Add(GradeReport r)=>Db.GradeReports.Add(r);
 }

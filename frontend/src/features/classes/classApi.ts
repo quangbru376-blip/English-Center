@@ -158,7 +158,7 @@ export type ScheduleDetail = {
 };
 export type ScopedScheduleDetail = Omit<ScheduleDetail, 'version' | 'held' | 'notHeld' | 'dependencies' | 'allowedActions' | 'disabledReasons' | 'class'> & { class: Omit<ScheduleDetail['class'], 'teacher'> & { teacher: Teacher | Pick<Teacher, 'displayName'> } };
 export type ScheduleRead = ScheduleDetail | ScopedScheduleDetail;
-export const classCodes = { CREATE: 'ACADEMIC.CLASS.CREATE', CAPACITY: 'ACADEMIC.CLASS.UPDATE_CAPACITY', TEACHER: 'ACADEMIC.CLASS.CHANGE_TEACHER', OPEN: 'ACADEMIC.CLASS.OPEN', CANCEL: 'ACADEMIC.CLASS.CANCEL', ASSIGN: 'ACADEMIC.CLASS.PLACE_REGISTRATION', SCHEDULE: 'ACADEMIC.SCHEDULE.CREATE' };
+export const classCodes = { CREATE: 'ACADEMIC.CLASS.CREATE', CAPACITY: 'ACADEMIC.CLASS.UPDATE_CAPACITY', TEACHER: 'ACADEMIC.CLASS.CHANGE_TEACHER', OPEN: 'ACADEMIC.CLASS.OPEN', START:'ACADEMIC.CLASS.START', COMPLETE:'ACADEMIC.CLASS.COMPLETE', CANCEL: 'ACADEMIC.CLASS.CANCEL', ASSIGN: 'ACADEMIC.CLASS.PLACE_REGISTRATION', SCHEDULE: 'ACADEMIC.SCHEDULE.CREATE' };
 export type ClassAction = keyof typeof classCodes;
 const summaryKeys = ['id', 'code', 'program', 'teacher', 'status', 'maxSize', 'placedCount', 'createdAt', 'version'];
 const localDate = (v: unknown): v is string => typeof v === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(v) && Number.isFinite(Date.parse(v)) && new Date(v).toISOString().slice(0,10) === v;
@@ -193,7 +193,7 @@ export function decodeClass(v: unknown, role: ClassRole = 'AcademicAffairs', det
         if (role !== 'Student')
             prerequisites(r.prerequisites);
         if (role === 'AcademicAffairs') {
-            capabilities(r, ['CREATE_SCHEDULE', 'EDIT_CAPACITY', 'CHANGE_TEACHER', 'PREVIEW_TRANSITION', 'OPEN', 'CANCEL', 'VIEW_ROSTER', 'PLACE_REGISTRATION']);
+            capabilities(r, ['CREATE_SCHEDULE', 'EDIT_CAPACITY', 'CHANGE_TEACHER', 'PREVIEW_TRANSITION', 'OPEN', 'START', 'COMPLETE', 'CANCEL', 'VIEW_ROSTER', 'PLACE_REGISTRATION']);
             const g = object(r.guardContext, ['program', 'teacher', 'assignments', 'schedules']);
             requireWire(version(g.program) && version(g.teacher));
             assignments(g.assignments);
@@ -235,9 +235,10 @@ export function decodeManifest(v: unknown, kind: 'teacher' | 'transition' | 'pla
     const m = object(v, ['expectedVersions', 'expectedSet']);
     const rvKeys = kind === 'teacher' ? ['class', 'program', 'currentTeacher', 'proposedTeacher', 'schedules'] : kind === 'placement' ? ['registration', 'bandAssignment', 'invoice', 'class', 'program', 'teacher', 'classSchedules'] : ['class', 'program', 'teacher', 'schedules'];
     const setKeys = kind === 'placement' ? ['bandAssignmentId', 'invoiceId', 'registrationAssignmentId', 'classAssignmentIds', 'classScheduleBindings', 'studentTimetable'] : ['assignmentIds', 'scheduleBindings', ...kind === 'teacher' || action === 'CANCEL' ? ['hasAttendance', 'hasScores'] : [], ...kind === 'schedule' ? ['resources', 'cohortTimetables'] : []];
+    if(action==='COMPLETE')rvKeys.push('attendances');if(action==='COMPLETE')setKeys.push('attendanceBindings');
     const rv = object(m.expectedVersions, rvKeys), s = object(m.expectedSet, setKeys);
     for (const [k, x] of Object.entries(rv))
-        if (k === 'schedules' || k === 'classSchedules')
+        if (k === 'schedules' || k === 'classSchedules' || k === 'attendances')
             references(x);
         else
             requireWire(version(x));
@@ -246,6 +247,7 @@ export function decodeManifest(v: unknown, kind: 'teacher' | 'transition' | 'pla
     sameIds(rv[kind === 'placement' ? 'classSchedules' : 'schedules'], s[kind === 'placement' ? 'classScheduleBindings' : 'scheduleBindings'], 'id', 'id');
     if (kind === 'teacher' || action === 'CANCEL')
         requireWire(s.hasAttendance === false && s.hasScores === false);
+    if(action==='COMPLETE'){requireWire(Array.isArray(s.attendanceBindings));const pairs=new Set<string>();for(const value of s.attendanceBindings){const x=object(value,['attendanceId','scheduleId','classAssignmentId']);requireWire(validId(x.attendanceId)&&validId(x.scheduleId)&&validId(x.classAssignmentId)&&(s.assignmentIds as number[]).includes(x.classAssignmentId)&&(s.scheduleBindings as Binding[]).some(b=>b.id===x.scheduleId)&&!pairs.has(x.classAssignmentId+':'+x.scheduleId));pairs.add(x.classAssignmentId+':'+x.scheduleId);}sameIds(rv.attendances,s.attendanceBindings,'id','attendanceId');}
     if (kind === 'placement') {
         requireWire(validId(s.bandAssignmentId) && validId(s.invoiceId) && s.registrationAssignmentId === null);
         timetable(s.studentTimetable);
@@ -320,7 +322,7 @@ export function decodeSchedule(v: unknown, detail = true, role: ClassRole = 'Aca
     if(role === 'AcademicAffairs') {
     const d = object(r.dependencies, ['hasAttendance', 'hasLinkedScore']);
     requireWire(typeof d.hasAttendance === 'boolean' && typeof d.hasLinkedScore === 'boolean' && Array.isArray(r.replacementChain));
-    capabilities(r, ['VIEW_CLASS','MOVE','REPLACE']);
+    capabilities(r, ['VIEW_CLASS','MOVE','REPLACE','CONFIRM_HELD']);
     provenance(r.held, ['actorAccountId', 'at']);
     provenance(r.notHeld, ['actorAccountId', 'at', 'reason']);
     }
@@ -354,7 +356,7 @@ export const classPreview = (c: HttpClient, id: number, kind: 'teacher' | 'trans
         const candidate = r.candidate as ScheduleCandidate;
         requireWire(['type', 'date', 'startTime', 'endTime', 'room'].every(k => candidate[k as keyof ScheduleCandidate] === input.candidate?.[k as keyof ScheduleCandidate]));
     } return r; } });
-const commandEndpoints: Record<ClassAction, Endpoint> = { CREATE: 'classCreate', CAPACITY: 'classCapacity', TEACHER: 'classTeacher', OPEN: 'classOpen', CANCEL: 'classCancel', ASSIGN: 'classAssign', SCHEDULE: 'classSchedule' };
+const commandEndpoints: Record<ClassAction, Endpoint> = { CREATE: 'classCreate', CAPACITY: 'classCapacity', TEACHER: 'classTeacher', OPEN: 'classOpen', START:'classStart', COMPLETE:'classComplete', CANCEL: 'classCancel', ASSIGN: 'classAssign', SCHEDULE: 'classSchedule' };
 export const classCommand = (c: HttpClient, action: ClassAction, id: number | undefined, body: unknown, key: string, signal: AbortSignal) => c.request({ endpoint: commandEndpoints[action], targetId: id, body, requestId: key, signal, slot: 'class-command', decode: v => { const r = object(v, action === 'SCHEDULE' ? ['schedule', 'operationId'] : action === 'ASSIGN' ? ['assignment', 'class', 'operationId'] : ['class', 'operationId']); requireWire(validUuid(r.operationId)); if (action === 'SCHEDULE') {
         const s = decodeSchedule(r.schedule);
         requireWire(s.class.id === id);

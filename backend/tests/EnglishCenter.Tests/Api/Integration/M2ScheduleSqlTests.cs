@@ -53,7 +53,7 @@ public sealed class M2ScheduleSqlTests
         await host.Login("Teacher");using(var role=await host.Send(System.Net.Http.HttpMethod.Post,$"/api/v1/academics/schedules/{sid}/replace",new{},Guid.NewGuid()))Assert.Equal(System.Net.HttpStatusCode.Forbidden,role.StatusCode);
         using(var own=await host.Send(System.Net.Http.HttpMethod.Get,$"/api/v1/academics/teachers/me/schedules/{sid}"))Assert.Equal(System.Net.HttpStatusCode.OK,own.StatusCode);
         using(var malformed=await host.Send(System.Net.Http.HttpMethod.Get,"/api/v1/academics/teachers/me/schedules?teacherId=1"))Assert.Equal(System.Net.HttpStatusCode.BadRequest,malformed.StatusCode);
-        using(var held=await host.Send(System.Net.Http.HttpMethod.Post,$"/api/v1/academics/schedules/{sid}/confirm-held",new{},Guid.NewGuid()))Assert.Equal(System.Net.HttpStatusCode.NotFound,held.StatusCode);
+        using(var held=await host.Send(System.Net.Http.HttpMethod.Post,$"/api/v1/academics/schedules/{sid}/confirm-held",new{},Guid.NewGuid()))Assert.Equal(System.Net.HttpStatusCode.Forbidden,held.StatusCode);
     }
     private static async Task Place(OwnedSqlFixture f,VerifiedSessionToken t,int id,int registration)
     {var p=await M2ClassSqlTests.Ex(f).Preview(t,id,"placement",$"{{\"registrationId\":{registration}}}",Ct);var b=p["manifest"]!.DeepClone().AsObject();b["registrationId"]=registration;await M2ClassSqlTests.Ex(f).Command(t,108,id,Guid.NewGuid(),b.ToJsonString(),65536,Ct);}

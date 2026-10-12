@@ -52,7 +52,7 @@ public sealed class M2ClassSqlTests
         public override ValueTask<DbDataReader> ReaderExecutedAsync(DbCommand cmd,CommandExecutedEventData data,DbDataReader reader,CancellationToken ct=default)
         {if(!Fired&&cmd.CommandText.Contains("[Schedule]",StringComparison.Ordinal)&&cmd.CommandText.Contains("INSERT",StringComparison.Ordinal)){time.Now=target;Fired=true;}return ValueTask.FromResult(reader);}
     }
-    private static async Task<int> SecondPaid(OwnedSqlFixture f,int source)
+    internal static async Task<int> SecondPaid(OwnedSqlFixture f,int source)
     {
         await using var db=f.Db();var original=await db.Registrations.SingleAsync(x=>x.RegistrationId==source,Ct);var role=await db.Roles.SingleAsync(x=>x.RoleCode=="Student",Ct);var now=f.Clock.GetUtcNow().UtcDateTime;
         var account=new Account{RoleId=role.RoleId,FullName="Synthetic Student2",Email="student2@example.invalid",Phone="0987654321",PasswordHash=f.Hasher.Hash(f.Password),Status="ACTIVE",SecurityVersion=1,CreatedAt=now};db.Accounts.Add(account);await db.SaveChangesAsync(Ct);f.Accounts["Student2"]=account.AccountId;var profile=new StudentProfile{AccountId=account.AccountId,DateOfBirth=new(2000,1,1)};db.StudentProfiles.Add(profile);await db.SaveChangesAsync(Ct);

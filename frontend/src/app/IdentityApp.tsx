@@ -19,6 +19,7 @@ import { TeacherEntryPage } from '../features/entryTasks/TeacherEntryPage';
 import { AdmissionsPage } from '../features/admissions/AdmissionsPage';
 import { StudentInvoicesPage } from '../features/invoices/StudentInvoicesPage';
 import { FinancePage } from '../features/finance/FinancePage';
+import { AttendancePanel } from '../features/classes/AttendancePanel';
 import { ClassesPage } from '../features/classes/ClassesPage';
 
 function Routes({ controller, initialPath }: { controller: SessionController; initialPath?: string }) {
@@ -28,12 +29,13 @@ function Routes({ controller, initialPath }: { controller: SessionController; in
   const [path, setPath] = useState(initialPath ?? window.location.pathname);
   const effectivePath = identityPath(snapshot.context, path);
   const navigate = useCallback((next: string) => {
+    if(document.querySelector('[data-unsaved-attendance="true"]')&&!window.confirm('Có điểm danh chưa lưu. Rời trang và bỏ thay đổi?'))return;
     window.history.pushState(null, '', next); setPath(next);
   }, []);
   useEffect(() => {
-    const pop = () => { setPath(window.location.pathname); void controller.checkSession(); };
+    const pop = () => { if(document.querySelector('[data-unsaved-attendance="true"]')&&!window.confirm('Có điểm danh chưa lưu. Rời trang và bỏ thay đổi?')){window.history.pushState(null,'',path);return;}setPath(window.location.pathname); void controller.checkSession(); };
     window.addEventListener('popstate', pop); return () => window.removeEventListener('popstate', pop);
-  }, [controller]);
+  }, [controller,path]);
   useEffect(() => {
     if (snapshot.phase === 'checking' || snapshot.phase === 'pending' || snapshot.phase === 'unknown') return;
     if (window.location.pathname !== effectivePath) window.history.replaceState(null, '', effectivePath);
@@ -51,7 +53,7 @@ function Routes({ controller, initialPath }: { controller: SessionController; in
   if (snapshot.context?.role === 'Student' && snapshot.context.scope === 'NORMAL') return <><nav aria-label="Học viên" className="mb-4 flex flex-wrap gap-3"><Button onClick={()=>navigate('/student/home')}>Hồ sơ và lịch thi</Button><Button onClick={()=>navigate('/student/invoices')}>Hóa đơn của tôi</Button><Button onClick={()=>navigate('/student/classes')}>Lớp của tôi</Button></nav>{effectivePath==='/student/classes'?<ClassesPage controller={controller} role="Student" onPassword={()=>navigate('/account/change-password')}/>:effectivePath.startsWith('/student/invoices')?<StudentInvoicesPage key={effectivePath} initialId={Number(effectivePath.split('/')[3])||undefined} controller={controller} onPassword={()=>navigate('/account/change-password')}/>:<StudentEnrollmentPage controller={controller} onPassword={()=>navigate('/account/change-password')}/>}</>;
   if (snapshot.context?.role === 'Admissions' && snapshot.context.scope === 'NORMAL') return <AdmissionsPage key={effectivePath} initialId={Number(effectivePath.split('/')[3])||undefined} controller={controller} onPassword={()=>navigate('/account/change-password')}/>;
   if (snapshot.context?.role === 'Accountant' && snapshot.context.scope === 'NORMAL') return <FinancePage key={effectivePath} initialId={effectivePath.startsWith('/accountant/invoices/')?Number(effectivePath.split('/')[3]):undefined} initialPaymentId={effectivePath.startsWith('/accountant/payments/')?Number(effectivePath.split('/')[3]):undefined} controller={controller} onPassword={()=>navigate('/account/change-password')}/>;
-  if (snapshot.context?.role === 'Teacher' && snapshot.context.scope === 'NORMAL') return <><nav aria-label="Giáo viên" className="mb-4 flex flex-wrap gap-3"><Button onClick={()=>navigate('/teacher/entry-test-sessions')}>Kiểm tra đầu vào</Button><Button onClick={()=>navigate('/teacher/classes')}>Lớp và lịch dạy</Button></nav>{effectivePath==='/teacher/entry-test-sessions'?<TeacherEntryPage controller={controller} onPassword={()=>navigate('/account/change-password')}/>:<ClassesPage controller={controller} role="Teacher" onPassword={()=>navigate('/account/change-password')}/>}</>;
+  if (snapshot.context?.role === 'Teacher' && snapshot.context.scope === 'NORMAL') return <><nav aria-label="Giáo viên" className="mb-4 flex flex-wrap gap-3"><Button onClick={()=>navigate('/teacher/entry-test-sessions')}>Kiểm tra đầu vào</Button><Button onClick={()=>navigate('/teacher/classes')}>Lớp và lịch dạy</Button></nav>{effectivePath==='/teacher/entry-test-sessions'?<TeacherEntryPage controller={controller} onPassword={()=>navigate('/account/change-password')}/>:effectivePath.includes('/attendance')?<AttendancePanel key={effectivePath} controller={controller} role="Teacher" classId={Number(effectivePath.split('/')[3])} initialSchedule={effectivePath.includes('/lessons/')?Number(effectivePath.split('/')[5]):undefined} parentBusy={false} onLock={()=>{}}/>:<ClassesPage controller={controller} role="Teacher" onPassword={()=>navigate('/account/change-password')}/>}</>;
   if (snapshot.context) return <SessionPage controller={controller} snapshot={snapshot} onPassword={() => navigate('/account/change-password')} />;
   if (effectivePath === '/register') return <SignupPage client={controller.client}
     onCreated={() => { navigate('/login'); void controller.prepare(); }} onLogin={() => navigate('/login')} />;

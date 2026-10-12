@@ -30,7 +30,7 @@ public sealed class ScheduleService(SqlClassRepository repository, IReplayReposi
         {
             await AcademicAuthority.RequireAsync(repository, token, clock, c);
             return stored.Target["classId"] == classId &&
-                (input.Api == 120 || stored.Target[input.Api == 122 ? "scheduleId" : "oldScheduleId"] == input.Id) && await repository.Matches(stored.Target, c);
+                (input.Api == 120 || stored.Target[input.Api is 122 or 126 ? "scheduleId" : "oldScheduleId"] == input.Id) && await repository.Matches(stored.Target, c);
         }, ct);
         if (repeated is not null) return new(await Result(token, input.Api, repeated.Target, repeated.OperationId, ct), true);
 
@@ -56,6 +56,15 @@ public sealed class ScheduleService(SqlClassRepository repository, IReplayReposi
                 repository.Add(row); await repository.SaveAsync(ct);
                 await Audit(input, token, row, null, operation, now, new() { ["classId"] = classId }, null, false, ct);
             }
+        }
+        else if(input.Api==126)
+        {
+            var row=state.Schedules.SingleOrDefault(x=>x.ScheduleId==input.Id)??throw new ApiErrorException(ApiErrorCode.NOT_FOUND);
+            input.RequireManifest(TeachingHeld.Manifest(state,row));
+            if(!TeachingHeld.CanConfirm(state,row,now.UtcDateTime))throw AcademicGuard.Conflict();
+            var before=Snapshot(row);row.OccurrenceState="HELD";row.HeldBy=token.AccountId;row.HeldAt=now.UtcDateTime;
+            await repository.SaveAsync(ct);await Audit(input,token,row,before,operation,now,new(){["classId"]=classId},null,false,ct);
+            target["scheduleId"]=row.ScheduleId;windows=[];
         }
         else
         {
@@ -104,7 +113,7 @@ public sealed class ScheduleService(SqlClassRepository repository, IReplayReposi
         var state = await repository.State(target["classId"], ct);
         JsonObject result;
         if (api == 120) result = ClassWire.Object(new { created = await repository.WeeklyCreated(operation, ct), context = ClassPreviews.SchedulingContext(state), operationId = operation });
-        else if (api == 122) result = ClassWire.Object(new { schedule = await repository.ScheduleDetail(target["scheduleId"], clock.GetUtcNow().UtcDateTime, ct), operationId = operation });
+        else if (api is 122 or 126) result = ClassWire.Object(new { schedule = await repository.ScheduleDetail(target["scheduleId"], clock.GetUtcNow().UtcDateTime, ct), operationId = operation });
         else result = ClassWire.Object(new { oldScheduleId = target["oldScheduleId"], newScheduleId = target["newScheduleId"], classId = target["classId"], obligationKey = state.Schedules.Single(x => x.ScheduleId == target["newScheduleId"]).ObligationKey, operationId = operation });
         var live = await AcademicAuthority.RequireAsync(repository, token, clock, ct);
         if (!clock.IsBefore(live.EffectiveDeadline)) throw new ApiErrorException(ApiErrorCode.AUTHENTICATION_REQUIRED);
@@ -116,7 +125,7 @@ public sealed class ScheduleService(SqlClassRepository repository, IReplayReposi
     private static JsonObject Snapshot(Schedule s) => ClassWire.Object(new { classId = s.ClassId, sessionType = s.SessionType,
         sessionDate = s.SessionDate.ToString("yyyy-MM-dd"), startTime = s.StartTime.ToString("HH:mm"), endTime = s.EndTime.ToString("HH:mm"), room = s.Room,
         obligationKey = s.ObligationKey, replacesScheduleId = s.ReplacesScheduleId, occurrenceState = s.OccurrenceState, isCurrent = s.IsCurrent,
-        notHeldBy = s.NotHeldBy, notHeldAt = s.NotHeldAt is { } at ? ClassWire.At(at) : null, replacementOperationId = s.ReplacementOperationId });
+        heldBy=s.HeldBy,heldAt=s.HeldAt is {} held?ClassWire.At(held):null,notHeldBy = s.NotHeldBy, notHeldAt = s.NotHeldAt is { } at ? ClassWire.At(at) : null, replacementOperationId = s.ReplacementOperationId });
     private Task Audit(ScheduleInput i, VerifiedSessionToken t, Schedule s, JsonObject? before, Guid operation, DateTimeOffset now,
         JsonObject parent, string? reason, bool effect, CancellationToken ct) => repository.AuditAsync(AuditEntry.Mandatory(
             i.Intent.Action.Code + (effect ? ".EFFECT" : ""), t.AccountId, "Schedule", s.ScheduleId, operation, now,

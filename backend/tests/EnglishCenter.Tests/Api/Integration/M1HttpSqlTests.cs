@@ -104,7 +104,7 @@ public sealed class M1HttpSqlTests
             var app=builder.Build();app.UseApiErrorMiddleware();app.UseRouting();app.UseAuthJsonBoundary();app.UseCsrfBoundary("https://localhost",new LiveCsrfIdentityResolver(f.Validator,f.Current,f.Audit,f.Clock));
             app.MapCsrfContext();app.MapLogin(f.Login,new LoginIpLimiter(),new Ip(),f.Audit,f.Clock,4096);app.MapCurrentSession(f.Current,f.Clock);
             app.MapAdminAccountPilot(f.Admin,4096);app.MapStaffAccounts(new SqlStaffAccountExecutor(()=>f.Db(),f.Clock,f.Hasher,new TemporaryPasswordGenerator(new PasswordPolicy(OfflinePasswordBlocklist.Load(Path.Combine(AppContext.BaseDirectory,"Resources","PasswordBlocklist")))),10,1000),4096);
-            app.MapCourseCatalogue(new SqlCourseExecutor(()=>f.Db(),f.Clock,10,1000),4096);app.MapTrainingPrograms(new SqlProgramExecutor(()=>f.Db(),f.Clock,10,1000),4096);app.MapEntrySessions(new SqlEntrySessionExecutor(()=>f.Db(),f.Clock,10,1000),4096,new(()=>f.Db(),f.Clock,10,1000),new(()=>f.Db(),f.Clock,10,1000));
+            app.MapCourseCatalogue(new SqlCourseExecutor(()=>f.Db(),f.Clock,10,1000),4096,new(()=>f.Db(),f.Clock,10,1000));app.MapTrainingPrograms(new SqlProgramExecutor(()=>f.Db(),f.Clock,10,1000),4096);app.MapEntrySessions(new SqlEntrySessionExecutor(()=>f.Db(),f.Clock,10,1000),4096,new(()=>f.Db(),f.Clock,10,1000),new(()=>f.Db(),f.Clock,10,1000));
             app.MapStudentEnrollment(new(()=>f.Db(),f.Clock,10,1000),new(()=>f.Db(),f.Clock,10,1000),new(()=>f.Db(),f.Clock,10,1000),4096);
             app.MapTeacherEntry(new(()=>f.Db(),f.Clock,10,1000),new(()=>f.Db(),f.Clock,10,1000),4096);
             EnglishCenter.Api.Api.Finance.FinanceEndpoints.MapFinance(app,new(()=>f.Db(),f.Clock,10,1000),4096);

@@ -38,7 +38,7 @@ public sealed class ClassService(SqlClassRepository repository,IReplayRepository
         }
         else
         {
-            state=await repository.LockState(input.Id,regs,candidate,ct);entity=state.Class;var before=ClassSnapshot(entity);
+            state=await repository.LockState(input.Id,regs,candidate,ct);entity=state.Class;if(entity.TeacherId!=teacher||entity.ProgramId!=program)throw AcademicGuard.Conflict();var before=ClassSnapshot(entity);
             if(api==94)
             {
                 RequireManifest(input,ClassWire.Object(new{expectedVersions=new{@class=ClassWire.Rv(entity.RowVersion)},expectedSet=new{assignmentIds=state.Assignments.Select(x=>x.ClassAssignmentId)}}));var size=b.GetProperty("maxSize").GetInt32();
@@ -51,9 +51,9 @@ public sealed class ClassService(SqlClassRepository repository,IReplayRepository
                 var manifest=ClassWire.BaseManifest(state);var versions=manifest["expectedVersions"]!.AsObject();versions.Remove("teacher");versions["currentTeacher"]=ClassWire.Rv(state.Teacher.RowVersion);var a=await repository.Teacher(proposed!.Value,ct);versions["proposedTeacher"]=ClassWire.Rv(a.RowVersion);manifest["expectedSet"]!["hasAttendance"]=false;manifest["expectedSet"]!["hasScores"]=false;RequireManifest(input,manifest);
                 if(!ClassWire.BeforeTeaching(state,now.UtcDateTime))throw AcademicGuard.Conflict();if(proposed==entity.TeacherId)throw ApiErrorException.Validation("teacherId");if(!preview["eligible"]!.GetValue<bool>())throw AcademicGuard.Conflict();entity.TeacherId=proposed.Value;
             }
-            else if(api is 99 or 102)
+            else if(api is 99 or 100 or 101 or 102)
             {
-                var action=api==99?"OPEN":"CANCEL";var preview=await repository.TransitionPreview(state,action,now.UtcDateTime,ct);var manifest=ClassWire.BaseManifest(state);if(api==102){manifest["expectedSet"]!["hasAttendance"]=false;manifest["expectedSet"]!["hasScores"]=false;}RequireManifest(input,manifest);if(!preview["eligible"]!.GetValue<bool>())throw AcademicGuard.Conflict();entity.Status=api==99?"OPEN":"CANCELLED";if(api==102){entity.CancelledAt=now.UtcDateTime;entity.CancelledBy=token.AccountId;entity.CancellationReason=b.GetProperty("reason").GetString();entity.CancellationOperationId=operation;}
+                var action=api==99?"OPEN":api==100?"START":api==101?"COMPLETE":"CANCEL";var preview=await repository.TransitionPreview(state,action,now.UtcDateTime,ct);var manifest=api==101?ClassWire.CompleteManifest(state):ClassWire.BaseManifest(state);if(api==102){manifest["expectedSet"]!["hasAttendance"]=false;manifest["expectedSet"]!["hasScores"]=false;}RequireManifest(input,manifest);if(!preview["eligible"]!.GetValue<bool>())throw AcademicGuard.Conflict();entity.Status=api==99?"OPEN":api==100?"ONGOING":api==101?"COMPLETED":"CANCELLED";if(api==102){entity.CancelledAt=now.UtcDateTime;entity.CancelledBy=token.AccountId;entity.CancellationReason=b.GetProperty("reason").GetString();entity.CancellationOperationId=operation;}
             }
             else if(api==108)
             {
@@ -66,7 +66,7 @@ public sealed class ClassService(SqlClassRepository repository,IReplayRepository
                 var window=ScheduleCandidate.Parse(b.GetProperty("candidate"));var preview=await repository.SchedulePreview(state,window,now.UtcDateTime,ct);if(preview["manifest"] is not JsonObject m)throw AcademicGuard.Conflict();RequireManifest(input,m);
                 var schedule=new Schedule{ClassId=entity.ClassId,SessionType=window.Type,ObligationKey=Guid.NewGuid(),IsCurrent=true,SessionDate=window.Date,StartTime=window.StartTime,EndTime=window.EndTime,Room=window.Room,OccurrenceState="PLANNED"};repository.Add(schedule);await repository.SaveAsync(ct);await Audit(input,token,"Schedule",schedule.ScheduleId,null,ClassWire.Object(new{classId=entity.ClassId,sessionType=schedule.SessionType,sessionDate=window.Date.ToString("yyyy-MM-dd"),startTime=window.StartTime.ToString("HH:mm"),endTime=window.EndTime.ToString("HH:mm"),room=window.Room,obligationKey=schedule.ObligationKey.ToString("D"),replacesScheduleId=(int?)null,occurrenceState="PLANNED",isCurrent=true}),operation,now,new(){["classId"]=entity.ClassId},null,ct);target["scheduleId"]=schedule.ScheduleId;
             }
-            if(api is 94 or 97 or 99 or 102){await repository.SaveAsync(ct);await Audit(input,token,"Class",entity.ClassId,before,ClassSnapshot(entity),operation,now,null,api==102?entity.CancellationReason:null,ct);}
+            if(api is 94 or 97 or 99 or 100 or 101 or 102){await repository.SaveAsync(ct);await Audit(input,token,"Class",entity.ClassId,before,ClassSnapshot(entity),operation,now,null,api==102?entity.CancellationReason:null,ct);}
         }
         target["classId"]=entity.ClassId;await replay.CompleteAsync(token.AccountId,input.Request,input.Intent,operation,target,ct);await new CurrentSessionService(repository,clock).TouchApprovedInteractiveActivityAsync(token,ct);var result=await Result(token,target,operation,api,ct);
         var finalNow=clock.GetUtcNow().UtcDateTime;

@@ -100,7 +100,7 @@ internal sealed class LocalRuntimeServices : ITrustedLoginIpResolver, IDisposabl
         routes.MapLogin(login, limiter, this, audit, clock, bodyBytes);
         routes.MapCurrentSession(current, clock); routes.MapCurrentSessionLogout(logout);
         routes.MapPasswordChange(password, bodyBytes); routes.MapAdminAccountPilot(admin, bodyBytes);
-        routes.MapStaffAccounts(staff, bodyBytes); routes.MapCourseCatalogue(courses, bodyBytes);
+        routes.MapStaffAccounts(staff, bodyBytes); routes.MapCourseCatalogue(courses, bodyBytes,classes);
         routes.MapTrainingPrograms(programs,bodyBytes);
         routes.MapEntrySessions(entrySessions,bodyBytes,admissions,classes);
         routes.MapStudentEnrollment(profiles, studentReads, studentEnrollment, bodyBytes);
