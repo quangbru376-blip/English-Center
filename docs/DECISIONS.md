@@ -4915,3 +4915,82 @@ Owner continuation assigned batch3/packages6–8. Whole M3 COMPLETE/review PASS/
 ## M4 batch1–2 checkpoint2026-10-12
 M4 assigned2026-10-12: batches1–2 reports/CSV API150–154 andAdminaudit015–017 COMPLETE/independent review PASS/applied ADR163/main reverified. Main source84b062a/testacceptance7ca13d7; manager68152ac/4ec3bca; identical src2bbd7f316dab45818ec4f19c9c6e83db3e5a9309/tests3ef9ccfaa2f7b1d46b058b0e26af75036cce44e2/frontendb2fb22a757468e0f29aa6adc8269cec48c3e24bc. Both1438defaultPASS/325intentionalopt-inSKIP/build0warnings0errors;168uniqueaffectedSQLHTTP(23new)/170frontend/types/lint/build/installedEdge95 all3widths and7rolesPASS. GenuineLOCALDEV all9/strictSQL+HTTPS/Admin4login4logout/auditviewer/reportwrongrole403/replayCOMMIT1/explicitAuditCOMMIT1/failed0/stop503/forced0PASS. ActualExcel nativeCSVopen+save/reopen preservedUnicode/quotedcomma/LF/formulas0; no universal decimal38 spreadsheet guarantee.196manager+170main scratchID/GUID-paired dropped/live0/hosts0/listener0. Operational7roles/1unchangedACTIVEAdmin/5Band/6migrations/business0/activeSID0; nofakeoperationaldata/custodypromotion. AGY2970fff4-1f5 exact3fullreads/sole90diffLinepuretable/zeroobservedviolations; Codex fixes/reviews/tests. Owner4hashes unchanged/unshared/untracked/unstaged; D07/schema/grants/C1/dependencies/defaultnoarghost preserved.
 Whole M4 IN PROGRESS: actual encrypted backup/media/access/key reference and isolated restore profile remain required operator inputs (SC04/implementation-plan); no backup/restore/RPO/RTO/load/install/push/deploy claim. Question for nonsecret inputs pending; do not repeat accepted LOCAL_DEV/10000/ADR177/163 decisions. Next M4_03 recovery contract only after inputs; meanwhile retained manager .worktrees/m2-finance, main product verified. M0–M3 COMPLETE. Evidence docs/plan/M4-evidence/summary.json, M4_REVIEW/M4_CLOSURE_MATRIX/M4_03_RECOVERY_TASK_CARD.
+
+## UI refresh direction accepted — 2026-10-13
+
+Owner supplied a refresh plan and explicitly selected answers1A–6A. Accepted:
+teal/yellow palette and temporary Trung tâm tiếng Anh brand; consolidated navigation,
+initial scoped data reads and session-recovery controls while preserving API/routes,
+rights/validation/session/CSRF/RAM/unknown/manual lookup/business semantics. Student
+top navigation/mobile drawer, staff sidebar; all roles checked375/768/1280. Upgrade
+existing components; Be Vietnam Pro/lucide plus licensed SVG selected, no blanket
+shadcn/Radix/Recharts/Playwright addition. Four output approval gates: inventory and
+interaction mapping, styleguide/auth shell, Student pilot, final acceptance. Parent
+scope remains excluded. This supersedes old visual direction only within UI refresh;
+canonical E03/E04/requirements business and security invariants remain unchanged.
+
+Full active contract: docs/plan/UI_REFRESH_PLAN.md. Current turn finalized planning
+only; phase0 baseline/inventory/screenshots, code/packages/runtime/worker operations
+have not begun. Do not infer implementation PASS or M4 recovery closure. Owner's
+six choices persist; four gates review concrete outputs, not repeated policy questions.
+## UI refresh stage1 preparation checkpoint — 2026-10-13
+Owner assigned completing first preparation stage. Branch ui-refresh from26067e0,
+six sizeable stages/four output gates. Inventory32F/F15removed and route/view/action
+map complete; source/package97hashesmatch;536beforePNG digestsmatch. Frontend170/
+backend1438defaultPASS325intentionalSKIP/buildclean/21unique realEdgeHTTPSscratchcases
+PASS;32owned scratch exactIDGUIDdropped/live0/listener8443=0. No product redesign,
+package/schema/custody/operational changes or worker dispatch. Gate1 owner accepts
+concrete inventory/interaction outputs before phase2. See UI_REFRESH_STAGE_1_REVIEW
+and UI-refresh-evidence/summary.json. Prior recovery inputs remain pending. This is
+preparation evidence, not new business decisions or wholeUI/M4 completion.
+
+## UI refresh — gate1 approved, stage2 verified (2026-10-13)
+
+Owner approved gate1 and authorized stage2 under UI_REFRESH_PLAN. The reviewed working tree implements the accepted teal/yellow design system, local licensed font/icons, auth and role shells. Stage2 verification:174frontend,1438backend/325intentional skips,21unique Edge cases PASS;16contrast pairs,73final and6styleguide images;64owned scratch databases cleaned,live0. Gate2 remains pending before Student pilot. No backend contracts/custody/profile pins or M4 recovery completion implied. Detailed review: docs/plan/UI_REFRESH_STAGE_2_REVIEW.md.
+
+
+## UI refresh — gate2 accepted, Student pilot verified (2026-10-13)
+
+Owner “tiếp tục đi” accepts gate2 and assigns stage3. Student pilot preserves business/API/session contracts while adding scoped initial reads, Home/course cards and booking/detail/recovery presentation. Final178frontend/21uniqueEdge PASS, extra4Student state/capture cases PASS, StrictMode mock initialHome1/courses1/write0;46scratch ID/GUID-paired cleaned/live0;178real-fixture+18visual-preview images. Working tree ui-refresh remains uncommitted/unapplied to main. Gate3 pending before stage4; no M4 recovery/custody/runtime promotion. See UI_REFRESH_STAGE_3_REVIEW.md.
+
+
+## UI refresh — gate3 accepted, Student remaining screens verified (2026-10-13)
+
+Owner “tiếp tục” accepts gate3 and assigns stage4 according to the approved pattern, with no new approval gate. Profile/booking/Invoice/print/classes/schedules/FINALIZED results updated; no business/API/session/custody change. Final181frontend/types/lint/build/21uniqueEdge PASS;593final images/14Student selections;42scratch ID/GUIDpaired cleaned/live0;StrictMode mock initial reads1perfamily/mutations0. Initial18PASS/3FAIL retained, corrected money wrap/grade list label and final21PASS. Working tree ui-refresh remains uncommitted/unapplied to main. Next stage5 staff presentation then stage6/cổng4. M4 recovery remains input-dependent. Detailed review UI_REFRESH_STAGE_4_REVIEW.md.
+
+
+## UI refresh stage5 checkpoint — 2026-10-13
+
+Owner continuation assigns staff UI under approved UI_REFRESH_PLAN; no new role gate.
+Stage5 COMPLETE/Codex review PASS, working tree ui-refresh/uncommitted/no main apply.
+Six staff roles share workbench presentation, server total metric cards and cancellable
+initial reads through existing APIs; native forms, secret handoff/dirty manifests/
+manual unknown recovery/exact money/rights preserved. Final183frontend/types/lint/build,
+21unique Edge three widths and13StrictMode mock destinations PASS. Final593PNG/22
+selections,107source hashes,42scratch paired dropped/live0; protected files unchanged.
+Late loading/compact-button refinement received full final recheck; first21PASS retained.
+Next stage6 overall acceptance/handoff and gate4. No backend/dependency/runtime/custody
+change or genuine LOCAL_DEV/backup/load/deploy acceptance; M4 recovery inputs pending.
+Evidence: UI_REFRESH_STAGE_5_REVIEW.md and UI-refresh-evidence/stage5/summary.json.
+
+
+## UI refresh stage6 integrated acceptance — 2026-10-13
+
+Owner “ok tiếp tục” assigns final phase. Technical COMPLETE/review PASS/applied
+ADR163/main reverified; source f7b16a5/final packaging+operator485b293. Main183
+frontend/types/lint/build,1438defaultbackend/325intentional opt-inSKIP,21unique real
+Edge7roles/3757681280 PASS; preapply21PASS separate.593PNG/476matched state markers/
+30before-after selections;10,645controls/labels/44px/pageoverflow findings0; bounded
+keyboard/contrast/reduced-motion/StrictMode lifecycle checks PASS, not full WCAG.
+Genuine LOCAL_DEV all9/strictSQL+trustedHTTPS/Admin4login4logout/audit+wrongrole403/
+manual404/maintenance replay1/audit1/failed0/stop503/forced0 PASS. Exact two approved
+frontend package artifact pins refreshed in both nonsecret manifests with guards;
+backend3pins/runtime versions/review expiry/profile/key/ACL unchanged. Three public
+licenses render HTML with original text to satisfy unchanged LocalUiFiles allowlist.
+Operator driver uses original assertions/native menu actions/own-context CSRF cleanup.
+Initial failed-browser session recovered by exact guarded one-row revocation, no
+fabricated audit; activeSID0 and two prior expired-unrevoked sessions kept.42scratch
+ID/GUID-paired dropped/live0/listener0; owner protected files preserved. No fake
+operational seed/empty-catalog claim or install/push/deploy/load/backup/recovery claim.
+All phase1–6 technical work complete; owner gate4 reviews concrete full UI output,
+not repeated colors/navigation/package decisions. M4 recovery inputs remain pending.

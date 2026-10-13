@@ -1,0 +1,44 @@
+
+> frontend@0.1.0 build
+> npm run typecheck && vite build
+
+
+> frontend@0.1.0 typecheck
+> tsc --noEmit
+
+vite v8.3.2 building client environment for production...
+transforming...
+✓ 2003 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                                                    0.55 kB │ gzip:   0.35 kB
+dist/assets/be-vietnam-pro-vietnamese-400-normal-BuGn0gnm.woff     6.56 kB
+dist/assets/be-vietnam-pro-vietnamese-600-normal-DkpCIyan.woff     6.88 kB
+dist/assets/be-vietnam-pro-vietnamese-500-normal-CfdwVo8-.woff     6.88 kB
+dist/assets/be-vietnam-pro-vietnamese-700-normal-By_5yT39.woff     6.89 kB
+dist/assets/be-vietnam-pro-vietnamese-400-normal-CRcqvyg1.woff2   11.53 kB
+dist/assets/be-vietnam-pro-vietnamese-500-normal-DREgrEoJ.woff2   12.17 kB
+dist/assets/be-vietnam-pro-vietnamese-600-normal-nyU-ZL2p.woff2   12.17 kB
+dist/assets/be-vietnam-pro-vietnamese-700-normal-Csr0PCuG.woff2   12.46 kB
+dist/assets/be-vietnam-pro-latin-400-normal-bXgqVju9.woff         16.43 kB
+dist/assets/be-vietnam-pro-latin-700-normal-C2EtzaOi.woff         16.90 kB
+dist/assets/be-vietnam-pro-latin-500-normal-BJkVuMHw.woff         16.99 kB
+dist/assets/be-vietnam-pro-latin-600-normal-5IO4e7bK.woff         17.01 kB
+dist/assets/be-vietnam-pro-latin-400-normal-PpnXBOrz.woff2        21.16 kB
+dist/assets/be-vietnam-pro-latin-500-normal-B6LVzGNe.woff2        21.89 kB
+dist/assets/be-vietnam-pro-latin-600-normal-BZDkUTrt.woff2        22.03 kB
+dist/assets/be-vietnam-pro-latin-700-normal-DlW1Zbsh.woff2        22.15 kB
+dist/assets/index-CMxDTkbU.css                                    28.95 kB │ gzip:   5.77 kB
+dist/assets/reportWire-BLkXD3vS.js                                 5.26 kB │ gzip:   1.91 kB
+dist/assets/GradeReviewPage-CfwL8OVQ.js                            6.32 kB │ gzip:   2.34 kB
+dist/assets/StudentGradesPage-BhLCtQCO.js                          9.78 kB │ gzip:   3.38 kB
+dist/assets/GradebookPanel-CA6TfsAi.js                            12.33 kB │ gzip:   4.04 kB
+dist/assets/AttendancePanel-gzYsBCi2.js                           13.04 kB │ gzip:   4.62 kB
+dist/assets/gradeApi-B3Q6y7eN.js                                  14.57 kB │ gzip:   4.32 kB
+dist/assets/academicWire-NMkK5SNR.js                              15.57 kB │ gzip:   5.88 kB
+dist/assets/ReportsPage-CSAhAiAc.js                               18.97 kB │ gzip:   5.85 kB
+dist/assets/AuditPage-C3jl1kR7.js                                 22.23 kB │ gzip:   5.96 kB
+dist/assets/StudentEnrollmentPage-BLX8zaum.js                     30.57 kB │ gzip:   8.47 kB
+dist/assets/index-DRjNyKUQ.js                                    483.77 kB │ gzip: 128.52 kB
+
+✓ built in 2.25s

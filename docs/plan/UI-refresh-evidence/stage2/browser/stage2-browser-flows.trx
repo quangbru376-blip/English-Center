@@ -1,0 +1,367 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TestRun id="66052b37-107e-4733-8baf-74c9880f2139" name="asus@CHARCAS 2026-10-13 12:39:22" runUser="CHARCAS\asus" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <Times creation="2026-10-13T12:39:22.7359695+07:00" queuing="2026-10-13T12:39:22.7359699+07:00" start="2026-10-13T12:38:38.8316490+07:00" finish="2026-10-13T12:44:08.0267428+07:00" />
+  <TestSettings name="default" id="4157de4d-1e4d-42d5-bf65-8309e80fb723">
+    <Deployment runDeploymentRoot="asus_CHARCAS_2026-10-13_12_39_22" />
+  </TestSettings>
+  <Results>
+    <UnitTestResult executionId="c15ce27d-6604-4920-94da-291a7faf4b28" testId="ee03b107-2857-c068-91f1-33475191341e" testName="EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests.M2ClassesRealEdgeThreeWidths" computerName="CHARCAS" duration="00:00:18.4470000" startTime="2026-10-13T12:42:08.7583229+07:00" endTime="2026-10-13T12:42:27.2086049+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="c15ce27d-6604-4920-94da-291a7faf4b28">
+      <Output>
+        <ErrorInfo>
+          <Message>Browser fixture failed: V01-D failed at m2-classes-calendar-publication-375 ERR_ASSERTION actual=false expected=true</Message>
+          <StackTrace>   at EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests.RealBrowserHttpsToOwnedCommit(Int32 group) in C:\Study\SOEN\main_workplace\backend\tests\EnglishCenter.Tests\Api\Integration\OwnedBrowserSqlHostingTests.cs:line 143&#xD;
+   at EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests.RealBrowserHttpsToOwnedCommit(Int32 group) in C:\Study\SOEN\main_workplace\backend\tests\EnglishCenter.Tests\Api\Integration\OwnedBrowserSqlHostingTests.cs:line 209&#xD;
+   at EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests.RealBrowserHttpsToOwnedCommit(Int32 group) in C:\Study\SOEN\main_workplace\backend\tests\EnglishCenter.Tests\Api\Integration\OwnedBrowserSqlHostingTests.cs:line 209&#xD;
+   at EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests.RealBrowserHttpsToOwnedCommit(Int32 group) in C:\Study\SOEN\main_workplace\backend\tests\EnglishCenter.Tests\Api\Integration\OwnedBrowserSqlHostingTests.cs:line 209&#xD;
+   at EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests.RealBrowserHttpsToOwnedCommit(Int32 group) in C:\Study\SOEN\main_workplace\backend\tests\EnglishCenter.Tests\Api\Integration\OwnedBrowserSqlHostingTests.cs:line 209&#xD;
+--- End of stack trace from previous location ---</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="9518deaf-f8be-42f7-bf18-97307055274e" testId="c3948b88-c70c-2895-2d77-08797a84afca" testName="EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests.RealBrowserHttpsToOwnedCommit(group: 82)" computerName="CHARCAS" duration="00:00:09.3050000" startTime="2026-10-13T12:42:54.1766088+07:00" endTime="2026-10-13T12:43:03.4835057+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="9518deaf-f8be-42f7-bf18-97307055274e">
+      <Output>
+        <ErrorInfo>
+          <Message>Browser fixture failed: V01-D failed at group-82-cookie-policy ERR_ASSERTION actual=false expected=true</Message>
+          <StackTrace>   at EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests.RealBrowserHttpsToOwnedCommit(Int32 group) in C:\Study\SOEN\main_workplace\backend\tests\EnglishCenter.Tests\Api\Integration\OwnedBrowserSqlHostingTests.cs:line 143&#xD;
+   at EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests.RealBrowserHttpsToOwnedCommit(Int32 group) in C:\Study\SOEN\main_workplace\backend\tests\EnglishCenter.Tests\Api\Integration\OwnedBrowserSqlHostingTests.cs:line 209&#xD;
+   at EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests.RealBrowserHttpsToOwnedCommit(Int32 group) in C:\Study\SOEN\main_workplace\backend\tests\EnglishCenter.Tests\Api\Integration\OwnedBrowserSqlHostingTests.cs:line 209&#xD;
+   at EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests.RealBrowserHttpsToOwnedCommit(Int32 group) in C:\Study\SOEN\main_workplace\backend\tests\EnglishCenter.Tests\Api\Integration\OwnedBrowserSqlHostingTests.cs:line 209&#xD;
+   at EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests.RealBrowserHttpsToOwnedCommit(Int32 group) in C:\Study\SOEN\main_workplace\backend\tests\EnglishCenter.Tests\Api\Integration\OwnedBrowserSqlHostingTests.cs:line 209&#xD;
+--- End of stack trace from previous location ---</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="e4f3e97e-482a-448f-9b7e-a7bbe047baa7" testId="0d26d97b-6fc2-70b4-a387-de16b4c9fa86" testName="EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests.RealBrowserHttpsToOwnedCommit(group: 87)" computerName="CHARCAS" duration="00:00:09.1300000" startTime="2026-10-13T12:43:03.4857289+07:00" endTime="2026-10-13T12:43:12.6180254+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="e4f3e97e-482a-448f-9b7e-a7bbe047baa7">
+      <Output>
+        <ErrorInfo>
+          <Message>Browser fixture failed: V01-D failed at group-87-cookie-policy ERR_ASSERTION actual=false expected=true</Message>
+          <StackTrace>   at EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests.RealBrowserHttpsToOwnedCommit(Int32 group) in C:\Study\SOEN\main_workplace\backend\tests\EnglishCenter.Tests\Api\Integration\OwnedBrowserSqlHostingTests.cs:line 143&#xD;
+   at EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests.RealBrowserHttpsToOwnedCommit(Int32 group) in C:\Study\SOEN\main_workplace\backend\tests\EnglishCenter.Tests\Api\Integration\OwnedBrowserSqlHostingTests.cs:line 209&#xD;
+   at EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests.RealBrowserHttpsToOwnedCommit(Int32 group) in C:\Study\SOEN\main_workplace\backend\tests\EnglishCenter.Tests\Api\Integration\OwnedBrowserSqlHostingTests.cs:line 209&#xD;
+   at EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests.RealBrowserHttpsToOwnedCommit(Int32 group) in C:\Study\SOEN\main_workplace\backend\tests\EnglishCenter.Tests\Api\Integration\OwnedBrowserSqlHostingTests.cs:line 209&#xD;
+   at EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests.RealBrowserHttpsToOwnedCommit(Int32 group) in C:\Study\SOEN\main_workplace\backend\tests\EnglishCenter.Tests\Api\Integration\OwnedBrowserSqlHostingTests.cs:line 209&#xD;
+--- End of stack trace from previous location ---</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="5c361f4a-1ebe-4955-8b44-4cbff76ee646" testId="3c22308e-2860-092c-fae5-b792b29da66f" testName="EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests.RealBrowserHttpsToOwnedCommit(group: 85)" computerName="CHARCAS" duration="00:00:11.1470000" startTime="2026-10-13T12:43:46.1160678+07:00" endTime="2026-10-13T12:43:57.2645312+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="5c361f4a-1ebe-4955-8b44-4cbff76ee646">
+      <Output>
+        <ErrorInfo>
+          <Message>Browser fixture failed: V01-D failed at group-85-cookie-policy ERR_ASSERTION actual=false expected=true</Message>
+          <StackTrace>   at EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests.RealBrowserHttpsToOwnedCommit(Int32 group) in C:\Study\SOEN\main_workplace\backend\tests\EnglishCenter.Tests\Api\Integration\OwnedBrowserSqlHostingTests.cs:line 143&#xD;
+   at EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests.RealBrowserHttpsToOwnedCommit(Int32 group) in C:\Study\SOEN\main_workplace\backend\tests\EnglishCenter.Tests\Api\Integration\OwnedBrowserSqlHostingTests.cs:line 209&#xD;
+   at EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests.RealBrowserHttpsToOwnedCommit(Int32 group) in C:\Study\SOEN\main_workplace\backend\tests\EnglishCenter.Tests\Api\Integration\OwnedBrowserSqlHostingTests.cs:line 209&#xD;
+   at EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests.RealBrowserHttpsToOwnedCommit(Int32 group) in C:\Study\SOEN\main_workplace\backend\tests\EnglishCenter.Tests\Api\Integration\OwnedBrowserSqlHostingTests.cs:line 209&#xD;
+   at EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests.RealBrowserHttpsToOwnedCommit(Int32 group) in C:\Study\SOEN\main_workplace\backend\tests\EnglishCenter.Tests\Api\Integration\OwnedBrowserSqlHostingTests.cs:line 209&#xD;
+--- End of stack trace from previous location ---</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="430f463a-f9be-4024-abb8-505d6d280883" testId="75d4db77-07d7-4320-37b3-943cb4e79478" testName="EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests.M2SchedulesRealEdgeThreeWidths" computerName="CHARCAS" duration="00:01:05.8640000" startTime="2026-10-13T12:41:02.8494813+07:00" endTime="2026-10-13T12:42:08.7526834+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="430f463a-f9be-4024-abb8-505d6d280883">
+      <Output>
+        <ErrorInfo>
+          <Message>Browser fixture failed: V01-D failed at group-91-cookie-policy UI_TIMEOUT actual=redacted expected=redacted</Message>
+          <StackTrace>   at EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests.RealBrowserHttpsToOwnedCommit(Int32 group) in C:\Study\SOEN\main_workplace\backend\tests\EnglishCenter.Tests\Api\Integration\OwnedBrowserSqlHostingTests.cs:line 143&#xD;
+   at EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests.RealBrowserHttpsToOwnedCommit(Int32 group) in C:\Study\SOEN\main_workplace\backend\tests\EnglishCenter.Tests\Api\Integration\OwnedBrowserSqlHostingTests.cs:line 209&#xD;
+   at EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests.RealBrowserHttpsToOwnedCommit(Int32 group) in C:\Study\SOEN\main_workplace\backend\tests\EnglishCenter.Tests\Api\Integration\OwnedBrowserSqlHostingTests.cs:line 209&#xD;
+   at EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests.RealBrowserHttpsToOwnedCommit(Int32 group) in C:\Study\SOEN\main_workplace\backend\tests\EnglishCenter.Tests\Api\Integration\OwnedBrowserSqlHostingTests.cs:line 209&#xD;
+   at EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests.RealBrowserHttpsToOwnedCommit(Int32 group) in C:\Study\SOEN\main_workplace\backend\tests\EnglishCenter.Tests\Api\Integration\OwnedBrowserSqlHostingTests.cs:line 209&#xD;
+--- End of stack trace from previous location ---</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="9f8d8439-9131-486e-9e48-29aa121d825a" testId="60f2ec90-4126-11e1-08cb-3133510d82f5" testName="EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests.RealBrowserHttpsToOwnedCommit(group: 84)" computerName="CHARCAS" duration="00:00:10.3770000" startTime="2026-10-13T12:43:12.6208555+07:00" endTime="2026-10-13T12:43:22.9992754+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="9f8d8439-9131-486e-9e48-29aa121d825a">
+      <Output>
+        <ErrorInfo>
+          <Message>Browser fixture failed: V01-D failed at group-84-cookie-policy ERR_ASSERTION actual=false expected=true</Message>
+          <StackTrace>   at EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests.RealBrowserHttpsToOwnedCommit(Int32 group) in C:\Study\SOEN\main_workplace\backend\tests\EnglishCenter.Tests\Api\Integration\OwnedBrowserSqlHostingTests.cs:line 143&#xD;
+   at EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests.RealBrowserHttpsToOwnedCommit(Int32 group) in C:\Study\SOEN\main_workplace\backend\tests\EnglishCenter.Tests\Api\Integration\OwnedBrowserSqlHostingTests.cs:line 209&#xD;
+   at EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests.RealBrowserHttpsToOwnedCommit(Int32 group) in C:\Study\SOEN\main_workplace\backend\tests\EnglishCenter.Tests\Api\Integration\OwnedBrowserSqlHostingTests.cs:line 209&#xD;
+   at EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests.RealBrowserHttpsToOwnedCommit(Int32 group) in C:\Study\SOEN\main_workplace\backend\tests\EnglishCenter.Tests\Api\Integration\OwnedBrowserSqlHostingTests.cs:line 209&#xD;
+   at EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests.RealBrowserHttpsToOwnedCommit(Int32 group) in C:\Study\SOEN\main_workplace\backend\tests\EnglishCenter.Tests\Api\Integration\OwnedBrowserSqlHostingTests.cs:line 209&#xD;
+--- End of stack trace from previous location ---</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="8db88ab3-4e5a-4a85-975c-54e66910fc55" testId="cc4ddb15-27c1-9d3a-47ab-ffa533b34a35" testName="EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests.M3PublicationRealEdgeThreeWidths" computerName="CHARCAS" duration="00:00:59.6340000" startTime="2026-10-13T12:40:03.2111102+07:00" endTime="2026-10-13T12:41:02.8461400+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="8db88ab3-4e5a-4a85-975c-54e66910fc55" />
+    <UnitTestResult executionId="75620fad-613d-4a41-83f9-7a32d05b28a6" testId="c5e11282-2d80-06eb-c2d9-8e1f5c47ef2d" testName="EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests.RealBrowserHttpsToOwnedCommit(group: 81)" computerName="CHARCAS" duration="00:00:11.0550000" startTime="2026-10-13T12:43:35.0567622+07:00" endTime="2026-10-13T12:43:46.1133609+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="75620fad-613d-4a41-83f9-7a32d05b28a6">
+      <Output>
+        <ErrorInfo>
+          <Message>Browser fixture failed: V01-D failed at group-81-cookie-policy ERR_ASSERTION actual=false expected=true</Message>
+          <StackTrace>   at EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests.RealBrowserHttpsToOwnedCommit(Int32 group) in C:\Study\SOEN\main_workplace\backend\tests\EnglishCenter.Tests\Api\Integration\OwnedBrowserSqlHostingTests.cs:line 143&#xD;
+   at EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests.RealBrowserHttpsToOwnedCommit(Int32 group) in C:\Study\SOEN\main_workplace\backend\tests\EnglishCenter.Tests\Api\Integration\OwnedBrowserSqlHostingTests.cs:line 209&#xD;
+   at EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests.RealBrowserHttpsToOwnedCommit(Int32 group) in C:\Study\SOEN\main_workplace\backend\tests\EnglishCenter.Tests\Api\Integration\OwnedBrowserSqlHostingTests.cs:line 209&#xD;
+   at EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests.RealBrowserHttpsToOwnedCommit(Int32 group) in C:\Study\SOEN\main_workplace\backend\tests\EnglishCenter.Tests\Api\Integration\OwnedBrowserSqlHostingTests.cs:line 209&#xD;
+   at EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests.RealBrowserHttpsToOwnedCommit(Int32 group) in C:\Study\SOEN\main_workplace\backend\tests\EnglishCenter.Tests\Api\Integration\OwnedBrowserSqlHostingTests.cs:line 209&#xD;
+--- End of stack trace from previous location ---</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="d45cefac-3417-4987-abcd-2bc2b017944e" testId="46891fa3-7c8d-2cac-3fce-a619741632f6" testName="EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests.RealBrowserHttpsToOwnedCommit(group: 83)" computerName="CHARCAS" duration="00:00:12.0480000" startTime="2026-10-13T12:43:23.0028646+07:00" endTime="2026-10-13T12:43:35.0530606+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="d45cefac-3417-4987-abcd-2bc2b017944e">
+      <Output>
+        <ErrorInfo>
+          <Message>Browser fixture failed: V01-D failed at group-83-cookie-policy ERR_ASSERTION actual=false expected=true</Message>
+          <StackTrace>   at EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests.RealBrowserHttpsToOwnedCommit(Int32 group) in C:\Study\SOEN\main_workplace\backend\tests\EnglishCenter.Tests\Api\Integration\OwnedBrowserSqlHostingTests.cs:line 143&#xD;
+   at EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests.RealBrowserHttpsToOwnedCommit(Int32 group) in C:\Study\SOEN\main_workplace\backend\tests\EnglishCenter.Tests\Api\Integration\OwnedBrowserSqlHostingTests.cs:line 209&#xD;
+   at EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests.RealBrowserHttpsToOwnedCommit(Int32 group) in C:\Study\SOEN\main_workplace\backend\tests\EnglishCenter.Tests\Api\Integration\OwnedBrowserSqlHostingTests.cs:line 209&#xD;
+   at EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests.RealBrowserHttpsToOwnedCommit(Int32 group) in C:\Study\SOEN\main_workplace\backend\tests\EnglishCenter.Tests\Api\Integration\OwnedBrowserSqlHostingTests.cs:line 209&#xD;
+   at EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests.RealBrowserHttpsToOwnedCommit(Int32 group) in C:\Study\SOEN\main_workplace\backend\tests\EnglishCenter.Tests\Api\Integration\OwnedBrowserSqlHostingTests.cs:line 209&#xD;
+--- End of stack trace from previous location ---</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="5533a29e-69d9-478e-8614-8b10dd9b8b67" testId="0cb6832a-acd0-1275-bc40-581294bb6fe1" testName="EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests.RealBrowserHttpsToOwnedCommit(group: 86)" computerName="CHARCAS" duration="00:00:10.5140000" startTime="2026-10-13T12:43:57.2667465+07:00" endTime="2026-10-13T12:44:07.7825284+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="5533a29e-69d9-478e-8614-8b10dd9b8b67">
+      <Output>
+        <ErrorInfo>
+          <Message>Browser fixture failed: V01-D failed at group-86-cookie-policy ERR_ASSERTION actual=false expected=true</Message>
+          <StackTrace>   at EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests.RealBrowserHttpsToOwnedCommit(Int32 group) in C:\Study\SOEN\main_workplace\backend\tests\EnglishCenter.Tests\Api\Integration\OwnedBrowserSqlHostingTests.cs:line 143&#xD;
+   at EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests.RealBrowserHttpsToOwnedCommit(Int32 group) in C:\Study\SOEN\main_workplace\backend\tests\EnglishCenter.Tests\Api\Integration\OwnedBrowserSqlHostingTests.cs:line 209&#xD;
+   at EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests.RealBrowserHttpsToOwnedCommit(Int32 group) in C:\Study\SOEN\main_workplace\backend\tests\EnglishCenter.Tests\Api\Integration\OwnedBrowserSqlHostingTests.cs:line 209&#xD;
+   at EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests.RealBrowserHttpsToOwnedCommit(Int32 group) in C:\Study\SOEN\main_workplace\backend\tests\EnglishCenter.Tests\Api\Integration\OwnedBrowserSqlHostingTests.cs:line 209&#xD;
+   at EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests.RealBrowserHttpsToOwnedCommit(Int32 group) in C:\Study\SOEN\main_workplace\backend\tests\EnglishCenter.Tests\Api\Integration\OwnedBrowserSqlHostingTests.cs:line 209&#xD;
+--- End of stack trace from previous location ---</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="2f6cd523-23d9-4147-9c59-6c7b62ab8251" testId="bfc27950-e638-daf1-46c1-751ecbe6e0ac" testName="EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests.M3TeachingRealEdgeThreeWidths" computerName="CHARCAS" duration="00:00:41.6240000" startTime="2026-10-13T12:38:41.0141120+07:00" endTime="2026-10-13T12:39:22.6641881+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="2f6cd523-23d9-4147-9c59-6c7b62ab8251" />
+    <UnitTestResult executionId="2fa9dde8-427b-43f1-9a56-63811a54a439" testId="0ada3354-9b38-ddaf-93e7-e51ba47dda78" testName="EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests.M3GradingRealEdgeThreeWidths" computerName="CHARCAS" duration="00:00:16.8700000" startTime="2026-10-13T12:42:27.2143564+07:00" endTime="2026-10-13T12:42:44.0872095+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="2fa9dde8-427b-43f1-9a56-63811a54a439">
+      <Output>
+        <ErrorInfo>
+          <Message>Browser fixture failed: V01-D failed at group-93-cookie-policy ERR_ASSERTION actual=false expected=true</Message>
+          <StackTrace>   at EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests.RealBrowserHttpsToOwnedCommit(Int32 group) in C:\Study\SOEN\main_workplace\backend\tests\EnglishCenter.Tests\Api\Integration\OwnedBrowserSqlHostingTests.cs:line 143&#xD;
+   at EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests.RealBrowserHttpsToOwnedCommit(Int32 group) in C:\Study\SOEN\main_workplace\backend\tests\EnglishCenter.Tests\Api\Integration\OwnedBrowserSqlHostingTests.cs:line 209&#xD;
+   at EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests.RealBrowserHttpsToOwnedCommit(Int32 group) in C:\Study\SOEN\main_workplace\backend\tests\EnglishCenter.Tests\Api\Integration\OwnedBrowserSqlHostingTests.cs:line 209&#xD;
+   at EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests.RealBrowserHttpsToOwnedCommit(Int32 group) in C:\Study\SOEN\main_workplace\backend\tests\EnglishCenter.Tests\Api\Integration\OwnedBrowserSqlHostingTests.cs:line 209&#xD;
+   at EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests.RealBrowserHttpsToOwnedCommit(Int32 group) in C:\Study\SOEN\main_workplace\backend\tests\EnglishCenter.Tests\Api\Integration\OwnedBrowserSqlHostingTests.cs:line 209&#xD;
+--- End of stack trace from previous location ---</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="2fb2064c-396f-4273-9cfa-7132ac2110e7" testId="afac8390-739b-4ce4-b112-31123d567d28" testName="EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests.RealBrowserHttpsToOwnedCommit(group: 88)" computerName="CHARCAS" duration="00:00:10.0820000" startTime="2026-10-13T12:42:44.0917465+07:00" endTime="2026-10-13T12:42:54.1747408+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="2fb2064c-396f-4273-9cfa-7132ac2110e7">
+      <Output>
+        <ErrorInfo>
+          <Message>Browser fixture failed: V01-D failed at group-88-cookie-policy ERR_ASSERTION actual=false expected=true</Message>
+          <StackTrace>   at EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests.RealBrowserHttpsToOwnedCommit(Int32 group) in C:\Study\SOEN\main_workplace\backend\tests\EnglishCenter.Tests\Api\Integration\OwnedBrowserSqlHostingTests.cs:line 143&#xD;
+   at EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests.RealBrowserHttpsToOwnedCommit(Int32 group) in C:\Study\SOEN\main_workplace\backend\tests\EnglishCenter.Tests\Api\Integration\OwnedBrowserSqlHostingTests.cs:line 209&#xD;
+   at EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests.RealBrowserHttpsToOwnedCommit(Int32 group) in C:\Study\SOEN\main_workplace\backend\tests\EnglishCenter.Tests\Api\Integration\OwnedBrowserSqlHostingTests.cs:line 209&#xD;
+   at EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests.RealBrowserHttpsToOwnedCommit(Int32 group) in C:\Study\SOEN\main_workplace\backend\tests\EnglishCenter.Tests\Api\Integration\OwnedBrowserSqlHostingTests.cs:line 209&#xD;
+   at EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests.RealBrowserHttpsToOwnedCommit(Int32 group) in C:\Study\SOEN\main_workplace\backend\tests\EnglishCenter.Tests\Api\Integration\OwnedBrowserSqlHostingTests.cs:line 209&#xD;
+--- End of stack trace from previous location ---</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="3c3f56c2-e03c-4af6-9815-2d8eff55fd86" testId="642867ef-95d5-0c7f-b489-ed4c38e11014" testName="EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests.M2FinanceRealEdgeThreeWidths" computerName="CHARCAS" duration="00:00:40.5080000" startTime="2026-10-13T12:39:22.6969422+07:00" endTime="2026-10-13T12:40:03.2064904+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="3c3f56c2-e03c-4af6-9815-2d8eff55fd86" />
+  </Results>
+  <TestDefinitions>
+    <UnitTest name="EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests.M2ClassesRealEdgeThreeWidths" storage="c:\study\soen\main_workplace\backend\tests\englishcenter.tests\bin\debug\net10.0\englishcenter.tests.dll" id="ee03b107-2857-c068-91f1-33475191341e">
+      <Execution id="c15ce27d-6604-4920-94da-291a7faf4b28" />
+      <TestMethod codeBase="C:\Study\SOEN\main_workplace\backend\tests\EnglishCenter.Tests\bin\Debug\net10.0\EnglishCenter.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests" name="M2ClassesRealEdgeThreeWidths" />
+    </UnitTest>
+    <UnitTest name="EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests.M3PublicationRealEdgeThreeWidths" storage="c:\study\soen\main_workplace\backend\tests\englishcenter.tests\bin\debug\net10.0\englishcenter.tests.dll" id="cc4ddb15-27c1-9d3a-47ab-ffa533b34a35">
+      <Execution id="8db88ab3-4e5a-4a85-975c-54e66910fc55" />
+      <TestMethod codeBase="C:\Study\SOEN\main_workplace\backend\tests\EnglishCenter.Tests\bin\Debug\net10.0\EnglishCenter.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests" name="M3PublicationRealEdgeThreeWidths" />
+    </UnitTest>
+    <UnitTest name="EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests.RealBrowserHttpsToOwnedCommit(group: 85)" storage="c:\study\soen\main_workplace\backend\tests\englishcenter.tests\bin\debug\net10.0\englishcenter.tests.dll" id="3c22308e-2860-092c-fae5-b792b29da66f">
+      <Execution id="5c361f4a-1ebe-4955-8b44-4cbff76ee646" />
+      <TestMethod codeBase="C:\Study\SOEN\main_workplace\backend\tests\EnglishCenter.Tests\bin\Debug\net10.0\EnglishCenter.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests" name="RealBrowserHttpsToOwnedCommit" />
+    </UnitTest>
+    <UnitTest name="EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests.RealBrowserHttpsToOwnedCommit(group: 81)" storage="c:\study\soen\main_workplace\backend\tests\englishcenter.tests\bin\debug\net10.0\englishcenter.tests.dll" id="c5e11282-2d80-06eb-c2d9-8e1f5c47ef2d">
+      <Execution id="75620fad-613d-4a41-83f9-7a32d05b28a6" />
+      <TestMethod codeBase="C:\Study\SOEN\main_workplace\backend\tests\EnglishCenter.Tests\bin\Debug\net10.0\EnglishCenter.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests" name="RealBrowserHttpsToOwnedCommit" />
+    </UnitTest>
+    <UnitTest name="EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests.M3TeachingRealEdgeThreeWidths" storage="c:\study\soen\main_workplace\backend\tests\englishcenter.tests\bin\debug\net10.0\englishcenter.tests.dll" id="bfc27950-e638-daf1-46c1-751ecbe6e0ac">
+      <Execution id="2f6cd523-23d9-4147-9c59-6c7b62ab8251" />
+      <TestMethod codeBase="C:\Study\SOEN\main_workplace\backend\tests\EnglishCenter.Tests\bin\Debug\net10.0\EnglishCenter.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests" name="M3TeachingRealEdgeThreeWidths" />
+    </UnitTest>
+    <UnitTest name="EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests.RealBrowserHttpsToOwnedCommit(group: 84)" storage="c:\study\soen\main_workplace\backend\tests\englishcenter.tests\bin\debug\net10.0\englishcenter.tests.dll" id="60f2ec90-4126-11e1-08cb-3133510d82f5">
+      <Execution id="9f8d8439-9131-486e-9e48-29aa121d825a" />
+      <TestMethod codeBase="C:\Study\SOEN\main_workplace\backend\tests\EnglishCenter.Tests\bin\Debug\net10.0\EnglishCenter.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests" name="RealBrowserHttpsToOwnedCommit" />
+    </UnitTest>
+    <UnitTest name="EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests.M2FinanceRealEdgeThreeWidths" storage="c:\study\soen\main_workplace\backend\tests\englishcenter.tests\bin\debug\net10.0\englishcenter.tests.dll" id="642867ef-95d5-0c7f-b489-ed4c38e11014">
+      <Execution id="3c3f56c2-e03c-4af6-9815-2d8eff55fd86" />
+      <TestMethod codeBase="C:\Study\SOEN\main_workplace\backend\tests\EnglishCenter.Tests\bin\Debug\net10.0\EnglishCenter.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests" name="M2FinanceRealEdgeThreeWidths" />
+    </UnitTest>
+    <UnitTest name="EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests.RealBrowserHttpsToOwnedCommit(group: 87)" storage="c:\study\soen\main_workplace\backend\tests\englishcenter.tests\bin\debug\net10.0\englishcenter.tests.dll" id="0d26d97b-6fc2-70b4-a387-de16b4c9fa86">
+      <Execution id="e4f3e97e-482a-448f-9b7e-a7bbe047baa7" />
+      <TestMethod codeBase="C:\Study\SOEN\main_workplace\backend\tests\EnglishCenter.Tests\bin\Debug\net10.0\EnglishCenter.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests" name="RealBrowserHttpsToOwnedCommit" />
+    </UnitTest>
+    <UnitTest name="EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests.RealBrowserHttpsToOwnedCommit(group: 82)" storage="c:\study\soen\main_workplace\backend\tests\englishcenter.tests\bin\debug\net10.0\englishcenter.tests.dll" id="c3948b88-c70c-2895-2d77-08797a84afca">
+      <Execution id="9518deaf-f8be-42f7-bf18-97307055274e" />
+      <TestMethod codeBase="C:\Study\SOEN\main_workplace\backend\tests\EnglishCenter.Tests\bin\Debug\net10.0\EnglishCenter.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests" name="RealBrowserHttpsToOwnedCommit" />
+    </UnitTest>
+    <UnitTest name="EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests.M2SchedulesRealEdgeThreeWidths" storage="c:\study\soen\main_workplace\backend\tests\englishcenter.tests\bin\debug\net10.0\englishcenter.tests.dll" id="75d4db77-07d7-4320-37b3-943cb4e79478">
+      <Execution id="430f463a-f9be-4024-abb8-505d6d280883" />
+      <TestMethod codeBase="C:\Study\SOEN\main_workplace\backend\tests\EnglishCenter.Tests\bin\Debug\net10.0\EnglishCenter.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests" name="M2SchedulesRealEdgeThreeWidths" />
+    </UnitTest>
+    <UnitTest name="EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests.RealBrowserHttpsToOwnedCommit(group: 88)" storage="c:\study\soen\main_workplace\backend\tests\englishcenter.tests\bin\debug\net10.0\englishcenter.tests.dll" id="afac8390-739b-4ce4-b112-31123d567d28">
+      <Execution id="2fb2064c-396f-4273-9cfa-7132ac2110e7" />
+      <TestMethod codeBase="C:\Study\SOEN\main_workplace\backend\tests\EnglishCenter.Tests\bin\Debug\net10.0\EnglishCenter.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests" name="RealBrowserHttpsToOwnedCommit" />
+    </UnitTest>
+    <UnitTest name="EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests.RealBrowserHttpsToOwnedCommit(group: 86)" storage="c:\study\soen\main_workplace\backend\tests\englishcenter.tests\bin\debug\net10.0\englishcenter.tests.dll" id="0cb6832a-acd0-1275-bc40-581294bb6fe1">
+      <Execution id="5533a29e-69d9-478e-8614-8b10dd9b8b67" />
+      <TestMethod codeBase="C:\Study\SOEN\main_workplace\backend\tests\EnglishCenter.Tests\bin\Debug\net10.0\EnglishCenter.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests" name="RealBrowserHttpsToOwnedCommit" />
+    </UnitTest>
+    <UnitTest name="EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests.M3GradingRealEdgeThreeWidths" storage="c:\study\soen\main_workplace\backend\tests\englishcenter.tests\bin\debug\net10.0\englishcenter.tests.dll" id="0ada3354-9b38-ddaf-93e7-e51ba47dda78">
+      <Execution id="2fa9dde8-427b-43f1-9a56-63811a54a439" />
+      <TestMethod codeBase="C:\Study\SOEN\main_workplace\backend\tests\EnglishCenter.Tests\bin\Debug\net10.0\EnglishCenter.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests" name="M3GradingRealEdgeThreeWidths" />
+    </UnitTest>
+    <UnitTest name="EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests.RealBrowserHttpsToOwnedCommit(group: 83)" storage="c:\study\soen\main_workplace\backend\tests\englishcenter.tests\bin\debug\net10.0\englishcenter.tests.dll" id="46891fa3-7c8d-2cac-3fce-a619741632f6">
+      <Execution id="d45cefac-3417-4987-abcd-2bc2b017944e" />
+      <TestMethod codeBase="C:\Study\SOEN\main_workplace\backend\tests\EnglishCenter.Tests\bin\Debug\net10.0\EnglishCenter.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests" name="RealBrowserHttpsToOwnedCommit" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestEntries>
+    <TestEntry testId="ee03b107-2857-c068-91f1-33475191341e" executionId="c15ce27d-6604-4920-94da-291a7faf4b28" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="c3948b88-c70c-2895-2d77-08797a84afca" executionId="9518deaf-f8be-42f7-bf18-97307055274e" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="0d26d97b-6fc2-70b4-a387-de16b4c9fa86" executionId="e4f3e97e-482a-448f-9b7e-a7bbe047baa7" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="3c22308e-2860-092c-fae5-b792b29da66f" executionId="5c361f4a-1ebe-4955-8b44-4cbff76ee646" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="75d4db77-07d7-4320-37b3-943cb4e79478" executionId="430f463a-f9be-4024-abb8-505d6d280883" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="60f2ec90-4126-11e1-08cb-3133510d82f5" executionId="9f8d8439-9131-486e-9e48-29aa121d825a" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="cc4ddb15-27c1-9d3a-47ab-ffa533b34a35" executionId="8db88ab3-4e5a-4a85-975c-54e66910fc55" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="c5e11282-2d80-06eb-c2d9-8e1f5c47ef2d" executionId="75620fad-613d-4a41-83f9-7a32d05b28a6" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="46891fa3-7c8d-2cac-3fce-a619741632f6" executionId="d45cefac-3417-4987-abcd-2bc2b017944e" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="0cb6832a-acd0-1275-bc40-581294bb6fe1" executionId="5533a29e-69d9-478e-8614-8b10dd9b8b67" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="bfc27950-e638-daf1-46c1-751ecbe6e0ac" executionId="2f6cd523-23d9-4147-9c59-6c7b62ab8251" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="0ada3354-9b38-ddaf-93e7-e51ba47dda78" executionId="2fa9dde8-427b-43f1-9a56-63811a54a439" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="afac8390-739b-4ce4-b112-31123d567d28" executionId="2fb2064c-396f-4273-9cfa-7132ac2110e7" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="642867ef-95d5-0c7f-b489-ed4c38e11014" executionId="3c3f56c2-e03c-4af6-9815-2d8eff55fd86" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <ResultSummary outcome="Failed">
+    <Counters total="14" executed="14" passed="3" failed="11" error="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+    <Output>
+      <StdOut>[xUnit.net 00:00:00.00] xUnit.net VSTest Adapter v4.0.0+05679a7ab5 (64-bit .NET 10.0.4)&#xD;
+[xUnit.net 00:00:00.41]   Discovering: EnglishCenter.Tests&#xD;
+[xUnit.net 00:00:01.34]   Discovered:  EnglishCenter.Tests&#xD;
+[xUnit.net 00:00:01.60]   Starting:    EnglishCenter.Tests&#xD;
+[xUnit.net 00:03:29.46]       Browser fixture failed: V01-D failed at group-91-cookie-policy UI_TIMEOUT actual=redacted expected=redacted&#xD;
+[xUnit.net 00:03:29.46]       Stack Trace:&#xD;
+[xUnit.net 00:03:29.46]         C:\Study\SOEN\main_workplace\backend\tests\EnglishCenter.Tests\Api\Integration\OwnedBrowserSqlHostingTests.cs(143,0): at EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests.RealBrowserHttpsToOwnedCommit(Int32 group)&#xD;
+[xUnit.net 00:03:29.46]         C:\Study\SOEN\main_workplace\backend\tests\EnglishCenter.Tests\Api\Integration\OwnedBrowserSqlHostingTests.cs(209,0): at EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests.RealBrowserHttpsToOwnedCommit(Int32 group)&#xD;
+[xUnit.net 00:03:29.46]         C:\Study\SOEN\main_workplace\backend\tests\EnglishCenter.Tests\Api\Integration\OwnedBrowserSqlHostingTests.cs(209,0): at EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests.RealBrowserHttpsToOwnedCommit(Int32 group)&#xD;
+[xUnit.net 00:03:29.46]         C:\Study\SOEN\main_workplace\backend\tests\EnglishCenter.Tests\Api\Integration\OwnedBrowserSqlHostingTests.cs(209,0): at EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests.RealBrowserHttpsToOwnedCommit(Int32 group)&#xD;
+[xUnit.net 00:03:29.47]         C:\Study\SOEN\main_workplace\backend\tests\EnglishCenter.Tests\Api\Integration\OwnedBrowserSqlHostingTests.cs(209,0): at EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests.RealBrowserHttpsToOwnedCommit(Int32 group)&#xD;
+[xUnit.net 00:03:29.47]         --- End of stack trace from previous location ---&#xD;
+[xUnit.net 00:03:47.91]       Browser fixture failed: V01-D failed at m2-classes-calendar-publication-375 ERR_ASSERTION actual=false expected=true&#xD;
+[xUnit.net 00:03:47.91]       Stack Trace:&#xD;
+[xUnit.net 00:03:47.91]         C:\Study\SOEN\main_workplace\backend\tests\EnglishCenter.Tests\Api\Integration\OwnedBrowserSqlHostingTests.cs(143,0): at EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests.RealBrowserHttpsToOwnedCommit(Int32 group)&#xD;
+[xUnit.net 00:03:47.91]         C:\Study\SOEN\main_workplace\backend\tests\EnglishCenter.Tests\Api\Integration\OwnedBrowserSqlHostingTests.cs(209,0): at EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests.RealBrowserHttpsToOwnedCommit(Int32 group)&#xD;
+[xUnit.net 00:03:47.91]         C:\Study\SOEN\main_workplace\backend\tests\EnglishCenter.Tests\Api\Integration\OwnedBrowserSqlHostingTests.cs(209,0): at EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests.RealBrowserHttpsToOwnedCommit(Int32 group)&#xD;
+[xUnit.net 00:03:47.91]         C:\Study\SOEN\main_workplace\backend\tests\EnglishCenter.Tests\Api\Integration\OwnedBrowserSqlHostingTests.cs(209,0): at EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests.RealBrowserHttpsToOwnedCommit(Int32 group)&#xD;
+[xUnit.net 00:03:47.91]         C:\Study\SOEN\main_workplace\backend\tests\EnglishCenter.Tests\Api\Integration\OwnedBrowserSqlHostingTests.cs(209,0): at EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests.RealBrowserHttpsToOwnedCommit(Int32 group)&#xD;
+[xUnit.net 00:03:47.91]         --- End of stack trace from previous location ---&#xD;
+[xUnit.net 00:04:04.78]       Browser fixture failed: V01-D failed at group-93-cookie-policy ERR_ASSERTION actual=false expected=true&#xD;
+[xUnit.net 00:04:04.78]       Stack Trace:&#xD;
+[xUnit.net 00:04:04.78]         C:\Study\SOEN\main_workplace\backend\tests\EnglishCenter.Tests\Api\Integration\OwnedBrowserSqlHostingTests.cs(143,0): at EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests.RealBrowserHttpsToOwnedCommit(Int32 group)&#xD;
+[xUnit.net 00:04:04.78]         C:\Study\SOEN\main_workplace\backend\tests\EnglishCenter.Tests\Api\Integration\OwnedBrowserSqlHostingTests.cs(209,0): at EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests.RealBrowserHttpsToOwnedCommit(Int32 group)&#xD;
+[xUnit.net 00:04:04.78]         C:\Study\SOEN\main_workplace\backend\tests\EnglishCenter.Tests\Api\Integration\OwnedBrowserSqlHostingTests.cs(209,0): at EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests.RealBrowserHttpsToOwnedCommit(Int32 group)&#xD;
+[xUnit.net 00:04:04.78]         C:\Study\SOEN\main_workplace\backend\tests\EnglishCenter.Tests\Api\Integration\OwnedBrowserSqlHostingTests.cs(209,0): at EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests.RealBrowserHttpsToOwnedCommit(Int32 group)&#xD;
+[xUnit.net 00:04:04.78]         C:\Study\SOEN\main_workplace\backend\tests\EnglishCenter.Tests\Api\Integration\OwnedBrowserSqlHostingTests.cs(209,0): at EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests.RealBrowserHttpsToOwnedCommit(Int32 group)&#xD;
+[xUnit.net 00:04:04.78]         --- End of stack trace from previous location ---&#xD;
+[xUnit.net 00:04:14.87]       Browser fixture failed: V01-D failed at group-88-cookie-policy ERR_ASSERTION actual=false expected=true&#xD;
+[xUnit.net 00:04:14.87]       Stack Trace:&#xD;
+[xUnit.net 00:04:14.87]         C:\Study\SOEN\main_workplace\backend\tests\EnglishCenter.Tests\Api\Integration\OwnedBrowserSqlHostingTests.cs(143,0): at EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests.RealBrowserHttpsToOwnedCommit(Int32 group)&#xD;
+[xUnit.net 00:04:14.87]         C:\Study\SOEN\main_workplace\backend\tests\EnglishCenter.Tests\Api\Integration\OwnedBrowserSqlHostingTests.cs(209,0): at EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests.RealBrowserHttpsToOwnedCommit(Int32 group)&#xD;
+[xUnit.net 00:04:14.87]         C:\Study\SOEN\main_workplace\backend\tests\EnglishCenter.Tests\Api\Integration\OwnedBrowserSqlHostingTests.cs(209,0): at EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests.RealBrowserHttpsToOwnedCommit(Int32 group)&#xD;
+[xUnit.net 00:04:14.87]         C:\Study\SOEN\main_workplace\backend\tests\EnglishCenter.Tests\Api\Integration\OwnedBrowserSqlHostingTests.cs(209,0): at EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests.RealBrowserHttpsToOwnedCommit(Int32 group)&#xD;
+[xUnit.net 00:04:14.87]         C:\Study\SOEN\main_workplace\backend\tests\EnglishCenter.Tests\Api\Integration\OwnedBrowserSqlHostingTests.cs(209,0): at EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests.RealBrowserHttpsToOwnedCommit(Int32 group)&#xD;
+[xUnit.net 00:04:14.87]         --- End of stack trace from previous location ---&#xD;
+[xUnit.net 00:04:24.18]       Browser fixture failed: V01-D failed at group-82-cookie-policy ERR_ASSERTION actual=false expected=true&#xD;
+[xUnit.net 00:04:24.18]       Stack Trace:&#xD;
+[xUnit.net 00:04:24.18]         C:\Study\SOEN\main_workplace\backend\tests\EnglishCenter.Tests\Api\Integration\OwnedBrowserSqlHostingTests.cs(143,0): at EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests.RealBrowserHttpsToOwnedCommit(Int32 group)&#xD;
+[xUnit.net 00:04:24.18]         C:\Study\SOEN\main_workplace\backend\tests\EnglishCenter.Tests\Api\Integration\OwnedBrowserSqlHostingTests.cs(209,0): at EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests.RealBrowserHttpsToOwnedCommit(Int32 group)&#xD;
+[xUnit.net 00:04:24.18]         C:\Study\SOEN\main_workplace\backend\tests\EnglishCenter.Tests\Api\Integration\OwnedBrowserSqlHostingTests.cs(209,0): at EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests.RealBrowserHttpsToOwnedCommit(Int32 group)&#xD;
+[xUnit.net 00:04:24.18]         C:\Study\SOEN\main_workplace\backend\tests\EnglishCenter.Tests\Api\Integration\OwnedBrowserSqlHostingTests.cs(209,0): at EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests.RealBrowserHttpsToOwnedCommit(Int32 group)&#xD;
+[xUnit.net 00:04:24.18]         C:\Study\SOEN\main_workplace\backend\tests\EnglishCenter.Tests\Api\Integration\OwnedBrowserSqlHostingTests.cs(209,0): at EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests.RealBrowserHttpsToOwnedCommit(Int32 group)&#xD;
+[xUnit.net 00:04:24.18]         --- End of stack trace from previous location ---&#xD;
+[xUnit.net 00:04:33.31]       Browser fixture failed: V01-D failed at group-87-cookie-policy ERR_ASSERTION actual=false expected=true&#xD;
+[xUnit.net 00:04:33.31]       Stack Trace:&#xD;
+[xUnit.net 00:04:33.31]         C:\Study\SOEN\main_workplace\backend\tests\EnglishCenter.Tests\Api\Integration\OwnedBrowserSqlHostingTests.cs(143,0): at EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests.RealBrowserHttpsToOwnedCommit(Int32 group)&#xD;
+[xUnit.net 00:04:33.31]         C:\Study\SOEN\main_workplace\backend\tests\EnglishCenter.Tests\Api\Integration\OwnedBrowserSqlHostingTests.cs(209,0): at EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests.RealBrowserHttpsToOwnedCommit(Int32 group)&#xD;
+[xUnit.net 00:04:33.31]         C:\Study\SOEN\main_workplace\backend\tests\EnglishCenter.Tests\Api\Integration\OwnedBrowserSqlHostingTests.cs(209,0): at EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests.RealBrowserHttpsToOwnedCommit(Int32 group)&#xD;
+[xUnit.net 00:04:33.31]         C:\Study\SOEN\main_workplace\backend\tests\EnglishCenter.Tests\Api\Integration\OwnedBrowserSqlHostingTests.cs(209,0): at EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests.RealBrowserHttpsToOwnedCommit(Int32 group)&#xD;
+[xUnit.net 00:04:33.31]         C:\Study\SOEN\main_workplace\backend\tests\EnglishCenter.Tests\Api\Integration\OwnedBrowserSqlHostingTests.cs(209,0): at EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests.RealBrowserHttpsToOwnedCommit(Int32 group)&#xD;
+[xUnit.net 00:04:33.31]         --- End of stack trace from previous location ---&#xD;
+[xUnit.net 00:04:43.70]       Browser fixture failed: V01-D failed at group-84-cookie-policy ERR_ASSERTION actual=false expected=true&#xD;
+[xUnit.net 00:04:43.70]       Stack Trace:&#xD;
+[xUnit.net 00:04:43.70]         C:\Study\SOEN\main_workplace\backend\tests\EnglishCenter.Tests\Api\Integration\OwnedBrowserSqlHostingTests.cs(143,0): at EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests.RealBrowserHttpsToOwnedCommit(Int32 group)&#xD;
+[xUnit.net 00:04:43.70]         C:\Study\SOEN\main_workplace\backend\tests\EnglishCenter.Tests\Api\Integration\OwnedBrowserSqlHostingTests.cs(209,0): at EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests.RealBrowserHttpsToOwnedCommit(Int32 group)&#xD;
+[xUnit.net 00:04:43.70]         C:\Study\SOEN\main_workplace\backend\tests\EnglishCenter.Tests\Api\Integration\OwnedBrowserSqlHostingTests.cs(209,0): at EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests.RealBrowserHttpsToOwnedCommit(Int32 group)&#xD;
+[xUnit.net 00:04:43.70]         C:\Study\SOEN\main_workplace\backend\tests\EnglishCenter.Tests\Api\Integration\OwnedBrowserSqlHostingTests.cs(209,0): at EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests.RealBrowserHttpsToOwnedCommit(Int32 group)&#xD;
+[xUnit.net 00:04:43.70]         C:\Study\SOEN\main_workplace\backend\tests\EnglishCenter.Tests\Api\Integration\OwnedBrowserSqlHostingTests.cs(209,0): at EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests.RealBrowserHttpsToOwnedCommit(Int32 group)&#xD;
+[xUnit.net 00:04:43.70]         --- End of stack trace from previous location ---&#xD;
+[xUnit.net 00:04:55.75]       Browser fixture failed: V01-D failed at group-83-cookie-policy ERR_ASSERTION actual=false expected=true&#xD;
+[xUnit.net 00:04:55.75]       Stack Trace:&#xD;
+[xUnit.net 00:04:55.75]         C:\Study\SOEN\main_workplace\backend\tests\EnglishCenter.Tests\Api\Integration\OwnedBrowserSqlHostingTests.cs(143,0): at EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests.RealBrowserHttpsToOwnedCommit(Int32 group)&#xD;
+[xUnit.net 00:04:55.75]         C:\Study\SOEN\main_workplace\backend\tests\EnglishCenter.Tests\Api\Integration\OwnedBrowserSqlHostingTests.cs(209,0): at EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests.RealBrowserHttpsToOwnedCommit(Int32 group)&#xD;
+[xUnit.net 00:04:55.75]         C:\Study\SOEN\main_workplace\backend\tests\EnglishCenter.Tests\Api\Integration\OwnedBrowserSqlHostingTests.cs(209,0): at EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests.RealBrowserHttpsToOwnedCommit(Int32 group)&#xD;
+[xUnit.net 00:04:55.75]         C:\Study\SOEN\main_workplace\backend\tests\EnglishCenter.Tests\Api\Integration\OwnedBrowserSqlHostingTests.cs(209,0): at EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests.RealBrowserHttpsToOwnedCommit(Int32 group)&#xD;
+[xUnit.net 00:04:55.75]         C:\Study\SOEN\main_workplace\backend\tests\EnglishCenter.Tests\Api\Integration\OwnedBrowserSqlHostingTests.cs(209,0): at EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests.RealBrowserHttpsToOwnedCommit(Int32 group)&#xD;
+[xUnit.net 00:04:55.75]         --- End of stack trace from previous location ---&#xD;
+[xUnit.net 00:05:06.81]       Browser fixture failed: V01-D failed at group-81-cookie-policy ERR_ASSERTION actual=false expected=true&#xD;
+[xUnit.net 00:05:06.81]       Stack Trace:&#xD;
+[xUnit.net 00:05:06.81]         C:\Study\SOEN\main_workplace\backend\tests\EnglishCenter.Tests\Api\Integration\OwnedBrowserSqlHostingTests.cs(143,0): at EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests.RealBrowserHttpsToOwnedCommit(Int32 group)&#xD;
+[xUnit.net 00:05:06.81]         C:\Study\SOEN\main_workplace\backend\tests\EnglishCenter.Tests\Api\Integration\OwnedBrowserSqlHostingTests.cs(209,0): at EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests.RealBrowserHttpsToOwnedCommit(Int32 group)&#xD;
+[xUnit.net 00:05:06.81]         C:\Study\SOEN\main_workplace\backend\tests\EnglishCenter.Tests\Api\Integration\OwnedBrowserSqlHostingTests.cs(209,0): at EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests.RealBrowserHttpsToOwnedCommit(Int32 group)&#xD;
+[xUnit.net 00:05:06.81]         C:\Study\SOEN\main_workplace\backend\tests\EnglishCenter.Tests\Api\Integration\OwnedBrowserSqlHostingTests.cs(209,0): at EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests.RealBrowserHttpsToOwnedCommit(Int32 group)&#xD;
+[xUnit.net 00:05:06.81]         C:\Study\SOEN\main_workplace\backend\tests\EnglishCenter.Tests\Api\Integration\OwnedBrowserSqlHostingTests.cs(209,0): at EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests.RealBrowserHttpsToOwnedCommit(Int32 group)&#xD;
+[xUnit.net 00:05:06.81]         --- End of stack trace from previous location ---&#xD;
+[xUnit.net 00:05:17.96]       Browser fixture failed: V01-D failed at group-85-cookie-policy ERR_ASSERTION actual=false expected=true&#xD;
+[xUnit.net 00:05:17.96]       Stack Trace:&#xD;
+[xUnit.net 00:05:17.96]         C:\Study\SOEN\main_workplace\backend\tests\EnglishCenter.Tests\Api\Integration\OwnedBrowserSqlHostingTests.cs(143,0): at EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests.RealBrowserHttpsToOwnedCommit(Int32 group)&#xD;
+[xUnit.net 00:05:17.96]         C:\Study\SOEN\main_workplace\backend\tests\EnglishCenter.Tests\Api\Integration\OwnedBrowserSqlHostingTests.cs(209,0): at EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests.RealBrowserHttpsToOwnedCommit(Int32 group)&#xD;
+[xUnit.net 00:05:17.96]         C:\Study\SOEN\main_workplace\backend\tests\EnglishCenter.Tests\Api\Integration\OwnedBrowserSqlHostingTests.cs(209,0): at EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests.RealBrowserHttpsToOwnedCommit(Int32 group)&#xD;
+[xUnit.net 00:05:17.96]         C:\Study\SOEN\main_workplace\backend\tests\EnglishCenter.Tests\Api\Integration\OwnedBrowserSqlHostingTests.cs(209,0): at EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests.RealBrowserHttpsToOwnedCommit(Int32 group)&#xD;
+[xUnit.net 00:05:17.96]         C:\Study\SOEN\main_workplace\backend\tests\EnglishCenter.Tests\Api\Integration\OwnedBrowserSqlHostingTests.cs(209,0): at EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests.RealBrowserHttpsToOwnedCommit(Int32 group)&#xD;
+[xUnit.net 00:05:17.96]         --- End of stack trace from previous location ---&#xD;
+[xUnit.net 00:05:28.48]       Browser fixture failed: V01-D failed at group-86-cookie-policy ERR_ASSERTION actual=false expected=true&#xD;
+[xUnit.net 00:05:28.48]       Stack Trace:&#xD;
+[xUnit.net 00:05:28.48]         C:\Study\SOEN\main_workplace\backend\tests\EnglishCenter.Tests\Api\Integration\OwnedBrowserSqlHostingTests.cs(143,0): at EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests.RealBrowserHttpsToOwnedCommit(Int32 group)&#xD;
+[xUnit.net 00:05:28.48]         C:\Study\SOEN\main_workplace\backend\tests\EnglishCenter.Tests\Api\Integration\OwnedBrowserSqlHostingTests.cs(209,0): at EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests.RealBrowserHttpsToOwnedCommit(Int32 group)&#xD;
+[xUnit.net 00:05:28.48]         C:\Study\SOEN\main_workplace\backend\tests\EnglishCenter.Tests\Api\Integration\OwnedBrowserSqlHostingTests.cs(209,0): at EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests.RealBrowserHttpsToOwnedCommit(Int32 group)&#xD;
+[xUnit.net 00:05:28.48]         C:\Study\SOEN\main_workplace\backend\tests\EnglishCenter.Tests\Api\Integration\OwnedBrowserSqlHostingTests.cs(209,0): at EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests.RealBrowserHttpsToOwnedCommit(Int32 group)&#xD;
+[xUnit.net 00:05:28.48]         C:\Study\SOEN\main_workplace\backend\tests\EnglishCenter.Tests\Api\Integration\OwnedBrowserSqlHostingTests.cs(209,0): at EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests.RealBrowserHttpsToOwnedCommit(Int32 group)&#xD;
+[xUnit.net 00:05:28.48]         --- End of stack trace from previous location ---&#xD;
+[xUnit.net 00:05:28.59]   Finished:    EnglishCenter.Tests (ID = 'cb4360231e9a92433e299e124d24776dd42ec676afd7171830ebad8a4c53128f')&#xD;
+</StdOut>
+    </Output>
+    <RunInfos>
+      <RunInfo computerName="CHARCAS" outcome="Error" timestamp="2026-10-13T12:42:08.7653740+07:00">
+        <Text>[xUnit.net 00:03:29.46]     EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests.M2SchedulesRealEdgeThreeWidths [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="CHARCAS" outcome="Error" timestamp="2026-10-13T12:42:27.2108522+07:00">
+        <Text>[xUnit.net 00:03:47.91]     EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests.M2ClassesRealEdgeThreeWidths [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="CHARCAS" outcome="Error" timestamp="2026-10-13T12:42:44.0883611+07:00">
+        <Text>[xUnit.net 00:04:04.78]     EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests.M3GradingRealEdgeThreeWidths [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="CHARCAS" outcome="Error" timestamp="2026-10-13T12:42:54.1758647+07:00">
+        <Text>[xUnit.net 00:04:14.87]     EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests.RealBrowserHttpsToOwnedCommit(group: 88) [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="CHARCAS" outcome="Error" timestamp="2026-10-13T12:43:03.4844077+07:00">
+        <Text>[xUnit.net 00:04:24.18]     EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests.RealBrowserHttpsToOwnedCommit(group: 82) [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="CHARCAS" outcome="Error" timestamp="2026-10-13T12:43:12.6188918+07:00">
+        <Text>[xUnit.net 00:04:33.31]     EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests.RealBrowserHttpsToOwnedCommit(group: 87) [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="CHARCAS" outcome="Error" timestamp="2026-10-13T12:43:23.0005229+07:00">
+        <Text>[xUnit.net 00:04:43.70]     EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests.RealBrowserHttpsToOwnedCommit(group: 84) [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="CHARCAS" outcome="Error" timestamp="2026-10-13T12:43:35.0546542+07:00">
+        <Text>[xUnit.net 00:04:55.75]     EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests.RealBrowserHttpsToOwnedCommit(group: 83) [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="CHARCAS" outcome="Error" timestamp="2026-10-13T12:43:46.1141639+07:00">
+        <Text>[xUnit.net 00:05:06.81]     EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests.RealBrowserHttpsToOwnedCommit(group: 81) [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="CHARCAS" outcome="Error" timestamp="2026-10-13T12:43:57.2652747+07:00">
+        <Text>[xUnit.net 00:05:17.96]     EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests.RealBrowserHttpsToOwnedCommit(group: 85) [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="CHARCAS" outcome="Error" timestamp="2026-10-13T12:44:07.7831907+07:00">
+        <Text>[xUnit.net 00:05:28.48]     EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests.RealBrowserHttpsToOwnedCommit(group: 86) [FAIL]</Text>
+      </RunInfo>
+    </RunInfos>
+  </ResultSummary>
+</TestRun>

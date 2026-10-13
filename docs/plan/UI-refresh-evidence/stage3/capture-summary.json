@@ -1,0 +1,22 @@
+{
+  "screenshots": 178,
+  "roles": [
+    "AcademicAffairs",
+    "Admissions",
+    "Anonymous",
+    "Student",
+    "Teacher"
+  ],
+  "widths": [
+    375,
+    768,
+    1280
+  ],
+  "groups": [
+    85,
+    87,
+    88,
+    94
+  ],
+  "digestsVerified": true
+}

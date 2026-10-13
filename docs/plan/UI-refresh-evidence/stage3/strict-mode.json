@@ -1,0 +1,9 @@
+{
+  "passed": true,
+  "realDevMainStrictMode": true,
+  "mockHttpOnly": true,
+  "home": 1,
+  "courses": 1,
+  "mutations": 0,
+  "unexpected": 0
+}

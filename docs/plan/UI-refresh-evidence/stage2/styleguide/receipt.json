@@ -1,0 +1,12 @@
+{
+  "passed": true,
+  "widths": [
+    375,
+    768,
+    1280
+  ],
+  "fontLoaded": true,
+  "noPageOverflow": true,
+  "tabsKeyboard": true,
+  "dialogEscapeFocusRestored": true
+}

@@ -1,0 +1,135 @@
+{
+  "stage": 6,
+  "status": "COMPLETE_REVIEW_PASS_GATE_4_PENDING",
+  "date": "2026-10-13",
+  "branch": "main",
+  "sourceCommit": "485b293f1ba49600e1b0fdf706c940ef5a6e7cf1",
+  "initialUIApply": "f7b16a5",
+  "appliedADR163": true,
+  "mainReverified": true,
+  "gate4": "OWNER_OUTPUT_REVIEW_PENDING",
+  "frontend": {
+    "passed": 183,
+    "failed": 0,
+    "skipped": 0,
+    "types": "PASS",
+    "lint": "PASS",
+    "build": "PASS"
+  },
+  "backend": {
+    "passed": 1438,
+    "intentionalOptInSkipped": 325,
+    "failed": 0,
+    "mainFinalEvidence": "main-default-final/stage6-main-default-final.trx"
+  },
+  "edge": {
+    "uniqueCases": 21,
+    "beforeApplyPassed": 21,
+    "mainPassed": 21,
+    "failed": 0,
+    "skipped": 0,
+    "reviewDuration": "8m27",
+    "mainDuration": "12m50",
+    "widths": [
+      375,
+      768,
+      1280
+    ],
+    "roles": 7,
+    "anonymous": true,
+    "mainEvidence": "main-browser/stage6-main-edge.trx",
+    "noBusinessAssertionRelaxation": true
+  },
+  "accessibility": {
+    "stateObservations": 593,
+    "visibleControls": 10645,
+    "missingLabels": 0,
+    "mobileTargetFindings": 0,
+    "pageOverflowFindings": 0,
+    "tableScrollFocusNameFindings": 0,
+    "fontLoaded": true,
+    "actualKeyboard": "PASS",
+    "reducedMotion": "PASS",
+    "contrastTests": "PASS",
+    "limitedChecksNotWcagCertification": true
+  },
+  "strictMode": {
+    "studentInitialEndpoints": 6,
+    "staffDestinations": 13,
+    "oneReadPerExpectedEndpoint": true,
+    "businessMutations": 0,
+    "mockTransportOnly": true
+  },
+  "photos": {
+    "after": 593,
+    "digestsVerified": true,
+    "matchedBeforeAfterPairs": 476,
+    "selectedPairs": 30,
+    "syntheticDifferentIdsClocksData": true
+  },
+  "source": {
+    "tsCssPackages": 107,
+    "shippingWith3Licenses2OperatorTools": 112,
+    "moduleByteDrift": [],
+    "literalIdNameTestidRemoved": 0,
+    "protectedDrift": [],
+    "backendBusinessSchemaGrantChanges": false,
+    "newDependenciesStage6": false
+  },
+  "runtime": {
+    "genuineLocalDev": {
+      "phase": "W5-launch",
+      "success": true,
+      "ready": true,
+      "browserPassed": true,
+      "replayCommits": 1,
+      "auditCommits": 1,
+      "failedRuns": 0,
+      "stoppedMaintenanceRefused": true,
+      "forcedStops": 0
+    },
+    "finalEvidence": "genuine-localdev-transport.json",
+    "logins": 4,
+    "logouts": 4,
+    "twoFrontendPinsInTwoManifestsRefreshed": true,
+    "backend3PinsVersionsReviewDatesUnchanged": true,
+    "licensePackaging": "3TXT_to_HTML_text_preserved",
+    "distArtifacts": 32,
+    "unsupportedDistFiles": 0,
+    "noKeyProfileAclGrantProvisioningChanges": true
+  },
+  "cleanup": {
+    "scratch": {
+      "runs": 2,
+      "created": 42,
+      "nameIdGuidPairedDropped": 42,
+      "unpaired": 0,
+      "independentLive": 0,
+      "listener8443": 0
+    },
+    "activeUnrevokedSessions": 0,
+    "preexistingExpiredUnrevokedSessionsRetained": 2,
+    "ownInitialFailedBrowserSessionExactGuardRevoked": 1,
+    "roles": 7,
+    "activeAdmins": 1,
+    "migrations": 6,
+    "fakeOperationalSeed": false
+  },
+  "initialFailuresRetained": [
+    "TS6CommonJSFlag",
+    "DEVpreviewStopped",
+    "GitCheckoutNewlineOnlyRestored",
+    "MainBuildEdgeDllLock",
+    "GenuineUnsupportedLicenseTXT",
+    "LegacyOperatorVisibleLogoutAssumption",
+    "GenuineNavigationRefusalsUnprovenTransportCause",
+    "ReadOnlySessionPreflightColumnAndUtcParsing"
+  ],
+  "limits": [
+    "Gate4owneroutputreviewpending",
+    "NoFullWcagScreenReaderAllBrowserCertification",
+    "NoLoadLanBackupRestoreInstallPushDeployClaim",
+    "M4RecoveryOperatorInputsStillRequired"
+  ],
+  "preview": "http://127.0.0.1:5178/tests/ui-refresh-styleguide.html"
+}

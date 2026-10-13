@@ -1,0 +1,400 @@
+[
+  {
+    "title": "Tuyển sinh — hồ sơ và quyết định",
+    "file": "g88-1c1d1432-017-Admissions-375-admissions-cancel-375.png",
+    "group": 88,
+    "role": "Admissions",
+    "width": 375,
+    "route": "/admissions/registrations/1",
+    "label": "admissions-cancel-375",
+    "headings": [
+      "Hồ sơ tuyển sinh",
+      "Hồ sơ 3 — Synthetic Student",
+      "Xác nhận",
+      "Điều hướng"
+    ],
+    "sha256": "a3c13212f0f8d2d27916b3a8ba4cd05918bd42676af890ca675efe4cd53487fa",
+    "synthetic": true
+  },
+  {
+    "title": "Tuyển sinh — hồ sơ và quyết định",
+    "file": "g88-1c1d1432-039-Admissions-1280-admissions-cancel-1280.png",
+    "group": 88,
+    "role": "Admissions",
+    "width": 1280,
+    "route": "/admissions/registrations/7",
+    "label": "admissions-cancel-1280",
+    "headings": [
+      "Hồ sơ tuyển sinh",
+      "Hồ sơ 9 — Synthetic Student",
+      "Xác nhận",
+      "Điều hướng"
+    ],
+    "sha256": "4babed768b85a5cb2910e1b54277dc6d2a4c6331bc92120a01fb29c9a9e61a49",
+    "synthetic": true
+  },
+  {
+    "title": "Giáo vụ — chương trình/cấu hình",
+    "file": "g83-88a09cb9-012-AcademicAffairs-375-program-lost-ack-lookup-button-visible-clicked-responded.png",
+    "group": 83,
+    "role": "AcademicAffairs",
+    "width": 375,
+    "route": "/academics/training-programs",
+    "label": "program-lost-ack-lookup-button-visible-clicked-responded",
+    "headings": [
+      "Chương trình đào tạo",
+      "Renamed 375",
+      "Tạo bản nháp",
+      "Xác nhận chương trình",
+      "Kích hoạt cấu hình đã lưu",
+      "Điều hướng"
+    ],
+    "sha256": "40104d468f32418ceda375245b8b4d85c4a25f1187b2778bb526ceb6540a6a69",
+    "synthetic": true
+  },
+  {
+    "title": "Giáo vụ — chương trình/cấu hình",
+    "file": "g83-88a09cb9-022-AcademicAffairs-1280-program-select-band.png",
+    "group": 83,
+    "role": "AcademicAffairs",
+    "width": 1280,
+    "route": "/academics/training-programs",
+    "label": "program-select-band",
+    "headings": [
+      "Chương trình đào tạo",
+      "Renamed 1280",
+      "Tạo bản nháp",
+      "Xác nhận chương trình",
+      "Kích hoạt cấu hình đã lưu",
+      "Điều hướng"
+    ],
+    "sha256": "1bfdbc4b063464f181a23ba28af062ef4c82b3ed1e647395f028c0907529446f",
+    "synthetic": true
+  },
+  {
+    "title": "Giáo vụ — ca thi/giáo viên",
+    "file": "g84-5f44155f-012-AcademicAffairs-375-session-lost-ack-lookup-button-visible-clicked-responded.png",
+    "group": 84,
+    "role": "AcademicAffairs",
+    "width": 375,
+    "route": "/academics/entry-test-sessions",
+    "label": "session-lost-ack-lookup-button-visible-clicked-responded",
+    "headings": [
+      "Ca thi đầu vào",
+      "Ca 1 · 2026-10-14 09:00–10:00",
+      "Tạo ca thi đóng",
+      "Chọn giáo viên mới",
+      "Xác nhận trạng thái ca",
+      "Xác nhận đổi giáo viên",
+      "Điều hướng"
+    ],
+    "sha256": "9473ba444e3942478310c259c293be620f45c0fd94f844f17800aab182e3e78f",
+    "synthetic": true
+  },
+  {
+    "title": "Giáo vụ — ca thi/giáo viên",
+    "file": "g84-5f44155f-022-AcademicAffairs-1280-session-change-grader.png",
+    "group": 84,
+    "role": "AcademicAffairs",
+    "width": 1280,
+    "route": "/academics/entry-test-sessions",
+    "label": "session-change-grader",
+    "headings": [
+      "Ca thi đầu vào",
+      "Ca 3 · 2026-10-14 11:00–12:00",
+      "Tạo ca thi đóng",
+      "Chọn giáo viên mới",
+      "Xác nhận trạng thái ca",
+      "Xác nhận đổi giáo viên",
+      "Điều hướng"
+    ],
+    "sha256": "b03de41212ec66939304d78d79eef1a857a2a333344765092a1a6eb412335b0b",
+    "synthetic": true
+  },
+  {
+    "title": "Giáo vụ — lớp và lịch",
+    "file": "g91-da953376-011-AcademicAffairs-375-m2-calendar-week-375.png",
+    "group": 91,
+    "role": "AcademicAffairs",
+    "width": 375,
+    "route": "/academics/classes",
+    "label": "m2-calendar-week-375",
+    "headings": [
+      "Lớp, xếp học viên và lịch học",
+      "SCHED_375 · Đang nhận học viên",
+      "Hồ sơ chờ xếp lớp",
+      "Điểm danh buổi học",
+      "Lịch học và thi cuối khóa",
+      "Xác nhận lịch",
+      "Xác nhận",
+      "Điều hướng"
+    ],
+    "sha256": "8a6c55a7a1414fb21e29342378700e8b1d5e33c31a67de8920ae738f8009274a",
+    "synthetic": true
+  },
+  {
+    "title": "Giáo vụ — lớp và lịch",
+    "file": "g91-da953376-041-AcademicAffairs-1280-m2-calendar-week-1280.png",
+    "group": 91,
+    "role": "AcademicAffairs",
+    "width": 1280,
+    "route": "/academics/classes",
+    "label": "m2-calendar-week-1280",
+    "headings": [
+      "Lớp, xếp học viên và lịch học",
+      "SCHED_1280 · Đang nhận học viên",
+      "Hồ sơ chờ xếp lớp",
+      "Điểm danh buổi học",
+      "Lịch học và thi cuối khóa",
+      "Xác nhận lịch",
+      "Xác nhận",
+      "Điều hướng"
+    ],
+    "sha256": "07d0bc51428eac21de78ef2c77565dc910f5264158115d68fd97b44ae1e941c5",
+    "synthetic": true
+  },
+  {
+    "title": "Giáo viên — nhiệm vụ đầu vào",
+    "file": "g86-900fadd2-012-Teacher-375-teacher-absence-375.png",
+    "group": 86,
+    "role": "Teacher",
+    "width": 375,
+    "route": "/teacher/entry-test-sessions",
+    "label": "teacher-absence-375",
+    "headings": [
+      "Nhiệm vụ kiểm tra đầu vào",
+      "Ca 1 · ENROLL",
+      "Synthetic Student · Lượt 1",
+      "Sửa điểm đầu vào",
+      "Điều hướng"
+    ],
+    "sha256": "07c4a2b574af5dd706d774c263a9a7bd58b851cb000e43960342a06098a17a17",
+    "synthetic": true
+  },
+  {
+    "title": "Giáo viên — nhiệm vụ đầu vào",
+    "file": "g86-900fadd2-022-Teacher-1280-teacher-absence-1280.png",
+    "group": 86,
+    "role": "Teacher",
+    "width": 1280,
+    "route": "/teacher/entry-test-sessions",
+    "label": "teacher-absence-1280",
+    "headings": [
+      "Nhiệm vụ kiểm tra đầu vào",
+      "Ca 1 · ENROLL",
+      "Synthetic Student · Lượt 1",
+      "Sửa điểm đầu vào",
+      "Điều hướng"
+    ],
+    "sha256": "79e328ccd0bc87a48f9306a1e5dc43d03e5128b260702735c28352b85ef19df5",
+    "synthetic": true
+  },
+  {
+    "title": "Giáo viên — điểm danh/sổ điểm",
+    "file": "g93-c9209b20-011-Teacher-375-m3-save-375.png",
+    "group": 93,
+    "role": "Teacher",
+    "width": 375,
+    "route": "/teacher/classes",
+    "label": "m3-save-375",
+    "headings": [
+      "Lớp phụ trách",
+      "CLASS_A · Đã hoàn thành",
+      "Sổ điểm lớp",
+      "Điểm danh buổi học",
+      "Lịch học và thi cuối khóa",
+      "Xác nhận lịch",
+      "Xác nhận",
+      "Điều hướng"
+    ],
+    "sha256": "f99ac1bbde0d4f1da3be8aead48123aec0f92bc3d32a8456c7edbd9fb2e98413",
+    "synthetic": true
+  },
+  {
+    "title": "Giáo viên — điểm danh/sổ điểm",
+    "file": "g93-c9209b20-031-Teacher-1280-m3-save-1280.png",
+    "group": 93,
+    "role": "Teacher",
+    "width": 1280,
+    "route": "/teacher/classes",
+    "label": "m3-save-1280",
+    "headings": [
+      "Lớp phụ trách",
+      "CLASS_A · Đã hoàn thành",
+      "Sổ điểm lớp",
+      "Điểm danh buổi học",
+      "Lịch học và thi cuối khóa",
+      "Xác nhận lịch",
+      "Xác nhận",
+      "Điều hướng"
+    ],
+    "sha256": "ee86558f22c96bf47d36dac97e9b998ffb0cf48e4456853ed7f7d72dc27b7b84",
+    "synthetic": true
+  },
+  {
+    "title": "Kế toán — hóa đơn và thanh toán",
+    "file": "g89-c33c1601-018-Accountant-375-group-89-api-GET-_api_vN_students_me_invoices_N-status-403.png",
+    "group": 89,
+    "role": "Accountant",
+    "width": 375,
+    "route": "/accountant/invoices/1",
+    "label": "group-89-api-GET-/api/vN/students/me/invoices/N-status-403",
+    "headings": [
+      "Hóa đơn và thanh toán",
+      "HD-2026-00000001 — Synthetic Student",
+      "Xác nhận",
+      "Điều hướng"
+    ],
+    "sha256": "2a4e1d5967a5603c6afe67d9d40698046985c22b84acba9a7630060d468c77e2",
+    "synthetic": true
+  },
+  {
+    "title": "Kế toán — hóa đơn và thanh toán",
+    "file": "g89-c33c1601-044-Accountant-1280-group-89-api-GET-_api_vN_students_me_invoices_N-status-403.png",
+    "group": 89,
+    "role": "Accountant",
+    "width": 1280,
+    "route": "/accountant/invoices/3",
+    "label": "group-89-api-GET-/api/vN/students/me/invoices/N-status-403",
+    "headings": [
+      "Hóa đơn và thanh toán",
+      "HD-2026-00000003 — Synthetic Student",
+      "Xác nhận",
+      "Điều hướng"
+    ],
+    "sha256": "687b9ff510417f8014e0f0b35e8c7d4a94f77872e763d9b26bdf19a4636b34f6",
+    "synthetic": true
+  },
+  {
+    "title": "Kế toán — báo cáo/CSV",
+    "file": "g95-8a48b55f-018-Accountant-375-group-95-api-GET-_api_vN_reports_accountant_finance_csv-status-400.png",
+    "group": 95,
+    "role": "Accountant",
+    "width": 375,
+    "route": "/accountant/reports",
+    "label": "group-95-api-GET-/api/vN/reports/accountant/finance/csv-status-400",
+    "headings": [
+      "Báo cáo trung tâm",
+      "Báo cáo tài chính",
+      "Điều hướng"
+    ],
+    "sha256": "5de0f30c88054fc0a39a9539cc18afc988158044864f53261ea665b96d8ec522",
+    "synthetic": true
+  },
+  {
+    "title": "Kế toán — báo cáo/CSV",
+    "file": "g95-8a48b55f-052-Accountant-1280-group-95-api-GET-_api_vN_reports_accountant_finance_csv-status-400.png",
+    "group": 95,
+    "role": "Accountant",
+    "width": 1280,
+    "route": "/accountant/reports",
+    "label": "group-95-api-GET-/api/vN/reports/accountant/finance/csv-status-400",
+    "headings": [
+      "Báo cáo trung tâm",
+      "Báo cáo tài chính",
+      "Điều hướng"
+    ],
+    "sha256": "5d3073069746d808abf63f2597865e2239c3bb8d4bc5a25547e1a784da594a76",
+    "synthetic": true
+  },
+  {
+    "title": "Admin — tài khoản/bàn giao mật khẩu",
+    "file": "g81-4f535b0c-016-Admin-375-group-81-api-GET-_api_vN_auth_me-status-401.png",
+    "group": 81,
+    "role": "Admin",
+    "width": 375,
+    "route": "/admin/accounts",
+    "label": "group-81-api-GET-/api/vN/auth/me-status-401",
+    "headings": [
+      "Quản trị tài khoản",
+      "Cấp tài khoản nhân sự",
+      "Xác nhận thao tác tài khoản",
+      "Bàn giao mật khẩu tạm một lần",
+      "Điều hướng"
+    ],
+    "sha256": "e4b07bd28cb1738a8dc19cfcaded70a955eba933797324239083528348c8dcf5",
+    "synthetic": true
+  },
+  {
+    "title": "Admin — tài khoản/bàn giao mật khẩu",
+    "file": "g81-4f535b0c-028-Admin-1280-group-81-cookie-policy.png",
+    "group": 81,
+    "role": "Admin",
+    "width": 1280,
+    "route": "/admin/accounts",
+    "label": "group-81-cookie-policy",
+    "headings": [
+      "Quản trị tài khoản",
+      "Cấp tài khoản nhân sự",
+      "Xác nhận thao tác tài khoản",
+      "Bàn giao mật khẩu tạm một lần",
+      "Điều hướng"
+    ],
+    "sha256": "b62212d9452e44777236ad00e9d5498d1f40de283d4e17917d33569899511407",
+    "synthetic": true
+  },
+  {
+    "title": "Admin — nhật ký kiểm toán",
+    "file": "g95-8a48b55f-023-Admin-375-group-95-api-GET-_api_vN_reports_director_finance-status-403.png",
+    "group": 95,
+    "role": "Admin",
+    "width": 375,
+    "route": "/admin/audit-events",
+    "label": "group-95-api-GET-/api/vN/reports/director/finance-status-403",
+    "headings": [
+      "Lịch sử kiểm toán",
+      "ACADEMIC.CLASS.COMPLETE · Thành công",
+      "Điều hướng"
+    ],
+    "sha256": "2dafae6d4509c13b3232210b60c9786a83a8d45f0ed65ee24ba7508f9934dbd1",
+    "synthetic": true
+  },
+  {
+    "title": "Admin — nhật ký kiểm toán",
+    "file": "g95-8a48b55f-057-Admin-1280-group-95-api-GET-_api_vN_reports_director_finance-status-403.png",
+    "group": 95,
+    "role": "Admin",
+    "width": 1280,
+    "route": "/admin/audit-events",
+    "label": "group-95-api-GET-/api/vN/reports/director/finance-status-403",
+    "headings": [
+      "Lịch sử kiểm toán",
+      "AUTH.LOGIN · Thành công",
+      "Điều hướng"
+    ],
+    "sha256": "35e4732221a6faf3e27627d3e20e7b8e99745fdbe7f87d31ed24df28db1fb269",
+    "synthetic": true
+  },
+  {
+    "title": "Giám đốc — tài chính/tuyển sinh/đào tạo",
+    "file": "g95-8a48b55f-013-Director-375-group-95-api-GET-_api_vN_reports_director_training-status-400.png",
+    "group": 95,
+    "role": "Director",
+    "width": 375,
+    "route": "/reports",
+    "label": "group-95-api-GET-/api/vN/reports/director/training-status-400",
+    "headings": [
+      "Báo cáo trung tâm",
+      "Báo cáo đào tạo",
+      "Điều hướng"
+    ],
+    "sha256": "25f2094ab3d6995817a7f44368b92e59af055999aa2b1f1ecde67796f2b63341",
+    "synthetic": true
+  },
+  {
+    "title": "Giám đốc — tài chính/tuyển sinh/đào tạo",
+    "file": "g95-8a48b55f-047-Director-1280-group-95-api-GET-_api_vN_reports_director_training-status-400.png",
+    "group": 95,
+    "role": "Director",
+    "width": 1280,
+    "route": "/reports",
+    "label": "group-95-api-GET-/api/vN/reports/director/training-status-400",
+    "headings": [
+      "Báo cáo trung tâm",
+      "Báo cáo đào tạo",
+      "Điều hướng"
+    ],
+    "sha256": "ad96525b8c3d76418c00c77aa868da122ab4ab19004db966ecbcd781f43843db",
+    "synthetic": true
+  }
+]

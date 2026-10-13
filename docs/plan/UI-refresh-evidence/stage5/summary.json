@@ -1,0 +1,64 @@
+{
+  "stage": 5,
+  "status": "COMPLETE",
+  "review": "PASS",
+  "date": "2026-10-13",
+  "branch": "ui-refresh",
+  "workingTreeUncommitted": true,
+  "mainApplied": false,
+  "frontend": {
+    "passed": 183,
+    "failed": 0,
+    "skipped": 0,
+    "types": true,
+    "lint": true,
+    "build": true
+  },
+  "edge": {
+    "uniqueCases": 21,
+    "finalPassed": 21,
+    "failed": 0,
+    "skipped": 0,
+    "duration": "9m04",
+    "initialRunPassed": 21,
+    "runs": 2,
+    "widths": [
+      375,
+      768,
+      1280
+    ],
+    "evidence": "final-browser/stage5-final-edge.trx"
+  },
+  "strictMode": {
+    "passed": true,
+    "destinations": 13,
+    "transport": "mock HTTP only",
+    "evidence": "strict-mode-final.log"
+  },
+  "screenshots": 593,
+  "selected": 22,
+  "digestsVerified": true,
+  "sourceFiles": 107,
+  "latePresentationChanges": [
+    "frontend/src/features/entrySessions/pages/EntrySessionPage.tsx",
+    "frontend/src/features/entryTasks/TeacherEntryPage.tsx",
+    "frontend/src/features/programs/pages/ProgramPage.tsx",
+    "frontend/src/styles/workbench.css"
+  ],
+  "protectedDrift": [],
+  "scratch": {
+    "created": 42,
+    "dropped": 42,
+    "unpaired": 0,
+    "runs": 2,
+    "independentLiveCount": 0,
+    "listener8443": 0,
+    "liveEvidence": "live-scratch-final.log",
+    "listenerEvidence": "listener8443-final.txt"
+  },
+  "backendDefaultRerun": false,
+  "newDependencies": false,
+  "genuineRuntimeAcceptance": false,
+  "nextStage": 6,
+  "finalOwnerGate": 4
+}

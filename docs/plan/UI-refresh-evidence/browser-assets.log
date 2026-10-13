@@ -1,0 +1,18 @@
+vite v8.3.2 building client environment for production...
+transforming...
+✓ 102 modules transformed.
+rendering chunks...
+computing gzip size...
+../../../../Users/asus/AppData/Local/Temp/englishcenter-ui-refresh-assets-20261013/tests/browser/identity-entry.html       0.36 kB │ gzip:   0.26 kB
+../../../../Users/asus/AppData/Local/Temp/englishcenter-ui-refresh-assets-20261013/assets/identity-entry-BpXI-GUq.css     19.97 kB │ gzip:   4.65 kB
+../../../../Users/asus/AppData/Local/Temp/englishcenter-ui-refresh-assets-20261013/assets/reportWire-CeB_aCMc.js           5.26 kB │ gzip:   1.92 kB
+../../../../Users/asus/AppData/Local/Temp/englishcenter-ui-refresh-assets-20261013/assets/GradeReviewPage-Cy3345z1.js      5.96 kB │ gzip:   2.22 kB
+../../../../Users/asus/AppData/Local/Temp/englishcenter-ui-refresh-assets-20261013/assets/StudentGradesPage-h_8HWONd.js    9.05 kB │ gzip:   3.18 kB
+../../../../Users/asus/AppData/Local/Temp/englishcenter-ui-refresh-assets-20261013/assets/GradebookPanel-CgnPKtZJ.js      12.14 kB │ gzip:   3.96 kB
+../../../../Users/asus/AppData/Local/Temp/englishcenter-ui-refresh-assets-20261013/assets/AttendancePanel-DU4bSrwa.js     12.90 kB │ gzip:   4.56 kB
+../../../../Users/asus/AppData/Local/Temp/englishcenter-ui-refresh-assets-20261013/assets/gradeApi-Cid87o1s.js            14.54 kB │ gzip:   4.29 kB
+../../../../Users/asus/AppData/Local/Temp/englishcenter-ui-refresh-assets-20261013/assets/ReportsPage-Dq5Sn-RQ.js         17.03 kB │ gzip:   5.46 kB
+../../../../Users/asus/AppData/Local/Temp/englishcenter-ui-refresh-assets-20261013/assets/AuditPage-Chtz202r.js           22.02 kB │ gzip:   5.89 kB
+../../../../Users/asus/AppData/Local/Temp/englishcenter-ui-refresh-assets-20261013/assets/identity-entry-Dp5E6n_d.js     495.42 kB │ gzip: 130.00 kB
+
+✓ built in 339ms

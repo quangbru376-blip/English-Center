@@ -1,0 +1,154 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TestRun id="cda299f9-1d93-423a-b879-fb4d35b939bc" name="asus@CHARCAS 2026-10-13 15:51:25" runUser="CHARCAS\asus" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <Times creation="2026-10-13T15:51:25.4120107+07:00" queuing="2026-10-13T15:51:25.4120113+07:00" start="2026-10-13T15:50:50.7166204+07:00" finish="2026-10-13T15:59:48.6559969+07:00" />
+  <TestSettings name="default" id="9acaa569-a4d7-451a-8e25-cc386bcab5b4">
+    <Deployment runDeploymentRoot="asus_CHARCAS_2026-10-13_15_51_25" />
+  </TestSettings>
+  <Results>
+    <UnitTestResult executionId="de15f945-f36a-4b36-81f3-0af85fa1c832" testId="46891fa3-7c8d-2cac-3fce-a619741632f6" testName="EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests.RealBrowserHttpsToOwnedCommit(group: 83)" computerName="CHARCAS" duration="00:00:12.6960000" startTime="2026-10-13T15:55:53.6840398+07:00" endTime="2026-10-13T15:56:06.3801766+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="de15f945-f36a-4b36-81f3-0af85fa1c832" />
+    <UnitTestResult executionId="ab28adf9-3b68-4ea0-a54f-4318e56736fb" testId="ee03b107-2857-c068-91f1-33475191341e" testName="EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests.M2ClassesRealEdgeThreeWidths" computerName="CHARCAS" duration="00:00:26.3960000" startTime="2026-10-13T15:52:52.5358673+07:00" endTime="2026-10-13T15:53:18.9323319+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="ab28adf9-3b68-4ea0-a54f-4318e56736fb" />
+    <UnitTestResult executionId="8f87cbf4-f547-41dd-abda-fc569a5b44c3" testId="eb3b70aa-1e7b-9906-0a37-bc8b50fea308" testName="EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests.RealBrowserHttpsToOwnedCommit(group: 4)" computerName="CHARCAS" duration="00:00:10.2520000" startTime="2026-10-13T15:55:18.2129937+07:00" endTime="2026-10-13T15:55:28.4652235+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="8f87cbf4-f547-41dd-abda-fc569a5b44c3" />
+    <UnitTestResult executionId="d025c9de-7aca-47d4-9735-3ce421941ce2" testId="b36a2261-56a2-620c-1534-9f5644928a92" testName="EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests.M4ReportsAuditRealEdgeThreeWidths" computerName="CHARCAS" duration="00:00:29.0080000" startTime="2026-10-13T15:59:19.5248522+07:00" endTime="2026-10-13T15:59:48.5331139+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="d025c9de-7aca-47d4-9735-3ce421941ce2" />
+    <UnitTestResult executionId="455631ba-baf7-4655-b06f-b506d8ad93ee" testId="90b971ec-b1b3-5ffb-c9df-38989ba87189" testName="EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests.RealBrowserHttpsToOwnedCommit(group: 5)" computerName="CHARCAS" duration="00:00:07.8780000" startTime="2026-10-13T15:59:11.6450185+07:00" endTime="2026-10-13T15:59:19.5237028+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="455631ba-baf7-4655-b06f-b506d8ad93ee" />
+    <UnitTestResult executionId="b67c42ea-55a3-46e3-b8d7-9ab4e04880cd" testId="afac8390-739b-4ce4-b112-31123d567d28" testName="EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests.RealBrowserHttpsToOwnedCommit(group: 88)" computerName="CHARCAS" duration="00:00:33.5110000" startTime="2026-10-13T15:53:52.5106312+07:00" endTime="2026-10-13T15:54:26.0219973+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="b67c42ea-55a3-46e3-b8d7-9ab4e04880cd" />
+    <UnitTestResult executionId="6b374353-727a-42e0-a4d4-b5a08c4d82d9" testId="10b86601-3d7c-b131-3514-f285b995fec4" testName="EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests.RealBrowserHttpsToOwnedCommit(group: 9)" computerName="CHARCAS" duration="00:00:06.9290000" startTime="2026-10-13T15:56:06.3824524+07:00" endTime="2026-10-13T15:56:13.3115909+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="6b374353-727a-42e0-a4d4-b5a08c4d82d9" />
+    <UnitTestResult executionId="54d0b879-6012-4458-bf4d-c882804ceeaf" testId="0ada3354-9b38-ddaf-93e7-e51ba47dda78" testName="EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests.M3GradingRealEdgeThreeWidths" computerName="CHARCAS" duration="00:00:33.5730000" startTime="2026-10-13T15:53:18.9344854+07:00" endTime="2026-10-13T15:53:52.5080028+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="54d0b879-6012-4458-bf4d-c882804ceeaf" />
+    <UnitTestResult executionId="cce78b09-2b3f-4d2e-aab3-4dc0f2748ab2" testId="0d26d97b-6fc2-70b4-a387-de16b4c9fa86" testName="EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests.RealBrowserHttpsToOwnedCommit(group: 87)" computerName="CHARCAS" duration="00:00:31.7650000" startTime="2026-10-13T15:54:46.4459895+07:00" endTime="2026-10-13T15:55:18.2113325+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="cce78b09-2b3f-4d2e-aab3-4dc0f2748ab2" />
+    <UnitTestResult executionId="c4701434-5788-466f-9850-d6b762fa52f6" testId="19c2cc2a-be43-f369-6a6b-293e77de9fe6" testName="EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests.RealBrowserHttpsToOwnedCommit(group: 2)" computerName="CHARCAS" duration="00:02:15.5260000" startTime="2026-10-13T15:56:43.2096340+07:00" endTime="2026-10-13T15:58:58.7361205+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="c4701434-5788-466f-9850-d6b762fa52f6" />
+    <UnitTestResult executionId="223ab43f-e252-451f-a6e0-4f2b3009d326" testId="0cb6832a-acd0-1275-bc40-581294bb6fe1" testName="EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests.RealBrowserHttpsToOwnedCommit(group: 86)" computerName="CHARCAS" duration="00:00:12.9060000" startTime="2026-10-13T15:58:58.7374617+07:00" endTime="2026-10-13T15:59:11.6440905+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="223ab43f-e252-451f-a6e0-4f2b3009d326" />
+    <UnitTestResult executionId="8b0cd858-2489-4207-a9ea-cb1b69a963a4" testId="bfc27950-e638-daf1-46c1-751ecbe6e0ac" testName="EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests.M3TeachingRealEdgeThreeWidths" computerName="CHARCAS" duration="00:00:32.3980000" startTime="2026-10-13T15:50:52.9042088+07:00" endTime="2026-10-13T15:51:25.3325497+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="8b0cd858-2489-4207-a9ea-cb1b69a963a4" />
+    <UnitTestResult executionId="899ecad1-214a-4c28-9660-da0cca34480e" testId="cc4ddb15-27c1-9d3a-47ab-ffa533b34a35" testName="EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests.M3PublicationRealEdgeThreeWidths" computerName="CHARCAS" duration="00:00:32.6510000" startTime="2026-10-13T15:51:48.3663875+07:00" endTime="2026-10-13T15:52:21.0176760+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="899ecad1-214a-4c28-9660-da0cca34480e" />
+    <UnitTestResult executionId="abe45383-abaa-45a2-9da2-9c306ff98937" testId="74760e3b-898c-7d37-360e-1a8eab9e6585" testName="EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests.RealBrowserHttpsToOwnedCommit(group: 6)" computerName="CHARCAS" duration="00:00:07.0350000" startTime="2026-10-13T15:55:40.0340286+07:00" endTime="2026-10-13T15:55:47.0695493+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="abe45383-abaa-45a2-9da2-9c306ff98937" />
+    <UnitTestResult executionId="891f9651-eff4-4438-8a17-7ae22f58b8a7" testId="c5e11282-2d80-06eb-c2d9-8e1f5c47ef2d" testName="EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests.RealBrowserHttpsToOwnedCommit(group: 81)" computerName="CHARCAS" duration="00:00:11.0450000" startTime="2026-10-13T15:56:13.3131237+07:00" endTime="2026-10-13T15:56:24.3586332+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="891f9651-eff4-4438-8a17-7ae22f58b8a7" />
+    <UnitTestResult executionId="ae8e9c3f-9aef-4d65-9760-9c997af3c1e5" testId="642867ef-95d5-0c7f-b489-ed4c38e11014" testName="EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests.M2FinanceRealEdgeThreeWidths" computerName="CHARCAS" duration="00:00:22.9880000" startTime="2026-10-13T15:51:25.3748212+07:00" endTime="2026-10-13T15:51:48.3640166+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="ae8e9c3f-9aef-4d65-9760-9c997af3c1e5" />
+    <UnitTestResult executionId="fe88da9f-2d40-44cd-bba6-39cb1af4a63c" testId="60f2ec90-4126-11e1-08cb-3133510d82f5" testName="EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests.RealBrowserHttpsToOwnedCommit(group: 84)" computerName="CHARCAS" duration="00:00:11.5650000" startTime="2026-10-13T15:55:28.4666492+07:00" endTime="2026-10-13T15:55:40.0323881+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="fe88da9f-2d40-44cd-bba6-39cb1af4a63c" />
+    <UnitTestResult executionId="af63dbc7-a99f-4f53-8e12-2302eff844f3" testId="75d4db77-07d7-4320-37b3-943cb4e79478" testName="EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests.M2SchedulesRealEdgeThreeWidths" computerName="CHARCAS" duration="00:00:31.5130000" startTime="2026-10-13T15:52:21.0200416+07:00" endTime="2026-10-13T15:52:52.5338152+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="af63dbc7-a99f-4f53-8e12-2302eff844f3" />
+    <UnitTestResult executionId="d69861b3-7ee8-4fdb-add2-44a54a383579" testId="7815e6c8-c595-3a62-a342-16c0368264dd" testName="EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests.RealBrowserHttpsToOwnedCommit(group: 1)" computerName="CHARCAS" duration="00:00:06.6110000" startTime="2026-10-13T15:55:47.0707997+07:00" endTime="2026-10-13T15:55:53.6827054+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="d69861b3-7ee8-4fdb-add2-44a54a383579" />
+    <UnitTestResult executionId="e75171da-afc4-4115-a960-7a98b7f93979" testId="3c22308e-2860-092c-fae5-b792b29da66f" testName="EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests.RealBrowserHttpsToOwnedCommit(group: 85)" computerName="CHARCAS" duration="00:00:18.8470000" startTime="2026-10-13T15:56:24.3606231+07:00" endTime="2026-10-13T15:56:43.2078965+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="e75171da-afc4-4115-a960-7a98b7f93979" />
+    <UnitTestResult executionId="5a75ab42-8c18-4a88-9cdb-12f43c7fb2ce" testId="c3948b88-c70c-2895-2d77-08797a84afca" testName="EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests.RealBrowserHttpsToOwnedCommit(group: 82)" computerName="CHARCAS" duration="00:00:20.4190000" startTime="2026-10-13T15:54:26.0243304+07:00" endTime="2026-10-13T15:54:46.4442891+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="5a75ab42-8c18-4a88-9cdb-12f43c7fb2ce" />
+  </Results>
+  <TestDefinitions>
+    <UnitTest name="EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests.RealBrowserHttpsToOwnedCommit(group: 6)" storage="c:\study\soen\main_workplace\backend\tests\englishcenter.tests\bin\debug\net10.0\englishcenter.tests.dll" id="74760e3b-898c-7d37-360e-1a8eab9e6585">
+      <Execution id="abe45383-abaa-45a2-9da2-9c306ff98937" />
+      <TestMethod codeBase="C:\Study\SOEN\main_workplace\backend\tests\EnglishCenter.Tests\bin\Debug\net10.0\EnglishCenter.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests" name="RealBrowserHttpsToOwnedCommit" />
+    </UnitTest>
+    <UnitTest name="EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests.M2ClassesRealEdgeThreeWidths" storage="c:\study\soen\main_workplace\backend\tests\englishcenter.tests\bin\debug\net10.0\englishcenter.tests.dll" id="ee03b107-2857-c068-91f1-33475191341e">
+      <Execution id="ab28adf9-3b68-4ea0-a54f-4318e56736fb" />
+      <TestMethod codeBase="C:\Study\SOEN\main_workplace\backend\tests\EnglishCenter.Tests\bin\Debug\net10.0\EnglishCenter.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests" name="M2ClassesRealEdgeThreeWidths" />
+    </UnitTest>
+    <UnitTest name="EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests.M3PublicationRealEdgeThreeWidths" storage="c:\study\soen\main_workplace\backend\tests\englishcenter.tests\bin\debug\net10.0\englishcenter.tests.dll" id="cc4ddb15-27c1-9d3a-47ab-ffa533b34a35">
+      <Execution id="899ecad1-214a-4c28-9660-da0cca34480e" />
+      <TestMethod codeBase="C:\Study\SOEN\main_workplace\backend\tests\EnglishCenter.Tests\bin\Debug\net10.0\EnglishCenter.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests" name="M3PublicationRealEdgeThreeWidths" />
+    </UnitTest>
+    <UnitTest name="EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests.RealBrowserHttpsToOwnedCommit(group: 85)" storage="c:\study\soen\main_workplace\backend\tests\englishcenter.tests\bin\debug\net10.0\englishcenter.tests.dll" id="3c22308e-2860-092c-fae5-b792b29da66f">
+      <Execution id="e75171da-afc4-4115-a960-7a98b7f93979" />
+      <TestMethod codeBase="C:\Study\SOEN\main_workplace\backend\tests\EnglishCenter.Tests\bin\Debug\net10.0\EnglishCenter.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests" name="RealBrowserHttpsToOwnedCommit" />
+    </UnitTest>
+    <UnitTest name="EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests.RealBrowserHttpsToOwnedCommit(group: 81)" storage="c:\study\soen\main_workplace\backend\tests\englishcenter.tests\bin\debug\net10.0\englishcenter.tests.dll" id="c5e11282-2d80-06eb-c2d9-8e1f5c47ef2d">
+      <Execution id="891f9651-eff4-4438-8a17-7ae22f58b8a7" />
+      <TestMethod codeBase="C:\Study\SOEN\main_workplace\backend\tests\EnglishCenter.Tests\bin\Debug\net10.0\EnglishCenter.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests" name="RealBrowserHttpsToOwnedCommit" />
+    </UnitTest>
+    <UnitTest name="EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests.M3TeachingRealEdgeThreeWidths" storage="c:\study\soen\main_workplace\backend\tests\englishcenter.tests\bin\debug\net10.0\englishcenter.tests.dll" id="bfc27950-e638-daf1-46c1-751ecbe6e0ac">
+      <Execution id="8b0cd858-2489-4207-a9ea-cb1b69a963a4" />
+      <TestMethod codeBase="C:\Study\SOEN\main_workplace\backend\tests\EnglishCenter.Tests\bin\Debug\net10.0\EnglishCenter.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests" name="M3TeachingRealEdgeThreeWidths" />
+    </UnitTest>
+    <UnitTest name="EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests.RealBrowserHttpsToOwnedCommit(group: 84)" storage="c:\study\soen\main_workplace\backend\tests\englishcenter.tests\bin\debug\net10.0\englishcenter.tests.dll" id="60f2ec90-4126-11e1-08cb-3133510d82f5">
+      <Execution id="fe88da9f-2d40-44cd-bba6-39cb1af4a63c" />
+      <TestMethod codeBase="C:\Study\SOEN\main_workplace\backend\tests\EnglishCenter.Tests\bin\Debug\net10.0\EnglishCenter.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests" name="RealBrowserHttpsToOwnedCommit" />
+    </UnitTest>
+    <UnitTest name="EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests.RealBrowserHttpsToOwnedCommit(group: 1)" storage="c:\study\soen\main_workplace\backend\tests\englishcenter.tests\bin\debug\net10.0\englishcenter.tests.dll" id="7815e6c8-c595-3a62-a342-16c0368264dd">
+      <Execution id="d69861b3-7ee8-4fdb-add2-44a54a383579" />
+      <TestMethod codeBase="C:\Study\SOEN\main_workplace\backend\tests\EnglishCenter.Tests\bin\Debug\net10.0\EnglishCenter.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests" name="RealBrowserHttpsToOwnedCommit" />
+    </UnitTest>
+    <UnitTest name="EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests.M2FinanceRealEdgeThreeWidths" storage="c:\study\soen\main_workplace\backend\tests\englishcenter.tests\bin\debug\net10.0\englishcenter.tests.dll" id="642867ef-95d5-0c7f-b489-ed4c38e11014">
+      <Execution id="ae8e9c3f-9aef-4d65-9760-9c997af3c1e5" />
+      <TestMethod codeBase="C:\Study\SOEN\main_workplace\backend\tests\EnglishCenter.Tests\bin\Debug\net10.0\EnglishCenter.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests" name="M2FinanceRealEdgeThreeWidths" />
+    </UnitTest>
+    <UnitTest name="EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests.RealBrowserHttpsToOwnedCommit(group: 2)" storage="c:\study\soen\main_workplace\backend\tests\englishcenter.tests\bin\debug\net10.0\englishcenter.tests.dll" id="19c2cc2a-be43-f369-6a6b-293e77de9fe6">
+      <Execution id="c4701434-5788-466f-9850-d6b762fa52f6" />
+      <TestMethod codeBase="C:\Study\SOEN\main_workplace\backend\tests\EnglishCenter.Tests\bin\Debug\net10.0\EnglishCenter.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests" name="RealBrowserHttpsToOwnedCommit" />
+    </UnitTest>
+    <UnitTest name="EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests.RealBrowserHttpsToOwnedCommit(group: 87)" storage="c:\study\soen\main_workplace\backend\tests\englishcenter.tests\bin\debug\net10.0\englishcenter.tests.dll" id="0d26d97b-6fc2-70b4-a387-de16b4c9fa86">
+      <Execution id="cce78b09-2b3f-4d2e-aab3-4dc0f2748ab2" />
+      <TestMethod codeBase="C:\Study\SOEN\main_workplace\backend\tests\EnglishCenter.Tests\bin\Debug\net10.0\EnglishCenter.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests" name="RealBrowserHttpsToOwnedCommit" />
+    </UnitTest>
+    <UnitTest name="EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests.RealBrowserHttpsToOwnedCommit(group: 82)" storage="c:\study\soen\main_workplace\backend\tests\englishcenter.tests\bin\debug\net10.0\englishcenter.tests.dll" id="c3948b88-c70c-2895-2d77-08797a84afca">
+      <Execution id="5a75ab42-8c18-4a88-9cdb-12f43c7fb2ce" />
+      <TestMethod codeBase="C:\Study\SOEN\main_workplace\backend\tests\EnglishCenter.Tests\bin\Debug\net10.0\EnglishCenter.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests" name="RealBrowserHttpsToOwnedCommit" />
+    </UnitTest>
+    <UnitTest name="EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests.M2SchedulesRealEdgeThreeWidths" storage="c:\study\soen\main_workplace\backend\tests\englishcenter.tests\bin\debug\net10.0\englishcenter.tests.dll" id="75d4db77-07d7-4320-37b3-943cb4e79478">
+      <Execution id="af63dbc7-a99f-4f53-8e12-2302eff844f3" />
+      <TestMethod codeBase="C:\Study\SOEN\main_workplace\backend\tests\EnglishCenter.Tests\bin\Debug\net10.0\EnglishCenter.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests" name="M2SchedulesRealEdgeThreeWidths" />
+    </UnitTest>
+    <UnitTest name="EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests.RealBrowserHttpsToOwnedCommit(group: 5)" storage="c:\study\soen\main_workplace\backend\tests\englishcenter.tests\bin\debug\net10.0\englishcenter.tests.dll" id="90b971ec-b1b3-5ffb-c9df-38989ba87189">
+      <Execution id="455631ba-baf7-4655-b06f-b506d8ad93ee" />
+      <TestMethod codeBase="C:\Study\SOEN\main_workplace\backend\tests\EnglishCenter.Tests\bin\Debug\net10.0\EnglishCenter.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests" name="RealBrowserHttpsToOwnedCommit" />
+    </UnitTest>
+    <UnitTest name="EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests.RealBrowserHttpsToOwnedCommit(group: 88)" storage="c:\study\soen\main_workplace\backend\tests\englishcenter.tests\bin\debug\net10.0\englishcenter.tests.dll" id="afac8390-739b-4ce4-b112-31123d567d28">
+      <Execution id="b67c42ea-55a3-46e3-b8d7-9ab4e04880cd" />
+      <TestMethod codeBase="C:\Study\SOEN\main_workplace\backend\tests\EnglishCenter.Tests\bin\Debug\net10.0\EnglishCenter.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests" name="RealBrowserHttpsToOwnedCommit" />
+    </UnitTest>
+    <UnitTest name="EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests.RealBrowserHttpsToOwnedCommit(group: 86)" storage="c:\study\soen\main_workplace\backend\tests\englishcenter.tests\bin\debug\net10.0\englishcenter.tests.dll" id="0cb6832a-acd0-1275-bc40-581294bb6fe1">
+      <Execution id="223ab43f-e252-451f-a6e0-4f2b3009d326" />
+      <TestMethod codeBase="C:\Study\SOEN\main_workplace\backend\tests\EnglishCenter.Tests\bin\Debug\net10.0\EnglishCenter.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests" name="RealBrowserHttpsToOwnedCommit" />
+    </UnitTest>
+    <UnitTest name="EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests.M3GradingRealEdgeThreeWidths" storage="c:\study\soen\main_workplace\backend\tests\englishcenter.tests\bin\debug\net10.0\englishcenter.tests.dll" id="0ada3354-9b38-ddaf-93e7-e51ba47dda78">
+      <Execution id="54d0b879-6012-4458-bf4d-c882804ceeaf" />
+      <TestMethod codeBase="C:\Study\SOEN\main_workplace\backend\tests\EnglishCenter.Tests\bin\Debug\net10.0\EnglishCenter.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests" name="M3GradingRealEdgeThreeWidths" />
+    </UnitTest>
+    <UnitTest name="EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests.RealBrowserHttpsToOwnedCommit(group: 83)" storage="c:\study\soen\main_workplace\backend\tests\englishcenter.tests\bin\debug\net10.0\englishcenter.tests.dll" id="46891fa3-7c8d-2cac-3fce-a619741632f6">
+      <Execution id="de15f945-f36a-4b36-81f3-0af85fa1c832" />
+      <TestMethod codeBase="C:\Study\SOEN\main_workplace\backend\tests\EnglishCenter.Tests\bin\Debug\net10.0\EnglishCenter.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests" name="RealBrowserHttpsToOwnedCommit" />
+    </UnitTest>
+    <UnitTest name="EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests.RealBrowserHttpsToOwnedCommit(group: 9)" storage="c:\study\soen\main_workplace\backend\tests\englishcenter.tests\bin\debug\net10.0\englishcenter.tests.dll" id="10b86601-3d7c-b131-3514-f285b995fec4">
+      <Execution id="6b374353-727a-42e0-a4d4-b5a08c4d82d9" />
+      <TestMethod codeBase="C:\Study\SOEN\main_workplace\backend\tests\EnglishCenter.Tests\bin\Debug\net10.0\EnglishCenter.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests" name="RealBrowserHttpsToOwnedCommit" />
+    </UnitTest>
+    <UnitTest name="EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests.M4ReportsAuditRealEdgeThreeWidths" storage="c:\study\soen\main_workplace\backend\tests\englishcenter.tests\bin\debug\net10.0\englishcenter.tests.dll" id="b36a2261-56a2-620c-1534-9f5644928a92">
+      <Execution id="d025c9de-7aca-47d4-9735-3ce421941ce2" />
+      <TestMethod codeBase="C:\Study\SOEN\main_workplace\backend\tests\EnglishCenter.Tests\bin\Debug\net10.0\EnglishCenter.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests" name="M4ReportsAuditRealEdgeThreeWidths" />
+    </UnitTest>
+    <UnitTest name="EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests.RealBrowserHttpsToOwnedCommit(group: 4)" storage="c:\study\soen\main_workplace\backend\tests\englishcenter.tests\bin\debug\net10.0\englishcenter.tests.dll" id="eb3b70aa-1e7b-9906-0a37-bc8b50fea308">
+      <Execution id="8f87cbf4-f547-41dd-abda-fc569a5b44c3" />
+      <TestMethod codeBase="C:\Study\SOEN\main_workplace\backend\tests\EnglishCenter.Tests\bin\Debug\net10.0\EnglishCenter.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="EnglishCenter.Tests.Api.Integration.OwnedBrowserSqlHostingTests" name="RealBrowserHttpsToOwnedCommit" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestEntries>
+    <TestEntry testId="46891fa3-7c8d-2cac-3fce-a619741632f6" executionId="de15f945-f36a-4b36-81f3-0af85fa1c832" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="ee03b107-2857-c068-91f1-33475191341e" executionId="ab28adf9-3b68-4ea0-a54f-4318e56736fb" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="eb3b70aa-1e7b-9906-0a37-bc8b50fea308" executionId="8f87cbf4-f547-41dd-abda-fc569a5b44c3" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="b36a2261-56a2-620c-1534-9f5644928a92" executionId="d025c9de-7aca-47d4-9735-3ce421941ce2" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="90b971ec-b1b3-5ffb-c9df-38989ba87189" executionId="455631ba-baf7-4655-b06f-b506d8ad93ee" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="afac8390-739b-4ce4-b112-31123d567d28" executionId="b67c42ea-55a3-46e3-b8d7-9ab4e04880cd" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="10b86601-3d7c-b131-3514-f285b995fec4" executionId="6b374353-727a-42e0-a4d4-b5a08c4d82d9" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="0ada3354-9b38-ddaf-93e7-e51ba47dda78" executionId="54d0b879-6012-4458-bf4d-c882804ceeaf" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="0d26d97b-6fc2-70b4-a387-de16b4c9fa86" executionId="cce78b09-2b3f-4d2e-aab3-4dc0f2748ab2" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="19c2cc2a-be43-f369-6a6b-293e77de9fe6" executionId="c4701434-5788-466f-9850-d6b762fa52f6" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="0cb6832a-acd0-1275-bc40-581294bb6fe1" executionId="223ab43f-e252-451f-a6e0-4f2b3009d326" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="bfc27950-e638-daf1-46c1-751ecbe6e0ac" executionId="8b0cd858-2489-4207-a9ea-cb1b69a963a4" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="cc4ddb15-27c1-9d3a-47ab-ffa533b34a35" executionId="899ecad1-214a-4c28-9660-da0cca34480e" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="74760e3b-898c-7d37-360e-1a8eab9e6585" executionId="abe45383-abaa-45a2-9da2-9c306ff98937" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="c5e11282-2d80-06eb-c2d9-8e1f5c47ef2d" executionId="891f9651-eff4-4438-8a17-7ae22f58b8a7" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="642867ef-95d5-0c7f-b489-ed4c38e11014" executionId="ae8e9c3f-9aef-4d65-9760-9c997af3c1e5" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="60f2ec90-4126-11e1-08cb-3133510d82f5" executionId="fe88da9f-2d40-44cd-bba6-39cb1af4a63c" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="75d4db77-07d7-4320-37b3-943cb4e79478" executionId="af63dbc7-a99f-4f53-8e12-2302eff844f3" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="7815e6c8-c595-3a62-a342-16c0368264dd" executionId="d69861b3-7ee8-4fdb-add2-44a54a383579" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="3c22308e-2860-092c-fae5-b792b29da66f" executionId="e75171da-afc4-4115-a960-7a98b7f93979" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="c3948b88-c70c-2895-2d77-08797a84afca" executionId="5a75ab42-8c18-4a88-9cdb-12f43c7fb2ce" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <ResultSummary outcome="Completed">
+    <Counters total="21" executed="21" passed="21" failed="0" error="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+    <Output>
+      <StdOut>[xUnit.net 00:00:00.00] xUnit.net VSTest Adapter v4.0.0+05679a7ab5 (64-bit .NET 10.0.4)&#xD;
+[xUnit.net 00:00:00.33]   Discovering: EnglishCenter.Tests&#xD;
+[xUnit.net 00:00:01.22]   Discovered:  EnglishCenter.Tests&#xD;
+[xUnit.net 00:00:01.50]   Starting:    EnglishCenter.Tests&#xD;
+[xUnit.net 00:08:57.42]   Finished:    EnglishCenter.Tests (ID = 'cb4360231e9a92433e299e124d24776dd42ec676afd7171830ebad8a4c53128f')&#xD;
+</StdOut>
+    </Output>
+  </ResultSummary>
+</TestRun>

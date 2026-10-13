@@ -1,0 +1,1042 @@
+{
+  "kind": "source-freeze-not-runtime-proof",
+  "rows": [
+    {
+      "file": "package-lock.json",
+      "sha256": "7bef26a14acfcf525d19ae8f580d9426e9937e479ebbdfdc53070abb1473d513",
+      "literalSelectors": [],
+      "routeLiterals": []
+    },
+    {
+      "file": "package.json",
+      "sha256": "abd6b4d34a604c994728dd8827f84453653aaa2828384fc920df5549f3ba0663",
+      "literalSelectors": [],
+      "routeLiterals": []
+    },
+    {
+      "file": "src/app/App.tsx",
+      "sha256": "0df6fc109a1cee6cd11d1ec6a49b2c21867e7df7efd3edd5b660131fe2b1062c",
+      "literalSelectors": [],
+      "routeLiterals": []
+    },
+    {
+      "file": "src/app/IdentityApp.tsx",
+      "sha256": "f6e9d86cb01431fa6f0f150ea3ba8e434a3ca8c36333b0d59bd872e1e1eebd25",
+      "literalSelectors": [
+        {
+          "attribute": "aria-label",
+          "value": "Quản trị"
+        },
+        {
+          "attribute": "aria-label",
+          "value": "Giáo vụ"
+        },
+        {
+          "attribute": "aria-label",
+          "value": "Học viên"
+        },
+        {
+          "attribute": "aria-label",
+          "value": "Kế toán"
+        },
+        {
+          "attribute": "aria-label",
+          "value": "Giáo viên"
+        }
+      ],
+      "routeLiterals": [
+        "/account/change-password",
+        "/login",
+        "/admin/accounts",
+        "/admin/audit-events",
+        "/admin/operations",
+        "/admin/audit-events/",
+        "/admin/operations/",
+        "/admin/accounts/",
+        "/academics/entry-test-sessions",
+        "/academics/courses",
+        "/academics/training-programs",
+        "/academics/classes",
+        "/academics/grade-reviews",
+        "/student/home",
+        "/student/invoices",
+        "/student/classes",
+        "/student/grade-reports",
+        "/student/grade-reports/",
+        "/accountant/invoices",
+        "/accountant/reports",
+        "/accountant/invoices/",
+        "/accountant/payments/",
+        "/teacher/entry-test-sessions",
+        "/teacher/classes",
+        "/register"
+      ]
+    },
+    {
+      "file": "src/app/IdentityShell.tsx",
+      "sha256": "2b98cadde43e2822c9f7c70ddc4e30a12307cf898fb1d0098a653c4ca3ed315b",
+      "literalSelectors": [
+        {
+          "attribute": "id",
+          "value": "main-content"
+        }
+      ],
+      "routeLiterals": []
+    },
+    {
+      "file": "src/app/identityNavigation.ts",
+      "sha256": "e8cbccc66ecaad3ca503398241cf4e78f7a4e8a1939444316d99f1a21f478d38",
+      "literalSelectors": [],
+      "routeLiterals": [
+        "/student/home",
+        "/admissions/registrations",
+        "/academics/entry-test-sessions",
+        "/teacher/classes",
+        "/accountant/invoices",
+        "/reports",
+        "/admin/accounts",
+        "/register",
+        "/login",
+        "/account/change-password",
+        "/accountant/reports",
+        "/admin/audit-events",
+        "/academics/grade-reviews",
+        "/academics/classes",
+        "/academics/courses",
+        "/academics/training-programs",
+        "/teacher/entry-test-sessions",
+        "/student/grade-reports",
+        "/student/classes",
+        "/student/invoices"
+      ]
+    },
+    {
+      "file": "src/components/ui/Button.tsx",
+      "sha256": "17a4c511f4a3d424bea1708b3acad85cab94308e1d46393bf067860fdac7e3fd",
+      "literalSelectors": [],
+      "routeLiterals": []
+    },
+    {
+      "file": "src/components/ui/Feedback.tsx",
+      "sha256": "4599a2c1d0bd1d7b4d5a8b496d68e6f4090f6b9bc6904d0e6d012e6290b7c1ac",
+      "literalSelectors": [],
+      "routeLiterals": []
+    },
+    {
+      "file": "src/components/ui/LocalCalendar.tsx",
+      "sha256": "e81180cf5eea6298c6dd10cf5ee15d1a6f6b38cc0df1aca8e688294e7fdb0551",
+      "literalSelectors": [
+        {
+          "attribute": "aria-label",
+          "value": "Lịch tuần"
+        },
+        {
+          "attribute": "aria-label",
+          "value": "Danh sách lịch trên màn hình nhỏ"
+        },
+        {
+          "attribute": "aria-label",
+          "value": "Danh sách lịch"
+        }
+      ],
+      "routeLiterals": []
+    },
+    {
+      "file": "src/components/ui/Modal.tsx",
+      "sha256": "e964a4f7dac0eba075922b9ffb2126ce44ac9eb1dc35f6c6fdbd470e277c4d08",
+      "literalSelectors": [
+        {
+          "attribute": "aria-label",
+          "value": "Đóng hộp thoại"
+        }
+      ],
+      "routeLiterals": []
+    },
+    {
+      "file": "src/components/ui/PageHeader.tsx",
+      "sha256": "5e1633c4e81b41138e14176defb35277e9dff67c550a49cc2f389aee281c7c64",
+      "literalSelectors": [],
+      "routeLiterals": []
+    },
+    {
+      "file": "src/components/ui/SelectField.tsx",
+      "sha256": "f79f7fe7b61c42efb82974d6478fac08c8d616d5682498dd65c9aca758186674",
+      "literalSelectors": [],
+      "routeLiterals": []
+    },
+    {
+      "file": "src/components/ui/TextField.tsx",
+      "sha256": "d39b828cac522e3b1fbe9ab98a2947d51aa6e55f7a1d3dfb480077cb927fdac6",
+      "literalSelectors": [],
+      "routeLiterals": []
+    },
+    {
+      "file": "src/features/administration/adminApi.ts",
+      "sha256": "3712784310631dfb323a620bf5b61e055414af65cb36e22b36acbf9569e2e366",
+      "literalSelectors": [],
+      "routeLiterals": []
+    },
+    {
+      "file": "src/features/administration/components/AdminAccountPanel.tsx",
+      "sha256": "4b07a8377531dd5654b9732db8844df4b8ddd6415d42a9d8a3990530f079ebe2",
+      "literalSelectors": [],
+      "routeLiterals": []
+    },
+    {
+      "file": "src/features/administration/components/StaffCreateForm.tsx",
+      "sha256": "699502d571ad7569488f96281cc795c3af0dcd08c212ad9d109a01219ea1d527",
+      "literalSelectors": [],
+      "routeLiterals": []
+    },
+    {
+      "file": "src/features/administration/lockIntent.ts",
+      "sha256": "0c617e1feac464d2429b174edfbbc4134e90f09a8c3940bf4933c2aedbf4b045",
+      "literalSelectors": [],
+      "routeLiterals": []
+    },
+    {
+      "file": "src/features/administration/pages/AdminAccountPage.tsx",
+      "sha256": "fb04c396f55c1c544ede139e75fbe7dba40545f594b60c4c7091334099465105",
+      "literalSelectors": [
+        {
+          "attribute": "id",
+          "value": "admin-target"
+        }
+      ],
+      "routeLiterals": []
+    },
+    {
+      "file": "src/features/administration/pages/StaffAdminPage.tsx",
+      "sha256": "580be6861d32bde5e40fc2d22218bf3a2a82f86d161ece5bb2bc94075e9e2c6d",
+      "literalSelectors": [
+        {
+          "attribute": "aria-label",
+          "value": "Mật khẩu tạm"
+        }
+      ],
+      "routeLiterals": []
+    },
+    {
+      "file": "src/features/administration/staffApi.ts",
+      "sha256": "5acf476358137d61be1baa274e8d7a7a6b6755e7bb874449cf320fd42f15a58c",
+      "literalSelectors": [],
+      "routeLiterals": []
+    },
+    {
+      "file": "src/features/administration/types.ts",
+      "sha256": "cd5c1f910e674c3163fbb552662af5bca7f01ba4d4521e5e0bfd47d42dad5750",
+      "literalSelectors": [],
+      "routeLiterals": []
+    },
+    {
+      "file": "src/features/admissions/AdmissionsPage.tsx",
+      "sha256": "f405e50ddac74010e1b12c388829b1584f20533011ad5ac31429dc47cc4b4ceb",
+      "literalSelectors": [
+        {
+          "attribute": "aria-label",
+          "value": "Trạng thái hồ sơ"
+        },
+        {
+          "attribute": "aria-label",
+          "value": "Thứ tự hồ sơ"
+        }
+      ],
+      "routeLiterals": []
+    },
+    {
+      "file": "src/features/admissions/admissionsApi.ts",
+      "sha256": "b701f469b7b3f0de293bcb29ca549187ed3f8ffabb9d3df8dad19ff1bf9f678b",
+      "literalSelectors": [],
+      "routeLiterals": []
+    },
+    {
+      "file": "src/features/admissions/components/AdmissionReasonForm.tsx",
+      "sha256": "93f2b93199982c4a582533f0921140787658716694b36321f30bf4cd873c1423",
+      "literalSelectors": [
+        {
+          "attribute": "id",
+          "value": "admission-reason"
+        },
+        {
+          "attribute": "name",
+          "value": "admission-reason"
+        },
+        {
+          "attribute": "id",
+          "value": "admission-reason-hint"
+        }
+      ],
+      "routeLiterals": []
+    },
+    {
+      "file": "src/features/audit/AuditPage.tsx",
+      "sha256": "ab0e0ffabc26a5d798cd2f48dc9f1e733f2ffcb89e930dd5af69db45689ed778",
+      "literalSelectors": [
+        {
+          "attribute": "aria-label",
+          "value": "Hành động"
+        },
+        {
+          "attribute": "aria-label",
+          "value": "Loại đối tượng"
+        },
+        {
+          "attribute": "aria-label",
+          "value": "Kết quả"
+        },
+        {
+          "attribute": "aria-label",
+          "value": "Mã thao tác"
+        }
+      ],
+      "routeLiterals": []
+    },
+    {
+      "file": "src/features/audit/auditApi.ts",
+      "sha256": "66d90cb16c7f3650ed8e7f6d0782489e42590880b46d52dccc1c088e23d5aa50",
+      "literalSelectors": [],
+      "routeLiterals": []
+    },
+    {
+      "file": "src/features/audit/auditRegistry.ts",
+      "sha256": "8452c69eaaa46c48425cf1b6f8cee2d957853f8af6e745cb546edc5c8f89e420",
+      "literalSelectors": [],
+      "routeLiterals": []
+    },
+    {
+      "file": "src/features/catalogue/catalogueApi.ts",
+      "sha256": "3589aa20098a3c68c39a2762a08b7c328bf1f1e201d1ef87634270861bf3e3b4",
+      "literalSelectors": [],
+      "routeLiterals": []
+    },
+    {
+      "file": "src/features/catalogue/components/CourseForm.tsx",
+      "sha256": "21f67d05e51b22e0b6635f575deb8f8da937471b7d16ea7ddab3421def3eb2cb",
+      "literalSelectors": [
+        {
+          "attribute": "id",
+          "value": "course-code"
+        },
+        {
+          "attribute": "id",
+          "value": "course-name"
+        },
+        {
+          "attribute": "id",
+          "value": "course-base-price"
+        },
+        {
+          "attribute": "id",
+          "value": "course-status"
+        }
+      ],
+      "routeLiterals": []
+    },
+    {
+      "file": "src/features/catalogue/pages/CataloguePage.tsx",
+      "sha256": "eed3ad797f3b7676cf63b52136f2868753e8a1602072924fbb23fafd213efb58",
+      "literalSelectors": [],
+      "routeLiterals": []
+    },
+    {
+      "file": "src/features/classes/AttendancePanel.tsx",
+      "sha256": "81f83e62540c75391bcf38be0ba8592dc2c5928928aaa6933daf90f07f11f584",
+      "literalSelectors": [
+        {
+          "attribute": "aria-label",
+          "value": "Phạm vi điểm danh"
+        }
+      ],
+      "routeLiterals": []
+    },
+    {
+      "file": "src/features/classes/ClassesPage.tsx",
+      "sha256": "0a8fc827594e0668be10ca0677987e188ce55436c98c39e1f864fe729761b14c",
+      "literalSelectors": [
+        {
+          "attribute": "aria-label",
+          "value": "Giáo viên mới"
+        },
+        {
+          "attribute": "aria-label",
+          "value": "Loại lịch"
+        }
+      ],
+      "routeLiterals": []
+    },
+    {
+      "file": "src/features/classes/GradePanels.tsx",
+      "sha256": "a273c53dcafafd2641e873986727badbfdb1b819c730ef4c1a567f1053953bd3",
+      "literalSelectors": [],
+      "routeLiterals": []
+    },
+    {
+      "file": "src/features/classes/GradeReviewPage.tsx",
+      "sha256": "9e5bf359e357b5ff177b13272613a9569d6308423e2346a32948f7f1a3187db3",
+      "literalSelectors": [
+        {
+          "attribute": "aria-label",
+          "value": "Trạng thái bảng điểm"
+        }
+      ],
+      "routeLiterals": []
+    },
+    {
+      "file": "src/features/classes/GradebookPanel.tsx",
+      "sha256": "d7101c0a900ec639385ad284e95dc3a745d52b59bacb69bf3935b72bb9b2c911",
+      "literalSelectors": [],
+      "routeLiterals": []
+    },
+    {
+      "file": "src/features/classes/SchedulesPanel.tsx",
+      "sha256": "cfbf5f680da267cc661f0a49915fe4f9dc3c11838c610e81e9779207a3a5342b",
+      "literalSelectors": [
+        {
+          "attribute": "aria-label",
+          "value": "Phạm vi lịch"
+        },
+        {
+          "attribute": "aria-label",
+          "value": "Thao tác lịch"
+        }
+      ],
+      "routeLiterals": []
+    },
+    {
+      "file": "src/features/classes/StudentGradesPage.tsx",
+      "sha256": "43a6371fa3f3ccd80e2f9760e7fa4820b47768dd2a6857d7f916dbbacb0e9177",
+      "literalSelectors": [
+        {
+          "attribute": "aria-label",
+          "value": "Thứ tự công bố"
+        }
+      ],
+      "routeLiterals": []
+    },
+    {
+      "file": "src/features/classes/attendanceApi.ts",
+      "sha256": "1f369e3ad394d2e295285a9350064288f9f27ef23a7052687652f722a1d20497",
+      "literalSelectors": [],
+      "routeLiterals": []
+    },
+    {
+      "file": "src/features/classes/classApi.ts",
+      "sha256": "21cf86f967c4e44c9ac3b68b8e5f9a6e935ff74bfe86c0d5da7925175414d98c",
+      "literalSelectors": [],
+      "routeLiterals": []
+    },
+    {
+      "file": "src/features/classes/components/AttendanceFields.tsx",
+      "sha256": "3bfa3ec7e866cb2f99aa967fc209193389688c5abf9912b8f21bdf5e9b3bde22",
+      "literalSelectors": [],
+      "routeLiterals": []
+    },
+    {
+      "file": "src/features/classes/components/ClassFields.tsx",
+      "sha256": "d57ceeded05d6a02a2bafe0c92f4c3ce7f060fe566821e84b6fcc40c4730ab64",
+      "literalSelectors": [
+        {
+          "attribute": "id",
+          "value": "code"
+        },
+        {
+          "attribute": "name",
+          "value": "code"
+        },
+        {
+          "attribute": "id",
+          "value": "programId"
+        },
+        {
+          "attribute": "name",
+          "value": "programId"
+        },
+        {
+          "attribute": "id",
+          "value": "teacherId"
+        },
+        {
+          "attribute": "name",
+          "value": "teacherId"
+        },
+        {
+          "attribute": "id",
+          "value": "maxSize"
+        },
+        {
+          "attribute": "name",
+          "value": "maxSize"
+        }
+      ],
+      "routeLiterals": []
+    },
+    {
+      "file": "src/features/classes/components/GradeDraftFields.tsx",
+      "sha256": "073594d3df77f52ef15b52bd690b6b830371dca809efc2087756ae3c0925d706",
+      "literalSelectors": [
+        {
+          "attribute": "aria-label",
+          "value": "Điểm học viên"
+        },
+        {
+          "attribute": "id",
+          "value": "grade-comment"
+        }
+      ],
+      "routeLiterals": []
+    },
+    {
+      "file": "src/features/classes/components/StudentGradeResults.tsx",
+      "sha256": "860af4404e56c9a2d7cc8856c012e1f56cff5c9ea0ecb0d7679e873421996529",
+      "literalSelectors": [],
+      "routeLiterals": []
+    },
+    {
+      "file": "src/features/classes/components/WeeklyFields.tsx",
+      "sha256": "458f4b0f4b491fafb423416438c7ca8e646c36faa9e7a6f419ac84a1ec84dbfd",
+      "literalSelectors": [],
+      "routeLiterals": []
+    },
+    {
+      "file": "src/features/classes/gradeApi.ts",
+      "sha256": "1432a6d2bb23e44448beba0a0dbe803f5e68ee088f7c1e4720685630749a67bb",
+      "literalSelectors": [],
+      "routeLiterals": []
+    },
+    {
+      "file": "src/features/classes/scheduleApi.ts",
+      "sha256": "c6f4e75be45dca58487ce9f88581864b0a7b8843a4efe15459abf2083e779903",
+      "literalSelectors": [],
+      "routeLiterals": []
+    },
+    {
+      "file": "src/features/classes/studentGradeApi.ts",
+      "sha256": "aa72756e5bb9affea5fc389dae27ffe20bdd817799644e550bf4f7c14646fd8b",
+      "literalSelectors": [],
+      "routeLiterals": []
+    },
+    {
+      "file": "src/features/enrollment/StudentEnrollmentPage.tsx",
+      "sha256": "2b785d3b17a27238771a784aa4c7be480075c9e7f3660b4cf8ebc1dc623b08e3",
+      "literalSelectors": [
+        {
+          "attribute": "aria-label",
+          "value": "Học viên"
+        },
+        {
+          "attribute": "aria-label",
+          "value": "Phạm vi lịch"
+        },
+        {
+          "attribute": "name",
+          "value": "entry-slot"
+        }
+      ],
+      "routeLiterals": []
+    },
+    {
+      "file": "src/features/enrollment/components/StudentProfileForm.tsx",
+      "sha256": "a479b4069c8db2c29a754504d4c07fa5a68e7c5c0364d7113c40b754eeb853b4",
+      "literalSelectors": [
+        {
+          "attribute": "id",
+          "value": "fullName"
+        },
+        {
+          "attribute": "name",
+          "value": "fullName"
+        },
+        {
+          "attribute": "id",
+          "value": "dateOfBirth"
+        },
+        {
+          "attribute": "name",
+          "value": "dateOfBirth"
+        },
+        {
+          "attribute": "id",
+          "value": "phone"
+        },
+        {
+          "attribute": "name",
+          "value": "phone"
+        },
+        {
+          "attribute": "id",
+          "value": "address"
+        },
+        {
+          "attribute": "name",
+          "value": "address"
+        }
+      ],
+      "routeLiterals": []
+    },
+    {
+      "file": "src/features/enrollment/enrollmentApi.ts",
+      "sha256": "859aa7b168ce6026bcdea30196584d87802a41589e09f36b4671f9c178bdd44e",
+      "literalSelectors": [],
+      "routeLiterals": []
+    },
+    {
+      "file": "src/features/enrollment/profileValidation.ts",
+      "sha256": "09168e79ab8ac5b873208790c07b9bf41b23140460ed8fe5450e0e8218c4052a",
+      "literalSelectors": [],
+      "routeLiterals": []
+    },
+    {
+      "file": "src/features/entrySessions/components/EntrySessionForm.tsx",
+      "sha256": "a4083b47b581b9c90db18ce75a836b2980bce6ea057a7baf607ac4f2292549cb",
+      "literalSelectors": [
+        {
+          "attribute": "aria-label",
+          "value": "Giáo viên chấm"
+        }
+      ],
+      "routeLiterals": []
+    },
+    {
+      "file": "src/features/entrySessions/pages/EntrySessionPage.tsx",
+      "sha256": "8510f855c796adfd6d80d925977054ad597bd1ec90e64a3d9f5d9b7c092b0f20",
+      "literalSelectors": [
+        {
+          "attribute": "aria-label",
+          "value": "Giáo viên mới"
+        }
+      ],
+      "routeLiterals": []
+    },
+    {
+      "file": "src/features/entrySessions/sessionApi.ts",
+      "sha256": "f8701d42e2ef2f1fa04ed6d0f3f7ea97cc1cad02b4a53d96a005fea6ce808a26",
+      "literalSelectors": [],
+      "routeLiterals": []
+    },
+    {
+      "file": "src/features/entryTasks/TeacherEntryPage.tsx",
+      "sha256": "293f18c68e2cbd9b668385fde595286843ff80f909dc5933773dd9de4b11c4a6",
+      "literalSelectors": [
+        {
+          "attribute": "aria-label",
+          "value": "Trạng thái ca"
+        },
+        {
+          "attribute": "aria-label",
+          "value": "Sắp xếp ca"
+        },
+        {
+          "attribute": "aria-label",
+          "value": "Phạm vi"
+        },
+        {
+          "attribute": "aria-label",
+          "value": "Trạng thái đặt"
+        }
+      ],
+      "routeLiterals": []
+    },
+    {
+      "file": "src/features/entryTasks/components/EntryScoreForm.tsx",
+      "sha256": "561abe9069a5223aea425842ab039de9848434efc8a58753adccb875915f488a",
+      "literalSelectors": [],
+      "routeLiterals": []
+    },
+    {
+      "file": "src/features/entryTasks/teacherApi.ts",
+      "sha256": "3f379d99fdfd3dfb2dd2b28762803d07b41c8fa858ea8d3a7a342d44f14af75f",
+      "literalSelectors": [],
+      "routeLiterals": []
+    },
+    {
+      "file": "src/features/finance/FinancePage.tsx",
+      "sha256": "3980ca68723a5de756d6fa5310847437109efaf233eefcf36ff86b8bcf670650",
+      "literalSelectors": [
+        {
+          "attribute": "aria-label",
+          "value": "Trạng thái hóa đơn"
+        },
+        {
+          "attribute": "aria-label",
+          "value": "Thứ tự hóa đơn"
+        }
+      ],
+      "routeLiterals": []
+    },
+    {
+      "file": "src/features/finance/components/PaymentFields.tsx",
+      "sha256": "5fc75ee0c8ca5a1476954dab5bcde29356ae67a38b2ad2d786ecd2979a9d3c2b",
+      "literalSelectors": [
+        {
+          "attribute": "id",
+          "value": "payment-method"
+        },
+        {
+          "attribute": "id",
+          "value": "payment-reference"
+        },
+        {
+          "attribute": "id",
+          "value": "payment-reason"
+        }
+      ],
+      "routeLiterals": []
+    },
+    {
+      "file": "src/features/finance/financeApi.ts",
+      "sha256": "f72375087912e209e57ed8d3c688519134a06f64cb2664e13cbac77e70769afe",
+      "literalSelectors": [],
+      "routeLiterals": []
+    },
+    {
+      "file": "src/features/identity/components/LoginForm.tsx",
+      "sha256": "26a99a3a059dfa88a451103f6e937b4f2f71be0e4359fc5aedafadee4c0844ab",
+      "literalSelectors": [
+        {
+          "attribute": "id",
+          "value": "login-email"
+        },
+        {
+          "attribute": "name",
+          "value": "email"
+        },
+        {
+          "attribute": "id",
+          "value": "login-password"
+        },
+        {
+          "attribute": "name",
+          "value": "password"
+        }
+      ],
+      "routeLiterals": []
+    },
+    {
+      "file": "src/features/identity/components/PasswordChangeForm.tsx",
+      "sha256": "63e4f1e2f6b45efe020d89e7d7c8bc0f496ed96fd8f8c52fcd90d5693c0bfc34",
+      "literalSelectors": [
+        {
+          "attribute": "id",
+          "value": "password-current"
+        },
+        {
+          "attribute": "name",
+          "value": "currentPassword"
+        },
+        {
+          "attribute": "id",
+          "value": "password-new"
+        },
+        {
+          "attribute": "name",
+          "value": "newPassword"
+        },
+        {
+          "attribute": "id",
+          "value": "password-confirmation"
+        },
+        {
+          "attribute": "name",
+          "value": "confirmation"
+        }
+      ],
+      "routeLiterals": []
+    },
+    {
+      "file": "src/features/identity/components/SignupForm.tsx",
+      "sha256": "80b009526bba2f958e243e69e11f045d464fc8975ffa43db97e69c08af9d52e4",
+      "literalSelectors": [
+        {
+          "attribute": "id",
+          "value": "signup-fullName"
+        },
+        {
+          "attribute": "name",
+          "value": "fullName"
+        },
+        {
+          "attribute": "id",
+          "value": "signup-dateOfBirth"
+        },
+        {
+          "attribute": "name",
+          "value": "dateOfBirth"
+        },
+        {
+          "attribute": "id",
+          "value": "signup-email"
+        },
+        {
+          "attribute": "name",
+          "value": "email"
+        },
+        {
+          "attribute": "id",
+          "value": "signup-phone"
+        },
+        {
+          "attribute": "name",
+          "value": "phone"
+        },
+        {
+          "attribute": "id",
+          "value": "signup-address"
+        },
+        {
+          "attribute": "name",
+          "value": "address"
+        },
+        {
+          "attribute": "id",
+          "value": "signup-password"
+        },
+        {
+          "attribute": "name",
+          "value": "password"
+        }
+      ],
+      "routeLiterals": []
+    },
+    {
+      "file": "src/features/identity/pages/LoginPage.tsx",
+      "sha256": "ff393136d7f01c6ed123d9021ea4edacfdd631a46d18652394cdf2bd12603d17",
+      "literalSelectors": [],
+      "routeLiterals": []
+    },
+    {
+      "file": "src/features/identity/pages/PasswordChangePage.tsx",
+      "sha256": "949d052086452154fe04691db5685bd1599ebf8a1b6b7fde9478b35eb0a8ae8e",
+      "literalSelectors": [],
+      "routeLiterals": [
+        "/account/change-password"
+      ]
+    },
+    {
+      "file": "src/features/identity/pages/SessionPage.tsx",
+      "sha256": "84db684e6c85c9b186bb9743727defe6e02366f68eea77e9ed61bd2f72c5c23d",
+      "literalSelectors": [],
+      "routeLiterals": []
+    },
+    {
+      "file": "src/features/identity/pages/SignupPage.tsx",
+      "sha256": "73ad47e4eca9e7dea7fee53083c07248773c1328ecdbcd7a816378f3cbd74fba",
+      "literalSelectors": [],
+      "routeLiterals": []
+    },
+    {
+      "file": "src/features/identity/passwordApi.ts",
+      "sha256": "a5bc7867b2e6109e9a96669d397717748e655737d3f004758886e6c0a1739caa",
+      "literalSelectors": [],
+      "routeLiterals": []
+    },
+    {
+      "file": "src/features/identity/passwordValidation.ts",
+      "sha256": "11ff88337a65b36314cdf8db3c59c178e82cbc9927ff91055344499d755ddafa",
+      "literalSelectors": [],
+      "routeLiterals": []
+    },
+    {
+      "file": "src/features/identity/sessionController.ts",
+      "sha256": "cb2c152f1146961b86ab3f3f51fe359069ec4121c9de718e5eac5b1b595d860f",
+      "literalSelectors": [],
+      "routeLiterals": []
+    },
+    {
+      "file": "src/features/identity/sessionSignals.ts",
+      "sha256": "b61cf66ed6e3c324c18d91426c6c882415a44b4450b3d903756750465d9e5d61",
+      "literalSelectors": [],
+      "routeLiterals": []
+    },
+    {
+      "file": "src/features/identity/signupApi.ts",
+      "sha256": "6049274cdf00829ecb39c5dcf73e3c05d33cfff944be8ea9e0fa47ce4973cbdc",
+      "literalSelectors": [],
+      "routeLiterals": []
+    },
+    {
+      "file": "src/features/identity/signupValidation.ts",
+      "sha256": "c880f14a421793c168ae6e319574faa2a0a3ad0de6c864cb5504c130bf5cc72c",
+      "literalSelectors": [],
+      "routeLiterals": []
+    },
+    {
+      "file": "src/features/identity/types.ts",
+      "sha256": "32e57529adc63f75c8c4c53c7dfd325364cf7ceac0b653e78c70b33d56669d61",
+      "literalSelectors": [],
+      "routeLiterals": []
+    },
+    {
+      "file": "src/features/invoices/StudentInvoicesPage.tsx",
+      "sha256": "0a276150d72c63c41f2a668c044b91b93c0db6b9262d85dbed19f2641c836fcc",
+      "literalSelectors": [
+        {
+          "attribute": "aria-label",
+          "value": "Trạng thái hóa đơn"
+        }
+      ],
+      "routeLiterals": []
+    },
+    {
+      "file": "src/features/invoices/invoiceApi.ts",
+      "sha256": "33ee164da80bbae6ae777f913aa49f6b900057ed27337b1c2d1992b6178dbe01",
+      "literalSelectors": [],
+      "routeLiterals": []
+    },
+    {
+      "file": "src/features/programs/components/ProgramComponents.tsx",
+      "sha256": "f3f44cfe664ad2116c582968f5a3b8a6b7c9def8c6ddffddda859b6138a05fa1",
+      "literalSelectors": [],
+      "routeLiterals": []
+    },
+    {
+      "file": "src/features/programs/pages/ProgramPage.tsx",
+      "sha256": "4eb2917e7e60037c0d63d6205f30084d6f6f7afd92fe01fade34c6d2bb99cac4",
+      "literalSelectors": [
+        {
+          "attribute": "aria-label",
+          "value": "Band"
+        }
+      ],
+      "routeLiterals": []
+    },
+    {
+      "file": "src/features/programs/programApi.ts",
+      "sha256": "3ba4a9c3dd8befa7e0e92039c75681083b588cb4061404abe28bd26d5a3cf83e",
+      "literalSelectors": [],
+      "routeLiterals": []
+    },
+    {
+      "file": "src/features/reports/ReportPanels.tsx",
+      "sha256": "a3a005774b657f147db3b652fca18bfb4350cc5ffc1975f20180e315cc1a769d",
+      "literalSelectors": [],
+      "routeLiterals": []
+    },
+    {
+      "file": "src/features/reports/ReportsPage.tsx",
+      "sha256": "25ce81349af3ae02883708f6368a4801adeb11128cd7b76b1b62b809df0669be",
+      "literalSelectors": [
+        {
+          "attribute": "aria-label",
+          "value": "Loại báo cáo"
+        },
+        {
+          "attribute": "aria-label",
+          "value": "Khóa học"
+        },
+        {
+          "attribute": "aria-label",
+          "value": "Trạng thái"
+        },
+        {
+          "attribute": "aria-label",
+          "value": "Band"
+        },
+        {
+          "attribute": "aria-label",
+          "value": "Lớp"
+        },
+        {
+          "attribute": "aria-label",
+          "value": "Giáo viên hiện tại"
+        }
+      ],
+      "routeLiterals": []
+    },
+    {
+      "file": "src/features/reports/components/FinanceReportTable.tsx",
+      "sha256": "9380af6d35f06ed8fb7e3b462c4a2320ac28c8ae8b8bff41df74843dbc16b258",
+      "literalSelectors": [],
+      "routeLiterals": []
+    },
+    {
+      "file": "src/features/reports/reportApi.ts",
+      "sha256": "247aad57ea3b00fb2cda47860d7badbcbc6ce3200350ea47f5ed1ba7389e8497",
+      "literalSelectors": [],
+      "routeLiterals": []
+    },
+    {
+      "file": "src/features/reports/reportWire.ts",
+      "sha256": "96c027a65144a16e2c246678107b5411cd9639e01e0d30c60eeb5a3c3160b5b7",
+      "literalSelectors": [],
+      "routeLiterals": []
+    },
+    {
+      "file": "src/lib/academicWire.ts",
+      "sha256": "663a193597fa17b9ab15ef10fa01af67c1822bb7101fd1639ee51b89394f1cd2",
+      "literalSelectors": [],
+      "routeLiterals": []
+    },
+    {
+      "file": "src/lib/apiError.ts",
+      "sha256": "4a380058c6e7c6f7274720fb47b16b2bd2c123242450781ac7c11c1d06151187",
+      "literalSelectors": [],
+      "routeLiterals": []
+    },
+    {
+      "file": "src/lib/auth.ts",
+      "sha256": "f6703b353c722c7b3debae3570276215ed7e8291b7df72c2013094c9d8a6c4b9",
+      "literalSelectors": [],
+      "routeLiterals": []
+    },
+    {
+      "file": "src/lib/enrollmentDisplay.ts",
+      "sha256": "0f38977e150e0735c220fe738794e7a40a3423e6b7ff6139bb2b9d7ccb5b945d",
+      "literalSelectors": [],
+      "routeLiterals": []
+    },
+    {
+      "file": "src/lib/http.ts",
+      "sha256": "28162f29f41eb1ac466ad1e68d461b9e1d2d9a5b598842e13bd8daed535ca275",
+      "literalSelectors": [],
+      "routeLiterals": []
+    },
+    {
+      "file": "src/lib/m1Wire.ts",
+      "sha256": "964fa0962864bf4995342641d6362a5ad68badecef2ed1be107ce250e6d92ff2",
+      "literalSelectors": [],
+      "routeLiterals": []
+    },
+    {
+      "file": "src/lib/requestScope.ts",
+      "sha256": "90b62af3a93ce1075d6b7aad8502e111aa50286a4c33fb713373922332b5d8da",
+      "literalSelectors": [],
+      "routeLiterals": []
+    },
+    {
+      "file": "src/lib/useOwnedTask.ts",
+      "sha256": "5e93da3ae3d2a2eee6c94961066d1f28fb94e4d680070a8c14b653b73f564d90",
+      "literalSelectors": [],
+      "routeLiterals": []
+    },
+    {
+      "file": "src/main.tsx",
+      "sha256": "0a25bb949ba1370437d0475327106c3e381b2cda91ac18125aa3819eafebc49f",
+      "literalSelectors": [],
+      "routeLiterals": []
+    },
+    {
+      "file": "src/styles/index.css",
+      "sha256": "d5546c3e7f6fce1f88427aa82932d61e5d175dc8c930643fec9c526b84e16fdc",
+      "literalSelectors": [],
+      "routeLiterals": []
+    },
+    {
+      "file": "src/styles/tokens.css",
+      "sha256": "f025bc4098b6bbfb00fd4b7f2db8fc6c93f7eed788fb8b70347e1ed34e335d27",
+      "literalSelectors": [],
+      "routeLiterals": []
+    },
+    {
+      "file": "tsconfig.json",
+      "sha256": "772702dadbf66b140f51d935a009a528a1e5ab901f80377bf388877015e0d157",
+      "literalSelectors": [],
+      "routeLiterals": []
+    },
+    {
+      "file": "vite.config.ts",
+      "sha256": "9f7351325c2630b0e73a22a1337f0c60f1614a54aea2da0dba7866a8db40585c",
+      "literalSelectors": [],
+      "routeLiterals": []
+    }
+  ]
+}

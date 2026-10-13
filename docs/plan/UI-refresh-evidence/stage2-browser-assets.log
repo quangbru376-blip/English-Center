@@ -1,0 +1,35 @@
+vite v8.3.2 building client environment for production...
+transforming...
+✓ 1998 modules transformed.
+rendering chunks...
+computing gzip size...
+../../../../Users/asus/AppData/Local/Temp/englishcenter-ui-refresh-stage2-assets/tests/browser/identity-entry.html                             0.36 kB │ gzip:   0.26 kB
+../../../../Users/asus/AppData/Local/Temp/englishcenter-ui-refresh-stage2-assets/assets/be-vietnam-pro-vietnamese-400-normal-BuGn0gnm.woff     6.56 kB
+../../../../Users/asus/AppData/Local/Temp/englishcenter-ui-refresh-stage2-assets/assets/be-vietnam-pro-vietnamese-600-normal-DkpCIyan.woff     6.88 kB
+../../../../Users/asus/AppData/Local/Temp/englishcenter-ui-refresh-stage2-assets/assets/be-vietnam-pro-vietnamese-500-normal-CfdwVo8-.woff     6.88 kB
+../../../../Users/asus/AppData/Local/Temp/englishcenter-ui-refresh-stage2-assets/assets/be-vietnam-pro-vietnamese-700-normal-By_5yT39.woff     6.89 kB
+../../../../Users/asus/AppData/Local/Temp/englishcenter-ui-refresh-stage2-assets/assets/be-vietnam-pro-vietnamese-400-normal-CRcqvyg1.woff2   11.53 kB
+../../../../Users/asus/AppData/Local/Temp/englishcenter-ui-refresh-stage2-assets/assets/be-vietnam-pro-vietnamese-500-normal-DREgrEoJ.woff2   12.17 kB
+../../../../Users/asus/AppData/Local/Temp/englishcenter-ui-refresh-stage2-assets/assets/be-vietnam-pro-vietnamese-600-normal-nyU-ZL2p.woff2   12.17 kB
+../../../../Users/asus/AppData/Local/Temp/englishcenter-ui-refresh-stage2-assets/assets/be-vietnam-pro-vietnamese-700-normal-Csr0PCuG.woff2   12.46 kB
+../../../../Users/asus/AppData/Local/Temp/englishcenter-ui-refresh-stage2-assets/assets/be-vietnam-pro-latin-400-normal-bXgqVju9.woff         16.43 kB
+../../../../Users/asus/AppData/Local/Temp/englishcenter-ui-refresh-stage2-assets/assets/be-vietnam-pro-latin-700-normal-C2EtzaOi.woff         16.90 kB
+../../../../Users/asus/AppData/Local/Temp/englishcenter-ui-refresh-stage2-assets/assets/be-vietnam-pro-latin-500-normal-BJkVuMHw.woff         16.99 kB
+../../../../Users/asus/AppData/Local/Temp/englishcenter-ui-refresh-stage2-assets/assets/be-vietnam-pro-latin-600-normal-5IO4e7bK.woff         17.01 kB
+../../../../Users/asus/AppData/Local/Temp/englishcenter-ui-refresh-stage2-assets/assets/be-vietnam-pro-latin-400-normal-PpnXBOrz.woff2        21.16 kB
+../../../../Users/asus/AppData/Local/Temp/englishcenter-ui-refresh-stage2-assets/assets/be-vietnam-pro-latin-500-normal-B6LVzGNe.woff2        21.89 kB
+../../../../Users/asus/AppData/Local/Temp/englishcenter-ui-refresh-stage2-assets/assets/be-vietnam-pro-latin-600-normal-BZDkUTrt.woff2        22.03 kB
+../../../../Users/asus/AppData/Local/Temp/englishcenter-ui-refresh-stage2-assets/assets/be-vietnam-pro-latin-700-normal-DlW1Zbsh.woff2        22.15 kB
+../../../../Users/asus/AppData/Local/Temp/englishcenter-ui-refresh-stage2-assets/assets/identity-entry-D73fTBzF.css                           31.88 kB │ gzip:   6.85 kB
+../../../../Users/asus/AppData/Local/Temp/englishcenter-ui-refresh-stage2-assets/assets/reportWire-BtOAnsIz.js                                 5.26 kB │ gzip:   1.92 kB
+../../../../Users/asus/AppData/Local/Temp/englishcenter-ui-refresh-stage2-assets/assets/GradeReviewPage-9Ojftn4G.js                            6.01 kB │ gzip:   2.24 kB
+../../../../Users/asus/AppData/Local/Temp/englishcenter-ui-refresh-stage2-assets/assets/StudentGradesPage-Kb0lynca.js                          9.11 kB │ gzip:   3.22 kB
+../../../../Users/asus/AppData/Local/Temp/englishcenter-ui-refresh-stage2-assets/assets/GradebookPanel-BkiYBptX.js                            12.21 kB │ gzip:   3.98 kB
+../../../../Users/asus/AppData/Local/Temp/englishcenter-ui-refresh-stage2-assets/assets/AttendancePanel-C4BdmAk6.js                           12.90 kB │ gzip:   4.60 kB
+../../../../Users/asus/AppData/Local/Temp/englishcenter-ui-refresh-stage2-assets/assets/gradeApi-DTzn9IXx.js                                  14.54 kB │ gzip:   4.32 kB
+../../../../Users/asus/AppData/Local/Temp/englishcenter-ui-refresh-stage2-assets/assets/ReportsPage-BKPCKz52.js                               17.08 kB │ gzip:   5.47 kB
+../../../../Users/asus/AppData/Local/Temp/englishcenter-ui-refresh-stage2-assets/assets/StudentEnrollmentPage-oYB8X13h.js                     19.42 kB │ gzip:   5.88 kB
+../../../../Users/asus/AppData/Local/Temp/englishcenter-ui-refresh-stage2-assets/assets/AuditPage-DuAyKWvF.js                                 22.08 kB │ gzip:   5.93 kB
+../../../../Users/asus/AppData/Local/Temp/englishcenter-ui-refresh-stage2-assets/assets/identity-entry-lwCr-XQR.js                           489.93 kB │ gzip: 130.48 kB
+
+✓ built in 1.86s

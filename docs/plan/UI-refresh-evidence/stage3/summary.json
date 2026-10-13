@@ -1,0 +1,105 @@
+{
+  "stage": 3,
+  "status": "COMPLETE_REVIEW_PASS_GATE_3_PENDING",
+  "gate2": "OWNER_APPROVED_CONTINUE",
+  "branch": "ui-refresh",
+  "committed": false,
+  "mainApplied": false,
+  "frontend": {
+    "passed": 178,
+    "failed": 0,
+    "skipped": 0,
+    "build": "PASS",
+    "types": "PASS",
+    "lint": "PASS"
+  },
+  "edge": {
+    "finalUniquePassed": 21,
+    "finalFailed": 0,
+    "finalSkipped": 0,
+    "extraStudentPassed": 4,
+    "extraNotCountedAsUnique": true,
+    "widths": [
+      375,
+      768,
+      1280
+    ]
+  },
+  "strictModeDevMock": {
+    "passed": true,
+    "realDevMainStrictMode": true,
+    "mockHttpOnly": true,
+    "home": 1,
+    "courses": 1,
+    "mutations": 0,
+    "unexpected": 0
+  },
+  "scratch": {
+    "sets": {
+      "owned": {
+        "created": 21,
+        "dropped": 21,
+        "unpaired": 0
+      },
+      "reviewed-owned": {
+        "created": 4,
+        "dropped": 4,
+        "unpaired": 0
+      },
+      "final-owned": {
+        "created": 21,
+        "dropped": 21,
+        "unpaired": 0
+      }
+    },
+    "created": 46,
+    "dropped": 46,
+    "unpaired": 0,
+    "independentLiveCount": 0,
+    "listener8443": 0
+  },
+  "capture": {
+    "screenshots": 178,
+    "roles": [
+      "AcademicAffairs",
+      "Admissions",
+      "Anonymous",
+      "Student",
+      "Teacher"
+    ],
+    "widths": [
+      375,
+      768,
+      1280
+    ],
+    "groups": [
+      85,
+      87,
+      88,
+      94
+    ],
+    "digestsVerified": true
+  },
+  "preview": {
+    "images": 18,
+    "apiCalls": 0,
+    "visualOnly": true,
+    "url": "http://127.0.0.1:5178/tests/ui-refresh-student.html"
+  },
+  "sourceFiles": 103,
+  "sourceDrift": [],
+  "literalIdNameTestidRemoved": 0,
+  "intermediateRun": {
+    "passed": 20,
+    "failed": 1,
+    "cause": "Capture adapter changed while older fixture build was running; corrected immutable reviewed build used for4and21finalruns"
+  },
+  "backendDefault": "Not rerun; unchanged source/test/lib, stage2 default evidence retained",
+  "stage4": "NOT_STARTED",
+  "exclusions": [
+    "genuine LOCAL_DEV readiness/profile pins",
+    "backup/restore/load/deploy",
+    "backend/API/session/schema/custody changes",
+    "owner file edits/staging"
+  ]
+}

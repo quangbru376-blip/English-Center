@@ -1,0 +1,110 @@
+[
+  {
+    "file": "g95-f13832e5-003-Anonymous-1280-login.png",
+    "group": 95,
+    "role": "Anonymous",
+    "width": 1280,
+    "route": "/login",
+    "label": "login",
+    "headings": [
+      "Tiếng Anh,mở thêm cơ hội.",
+      "Đăng nhập"
+    ],
+    "sha256": "406ca12551c2bd49694943dca8c7e6fb0c10c9eec3b764c30e7b2c65e7d4985c",
+    "synthetic": true
+  },
+  {
+    "file": "g95-f13832e5-001-Anonymous-375-login.png",
+    "group": 95,
+    "role": "Anonymous",
+    "width": 375,
+    "route": "/login",
+    "label": "login",
+    "headings": [
+      "Tiếng Anh,mở thêm cơ hội.",
+      "Đăng nhập"
+    ],
+    "sha256": "d18b1327bad649a306867aa6a2fea79b63787d3fc6b891f0a8a8ac169dd3df39",
+    "synthetic": true
+  },
+  {
+    "file": "g95-f13832e5-006-Anonymous-1280-signup.png",
+    "group": 95,
+    "role": "Anonymous",
+    "width": 1280,
+    "route": "/register",
+    "label": "signup",
+    "headings": [
+      "Tiếng Anh,mở thêm cơ hội.",
+      "Đăng ký tài khoản học viên"
+    ],
+    "sha256": "9469b413dd4e25146d3bd6fb208c7b56269627e43e5445dd77e7381d0f69729e",
+    "synthetic": true
+  },
+  {
+    "file": "g95-f13832e5-061-Student-1280-landing-NORMAL.png",
+    "group": 95,
+    "role": "Student",
+    "width": 1280,
+    "route": "/student/home",
+    "label": "landing-NORMAL",
+    "headings": [
+      "Trang chủ học viên",
+      "Xác nhận thay đổi",
+      "Xác nhận kết quả đầu vào",
+      "Điều hướng"
+    ],
+    "sha256": "170b86adf15b2b8f06b2410602ad6d5b5237ef5c248dc3f1ca1bca910a529138",
+    "synthetic": true
+  },
+  {
+    "file": "g95-f13832e5-059-Student-375-landing-NORMAL.png",
+    "group": 95,
+    "role": "Student",
+    "width": 375,
+    "route": "/student/home",
+    "label": "landing-NORMAL",
+    "headings": [
+      "Trang chủ học viên",
+      "Xác nhận thay đổi",
+      "Xác nhận kết quả đầu vào",
+      "Điều hướng"
+    ],
+    "sha256": "7dd45bcd1d239c40fb50cfe4393d2482516059e4b7773f7616c537e1a62b801a",
+    "synthetic": true
+  },
+  {
+    "file": "g95-f13832e5-058-Student-375-drawer-open.png",
+    "group": 95,
+    "role": "Student",
+    "width": 375,
+    "route": "/student/home",
+    "label": "drawer-open",
+    "headings": [
+      "Trang chủ học viên",
+      "Xác nhận thay đổi",
+      "Xác nhận kết quả đầu vào",
+      "Điều hướng"
+    ],
+    "sha256": "468dd0feba6fb654fd5edf5207997b119c6989ce89b95a53ec566ed95de7e5e4",
+    "synthetic": true
+  },
+  {
+    "file": "g95-f13832e5-069-AcademicAffairs-1280-landing-NORMAL.png",
+    "group": 95,
+    "role": "AcademicAffairs",
+    "width": 1280,
+    "route": "/academics/entry-test-sessions",
+    "label": "landing-NORMAL",
+    "headings": [
+      "Ca thi đầu vào",
+      "Tạo ca thi đóng",
+      "Chọn giáo viên mới",
+      "Xác nhận trạng thái ca",
+      "Xác nhận đổi giáo viên",
+      "Điều hướng"
+    ],
+    "sha256": "33348d77cd6e1dae73c7c6f48632037c6a38703a230bdfb6c83b9d7fbb3c7091",
+    "synthetic": true
+  }
+]

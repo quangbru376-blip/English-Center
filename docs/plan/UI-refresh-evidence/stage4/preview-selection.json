@@ -1,0 +1,254 @@
+[
+  {
+    "title": "Thông tin cá nhân",
+    "file": "g85-071371f2-026-Student-375-profile-auto-read.png",
+    "group": 85,
+    "role": "Student",
+    "width": 375,
+    "route": "/student/home",
+    "label": "profile-auto-read",
+    "headings": [
+      "Thông tin cá nhân",
+      "Synthetic Student",
+      "Xác nhận thay đổi",
+      "Xác nhận kết quả đầu vào",
+      "Điều hướng"
+    ],
+    "sha256": "22dbe40f5bc25ae49fea5b9f476f6d015c4025275513157f81dfe4bae776c8e6",
+    "synthetic": true
+  },
+  {
+    "title": "Thông tin cá nhân",
+    "file": "g85-071371f2-028-Student-1280-profile-auto-read.png",
+    "group": 85,
+    "role": "Student",
+    "width": 1280,
+    "route": "/student/home",
+    "label": "profile-auto-read",
+    "headings": [
+      "Thông tin cá nhân",
+      "Synthetic Student",
+      "Xác nhận thay đổi",
+      "Xác nhận kết quả đầu vào",
+      "Điều hướng"
+    ],
+    "sha256": "5c128cd7698449671f59df6a6bed6d4d5276301ffe7ffa48c8c8fdb19f26fc12",
+    "synthetic": true
+  },
+  {
+    "title": "Biểu mẫu thông tin cá nhân",
+    "file": "g85-071371f2-029-Student-375-profile-draft.png",
+    "group": 85,
+    "role": "Student",
+    "width": 375,
+    "route": "/student/home",
+    "label": "profile-draft",
+    "headings": [
+      "Thông tin cá nhân",
+      "Synthetic Student",
+      "Xác nhận thay đổi",
+      "Xác nhận kết quả đầu vào",
+      "Điều hướng"
+    ],
+    "sha256": "70b99049d1f92feb0378435f1d9bb644a86e74bcfdddce419c9f496226b9a6d2",
+    "synthetic": true
+  },
+  {
+    "title": "Biểu mẫu thông tin cá nhân",
+    "file": "g85-071371f2-031-Student-1280-profile-draft.png",
+    "group": 85,
+    "role": "Student",
+    "width": 1280,
+    "route": "/student/home",
+    "label": "profile-draft",
+    "headings": [
+      "Thông tin cá nhân",
+      "Synthetic Student",
+      "Xác nhận thay đổi",
+      "Xác nhận kết quả đầu vào",
+      "Điều hướng"
+    ],
+    "sha256": "21dfcfb7decb6da09308af74c3d160406d19d94a13456a4857345f9841b16e3d",
+    "synthetic": true
+  },
+  {
+    "title": "Lịch thi và lịch sử lượt đặt",
+    "file": "g85-071371f2-037-Student-375-student-calendar-375-tab-view.png",
+    "group": 85,
+    "role": "Student",
+    "width": 375,
+    "route": "/student/home",
+    "label": "student-calendar-375-tab-view",
+    "headings": [
+      "Lịch thi của tôi",
+      "Các lượt đặt của bạn",
+      "Xác nhận thay đổi",
+      "Xác nhận kết quả đầu vào",
+      "Điều hướng"
+    ],
+    "sha256": "11b08b895b93e708c21d79cad723323f508cba7431f0225abae1549f4cca8e32",
+    "synthetic": true
+  },
+  {
+    "title": "Lịch thi và lịch sử lượt đặt",
+    "file": "g85-071371f2-053-Student-1280-student-calendar-1280-tab-view.png",
+    "group": 85,
+    "role": "Student",
+    "width": 1280,
+    "route": "/student/home",
+    "label": "student-calendar-1280-tab-view",
+    "headings": [
+      "Lịch thi của tôi",
+      "Các lượt đặt của bạn",
+      "Xác nhận thay đổi",
+      "Xác nhận kết quả đầu vào",
+      "Điều hướng"
+    ],
+    "sha256": "b44f6a68139032ae860e1a9d67acef25798a9263edaf005bdf4ac6ba499cfc5a",
+    "synthetic": true
+  },
+  {
+    "title": "Hóa đơn đã thanh toán — tiền dài",
+    "file": "g89-2a7837a8-019-Student-375-group-89-api-GET-_api_vN_students_me_invoices_N-status-403.png",
+    "group": 89,
+    "role": "Student",
+    "width": 375,
+    "route": "/student/invoices/1/print",
+    "label": "group-89-api-GET-/api/vN/students/me/invoices/N-status-403",
+    "headings": [
+      "Hóa đơn của tôi",
+      "HD-2026-00000001",
+      "Điều hướng"
+    ],
+    "sha256": "caeb565c8f4070a94164b1c09982772525178ecfde1c8d0a04513eaad84ffd10",
+    "synthetic": true
+  },
+  {
+    "title": "Hóa đơn đã thanh toán — tiền dài",
+    "file": "g89-2a7837a8-045-Student-1280-group-89-api-GET-_api_vN_students_me_invoices_N-status-403.png",
+    "group": 89,
+    "role": "Student",
+    "width": 1280,
+    "route": "/student/invoices/3/print",
+    "label": "group-89-api-GET-/api/vN/students/me/invoices/N-status-403",
+    "headings": [
+      "Hóa đơn của tôi",
+      "HD-2026-00000003",
+      "Điều hướng"
+    ],
+    "sha256": "2b2c5c94d018be0f84e611ca7476f1e8160d572dc3b1fc61ad6fbeae6f71151e",
+    "synthetic": true
+  },
+  {
+    "title": "Lớp của tôi",
+    "file": "g90-a9f3df3d-022-Student-375-group-90-api-GET-_api_vN_students_me_classes_N-status-200.png",
+    "group": 90,
+    "role": "Student",
+    "width": 375,
+    "route": "/student/classes",
+    "label": "group-90-api-GET-/api/vN/students/me/classes/N-status-200",
+    "headings": [
+      "Lớp của tôi",
+      "Lớp học của bạn",
+      "EDGE_375 · Đang nhận học viên",
+      "Lịch học và thi cuối khóa",
+      "Xác nhận lịch",
+      "Xác nhận",
+      "Điều hướng"
+    ],
+    "sha256": "966fdcebfe8a98f40e414e5b85b98d692f3c7130730405048c924f07b1e425ac",
+    "synthetic": true
+  },
+  {
+    "title": "Lớp của tôi",
+    "file": "g90-a9f3df3d-054-Student-1280-group-90-api-GET-_api_vN_students_me_classes_N-status-404.png",
+    "group": 90,
+    "role": "Student",
+    "width": 1280,
+    "route": "/student/classes",
+    "label": "group-90-api-GET-/api/vN/students/me/classes/N-status-404",
+    "headings": [
+      "Lớp của tôi",
+      "Lớp học của bạn",
+      "EDGE_375 · Đang nhận học viên",
+      "Lịch học và thi cuối khóa",
+      "Xác nhận lịch",
+      "Xác nhận",
+      "Điều hướng"
+    ],
+    "sha256": "5ba65da5231102577ca6243e6aacac51fa58e4afe6aadfd249e1566ff14a519e",
+    "synthetic": true
+  },
+  {
+    "title": "Lịch học và lịch sử thay thế",
+    "file": "g91-dce8b110-021-Student-375-group-91-api-POST-_api_vN_academics_schedules_N_replace-status-403.png",
+    "group": 91,
+    "role": "Student",
+    "width": 375,
+    "route": "/student/classes",
+    "label": "group-91-api-POST-/api/vN/academics/schedules/N/replace-status-403",
+    "headings": [
+      "Lớp của tôi",
+      "Lớp học của bạn",
+      "Lịch học và thi cuối khóa",
+      "Xác nhận lịch",
+      "Xác nhận",
+      "Điều hướng"
+    ],
+    "sha256": "10d36f35834847f2fffafd2d45271e84eb9ec8aa17e8c08647f5a0d517aa0d9b",
+    "synthetic": true
+  },
+  {
+    "title": "Lịch học và lịch sử thay thế",
+    "file": "g91-dce8b110-051-Student-1280-group-91-api-POST-_api_vN_academics_schedules_N_replace-status-403.png",
+    "group": 91,
+    "role": "Student",
+    "width": 1280,
+    "route": "/student/classes",
+    "label": "group-91-api-POST-/api/vN/academics/schedules/N/replace-status-403",
+    "headings": [
+      "Lớp của tôi",
+      "Lớp học của bạn",
+      "Lịch học và thi cuối khóa",
+      "Xác nhận lịch",
+      "Xác nhận",
+      "Điều hướng"
+    ],
+    "sha256": "223e78ffaaab9c021b0cf2520100b895d604fe36b32f72b99be08a6a76b0733e",
+    "synthetic": true
+  },
+  {
+    "title": "Kết quả đã công bố — nhận xét dài",
+    "file": "g94-89c43e6c-040-Student-375-group-94-api-GET-_api_vN_academics_grade-reviews-status-403.png",
+    "group": 94,
+    "role": "Student",
+    "width": 375,
+    "route": "/student/grade-reports",
+    "label": "group-94-api-GET-/api/vN/academics/grade-reviews-status-403",
+    "headings": [
+      "Kết quả của tôi",
+      "Kết quả học tập của bạn",
+      "Kết quả học tập",
+      "Điều hướng"
+    ],
+    "sha256": "c891aeb00d9255ff45d7a914d881783cbd5aefe9f437937565ed35f11e3644df",
+    "synthetic": true
+  },
+  {
+    "title": "Kết quả đã công bố — nhận xét dài",
+    "file": "g94-89c43e6c-050-Student-1280-group-94-api-GET-_api_vN_academics_grade-reviews-status-403.png",
+    "group": 94,
+    "role": "Student",
+    "width": 1280,
+    "route": "/student/grade-reports",
+    "label": "group-94-api-GET-/api/vN/academics/grade-reviews-status-403",
+    "headings": [
+      "Kết quả của tôi",
+      "Kết quả học tập của bạn",
+      "Kết quả học tập",
+      "Điều hướng"
+    ],
+    "sha256": "c68daf2e72c7bd3fb321d11e57107a2de9fd88c7616c1db77224253c080bc7c6",
+    "synthetic": true
+  }
+]

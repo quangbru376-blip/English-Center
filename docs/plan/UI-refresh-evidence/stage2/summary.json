@@ -1,0 +1,49 @@
+{
+  "stage": 2,
+  "status": "COMPLETE_REVIEW_PASS_GATE_2_PENDING",
+  "gate1": "OWNER_APPROVED",
+  "branch": "ui-refresh",
+  "committed": false,
+  "frontend": {
+    "passed": 174,
+    "failed": 0,
+    "types": "PASS",
+    "lint": "PASS",
+    "build": "PASS"
+  },
+  "backend": {
+    "passed": 1438,
+    "intentionalOptInSkipped": 325,
+    "failed": 0
+  },
+  "edge": {
+    "uniquePassed": 21,
+    "failed": 0,
+    "widths": [
+      375,
+      768,
+      1280
+    ],
+    "captureExtraRunUnique": false
+  },
+  "contrastPairsPassed": 16,
+  "finalScreenshots": 73,
+  "styleguideScreenshots": 6,
+  "reviewedSourceFiles": 101,
+  "sourceDrift": [],
+  "scratch": {
+    "created": 64,
+    "identityPairedDropped": 64,
+    "live": 0
+  },
+  "operationalListener8443": 0,
+  "reviewDevPreview": "http://127.0.0.1:5178/tests/ui-refresh-styleguide.html",
+  "stage3": "NOT_STARTED",
+  "exclusions": [
+    "backend/business/API/session contracts",
+    "SQL schema/grants",
+    "operational key custody/profile pins",
+    "M4 backup/recovery acceptance",
+    "main apply/push/deploy"
+  ]
+}
