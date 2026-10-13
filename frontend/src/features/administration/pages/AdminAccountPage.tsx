@@ -1,3 +1,4 @@
+import { AccountActions } from '../../../app/AccountActions';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { Button } from '../../../components/ui/Button';
 import { TextField } from '../../../components/ui/TextField';
@@ -87,8 +88,8 @@ export function AdminAccountPage({ controller, initialId, onDetail, onPassword }
     }}>Kết thúc đối chiếu để tạo intent mới</Button>}
     {!account&&lastTarget&&<Button className="mt-4" disabled={pending} variant="secondary" onClick={()=>void read(lastTarget)}>Tải lại tài khoản</Button>}
     <div className="mt-4 flex flex-wrap gap-3">
-      <Button disabled={pending} variant="secondary" onClick={onPassword}>Đổi mật khẩu</Button>
-      <Button disabled={pending||!client.auth.csrf} variant="secondary" onClick={()=>void controller.logout()}>Đăng xuất</Button>
+      <AccountActions><Button disabled={pending} variant="secondary" onClick={onPassword}>Đổi mật khẩu</Button></AccountActions>
+      <AccountActions><Button disabled={pending||!client.auth.csrf} variant="secondary" onClick={()=>void controller.logout()}>Đăng xuất</Button></AccountActions>
       <Button disabled={pending} variant="secondary" onClick={()=>void controller.checkSession()}>Kiểm tra lại phiên</Button>
     </div>
     <Modal open={Boolean(preview)} title="Xác nhận khóa tài khoản" onRequestClose={()=>setPreview(null)}>

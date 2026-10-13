@@ -1,0 +1,58 @@
+.student-page { display: grid; grid-template-columns: minmax(0, 1fr); min-width: 0; gap: var(--ec-space-6); }
+.student-page > * { min-width: 0; }
+.student-page h2 { font-size: var(--ec-text-lg); font-weight: 600; }
+.student-page h3 { font-size: var(--ec-text-lg); font-weight: 600; overflow-wrap: anywhere; }
+.student-page p, .student-page dd, .student-page li { overflow-wrap: anywhere; }
+.student-intro, .student-list-heading, .student-card-heading { display: flex; align-items: center; justify-content: space-between; gap: var(--ec-space-4); flex-wrap: wrap; }
+.student-intro { align-items: flex-start; }
+.student-intro .ec-page-header { margin: 0; }
+.student-eyebrow { font-size: var(--ec-text-sm); color: var(--ec-muted); }
+.student-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--ec-space-6); padding: 0; list-style: none; }
+.student-grid > li { min-width: 0; }
+.student-registration-card, .student-course-card { display: flex; flex-direction: column; gap: var(--ec-space-4); height: 100%; padding: var(--ec-space-6); }
+.student-step { font-weight: 500; color: var(--ec-primary); }
+.student-waiting { border-left: var(--ec-space-1) solid var(--ec-accent); padding-left: var(--ec-space-3); font-size: var(--ec-text-sm); }
+.student-facts { display: grid; gap: var(--ec-space-4); padding: var(--ec-space-4) 0; border-top: 1px solid var(--ec-divider); }
+.student-facts dt { display: flex; align-items: center; gap: var(--ec-space-2); color: var(--ec-muted); font-size: var(--ec-text-sm); }
+.student-facts dd { margin-top: var(--ec-space-2); font-weight: 500; }
+.student-fact-note { display: block; color: var(--ec-muted); font-size: var(--ec-text-sm); font-weight: 400; margin: var(--ec-space-1) 0; }
+.student-card-actions { display: flex; gap: var(--ec-space-3); flex-wrap: wrap; margin-top: auto; }
+.student-course-icon { display: inline-flex; padding: var(--ec-space-3); border-radius: var(--ec-radius-card); background: var(--ec-primary-soft); color: var(--ec-primary); }
+.student-price { font-size: var(--ec-text-xl); }
+.student-pagination { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: var(--ec-space-3); padding-top: var(--ec-space-4); }
+.student-detail, .student-options { padding: var(--ec-space-6); display: grid; gap: var(--ec-space-4); scroll-margin-top: var(--ec-space-6); }
+.student-summary { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--ec-space-4); border-block: 1px solid var(--ec-divider); padding-block: var(--ec-space-4); }
+.student-summary dt { font-size: var(--ec-text-sm); color: var(--ec-muted); }
+.student-summary dt { display: flex; align-items: center; gap: var(--ec-space-2); }
+.student-summary dd { font-weight: 500; margin-top: var(--ec-space-2); }
+.student-attempts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--ec-space-4); list-style: none; padding: 0; }
+.student-attempts > li { border: 1px solid var(--ec-divider); border-radius: var(--ec-radius-card); padding: var(--ec-space-4); display: grid; gap: var(--ec-space-3); }
+.student-actions { display: flex; flex-wrap: wrap; gap: var(--ec-space-3); }
+.student-reasons { color: var(--ec-muted); font-size: var(--ec-text-sm); padding-left: var(--ec-space-5); list-style: disc; }
+.student-slot-list { display: grid; gap: var(--ec-space-3); }
+.student-slot { display: flex; align-items: flex-start; gap: var(--ec-space-3); border: 1px solid var(--ec-border); border-radius: var(--ec-radius-card); padding: var(--ec-space-4); cursor: pointer; }
+.student-slot:has(input:checked) { background: var(--ec-primary-soft); border-color: var(--ec-primary); }
+.student-slot:has(input:focus-visible) { outline: 3px solid var(--ec-focus); outline-offset: 3px; }
+.student-slot input { flex-shrink: 0; width: var(--ec-icon-size); height: var(--ec-icon-size); margin-top: var(--ec-space-1); accent-color: var(--ec-primary); }
+.student-recovery { background: var(--ec-warning-soft); border: 1px solid var(--ec-warning); border-radius: var(--ec-radius-card); padding: var(--ec-space-6); display: grid; gap: var(--ec-space-4); }
+.student-filter { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--ec-space-4); align-items: end; border: 1px solid var(--ec-divider); border-radius: var(--ec-radius-card); padding: var(--ec-space-4); }
+.student-filter > .ec-button { justify-self: start; }
+.student-filter label, .student-filter .ec-field { min-width: 0; }
+.student-profile-form { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--ec-space-4); border: 1px solid var(--ec-divider); border-radius: var(--ec-radius-card); padding: var(--ec-space-6); }
+.student-profile-form > .student-actions { grid-column: 1 / -1; }
+.student-lines { display: grid; gap: var(--ec-space-4); margin-block: var(--ec-space-4); }
+.student-line { display: flex; align-items: center; justify-content: space-between; gap: var(--ec-space-4); flex-wrap: wrap; padding: var(--ec-space-4); border: 1px solid var(--ec-divider); border-radius: var(--ec-radius-card); }
+.student-line h2, .student-line h3 { font-size: var(--ec-text-base); }
+.student-invoice-amount { font-size: var(--ec-text-xl); font-weight: 600; overflow-wrap: anywhere; max-width: 100%; min-width: 0; font-variant-numeric: tabular-nums; }
+.student-invoice-status { padding: var(--ec-space-4); border-radius: var(--ec-radius); background: var(--ec-info-soft); }
+.student-grade-total { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--ec-space-4); padding: var(--ec-space-6); border-radius: var(--ec-radius-card); background: var(--ec-primary-soft); }
+.student-grade-total dd { font-size: var(--ec-text-2xl); font-weight: 600; color: var(--ec-brand-dark); }
+.student-grade-comment { white-space: pre-wrap; overflow-wrap: anywhere; }
+.student-schedules { display: grid; gap: var(--ec-space-4); margin-top: var(--ec-space-6); padding-top: var(--ec-space-6); border-top: 1px solid var(--ec-divider); }
+.student-schedules article, .student-calendar-event { padding: var(--ec-space-4); border: 1px solid var(--ec-divider); border-radius: var(--ec-radius-card); }
+.student-schedules article > p { margin-bottom: var(--ec-space-2); }
+@media (max-width: 767px) {
+  .student-grid, .student-attempts, .student-summary, .student-filter, .student-profile-form { grid-template-columns: minmax(0, 1fr); }
+  .student-detail, .student-options, .student-registration-card, .student-course-card, .student-recovery { padding: var(--ec-space-4); }
+  .student-card-actions > .ec-button, .student-course-card > .ec-button { width: 100%; }
+}

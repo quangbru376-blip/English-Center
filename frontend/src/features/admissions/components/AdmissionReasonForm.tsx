@@ -26,7 +26,7 @@ export function AdmissionReasonForm({
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-4">
+    <form onSubmit={handleSubmit} className="ec-work-form space-y-4">
       <div>
         <label
           htmlFor="admission-reason"

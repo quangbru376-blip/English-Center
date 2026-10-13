@@ -1,11 +1,21 @@
 @import "tailwindcss" source("../");
 @source "../../tests";
+@import "@fontsource/be-vietnam-pro/vietnamese-400.css";
+@import "@fontsource/be-vietnam-pro/vietnamese-500.css";
+@import "@fontsource/be-vietnam-pro/vietnamese-600.css";
+@import "@fontsource/be-vietnam-pro/vietnamese-700.css";
+@import "@fontsource/be-vietnam-pro/latin-400.css";
+@import "@fontsource/be-vietnam-pro/latin-500.css";
+@import "@fontsource/be-vietnam-pro/latin-600.css";
+@import "@fontsource/be-vietnam-pro/latin-700.css";
 @import "./tokens.css";
+@import "./components.css";
+@import "./student.css";
+@import "./workbench.css";
 
 :root {
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    Oxygen, Ubuntu, Cantarell, "Helvetica Neue", Arial, sans-serif;
-  line-height: 1.5;
+  font-family: var(--ec-font-family);
+  line-height: 1.6;
   font-weight: 400;
 }
 

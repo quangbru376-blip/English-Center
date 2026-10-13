@@ -66,7 +66,7 @@ export function CourseForm({
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-4 rounded-[var(--ec-radius)] border border-[var(--ec-border)] bg-[var(--ec-surface)] p-4">
+    <form onSubmit={handleSubmit} className="ec-work-form space-y-4 rounded-[var(--ec-radius)] border border-[var(--ec-border)] bg-[var(--ec-surface)] p-4">
       {error && (
         <div role="alert" className="rounded-[var(--ec-radius)] border border-[var(--ec-danger)] p-3 text-sm text-[var(--ec-danger)]">
           {error}

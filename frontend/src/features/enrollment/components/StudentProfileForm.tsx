@@ -32,7 +32,7 @@ export function StudentProfileForm({
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-4">
+    <form onSubmit={handleSubmit} className="student-profile-form">
       <TextField
         id="fullName"
         name="fullName"
@@ -77,11 +77,12 @@ export function StudentProfileForm({
         disabled={disabled}
       />
 
-      <div className="flex items-center gap-3 pt-2">
+      <div className="student-actions">
         <Button type="submit" disabled={disabled} className="min-h-[44px]">
           Lưu
         </Button>
         <Button
+          variant="secondary"
           type="button"
           onClick={onCancel}
           disabled={disabled}

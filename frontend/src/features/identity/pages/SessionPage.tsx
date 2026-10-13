@@ -1,3 +1,4 @@
+import { AccountActions } from '../../../app/AccountActions';
 import { Button } from '../../../components/ui/Button';
 import { Feedback } from '../../../components/ui/Feedback';
 import { PageHeader } from '../../../components/ui/PageHeader';
@@ -20,8 +21,8 @@ export function SessionPage({ controller, snapshot, onPassword }: { controller: 
       ? 'Phiên hạn chế chỉ cho phép đổi mật khẩu và đăng xuất. Form đổi mật khẩu chưa được triển khai.'
       : 'Chức năng nghiệp vụ của màn hình này chưa được triển khai.'} />
     <div className="mt-4 flex flex-wrap gap-3">
-      <Button variant="secondary" onClick={onPassword}>Đổi mật khẩu</Button>
-      <Button disabled={!snapshot.csrfReady} onClick={() => void controller.logout()}>Đăng xuất</Button>
+      <AccountActions><Button variant="secondary" onClick={onPassword}>Đổi mật khẩu</Button></AccountActions>
+      <AccountActions><Button disabled={!snapshot.csrfReady} onClick={() => void controller.logout()}>Đăng xuất</Button></AccountActions>
       <Button variant="secondary" onClick={() => void controller.checkSession()}>Kiểm tra lại phiên</Button>
     </div>
   </section>;

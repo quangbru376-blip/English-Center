@@ -25,7 +25,7 @@ export function PaymentFields({
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-4">
+    <form onSubmit={handleSubmit} className="ec-work-form space-y-4">
       <div>
         <label htmlFor="payment-method" className="block text-sm font-medium mb-1" style={{ color: 'var(--ec-text)' }}>
           Phương thức

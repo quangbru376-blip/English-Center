@@ -1,3 +1,4 @@
+import { AccountActions } from '../../../app/AccountActions';
 import { useCallback,useEffect,useState } from 'react';
 import { Button } from '../../../components/ui/Button';
 import { TextField } from '../../../components/ui/TextField';
@@ -21,7 +22,7 @@ export function StaffAdminPage({controller,onPassword,initialId}:{controller:Ses
   const clear=useCallback(()=>{setName('');setEmail('');setPhone('');setRole('');setStatus('');setData(null);setAccount(null);setCreating(false);setPreview(null);setSecret(null);setUnknown(null);},[]);
   const task=useOwnedTask(client,clear);
   const run=task.run;
-  useEffect(()=>{if(initialId)void run(signal=>loadAdminAccount(client,initialId,signal),setAccount);},[client,initialId,run]);
+  useEffect(()=>{const timer=window.setTimeout(()=>{if(initialId)void run(signal=>loadAdminAccount(client,initialId,signal),setAccount);else void run(signal=>searchAccounts(client,{page:1},signal),setData,undefined,()=>setData(null));},0);return()=>window.clearTimeout(timer);},[client,initialId,run]);
   const closeSecret=()=>{const own=secret?.accountId===client.auth.context?.accountId;setSecret(null);if(own)void controller.checkSession();};
   useEffect(()=>{if(!secret)return;const timer=setTimeout(()=>setSecret(null),Math.max(0,Date.parse(secret.temporaryPasswordExpiresAt)-Date.now()));return()=>clearTimeout(timer);},[secret]);
   const search=(page=1)=>void task.run(signal=>searchAccounts(client,{page,...name.trim()?{name}: {},...email.trim()?{email}:{},...phone.trim()?{phone}:{},...role?{role}:{},...status?{status}:{}},signal),setData);
@@ -38,10 +39,10 @@ export function StaffAdminPage({controller,onPassword,initialId}:{controller:Ses
     },()=>{setAccount(null);setUnknown({requestId,action:staffActions[action].path,target:target.id});},()=>{setAccount(null);setData(null);});
   }
   if(client.auth.context?.role!=='Admin'||client.auth.context.scope!=='NORMAL')return <Feedback kind="error" message="Không có quyền quản trị tài khoản."/>;
-  return <section>
+  return <section className="ec-work-page">
     <PageHeader title="Quản trị tài khoản"/>
-    <div className="mb-4 flex flex-wrap gap-3"><Button disabled={task.pending||Boolean(unknown)||Boolean(secret)} onClick={()=>{setAccount(null);setCreating(true);}}>Thêm nhân sự</Button><Button variant="secondary" onClick={onPassword}>Đổi mật khẩu</Button><Button variant="secondary" disabled={task.pending} onClick={()=>{setSecret(null);void controller.logout();}}>Đăng xuất</Button></div>
-    <form className="mb-4 grid gap-3 md:grid-cols-3" onSubmit={e=>{e.preventDefault();search();}}>
+    <div className="mb-4 flex flex-wrap gap-3"><Button disabled={task.pending||Boolean(unknown)||Boolean(secret)} onClick={()=>{setAccount(null);setCreating(true);}}>Thêm nhân sự</Button><AccountActions><Button variant="secondary" onClick={onPassword}>Đổi mật khẩu</Button></AccountActions><AccountActions><Button variant="secondary" disabled={task.pending} onClick={()=>{setSecret(null);void controller.logout();}}>Đăng xuất</Button></AccountActions></div>
+    <form className="ec-work-filter mb-4 grid gap-3 md:grid-cols-3" onSubmit={e=>{e.preventDefault();search();}}>
       <TextField label="Tìm theo tên" value={name} disabled={task.pending} onChange={e=>setName(e.currentTarget.value)}/>
       <TextField label="Tìm theo email" value={email} disabled={task.pending} onChange={e=>setEmail(e.currentTarget.value)}/>
       <TextField label="Số điện thoại" value={phone} disabled={task.pending} onChange={e=>setPhone(e.currentTarget.value)}/>
@@ -50,9 +51,9 @@ export function StaffAdminPage({controller,onPassword,initialId}:{controller:Ses
       <Button type="submit" pending={task.pending}>Tìm kiếm</Button>
     </form>
     {task.notice&&<Feedback kind="error" message={task.notice}/>} {task.pending&&<Feedback kind="loading" message="Đang xử lý…"/>}
-    {data&&<><p>{data.totalCount} tài khoản — trang {data.page}</p>{data.items.length===0?<Feedback kind="empty" message="Không có tài khoản phù hợp."/>:<div className="overflow-x-auto"><table className="w-full text-left"><thead><tr><th>Họ tên</th><th>Email</th><th>Vai trò</th><th>Trạng thái</th><th>Thao tác</th></tr></thead><tbody>{data.items.map(a=><tr key={a.id} className="border-b"><td>{a.fullName}</td><td>{a.email}</td><td>{a.role}</td><td>{a.status}</td><td><Button variant="secondary" disabled={task.pending} onClick={()=>read(a.id)}>Xem #{a.id}</Button></td></tr>)}</tbody></table></div>}
+    {data&&<><p>{data.totalCount} tài khoản — trang {data.page}</p>{data.items.length===0?<Feedback kind="empty" message="Không có tài khoản phù hợp."/>:<div className="ec-work-table" role="region" aria-label="Danh sách tài khoản theo bộ lọc" tabIndex={0}><table className="w-full text-left"><caption className="sr-only">Danh sách tài khoản theo bộ lọc</caption><thead><tr><th>Họ tên</th><th>Email</th><th>Vai trò</th><th>Trạng thái</th><th>Thao tác</th></tr></thead><tbody>{data.items.map(a=><tr key={a.id} className="border-b"><td>{a.fullName}</td><td>{a.email}</td><td>{a.role}</td><td>{a.status}</td><td><Button variant="secondary" disabled={task.pending} onClick={()=>read(a.id)}>Xem #{a.id}</Button></td></tr>)}</tbody></table></div>}
       <Button disabled={task.pending||data.page===1} onClick={()=>search(data.page-1)}>Trang trước</Button> <Button disabled={task.pending||data.page*data.pageSize>=data.totalCount} onClick={()=>search(data.page+1)}>Trang sau</Button></>}
-    {account&&<article className="mt-4 border p-4"><h2 className="font-semibold break-words">#{account.id} — {account.fullName}</h2><p className="break-words">{account.email} · {account.role} · {account.status}</p><p>{account.mustChangePassword?'Bắt buộc đổi mật khẩu tạm':'Mật khẩu thông thường'}</p>
+    {account&&<article className="ec-work-card mt-4 border p-4"><h2 className="font-semibold break-words">#{account.id} — {account.fullName}</h2><p className="break-words">{account.email} · {account.role} · {account.status}</p><p>{account.mustChangePassword?'Bắt buộc đổi mật khẩu tạm':'Mật khẩu thông thường'}</p>
       <div className="mt-3 flex flex-wrap gap-3">{(Object.keys(staffActions) as StaffAction[]).map(action=><Button key={action} variant={action==='LOCK'||action==='DISABLE'?'danger':'secondary'} title={account.disabledReasons[action]} disabled={task.pending||Boolean(unknown)||Boolean(secret)||!account.allowedActions.includes(action)} onClick={()=>setPreview(action)}>{staffActions[action].label}</Button>)}<Button variant="secondary" disabled={task.pending} onClick={()=>read(account.id)}>Tải lại tài khoản</Button></div></article>}
     {unknown&&<div className="mt-4 space-x-3"><Button disabled={task.pending} onClick={()=>void task.run(signal=>staffLookup(client,unknown.action,unknown.requestId,signal),()=>{task.setNotice('Đã có completion. Tải lại để xem trạng thái; mật khẩu tạm không được trả lại.');setUnknown(null);})}>Kiểm tra kết quả</Button>{unknown.target&&<Button disabled={task.pending} onClick={()=>read(unknown.target!)}>Đối chiếu tài khoản</Button>}<Button variant="secondary" disabled={task.pending} onClick={()=>{setUnknown(null);setAccount(null);setData(null);task.setNotice('Kết thúc đối chiếu theo lựa chọn của bạn; kết quả cũ chưa xác nhận. Tải lại trước intent mới.');}}>Kết thúc đối chiếu</Button></div>}
     <Modal open={creating} title="Cấp tài khoản nhân sự" onRequestClose={()=>{if(!task.pending)setCreating(false);}}><StaffCreateForm pending={task.pending} onSubmit={create} onCancel={()=>setCreating(false)}/></Modal>

@@ -1,0 +1,40 @@
+.ec-work-page { display: grid; grid-template-columns: minmax(0, 1fr); min-width: 0; gap: var(--ec-space-5); }
+.ec-work-page > * { min-width: 0; }
+.ec-work-page > .ec-button { justify-self: start; }
+.ec-work-page .ec-page-header { margin-bottom: 0; }
+.ec-work-page h1 { font-size: var(--ec-text-xl); font-weight: 600; }
+.ec-work-page h2 { font-size: var(--ec-text-lg); font-weight: 600; }
+.ec-work-page h3, .ec-work-page h4 { font-size: var(--ec-text-base); font-weight: 600; }
+.ec-work-page p, .ec-work-page dd, .ec-work-page dt, .ec-work-page h2, .ec-work-page h3, .ec-work-page h4 { overflow-wrap: anywhere; }
+.ec-work-filter { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--ec-space-4); align-items: end; padding: var(--ec-space-4); border: 1px solid var(--ec-divider); border-radius: var(--ec-radius-card); background: var(--ec-background); }
+.ec-work-filter label, .ec-work-filter .ec-field { min-width: 0; }
+.ec-work-filter > .ec-button { justify-self: start; }
+.ec-work-card { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--ec-space-3); min-width: 0; padding: var(--ec-space-5); border: 1px solid var(--ec-divider); border-radius: var(--ec-radius-card); background: var(--ec-surface); }
+.ec-work-card > * { min-width: 0; }
+.ec-work-card > .ec-button { justify-self: start; }
+.ec-work-page article + article { margin-top: var(--ec-space-4); }
+.ec-work-page ul { padding-left: 0; list-style: none; }
+.ec-work-page li.ec-work-card { margin-block: var(--ec-space-3); }
+.ec-work-page input:not([type=radio]):not([type=checkbox]), .ec-work-page select, .ec-work-page textarea { max-width: 100%; min-width: 0; border-radius: var(--ec-radius); color: var(--ec-text); background: var(--ec-surface); border-color: var(--ec-border); }
+.ec-work-page label > input:not([type=radio]):not([type=checkbox]), .ec-work-page label > select, .ec-work-page label > textarea { width: 100%; padding: var(--ec-space-3); min-height: var(--ec-control-height); }
+.ec-work-table { max-width: 100%; min-width: 0; overflow-x: auto; border: 1px solid var(--ec-divider); border-radius: var(--ec-radius-card); }
+.ec-work-page table { border-collapse: collapse; width: 100%; font-size: var(--ec-text-sm); }
+.ec-work-page th { background: var(--ec-background); color: var(--ec-muted); font-weight: 600; position: sticky; top: 0; }
+.ec-work-page td, .ec-work-page th { padding: var(--ec-space-3); border-bottom: 1px solid var(--ec-divider); vertical-align: top; }
+.ec-work-page tbody tr:hover { background: var(--ec-primary-soft); }
+.ec-work-page td { overflow-wrap: anywhere; min-width: var(--ec-space-24); }
+.ec-work-page th, .ec-work-page td.text-right { white-space: nowrap; }
+.ec-work-page .ec-work-table:focus-visible { outline: 3px solid var(--ec-focus); outline-offset: 3px; }
+.ec-work-form { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--ec-space-4); }
+.ec-work-form > :not(.ec-field):not(label) { grid-column: 1 / -1; }
+.ec-work-page nav[aria-label="Loại báo cáo"] { border-bottom: 1px solid var(--ec-divider); padding-bottom: var(--ec-space-4); }
+.ec-metrics { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--ec-space-4); }
+.ec-metric { padding: var(--ec-space-5); border: 1px solid var(--ec-divider); border-radius: var(--ec-radius-card); background: var(--ec-primary-soft); min-width: 0; }
+.ec-metric dt { color: var(--ec-muted); font-size: var(--ec-text-sm); }
+.ec-metric dd { color: var(--ec-brand-dark); font-size: var(--ec-text-xl); font-weight: 600; margin-top: var(--ec-space-2); overflow-wrap: anywhere; font-variant-numeric: tabular-nums; }
+.ec-metric-note { font-size: var(--ec-text-sm); color: var(--ec-muted); margin-top: var(--ec-space-2); }
+.ec-work-context { padding: var(--ec-space-4); border-left: var(--ec-space-1) solid var(--ec-primary); background: var(--ec-primary-soft); border-radius: var(--ec-radius); }
+@media (max-width: 767px) {
+  .ec-work-filter, .ec-work-form, .ec-metrics { grid-template-columns: minmax(0, 1fr); }
+  .ec-work-card { padding: var(--ec-space-4); }
+}

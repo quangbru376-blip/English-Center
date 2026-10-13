@@ -1,0 +1,9 @@
+Temporary geometric wordmark and LearningIllustration
+Source: frontend/src/components/ui/Brand.tsx
+Created for the English Center UI refresh, 2026-10-13.
+
+To the extent possible under law, the contributor waives copyright and related
+rights in these original vector drawings under CC0 1.0 Universal.
+CC0 legal code: https://creativecommons.org/publicdomain/zero/1.0/legalcode
+No unDraw, Storyset or other third-party artwork is incorporated.
+This dedication covers only these drawings, not project reports, data or code.

@@ -37,7 +37,7 @@ export function EntryScoreForm({
         : 'Xác nhận vắng';
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-4">
+    <form onSubmit={handleSubmit} className="ec-work-form space-y-4">
       {mode === 'MARK_ABSENT' ? (
         <p className="text-sm text-[var(--ec-text)]">
           Xác nhận học viên không dự thi. Vắng không phải điểm 0.

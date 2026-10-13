@@ -1,3 +1,4 @@
+import { AccountActions } from '../../../app/AccountActions';
 import { useEffect, useRef, useState } from 'react';
 import { Button } from '../../../components/ui/Button';
 import { Feedback } from '../../../components/ui/Feedback';
@@ -49,6 +50,7 @@ export function PasswordChangePage({ controller, snapshot, onBack }: {
   const pending = snapshot.phase === 'pending';
   return <section className="mx-auto max-w-xl">
     <PageHeader title={snapshot.context?.scope === 'PASSWORD_CHANGE' ? 'Đổi mật khẩu bắt buộc' : 'Đổi mật khẩu'} />
+    <p className="ec-auth-copy">Sau khi đổi mật khẩu, bạn cần đăng nhập lại. Các phiên hiện tại sẽ được hủy.</p>
     {snapshot.notice && <div className="mb-4"><Feedback kind="error" message={snapshot.notice} /></div>}
     {reloadRequired && <p className="mb-4">Cần tải lại thông tin tài khoản trước khi gửi mới.</p>}
     <fieldset disabled={!snapshot.csrfReady || reloadRequired} className="min-w-0 border-0 p-0">
@@ -58,7 +60,7 @@ export function PasswordChangePage({ controller, snapshot, onBack }: {
     <div className="mt-4 flex flex-wrap gap-3">
       <Button disabled={pending} variant="secondary" onClick={() => { setReloadRequired(false); void controller.checkSession(); }}>Tải lại ngữ cảnh</Button>
       {snapshot.context?.scope === 'NORMAL' && <Button disabled={pending} variant="secondary" onClick={() => dirty ? setLeave(true) : onBack()}>Quay lại</Button>}
-      <Button disabled={pending || !snapshot.csrfReady} variant="secondary" onClick={() => void controller.logout()}>Đăng xuất</Button>
+      <AccountActions><Button disabled={pending || !snapshot.csrfReady} variant="secondary" onClick={() => void controller.logout()}>Đăng xuất</Button></AccountActions>
     </div>
     <Modal open={leave} title="Bỏ dữ liệu chưa gửi?" onRequestClose={() => setLeave(false)}>
       <p>Mật khẩu chưa gửi sẽ bị xóa khi rời màn hình.</p>

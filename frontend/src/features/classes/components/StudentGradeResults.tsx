@@ -1,3 +1,4 @@
+import { Badge } from '../../../components/ui/Surfaces';
 export type PublishedComponent = {
   componentId: number;
   name: string;
@@ -27,10 +28,10 @@ export function StudentGradeResults(props: StudentGradeResultsProps) {
   const resultText = props.passed ? 'Đạt' : 'Chưa đạt';
 
   return (
-    <section className="min-w-0 max-w-full break-words rounded-lg border border-[var(--ec-border)] bg-[var(--ec-surface)] p-4 text-[var(--ec-text)] font-sans sm:p-6">
-      <header className="border-b border-[var(--ec-border)] pb-4">
+    <section className="ec-card student-detail">
+      <header className="student-result-heading">
         <h2 className="text-lg font-semibold sm:text-xl">Kết quả học tập</h2>
-        <dl className="mt-3 grid grid-cols-1 gap-2 text-sm sm:grid-cols-3">
+        <dl className="student-summary">
           <div>
             <dt className="text-xs opacity-75">Mã lớp</dt>
             <dd className="font-medium">{props.classCode}</dd>
@@ -46,7 +47,7 @@ export function StudentGradeResults(props: StudentGradeResultsProps) {
         </dl>
       </header>
 
-      <div className="my-4 rounded-md border border-[var(--ec-border)] p-4">
+      <div className="student-grade-total">
         <dl className="grid grid-cols-1 gap-4 sm:grid-cols-2">
           <div>
             <dt className="text-xs opacity-75">Điểm tổng kết</dt>
@@ -54,26 +55,26 @@ export function StudentGradeResults(props: StudentGradeResultsProps) {
           </div>
           <div>
             <dt className="text-xs opacity-75">Kết quả</dt>
-            <dd className="text-2xl font-bold">{resultText}</dd>
+            <dd className="text-2xl font-bold"><Badge tone={props.passed ? 'success' : 'warning'}>{resultText}</Badge></dd>
           </div>
         </dl>
       </div>
 
-      <section className="mb-4 rounded-md border border-[var(--ec-border)] p-3">
+      <section className="ec-card p-4">
         <h3 className="text-xs font-medium opacity-75">Nhận xét của giáo viên</h3>
-        <p className="mt-1 text-sm">{props.teacherComment ?? 'Chưa có nhận xét'}</p>
+        <p className="mt-1 text-sm student-grade-comment">{props.teacherComment ?? 'Chưa có nhận xét'}</p>
       </section>
 
       <section className="space-y-3">
         <h3 className="text-sm font-semibold">Thành phần điểm</h3>
-        <div className="space-y-2">
+        <div className="student-grid">
           {props.components.length === 0 ? (
             <p className="text-xs opacity-75">Chưa có thành phần điểm</p>
           ) : (
             props.components.map((component) => (
               <article
                 key={component.componentId}
-                className="min-w-0 break-words rounded-md border border-[var(--ec-border)] p-3 text-sm"
+                className="ec-card p-4 text-sm"
               >
                 <div className="flex flex-wrap items-center justify-between gap-2">
                   <span className="font-medium">{component.name}</span>

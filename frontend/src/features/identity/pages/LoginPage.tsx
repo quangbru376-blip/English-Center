@@ -20,6 +20,7 @@ export function LoginPage({ controller, snapshot, onRegister }: {
   }
   return <section className="mx-auto max-w-xl">
     <PageHeader title="Đăng nhập" />
+    <p className="ec-auth-copy">Chào mừng bạn trở lại. Đăng nhập để tiếp tục việc học và quản lý công việc.</p>
     {snapshot.notice && <div className="mb-4"><Feedback kind="error" message={snapshot.notice} /></div>}
     {snapshot.retryAfter && <p className="mb-4 text-sm">Thời gian chờ theo server: {snapshot.retryAfter}</p>}
     {!snapshot.csrfReady && <Button className="mb-4" onClick={() => void controller.prepare()}>Lấy ngữ cảnh đăng nhập</Button>}
@@ -29,7 +30,7 @@ export function LoginPage({ controller, snapshot, onRegister }: {
     </fieldset>
     <div className="mt-4 flex flex-wrap gap-3">
       <Button variant="secondary" onClick={onRegister}>Đăng ký tài khoản học viên</Button>
-      <Button variant="secondary" onClick={() => void controller.checkSession()}>Kiểm tra lại phiên</Button>
     </div>
+    <details className="ec-recovery"><summary>Gặp khó khăn khi đăng nhập?</summary><p className="text-sm text-muted">Nếu phiên chưa được xác minh, bạn có thể kiểm tra lại trước khi tiếp tục.</p><Button variant="ghost" onClick={() => void controller.checkSession()}>Kiểm tra lại phiên</Button></details>
   </section>;
 }

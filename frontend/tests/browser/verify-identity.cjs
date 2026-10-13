@@ -3,6 +3,7 @@ const https = require('node:https'), http = require('node:http');
 const { X509Certificate, createHash, randomUUID } = require('node:crypto');
 const { chromium } = require(process.env.EC_PLAYWRIGHT);
 const { assertBrowserPolicy } = require('./cookie-policy.cjs');
+const { installShellControls } = require('./shell-controls.cjs');
 let checkpoint = 'input', server, asyncFailure=false; process.on('unhandledRejection',()=>{asyncFailure=true;});
 const input = async () => { let text = ''; for await (const chunk of process.stdin) text += chunk; return JSON.parse(text); };
 (async () => {
@@ -35,7 +36,7 @@ const input = async () => { let text = ''; for await (const chunk of process.std
  const browser = await chromium.launch({channel:'msedge',headless:true,args:['--ignore-certificate-errors-spki-list='+f.pin]});
  const errors=[];
  try {
-  const newPage = async(context) => { const ctx=context??await browser.newContext(); const p=await ctx.newPage(); p.on('pageerror',()=>errors.push('page-error')); await p.goto(f.origin+'/login'); await p.getByLabel('Email',{exact:true}).waitFor(); return p; };
+  const newPage = async(context) => { const ctx=context??await browser.newContext(); const p=await ctx.newPage(); installShellControls(p); p.on('pageerror',()=>errors.push('page-error')); await p.goto(f.origin+'/login'); await p.getByLabel('Email',{exact:true}).waitFor(); return p; };
   const api = async(p,path,method='GET',body,token,key) => {checkpoint='group-'+f.group+'-api-'+method+'-'+path.split('?')[0].replace(/\d+/g,'N'); const result=await p.evaluate(async ({path,method,body,token,key}) => {
    const headers={}; if(body)headers['Content-Type']='application/json'; if(token)headers['X-CSRF-Token']=token; if(key)headers['Idempotency-Key']=key;
    const res=await fetch(path,{method,headers,credentials:'same-origin',body:body?JSON.stringify(body):undefined});const text=await res.text();return {status:res.status,body:text?JSON.parse(text):null};
@@ -51,6 +52,7 @@ const input = async () => { let text = ''; for await (const chunk of process.std
    await p.getByLabel('Email',{exact:true}).fill(role.toLowerCase()+'@example.invalid');await p.getByLabel('Mật khẩu',{exact:true}).fill(password);
    const response=p.waitForResponse(r=>r.url().endsWith('/api/v1/auth/login')&&r.request().method()==='POST');await p.getByRole('button',{name:'Đăng nhập',exact:true}).click();assert.equal((await response).status(),200);
    if(scope==='PASSWORD_CHANGE')await p.getByLabel('Mật khẩu hiện tại',{exact:true}).waitFor();else await p.getByRole('button',{name:'Đăng xuất',exact:true}).waitFor();
+   if(scope==='NORMAL'){const menu=p.getByRole('button',{name:'Menu tài khoản',exact:true});if(await menu.getAttribute('aria-expanded')==='true')await menu.click();}
    proof(await api(p,'/api/v1/auth/me'),role,scope);await policy(p,true);
   };
   const logout = async p => {const response=p.waitForResponse(r=>r.url().endsWith('/api/v1/auth/logout'));await p.getByRole('button',{name:'Đăng xuất',exact:true}).click();assert.equal((await response).status(),204);await p.getByLabel('Email',{exact:true}).waitFor();await policy(p,false);};

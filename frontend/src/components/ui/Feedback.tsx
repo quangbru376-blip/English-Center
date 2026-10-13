@@ -47,7 +47,7 @@ export function Feedback({
         : undefined;
 
   const heading = defaultHeadings[kind];
-  const containerClass = `rounded-[var(--ec-radius)] p-4 border ${kindContainerClasses[kind]} ${className}`.trim();
+  const containerClass = `ec-feedback ec-feedback--${kind} ${kindContainerClasses[kind]} ${className}`.trim();
 
   return (
     <div role={role} className={containerClass}>

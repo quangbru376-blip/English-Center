@@ -7,9 +7,10 @@ type ModalProps = {
   title: string;
   children: ReactNode;
   onRequestClose: () => void;
+  className?: string;
 };
 
-export function Modal({ open, title, children, onRequestClose }: ModalProps) {
+export function Modal({ open, title, children, onRequestClose, className = '' }: ModalProps) {
   const dialogRef = useRef<HTMLDialogElement>(null);
   const headingId = useId();
 
@@ -28,7 +29,7 @@ export function Modal({ open, title, children, onRequestClose }: ModalProps) {
     <dialog
       ref={dialogRef}
       aria-labelledby={headingId}
-      className="w-[calc(100%-2rem)] max-w-lg rounded-[var(--ec-radius)] border border-[var(--ec-border)] bg-[var(--ec-surface)] p-5 text-[var(--ec-text)] backdrop:bg-black/40"
+      className={`ec-modal ${className}`}
       onCancel={(event) => { event.preventDefault(); onRequestClose(); }}
       onKeyDown={(event) => {
         if (event.key !== 'Tab') return;

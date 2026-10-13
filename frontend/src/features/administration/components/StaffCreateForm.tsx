@@ -5,7 +5,7 @@ import { SelectField } from '../../../components/ui/SelectField';
 import type { StaffFields } from '../staffApi';
 export function StaffCreateForm({pending,onSubmit,onCancel}:{pending:boolean;onSubmit:(value:StaffFields)=>void;onCancel:()=>void}){
   const [name,setName]=useState(''),[email,setEmail]=useState(''),[phone,setPhone]=useState(''),[role,setRole]=useState('Teacher');
-  return <form className="space-y-3" onSubmit={event=>{event.preventDefault();if(!pending)onSubmit({fullName:name,email,role,...phone.trim()?{phone}: {}});}}>
+  return <form className="ec-work-form space-y-3" onSubmit={event=>{event.preventDefault();if(!pending)onSubmit({fullName:name,email,role,...phone.trim()?{phone}: {}});}}>
     <TextField label="Họ và tên" value={name} onChange={e=>setName(e.currentTarget.value)} required disabled={pending}/>
     <TextField label="Email đăng nhập" type="email" value={email} onChange={e=>setEmail(e.currentTarget.value)} required disabled={pending}/>
     <TextField label="Số điện thoại (không bắt buộc)" value={phone} onChange={e=>setPhone(e.currentTarget.value)} disabled={pending}/>

@@ -27,7 +27,7 @@ export function FinanceReportTable({
   const rows = items;
 
   return (
-    <div style={{ overflowX: 'auto' }} className="overflow-x-auto">
+    <div className="ec-work-table" role="region" aria-label="Bảng báo cáo tài chính" tabIndex={0}>
       <table className="min-w-full divide-y divide-[var(--ec-border)] text-left text-sm">
         <caption className="p-2 text-left font-semibold text-[var(--ec-text)]">
           Báo cáo tài chính{overdueOnly ? ' — Công nợ hiện tại — chỉ quá hạn' : ''}

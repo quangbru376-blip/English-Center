@@ -78,6 +78,7 @@ export function SignupPage({ client, onCreated, onLogin }: {
   return (
     <section className="mx-auto max-w-xl">
       <PageHeader title="Đăng ký tài khoản học viên" />
+      <p className="ec-auth-copy">Bắt đầu hành trình học tiếng Anh. Thông tin của bạn được dùng để đăng ký khóa học và liên hệ.</p>
       {notice && <div className="mb-4"><Feedback {...notice} /></div>}
       {!ready && <div className="mb-4"><Button pending={pending} onClick={() => void prepare()}>Lấy ngữ cảnh đăng ký</Button></div>}
       <fieldset disabled={!ready} className="min-w-0 border-0 p-0">
