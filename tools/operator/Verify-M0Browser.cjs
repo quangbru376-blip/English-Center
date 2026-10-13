@@ -1,6 +1,7 @@
 const assert = require('node:assert/strict');
 const {chromium} = require('C:/Users/asus/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright');
 const {randomUUID} = require('node:crypto');
+const {installShellControls}=require('../../frontend/tests/browser/shell-controls.cjs');
 let checkpoint='input', browser, failed=false;
 process.on('unhandledRejection',()=>{failed=true;});
 (async()=>{
@@ -22,17 +23,17 @@ process.on('unhandledRejection',()=>{failed=true;});
  };
  const open=async(width,context)=>{
   const owned=context??await browser.newContext({viewport:{width,height:900},ignoreHTTPSErrors:false});
-  const page=await owned.newPage();page.on('pageerror',()=>errors.push('page-error'));
+  const page=await owned.newPage();installShellControls(page);page.on('pageerror',()=>errors.push('page-error'));
   await page.goto('https://localhost:8443/login');await page.getByLabel('Email',{exact:true}).waitFor();
   assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),true);return page;
  };
  const login=async page=>{
   await page.getByLabel('Email',{exact:true}).fill(input.email);await page.getByLabel('Mật khẩu',{exact:true}).fill(input.password);
-  const response=page.waitForResponse(response=>response.url().endsWith('/api/v1/auth/login')&&response.request().method()==='POST');
+  checkpoint='login-submit';const response=page.waitForResponse(response=>response.url().endsWith('/api/v1/auth/login')&&response.request().method()==='POST');
   await page.getByRole('button',{name:'Đăng nhập',exact:true}).click();assert.equal((await response).status(),200);logins++;
-  await page.getByRole('button',{name:'Đăng xuất',exact:true}).waitFor();
-  const me=await api(page,'/api/v1/auth/me');assert.equal(me.status,200);assert.equal(me.body.role,'Admin');assert.equal(me.body.scope,'NORMAL');
-  assert.equal((await api(page,'/api/v1/academics/training-programs')).status,403);
+  checkpoint='login-menu';await page.getByRole('button',{name:'Đăng xuất',exact:true}).waitFor();
+  checkpoint='login-me';const me=await api(page,'/api/v1/auth/me');assert.equal(me.status,200);assert.equal(me.body.role,'Admin');assert.equal(me.body.scope,'NORMAL');
+  checkpoint='role-denials';assert.equal((await api(page,'/api/v1/academics/training-programs')).status,403);
   assert.equal((await api(page,'/api/v1/admissions/entry-test-sessions')).status,403);
   assert.equal((await api(page,'/api/v1/students/me/home')).status,403);
   assert.equal((await api(page,'/api/v1/students/me/invoices')).status,403);
@@ -49,7 +50,7 @@ process.on('unhandledRejection',()=>{failed=true;});
   assert.equal((await api(page,'/api/v1/students/me/grade-reports')).status,403);
   assert.equal((await api(page,'/api/v1/students/me/grade-reports/1')).status,403);
   for(const path of ['/api/v1/reports/accountant/finance','/api/v1/reports/accountant/finance/csv','/api/v1/reports/director/finance','/api/v1/reports/director/admissions','/api/v1/reports/director/training'])assert.equal((await api(page,path)).status,403);
-  const audit=await api(page,'/api/v1/admin/audit-events');assert.equal(audit.status,200);assert.ok(audit.body.totalCount>0);const event=audit.body.items[0];const detail=await api(page,'/api/v1/admin/audit-events/'+event.id);assert.equal(detail.status,200);assert.deepEqual(Object.keys(detail.body).sort(),['id','occurredAt','actorId','action','entityType','entityId','result','operationId','reason','changes','ipAddress'].sort());assert.equal((await api(page,'/api/v1/admin/operations/'+event.operationId+'/audit-events')).status,200);
+  checkpoint='audit-api';const audit=await api(page,'/api/v1/admin/audit-events');assert.equal(audit.status,200);assert.ok(audit.body.totalCount>0);const event=audit.body.items[0];const detail=await api(page,'/api/v1/admin/audit-events/'+event.id);assert.equal(detail.status,200);assert.deepEqual(Object.keys(detail.body).sort(),['id','occurredAt','actorId','action','entityType','entityId','result','operationId','reason','changes','ipAddress'].sort());assert.equal((await api(page,'/api/v1/admin/operations/'+event.operationId+'/audit-events')).status,200);
   assert.equal((await api(page,'/api/v1/students/me/classes')).status,403);
   assert.equal((await api(page,'/api/v1/academics/teachers/me/schedules')).status,403);
   assert.equal((await api(page,'/api/v1/students/me/schedules')).status,403);
@@ -62,10 +63,10 @@ process.on('unhandledRejection',()=>{failed=true;});
  };
  for(const width of [375,768,1280]){
   checkpoint='width-'+width;const page=await open(width);await login(page);
-  await page.getByRole('button',{name:'Nhật ký kiểm toán',exact:true}).click();await page.getByRole('button',{name:'Đọc lịch sử kiểm toán',exact:true}).click();await page.getByText(/Bộ lọc đã áp dụng:/).waitFor();assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),true);await page.getByRole('button',{name:'Tài khoản',exact:true}).click();
-  await page.getByLabel('Tìm theo email',{exact:true}).fill(input.email);
+  checkpoint='audit-ui';await page.getByRole('button',{name:'Nhật ký kiểm toán',exact:true}).click();await page.getByRole('button',{name:'Đọc lịch sử kiểm toán',exact:true}).click();await page.getByText(/Bộ lọc đã áp dụng:/).waitFor();assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),true);await page.getByRole('button',{name:'Tài khoản',exact:true}).click();
+  checkpoint='account-search';await page.getByLabel('Tìm theo email',{exact:true}).fill(input.email);
   await page.getByRole('button',{name:'Tìm kiếm',exact:true}).click(); await page.getByRole('button',{name:'Xem #'+adminId,exact:true}).click();
-  await page.getByRole('button',{name:'Khóa',exact:true}).waitFor();
+  checkpoint='account-detail';await page.getByRole('button',{name:'Khóa',exact:true}).waitFor();
   assert.equal(await page.getByRole('button',{name:'Khóa',exact:true}).isDisabled(),true);
   assert.equal((await api(page,'/api/v1/admin/command-results/'+randomUUID()+'?action=ADMIN.ACCOUNT.LOCK')).status,404);
   if(width===375){
@@ -78,4 +79,18 @@ process.on('unhandledRejection',()=>{failed=true;});
  }
  input.password=null;assert.equal(failed,false);assert.equal(errors.length,0);assert.equal(logins,4);assert.equal(logouts,4);
  process.stdout.write(JSON.stringify({phase:'W5-browser',success:true,widths:3,logins,logouts,tlsTrusted:true}));
-})().catch(()=>{process.stderr.write('W5-browser refused at '+checkpoint);process.exitCode=1;}).finally(async()=>{if(browser){try{await browser.close();}catch{process.exitCode=1;}}});
+})().catch(error=>{const fs=require('node:fs'),path=require('node:path');const frames=[...String(error.stack||'').matchAll(/Verify-M0Browser\.cjs:(\d+):(\d+)/g)].map(m=>({line:Number(m[1]),column:Number(m[2])}));fs.writeFileSync(path.resolve(__dirname,'../../docs/plan/UI-refresh-evidence/stage6/genuine-browser-diagnostic-'+randomUUID()+'.json'),JSON.stringify({checkpoint,errorType:error.name,transportCode:String(error.message||'').match(/net::ERR_[A-Z_]+/)?.[0]??null,driverFrames:frames},null,2));process.stderr.write('W5-browser refused at '+checkpoint);process.exitCode=1;}).finally(async()=>{if(browser){
+ try {
+  // Revoke only still-open sessions created by this browser after a failed check.
+  for(const context of browser.contexts()){
+   const page=context.pages().find(p=>p.url().startsWith('https://localhost:8443/'));
+   if(page)await page.evaluate(async()=>{
+    const me=await fetch('/api/v1/auth/me',{credentials:'same-origin'});if(me.status!==200)return;
+    const response=await fetch('/api/v1/auth/csrf',{credentials:'same-origin'});if(response.status!==200)throw Error('Cleanup refused');
+    const csrf=await response.json();const result=await fetch('/api/v1/auth/logout',{method:'POST',credentials:'same-origin',headers:{'X-CSRF-Token':csrf.requestToken}});
+    if(result.status!==204)throw Error('Cleanup refused');
+   });
+  }
+ }catch{process.exitCode=1;}
+ try{await browser.close();}catch{process.exitCode=1;}
+}});

@@ -36,3 +36,10 @@ This is artifact binding for assigned local handoff, not patch/security/update/i
 
 Explicit extra handoff paths: tools/operator/Refresh-UIArtifactPins.ps1 and
 docs/plan/M0_PATCH_REVIEW.md (only frontend2 pins + bounded provenance note).
+
+Runtime finding repair allowlist: frontend/public/licenses TXT→HTML only; preserve
+license text, accept existing LocalUiFiles types/count limits without backend edits.
+
+Runtime browser adapter allowlist: tools/operator/Verify-M0Browser.cjs opens native
+account/drawer via shared shell-controls; retains original assertions. On failure
+logs out only its still-open contexts via normal CSRF endpoint before browser close.
