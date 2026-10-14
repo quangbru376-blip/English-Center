@@ -4994,3 +4994,16 @@ ID/GUID-paired dropped/live0/listener0; owner protected files preserved. No fake
 operational seed/empty-catalog claim or install/push/deploy/load/backup/recovery claim.
 All phase1–6 technical work complete; owner gate4 reviews concrete full UI output,
 not repeated colors/navigation/package decisions. M4 recovery inputs remain pending.
+
+
+## Session focus UX trial accepted — 2026-10-14
+
+Owner “Ok hãy thử đi” accepts focus-only removal/same-state visibility dedupe.
+Hidden/visible transitions/deadline/identity signals/manual/BackForward/serverauthority
+remain; no hiddenRAM retention, polling/renewal/CSRF/epoch change. Scopedsourcefc648ca
+reviewPASS/appliedADR163:183frontend/type/lint/build, DEVEdge/StrictMock lifecycle
+and live trustedHTTPS public3width focus20extra-checks0 PASS. Launcher firsthealth6s
+pacing after bounded5s startup proof preserves original20s deadline/allQ/TLS gates;
+ReadOnly/stop503 PASS. No backend/packages/pins/profile/keys/schema changes, no fresh
+full backend/SQLsuite/load acceptance. LIVE host for owner trial; reload once. UIgate4
+pending/M4recovery unchanged. Evidence SESSION_FOCUS_REVIEW/session-focus-evidence.

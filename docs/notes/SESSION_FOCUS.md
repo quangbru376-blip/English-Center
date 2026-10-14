@@ -11,4 +11,4 @@
 10.Không polling/renewal/retention khi hidden/new packages.
 11.Launcher firsthealth chờ6s, deadline20s/guards giữ.
 12.ReadOnly/stop503 và liveHTTPS/3width/focus0requests PASS; host giữ chạy.
-13.Trialworkingtree/reviewPASS; UIgate4/M4recovery vẫn chờ.
+13.Mainfc648ca/reviewPASS; UIgate4/M4recovery vẫn chờ.

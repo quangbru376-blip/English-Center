@@ -1,6 +1,6 @@
 {
   "date": "2026-10-14",
-  "status": "REVIEW_PASS_TRIAL_LIVE_UNCOMMITTED",
+  "status": "COMPLETE_REVIEW_PASS_LIVE_RUNNING",
   "frontendPassed": 183,
   "frontendFailed": 0,
   "types": "PASS",
@@ -89,9 +89,10 @@
   },
   "initialLiveFailuresRetained": true,
   "liveSession": "49103",
-  "committed": false,
+  "committed": true,
   "fingerprints": {
     "frontend/src/app/IdentityApp.tsx": "884369bb788e707019fb7a56ba5e0ad4532a93c39433fc8c173e306f8f397a6b",
     "tools/operator/Start-M0Local.ps1": "4f9d641a96fc83e9e8d8d6ac66a4db9b964826582e50a9c9c618d3d426a37ea2"
-  }
+  },
+  "sourceCommit": "fc648ca"
 }

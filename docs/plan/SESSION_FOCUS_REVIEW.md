@@ -26,5 +26,4 @@ reportedreadythenexited; connection refusals/ReadOnlyshutdownrefusal retained.
 Launcher6s first-health pacing after bounded5s startup proof preserves original20s
 launch deadline/all fresh readiness/TLS gates. FinalReadOnly/stop503/forced0/failed0
 and stablelivehealth/browser PASS; no broad runtime/load acceptance claim.
-No profile/pin/package/key/controller/epoch/schema updates. Trial is served from
-workingtree; commit authorization review pending. OldUIgate4/M4recovery unchanged.
+No profile/pin/package/key/controller/epoch/schema updates. Trial is served from main sourcefc648ca under standingADR163 afterreviewPASS. OldUIgate4/M4recovery unchanged.
