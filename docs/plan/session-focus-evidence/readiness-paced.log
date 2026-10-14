@@ -1,0 +1,11 @@
+{
+  "phase": "W5-launch",
+  "success": true,
+  "ready": true,
+  "browserPassed": false,
+  "replayCommits": 0,
+  "auditCommits": 0,
+  "failedRuns": 0,
+  "stoppedMaintenanceRefused": true,
+  "forcedStops": 0
+}

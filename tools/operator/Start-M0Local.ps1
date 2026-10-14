@@ -55,6 +55,9 @@ try{
     $checkpoint='hosts';$timer=[Diagnostics.Stopwatch]::StartNew();$maint=Start-Role 'EcM0Maint' '--m0-maintenance' ([bool]$VerifyBrowser)
     Start-Sleep -Milliseconds 1000
     $runtime=Start-Role 'EcM0Runtime' '--m0-local-runtime' $false
+    # Let the bounded 5s startup proof finish before concurrent health probes.
+    # The original 20s launch deadline and fresh per-request readiness still apply.
+    Start-Sleep -Milliseconds 6000
     $client=[Net.Http.HttpClient]::new();$client.Timeout=[TimeSpan]::FromSeconds(8)
     $checkpoint='readiness'
     while($timer.Elapsed.TotalSeconds -lt 20){

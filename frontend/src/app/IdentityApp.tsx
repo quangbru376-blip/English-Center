@@ -57,7 +57,7 @@ function Routes({ controller, initialPath }: { controller: SessionController; in
     setStudentViewRequest(previous => ({ view, sequence: previous.sequence + 1, revision: authRevision, owner: controller.client }));
   };
   const renderContent = () => {
-  if (snapshot.phase === 'checking' || snapshot.phase === 'pending' && effectivePath !== '/account/change-password') return <Feedback kind="loading" message="Đang kiểm tra ngữ cảnh…" />;
+  if (snapshot.phase === 'checking' || snapshot.phase === 'pending' && effectivePath !== '/account/change-password') return <Feedback kind="loading" message="Đang xác minh phiên đăng nhập…" />;
   if (snapshot.phase === 'unknown') return <>
     <Feedback kind="error" message={snapshot.notice ?? 'Chưa xác minh được phiên.'} />
     <Button className="mt-4" onClick={() => void controller.checkSession()}>Kiểm tra lại phiên</Button>
@@ -103,15 +103,21 @@ export function IdentityApp({ client, initialPath }: { client: HttpClient; initi
     const signals = createSessionSignals(() => { void session.checkSession(); });
     session.setSignalSender(signals.send);
     let active = true;
-    const focus = () => { if (document.visibilityState === 'visible') void session.checkSession(); };
-    const visibility = () => document.visibilityState === 'hidden' ? session.pause() : void session.checkSession();
-    window.addEventListener('focus', focus); document.addEventListener('visibilitychange', visibility);
+    let lastVisibility = document.visibilityState;
+    const visibility = () => {
+      const current = document.visibilityState;
+      if (current === lastVisibility) return;
+      lastVisibility = current;
+      if (current === 'hidden') session.pause();
+      else if (current === 'visible') void session.checkSession();
+    };
+    document.addEventListener('visibilitychange', visibility);
     void session.checkSession().then(() => { if (active) setEntry({ owner: client, session }); });
     return () => {
       active = false;
-      window.removeEventListener('focus', focus); document.removeEventListener('visibilitychange', visibility);
+      document.removeEventListener('visibilitychange', visibility);
       signals.close(); session.dispose();
     };
   }, [client]);
-  return controller ? <Routes controller={controller} initialPath={initialPath} /> : <IdentityShell><Feedback kind="loading" message="Đang kiểm tra ngữ cảnh…" /></IdentityShell>;
+  return controller ? <Routes controller={controller} initialPath={initialPath} /> : <IdentityShell><Feedback kind="loading" message="Đang xác minh phiên đăng nhập…" /></IdentityShell>;
 }
