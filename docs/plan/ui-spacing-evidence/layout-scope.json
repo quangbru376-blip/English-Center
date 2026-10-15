@@ -1,0 +1,62 @@
+[
+  {
+    "file": "frontend\\src\\features\\classes\\ClassesPage.tsx",
+    "actionGroups": 4,
+    "allNonClassJsxAttributesUnchanged": true
+  },
+  {
+    "file": "frontend\\src\\features\\classes\\SchedulesPanel.tsx",
+    "actionGroups": 4,
+    "allNonClassJsxAttributesUnchanged": true
+  },
+  {
+    "file": "frontend\\src\\features\\classes\\AttendancePanel.tsx",
+    "actionGroups": 2,
+    "allNonClassJsxAttributesUnchanged": true
+  },
+  {
+    "file": "frontend\\src\\features\\classes\\GradebookPanel.tsx",
+    "actionGroups": 2,
+    "allNonClassJsxAttributesUnchanged": true
+  },
+  {
+    "file": "frontend\\src\\features\\classes\\GradeReviewPage.tsx",
+    "actionGroups": 3,
+    "allNonClassJsxAttributesUnchanged": true
+  },
+  {
+    "file": "frontend\\src\\features\\admissions\\AdmissionsPage.tsx",
+    "actionGroups": 1,
+    "allNonClassJsxAttributesUnchanged": true
+  },
+  {
+    "file": "frontend\\src\\features\\finance\\FinancePage.tsx",
+    "actionGroups": 2,
+    "allNonClassJsxAttributesUnchanged": true
+  },
+  {
+    "file": "frontend\\src\\features\\administration\\pages\\StaffAdminPage.tsx",
+    "actionGroups": 2,
+    "allNonClassJsxAttributesUnchanged": true
+  },
+  {
+    "file": "frontend\\src\\features\\catalogue\\pages\\CataloguePage.tsx",
+    "actionGroups": 2,
+    "allNonClassJsxAttributesUnchanged": true
+  },
+  {
+    "file": "frontend\\src\\features\\programs\\pages\\ProgramPage.tsx",
+    "actionGroups": 3,
+    "allNonClassJsxAttributesUnchanged": true
+  },
+  {
+    "file": "frontend\\src\\features\\entrySessions\\pages\\EntrySessionPage.tsx",
+    "actionGroups": 5,
+    "allNonClassJsxAttributesUnchanged": true
+  },
+  {
+    "file": "frontend\\src\\features\\entryTasks\\TeacherEntryPage.tsx",
+    "actionGroups": 3,
+    "allNonClassJsxAttributesUnchanged": true
+  }
+]

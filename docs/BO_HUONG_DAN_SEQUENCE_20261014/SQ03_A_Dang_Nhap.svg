@@ -1,0 +1,224 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1320" width="1200" height="1320" style="background:#ffffff; font-family:'Segoe UI', Arial, sans-serif;">
+  <defs>
+    <!-- Arrowhead markers -->
+    <marker id="arrow-sync" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#2C3E50"/>
+    </marker>
+    <marker id="arrow-async" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M 0 2 L 9 5 L 0 8" fill="none" stroke="#2C3E50" stroke-width="1.8"/>
+    </marker>
+    <marker id="arrow-return" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M 0 2 L 9 5 L 0 8" fill="none" stroke="#2C3E50" stroke-width="1.8"/>
+    </marker>
+    <!-- Filter for soft drop shadow -->
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="1" dy="2" stdDeviation="2" flood-opacity="0.12"/>
+    </filter>
+  </defs>
+
+  <style>
+    .title { font-size: 15px; font-weight: bold; fill: #2C3E50; }
+    .lifeline-name { font-size: 13px; font-weight: 600; fill: #2C3E50; text-anchor: middle; }
+    .msg-text { font-size: 12px; fill: #2C3E50; }
+    .msg-return { font-size: 12px; fill: #2C3E50; }
+    .guard-text { font-size: 12px; font-weight: bold; fill: #1A5276; }
+    .note-text { font-size: 11px; fill: #4A4A4A; line-height: 1.35; }
+    .fragment-tag { font-size: 11px; font-weight: bold; fill: #2C3E50; }
+    .ref-text { font-size: 11.5px; font-weight: 600; fill: #B9770E; }
+  </style>
+
+  <!-- Outer Diagram Frame -->
+  <rect x="15" y="15" width="1170" height="1290" fill="#FFFFFF" stroke="#7F8C8D" stroke-width="1.2"/>
+  <path d="M 15 15 L 200 15 L 215 35 L 15 35 Z" fill="#EAECEE" stroke="#7F8C8D" stroke-width="1"/>
+  <text x="25" y="29" class="title">sd SQ03-A — Đăng nhập</text>
+
+  <!-- ================= LIFELINES ================= -->
+
+  <!-- Lifeline 1: Người dùng (Actor) -->
+  <g id="actor-lifeline" transform="translate(160, 45)">
+    <!-- Stick figure -->
+    <circle cx="0" cy="12" r="10" fill="#FEF9E7" stroke="#2C3E50" stroke-width="1.5"/>
+    <line x1="0" y1="22" x2="0" y2="42" stroke="#2C3E50" stroke-width="1.5"/>
+    <line x1="-14" y1="28" x2="14" y2="28" stroke="#2C3E50" stroke-width="1.5"/>
+    <line x1="0" y1="42" x2="-10" y2="58" stroke="#2C3E50" stroke-width="1.5"/>
+    <line x1="0" y1="42" x2="10" y2="58" stroke="#2C3E50" stroke-width="1.5"/>
+    <text x="0" y="75" class="lifeline-name">Người dùng</text>
+  </g>
+  <line x1="160" y1="130" x2="160" y2="1260" stroke="#7F8C8D" stroke-width="1" stroke-dasharray="5,4"/>
+
+  <!-- Lifeline 2: Giao diện tài khoản (Boundary) -->
+  <g id="boundary-lifeline" transform="translate(520, 45)">
+    <circle cx="0" cy="28" r="18" fill="#EBF5FB" stroke="#2C3E50" stroke-width="1.5"/>
+    <line x1="-18" y1="10" x2="-18" y2="46" stroke="#2C3E50" stroke-width="1.5"/>
+    <line x1="-18" y1="28" x2="0" y2="28" stroke="#2C3E50" stroke-width="1.5"/>
+    <text x="0" y="65" class="lifeline-name">Giao diện tài khoản</text>
+    <text x="0" y="78" font-size="11px" fill="#7F8C8D" text-anchor="middle">&lt;&lt;boundary&gt;&gt; F01</text>
+  </g>
+  <line x1="520" y1="130" x2="520" y2="1260" stroke="#7F8C8D" stroke-width="1" stroke-dasharray="5,4"/>
+
+  <!-- Lifeline 3: Hệ thống quản lý trung tâm (Control) -->
+  <g id="control-lifeline" transform="translate(960, 45)">
+    <circle cx="0" cy="28" r="18" fill="#E8F8F5" stroke="#2C3E50" stroke-width="1.5"/>
+    <path d="M 0 10 L 8 4 L 0 2" fill="none" stroke="#2C3E50" stroke-width="1.5"/>
+    <text x="0" y="65" class="lifeline-name">Hệ thống quản lý trung tâm</text>
+    <text x="0" y="78" font-size="11px" fill="#7F8C8D" text-anchor="middle">&lt;&lt;control&gt;&gt;</text>
+  </g>
+  <line x1="960" y1="130" x2="960" y2="1260" stroke="#7F8C8D" stroke-width="1" stroke-dasharray="5,4"/>
+
+  <!-- ================= ACTIVATION BARS ================= -->
+  <!-- User Activation: initial actions -->
+  <rect x="154" y="160" width="12" height="100" fill="#FEF9E7" stroke="#B7950B" stroke-width="1"/>
+
+  <!-- Boundary Activation: receiving input and handling flow -->
+  <rect x="514" y="165" width="12" height="40" fill="#EBF5FB" stroke="#2980B9" stroke-width="1"/>
+  <rect x="514" y="245" width="12" height="925" fill="#EBF5FB" stroke="#2980B9" stroke-width="1"/>
+
+  <!-- System Activation: processing login request -->
+  <rect x="954" y="285" width="12" height="885" fill="#E8F8F5" stroke="#16A085" stroke-width="1"/>
+
+  <!-- ================= SEQUENCE FLOW ================= -->
+
+  <!-- A01: Mở trang đăng nhập -->
+  <line x1="166" y1="170" x2="514" y2="170" stroke="#2C3E50" stroke-width="1.3" marker-end="url(#arrow-sync)"/>
+  <text x="340" y="163" text-anchor="middle" class="msg-text">A01: Mở trang đăng nhập</text>
+
+  <!-- A02: Hiển thị biểu mẫu đăng nhập -->
+  <line x1="514" y1="200" x2="166" y2="200" stroke="#2C3E50" stroke-width="1.2" stroke-dasharray="4,3" marker-end="url(#arrow-return)"/>
+  <text x="340" y="194" text-anchor="middle" class="msg-return">A02: Hiển thị biểu mẫu đăng nhập (email / mật khẩu)</text>
+
+  <!-- A03: Nhập email, mật khẩu và chọn 'Đăng nhập' -->
+  <line x1="166" y1="250" x2="514" y2="250" stroke="#2C3E50" stroke-width="1.3" marker-end="url(#arrow-sync)"/>
+  <text x="340" y="243" text-anchor="middle" class="msg-text">A03: Nhập email, mật khẩu và chọn "Đăng nhập"</text>
+
+  <!-- A04: Gửi yêu cầu đăng nhập -->
+  <line x1="526" y1="285" x2="954" y2="285" stroke="#2C3E50" stroke-width="1.3" marker-end="url(#arrow-sync)"/>
+  <text x="740" y="278" text-anchor="middle" class="msg-text">A04: Gửi yêu cầu đăng nhập (email, mật khẩu)</text>
+
+  <!-- A05: Kiểm tra điều kiện truy cập và thông tin đăng nhập -->
+  <path d="M 966 315 L 1020 315 L 1020 340 L 966 340" fill="none" stroke="#2C3E50" stroke-width="1.3" marker-end="url(#arrow-sync)"/>
+  <text x="1030" y="331" class="msg-text">A05: Kiểm tra điều kiện truy cập và thông tin đăng nhập</text>
+
+  <!-- Note for A05 -->
+  <g transform="translate(620, 310)" filter="url(#shadow)">
+    <path d="M 0 0 L 270 0 L 285 15 L 285 68 L 0 68 Z" fill="#FFFFE0" stroke="#BDB76B" stroke-width="1"/>
+    <path d="M 270 0 L 270 15 L 285 15 Z" fill="#F0E68C" stroke="#BDB76B" stroke-width="1"/>
+    <text x="12" y="20" class="note-text" font-weight="bold" fill="#7D6608">Ghi chú xác thực (A05):</text>
+    <text x="12" y="37" class="note-text">• Hệ thống tự xác định role (không cho chọn role từ UI).</text>
+    <text x="12" y="52" class="note-text">• Lỗi trước xác thực không tiết lộ email tồn tại hoặc</text>
+    <text x="18" y="65" class="note-text">  trạng thái tài khoản (LOCKED / DISABLED).</text>
+  </g>
+
+  <!-- ================= OUTER COMBINED FRAGMENT: alt ================= -->
+  <g id="outer-alt" transform="translate(40, 395)">
+    <!-- Outer alt border -->
+    <rect x="0" y="0" width="1120" height="845" fill="none" stroke="#2980B9" stroke-width="1.4"/>
+    <!-- Alt label tag -->
+    <path d="M 0 0 L 60 0 L 70 18 L 0 18 Z" fill="#D4E6F1" stroke="#2980B9" stroke-width="1"/>
+    <text x="12" y="13" class="fragment-tag">alt</text>
+
+    <!-- Branch 1: Không đáp ứng điều kiện đăng nhập -->
+    <text x="80" y="16" class="guard-text">[Không đáp ứng điều kiện đăng nhập]</text>
+
+    <!-- A06: Cập nhật kiểm soát đăng nhập và ghi sự kiện bảo mật -->
+    <path d="M 926 40 L 980 40 L 980 65 L 926 65" fill="none" stroke="#2C3E50" stroke-width="1.3" marker-end="url(#arrow-sync)"/>
+    <text x="990" y="56" class="msg-text">A06: Cập nhật kiểm soát đăng nhập &amp; ghi sự kiện bảo mật</text>
+
+    <!-- Note for A06 -->
+    <g transform="translate(680, 75)" filter="url(#shadow)">
+      <path d="M 0 0 L 390 0 L 405 15 L 405 52 L 0 52 Z" fill="#FFFFE0" stroke="#BDB76B" stroke-width="1"/>
+      <path d="M 390 0 L 390 15 L 405 15 Z" fill="#F0E68C" stroke="#BDB76B" stroke-width="1"/>
+      <text x="10" y="18" class="note-text">• Chỉ tăng đếm sai khi đúng loại sự kiện sai password (5 lần/15 phút).</text>
+      <text x="10" y="33" class="note-text">• Ghi nhật ký bảo mật best-effort (không ghi mật khẩu / token);</text>
+      <text x="10" y="47" class="note-text">  lỗi log không bỏ qua kiểm tra xác thực hoặc phục hồi phiên.</text>
+    </g>
+
+    <!-- A07: Trả kết quả đăng nhập không thành công -->
+    <line x1="914" y1="150" x2="486" y2="150" stroke="#2C3E50" stroke-width="1.2" stroke-dasharray="4,3" marker-end="url(#arrow-return)"/>
+    <text x="700" y="143" text-anchor="middle" class="msg-return">A07: Trả kết quả đăng nhập không thành công hoặc yêu cầu chờ thử lại</text>
+
+    <!-- A08: Hiển thị thông báo đăng nhập -->
+    <line x1="474" y1="180" x2="126" y2="180" stroke="#2C3E50" stroke-width="1.2" stroke-dasharray="4,3" marker-end="url(#arrow-return)"/>
+    <text x="300" y="173" text-anchor="middle" class="msg-return">A08: Hiển thị thông báo đăng nhập (lỗi chung / chờ 15 phút)</text>
+
+    <!-- Divider line for alt outer -->
+    <line x1="0" y1="210" x2="1120" y2="210" stroke="#2980B9" stroke-width="1.2" stroke-dasharray="6,4"/>
+
+    <!-- Branch 2: Đáp ứng điều kiện đăng nhập -->
+    <text x="20" y="230" class="guard-text">[Đáp ứng điều kiện đăng nhập]</text>
+
+    <!-- A09: Xác định vai trò và loại phiên; đặt lại đếm sai -->
+    <path d="M 926 245 L 980 245 L 980 270 L 926 270" fill="none" stroke="#2C3E50" stroke-width="1.3" marker-end="url(#arrow-sync)"/>
+    <text x="990" y="261" class="msg-text">A09: Xác định vai trò &amp; loại phiên; đặt lại đếm sai</text>
+
+    <!-- ================= INNER COMBINED FRAGMENT: alt ================= -->
+    <g id="inner-alt" transform="translate(30, 290)">
+      <rect x="0" y="0" width="1060" height="535" fill="none" stroke="#27AE60" stroke-width="1.3"/>
+      <path d="M 0 0 L 55 0 L 65 18 L 0 18 Z" fill="#D5F5E3" stroke="#27AE60" stroke-width="1"/>
+      <text x="12" y="13" class="fragment-tag" fill="#196F3D">alt</text>
+
+      <!-- Sub-branch 1: Không bắt buộc đổi mật khẩu tạm -->
+      <text x="75" y="16" class="guard-text" fill="#196F3D">[Không bắt buộc đổi mật khẩu tạm]</text>
+
+      <!-- A10: Tạo phiên thường và ghi sự kiện đăng nhập -->
+      <path d="M 896 35 L 950 35 L 950 60 L 896 60" fill="none" stroke="#2C3E50" stroke-width="1.3" marker-end="url(#arrow-sync)"/>
+      <text x="960" y="51" class="msg-text">A10: Tạo phiên thường &amp; ghi sự kiện đăng nhập</text>
+
+      <!-- Note for A10 -->
+      <g transform="translate(620, 70)" filter="url(#shadow)">
+        <path d="M 0 0 L 410 0 L 425 15 L 425 50 L 0 50 Z" fill="#FFFFE0" stroke="#BDB76B" stroke-width="1"/>
+        <path d="M 410 0 L 410 15 L 425 15 Z" fill="#F0E68C" stroke="#BDB76B" stroke-width="1"/>
+        <text x="10" y="18" class="note-text" font-weight="bold" fill="#7D6608">Quy tắc phiên thường (NORMAL):</text>
+        <text x="10" y="32" class="note-text">• Tối đa 2 giờ tuyệt đối hoặc 30 phút không hoạt động (idle timeout).</text>
+        <text x="10" y="45" class="note-text">• Không refresh token / remember-me; không thu hồi phiên khác thiết bị.</text>
+      </g>
+
+      <!-- A11: Trả kết quả đăng nhập với phiên thường và vai trò -->
+      <line x1="884" y1="140" x2="456" y2="140" stroke="#2C3E50" stroke-width="1.2" stroke-dasharray="4,3" marker-end="url(#arrow-return)"/>
+      <text x="670" y="133" text-anchor="middle" class="msg-return">A11: Trả kết quả đăng nhập với phiên thường và vai trò</text>
+
+      <!-- A12: Hiển thị trang đầu của vai trò -->
+      <line x1="444" y1="170" x2="96" y2="170" stroke="#2C3E50" stroke-width="1.2" stroke-dasharray="4,3" marker-end="url(#arrow-return)"/>
+      <text x="270" y="163" text-anchor="middle" class="msg-return">A12: Hiển thị trang đầu của vai trò (Student, Teacher, Academic,...)</text>
+
+      <!-- Divider line for inner alt -->
+      <line x1="0" y1="210" x2="1060" y2="210" stroke="#27AE60" stroke-width="1.2" stroke-dasharray="6,4"/>
+
+      <!-- Sub-branch 2: Bắt buộc đổi mật khẩu tạm -->
+      <text x="20" y="230" class="guard-text" fill="#B9770E">[Bắt buộc đổi mật khẩu tạm]</text>
+
+      <!-- A13: Tạo phiên hạn chế và ghi sự kiện đăng nhập -->
+      <path d="M 896 245 L 950 245 L 950 270 L 896 270" fill="none" stroke="#2C3E50" stroke-width="1.3" marker-end="url(#arrow-sync)"/>
+      <text x="960" y="261" class="msg-text">A13: Tạo phiên hạn chế &amp; ghi sự kiện đăng nhập</text>
+
+      <!-- Note for A13 -->
+      <g transform="translate(620, 280)" filter="url(#shadow)">
+        <path d="M 0 0 L 410 0 L 425 15 L 425 50 L 0 50 Z" fill="#FFFFE0" stroke="#BDB76B" stroke-width="1"/>
+        <path d="M 410 0 L 410 15 L 425 15 Z" fill="#F0E68C" stroke="#BDB76B" stroke-width="1"/>
+        <text x="10" y="18" class="note-text" font-weight="bold" fill="#7D6608">Quy tắc phiên hạn chế (RESTRICTED):</text>
+        <text x="10" y="32" class="note-text">• Tối đa 10 phút và không vượt hạn mật khẩu tạm 24 giờ.</text>
+        <text x="10" y="45" class="note-text">• Không cấp quyền nghiệp vụ; chỉ được đổi mật khẩu hoặc đăng xuất.</text>
+      </g>
+
+      <!-- A14: Trả kết quả cần đổi mật khẩu tạm -->
+      <line x1="884" y1="350" x2="456" y2="350" stroke="#2C3E50" stroke-width="1.2" stroke-dasharray="4,3" marker-end="url(#arrow-return)"/>
+      <text x="670" y="343" text-anchor="middle" class="msg-return">A14: Trả kết quả cần đổi mật khẩu tạm (phiên hạn chế)</text>
+
+      <!-- A15: Hiển thị màn hình bắt đổi mật khẩu -->
+      <line x1="444" y1="380" x2="96" y2="380" stroke="#2C3E50" stroke-width="1.2" stroke-dasharray="4,3" marker-end="url(#arrow-return)"/>
+      <text x="270" y="373" text-anchor="middle" class="msg-return">A15: Hiển thị màn hình bắt đổi mật khẩu</text>
+
+      <!-- Ref box for SQ04 -->
+      <g transform="translate(60, 420)" filter="url(#shadow)">
+        <rect x="0" y="0" width="450" height="70" fill="#FEF9E7" stroke="#D4AC0D" stroke-width="1.2"/>
+        <path d="M 0 0 L 50 0 L 60 18 L 0 18 Z" fill="#F9E79F" stroke="#D4AC0D" stroke-width="1"/>
+        <text x="12" y="13" class="fragment-tag" fill="#7D6608">ref</text>
+        <text x="70" y="14" class="ref-text">SQ04 — Tự đổi mật khẩu</text>
+        <text x="20" y="38" font-size="11.5px" fill="#2C3E50">Người dùng thực hiện đổi mật khẩu tạm sang mật khẩu chính thức.</text>
+        <text x="20" y="55" font-size="11px" fill="#7F8C8D">Sau khi hoàn tất SQ04 thành công, hệ thống thu hồi phiên hạn chế và cấp phiên thường.</text>
+      </g>
+
+    </g> <!-- end inner-alt -->
+
+  </g> <!-- end outer-alt -->
+
+</svg>

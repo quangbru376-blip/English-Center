@@ -1,0 +1,98 @@
+{
+  "passed": true,
+  "realDevMainStrictMode": true,
+  "mockHttpOnly": true,
+  "cases": [
+    {
+      "role": "Admin",
+      "route": "/admin/accounts",
+      "reads": 1,
+      "onePerExpectedEndpoint": true,
+      "mutations": 0
+    },
+    {
+      "role": "Admin",
+      "route": "/admin/audit-events",
+      "reads": 1,
+      "onePerExpectedEndpoint": true,
+      "mutations": 0
+    },
+    {
+      "role": "Admissions",
+      "route": "/admissions/registrations",
+      "reads": 1,
+      "onePerExpectedEndpoint": true,
+      "mutations": 0
+    },
+    {
+      "role": "AcademicAffairs",
+      "route": "/academics/courses",
+      "reads": 1,
+      "onePerExpectedEndpoint": true,
+      "mutations": 0
+    },
+    {
+      "role": "AcademicAffairs",
+      "route": "/academics/training-programs",
+      "reads": 1,
+      "onePerExpectedEndpoint": true,
+      "mutations": 0
+    },
+    {
+      "role": "AcademicAffairs",
+      "route": "/academics/entry-test-sessions",
+      "reads": 1,
+      "onePerExpectedEndpoint": true,
+      "mutations": 0
+    },
+    {
+      "role": "AcademicAffairs",
+      "route": "/academics/classes",
+      "reads": 2,
+      "onePerExpectedEndpoint": true,
+      "mutations": 0
+    },
+    {
+      "role": "AcademicAffairs",
+      "route": "/academics/grade-reviews",
+      "reads": 1,
+      "onePerExpectedEndpoint": true,
+      "mutations": 0
+    },
+    {
+      "role": "Teacher",
+      "route": "/teacher/classes",
+      "reads": 2,
+      "onePerExpectedEndpoint": true,
+      "mutations": 0
+    },
+    {
+      "role": "Teacher",
+      "route": "/teacher/entry-test-sessions",
+      "reads": 1,
+      "onePerExpectedEndpoint": true,
+      "mutations": 0
+    },
+    {
+      "role": "Accountant",
+      "route": "/accountant/invoices",
+      "reads": 1,
+      "onePerExpectedEndpoint": true,
+      "mutations": 0
+    },
+    {
+      "role": "Accountant",
+      "route": "/accountant/reports",
+      "reads": 1,
+      "onePerExpectedEndpoint": true,
+      "mutations": 0
+    },
+    {
+      "role": "Director",
+      "route": "/reports",
+      "reads": 1,
+      "onePerExpectedEndpoint": true,
+      "mutations": 0
+    }
+  ]
+}

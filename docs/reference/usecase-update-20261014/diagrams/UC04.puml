@@ -1,0 +1,23 @@
+@startuml
+left to right direction
+skinparam monochrome true
+skinparam shadowing false
+actor "Học viên" as A_s
+actor "Kế toán" as A_ac
+rectangle "Hệ thống quản lý trung tâm Anh ngữ" {
+usecase "Xem hóa đơn và hướng dẫn thanh toán" as U_own
+usecase "In hóa đơn của mình" as U_print
+usecase "Đọc mới hóa đơn đúng quyền" as U_fresh
+usecase "Tra cứu hóa đơn và công nợ" as U_search
+usecase "Xác nhận thanh toán đủ một lần" as U_pay
+usecase "Sửa phương thức hoặc mã giao dịch" as U_correct
+usecase "Lưu Payment và chuyển Invoice PAID" as U_paid
+}
+A_s -- U_own
+A_s -- U_print
+A_ac -- U_search
+A_ac -- U_pay
+A_ac -- U_correct
+U_print ..> U_fresh : <<include>>
+U_pay ..> U_paid : <<include>>
+@enduml

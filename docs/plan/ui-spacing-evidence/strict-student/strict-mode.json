@@ -1,0 +1,13 @@
+{
+  "passed": true,
+  "realDevMainStrictMode": true,
+  "mockHttpOnly": true,
+  "home": 1,
+  "courses": 1,
+  "invoices": 1,
+  "classes": 1,
+  "schedules": 1,
+  "grades": 1,
+  "mutations": 0,
+  "unexpected": 0
+}

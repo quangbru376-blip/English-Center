@@ -1,0 +1,74 @@
+digraph Logic {
+graph [rankdir=RL, newrank=true, compound=true, splines=polyline, nodesep=0.33, ranksep=0.65, bgcolor="white", pad=0.35, fontname="Arial", fontsize=22, labelloc=t, label="SƠ ĐỒ LOGIC DỮ LIỆU
+Hệ thống quản lý trung tâm tiếng Anh", outputorder=edgesfirst];
+node [shape=box, style="filled", fillcolor="white", color="#202020", penwidth=1.2, fontname="Arial", fontsize=17, margin="0.13,0.14"];
+edge [color="#484848", penwidth=1.1, arrowsize=0.75, fontname="Arial", fontsize=11];
+subgraph cluster_identity { label="TÀI KHOẢN VÀ PHIÊN"; fontsize=15; fontname="Arial"; style="rounded,filled"; color="#aaaaaa"; fillcolor="#f7f7f7"; penwidth=0.7; margin=22;
+Role [label="Role"];
+Account [label="Account"];
+StudentProfile [label="StudentProfile"];
+AuthSession [label="AuthSession"];
+}
+subgraph cluster_config { label="CẤU HÌNH ĐÀO TẠO"; fontsize=15; fontname="Arial"; style="rounded,filled"; color="#aaaaaa"; fillcolor="#f7f7f7"; penwidth=0.7; margin=22;
+Course [label="Course"];
+Band [label="Band"];
+TrainingProgram [label="TrainingProgram"];
+ScoreComponentConfig [label="ScoreComponentConfig"];
+}
+subgraph cluster_entry { label="ĐĂNG KÝ VÀ THI ĐẦU VÀO"; fontsize=15; fontname="Arial"; style="rounded,filled"; color="#aaaaaa"; fillcolor="#f7f7f7"; penwidth=0.7; margin=22;
+Registration [label="Registration"];
+EntryTestSession [label="EntryTestSession"];
+EntryTestAttempt [label="EntryTestAttempt"];
+EntryTestBooking [label="EntryTestBooking"];
+BandAssignment [label="BandAssignment"];
+}
+subgraph cluster_class { label="LỚP LỊCH VÀ KẾT QUẢ"; fontsize=15; fontname="Arial"; style="rounded,filled"; color="#aaaaaa"; fillcolor="#f7f7f7"; penwidth=0.7; margin=22;
+Class [label="Class"];
+StudentClassAssignment [label="StudentClassAssignment"];
+Schedule [label="Schedule"];
+Attendance [label="Attendance"];
+Score [label="Score"];
+GradeReport [label="GradeReport"];
+}
+subgraph cluster_finance { label="HÓA ĐƠN VÀ THANH TOÁN"; fontsize=15; fontname="Arial"; style="rounded,filled"; color="#aaaaaa"; fillcolor="#f7f7f7"; penwidth=0.7; margin=22;
+Invoice [label="Invoice"];
+Payment [label="Payment"];
+InvoiceNumberCounter [label="InvoiceNumberCounter\nBộ cấp số theo năm; không có FK"];
+}
+subgraph cluster_support { label="NHẬT KÝ VÀ REPLAY"; fontsize=15; fontname="Arial"; style="rounded,filled"; color="#aaaaaa"; fillcolor="#f7f7f7"; penwidth=0.7; margin=22;
+AuditLog [label="AuditLog"];
+ReplayOperation [label="ReplayOperation"];
+}
+Account -> Role [id="FK_Account_Role_role_id", tooltip="Account(role_id) → Role(role_id)", style="solid", arrowhead="normal"];
+StudentProfile -> Account [id="FK_StudentProfile_Account_account_id", tooltip="StudentProfile(account_id) → Account(account_id)", style="solid", arrowhead="normal"];
+AuthSession -> Account [id="FK_AuthSession_Account_account_id", tooltip="AuthSession(account_id) → Account(account_id)", style="solid", arrowhead="normal"];
+TrainingProgram -> Band [id="FK_TrainingProgram_Band_band_id", tooltip="TrainingProgram(band_id) → Band(band_id)", style="solid", arrowhead="normal"];
+TrainingProgram -> Course [id="FK_TrainingProgram_Course_course_id", tooltip="TrainingProgram(course_id) → Course(course_id)", style="solid", arrowhead="normal"];
+ScoreComponentConfig -> TrainingProgram [id="FK_ScoreComponentConfig_TrainingProgram_program_id", tooltip="ScoreComponentConfig(program_id) → TrainingProgram(program_id)", style="solid", arrowhead="normal"];
+Registration -> Course [id="FK_Registration_Course_course_id", tooltip="Registration(course_id) → Course(course_id)", style="solid", arrowhead="normal"];
+Registration -> StudentProfile [id="FK_Registration_StudentProfile_student_id", tooltip="Registration(student_id) → StudentProfile(student_id)", style="solid", arrowhead="normal"];
+EntryTestSession -> Account [id="FK_EntryTestSession_Account_grader_id", tooltip="EntryTestSession(grader_id) → Account(account_id)", style="solid", arrowhead="normal"];
+EntryTestAttempt -> EntryTestBooking [id="FK_Attempt_Booking_CompletedBookingAttempt", tooltip="EntryTestAttempt(completed_booking_id,attempt_id) → EntryTestBooking(booking_id,attempt_id)", style="dashed", constraint=false, label="FK ghép", arrowhead="onormal"];
+EntryTestAttempt -> Registration [id="FK_Attempt_Registration_registration_id", tooltip="EntryTestAttempt(registration_id) → Registration(registration_id)", style="solid", arrowhead="normal"];
+EntryTestBooking -> EntryTestAttempt [id="FK_Booking_Attempt_attempt_id", tooltip="EntryTestBooking(attempt_id) → EntryTestAttempt(attempt_id)", style="solid", arrowhead="normal"];
+EntryTestBooking -> EntryTestSession [id="FK_Booking_Session_session_id", tooltip="EntryTestBooking(session_id) → EntryTestSession(session_id)", style="solid", arrowhead="normal"];
+BandAssignment -> EntryTestAttempt [id="FK_BandAssignment_Attempt_BestAttemptRegistration", tooltip="BandAssignment(best_attempt_id,registration_id) → EntryTestAttempt(attempt_id,registration_id)", style="dashed", label="FK ghép", arrowhead="normal"];
+BandAssignment -> Band [id="FK_BandAssignment_Band_band_id", tooltip="BandAssignment(band_id) → Band(band_id)", style="solid", arrowhead="normal"];
+BandAssignment -> Registration [id="FK_BandAssignment_Registration_registration_id", tooltip="BandAssignment(registration_id) → Registration(registration_id)", style="solid", arrowhead="normal"];
+Class -> Account [id="FK_Class_Account_teacher_id", tooltip="Class(teacher_id) → Account(account_id)", style="solid", arrowhead="normal"];
+Class -> TrainingProgram [id="FK_Class_TrainingProgram_program_id", tooltip="Class(program_id) → TrainingProgram(program_id)", style="solid", arrowhead="normal"];
+StudentClassAssignment -> Class [id="FK_Assignment_Class_class_id", tooltip="StudentClassAssignment(class_id) → Class(class_id)", style="solid", arrowhead="normal"];
+StudentClassAssignment -> Registration [id="FK_Assignment_Registration_registration_id", tooltip="StudentClassAssignment(registration_id) → Registration(registration_id)", style="solid", arrowhead="normal"];
+Schedule -> Class [id="FK_Schedule_Class_class_id", tooltip="Schedule(class_id) → Class(class_id)", style="solid", arrowhead="normal"];
+Schedule -> Schedule [id="FK_Schedule_Schedule_replaces_schedule_id", tooltip="Schedule(replaces_schedule_id) → Schedule(schedule_id)", style="solid", label="thay thế", arrowhead="onormal"];
+Attendance -> Schedule [id="FK_Attendance_Schedule_schedule_id", tooltip="Attendance(schedule_id) → Schedule(schedule_id)", style="solid", arrowhead="normal"];
+Attendance -> StudentClassAssignment [id="FK_Attendance_StudentClassAssignment_class_assignment_id", tooltip="Attendance(class_assignment_id) → StudentClassAssignment(class_assignment_id)", style="solid", arrowhead="normal"];
+Score -> Schedule [id="FK_Score_Schedule_schedule_id", tooltip="Score(schedule_id) → Schedule(schedule_id)", style="solid", arrowhead="onormal"];
+Score -> ScoreComponentConfig [id="FK_Score_ScoreComponentConfig_component_id", tooltip="Score(component_id) → ScoreComponentConfig(component_id)", style="solid", arrowhead="normal"];
+Score -> StudentClassAssignment [id="FK_Score_StudentClassAssignment_class_assignment_id", tooltip="Score(class_assignment_id) → StudentClassAssignment(class_assignment_id)", style="solid", arrowhead="normal"];
+GradeReport -> StudentClassAssignment [id="FK_GradeReport_StudentClassAssignment_class_assignment_id", tooltip="GradeReport(class_assignment_id) → StudentClassAssignment(class_assignment_id)", style="solid", arrowhead="normal"];
+Invoice -> Registration [id="FK_Invoice_Registration_registration_id", tooltip="Invoice(registration_id) → Registration(registration_id)", style="solid", arrowhead="normal"];
+Payment -> Invoice [id="FK_Payment_Invoice_invoice_id", tooltip="Payment(invoice_id) → Invoice(invoice_id)", style="solid", arrowhead="normal"];
+AuditLog -> Account [id="FK_AuditLog_Account_actor_account_id", tooltip="AuditLog(actor_account_id) → Account(account_id)", style="solid", arrowhead="onormal"];
+ReplayOperation -> Account [id="FK_ReplayOperation_Account_actor_account_id", tooltip="ReplayOperation(actor_account_id) → Account(account_id)", style="solid", arrowhead="normal"];
+}

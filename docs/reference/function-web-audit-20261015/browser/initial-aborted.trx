@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TestRun id="88e2439f-695b-4613-bae4-bcb1f2e71225" name="asus@CHARCAS 2026-10-15 09:31:33" runUser="CHARCAS\asus" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <Times creation="2026-10-15T09:31:33.8770070+07:00" queuing="2026-10-15T09:31:33.8770076+07:00" start="2026-10-15T09:30:03.5152641+07:00" finish="2026-10-15T09:31:33.8779228+07:00" />
+  <TestSettings name="default" id="0fc66e1d-8d65-4e56-b8d4-d5aadb38f959">
+    <Deployment runDeploymentRoot="asus_CHARCAS_2026-10-15_09_31_33" />
+  </TestSettings>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <ResultSummary outcome="Failed">
+    <Counters total="0" executed="0" passed="0" failed="0" error="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+    <RunInfos>
+      <RunInfo computerName="CHARCAS" outcome="Error" timestamp="2026-10-15T09:31:33.6952366+07:00">
+        <Text>vstest.console process failed to connect to testhost process after 90 seconds. This may occur due to machine slowness, please set environment variable VSTEST_CONNECTION_TIMEOUT to increase timeout.</Text>
+      </RunInfo>
+    </RunInfos>
+  </ResultSummary>
+</TestRun>

@@ -1,0 +1,4039 @@
+{
+  "Role": {
+    "columns": {
+      "role_code": {
+        "type": "varchar(32)",
+        "null": "N",
+        "identity": false,
+        "collation": "Latin1_General_100_CI_AS_SC"
+      },
+      "role_id": {
+        "type": "int",
+        "null": "N",
+        "identity": true,
+        "collation": ""
+      },
+      "role_name": {
+        "type": "nvarchar(200)",
+        "null": "N",
+        "identity": false,
+        "collation": "Latin1_General_100_CI_AS_SC"
+      }
+    },
+    "keys": [
+      {
+        "name": "PK_Role",
+        "kind": "PK",
+        "columns": [
+          "role_id"
+        ]
+      }
+    ],
+    "indexes": [
+      {
+        "name": "PK_Role",
+        "unique": true,
+        "pk": true,
+        "constraint": false,
+        "filter": "",
+        "columns": [
+          "role_id"
+        ]
+      },
+      {
+        "name": "UQ_Role_Code",
+        "unique": true,
+        "pk": false,
+        "constraint": false,
+        "filter": "",
+        "columns": [
+          "role_code"
+        ]
+      }
+    ],
+    "fks": [],
+    "checks": [
+      {
+        "name": "CK_Role_Code",
+        "sql": "((([role_code]) collate Latin1_General_100_BIN2='Admin' OR ([role_code]) collate Latin1_General_100_BIN2='Director' OR ([role_code]) collate Latin1_General_100_BIN2='Accountant' OR ([role_code]) collate Latin1_General_100_BIN2='Teacher' OR ([role_code]) collate Latin1_General_100_BIN2='AcademicAffairs' OR ([role_code]) collate Latin1_General_100_BIN2='Admissions' OR ([role_code]) collate Latin1_General_100_BIN2='Student') AND datalength([role_code])=len([role_code]))"
+      }
+    ],
+    "defaults": {}
+  },
+  "Account": {
+    "columns": {
+      "account_id": {
+        "type": "int",
+        "null": "N",
+        "identity": true,
+        "collation": ""
+      },
+      "created_at": {
+        "type": "datetime2(3)",
+        "null": "N",
+        "identity": false,
+        "collation": ""
+      },
+      "email": {
+        "type": "varchar(254)",
+        "null": "N",
+        "identity": false,
+        "collation": "Latin1_General_100_CI_AS_SC"
+      },
+      "failed_login_count": {
+        "type": "int",
+        "null": "N",
+        "identity": false,
+        "collation": ""
+      },
+      "failure_window_started_at": {
+        "type": "datetime2(3)",
+        "null": "Y",
+        "identity": false,
+        "collation": ""
+      },
+      "full_name": {
+        "type": "nvarchar(200)",
+        "null": "N",
+        "identity": false,
+        "collation": "Latin1_General_100_CI_AS_SC"
+      },
+      "login_throttled_until": {
+        "type": "datetime2(3)",
+        "null": "Y",
+        "identity": false,
+        "collation": ""
+      },
+      "must_change_password": {
+        "type": "bit",
+        "null": "N",
+        "identity": false,
+        "collation": ""
+      },
+      "password_hash": {
+        "type": "varchar(512)",
+        "null": "N",
+        "identity": false,
+        "collation": "Latin1_General_100_CI_AS_SC"
+      },
+      "phone": {
+        "type": "varchar(10)",
+        "null": "Y",
+        "identity": false,
+        "collation": "Latin1_General_100_CI_AS_SC"
+      },
+      "role_id": {
+        "type": "int",
+        "null": "N",
+        "identity": false,
+        "collation": ""
+      },
+      "row_version": {
+        "type": "rowversion",
+        "null": "N",
+        "identity": false,
+        "collation": ""
+      },
+      "security_version": {
+        "type": "bigint",
+        "null": "N",
+        "identity": false,
+        "collation": ""
+      },
+      "status": {
+        "type": "varchar(16)",
+        "null": "N",
+        "identity": false,
+        "collation": "Latin1_General_100_CI_AS_SC"
+      },
+      "temp_expires_at": {
+        "type": "datetime2(3)",
+        "null": "Y",
+        "identity": false,
+        "collation": ""
+      },
+      "temp_issued_at": {
+        "type": "datetime2(3)",
+        "null": "Y",
+        "identity": false,
+        "collation": ""
+      }
+    },
+    "keys": [
+      {
+        "name": "PK_Account",
+        "kind": "PK",
+        "columns": [
+          "account_id"
+        ]
+      }
+    ],
+    "indexes": [
+      {
+        "name": "IX_Account_Role_Status_Id",
+        "unique": false,
+        "pk": false,
+        "constraint": false,
+        "filter": "",
+        "columns": [
+          "role_id",
+          "status",
+          "account_id"
+        ]
+      },
+      {
+        "name": "PK_Account",
+        "unique": true,
+        "pk": true,
+        "constraint": false,
+        "filter": "",
+        "columns": [
+          "account_id"
+        ]
+      },
+      {
+        "name": "UQ_Account_Email",
+        "unique": true,
+        "pk": false,
+        "constraint": false,
+        "filter": "",
+        "columns": [
+          "email"
+        ]
+      },
+      {
+        "name": "UQ_Account_Phone",
+        "unique": true,
+        "pk": false,
+        "constraint": false,
+        "filter": "([phone] IS NOT NULL)",
+        "columns": [
+          "phone"
+        ]
+      }
+    ],
+    "fks": [
+      {
+        "name": "FK_Account_Role_role_id",
+        "child": "Account",
+        "parent": "Role",
+        "columns": [
+          "role_id"
+        ],
+        "parent_columns": [
+          "role_id"
+        ],
+        "on_delete": "0",
+        "on_update": "0",
+        "disabled": "0",
+        "untrusted": "0"
+      }
+    ],
+    "checks": [
+      {
+        "name": "CK_Account_FailedLoginCount",
+        "sql": "([failed_login_count]>=(0))"
+      },
+      {
+        "name": "CK_Account_Phone",
+        "sql": "([phone] IS NULL OR datalength([phone])=(10) AND left([phone],(1))='0' AND NOT ([phone]) collate Latin1_General_100_BIN2 like '%[^0-9]%')"
+      },
+      {
+        "name": "CK_Account_SecurityVersion",
+        "sql": "([security_version]>(0))"
+      },
+      {
+        "name": "CK_Account_Status",
+        "sql": "((([status]) collate Latin1_General_100_BIN2='DISABLED' OR ([status]) collate Latin1_General_100_BIN2='LOCKED' OR ([status]) collate Latin1_General_100_BIN2='ACTIVE') AND datalength([status])=len([status]))"
+      },
+      {
+        "name": "CK_Account_TempBundle",
+        "sql": "([must_change_password]=(1) AND [temp_issued_at] IS NOT NULL AND [temp_expires_at] IS NOT NULL AND [temp_expires_at]=dateadd(hour,(24),[temp_issued_at]) OR [must_change_password]=(0) AND [temp_issued_at] IS NULL AND [temp_expires_at] IS NULL)"
+      }
+    ],
+    "defaults": {
+      "created_at": "(sysutcdatetime())",
+      "failed_login_count": "((0))",
+      "security_version": "(CONVERT([bigint],(1)))",
+      "status": "('ACTIVE')"
+    }
+  },
+  "StudentProfile": {
+    "columns": {
+      "account_id": {
+        "type": "int",
+        "null": "N",
+        "identity": false,
+        "collation": ""
+      },
+      "address": {
+        "type": "nvarchar(510)",
+        "null": "Y",
+        "identity": false,
+        "collation": "Latin1_General_100_CI_AS_SC"
+      },
+      "date_of_birth": {
+        "type": "date",
+        "null": "N",
+        "identity": false,
+        "collation": ""
+      },
+      "row_version": {
+        "type": "rowversion",
+        "null": "N",
+        "identity": false,
+        "collation": ""
+      },
+      "student_id": {
+        "type": "int",
+        "null": "N",
+        "identity": true,
+        "collation": ""
+      }
+    },
+    "keys": [
+      {
+        "name": "PK_StudentProfile",
+        "kind": "PK",
+        "columns": [
+          "student_id"
+        ]
+      }
+    ],
+    "indexes": [
+      {
+        "name": "PK_StudentProfile",
+        "unique": true,
+        "pk": true,
+        "constraint": false,
+        "filter": "",
+        "columns": [
+          "student_id"
+        ]
+      },
+      {
+        "name": "UQ_StudentProfile_Account",
+        "unique": true,
+        "pk": false,
+        "constraint": false,
+        "filter": "",
+        "columns": [
+          "account_id"
+        ]
+      }
+    ],
+    "fks": [
+      {
+        "name": "FK_StudentProfile_Account_account_id",
+        "child": "StudentProfile",
+        "parent": "Account",
+        "columns": [
+          "account_id"
+        ],
+        "parent_columns": [
+          "account_id"
+        ],
+        "on_delete": "0",
+        "on_update": "0",
+        "disabled": "0",
+        "untrusted": "0"
+      }
+    ],
+    "checks": [],
+    "defaults": {}
+  },
+  "AuthSession": {
+    "columns": {
+      "account_id": {
+        "type": "int",
+        "null": "N",
+        "identity": false,
+        "collation": ""
+      },
+      "expires_at": {
+        "type": "datetime2(3)",
+        "null": "N",
+        "identity": false,
+        "collation": ""
+      },
+      "issued_at": {
+        "type": "datetime2(3)",
+        "null": "N",
+        "identity": false,
+        "collation": ""
+      },
+      "last_activity_at": {
+        "type": "datetime2(3)",
+        "null": "N",
+        "identity": false,
+        "collation": ""
+      },
+      "revoked_at": {
+        "type": "datetime2(3)",
+        "null": "Y",
+        "identity": false,
+        "collation": ""
+      },
+      "row_version": {
+        "type": "rowversion",
+        "null": "N",
+        "identity": false,
+        "collation": ""
+      },
+      "security_version": {
+        "type": "bigint",
+        "null": "N",
+        "identity": false,
+        "collation": ""
+      },
+      "session_scope": {
+        "type": "varchar(24)",
+        "null": "N",
+        "identity": false,
+        "collation": "Latin1_General_100_CI_AS_SC"
+      },
+      "sid": {
+        "type": "binary(32)",
+        "null": "N",
+        "identity": false,
+        "collation": ""
+      }
+    },
+    "keys": [
+      {
+        "name": "PK_AuthSession",
+        "kind": "PK",
+        "columns": [
+          "sid"
+        ]
+      }
+    ],
+    "indexes": [
+      {
+        "name": "IX_AuthSession_Account_Revoked",
+        "unique": false,
+        "pk": false,
+        "constraint": false,
+        "filter": "",
+        "columns": [
+          "account_id",
+          "revoked_at"
+        ]
+      },
+      {
+        "name": "IX_AuthSession_Expires",
+        "unique": false,
+        "pk": false,
+        "constraint": false,
+        "filter": "",
+        "columns": [
+          "expires_at"
+        ]
+      },
+      {
+        "name": "PK_AuthSession",
+        "unique": true,
+        "pk": true,
+        "constraint": false,
+        "filter": "",
+        "columns": [
+          "sid"
+        ]
+      }
+    ],
+    "fks": [
+      {
+        "name": "FK_AuthSession_Account_account_id",
+        "child": "AuthSession",
+        "parent": "Account",
+        "columns": [
+          "account_id"
+        ],
+        "parent_columns": [
+          "account_id"
+        ],
+        "on_delete": "0",
+        "on_update": "0",
+        "disabled": "0",
+        "untrusted": "0"
+      }
+    ],
+    "checks": [
+      {
+        "name": "CK_AuthSession_Lifetime",
+        "sql": "([issued_at]<=[last_activity_at] AND [last_activity_at]<=[expires_at] AND [expires_at]>[issued_at])"
+      },
+      {
+        "name": "CK_AuthSession_RevokedAt",
+        "sql": "([revoked_at] IS NULL OR [revoked_at]>=[issued_at])"
+      },
+      {
+        "name": "CK_AuthSession_Scope",
+        "sql": "((([session_scope]) collate Latin1_General_100_BIN2='PASSWORD_CHANGE' OR ([session_scope]) collate Latin1_General_100_BIN2='NORMAL') AND datalength([session_scope])=len([session_scope]))"
+      }
+    ],
+    "defaults": {
+      "issued_at": "(sysutcdatetime())"
+    }
+  },
+  "Course": {
+    "columns": {
+      "base_price": {
+        "type": "decimal(18,0)",
+        "null": "N",
+        "identity": false,
+        "collation": ""
+      },
+      "course_code": {
+        "type": "varchar(30)",
+        "null": "N",
+        "identity": false,
+        "collation": "Latin1_General_100_CI_AS_SC"
+      },
+      "course_id": {
+        "type": "int",
+        "null": "N",
+        "identity": true,
+        "collation": ""
+      },
+      "course_name": {
+        "type": "nvarchar(300)",
+        "null": "N",
+        "identity": false,
+        "collation": "Latin1_General_100_CI_AS_SC"
+      },
+      "row_version": {
+        "type": "rowversion",
+        "null": "N",
+        "identity": false,
+        "collation": ""
+      },
+      "status": {
+        "type": "varchar(16)",
+        "null": "N",
+        "identity": false,
+        "collation": "Latin1_General_100_CI_AS_SC"
+      }
+    },
+    "keys": [
+      {
+        "name": "PK_Course",
+        "kind": "PK",
+        "columns": [
+          "course_id"
+        ]
+      }
+    ],
+    "indexes": [
+      {
+        "name": "IX_Course_Status_Id",
+        "unique": false,
+        "pk": false,
+        "constraint": false,
+        "filter": "",
+        "columns": [
+          "status",
+          "course_id"
+        ]
+      },
+      {
+        "name": "PK_Course",
+        "unique": true,
+        "pk": true,
+        "constraint": false,
+        "filter": "",
+        "columns": [
+          "course_id"
+        ]
+      },
+      {
+        "name": "UQ_Course_Code",
+        "unique": true,
+        "pk": false,
+        "constraint": false,
+        "filter": "",
+        "columns": [
+          "course_code"
+        ]
+      }
+    ],
+    "fks": [],
+    "checks": [
+      {
+        "name": "CK_Course_Code",
+        "sql": "(datalength([course_code])>=(1) AND datalength([course_code])<=(30) AND datalength([course_code])=len([course_code]) AND NOT ([course_code]) collate Latin1_General_100_BIN2 like '%[^A-Z0-9_-]%')"
+      },
+      {
+        "name": "CK_Course_Price",
+        "sql": "([base_price]>(0))"
+      },
+      {
+        "name": "CK_Course_Status",
+        "sql": "((([status]) collate Latin1_General_100_BIN2='INACTIVE' OR ([status]) collate Latin1_General_100_BIN2='ACTIVE') AND datalength([status])=len([status]))"
+      }
+    ],
+    "defaults": {}
+  },
+  "Band": {
+    "columns": {
+      "band_code": {
+        "type": "varchar(30)",
+        "null": "N",
+        "identity": false,
+        "collation": "Latin1_General_100_CI_AS_SC"
+      },
+      "band_id": {
+        "type": "int",
+        "null": "N",
+        "identity": true,
+        "collation": ""
+      },
+      "min_score": {
+        "type": "decimal(5,2)",
+        "null": "N",
+        "identity": false,
+        "collation": ""
+      },
+      "row_version": {
+        "type": "rowversion",
+        "null": "N",
+        "identity": false,
+        "collation": ""
+      }
+    },
+    "keys": [
+      {
+        "name": "PK_Band",
+        "kind": "PK",
+        "columns": [
+          "band_id"
+        ]
+      }
+    ],
+    "indexes": [
+      {
+        "name": "PK_Band",
+        "unique": true,
+        "pk": true,
+        "constraint": false,
+        "filter": "",
+        "columns": [
+          "band_id"
+        ]
+      },
+      {
+        "name": "UQ_Band_Code",
+        "unique": true,
+        "pk": false,
+        "constraint": false,
+        "filter": "",
+        "columns": [
+          "band_code"
+        ]
+      },
+      {
+        "name": "UQ_Band_MinScore",
+        "unique": true,
+        "pk": false,
+        "constraint": false,
+        "filter": "",
+        "columns": [
+          "min_score"
+        ]
+      }
+    ],
+    "fks": [],
+    "checks": [
+      {
+        "name": "CK_Band_Code",
+        "sql": "(datalength([band_code])>=(1) AND datalength([band_code])<=(30) AND NOT ([band_code]) collate Latin1_General_100_BIN2 like '%[^ -~]%' AND len([band_code])>(0))"
+      },
+      {
+        "name": "CK_Band_MinScore",
+        "sql": "([min_score]>=(0) AND [min_score]<=(100))"
+      }
+    ],
+    "defaults": {}
+  },
+  "TrainingProgram": {
+    "columns": {
+      "band_id": {
+        "type": "int",
+        "null": "N",
+        "identity": false,
+        "collation": ""
+      },
+      "course_id": {
+        "type": "int",
+        "null": "N",
+        "identity": false,
+        "collation": ""
+      },
+      "expected_lesson_count": {
+        "type": "int",
+        "null": "N",
+        "identity": false,
+        "collation": ""
+      },
+      "program_id": {
+        "type": "int",
+        "null": "N",
+        "identity": true,
+        "collation": ""
+      },
+      "program_name": {
+        "type": "nvarchar(300)",
+        "null": "N",
+        "identity": false,
+        "collation": "Latin1_General_100_CI_AS_SC"
+      },
+      "row_version": {
+        "type": "rowversion",
+        "null": "N",
+        "identity": false,
+        "collation": ""
+      },
+      "status": {
+        "type": "varchar(16)",
+        "null": "N",
+        "identity": false,
+        "collation": "Latin1_General_100_CI_AS_SC"
+      }
+    },
+    "keys": [
+      {
+        "name": "PK_TrainingProgram",
+        "kind": "PK",
+        "columns": [
+          "program_id"
+        ]
+      }
+    ],
+    "indexes": [
+      {
+        "name": "IX_Program_Band",
+        "unique": false,
+        "pk": false,
+        "constraint": false,
+        "filter": "",
+        "columns": [
+          "band_id"
+        ]
+      },
+      {
+        "name": "IX_Program_Status_Id",
+        "unique": false,
+        "pk": false,
+        "constraint": false,
+        "filter": "",
+        "columns": [
+          "status",
+          "program_id"
+        ]
+      },
+      {
+        "name": "PK_TrainingProgram",
+        "unique": true,
+        "pk": true,
+        "constraint": false,
+        "filter": "",
+        "columns": [
+          "program_id"
+        ]
+      },
+      {
+        "name": "UQ_Program_CourseBand",
+        "unique": true,
+        "pk": false,
+        "constraint": false,
+        "filter": "",
+        "columns": [
+          "course_id",
+          "band_id"
+        ]
+      }
+    ],
+    "fks": [
+      {
+        "name": "FK_TrainingProgram_Band_band_id",
+        "child": "TrainingProgram",
+        "parent": "Band",
+        "columns": [
+          "band_id"
+        ],
+        "parent_columns": [
+          "band_id"
+        ],
+        "on_delete": "0",
+        "on_update": "0",
+        "disabled": "0",
+        "untrusted": "0"
+      },
+      {
+        "name": "FK_TrainingProgram_Course_course_id",
+        "child": "TrainingProgram",
+        "parent": "Course",
+        "columns": [
+          "course_id"
+        ],
+        "parent_columns": [
+          "course_id"
+        ],
+        "on_delete": "0",
+        "on_update": "0",
+        "disabled": "0",
+        "untrusted": "0"
+      }
+    ],
+    "checks": [
+      {
+        "name": "CK_TrainingProgram_ExpectedLessons",
+        "sql": "([expected_lesson_count]>(0))"
+      },
+      {
+        "name": "CK_TrainingProgram_Status",
+        "sql": "((([status]) collate Latin1_General_100_BIN2='INACTIVE' OR ([status]) collate Latin1_General_100_BIN2='ACTIVE' OR ([status]) collate Latin1_General_100_BIN2='DRAFT') AND datalength([status])=len([status]))"
+      }
+    ],
+    "defaults": {
+      "status": "('DRAFT')"
+    }
+  },
+  "ScoreComponentConfig": {
+    "columns": {
+      "component_id": {
+        "type": "int",
+        "null": "N",
+        "identity": true,
+        "collation": ""
+      },
+      "component_name": {
+        "type": "nvarchar(200)",
+        "null": "N",
+        "identity": false,
+        "collation": "Latin1_General_100_CI_AS_SC"
+      },
+      "kind": {
+        "type": "varchar(16)",
+        "null": "N",
+        "identity": false,
+        "collation": "Latin1_General_100_CI_AS_SC"
+      },
+      "program_id": {
+        "type": "int",
+        "null": "N",
+        "identity": false,
+        "collation": ""
+      },
+      "row_version": {
+        "type": "rowversion",
+        "null": "N",
+        "identity": false,
+        "collation": ""
+      },
+      "weight": {
+        "type": "decimal(5,2)",
+        "null": "N",
+        "identity": false,
+        "collation": ""
+      }
+    },
+    "keys": [
+      {
+        "name": "PK_ScoreComponentConfig",
+        "kind": "PK",
+        "columns": [
+          "component_id"
+        ]
+      }
+    ],
+    "indexes": [
+      {
+        "name": "PK_ScoreComponentConfig",
+        "unique": true,
+        "pk": true,
+        "constraint": false,
+        "filter": "",
+        "columns": [
+          "component_id"
+        ]
+      },
+      {
+        "name": "UQ_Component_FinalExam",
+        "unique": true,
+        "pk": false,
+        "constraint": false,
+        "filter": "([kind]='FINAL_EXAM')",
+        "columns": [
+          "program_id"
+        ]
+      },
+      {
+        "name": "UQ_Component_ProgramName",
+        "unique": true,
+        "pk": false,
+        "constraint": false,
+        "filter": "",
+        "columns": [
+          "program_id",
+          "component_name"
+        ]
+      }
+    ],
+    "fks": [
+      {
+        "name": "FK_ScoreComponentConfig_TrainingProgram_program_id",
+        "child": "ScoreComponentConfig",
+        "parent": "TrainingProgram",
+        "columns": [
+          "program_id"
+        ],
+        "parent_columns": [
+          "program_id"
+        ],
+        "on_delete": "0",
+        "on_update": "0",
+        "disabled": "0",
+        "untrusted": "0"
+      }
+    ],
+    "checks": [
+      {
+        "name": "CK_ScoreComponentConfig_Kind",
+        "sql": "((([kind]) collate Latin1_General_100_BIN2='FINAL_EXAM' OR ([kind]) collate Latin1_General_100_BIN2='LESSON' OR ([kind]) collate Latin1_General_100_BIN2='GENERAL') AND datalength([kind])=len([kind]))"
+      },
+      {
+        "name": "CK_ScoreComponentConfig_Name",
+        "sql": "(len([component_name])>(0))"
+      },
+      {
+        "name": "CK_ScoreComponentConfig_Weight",
+        "sql": "([weight]>(0) AND [weight]<=(100))"
+      }
+    ],
+    "defaults": {}
+  },
+  "Registration": {
+    "columns": {
+      "admission_approved_at": {
+        "type": "datetime2(3)",
+        "null": "Y",
+        "identity": false,
+        "collation": ""
+      },
+      "admission_approved_by": {
+        "type": "int",
+        "null": "Y",
+        "identity": false,
+        "collation": ""
+      },
+      "admission_confirmed_at": {
+        "type": "datetime2(3)",
+        "null": "Y",
+        "identity": false,
+        "collation": ""
+      },
+      "cancellation_operation_id": {
+        "type": "uniqueidentifier",
+        "null": "Y",
+        "identity": false,
+        "collation": ""
+      },
+      "cancellation_reason": {
+        "type": "nvarchar(2000)",
+        "null": "Y",
+        "identity": false,
+        "collation": "Latin1_General_100_CI_AS_SC"
+      },
+      "cancelled_at": {
+        "type": "datetime2(3)",
+        "null": "Y",
+        "identity": false,
+        "collation": ""
+      },
+      "cancelled_by": {
+        "type": "int",
+        "null": "Y",
+        "identity": false,
+        "collation": ""
+      },
+      "cancelled_from_status": {
+        "type": "varchar(16)",
+        "null": "Y",
+        "identity": false,
+        "collation": "Latin1_General_100_CI_AS_SC"
+      },
+      "course_id": {
+        "type": "int",
+        "null": "N",
+        "identity": false,
+        "collation": ""
+      },
+      "created_at": {
+        "type": "datetime2(3)",
+        "null": "N",
+        "identity": false,
+        "collation": ""
+      },
+      "is_unfinished": {
+        "type": "bit",
+        "null": "N",
+        "identity": false,
+        "collation": ""
+      },
+      "registration_id": {
+        "type": "int",
+        "null": "N",
+        "identity": true,
+        "collation": ""
+      },
+      "rejected_at": {
+        "type": "datetime2(3)",
+        "null": "Y",
+        "identity": false,
+        "collation": ""
+      },
+      "rejected_by": {
+        "type": "int",
+        "null": "Y",
+        "identity": false,
+        "collation": ""
+      },
+      "rejected_from_status": {
+        "type": "varchar(16)",
+        "null": "Y",
+        "identity": false,
+        "collation": "Latin1_General_100_CI_AS_SC"
+      },
+      "rejection_operation_id": {
+        "type": "uniqueidentifier",
+        "null": "Y",
+        "identity": false,
+        "collation": ""
+      },
+      "rejection_reason": {
+        "type": "nvarchar(2000)",
+        "null": "Y",
+        "identity": false,
+        "collation": "Latin1_General_100_CI_AS_SC"
+      },
+      "row_version": {
+        "type": "rowversion",
+        "null": "N",
+        "identity": false,
+        "collation": ""
+      },
+      "status": {
+        "type": "varchar(16)",
+        "null": "N",
+        "identity": false,
+        "collation": "Latin1_General_100_CI_AS_SC"
+      },
+      "student_id": {
+        "type": "int",
+        "null": "N",
+        "identity": false,
+        "collation": ""
+      }
+    },
+    "keys": [
+      {
+        "name": "PK_Registration",
+        "kind": "PK",
+        "columns": [
+          "registration_id"
+        ]
+      }
+    ],
+    "indexes": [
+      {
+        "name": "IX_Registration_ApprovedBy",
+        "unique": false,
+        "pk": false,
+        "constraint": false,
+        "filter": "",
+        "columns": [
+          "admission_approved_by"
+        ]
+      },
+      {
+        "name": "IX_Registration_CancelledBy",
+        "unique": false,
+        "pk": false,
+        "constraint": false,
+        "filter": "",
+        "columns": [
+          "cancelled_by"
+        ]
+      },
+      {
+        "name": "IX_Registration_CourseStateCreated",
+        "unique": false,
+        "pk": false,
+        "constraint": false,
+        "filter": "",
+        "columns": [
+          "course_id",
+          "status",
+          "created_at",
+          "registration_id"
+        ]
+      },
+      {
+        "name": "IX_Registration_RejectedBy",
+        "unique": false,
+        "pk": false,
+        "constraint": false,
+        "filter": "",
+        "columns": [
+          "rejected_by"
+        ]
+      },
+      {
+        "name": "IX_Registration_StudentCreated",
+        "unique": false,
+        "pk": false,
+        "constraint": false,
+        "filter": "",
+        "columns": [
+          "student_id",
+          "created_at",
+          "registration_id"
+        ]
+      },
+      {
+        "name": "PK_Registration",
+        "unique": true,
+        "pk": true,
+        "constraint": false,
+        "filter": "",
+        "columns": [
+          "registration_id"
+        ]
+      },
+      {
+        "name": "UQ_Registration_Unfinished",
+        "unique": true,
+        "pk": false,
+        "constraint": false,
+        "filter": "([is_unfinished]=(1))",
+        "columns": [
+          "student_id",
+          "course_id"
+        ]
+      }
+    ],
+    "fks": [
+      {
+        "name": "FK_Registration_Account_admission_approved_by",
+        "child": "Registration",
+        "parent": "Account",
+        "columns": [
+          "admission_approved_by"
+        ],
+        "parent_columns": [
+          "account_id"
+        ],
+        "on_delete": "0",
+        "on_update": "0",
+        "disabled": "0",
+        "untrusted": "0"
+      },
+      {
+        "name": "FK_Registration_Account_cancelled_by",
+        "child": "Registration",
+        "parent": "Account",
+        "columns": [
+          "cancelled_by"
+        ],
+        "parent_columns": [
+          "account_id"
+        ],
+        "on_delete": "0",
+        "on_update": "0",
+        "disabled": "0",
+        "untrusted": "0"
+      },
+      {
+        "name": "FK_Registration_Account_rejected_by",
+        "child": "Registration",
+        "parent": "Account",
+        "columns": [
+          "rejected_by"
+        ],
+        "parent_columns": [
+          "account_id"
+        ],
+        "on_delete": "0",
+        "on_update": "0",
+        "disabled": "0",
+        "untrusted": "0"
+      },
+      {
+        "name": "FK_Registration_Course_course_id",
+        "child": "Registration",
+        "parent": "Course",
+        "columns": [
+          "course_id"
+        ],
+        "parent_columns": [
+          "course_id"
+        ],
+        "on_delete": "0",
+        "on_update": "0",
+        "disabled": "0",
+        "untrusted": "0"
+      },
+      {
+        "name": "FK_Registration_StudentProfile_student_id",
+        "child": "Registration",
+        "parent": "StudentProfile",
+        "columns": [
+          "student_id"
+        ],
+        "parent_columns": [
+          "student_id"
+        ],
+        "on_delete": "0",
+        "on_update": "0",
+        "disabled": "0",
+        "untrusted": "0"
+      }
+    ],
+    "checks": [
+      {
+        "name": "CK_Registration_ApprovedBundle",
+        "sql": "([admission_approved_by] IS NULL AND [admission_approved_at] IS NULL OR [admission_approved_by] IS NOT NULL AND [admission_approved_at] IS NOT NULL)"
+      },
+      {
+        "name": "CK_Registration_CancelledBundle",
+        "sql": "([status]='CANCELLED' AND [cancelled_by] IS NOT NULL AND [cancelled_at] IS NOT NULL AND [cancelled_from_status] IS NOT NULL AND (([cancelled_from_status]) collate Latin1_General_100_BIN2='ADMITTED' OR ([cancelled_from_status]) collate Latin1_General_100_BIN2='CONFIRMED' OR ([cancelled_from_status]) collate Latin1_General_100_BIN2='BAND_ASSIGNED' OR ([cancelled_from_status]) collate Latin1_General_100_BIN2='TESTING' OR ([cancelled_from_status]) collate Latin1_General_100_BIN2='PENDING') AND datalength([cancelled_from_status])=len([cancelled_from_status]) AND [cancellation_operation_id] IS NOT NULL OR [status]<>'CANCELLED' AND [cancelled_by] IS NULL AND [cancelled_at] IS NULL AND [cancellation_reason] IS NULL AND [cancelled_from_status] IS NULL AND [cancellation_operation_id] IS NULL)"
+      },
+      {
+        "name": "CK_Registration_RejectedBundle",
+        "sql": "([status]='REJECTED' AND [rejected_by] IS NOT NULL AND [rejected_at] IS NOT NULL AND [rejection_reason] IS NOT NULL AND len([rejection_reason])>(0) AND [rejected_from_status] IS NOT NULL AND ([rejected_from_status]) collate Latin1_General_100_BIN2='CONFIRMED' AND datalength([rejected_from_status])=len([rejected_from_status]) AND [rejection_operation_id] IS NOT NULL OR [status]<>'REJECTED' AND [rejected_by] IS NULL AND [rejected_at] IS NULL AND [rejection_reason] IS NULL AND [rejected_from_status] IS NULL AND [rejection_operation_id] IS NULL)"
+      },
+      {
+        "name": "CK_Registration_Status",
+        "sql": "((([status]) collate Latin1_General_100_BIN2='CANCELLED' OR ([status]) collate Latin1_General_100_BIN2='REJECTED' OR ([status]) collate Latin1_General_100_BIN2='ADMITTED' OR ([status]) collate Latin1_General_100_BIN2='CONFIRMED' OR ([status]) collate Latin1_General_100_BIN2='BAND_ASSIGNED' OR ([status]) collate Latin1_General_100_BIN2='TESTING' OR ([status]) collate Latin1_General_100_BIN2='PENDING') AND datalength([status])=len([status]))"
+      }
+    ],
+    "defaults": {
+      "created_at": "(sysutcdatetime())",
+      "is_unfinished": "(CONVERT([bit],(1)))",
+      "status": "('PENDING')"
+    }
+  },
+  "EntryTestSession": {
+    "columns": {
+      "cancellation_operation_id": {
+        "type": "uniqueidentifier",
+        "null": "Y",
+        "identity": false,
+        "collation": ""
+      },
+      "cancellation_reason": {
+        "type": "nvarchar(2000)",
+        "null": "Y",
+        "identity": false,
+        "collation": "Latin1_General_100_CI_AS_SC"
+      },
+      "cancelled_at": {
+        "type": "datetime2(3)",
+        "null": "Y",
+        "identity": false,
+        "collation": ""
+      },
+      "cancelled_by": {
+        "type": "int",
+        "null": "Y",
+        "identity": false,
+        "collation": ""
+      },
+      "capacity": {
+        "type": "int",
+        "null": "N",
+        "identity": false,
+        "collation": ""
+      },
+      "end_at": {
+        "type": "datetime2(3)",
+        "null": "N",
+        "identity": false,
+        "collation": ""
+      },
+      "grader_id": {
+        "type": "int",
+        "null": "N",
+        "identity": false,
+        "collation": ""
+      },
+      "room": {
+        "type": "varchar(30)",
+        "null": "N",
+        "identity": false,
+        "collation": "Latin1_General_100_CI_AS_SC"
+      },
+      "row_version": {
+        "type": "rowversion",
+        "null": "N",
+        "identity": false,
+        "collation": ""
+      },
+      "session_id": {
+        "type": "int",
+        "null": "N",
+        "identity": true,
+        "collation": ""
+      },
+      "start_at": {
+        "type": "datetime2(3)",
+        "null": "N",
+        "identity": false,
+        "collation": ""
+      },
+      "status": {
+        "type": "varchar(16)",
+        "null": "N",
+        "identity": false,
+        "collation": "Latin1_General_100_CI_AS_SC"
+      }
+    },
+    "keys": [
+      {
+        "name": "PK_EntryTestSession",
+        "kind": "PK",
+        "columns": [
+          "session_id"
+        ]
+      }
+    ],
+    "indexes": [
+      {
+        "name": "IX_Session_CancelledBy",
+        "unique": false,
+        "pk": false,
+        "constraint": false,
+        "filter": "",
+        "columns": [
+          "cancelled_by"
+        ]
+      },
+      {
+        "name": "IX_Session_GraderStart",
+        "unique": false,
+        "pk": false,
+        "constraint": false,
+        "filter": "",
+        "columns": [
+          "grader_id",
+          "start_at",
+          "end_at",
+          "session_id"
+        ]
+      },
+      {
+        "name": "IX_Session_RoomStart",
+        "unique": false,
+        "pk": false,
+        "constraint": false,
+        "filter": "",
+        "columns": [
+          "room",
+          "start_at",
+          "end_at",
+          "session_id"
+        ]
+      },
+      {
+        "name": "PK_EntryTestSession",
+        "unique": true,
+        "pk": true,
+        "constraint": false,
+        "filter": "",
+        "columns": [
+          "session_id"
+        ]
+      }
+    ],
+    "fks": [
+      {
+        "name": "FK_EntryTestSession_Account_cancelled_by",
+        "child": "EntryTestSession",
+        "parent": "Account",
+        "columns": [
+          "cancelled_by"
+        ],
+        "parent_columns": [
+          "account_id"
+        ],
+        "on_delete": "0",
+        "on_update": "0",
+        "disabled": "0",
+        "untrusted": "0"
+      },
+      {
+        "name": "FK_EntryTestSession_Account_grader_id",
+        "child": "EntryTestSession",
+        "parent": "Account",
+        "columns": [
+          "grader_id"
+        ],
+        "parent_columns": [
+          "account_id"
+        ],
+        "on_delete": "0",
+        "on_update": "0",
+        "disabled": "0",
+        "untrusted": "0"
+      }
+    ],
+    "checks": [
+      {
+        "name": "CK_EntryTestSession_CancelledBundle",
+        "sql": "([status]='CANCELLED' AND [cancelled_by] IS NOT NULL AND [cancelled_at] IS NOT NULL AND [cancellation_reason] IS NOT NULL AND len([cancellation_reason])>(0) AND [cancellation_operation_id] IS NOT NULL OR [status]<>'CANCELLED' AND [cancelled_by] IS NULL AND [cancelled_at] IS NULL AND [cancellation_reason] IS NULL AND [cancellation_operation_id] IS NULL)"
+      },
+      {
+        "name": "CK_EntryTestSession_Capacity",
+        "sql": "([capacity]>=(1) AND [capacity]<=(20))"
+      },
+      {
+        "name": "CK_EntryTestSession_Room",
+        "sql": "(datalength([room])>=(1) AND datalength([room])<=(30) AND datalength([room])=len([room]) AND NOT ([room]) collate Latin1_General_100_BIN2 like '%[^A-Z0-9_-]%')"
+      },
+      {
+        "name": "CK_EntryTestSession_Status",
+        "sql": "((([status]) collate Latin1_General_100_BIN2='CANCELLED' OR ([status]) collate Latin1_General_100_BIN2='CLOSED' OR ([status]) collate Latin1_General_100_BIN2='OPEN') AND datalength([status])=len([status]))"
+      },
+      {
+        "name": "CK_EntryTestSession_Time",
+        "sql": "([start_at]<[end_at] AND datepart(second,[start_at])=(0) AND datepart(millisecond,[start_at])=(0) AND datepart(second,[end_at])=(0) AND datepart(millisecond,[end_at])=(0) AND CONVERT([date],dateadd(minute,(420),[start_at]))=CONVERT([date],dateadd(minute,(420),[end_at])))"
+      }
+    ],
+    "defaults": {
+      "status": "('CLOSED')"
+    }
+  },
+  "EntryTestAttempt": {
+    "columns": {
+      "attempt_id": {
+        "type": "int",
+        "null": "N",
+        "identity": true,
+        "collation": ""
+      },
+      "attempt_number": {
+        "type": "int",
+        "null": "N",
+        "identity": false,
+        "collation": ""
+      },
+      "completed_booking_id": {
+        "type": "int",
+        "null": "Y",
+        "identity": false,
+        "collation": ""
+      },
+      "graded_at": {
+        "type": "datetime2(3)",
+        "null": "Y",
+        "identity": false,
+        "collation": ""
+      },
+      "graded_by": {
+        "type": "int",
+        "null": "Y",
+        "identity": false,
+        "collation": ""
+      },
+      "registration_id": {
+        "type": "int",
+        "null": "N",
+        "identity": false,
+        "collation": ""
+      },
+      "row_version": {
+        "type": "rowversion",
+        "null": "N",
+        "identity": false,
+        "collation": ""
+      },
+      "score": {
+        "type": "decimal(5,2)",
+        "null": "Y",
+        "identity": false,
+        "collation": ""
+      }
+    },
+    "keys": [
+      {
+        "name": "AK_Attempt_IdRegistration",
+        "kind": "UQ",
+        "columns": [
+          "attempt_id",
+          "registration_id"
+        ]
+      },
+      {
+        "name": "PK_EntryTestAttempt",
+        "kind": "PK",
+        "columns": [
+          "attempt_id"
+        ]
+      }
+    ],
+    "indexes": [
+      {
+        "name": "AK_Attempt_IdRegistration",
+        "unique": true,
+        "pk": false,
+        "constraint": true,
+        "filter": "",
+        "columns": [
+          "attempt_id",
+          "registration_id"
+        ]
+      },
+      {
+        "name": "IX_Attempt_GradedBy",
+        "unique": false,
+        "pk": false,
+        "constraint": false,
+        "filter": "",
+        "columns": [
+          "graded_by"
+        ]
+      },
+      {
+        "name": "PK_EntryTestAttempt",
+        "unique": true,
+        "pk": true,
+        "constraint": false,
+        "filter": "",
+        "columns": [
+          "attempt_id"
+        ]
+      },
+      {
+        "name": "UQ_Attempt_CompletedBooking",
+        "unique": true,
+        "pk": false,
+        "constraint": false,
+        "filter": "([completed_booking_id] IS NOT NULL)",
+        "columns": [
+          "completed_booking_id"
+        ]
+      },
+      {
+        "name": "UQ_Attempt_RegistrationNumber",
+        "unique": true,
+        "pk": false,
+        "constraint": false,
+        "filter": "",
+        "columns": [
+          "registration_id",
+          "attempt_number"
+        ]
+      }
+    ],
+    "fks": [
+      {
+        "name": "FK_Attempt_Account_graded_by",
+        "child": "EntryTestAttempt",
+        "parent": "Account",
+        "columns": [
+          "graded_by"
+        ],
+        "parent_columns": [
+          "account_id"
+        ],
+        "on_delete": "0",
+        "on_update": "0",
+        "disabled": "0",
+        "untrusted": "0"
+      },
+      {
+        "name": "FK_Attempt_Booking_CompletedBookingAttempt",
+        "child": "EntryTestAttempt",
+        "parent": "EntryTestBooking",
+        "columns": [
+          "completed_booking_id",
+          "attempt_id"
+        ],
+        "parent_columns": [
+          "booking_id",
+          "attempt_id"
+        ],
+        "on_delete": "0",
+        "on_update": "0",
+        "disabled": "0",
+        "untrusted": "0"
+      },
+      {
+        "name": "FK_Attempt_Registration_registration_id",
+        "child": "EntryTestAttempt",
+        "parent": "Registration",
+        "columns": [
+          "registration_id"
+        ],
+        "parent_columns": [
+          "registration_id"
+        ],
+        "on_delete": "0",
+        "on_update": "0",
+        "disabled": "0",
+        "untrusted": "0"
+      }
+    ],
+    "checks": [
+      {
+        "name": "CK_EntryTestAttempt_Number",
+        "sql": "([attempt_number]=(2) OR [attempt_number]=(1))"
+      },
+      {
+        "name": "CK_EntryTestAttempt_ResultBundle",
+        "sql": "([score] IS NULL AND [graded_by] IS NULL AND [graded_at] IS NULL AND [completed_booking_id] IS NULL OR [score] IS NOT NULL AND [graded_by] IS NOT NULL AND [graded_at] IS NOT NULL AND [completed_booking_id] IS NOT NULL)"
+      },
+      {
+        "name": "CK_EntryTestAttempt_Score",
+        "sql": "([score] IS NULL OR [score]>=(0) AND [score]<=(100))"
+      }
+    ],
+    "defaults": {}
+  },
+  "EntryTestBooking": {
+    "columns": {
+      "absent_at": {
+        "type": "datetime2(3)",
+        "null": "Y",
+        "identity": false,
+        "collation": ""
+      },
+      "absent_by": {
+        "type": "int",
+        "null": "Y",
+        "identity": false,
+        "collation": ""
+      },
+      "absent_operation_id": {
+        "type": "uniqueidentifier",
+        "null": "Y",
+        "identity": false,
+        "collation": ""
+      },
+      "attempt_id": {
+        "type": "int",
+        "null": "N",
+        "identity": false,
+        "collation": ""
+      },
+      "booked_at": {
+        "type": "datetime2(3)",
+        "null": "N",
+        "identity": false,
+        "collation": ""
+      },
+      "booking_id": {
+        "type": "int",
+        "null": "N",
+        "identity": true,
+        "collation": ""
+      },
+      "cancellation_operation_id": {
+        "type": "uniqueidentifier",
+        "null": "Y",
+        "identity": false,
+        "collation": ""
+      },
+      "cancellation_reason": {
+        "type": "nvarchar(2000)",
+        "null": "Y",
+        "identity": false,
+        "collation": "Latin1_General_100_CI_AS_SC"
+      },
+      "cancelled_at": {
+        "type": "datetime2(3)",
+        "null": "Y",
+        "identity": false,
+        "collation": ""
+      },
+      "cancelled_by": {
+        "type": "int",
+        "null": "Y",
+        "identity": false,
+        "collation": ""
+      },
+      "cancelled_from_status": {
+        "type": "varchar(16)",
+        "null": "Y",
+        "identity": false,
+        "collation": "Latin1_General_100_CI_AS_SC"
+      },
+      "row_version": {
+        "type": "rowversion",
+        "null": "N",
+        "identity": false,
+        "collation": ""
+      },
+      "session_id": {
+        "type": "int",
+        "null": "N",
+        "identity": false,
+        "collation": ""
+      },
+      "status": {
+        "type": "varchar(16)",
+        "null": "N",
+        "identity": false,
+        "collation": "Latin1_General_100_CI_AS_SC"
+      }
+    },
+    "keys": [
+      {
+        "name": "AK_Booking_IdAttempt",
+        "kind": "UQ",
+        "columns": [
+          "booking_id",
+          "attempt_id"
+        ]
+      },
+      {
+        "name": "PK_EntryTestBooking",
+        "kind": "PK",
+        "columns": [
+          "booking_id"
+        ]
+      }
+    ],
+    "indexes": [
+      {
+        "name": "AK_Booking_IdAttempt",
+        "unique": true,
+        "pk": false,
+        "constraint": true,
+        "filter": "",
+        "columns": [
+          "booking_id",
+          "attempt_id"
+        ]
+      },
+      {
+        "name": "IX_Booking_AbsentBy",
+        "unique": false,
+        "pk": false,
+        "constraint": false,
+        "filter": "",
+        "columns": [
+          "absent_by"
+        ]
+      },
+      {
+        "name": "IX_Booking_AttemptHistory",
+        "unique": false,
+        "pk": false,
+        "constraint": false,
+        "filter": "",
+        "columns": [
+          "attempt_id",
+          "booked_at",
+          "booking_id"
+        ]
+      },
+      {
+        "name": "IX_Booking_CancelledBy",
+        "unique": false,
+        "pk": false,
+        "constraint": false,
+        "filter": "",
+        "columns": [
+          "cancelled_by"
+        ]
+      },
+      {
+        "name": "IX_Booking_SessionState",
+        "unique": false,
+        "pk": false,
+        "constraint": false,
+        "filter": "",
+        "columns": [
+          "session_id",
+          "status",
+          "booking_id"
+        ]
+      },
+      {
+        "name": "PK_EntryTestBooking",
+        "unique": true,
+        "pk": true,
+        "constraint": false,
+        "filter": "",
+        "columns": [
+          "booking_id"
+        ]
+      },
+      {
+        "name": "UQ_Booking_Completed",
+        "unique": true,
+        "pk": false,
+        "constraint": false,
+        "filter": "([status]='COMPLETED')",
+        "columns": [
+          "attempt_id"
+        ]
+      },
+      {
+        "name": "UQ_Booking_Current",
+        "unique": true,
+        "pk": false,
+        "constraint": false,
+        "filter": "([status]='SCHEDULED')",
+        "columns": [
+          "attempt_id"
+        ]
+      }
+    ],
+    "fks": [
+      {
+        "name": "FK_Booking_Account_absent_by",
+        "child": "EntryTestBooking",
+        "parent": "Account",
+        "columns": [
+          "absent_by"
+        ],
+        "parent_columns": [
+          "account_id"
+        ],
+        "on_delete": "0",
+        "on_update": "0",
+        "disabled": "0",
+        "untrusted": "0"
+      },
+      {
+        "name": "FK_Booking_Account_cancelled_by",
+        "child": "EntryTestBooking",
+        "parent": "Account",
+        "columns": [
+          "cancelled_by"
+        ],
+        "parent_columns": [
+          "account_id"
+        ],
+        "on_delete": "0",
+        "on_update": "0",
+        "disabled": "0",
+        "untrusted": "0"
+      },
+      {
+        "name": "FK_Booking_Attempt_attempt_id",
+        "child": "EntryTestBooking",
+        "parent": "EntryTestAttempt",
+        "columns": [
+          "attempt_id"
+        ],
+        "parent_columns": [
+          "attempt_id"
+        ],
+        "on_delete": "0",
+        "on_update": "0",
+        "disabled": "0",
+        "untrusted": "0"
+      },
+      {
+        "name": "FK_Booking_Session_session_id",
+        "child": "EntryTestBooking",
+        "parent": "EntryTestSession",
+        "columns": [
+          "session_id"
+        ],
+        "parent_columns": [
+          "session_id"
+        ],
+        "on_delete": "0",
+        "on_update": "0",
+        "disabled": "0",
+        "untrusted": "0"
+      }
+    ],
+    "checks": [
+      {
+        "name": "CK_EntryTestBooking_AbsenceBundle",
+        "sql": "([status]='ABSENT' AND [absent_by] IS NOT NULL AND [absent_at] IS NOT NULL AND [absent_operation_id] IS NOT NULL OR [status]<>'ABSENT' AND [absent_by] IS NULL AND [absent_at] IS NULL AND [absent_operation_id] IS NULL)"
+      },
+      {
+        "name": "CK_EntryTestBooking_CancellationBundle",
+        "sql": "([status]='CANCELLED' AND [cancelled_by] IS NOT NULL AND [cancelled_at] IS NOT NULL AND [cancelled_from_status] IS NOT NULL AND ([cancelled_from_status]) collate Latin1_General_100_BIN2='SCHEDULED' AND datalength([cancelled_from_status])=len([cancelled_from_status]) AND [cancellation_operation_id] IS NOT NULL OR [status]<>'CANCELLED' AND [cancelled_by] IS NULL AND [cancelled_at] IS NULL AND [cancelled_from_status] IS NULL AND [cancellation_reason] IS NULL AND [cancellation_operation_id] IS NULL)"
+      },
+      {
+        "name": "CK_EntryTestBooking_Status",
+        "sql": "((([status]) collate Latin1_General_100_BIN2='CANCELLED' OR ([status]) collate Latin1_General_100_BIN2='ABSENT' OR ([status]) collate Latin1_General_100_BIN2='COMPLETED' OR ([status]) collate Latin1_General_100_BIN2='SCHEDULED') AND datalength([status])=len([status]))"
+      }
+    ],
+    "defaults": {
+      "booked_at": "(sysutcdatetime())",
+      "status": "('SCHEDULED')"
+    }
+  },
+  "BandAssignment": {
+    "columns": {
+      "assigned_at": {
+        "type": "datetime2(3)",
+        "null": "N",
+        "identity": false,
+        "collation": ""
+      },
+      "band_assignment_id": {
+        "type": "int",
+        "null": "N",
+        "identity": true,
+        "collation": ""
+      },
+      "band_id": {
+        "type": "int",
+        "null": "N",
+        "identity": false,
+        "collation": ""
+      },
+      "best_attempt_id": {
+        "type": "int",
+        "null": "N",
+        "identity": false,
+        "collation": ""
+      },
+      "registration_id": {
+        "type": "int",
+        "null": "N",
+        "identity": false,
+        "collation": ""
+      },
+      "row_version": {
+        "type": "rowversion",
+        "null": "N",
+        "identity": false,
+        "collation": ""
+      }
+    },
+    "keys": [
+      {
+        "name": "PK_BandAssignment",
+        "kind": "PK",
+        "columns": [
+          "band_assignment_id"
+        ]
+      }
+    ],
+    "indexes": [
+      {
+        "name": "IX_BandAssignment_Band",
+        "unique": false,
+        "pk": false,
+        "constraint": false,
+        "filter": "",
+        "columns": [
+          "band_id"
+        ]
+      },
+      {
+        "name": "IX_BandAssignment_BestAttempt",
+        "unique": false,
+        "pk": false,
+        "constraint": false,
+        "filter": "",
+        "columns": [
+          "best_attempt_id",
+          "registration_id"
+        ]
+      },
+      {
+        "name": "PK_BandAssignment",
+        "unique": true,
+        "pk": true,
+        "constraint": false,
+        "filter": "",
+        "columns": [
+          "band_assignment_id"
+        ]
+      },
+      {
+        "name": "UQ_BandAssignment_Registration",
+        "unique": true,
+        "pk": false,
+        "constraint": false,
+        "filter": "",
+        "columns": [
+          "registration_id"
+        ]
+      }
+    ],
+    "fks": [
+      {
+        "name": "FK_BandAssignment_Attempt_BestAttemptRegistration",
+        "child": "BandAssignment",
+        "parent": "EntryTestAttempt",
+        "columns": [
+          "best_attempt_id",
+          "registration_id"
+        ],
+        "parent_columns": [
+          "attempt_id",
+          "registration_id"
+        ],
+        "on_delete": "0",
+        "on_update": "0",
+        "disabled": "0",
+        "untrusted": "0"
+      },
+      {
+        "name": "FK_BandAssignment_Band_band_id",
+        "child": "BandAssignment",
+        "parent": "Band",
+        "columns": [
+          "band_id"
+        ],
+        "parent_columns": [
+          "band_id"
+        ],
+        "on_delete": "0",
+        "on_update": "0",
+        "disabled": "0",
+        "untrusted": "0"
+      },
+      {
+        "name": "FK_BandAssignment_Registration_registration_id",
+        "child": "BandAssignment",
+        "parent": "Registration",
+        "columns": [
+          "registration_id"
+        ],
+        "parent_columns": [
+          "registration_id"
+        ],
+        "on_delete": "0",
+        "on_update": "0",
+        "disabled": "0",
+        "untrusted": "0"
+      }
+    ],
+    "checks": [],
+    "defaults": {
+      "assigned_at": "(sysutcdatetime())"
+    }
+  },
+  "Class": {
+    "columns": {
+      "cancellation_operation_id": {
+        "type": "uniqueidentifier",
+        "null": "Y",
+        "identity": false,
+        "collation": ""
+      },
+      "cancellation_reason": {
+        "type": "nvarchar(2000)",
+        "null": "Y",
+        "identity": false,
+        "collation": "Latin1_General_100_CI_AS_SC"
+      },
+      "cancelled_at": {
+        "type": "datetime2(3)",
+        "null": "Y",
+        "identity": false,
+        "collation": ""
+      },
+      "cancelled_by": {
+        "type": "int",
+        "null": "Y",
+        "identity": false,
+        "collation": ""
+      },
+      "class_code": {
+        "type": "varchar(30)",
+        "null": "N",
+        "identity": false,
+        "collation": "Latin1_General_100_CI_AS_SC"
+      },
+      "class_id": {
+        "type": "int",
+        "null": "N",
+        "identity": true,
+        "collation": ""
+      },
+      "created_at": {
+        "type": "datetime2(3)",
+        "null": "N",
+        "identity": false,
+        "collation": ""
+      },
+      "max_size": {
+        "type": "int",
+        "null": "N",
+        "identity": false,
+        "collation": ""
+      },
+      "program_id": {
+        "type": "int",
+        "null": "N",
+        "identity": false,
+        "collation": ""
+      },
+      "row_version": {
+        "type": "rowversion",
+        "null": "N",
+        "identity": false,
+        "collation": ""
+      },
+      "status": {
+        "type": "varchar(16)",
+        "null": "N",
+        "identity": false,
+        "collation": "Latin1_General_100_CI_AS_SC"
+      },
+      "teacher_id": {
+        "type": "int",
+        "null": "N",
+        "identity": false,
+        "collation": ""
+      }
+    },
+    "keys": [
+      {
+        "name": "PK_Class",
+        "kind": "PK",
+        "columns": [
+          "class_id"
+        ]
+      }
+    ],
+    "indexes": [
+      {
+        "name": "IX_Class_CancelledBy",
+        "unique": false,
+        "pk": false,
+        "constraint": false,
+        "filter": "",
+        "columns": [
+          "cancelled_by"
+        ]
+      },
+      {
+        "name": "IX_Class_ProgramState",
+        "unique": false,
+        "pk": false,
+        "constraint": false,
+        "filter": "",
+        "columns": [
+          "program_id",
+          "status",
+          "class_id"
+        ]
+      },
+      {
+        "name": "IX_Class_TeacherState",
+        "unique": false,
+        "pk": false,
+        "constraint": false,
+        "filter": "",
+        "columns": [
+          "teacher_id",
+          "status",
+          "class_id"
+        ]
+      },
+      {
+        "name": "PK_Class",
+        "unique": true,
+        "pk": true,
+        "constraint": false,
+        "filter": "",
+        "columns": [
+          "class_id"
+        ]
+      },
+      {
+        "name": "UQ_Class_Code",
+        "unique": true,
+        "pk": false,
+        "constraint": false,
+        "filter": "",
+        "columns": [
+          "class_code"
+        ]
+      }
+    ],
+    "fks": [
+      {
+        "name": "FK_Class_Account_cancelled_by",
+        "child": "Class",
+        "parent": "Account",
+        "columns": [
+          "cancelled_by"
+        ],
+        "parent_columns": [
+          "account_id"
+        ],
+        "on_delete": "0",
+        "on_update": "0",
+        "disabled": "0",
+        "untrusted": "0"
+      },
+      {
+        "name": "FK_Class_Account_teacher_id",
+        "child": "Class",
+        "parent": "Account",
+        "columns": [
+          "teacher_id"
+        ],
+        "parent_columns": [
+          "account_id"
+        ],
+        "on_delete": "0",
+        "on_update": "0",
+        "disabled": "0",
+        "untrusted": "0"
+      },
+      {
+        "name": "FK_Class_TrainingProgram_program_id",
+        "child": "Class",
+        "parent": "TrainingProgram",
+        "columns": [
+          "program_id"
+        ],
+        "parent_columns": [
+          "program_id"
+        ],
+        "on_delete": "0",
+        "on_update": "0",
+        "disabled": "0",
+        "untrusted": "0"
+      }
+    ],
+    "checks": [
+      {
+        "name": "CK_Class_CancellationBundle",
+        "sql": "([status]='CANCELLED' AND [cancelled_by] IS NOT NULL AND [cancelled_at] IS NOT NULL AND [cancellation_reason] IS NOT NULL AND len([cancellation_reason])>(0) AND [cancellation_operation_id] IS NOT NULL OR [status]<>'CANCELLED' AND [cancelled_by] IS NULL AND [cancelled_at] IS NULL AND [cancellation_reason] IS NULL AND [cancellation_operation_id] IS NULL)"
+      },
+      {
+        "name": "CK_Class_Code",
+        "sql": "(datalength([class_code])>=(1) AND datalength([class_code])<=(30) AND datalength([class_code])=len([class_code]) AND NOT ([class_code]) collate Latin1_General_100_BIN2 like '%[^A-Z0-9_-]%')"
+      },
+      {
+        "name": "CK_Class_MaxSize",
+        "sql": "([max_size]>=(1) AND [max_size]<=(15))"
+      },
+      {
+        "name": "CK_Class_Status",
+        "sql": "((([status]) collate Latin1_General_100_BIN2='CANCELLED' OR ([status]) collate Latin1_General_100_BIN2='COMPLETED' OR ([status]) collate Latin1_General_100_BIN2='ONGOING' OR ([status]) collate Latin1_General_100_BIN2='OPEN' OR ([status]) collate Latin1_General_100_BIN2='PLANNED') AND datalength([status])=len([status]))"
+      }
+    ],
+    "defaults": {
+      "created_at": "(sysutcdatetime())",
+      "status": "('PLANNED')"
+    }
+  },
+  "StudentClassAssignment": {
+    "columns": {
+      "assigned_at": {
+        "type": "datetime2(3)",
+        "null": "N",
+        "identity": false,
+        "collation": ""
+      },
+      "assigned_by": {
+        "type": "int",
+        "null": "N",
+        "identity": false,
+        "collation": ""
+      },
+      "class_assignment_id": {
+        "type": "int",
+        "null": "N",
+        "identity": true,
+        "collation": ""
+      },
+      "class_id": {
+        "type": "int",
+        "null": "N",
+        "identity": false,
+        "collation": ""
+      },
+      "registration_id": {
+        "type": "int",
+        "null": "N",
+        "identity": false,
+        "collation": ""
+      }
+    },
+    "keys": [
+      {
+        "name": "PK_StudentClassAssignment",
+        "kind": "PK",
+        "columns": [
+          "class_assignment_id"
+        ]
+      }
+    ],
+    "indexes": [
+      {
+        "name": "IX_Assignment_AssignedBy",
+        "unique": false,
+        "pk": false,
+        "constraint": false,
+        "filter": "",
+        "columns": [
+          "assigned_by"
+        ]
+      },
+      {
+        "name": "IX_Assignment_Class",
+        "unique": false,
+        "pk": false,
+        "constraint": false,
+        "filter": "",
+        "columns": [
+          "class_id",
+          "class_assignment_id"
+        ]
+      },
+      {
+        "name": "PK_StudentClassAssignment",
+        "unique": true,
+        "pk": true,
+        "constraint": false,
+        "filter": "",
+        "columns": [
+          "class_assignment_id"
+        ]
+      },
+      {
+        "name": "UQ_Assignment_Registration",
+        "unique": true,
+        "pk": false,
+        "constraint": false,
+        "filter": "",
+        "columns": [
+          "registration_id"
+        ]
+      }
+    ],
+    "fks": [
+      {
+        "name": "FK_Assignment_Account_assigned_by",
+        "child": "StudentClassAssignment",
+        "parent": "Account",
+        "columns": [
+          "assigned_by"
+        ],
+        "parent_columns": [
+          "account_id"
+        ],
+        "on_delete": "0",
+        "on_update": "0",
+        "disabled": "0",
+        "untrusted": "0"
+      },
+      {
+        "name": "FK_Assignment_Class_class_id",
+        "child": "StudentClassAssignment",
+        "parent": "Class",
+        "columns": [
+          "class_id"
+        ],
+        "parent_columns": [
+          "class_id"
+        ],
+        "on_delete": "0",
+        "on_update": "0",
+        "disabled": "0",
+        "untrusted": "0"
+      },
+      {
+        "name": "FK_Assignment_Registration_registration_id",
+        "child": "StudentClassAssignment",
+        "parent": "Registration",
+        "columns": [
+          "registration_id"
+        ],
+        "parent_columns": [
+          "registration_id"
+        ],
+        "on_delete": "0",
+        "on_update": "0",
+        "disabled": "0",
+        "untrusted": "0"
+      }
+    ],
+    "checks": [],
+    "defaults": {
+      "assigned_at": "(sysutcdatetime())"
+    }
+  },
+  "Schedule": {
+    "columns": {
+      "class_id": {
+        "type": "int",
+        "null": "N",
+        "identity": false,
+        "collation": ""
+      },
+      "end_time": {
+        "type": "time(0)",
+        "null": "N",
+        "identity": false,
+        "collation": ""
+      },
+      "held_at": {
+        "type": "datetime2(3)",
+        "null": "Y",
+        "identity": false,
+        "collation": ""
+      },
+      "held_by": {
+        "type": "int",
+        "null": "Y",
+        "identity": false,
+        "collation": ""
+      },
+      "is_current": {
+        "type": "bit",
+        "null": "N",
+        "identity": false,
+        "collation": ""
+      },
+      "not_held_at": {
+        "type": "datetime2(3)",
+        "null": "Y",
+        "identity": false,
+        "collation": ""
+      },
+      "not_held_by": {
+        "type": "int",
+        "null": "Y",
+        "identity": false,
+        "collation": ""
+      },
+      "not_held_reason": {
+        "type": "nvarchar(2000)",
+        "null": "Y",
+        "identity": false,
+        "collation": "Latin1_General_100_CI_AS_SC"
+      },
+      "obligation_key": {
+        "type": "uniqueidentifier",
+        "null": "N",
+        "identity": false,
+        "collation": ""
+      },
+      "occurrence_state": {
+        "type": "varchar(16)",
+        "null": "N",
+        "identity": false,
+        "collation": "Latin1_General_100_CI_AS_SC"
+      },
+      "replacement_operation_id": {
+        "type": "uniqueidentifier",
+        "null": "Y",
+        "identity": false,
+        "collation": ""
+      },
+      "replaces_schedule_id": {
+        "type": "int",
+        "null": "Y",
+        "identity": false,
+        "collation": ""
+      },
+      "room": {
+        "type": "varchar(30)",
+        "null": "N",
+        "identity": false,
+        "collation": "Latin1_General_100_CI_AS_SC"
+      },
+      "row_version": {
+        "type": "rowversion",
+        "null": "N",
+        "identity": false,
+        "collation": ""
+      },
+      "schedule_id": {
+        "type": "int",
+        "null": "N",
+        "identity": true,
+        "collation": ""
+      },
+      "session_date": {
+        "type": "date",
+        "null": "N",
+        "identity": false,
+        "collation": ""
+      },
+      "session_type": {
+        "type": "varchar(16)",
+        "null": "N",
+        "identity": false,
+        "collation": "Latin1_General_100_CI_AS_SC"
+      },
+      "start_time": {
+        "type": "time(0)",
+        "null": "N",
+        "identity": false,
+        "collation": ""
+      }
+    },
+    "keys": [
+      {
+        "name": "PK_Schedule",
+        "kind": "PK",
+        "columns": [
+          "schedule_id"
+        ]
+      }
+    ],
+    "indexes": [
+      {
+        "name": "IX_Schedule_ClassCurrentDate",
+        "unique": false,
+        "pk": false,
+        "constraint": false,
+        "filter": "",
+        "columns": [
+          "class_id",
+          "is_current",
+          "session_date",
+          "start_time",
+          "schedule_id"
+        ]
+      },
+      {
+        "name": "IX_Schedule_HeldBy",
+        "unique": false,
+        "pk": false,
+        "constraint": false,
+        "filter": "",
+        "columns": [
+          "held_by"
+        ]
+      },
+      {
+        "name": "IX_Schedule_NotHeldBy",
+        "unique": false,
+        "pk": false,
+        "constraint": false,
+        "filter": "",
+        "columns": [
+          "not_held_by"
+        ]
+      },
+      {
+        "name": "IX_Schedule_RoomDate",
+        "unique": false,
+        "pk": false,
+        "constraint": false,
+        "filter": "",
+        "columns": [
+          "room",
+          "session_date",
+          "start_time",
+          "end_time",
+          "schedule_id"
+        ]
+      },
+      {
+        "name": "PK_Schedule",
+        "unique": true,
+        "pk": true,
+        "constraint": false,
+        "filter": "",
+        "columns": [
+          "schedule_id"
+        ]
+      },
+      {
+        "name": "UQ_Schedule_CurrentFinalExam",
+        "unique": true,
+        "pk": false,
+        "constraint": false,
+        "filter": "([is_current]=(1) AND [session_type]='FINAL_EXAM')",
+        "columns": [
+          "class_id"
+        ]
+      },
+      {
+        "name": "UQ_Schedule_CurrentObligation",
+        "unique": true,
+        "pk": false,
+        "constraint": false,
+        "filter": "([is_current]=(1))",
+        "columns": [
+          "class_id",
+          "obligation_key"
+        ]
+      },
+      {
+        "name": "UQ_Schedule_Predecessor",
+        "unique": true,
+        "pk": false,
+        "constraint": false,
+        "filter": "([replaces_schedule_id] IS NOT NULL)",
+        "columns": [
+          "replaces_schedule_id"
+        ]
+      }
+    ],
+    "fks": [
+      {
+        "name": "FK_Schedule_Account_held_by",
+        "child": "Schedule",
+        "parent": "Account",
+        "columns": [
+          "held_by"
+        ],
+        "parent_columns": [
+          "account_id"
+        ],
+        "on_delete": "0",
+        "on_update": "0",
+        "disabled": "0",
+        "untrusted": "0"
+      },
+      {
+        "name": "FK_Schedule_Account_not_held_by",
+        "child": "Schedule",
+        "parent": "Account",
+        "columns": [
+          "not_held_by"
+        ],
+        "parent_columns": [
+          "account_id"
+        ],
+        "on_delete": "0",
+        "on_update": "0",
+        "disabled": "0",
+        "untrusted": "0"
+      },
+      {
+        "name": "FK_Schedule_Class_class_id",
+        "child": "Schedule",
+        "parent": "Class",
+        "columns": [
+          "class_id"
+        ],
+        "parent_columns": [
+          "class_id"
+        ],
+        "on_delete": "0",
+        "on_update": "0",
+        "disabled": "0",
+        "untrusted": "0"
+      },
+      {
+        "name": "FK_Schedule_Schedule_replaces_schedule_id",
+        "child": "Schedule",
+        "parent": "Schedule",
+        "columns": [
+          "replaces_schedule_id"
+        ],
+        "parent_columns": [
+          "schedule_id"
+        ],
+        "on_delete": "0",
+        "on_update": "0",
+        "disabled": "0",
+        "untrusted": "0"
+      }
+    ],
+    "checks": [
+      {
+        "name": "CK_Schedule_CurrentState",
+        "sql": "(([occurrence_state]='HELD' OR [occurrence_state]='PLANNED') AND [is_current]=(1) OR [occurrence_state]='NOT_HELD' AND [is_current]=(0))"
+      },
+      {
+        "name": "CK_Schedule_HeldBundle",
+        "sql": "([occurrence_state]='HELD' AND [held_by] IS NOT NULL AND [held_at] IS NOT NULL OR [occurrence_state]<>'HELD' AND [held_by] IS NULL AND [held_at] IS NULL)"
+      },
+      {
+        "name": "CK_Schedule_NoSelfReplacement",
+        "sql": "([replaces_schedule_id] IS NULL OR [replaces_schedule_id]<>[schedule_id])"
+      },
+      {
+        "name": "CK_Schedule_NotHeldBundle",
+        "sql": "([occurrence_state]='NOT_HELD' AND [not_held_by] IS NOT NULL AND [not_held_at] IS NOT NULL AND [not_held_reason] IS NOT NULL AND len([not_held_reason])>(0) AND [replacement_operation_id] IS NOT NULL OR [occurrence_state]<>'NOT_HELD' AND [not_held_by] IS NULL AND [not_held_at] IS NULL AND [not_held_reason] IS NULL AND [replacement_operation_id] IS NULL)"
+      },
+      {
+        "name": "CK_Schedule_Room",
+        "sql": "(datalength([room])>=(1) AND datalength([room])<=(30) AND datalength([room])=len([room]) AND NOT ([room]) collate Latin1_General_100_BIN2 like '%[^A-Z0-9_-]%')"
+      },
+      {
+        "name": "CK_Schedule_State",
+        "sql": "((([occurrence_state]) collate Latin1_General_100_BIN2='NOT_HELD' OR ([occurrence_state]) collate Latin1_General_100_BIN2='HELD' OR ([occurrence_state]) collate Latin1_General_100_BIN2='PLANNED') AND datalength([occurrence_state])=len([occurrence_state]))"
+      },
+      {
+        "name": "CK_Schedule_Time",
+        "sql": "([start_time]<[end_time] AND datepart(second,[start_time])=(0) AND datepart(second,[end_time])=(0))"
+      },
+      {
+        "name": "CK_Schedule_Type",
+        "sql": "((([session_type]) collate Latin1_General_100_BIN2='FINAL_EXAM' OR ([session_type]) collate Latin1_General_100_BIN2='LESSON') AND datalength([session_type])=len([session_type]))"
+      }
+    ],
+    "defaults": {
+      "is_current": "(CONVERT([bit],(1)))",
+      "occurrence_state": "('PLANNED')"
+    }
+  },
+  "Attendance": {
+    "columns": {
+      "attendance_id": {
+        "type": "int",
+        "null": "N",
+        "identity": true,
+        "collation": ""
+      },
+      "class_assignment_id": {
+        "type": "int",
+        "null": "N",
+        "identity": false,
+        "collation": ""
+      },
+      "entered_at": {
+        "type": "datetime2(3)",
+        "null": "N",
+        "identity": false,
+        "collation": ""
+      },
+      "entered_by": {
+        "type": "int",
+        "null": "N",
+        "identity": false,
+        "collation": ""
+      },
+      "present": {
+        "type": "bit",
+        "null": "N",
+        "identity": false,
+        "collation": ""
+      },
+      "row_version": {
+        "type": "rowversion",
+        "null": "N",
+        "identity": false,
+        "collation": ""
+      },
+      "schedule_id": {
+        "type": "int",
+        "null": "N",
+        "identity": false,
+        "collation": ""
+      }
+    },
+    "keys": [
+      {
+        "name": "PK_Attendance",
+        "kind": "PK",
+        "columns": [
+          "attendance_id"
+        ]
+      }
+    ],
+    "indexes": [
+      {
+        "name": "IX_Attendance_Assignment",
+        "unique": false,
+        "pk": false,
+        "constraint": false,
+        "filter": "",
+        "columns": [
+          "class_assignment_id",
+          "attendance_id"
+        ]
+      },
+      {
+        "name": "IX_Attendance_EnteredBy",
+        "unique": false,
+        "pk": false,
+        "constraint": false,
+        "filter": "",
+        "columns": [
+          "entered_by"
+        ]
+      },
+      {
+        "name": "PK_Attendance",
+        "unique": true,
+        "pk": true,
+        "constraint": false,
+        "filter": "",
+        "columns": [
+          "attendance_id"
+        ]
+      },
+      {
+        "name": "UQ_Attendance_ScheduleAssignment",
+        "unique": true,
+        "pk": false,
+        "constraint": false,
+        "filter": "",
+        "columns": [
+          "schedule_id",
+          "class_assignment_id"
+        ]
+      }
+    ],
+    "fks": [
+      {
+        "name": "FK_Attendance_Account_entered_by",
+        "child": "Attendance",
+        "parent": "Account",
+        "columns": [
+          "entered_by"
+        ],
+        "parent_columns": [
+          "account_id"
+        ],
+        "on_delete": "0",
+        "on_update": "0",
+        "disabled": "0",
+        "untrusted": "0"
+      },
+      {
+        "name": "FK_Attendance_Schedule_schedule_id",
+        "child": "Attendance",
+        "parent": "Schedule",
+        "columns": [
+          "schedule_id"
+        ],
+        "parent_columns": [
+          "schedule_id"
+        ],
+        "on_delete": "0",
+        "on_update": "0",
+        "disabled": "0",
+        "untrusted": "0"
+      },
+      {
+        "name": "FK_Attendance_StudentClassAssignment_class_assignment_id",
+        "child": "Attendance",
+        "parent": "StudentClassAssignment",
+        "columns": [
+          "class_assignment_id"
+        ],
+        "parent_columns": [
+          "class_assignment_id"
+        ],
+        "on_delete": "0",
+        "on_update": "0",
+        "disabled": "0",
+        "untrusted": "0"
+      }
+    ],
+    "checks": [],
+    "defaults": {}
+  },
+  "Score": {
+    "columns": {
+      "class_assignment_id": {
+        "type": "int",
+        "null": "N",
+        "identity": false,
+        "collation": ""
+      },
+      "component_id": {
+        "type": "int",
+        "null": "N",
+        "identity": false,
+        "collation": ""
+      },
+      "entered_at": {
+        "type": "datetime2(3)",
+        "null": "N",
+        "identity": false,
+        "collation": ""
+      },
+      "entered_by": {
+        "type": "int",
+        "null": "N",
+        "identity": false,
+        "collation": ""
+      },
+      "row_version": {
+        "type": "rowversion",
+        "null": "N",
+        "identity": false,
+        "collation": ""
+      },
+      "schedule_id": {
+        "type": "int",
+        "null": "Y",
+        "identity": false,
+        "collation": ""
+      },
+      "score_id": {
+        "type": "int",
+        "null": "N",
+        "identity": true,
+        "collation": ""
+      },
+      "score_value": {
+        "type": "decimal(5,2)",
+        "null": "N",
+        "identity": false,
+        "collation": ""
+      }
+    },
+    "keys": [
+      {
+        "name": "PK_Score",
+        "kind": "PK",
+        "columns": [
+          "score_id"
+        ]
+      }
+    ],
+    "indexes": [
+      {
+        "name": "IX_Score_Component",
+        "unique": false,
+        "pk": false,
+        "constraint": false,
+        "filter": "",
+        "columns": [
+          "component_id",
+          "score_id"
+        ]
+      },
+      {
+        "name": "IX_Score_EnteredBy",
+        "unique": false,
+        "pk": false,
+        "constraint": false,
+        "filter": "",
+        "columns": [
+          "entered_by"
+        ]
+      },
+      {
+        "name": "IX_Score_Schedule",
+        "unique": false,
+        "pk": false,
+        "constraint": false,
+        "filter": "([schedule_id] IS NOT NULL)",
+        "columns": [
+          "schedule_id",
+          "score_id"
+        ]
+      },
+      {
+        "name": "PK_Score",
+        "unique": true,
+        "pk": true,
+        "constraint": false,
+        "filter": "",
+        "columns": [
+          "score_id"
+        ]
+      },
+      {
+        "name": "UQ_Score_AssignmentComponent",
+        "unique": true,
+        "pk": false,
+        "constraint": false,
+        "filter": "",
+        "columns": [
+          "class_assignment_id",
+          "component_id"
+        ]
+      }
+    ],
+    "fks": [
+      {
+        "name": "FK_Score_Account_entered_by",
+        "child": "Score",
+        "parent": "Account",
+        "columns": [
+          "entered_by"
+        ],
+        "parent_columns": [
+          "account_id"
+        ],
+        "on_delete": "0",
+        "on_update": "0",
+        "disabled": "0",
+        "untrusted": "0"
+      },
+      {
+        "name": "FK_Score_Schedule_schedule_id",
+        "child": "Score",
+        "parent": "Schedule",
+        "columns": [
+          "schedule_id"
+        ],
+        "parent_columns": [
+          "schedule_id"
+        ],
+        "on_delete": "0",
+        "on_update": "0",
+        "disabled": "0",
+        "untrusted": "0"
+      },
+      {
+        "name": "FK_Score_ScoreComponentConfig_component_id",
+        "child": "Score",
+        "parent": "ScoreComponentConfig",
+        "columns": [
+          "component_id"
+        ],
+        "parent_columns": [
+          "component_id"
+        ],
+        "on_delete": "0",
+        "on_update": "0",
+        "disabled": "0",
+        "untrusted": "0"
+      },
+      {
+        "name": "FK_Score_StudentClassAssignment_class_assignment_id",
+        "child": "Score",
+        "parent": "StudentClassAssignment",
+        "columns": [
+          "class_assignment_id"
+        ],
+        "parent_columns": [
+          "class_assignment_id"
+        ],
+        "on_delete": "0",
+        "on_update": "0",
+        "disabled": "0",
+        "untrusted": "0"
+      }
+    ],
+    "checks": [
+      {
+        "name": "CK_Score_Score",
+        "sql": "([score_value]>=(0) AND [score_value]<=(100))"
+      }
+    ],
+    "defaults": {}
+  },
+  "GradeReport": {
+    "columns": {
+      "class_assignment_id": {
+        "type": "int",
+        "null": "N",
+        "identity": false,
+        "collation": ""
+      },
+      "final_score": {
+        "type": "decimal(5,2)",
+        "null": "Y",
+        "identity": false,
+        "collation": ""
+      },
+      "finalized_at": {
+        "type": "datetime2(3)",
+        "null": "Y",
+        "identity": false,
+        "collation": ""
+      },
+      "report_id": {
+        "type": "int",
+        "null": "N",
+        "identity": true,
+        "collation": ""
+      },
+      "returned_reason": {
+        "type": "nvarchar(2000)",
+        "null": "Y",
+        "identity": false,
+        "collation": "Latin1_General_100_CI_AS_SC"
+      },
+      "review_operation_id": {
+        "type": "uniqueidentifier",
+        "null": "Y",
+        "identity": false,
+        "collation": ""
+      },
+      "reviewed_at": {
+        "type": "datetime2(3)",
+        "null": "Y",
+        "identity": false,
+        "collation": ""
+      },
+      "reviewed_by": {
+        "type": "int",
+        "null": "Y",
+        "identity": false,
+        "collation": ""
+      },
+      "row_version": {
+        "type": "rowversion",
+        "null": "N",
+        "identity": false,
+        "collation": ""
+      },
+      "status": {
+        "type": "varchar(16)",
+        "null": "N",
+        "identity": false,
+        "collation": "Latin1_General_100_CI_AS_SC"
+      },
+      "submitted_at": {
+        "type": "datetime2(3)",
+        "null": "Y",
+        "identity": false,
+        "collation": ""
+      },
+      "submitted_by": {
+        "type": "int",
+        "null": "Y",
+        "identity": false,
+        "collation": ""
+      },
+      "submitted_operation_id": {
+        "type": "uniqueidentifier",
+        "null": "Y",
+        "identity": false,
+        "collation": ""
+      },
+      "teacher_comment": {
+        "type": "nvarchar(2000)",
+        "null": "Y",
+        "identity": false,
+        "collation": "Latin1_General_100_CI_AS_SC"
+      }
+    },
+    "keys": [
+      {
+        "name": "PK_GradeReport",
+        "kind": "PK",
+        "columns": [
+          "report_id"
+        ]
+      }
+    ],
+    "indexes": [
+      {
+        "name": "IX_GradeReport_ReviewedBy",
+        "unique": false,
+        "pk": false,
+        "constraint": false,
+        "filter": "",
+        "columns": [
+          "reviewed_by"
+        ]
+      },
+      {
+        "name": "IX_GradeReport_StateFinalized",
+        "unique": false,
+        "pk": false,
+        "constraint": false,
+        "filter": "",
+        "columns": [
+          "status",
+          "finalized_at",
+          "report_id"
+        ]
+      },
+      {
+        "name": "IX_GradeReport_SubmittedBy",
+        "unique": false,
+        "pk": false,
+        "constraint": false,
+        "filter": "",
+        "columns": [
+          "submitted_by"
+        ]
+      },
+      {
+        "name": "PK_GradeReport",
+        "unique": true,
+        "pk": true,
+        "constraint": false,
+        "filter": "",
+        "columns": [
+          "report_id"
+        ]
+      },
+      {
+        "name": "UQ_GradeReport_Assignment",
+        "unique": true,
+        "pk": false,
+        "constraint": false,
+        "filter": "",
+        "columns": [
+          "class_assignment_id"
+        ]
+      }
+    ],
+    "fks": [
+      {
+        "name": "FK_GradeReport_Account_reviewed_by",
+        "child": "GradeReport",
+        "parent": "Account",
+        "columns": [
+          "reviewed_by"
+        ],
+        "parent_columns": [
+          "account_id"
+        ],
+        "on_delete": "0",
+        "on_update": "0",
+        "disabled": "0",
+        "untrusted": "0"
+      },
+      {
+        "name": "FK_GradeReport_Account_submitted_by",
+        "child": "GradeReport",
+        "parent": "Account",
+        "columns": [
+          "submitted_by"
+        ],
+        "parent_columns": [
+          "account_id"
+        ],
+        "on_delete": "0",
+        "on_update": "0",
+        "disabled": "0",
+        "untrusted": "0"
+      },
+      {
+        "name": "FK_GradeReport_StudentClassAssignment_class_assignment_id",
+        "child": "GradeReport",
+        "parent": "StudentClassAssignment",
+        "columns": [
+          "class_assignment_id"
+        ],
+        "parent_columns": [
+          "class_assignment_id"
+        ],
+        "on_delete": "0",
+        "on_update": "0",
+        "disabled": "0",
+        "untrusted": "0"
+      }
+    ],
+    "checks": [
+      {
+        "name": "CK_GradeReport_FinalResult",
+        "sql": "([status]='FINALIZED' AND [final_score] IS NOT NULL AND [final_score]>=(0) AND [final_score]<=(100) AND [finalized_at] IS NOT NULL AND [reviewed_by] IS NOT NULL AND [reviewed_at] IS NOT NULL AND [review_operation_id] IS NOT NULL AND [finalized_at]=[reviewed_at] OR [status]<>'FINALIZED' AND [final_score] IS NULL AND [finalized_at] IS NULL)"
+      },
+      {
+        "name": "CK_GradeReport_ReturnedReason",
+        "sql": "([status]<>'RETURNED' OR [returned_reason] IS NOT NULL AND len([returned_reason])>(0) AND [reviewed_by] IS NOT NULL AND [reviewed_at] IS NOT NULL AND [review_operation_id] IS NOT NULL)"
+      },
+      {
+        "name": "CK_GradeReport_ReviewBundle",
+        "sql": "([reviewed_by] IS NULL AND [reviewed_at] IS NULL AND [review_operation_id] IS NULL OR [reviewed_by] IS NOT NULL AND [reviewed_at] IS NOT NULL AND [review_operation_id] IS NOT NULL)"
+      },
+      {
+        "name": "CK_GradeReport_Status",
+        "sql": "((([status]) collate Latin1_General_100_BIN2='FINALIZED' OR ([status]) collate Latin1_General_100_BIN2='RETURNED' OR ([status]) collate Latin1_General_100_BIN2='SUBMITTED' OR ([status]) collate Latin1_General_100_BIN2='DRAFT') AND datalength([status])=len([status]))"
+      },
+      {
+        "name": "CK_GradeReport_SubmitBundle",
+        "sql": "([submitted_by] IS NOT NULL AND [submitted_at] IS NOT NULL AND [submitted_operation_id] IS NOT NULL OR [status]='DRAFT' AND [submitted_by] IS NULL AND [submitted_at] IS NULL AND [submitted_operation_id] IS NULL)"
+      }
+    ],
+    "defaults": {
+      "status": "('DRAFT')"
+    }
+  },
+  "Invoice": {
+    "columns": {
+      "amount": {
+        "type": "decimal(18,0)",
+        "null": "N",
+        "identity": false,
+        "collation": ""
+      },
+      "cancellation_operation_id": {
+        "type": "uniqueidentifier",
+        "null": "Y",
+        "identity": false,
+        "collation": ""
+      },
+      "cancellation_reason": {
+        "type": "nvarchar(2000)",
+        "null": "Y",
+        "identity": false,
+        "collation": "Latin1_General_100_CI_AS_SC"
+      },
+      "cancelled_at": {
+        "type": "datetime2(3)",
+        "null": "Y",
+        "identity": false,
+        "collation": ""
+      },
+      "cancelled_by": {
+        "type": "int",
+        "null": "Y",
+        "identity": false,
+        "collation": ""
+      },
+      "cancelled_from_status": {
+        "type": "varchar(16)",
+        "null": "Y",
+        "identity": false,
+        "collation": "Latin1_General_100_CI_AS_SC"
+      },
+      "due_date": {
+        "type": "date",
+        "null": "N",
+        "identity": false,
+        "collation": ""
+      },
+      "invoice_id": {
+        "type": "int",
+        "null": "N",
+        "identity": true,
+        "collation": ""
+      },
+      "invoice_number": {
+        "type": "varchar(16)",
+        "null": "N",
+        "identity": false,
+        "collation": "Latin1_General_100_CI_AS_SC"
+      },
+      "issued_at": {
+        "type": "datetime2(3)",
+        "null": "N",
+        "identity": false,
+        "collation": ""
+      },
+      "registration_id": {
+        "type": "int",
+        "null": "N",
+        "identity": false,
+        "collation": ""
+      },
+      "row_version": {
+        "type": "rowversion",
+        "null": "N",
+        "identity": false,
+        "collation": ""
+      },
+      "status": {
+        "type": "varchar(16)",
+        "null": "N",
+        "identity": false,
+        "collation": "Latin1_General_100_CI_AS_SC"
+      }
+    },
+    "keys": [
+      {
+        "name": "PK_Invoice",
+        "kind": "PK",
+        "columns": [
+          "invoice_id"
+        ]
+      }
+    ],
+    "indexes": [
+      {
+        "name": "IX_Invoice_CancelledBy",
+        "unique": false,
+        "pk": false,
+        "constraint": false,
+        "filter": "",
+        "columns": [
+          "cancelled_by"
+        ]
+      },
+      {
+        "name": "IX_Invoice_Issued",
+        "unique": false,
+        "pk": false,
+        "constraint": false,
+        "filter": "",
+        "columns": [
+          "issued_at",
+          "invoice_id"
+        ]
+      },
+      {
+        "name": "IX_Invoice_StateDue",
+        "unique": false,
+        "pk": false,
+        "constraint": false,
+        "filter": "",
+        "columns": [
+          "status",
+          "due_date",
+          "invoice_id"
+        ]
+      },
+      {
+        "name": "PK_Invoice",
+        "unique": true,
+        "pk": true,
+        "constraint": false,
+        "filter": "",
+        "columns": [
+          "invoice_id"
+        ]
+      },
+      {
+        "name": "UQ_Invoice_Number",
+        "unique": true,
+        "pk": false,
+        "constraint": false,
+        "filter": "",
+        "columns": [
+          "invoice_number"
+        ]
+      },
+      {
+        "name": "UQ_Invoice_Registration",
+        "unique": true,
+        "pk": false,
+        "constraint": false,
+        "filter": "",
+        "columns": [
+          "registration_id"
+        ]
+      }
+    ],
+    "fks": [
+      {
+        "name": "FK_Invoice_Account_cancelled_by",
+        "child": "Invoice",
+        "parent": "Account",
+        "columns": [
+          "cancelled_by"
+        ],
+        "parent_columns": [
+          "account_id"
+        ],
+        "on_delete": "0",
+        "on_update": "0",
+        "disabled": "0",
+        "untrusted": "0"
+      },
+      {
+        "name": "FK_Invoice_Registration_registration_id",
+        "child": "Invoice",
+        "parent": "Registration",
+        "columns": [
+          "registration_id"
+        ],
+        "parent_columns": [
+          "registration_id"
+        ],
+        "on_delete": "0",
+        "on_update": "0",
+        "disabled": "0",
+        "untrusted": "0"
+      }
+    ],
+    "checks": [
+      {
+        "name": "CK_Invoice_Amount",
+        "sql": "([amount]>(0))"
+      },
+      {
+        "name": "CK_Invoice_CancelledBundle",
+        "sql": "([status]='CANCELLED' AND [cancelled_by] IS NOT NULL AND [cancelled_at] IS NOT NULL AND [cancelled_from_status] IS NOT NULL AND [cancellation_operation_id] IS NOT NULL AND ([cancelled_from_status]) collate Latin1_General_100_BIN2='UNPAID' AND datalength([cancelled_from_status])=len([cancelled_from_status]) OR [status]<>'CANCELLED' AND [cancelled_by] IS NULL AND [cancelled_at] IS NULL AND [cancellation_reason] IS NULL AND [cancelled_from_status] IS NULL AND [cancellation_operation_id] IS NULL)"
+      },
+      {
+        "name": "CK_Invoice_NumberPattern",
+        "sql": "(datalength([invoice_number])=(16) AND datalength([invoice_number])=len([invoice_number]) AND ([invoice_number]) collate Latin1_General_100_BIN2 like 'HD-[0-9][0-9][0-9][0-9]-[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]')"
+      },
+      {
+        "name": "CK_Invoice_Status",
+        "sql": "((([status]) collate Latin1_General_100_BIN2='CANCELLED' OR ([status]) collate Latin1_General_100_BIN2='PAID' OR ([status]) collate Latin1_General_100_BIN2='UNPAID') AND datalength([status])=len([status]))"
+      }
+    ],
+    "defaults": {
+      "status": "('UNPAID')"
+    }
+  },
+  "Payment": {
+    "columns": {
+      "amount_paid": {
+        "type": "decimal(18,0)",
+        "null": "N",
+        "identity": false,
+        "collation": ""
+      },
+      "confirmed_by": {
+        "type": "int",
+        "null": "N",
+        "identity": false,
+        "collation": ""
+      },
+      "invoice_id": {
+        "type": "int",
+        "null": "N",
+        "identity": false,
+        "collation": ""
+      },
+      "last_corrected_at": {
+        "type": "datetime2(3)",
+        "null": "Y",
+        "identity": false,
+        "collation": ""
+      },
+      "last_corrected_by": {
+        "type": "int",
+        "null": "Y",
+        "identity": false,
+        "collation": ""
+      },
+      "last_correction_reason": {
+        "type": "nvarchar(2000)",
+        "null": "Y",
+        "identity": false,
+        "collation": "Latin1_General_100_CI_AS_SC"
+      },
+      "method": {
+        "type": "varchar(16)",
+        "null": "N",
+        "identity": false,
+        "collation": "Latin1_General_100_CI_AS_SC"
+      },
+      "paid_at": {
+        "type": "datetime2(3)",
+        "null": "N",
+        "identity": false,
+        "collation": ""
+      },
+      "payment_id": {
+        "type": "int",
+        "null": "N",
+        "identity": true,
+        "collation": ""
+      },
+      "row_version": {
+        "type": "rowversion",
+        "null": "N",
+        "identity": false,
+        "collation": ""
+      },
+      "transaction_reference": {
+        "type": "nvarchar(200)",
+        "null": "Y",
+        "identity": false,
+        "collation": "Latin1_General_100_CI_AS_SC"
+      }
+    },
+    "keys": [
+      {
+        "name": "PK_Payment",
+        "kind": "PK",
+        "columns": [
+          "payment_id"
+        ]
+      }
+    ],
+    "indexes": [
+      {
+        "name": "IX_Payment_ConfirmedBy",
+        "unique": false,
+        "pk": false,
+        "constraint": false,
+        "filter": "",
+        "columns": [
+          "confirmed_by"
+        ]
+      },
+      {
+        "name": "IX_Payment_LastCorrectedBy",
+        "unique": false,
+        "pk": false,
+        "constraint": false,
+        "filter": "",
+        "columns": [
+          "last_corrected_by"
+        ]
+      },
+      {
+        "name": "IX_Payment_Paid",
+        "unique": false,
+        "pk": false,
+        "constraint": false,
+        "filter": "",
+        "columns": [
+          "paid_at",
+          "payment_id"
+        ]
+      },
+      {
+        "name": "PK_Payment",
+        "unique": true,
+        "pk": true,
+        "constraint": false,
+        "filter": "",
+        "columns": [
+          "payment_id"
+        ]
+      },
+      {
+        "name": "UQ_Payment_Invoice",
+        "unique": true,
+        "pk": false,
+        "constraint": false,
+        "filter": "",
+        "columns": [
+          "invoice_id"
+        ]
+      }
+    ],
+    "fks": [
+      {
+        "name": "FK_Payment_Account_confirmed_by",
+        "child": "Payment",
+        "parent": "Account",
+        "columns": [
+          "confirmed_by"
+        ],
+        "parent_columns": [
+          "account_id"
+        ],
+        "on_delete": "0",
+        "on_update": "0",
+        "disabled": "0",
+        "untrusted": "0"
+      },
+      {
+        "name": "FK_Payment_Account_last_corrected_by",
+        "child": "Payment",
+        "parent": "Account",
+        "columns": [
+          "last_corrected_by"
+        ],
+        "parent_columns": [
+          "account_id"
+        ],
+        "on_delete": "0",
+        "on_update": "0",
+        "disabled": "0",
+        "untrusted": "0"
+      },
+      {
+        "name": "FK_Payment_Invoice_invoice_id",
+        "child": "Payment",
+        "parent": "Invoice",
+        "columns": [
+          "invoice_id"
+        ],
+        "parent_columns": [
+          "invoice_id"
+        ],
+        "on_delete": "0",
+        "on_update": "0",
+        "disabled": "0",
+        "untrusted": "0"
+      }
+    ],
+    "checks": [
+      {
+        "name": "CK_Payment_Amount",
+        "sql": "([amount_paid]>(0))"
+      },
+      {
+        "name": "CK_Payment_CorrectionBundle",
+        "sql": "([last_corrected_by] IS NULL AND [last_corrected_at] IS NULL AND [last_correction_reason] IS NULL OR [last_corrected_by] IS NOT NULL AND [last_corrected_at] IS NOT NULL AND [last_correction_reason] IS NOT NULL AND len([last_correction_reason])>(0))"
+      },
+      {
+        "name": "CK_Payment_Method",
+        "sql": "((([method]) collate Latin1_General_100_BIN2='TRANSFER' OR ([method]) collate Latin1_General_100_BIN2='CASH') AND datalength([method])=len([method]))"
+      },
+      {
+        "name": "CK_Payment_Reference",
+        "sql": "([method]<>'TRANSFER' OR [transaction_reference] IS NOT NULL AND len([transaction_reference])>(0))"
+      }
+    ],
+    "defaults": {}
+  },
+  "AuditLog": {
+    "columns": {
+      "action": {
+        "type": "varchar(80)",
+        "null": "N",
+        "identity": false,
+        "collation": "Latin1_General_100_CI_AS_SC"
+      },
+      "actor_account_id": {
+        "type": "int",
+        "null": "Y",
+        "identity": false,
+        "collation": ""
+      },
+      "audit_category": {
+        "type": "varchar(16)",
+        "null": "N",
+        "identity": false,
+        "collation": "Latin1_General_100_CI_AS_SC"
+      },
+      "audit_id": {
+        "type": "int",
+        "null": "N",
+        "identity": true,
+        "collation": ""
+      },
+      "details": {
+        "type": "nvarchar(max)",
+        "null": "Y",
+        "identity": false,
+        "collation": "Latin1_General_100_CI_AS_SC"
+      },
+      "entity_id": {
+        "type": "varchar(100)",
+        "null": "Y",
+        "identity": false,
+        "collation": "Latin1_General_100_CI_AS_SC"
+      },
+      "entity_type": {
+        "type": "varchar(64)",
+        "null": "N",
+        "identity": false,
+        "collation": "Latin1_General_100_CI_AS_SC"
+      },
+      "ip_address": {
+        "type": "varchar(45)",
+        "null": "Y",
+        "identity": false,
+        "collation": "Latin1_General_100_CI_AS_SC"
+      },
+      "ip_expires_at": {
+        "type": "datetime2(3)",
+        "null": "Y",
+        "identity": false,
+        "collation": ""
+      },
+      "occurred_at": {
+        "type": "datetime2(3)",
+        "null": "N",
+        "identity": false,
+        "collation": ""
+      },
+      "operation_id": {
+        "type": "uniqueidentifier",
+        "null": "N",
+        "identity": false,
+        "collation": ""
+      },
+      "result": {
+        "type": "varchar(16)",
+        "null": "N",
+        "identity": false,
+        "collation": "Latin1_General_100_CI_AS_SC"
+      },
+      "security_expires_at": {
+        "type": "datetime2(3)",
+        "null": "Y",
+        "identity": false,
+        "collation": ""
+      }
+    },
+    "keys": [
+      {
+        "name": "PK_AuditLog",
+        "kind": "PK",
+        "columns": [
+          "audit_id"
+        ]
+      }
+    ],
+    "indexes": [
+      {
+        "name": "IX_Audit_ActorTime",
+        "unique": false,
+        "pk": false,
+        "constraint": false,
+        "filter": "",
+        "columns": [
+          "actor_account_id",
+          "occurred_at",
+          "audit_id"
+        ]
+      },
+      {
+        "name": "IX_Audit_EntityTime",
+        "unique": false,
+        "pk": false,
+        "constraint": false,
+        "filter": "",
+        "columns": [
+          "entity_type",
+          "entity_id",
+          "occurred_at",
+          "audit_id"
+        ]
+      },
+      {
+        "name": "IX_Audit_Operation",
+        "unique": false,
+        "pk": false,
+        "constraint": false,
+        "filter": "",
+        "columns": [
+          "operation_id",
+          "audit_id"
+        ]
+      },
+      {
+        "name": "IX_Audit_Time",
+        "unique": false,
+        "pk": false,
+        "constraint": false,
+        "filter": "",
+        "columns": [
+          "occurred_at",
+          "audit_id"
+        ]
+      },
+      {
+        "name": "PK_AuditLog",
+        "unique": true,
+        "pk": true,
+        "constraint": false,
+        "filter": "",
+        "columns": [
+          "audit_id"
+        ]
+      }
+    ],
+    "fks": [
+      {
+        "name": "FK_AuditLog_Account_actor_account_id",
+        "child": "AuditLog",
+        "parent": "Account",
+        "columns": [
+          "actor_account_id"
+        ],
+        "parent_columns": [
+          "account_id"
+        ],
+        "on_delete": "0",
+        "on_update": "0",
+        "disabled": "0",
+        "untrusted": "0"
+      }
+    ],
+    "checks": [
+      {
+        "name": "CK_AuditLog_Category",
+        "sql": "((([audit_category]) collate Latin1_General_100_BIN2='SECURITY' OR ([audit_category]) collate Latin1_General_100_BIN2='MANDATORY') AND datalength([audit_category])=len([audit_category]))"
+      },
+      {
+        "name": "CK_AuditLog_Details",
+        "sql": "([details] IS NULL OR isjson([details])=(1))"
+      },
+      {
+        "name": "CK_AuditLog_IPBundle",
+        "sql": "([ip_address] IS NULL AND [ip_expires_at] IS NULL OR [ip_address] IS NOT NULL AND [ip_expires_at] IS NOT NULL AND [ip_expires_at]=dateadd(day,(90),[occurred_at]))"
+      },
+      {
+        "name": "CK_AuditLog_Result",
+        "sql": "((([result]) collate Latin1_General_100_BIN2='FAILURE' OR ([result]) collate Latin1_General_100_BIN2='SUCCESS') AND datalength([result])=len([result]))"
+      },
+      {
+        "name": "CK_AuditLog_SecurityExpiry",
+        "sql": "([audit_category]='SECURITY' AND [security_expires_at] IS NOT NULL AND [security_expires_at]>=dateadd(day,(90),[occurred_at]) OR [audit_category]='MANDATORY' AND [security_expires_at] IS NULL)"
+      }
+    ],
+    "defaults": {}
+  },
+  "ReplayOperation": {
+    "columns": {
+      "action_code": {
+        "type": "varchar(80)",
+        "null": "N",
+        "identity": false,
+        "collation": "Latin1_General_100_CI_AS_SC"
+      },
+      "actor_account_id": {
+        "type": "int",
+        "null": "N",
+        "identity": false,
+        "collation": ""
+      },
+      "completed_at": {
+        "type": "datetime2(3)",
+        "null": "N",
+        "identity": false,
+        "collation": ""
+      },
+      "expires_at": {
+        "type": "datetime2(3)",
+        "null": "N",
+        "identity": false,
+        "collation": ""
+      },
+      "input_digest": {
+        "type": "binary(32)",
+        "null": "N",
+        "identity": false,
+        "collation": ""
+      },
+      "operation_id": {
+        "type": "uniqueidentifier",
+        "null": "N",
+        "identity": false,
+        "collation": ""
+      },
+      "replay_id": {
+        "type": "int",
+        "null": "N",
+        "identity": true,
+        "collation": ""
+      },
+      "request_id": {
+        "type": "uniqueidentifier",
+        "null": "N",
+        "identity": false,
+        "collation": ""
+      },
+      "result_mode": {
+        "type": "varchar(32)",
+        "null": "N",
+        "identity": false,
+        "collation": "Latin1_General_100_CI_AS_SC"
+      },
+      "result_reference": {
+        "type": "nvarchar(max)",
+        "null": "N",
+        "identity": false,
+        "collation": "Latin1_General_100_CI_AS_SC"
+      }
+    },
+    "keys": [
+      {
+        "name": "PK_ReplayOperation",
+        "kind": "PK",
+        "columns": [
+          "replay_id"
+        ]
+      }
+    ],
+    "indexes": [
+      {
+        "name": "IX_Replay_Expiry",
+        "unique": false,
+        "pk": false,
+        "constraint": false,
+        "filter": "",
+        "columns": [
+          "expires_at"
+        ]
+      },
+      {
+        "name": "IX_Replay_Operation",
+        "unique": false,
+        "pk": false,
+        "constraint": false,
+        "filter": "",
+        "columns": [
+          "operation_id"
+        ]
+      },
+      {
+        "name": "PK_ReplayOperation",
+        "unique": true,
+        "pk": true,
+        "constraint": false,
+        "filter": "",
+        "columns": [
+          "replay_id"
+        ]
+      },
+      {
+        "name": "UQ_Replay_ActorActionRequest",
+        "unique": true,
+        "pk": false,
+        "constraint": false,
+        "filter": "",
+        "columns": [
+          "actor_account_id",
+          "action_code",
+          "request_id"
+        ]
+      }
+    ],
+    "fks": [
+      {
+        "name": "FK_ReplayOperation_Account_actor_account_id",
+        "child": "ReplayOperation",
+        "parent": "Account",
+        "columns": [
+          "actor_account_id"
+        ],
+        "parent_columns": [
+          "account_id"
+        ],
+        "on_delete": "0",
+        "on_update": "0",
+        "disabled": "0",
+        "untrusted": "0"
+      }
+    ],
+    "checks": [
+      {
+        "name": "CK_ReplayOperation_Expiry",
+        "sql": "([expires_at]>=dateadd(hour,(24),[completed_at]))"
+      },
+      {
+        "name": "CK_ReplayOperation_Mode",
+        "sql": "((([result_mode]) collate Latin1_General_100_BIN2='SECRET_RESULT_UNAVAILABLE' OR ([result_mode]) collate Latin1_General_100_BIN2='SAFE_REFERENCE') AND datalength([result_mode])=len([result_mode]))"
+      },
+      {
+        "name": "CK_ReplayOperation_ResultReference",
+        "sql": "(isjson([result_reference])=(1))"
+      }
+    ],
+    "defaults": {}
+  },
+  "InvoiceNumberCounter": {
+    "columns": {
+      "issue_year": {
+        "type": "smallint",
+        "null": "N",
+        "identity": false,
+        "collation": ""
+      },
+      "last_value": {
+        "type": "int",
+        "null": "N",
+        "identity": false,
+        "collation": ""
+      },
+      "row_version": {
+        "type": "rowversion",
+        "null": "N",
+        "identity": false,
+        "collation": ""
+      }
+    },
+    "keys": [
+      {
+        "name": "PK_InvoiceNumberCounter",
+        "kind": "PK",
+        "columns": [
+          "issue_year"
+        ]
+      }
+    ],
+    "indexes": [
+      {
+        "name": "PK_InvoiceNumberCounter",
+        "unique": true,
+        "pk": true,
+        "constraint": false,
+        "filter": "",
+        "columns": [
+          "issue_year"
+        ]
+      }
+    ],
+    "fks": [],
+    "checks": [
+      {
+        "name": "CK_InvoiceNumberCounter_Value",
+        "sql": "([last_value]>=(0) AND [last_value]<=(99999999))"
+      },
+      {
+        "name": "CK_InvoiceNumberCounter_Year",
+        "sql": "([issue_year]>=(1) AND [issue_year]<=(9999))"
+      }
+    ],
+    "defaults": {
+      "last_value": "((0))"
+    }
+  }
+}

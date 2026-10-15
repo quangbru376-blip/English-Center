@@ -1,0 +1,18 @@
+{
+  "tables": 24,
+  "displayed_fk": 32,
+  "appendix_fk": 18,
+  "all_fk": 50,
+  "pdf_pages": 1,
+  "pdf_size": "A3 landscape",
+  "png_size": [
+    3572,
+    2526
+  ],
+  "source_report_unchanged": true,
+  "hashes": {
+    "SO_DO_LOGIC_6_1_20261014.svg": "4a8f0ef917ab17cf53e51272127445f1eab79bf783ed8e9edd803d3ed3b04a1f",
+    "SO_DO_LOGIC_6_1_20261014.pdf": "1c1ab185c0ba4b1171ab7ea9c851f79018db263fb1461839e795471519722920",
+    "SO_DO_LOGIC_6_1_20261014.png": "b6600f92cdcba7b09c27931c7f872e5cf446b4e885979995cdea07a523071dfc"
+  }
+}

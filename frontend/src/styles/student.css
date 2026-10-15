@@ -28,7 +28,7 @@
 .student-attempts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--ec-space-4); list-style: none; padding: 0; }
 .student-attempts > li { border: 1px solid var(--ec-divider); border-radius: var(--ec-radius-card); padding: var(--ec-space-4); display: grid; gap: var(--ec-space-3); }
 .student-actions { display: flex; flex-wrap: wrap; gap: var(--ec-space-3); }
-.student-reasons { color: var(--ec-muted); font-size: var(--ec-text-sm); padding-left: var(--ec-space-5); list-style: disc; }
+.student-reasons { display: grid; gap: var(--ec-space-2); color: var(--ec-muted); font-size: var(--ec-text-sm); padding-left: var(--ec-space-5); list-style: disc; }
 .student-slot-list { display: grid; gap: var(--ec-space-3); }
 .student-slot { display: flex; align-items: flex-start; gap: var(--ec-space-3); border: 1px solid var(--ec-border); border-radius: var(--ec-radius-card); padding: var(--ec-space-4); cursor: pointer; }
 .student-slot:has(input:checked) { background: var(--ec-primary-soft); border-color: var(--ec-primary); }
@@ -50,7 +50,11 @@
 .student-grade-comment { white-space: pre-wrap; overflow-wrap: anywhere; }
 .student-schedules { display: grid; gap: var(--ec-space-4); margin-top: var(--ec-space-6); padding-top: var(--ec-space-6); border-top: 1px solid var(--ec-divider); }
 .student-schedules article, .student-calendar-event { padding: var(--ec-space-4); border: 1px solid var(--ec-divider); border-radius: var(--ec-radius-card); }
-.student-schedules article > p { margin-bottom: var(--ec-space-2); }
+.student-filter, .student-profile-form { row-gap: var(--ec-space-5); column-gap: var(--ec-space-6); }
+.student-line > div, .student-card-heading > div { display: grid; gap: var(--ec-space-2); min-width: 0; }
+.student-line .ec-badge { justify-self: start; }
+.student-calendar-event { display: grid; gap: var(--ec-space-2); min-width: 0; }
+.student-calendar-event > .ec-button { justify-self: start; margin-top: var(--ec-space-2); }
 @media (max-width: 767px) {
   .student-grid, .student-attempts, .student-summary, .student-filter, .student-profile-form { grid-template-columns: minmax(0, 1fr); }
   .student-detail, .student-options, .student-registration-card, .student-course-card, .student-recovery { padding: var(--ec-space-4); }

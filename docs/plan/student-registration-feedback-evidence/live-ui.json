@@ -1,0 +1,25 @@
+{
+  "passed": true,
+  "trustedHttps": true,
+  "anonymousOnly": true,
+  "apiMutations": 0,
+  "sessionRevocations": 0,
+  "errors": [],
+  "cases": [
+    {
+      "width": 375,
+      "noPageOverflow": true,
+      "reviewedCssServed": true
+    },
+    {
+      "width": 768,
+      "noPageOverflow": true,
+      "reviewedCssServed": true
+    },
+    {
+      "width": 1280,
+      "noPageOverflow": true,
+      "reviewedCssServed": true
+    }
+  ]
+}

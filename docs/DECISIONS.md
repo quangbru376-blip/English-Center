@@ -5007,3 +5007,10 @@ pacing after bounded5s startup proof preserves original20s deadline/allQ/TLS gat
 ReadOnly/stop503 PASS. No backend/packages/pins/profile/keys/schema changes, no fresh
 full backend/SQLsuite/load acceptance. LIVE host for owner trial; reload once. UIgate4
 pending/M4recovery unchanged. Evidence SESSION_FOCUS_REVIEW/session-focus-evidence.
+
+## Demo dataset plan accepted — 2026-10-15
+
+Owner answered “đồng ý” to the proposed dataset for personal product exploration and future Internet demo:50Students/8Teachers/9otherstaff (2Admissions/2AcademicAffairs/2Accountants/1Director/2Admins),6Courses/12Programs/12Classes/12EntrySessions/about70Registrations, existing5Band references and coherent dependent finance/attendance/grade/history scenarios. Separate demo catalog, synthetic identities, protected credential handoff, repeatable generation and scenario walkthrough are part of the plan. Counts are initial dataset scope, not load evidence. See docs/plan/INTERNET_DEMO_DATA_PLAN.md. Approval records planning choices; no seed/database/account/password operation occurred, no hosting/provider/public exposure selected or recovery M4 closure implied.
+
+## LOCAL_DEMO implementation authorized and delivered — 2026-10-15
+Owner explicitly requested immediate implementation and localhost verification. Separate EnglishCenter_DEMO_LOCAL, loopback HTTPS8444, independent cryptographic/profile/proof custody and reused existing runtime/maintenance Windows identities were selected. Approved67account dataset and70registrations are now generated; all17staff completed real password change. Secret handoff is owner-local DPAPI/HTML outside Git/static webroot. Production guards/schema/API are unchanged. Managed launcher retained; restart preserves practice data and generator refuses populated catalogs. Evidence and limits: LOCAL_DEMO_REVIEW and local-demo-evidence/summary.json. Internet/public exposure and M4 recovery remain separate.

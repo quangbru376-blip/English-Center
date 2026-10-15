@@ -94,7 +94,7 @@ internal sealed class LocalRuntimeServices : ITrustedLoginIpResolver, IDisposabl
         var keys = DataProtectionProvider.Create(new DirectoryInfo(Path.Combine(LocalRuntimeReferences.RuntimeRoot, "csrf")), options =>
         {
             if (!OperatingSystem.IsWindows()) throw new PlatformNotSupportedException();
-            options.SetApplicationName("EnglishCenter.M0.Local").ProtectKeysWithDpapi(protectToLocalMachine: false).DisableAutomaticKeyGeneration();
+            options.SetApplicationName(LocalRuntimeReferences.CsrfApplication).ProtectKeysWithDpapi(protectToLocalMachine: false).DisableAutomaticKeyGeneration();
         });
         services.AddCsrfBoundary(keys);
     }

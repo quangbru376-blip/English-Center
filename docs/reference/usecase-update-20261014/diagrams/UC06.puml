@@ -1,0 +1,27 @@
+@startuml
+left to right direction
+skinparam monochrome true
+skinparam shadowing false
+actor "Giáo vụ" as A_aa
+actor "Học viên" as A_s
+rectangle "Hệ thống quản lý trung tâm Anh ngữ" {
+usecase "Tạo và quản lý sức chứa lớp" as U_class
+usecase "Mở bắt đầu hoàn thành hoặc hủy lớp" as U_lifecycle
+usecase "Phân công hoặc đổi giáo viên lớp" as U_teacher
+usecase "Xếp học viên đủ điều kiện vào lớp" as U_place
+usecase "Lập lịch tuần hoặc từng buổi" as U_weekly
+usecase "Dời lịch hoặc thay buổi không tổ chức" as U_move
+usecase "Xác nhận buổi đã tổ chức" as U_held
+usecase "Tạo bảng điểm nháp khi xếp lớp" as U_draft
+usecase "Xem lớp và lịch cá nhân" as U_own
+}
+A_aa -- U_class
+A_aa -- U_lifecycle
+A_aa -- U_teacher
+A_aa -- U_place
+A_aa -- U_weekly
+A_aa -- U_move
+A_aa -- U_held
+A_s -- U_own
+U_place ..> U_draft : <<include>>
+@enduml

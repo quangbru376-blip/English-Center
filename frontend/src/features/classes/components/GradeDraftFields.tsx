@@ -37,7 +37,7 @@ export function GradeDraftFields(props: GradeDraftFieldsProps): ReactElement {
       <legend className="text-base font-semibold text-[var(--ec-text)]">Nhập điểm đánh giá</legend>
 
       {props.fields.map((f) => (
-        <div key={f.componentId} className="flex flex-col gap-1.5 border-b border-[var(--ec-border)] pb-3">
+        <div key={f.componentId} className="flex flex-col gap-2 border-b border-[var(--ec-border)] pb-3">
           <label htmlFor={`score-${f.componentId}`} className="text-sm font-medium text-[var(--ec-text)]">
             {f.name} ({KIND_LABEL[f.kind]})
           </label>
@@ -57,7 +57,7 @@ export function GradeDraftFields(props: GradeDraftFieldsProps): ReactElement {
           />
 
           {f.kind !== 'GENERAL' && (
-            <div className="flex flex-col gap-1 pt-1">
+            <div className="flex flex-col gap-2 pt-2">
               <label htmlFor={`schedule-${f.componentId}`} className="text-xs font-medium text-[var(--ec-text)]">
                 Buổi học áp dụng
               </label>
@@ -86,7 +86,7 @@ export function GradeDraftFields(props: GradeDraftFieldsProps): ReactElement {
         </div>
       ))}
 
-      <div className="flex flex-col gap-1.5">
+      <div className="flex flex-col gap-2">
         <label htmlFor="grade-comment" className="text-sm font-medium text-[var(--ec-text)]">
           Ghi chú
         </label>

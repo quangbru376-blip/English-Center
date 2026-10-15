@@ -1,0 +1,953 @@
+[
+  {
+    "code": "UC00",
+    "title": "Tổng quan phạm vi hệ thống",
+    "actors": [
+      {
+        "key": "s",
+        "label": "Học viên",
+        "side": "L",
+        "y": 650
+      },
+      {
+        "key": "ad",
+        "label": "Tuyển sinh",
+        "side": "L",
+        "y": 420
+      },
+      {
+        "key": "t",
+        "label": "Giáo viên",
+        "side": "L",
+        "y": 190
+      },
+      {
+        "key": "admin",
+        "label": "Quản trị viên",
+        "side": "R",
+        "y": 650
+      },
+      {
+        "key": "aa",
+        "label": "Giáo vụ",
+        "side": "R",
+        "y": 490
+      },
+      {
+        "key": "ac",
+        "label": "Kế toán",
+        "side": "R",
+        "y": 320
+      },
+      {
+        "key": "di",
+        "label": "Giám đốc",
+        "side": "R",
+        "y": 150
+      }
+    ],
+    "left": [
+      [
+        "student",
+        "Tự đăng ký và theo dõi việc học"
+      ],
+      [
+        "admissions",
+        "Xử lý hồ sơ tuyển sinh"
+      ],
+      [
+        "teacher",
+        "Thi đầu vào và giảng dạy"
+      ]
+    ],
+    "right": [
+      [
+        "staff",
+        "Quản trị tài khoản và nhật ký"
+      ],
+      [
+        "acad",
+        "Cấu hình lớp lịch và duyệt điểm"
+      ],
+      [
+        "finance",
+        "Học phí thanh toán và CSV"
+      ],
+      [
+        "reports",
+        "Báo cáo quản lý tổng hợp"
+      ]
+    ],
+    "edges": [
+      [
+        "s",
+        "student"
+      ],
+      [
+        "ad",
+        "admissions"
+      ],
+      [
+        "t",
+        "teacher"
+      ],
+      [
+        "admin",
+        "staff"
+      ],
+      [
+        "aa",
+        "acad"
+      ],
+      [
+        "ac",
+        "finance"
+      ],
+      [
+        "di",
+        "reports"
+      ]
+    ],
+    "includes": [],
+    "scope": "Hình tổng quan gom các mục tiêu thành nhóm để giới thiệu phạm vi; các hình UC01–UC09 xác định quyền cụ thể. Bảy tác nhân bên ngoài tương ứng bảy vai trò cố định.",
+    "guards": "Đường nối thể hiện tham gia theo phạm vi, không phải quyền quản lý toàn bộ nhóm. “Hệ thống” không được vẽ thành tác nhân bên ngoài; không có phê duyệt của Giám đốc."
+  },
+  {
+    "code": "UC01",
+    "title": "Tài khoản và phiên đăng nhập",
+    "actors": [
+      {
+        "key": "u",
+        "label": "Người dùng\n7 vai trò",
+        "side": "L",
+        "y": 600
+      },
+      {
+        "key": "s",
+        "label": "Học viên",
+        "side": "L",
+        "y": 245
+      },
+      {
+        "key": "admin",
+        "label": "Quản trị viên",
+        "side": "R",
+        "y": 420
+      }
+    ],
+    "left": [
+      [
+        "login",
+        "Đăng nhập"
+      ],
+      [
+        "logout",
+        "Đăng xuất phiên hiện tại"
+      ],
+      [
+        "pass",
+        "Tự đổi mật khẩu"
+      ],
+      [
+        "signup",
+        "Tự đăng ký tài khoản Học viên"
+      ],
+      [
+        "profile",
+        "Sửa hồ sơ cá nhân của mình"
+      ]
+    ],
+    "right": [
+      [
+        "create",
+        "Cấp tài khoản nhân sự"
+      ],
+      [
+        "reset",
+        "Đặt lại mật khẩu tạm"
+      ],
+      [
+        "lock",
+        "Khóa hoặc mở khóa tài khoản"
+      ],
+      [
+        "disable",
+        "Ngừng hoặc khôi phục tài khoản"
+      ],
+      [
+        "revoke",
+        "Thu hồi các phiên liên quan"
+      ]
+    ],
+    "edges": [
+      [
+        "u",
+        "login"
+      ],
+      [
+        "u",
+        "logout"
+      ],
+      [
+        "u",
+        "pass"
+      ],
+      [
+        "s",
+        "signup"
+      ],
+      [
+        "s",
+        "profile"
+      ],
+      [
+        "admin",
+        "create"
+      ],
+      [
+        "admin",
+        "reset"
+      ],
+      [
+        "admin",
+        "lock"
+      ],
+      [
+        "admin",
+        "disable"
+      ]
+    ],
+    "includes": [
+      [
+        "pass",
+        "revoke"
+      ],
+      [
+        "reset",
+        "revoke"
+      ]
+    ],
+    "scope": "“Người dùng 7 vai trò” là ký hiệu rút gọn cho quyền dùng chung, không phải vai trò thứ tám. Student tự tạo tài khoản; Admin cấp nhân sự và quản lý trạng thái tài khoản.",
+    "guards": "Email bất biến; tự đổi mật khẩu cần mật khẩu hiện tại. Reset/đổi mật khẩu/khóa/ngừng dùng thu hồi mọi phiên; mở khóa/khôi phục không phục hồi phiên cũ. Quan hệ include ở hình thể hiện hai lệnh luôn thu hồi; nhánh khóa/ngừng cũng thu hồi theo điều kiện thao tác. Bảo vệ Admin tự khóa và Admin hoạt động cuối cùng."
+  },
+  {
+    "code": "UC02",
+    "title": "Hồ sơ đăng ký và quyết định tuyển sinh",
+    "actors": [
+      {
+        "key": "s",
+        "label": "Học viên",
+        "side": "L",
+        "y": 435
+      },
+      {
+        "key": "ad",
+        "label": "Tuyển sinh",
+        "side": "R",
+        "y": 470
+      }
+    ],
+    "left": [
+      [
+        "courses",
+        "Xem khóa học đang hoạt động"
+      ],
+      [
+        "create",
+        "Tạo hồ sơ đăng ký khóa học"
+      ],
+      [
+        "own",
+        "Xem hồ sơ của mình"
+      ],
+      [
+        "cancelown",
+        "Hủy hồ sơ trước xác nhận"
+      ],
+      [
+        "confirm",
+        "Xác nhận nhập học"
+      ]
+    ],
+    "right": [
+      [
+        "search",
+        "Tra cứu và kiểm tra hồ sơ"
+      ],
+      [
+        "approve",
+        "Duyệt hồ sơ nhập học"
+      ],
+      [
+        "reject",
+        "Từ chối hồ sơ có lý do"
+      ],
+      [
+        "cancel",
+        "Hủy hồ sơ theo quyền Tuyển sinh"
+      ],
+      [
+        "invoice",
+        "Phát hành một hóa đơn học phí"
+      ]
+    ],
+    "edges": [
+      [
+        "s",
+        "courses"
+      ],
+      [
+        "s",
+        "create"
+      ],
+      [
+        "s",
+        "own"
+      ],
+      [
+        "s",
+        "cancelown"
+      ],
+      [
+        "s",
+        "confirm"
+      ],
+      [
+        "ad",
+        "search"
+      ],
+      [
+        "ad",
+        "approve"
+      ],
+      [
+        "ad",
+        "reject"
+      ],
+      [
+        "ad",
+        "cancel"
+      ]
+    ],
+    "includes": [
+      [
+        "approve",
+        "invoice"
+      ]
+    ],
+    "scope": "Student tự đăng ký và xác nhận sau kết quả đầu vào; Admissions tra cứu và quyết định hồ sơ đã CONFIRMED. Phát hành Invoice là xử lý bắt buộc bên trong thao tác duyệt.",
+    "guards": "Một hồ sơ chưa kết thúc cho mỗi Student/Course. Confirmation không tạo Invoice. Duyệt tạo ADMITTED + Invoice + audit trong một giao dịch; hủy hợp lệ xử lý Invoice UNPAID và booking tương lai, kể cả ca CLOSED, giữ lịch sử. Không ghi danh/đặt ca thay hoặc hủy PAID. Invoice giữ học phí tại phát hành và hạn ngày Việt Nam +7 ngày lịch."
+  },
+  {
+    "code": "UC03",
+    "title": "Thi đầu vào và xác định trình độ",
+    "actors": [
+      {
+        "key": "s",
+        "label": "Học viên",
+        "side": "L",
+        "y": 565
+      },
+      {
+        "key": "aa",
+        "label": "Giáo vụ",
+        "side": "L",
+        "y": 205
+      },
+      {
+        "key": "t",
+        "label": "Giáo viên chấm",
+        "side": "R",
+        "y": 560
+      }
+    ],
+    "left": [
+      [
+        "slots",
+        "Xem ca phù hợp và lịch của mình"
+      ],
+      [
+        "booking",
+        "Đặt đổi hủy hoặc đặt lại ca thi"
+      ],
+      [
+        "results",
+        "Xem kết quả từng lượt và Band"
+      ],
+      [
+        "session",
+        "Tạo mở đóng hủy hoặc sửa ca thi"
+      ],
+      [
+        "grader",
+        "Phân công hoặc đổi người chấm"
+      ],
+      [
+        "follow",
+        "Theo dõi kết quả và tiến độ chấm"
+      ]
+    ],
+    "right": [
+      [
+        "assigned",
+        "Xem ca và danh sách được giao"
+      ],
+      [
+        "grade",
+        "Nhập điểm đầu vào"
+      ],
+      [
+        "absent",
+        "Ghi nhận vắng thi"
+      ],
+      [
+        "correct",
+        "Sửa điểm đầu vào có lý do"
+      ],
+      [
+        "band",
+        "Tính lại điểm tốt nhất và Band"
+      ]
+    ],
+    "edges": [
+      [
+        "s",
+        "slots"
+      ],
+      [
+        "s",
+        "booking"
+      ],
+      [
+        "s",
+        "results"
+      ],
+      [
+        "aa",
+        "session"
+      ],
+      [
+        "aa",
+        "grader"
+      ],
+      [
+        "aa",
+        "follow"
+      ],
+      [
+        "t",
+        "assigned"
+      ],
+      [
+        "t",
+        "grade"
+      ],
+      [
+        "t",
+        "absent"
+      ],
+      [
+        "t",
+        "correct"
+      ]
+    ],
+    "includes": [
+      [
+        "grade",
+        "band"
+      ],
+      [
+        "correct",
+        "band"
+      ]
+    ],
+    "scope": "Booking là lịch sử đặt ca; logical attempt là lượt thi, tối đa hai mỗi Registration. Thay đổi hoặc đặt lại booking không tạo lượt thứ ba. Band do hệ thống suy từ điểm Teacher nhập.",
+    "guards": "Student chỉ thao tác booking OPEN trước start; lượt hai cần điểm lượt một và trước CONFIRMED. Initial score/ABSENT từ session end; chỉ original grader còn assigned sửa điểm, trước confirmation và có reason. Vắng không là 0. Hòa chọn lượt một; bộ ngưỡng khóa từ completed result đầu tiên. Band chọn min_score lớn nhất không vượt điểm tốt nhất; seed ngưỡng 0/25/45/65/85."
+  },
+  {
+    "code": "UC04",
+    "title": "Hóa đơn và xác nhận thanh toán",
+    "actors": [
+      {
+        "key": "s",
+        "label": "Học viên",
+        "side": "L",
+        "y": 535
+      },
+      {
+        "key": "ac",
+        "label": "Kế toán",
+        "side": "R",
+        "y": 470
+      }
+    ],
+    "left": [
+      [
+        "own",
+        "Xem hóa đơn và hướng dẫn thanh toán"
+      ],
+      [
+        "print",
+        "In hóa đơn của mình"
+      ],
+      [
+        "fresh",
+        "Đọc mới hóa đơn đúng quyền"
+      ]
+    ],
+    "right": [
+      [
+        "search",
+        "Tra cứu hóa đơn và công nợ"
+      ],
+      [
+        "pay",
+        "Xác nhận thanh toán đủ một lần"
+      ],
+      [
+        "correct",
+        "Sửa phương thức hoặc mã giao dịch"
+      ],
+      [
+        "paid",
+        "Lưu Payment và chuyển Invoice PAID"
+      ]
+    ],
+    "edges": [
+      [
+        "s",
+        "own"
+      ],
+      [
+        "s",
+        "print"
+      ],
+      [
+        "ac",
+        "search"
+      ],
+      [
+        "ac",
+        "pay"
+      ],
+      [
+        "ac",
+        "correct"
+      ]
+    ],
+    "includes": [
+      [
+        "print",
+        "fresh"
+      ],
+      [
+        "pay",
+        "paid"
+      ]
+    ],
+    "scope": "Student xem/in Invoice riêng và trả tiền ngoài ứng dụng. Accountant xác nhận tiền đã đối chiếu và được sửa metadata Payment theo điều kiện; không tạo lại hóa đơn khi thu tiền.",
+    "guards": "Invoice phát hành từ duyệt tuyển sinh ở UC02. Payment bằng toàn bộ amount, một lần, CASH/TRANSFER; chuyển khoản cần reference. Chỉ sửa method/reference có reason/audit, giữ money/link/time. Không gateway, trả góp, refund, biên lai riêng; overdue chỉ cảnh báo."
+  },
+  {
+    "code": "UC05",
+    "title": "Cấu hình khóa và chương trình đào tạo",
+    "actors": [
+      {
+        "key": "aa",
+        "label": "Giáo vụ",
+        "side": "L",
+        "y": 435
+      }
+    ],
+    "left": [
+      [
+        "course",
+        "Tạo sửa ngừng hoặc khôi phục khóa"
+      ],
+      [
+        "band",
+        "Cấu hình các ngưỡng Band"
+      ],
+      [
+        "program",
+        "Tạo chương trình theo khóa và Band"
+      ],
+      [
+        "config",
+        "Cấu hình số buổi thành phần trọng số"
+      ],
+      [
+        "activate",
+        "Kiểm tra và kích hoạt chương trình"
+      ],
+      [
+        "state",
+        "Chuyển nháp ngừng hoặc khôi phục"
+      ]
+    ],
+    "right": [],
+    "edges": [
+      [
+        "aa",
+        "course"
+      ],
+      [
+        "aa",
+        "band"
+      ],
+      [
+        "aa",
+        "program"
+      ],
+      [
+        "aa",
+        "config"
+      ],
+      [
+        "aa",
+        "activate"
+      ],
+      [
+        "aa",
+        "state"
+      ]
+    ],
+    "includes": [],
+    "scope": "AcademicAffairs quản lý Course, Band và TrainingProgram. Program thuộc cặp Course/Band duy nhất, có expected LESSON count và các ScoreComponentConfig.",
+    "guards": "ACTIVE cần count dương, total weight 100 và đúng một FINAL_EXAM component. First Class use khóa Course/Band/components/kind/weights/count, kể cả Class CANCELLED. Giá mới chỉ cho Invoice sau đó; first entry result khóa bộ ngưỡng Band. Không version né khóa hay phê duyệt Director."
+  },
+  {
+    "code": "UC06",
+    "title": "Lớp xếp lớp và quản lý lịch",
+    "actors": [
+      {
+        "key": "aa",
+        "label": "Giáo vụ",
+        "side": "L",
+        "y": 475
+      },
+      {
+        "key": "s",
+        "label": "Học viên",
+        "side": "R",
+        "y": 170
+      }
+    ],
+    "left": [
+      [
+        "class",
+        "Tạo và quản lý sức chứa lớp"
+      ],
+      [
+        "lifecycle",
+        "Mở bắt đầu hoàn thành hoặc hủy lớp"
+      ],
+      [
+        "teacher",
+        "Phân công hoặc đổi giáo viên lớp"
+      ],
+      [
+        "place",
+        "Xếp học viên đủ điều kiện vào lớp"
+      ],
+      [
+        "weekly",
+        "Lập lịch tuần hoặc từng buổi"
+      ]
+    ],
+    "right": [
+      [
+        "move",
+        "Dời lịch hoặc thay buổi không tổ chức"
+      ],
+      [
+        "held",
+        "Xác nhận buổi đã tổ chức"
+      ],
+      [
+        "draft",
+        "Tạo bảng điểm nháp khi xếp lớp"
+      ],
+      [
+        "own",
+        "Xem lớp và lịch cá nhân"
+      ]
+    ],
+    "edges": [
+      [
+        "aa",
+        "class"
+      ],
+      [
+        "aa",
+        "lifecycle"
+      ],
+      [
+        "aa",
+        "teacher"
+      ],
+      [
+        "aa",
+        "place"
+      ],
+      [
+        "aa",
+        "weekly"
+      ],
+      [
+        "aa",
+        "move"
+      ],
+      [
+        "aa",
+        "held"
+      ],
+      [
+        "s",
+        "own"
+      ]
+    ],
+    "includes": [
+      [
+        "place",
+        "draft"
+      ]
+    ],
+    "scope": "Giáo vụ quản lý Class, assignments và từng Schedule cụ thể. Xếp lớp tạo một assignment và GradeReport DRAFT cùng giao dịch; Student chỉ xem lớp/lịch của mình.",
+    "guards": "Chỉ OPEN trước buổi đầu, ADMITTED + PAID, đúng Course/Band, còn chỗ và không trùng lịch. Không gỡ/chuyển sau xếp. Lịch tuần all-or-none; lịch mới/đích dời ở tương lai, replacement giữ cùng nghĩa vụ; HELD do Giáo vụ sau end/ONGOING. COMPLETE cần mọi nghĩa vụ HELD và đủ LESSON Attendance, chưa yêu cầu chốt điểm."
+  },
+  {
+    "code": "UC07",
+    "title": "Giảng dạy và bảng điểm cả lớp",
+    "actors": [
+      {
+        "key": "t",
+        "label": "Giáo viên",
+        "side": "L",
+        "y": 450
+      },
+      {
+        "key": "aa",
+        "label": "Giáo vụ",
+        "side": "R",
+        "y": 620
+      },
+      {
+        "key": "s",
+        "label": "Học viên",
+        "side": "R",
+        "y": 155
+      }
+    ],
+    "left": [
+      [
+        "classes",
+        "Xem lớp danh sách và lịch được giao"
+      ],
+      [
+        "attendance",
+        "Ghi hoặc sửa điểm danh một buổi"
+      ],
+      [
+        "draft",
+        "Lưu điểm nháp và nhận xét một học viên"
+      ],
+      [
+        "submit",
+        "Gửi bảng điểm cả lớp"
+      ],
+      [
+        "resubmit",
+        "Sửa và gửi lại lớp bị trả"
+      ]
+    ],
+    "right": [
+      [
+        "review",
+        "Xem bảng điểm theo quyền Giáo vụ"
+      ],
+      [
+        "return",
+        "Trả lại cả lớp có lý do"
+      ],
+      [
+        "finalize",
+        "Chốt và công bố cả lớp"
+      ],
+      [
+        "total",
+        "Tính và lưu điểm tổng kết chính thức"
+      ],
+      [
+        "published",
+        "Xem kết quả cá nhân đã chốt"
+      ]
+    ],
+    "edges": [
+      [
+        "t",
+        "classes"
+      ],
+      [
+        "t",
+        "attendance"
+      ],
+      [
+        "t",
+        "draft"
+      ],
+      [
+        "t",
+        "submit"
+      ],
+      [
+        "t",
+        "resubmit"
+      ],
+      [
+        "aa",
+        "review"
+      ],
+      [
+        "aa",
+        "return"
+      ],
+      [
+        "aa",
+        "finalize"
+      ],
+      [
+        "s",
+        "published"
+      ]
+    ],
+    "includes": [
+      [
+        "finalize",
+        "total"
+      ]
+    ],
+    "scope": "Teacher lưu Attendance theo một LESSON và draft theo một Student. Submit/resubmit/return/finalize là các lệnh cho toàn Class. Student chỉ xem own FINALIZED.",
+    "guards": "Attendance từ LESSON start đến trước COMPLETED; draft ONGOING/COMPLETED và DRAFT/RETURNED. Submit khi COMPLETED/đủ mọi điểm/không sửa chưa lưu; return/finalize toàn bộ SUBMITTED, all-or-none. Thang 100, half-up tổng một lần hai chữ số; FINALIZED ≥50 đạt, bất biến; không ghi final_score trước chốt."
+  },
+  {
+    "code": "UC08",
+    "title": "Báo cáo tổng hợp và CSV tài chính",
+    "actors": [
+      {
+        "key": "di",
+        "label": "Giám đốc",
+        "side": "L",
+        "y": 440
+      },
+      {
+        "key": "ac",
+        "label": "Kế toán",
+        "side": "R",
+        "y": 525
+      }
+    ],
+    "left": [
+      [
+        "admissions",
+        "Xem báo cáo tuyển sinh tổng hợp"
+      ],
+      [
+        "training",
+        "Xem báo cáo đào tạo và tỷ lệ đạt"
+      ],
+      [
+        "finance",
+        "Xem báo cáo tài chính tổng hợp"
+      ]
+    ],
+    "right": [
+      [
+        "accountant",
+        "Xem báo cáo học phí theo quyền"
+      ],
+      [
+        "csv",
+        "Xuất CSV tài chính toàn tập lọc"
+      ],
+      [
+        "fresh",
+        "Truy vấn mới kết quả tài chính"
+      ]
+    ],
+    "edges": [
+      [
+        "di",
+        "admissions"
+      ],
+      [
+        "di",
+        "training"
+      ],
+      [
+        "di",
+        "finance"
+      ],
+      [
+        "ac",
+        "accountant"
+      ],
+      [
+        "ac",
+        "csv"
+      ]
+    ],
+    "includes": [
+      [
+        "csv",
+        "fresh"
+      ]
+    ],
+    "scope": "Director chỉ đọc ba nhóm aggregates không định danh, không export/phê duyệt. Accountant chỉ finance, có CSV toàn tập lọc; xuất chạy query mới, không chỉ trang đang xem.",
+    "guards": "Doanh thu theo Payment confirmation; phải thu theo Invoice issue, loại CANCELLED; debt UNPAID hiện tại không kỳ ngày. Distinct Student toàn tập không cộng nhóm; tiến độ HELD obligations; pass rate FINALIZED-date, mẫu số rỗng là chưa có dữ liệu. CSV six columns/footer, caps và formula safeguards giữ nguyên."
+  },
+  {
+    "code": "UC09",
+    "title": "Tra cứu nhật ký hoạt động",
+    "actors": [
+      {
+        "key": "admin",
+        "label": "Quản trị viên",
+        "side": "L",
+        "y": 440
+      }
+    ],
+    "left": [
+      [
+        "list",
+        "Tra cứu nhật ký có bộ lọc"
+      ],
+      [
+        "detail",
+        "Xem chi tiết sự kiện được phép"
+      ],
+      [
+        "group",
+        "Xem các sự kiện cùng thao tác"
+      ]
+    ],
+    "right": [],
+    "edges": [
+      [
+        "admin",
+        "list"
+      ],
+      [
+        "admin",
+        "detail"
+      ],
+      [
+        "admin",
+        "group"
+      ]
+    ],
+    "includes": [],
+    "scope": "Admin xem AuditLog newest-first/paginated, event detail và liên kết operation_id. Quyền đọc log không mở thêm quyền truy cập đối tượng nghiệp vụ.",
+    "guards": "NV39 là xử lý nội bộ xuyên các workflow: mandatory mutation audit atomic/rollback; auth/logout/denial security-only best-effort. Không audit mọi read, lưu secrets hoặc raw payload. Mandatory history giữ; pure security/IP operational expiry 90 ngày. Không sửa/xóa/undo/export log."
+  }
+]

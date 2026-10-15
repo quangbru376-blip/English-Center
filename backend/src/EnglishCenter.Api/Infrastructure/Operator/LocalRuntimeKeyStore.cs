@@ -45,11 +45,11 @@ public sealed class LocalRuntimeKeyStore : IDisposable
                 record.GetProperty("phase").GetString() != "jwt_https_provisioned" ||
                 record.GetProperty("jwtReference").GetString() != LocalRuntimeReferences.Jwt)
                 throw new InvalidOperationException("Invalid runtime custody descriptor");
-            keyBytes = ProtectedData.Unprotect(Read("jwt.dpapi"), Encoding.UTF8.GetBytes("EnglishCenter.M0.Jwt.v1"), DataProtectionScope.CurrentUser);
+            keyBytes = ProtectedData.Unprotect(Read("jwt.dpapi"), Encoding.UTF8.GetBytes(LocalRuntimeReferences.JwtEntropy), DataProtectionScope.CurrentUser);
             if (keyBytes.Length != 32) throw new InvalidOperationException("Invalid runtime signing material");
             var key = new SymmetricSecurityKey(keyBytes) { CryptoProviderFactory = new CryptoProviderFactory { CacheSignatureProviders = false } };
             var material = new JwtReadinessMaterial(LocalRuntimeReferences.Jwt, new(key, "HS256"),
-                "english-center-m0-local", "english-center-m0-local-ui",
+                LocalRuntimeReferences.Issuer, LocalRuntimeReferences.Audience,
                 [new(LocalRuntimeReferences.Jwt, key, "HS256", record.GetProperty("jwtValidFrom").GetDateTimeOffset(),
                     record.GetProperty("jwtValidUntil").GetDateTimeOffset())]);
             var thumb = record.GetProperty("httpsThumbprint").GetString()!;

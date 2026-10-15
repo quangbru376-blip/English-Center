@@ -1,0 +1,5 @@
+{
+  "query": "master sys.databases fixed owned test prefix read only",
+  "liveScratch": 1,
+  "operationalCatalogQueried": false
+}

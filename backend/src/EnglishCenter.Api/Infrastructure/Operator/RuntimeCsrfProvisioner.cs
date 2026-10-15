@@ -8,8 +8,8 @@ namespace EnglishCenter.Api.Infrastructure.Operator;
 
 public static class RuntimeCsrfProvisioner
 {
-    private const string Root = @"C:\ProgramData\EnglishCenter\M0Runtime";
-    public const string ApplicationName = "EnglishCenter.M0.Local";
+    private static string Root => LocalRuntimeReferences.RuntimeRoot;
+    public static string ApplicationName => LocalRuntimeReferences.CsrfApplication;
 
     public static int Run(CancellationToken token)
     {

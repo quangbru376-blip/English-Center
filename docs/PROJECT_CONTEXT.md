@@ -291,3 +291,6 @@ authorized preserving its normalized content in memory on 27/09/2026. The Word
 file is unchanged. Its forms are illustrative; older diagrams/mockups are not
 authoritative when they conflict with accepted rules. New instruction inputs
 must be reviewed before adoption.
+
+## Localhost demo — 15/10/2026
+Owner-assigned demo is implemented and retained at https://localhost:8444 with a separate synthetic catalog,67accounts and coherent admissions/training/finance states. Use docs/DEMO_LOCALHOST.md for accounts and scenarios; docs/plan/LOCAL_DEMO_REVIEW.md and local-demo-evidence hold acceptance. This does not select Internet hosting or close M4 recovery. Avoid resetting the mutable demo. The source Word is owner-open and its hash differs from the earlier sectionIII audit; this task did not write it.

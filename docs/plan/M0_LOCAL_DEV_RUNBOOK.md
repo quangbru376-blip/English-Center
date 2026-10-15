@@ -1,8 +1,9 @@
 # Chạy M0 LOCAL_DEV
 
-M0 đã nghiệm thu2026-10-09. Code chính: C:\Study\SOEN\main_workplace.
-Chỉ chạy trên laptop này tại https://localhost:8443. M1 gói1–2 đã hoàn tất;
-gói3 và các milestone sau chưa được giao trong lượt này.
+Cập nhật13/10/2026: M0–M3 và M4 báo cáo/CSV, nhật ký Admin đã hoàn tất;
+backup/restore M4 còn chưa nghiệm thu. Code chính: C:\Study\SOEN\main_workplace.
+Chỉ chạy trên máy đã provision LOCAL_DEV tại https://localhost:8443.
+Hướng dẫn từng bước cho người sử dụng: [Hướng dẫn chạy sản phẩm từ đầu](../HUONG_DAN_CHAY_SAN_PHAM.md).
 
 Mở PowerShell7 bằng tài khoản Windows operator đã provision môi trường:
 
@@ -56,5 +57,6 @@ JWT/CSRF hiện có validity90ngày; patch review tiếp theo2027-01-09. Keys/ce
 không tự rotate/repair; servicing cần scope operator được review riêng khi đến hạn.
 Không có xác nhận tải50user, backup/restore, LAN/Internet hoặc production deployment.
 
-Lượt nghiệm thu tự động đã dừng mọi process/listener; lệnh trên mới khởi chạy ứng dụng.
+Các lượt nghiệm thu tự động dừng host khi hoàn tất. Nếu đã có phiên khởi chạy tương tác
+đang chạy để xem sản phẩm, dùng phiên đó hoặc dừng bằng Enter trước khi mở phiên khác.
 Xem M0_W5E_ACCEPTANCE_CARD và V01_READINESS_CLOSURE cho bằng chứng/phạm vi đầy đủ.

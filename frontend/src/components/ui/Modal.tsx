@@ -51,11 +51,11 @@ export function Modal({ open, title, children, onRequestClose, className = '' }:
             event.clientY < rect.top || event.clientY > rect.bottom) onRequestClose();
       }}
     >
-      <div className="mb-4 flex items-center justify-between gap-4">
+      <div className="ec-modal-header">
         <h2 id={headingId} className="text-lg font-semibold">{title}</h2>
         <Button variant="secondary" onClick={onRequestClose} aria-label="Đóng hộp thoại">Đóng</Button>
       </div>
-      {children}
+      <div className="ec-modal-body">{children}</div>
     </dialog>
   );
 }

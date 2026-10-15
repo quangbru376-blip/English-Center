@@ -1,0 +1,305 @@
+{
+  "source": "C:\\Study\\SOEN\\main_workplace\\docs\\Nhom18_ThietKeXuLy.docx",
+  "sha256": "250fe2e5cc57f904a93011041f39644550e32fcea378cf2cef928c60537c0520",
+  "section": "III. Bảng chức năng nghiệp vụ",
+  "trackedChanges": 0,
+  "count": 37,
+  "rows": [
+    {
+      "nv": 1,
+      "role": "Học viên",
+      "name": "Đăng ký, đăng nhập và quản lý thông tin cá nhân",
+      "conditions": "Học viên tự tạo tài khoản bằng họ tên, ngày sinh, email, số điện thoại, mật khẩu; địa chỉ tùy chọn. Email và số điện thoại không trùng. Đăng nhập bằng email/mật khẩu khi tài khoản đang hoạt động. Chỉ sửa họ tên, ngày sinh, số điện thoại, địa chỉ của mình; email đăng nhập không đổi.",
+      "form": "-",
+      "notes": "Đăng nhập dùng chung cho 7 vai trò. Người dùng được đổi mật khẩu bằng mật khẩu hiện tại và đăng xuất; quên mật khẩu do Quản trị viên xử lý. Không tự đăng ký tài khoản nhân sự."
+    },
+    {
+      "nv": 2,
+      "role": "Học viên",
+      "name": "Xem khóa học, đăng ký và hủy hồ sơ đăng ký",
+      "conditions": "Chỉ tạo hồ sơ cho khóa học đang hoạt động; mỗi học viên chỉ có một hồ sơ chưa kết thúc cho cùng khóa. Học viên chỉ hủy trước đã xác nhận nhập học. Khóa học của hồ sơ đã tạo không được đổi.",
+      "form": "Hồ sơ đăng ký khóa học",
+      "notes": "Chọn khóa khác cần hủy hợp lệ và tạo hồ sơ mới, thi đầu vào lại; không sao chép điểm/mức trình độ cũ. Hủy giữ lịch sử, đồng thời hủy lịch đặt ca thi tương lai và hóa đơn chưa thanh toán nếu có. Hồ sơ học chỉ kết thúc khi lớp đã hoàn tất và bảng điểm đã chốt, kể cả không đạt; đã hủy/đã từ chối cũng là kết thúc."
+    },
+    {
+      "nv": 3,
+      "role": "Học viên",
+      "name": "Đăng ký, đổi, hủy và xem lịch thi đầu vào",
+      "conditions": "Ca thi phải đang mở, chưa bắt đầu, còn chỗ và không trùng lịch của học viên. Tối đa hai lượt thi mỗi hồ sơ; lượt hai chỉ đặt sau khi có điểm lượt một và trước đã xác nhận nhập học. Đổi/hủy lịch đặt ca thi chỉ khi ca nguồn đang mở và chưa bắt đầu.",
+      "form": "Lịch và kết quả thi đầu vào",
+      "notes": "Vắng hoặc ca bị trung tâm hủy được đặt lại cùng lượt, không tính thành lượt thứ ba. Lịch sử lịch đặt ca thi khác số lượt thi. Ca đóng chặn thao tác lịch đặt ca thi của học viên."
+    },
+    {
+      "nv": 4,
+      "role": "Học viên",
+      "name": "Xem kết quả thi đầu vào và mức trình độ",
+      "conditions": "Chỉ xem kết quả hồ sơ của mình; hiển thị điểm từng lượt đã chấm, điểm tốt nhất và mức trình độ tương ứng.",
+      "form": "Lịch và kết quả thi đầu vào",
+      "notes": "Chọn điểm cao nhất trong các lượt đã hoàn tất; bằng điểm chọn lượt một và vẫn giữ cả hai kết quả. Vắng thi không được tính là điểm 0."
+    },
+    {
+      "nv": 5,
+      "role": "Học viên",
+      "name": "Xác nhận nhập học",
+      "conditions": "Chỉ xác nhận hồ sơ đã xác định trình độ có mức trình độ hợp lệ, không còn lượt hai chờ thi hoặc đã thi chưa chấm.",
+      "form": "Hồ sơ đăng ký khóa học",
+      "notes": "Sau xác nhận, hồ sơ chuyển đã xác nhận nhập học và khóa thi lại/sửa kết quả đầu vào. Bước này chưa duyệt nhập học, chưa tạo hóa đơn và chưa xếp lớp."
+    },
+    {
+      "nv": 6,
+      "role": "Học viên",
+      "name": "Xem, in hóa đơn và hướng dẫn thanh toán",
+      "conditions": "Chỉ xem/in hóa đơn của mình. Thanh toán đủ một lần bên ngoài hệ thống; học viên không tự xác nhận đã thanh toán.",
+      "form": "Hóa đơn học phí",
+      "notes": "In qua trình duyệt từ dữ liệu mới hợp lệ; không chức năng xuất PDF riêng hoặc phát hành biên lai. hóa đơn chưa thanh toán không là xác nhận đã thu tiền. Quá hạn chỉ cảnh báo."
+    },
+    {
+      "nv": 7,
+      "role": "Học viên",
+      "name": "Xem lớp và thời khóa biểu cá nhân",
+      "conditions": "Chỉ xem lớp đã được xếp và lịch thuộc lớp của mình.",
+      "form": "Thời khóa biểu",
+      "notes": "Hiển thị lịch hiện hành khi dữ liệu được cập nhật; học viên không tự xếp, chuyển lớp hoặc sửa lịch."
+    },
+    {
+      "nv": 8,
+      "role": "Học viên",
+      "name": "Xem kết quả học tập",
+      "conditions": "Chỉ xem bảng điểm đã chốt của mình, sau khi lớp đã hoàn tất và Giáo vụ chốt.",
+      "form": "Bảng điểm cá nhân",
+      "notes": "Không xem điểm nháp/đã gửi/đã trả lại. Điểm thang 0–100; tổng đã chốt từ 50 trở lên là đạt. Không chức năng tải phiếu điểm riêng."
+    },
+    {
+      "nv": 9,
+      "role": "Nhân viên Tuyển sinh",
+      "name": "Tra cứu và kiểm tra hồ sơ",
+      "conditions": "Tra cứu theo thông tin được phép, kiểm tra hồ sơ và theo dõi trạng thái tuyển sinh.",
+      "form": "Hồ sơ đăng ký khóa học",
+      "notes": "Không tạo tài khoản, ghi danh, đặt ca hoặc sửa hồ sơ cá nhân thay học viên. Hỗ trợ tại quầy vẫn hướng dẫn học viên tự thực hiện."
+    },
+    {
+      "nv": 12,
+      "role": "Nhân viên Tuyển sinh",
+      "name": "Duyệt, từ chối hoặc hủy hồ sơ nhập học",
+      "conditions": "Duyệt/từ chối chỉ khi hồ sơ đăng ký đã xác nhận nhập học có mức trình độ hợp lệ. Từ chối có lý do. Tuyển sinh được hủy đã xác nhận nhập học hoặc đã được duyệt nhập học có hóa đơn chưa thanh toán, kèm lý do; không hủy hồ sơ đã đã thanh toán.",
+      "form": "Hồ sơ đăng ký khóa học",
+      "notes": "Duyệt chuyển đã được duyệt nhập học và tạo đúng một hóa đơn chưa thanh toán trong cùng giao dịch. Hủy đồng thời xử lý lịch đặt ca thi tương lai/hóa đơn chưa thanh toán, giữ lịch sử. Duyệt không đồng nghĩa đã thanh toán hoặc đã xếp lớp."
+    },
+    {
+      "nv": 13,
+      "role": "Giáo vụ",
+      "name": "Quản lý khóa học, chương trình đào tạo và cấu hình mức trình độ",
+      "conditions": "Quản lý khóa học đang hoạt động/ngừng sử dụng; chương trình đào tạo nháp/đang hoạt động/ngừng sử dụng theo cặp khóa học/mức trình độ duy nhất. Chương trình đang hoạt động phải có số buổi học nguyên dương, tổng trọng số 100 và đúng một thành phần thi cuối khóa.",
+      "form": "-",
+      "notes": "Không qua phê duyệt Ban giám đốc. Chương trình đào tạo khóa khóa học/mức trình độ, số buổi và cấu hình điểm từ lần đầu tạo lớp học, kể cả lớp học về sau bị hủy. Toàn bộ ngưỡng mức trình độ khóa từ kết quả đầu vào đã hoàn tất đầu tiên. Giá mới chỉ áp dụng hóa đơn phát hành sau; ngừng sử dụng không tự hủy hồ sơ/lớp hiện có."
+    },
+    {
+      "nv": 14,
+      "role": "Giáo vụ",
+      "name": "Tổ chức và quản lý ca thi đầu vào",
+      "conditions": "Tạo ca đóng, phòng, giáo viên chấm đang hoạt động và sức chứa 1–20; không trùng phòng/giáo viên với ca thi hoặc lịch lớp. Mở/đóng/hủy ca chỉ trước giờ bắt đầu theo điều kiện hợp lệ.",
+      "form": "Lịch và kết quả thi đầu vào",
+      "notes": "Đến giờ bắt đầu, ca được coi đóng. Hủy ca giữ lịch sử, giải phóng lịch đặt ca thi và để học viên tự đặt lại. Đổi giáo viên chấm cần lý do, trước giờ bắt đầu và trước mọi điểm/vắng; sửa giờ/phòng trước giờ bắt đầu và khi chưa có lịch đặt ca thi."
+    },
+    {
+      "nv": 15,
+      "role": "Giáo vụ",
+      "name": "Theo dõi kết quả thi đầu vào và mức trình độ",
+      "conditions": "Theo dõi ca thi, tiến độ chấm, điểm từng lượt và mức trình độ theo phạm vi Giáo vụ.",
+      "form": "Lịch và kết quả thi đầu vào",
+      "notes": "Không nhập hoặc ghi đè điểm/mức trình độ thay giáo viên/hệ thống. đóng không ngăn việc chấm hợp lệ."
+    },
+    {
+      "nv": 16,
+      "role": "Giáo vụ",
+      "name": "Tạo và quản lý lớp học",
+      "conditions": "Lớp thuộc một chương trình đào tạo, một giáo viên và sĩ số tối đa từ 1–15. Vòng đời: đang chuẩn bị → đang mở → đang học → đã hoàn tất; hủy chỉ đang chuẩn bị/đang mở còn trống và chưa dạy.",
+      "form": "Danh sách lớp",
+      "notes": "Mở lớp cần chương trình đào tạo đang hoạt động, giáo viên hợp lệ và ít nhất một buổi học tương lai. Bắt đầu không trước buổi đầu, có học viên và đủ lịch buổi học. Hoàn tất khi mọi nghĩa vụ buổi học/thi cuối khóa đã đã tổ chức và đủ điểm danh buổi học; không tự chuyển trạng thái theo thời gian."
+    },
+    {
+      "nv": 17,
+      "role": "Giáo vụ",
+      "name": "Phân công hoặc đổi giáo viên phụ trách",
+      "conditions": "Mỗi lớp một giáo viên hợp lệ; không xung đột lịch. Chỉ đổi trước đang học/thực tế giảng dạy và chưa có điểm danh/điểm thành phần.",
+      "form": "Danh sách lớp / Thời khóa biểu",
+      "notes": "Khóa/ngừng tài khoản không tự đổi giáo viên hoặc phân công lại. Không thay giáo viên sau khi đã bắt đầu dạy."
+    },
+    {
+      "nv": 18,
+      "role": "Giáo vụ",
+      "name": "Xếp học viên vào lớp",
+      "conditions": "hồ sơ đăng ký đã được duyệt nhập học, hóa đơn đã thanh toán, đúng khóa học/mức trình độ; lớp học đang mở, còn chỗ và không trùng lịch thi/lớp của học viên.",
+      "form": "Danh sách lớp",
+      "notes": "Một việc xếp học viên vào lớp mỗi hồ sơ; tạo bảng điểm nháp cùng giao dịch, chưa tạo điểm thành phần/điểm danh. hồ sơ đăng ký vẫn đã được duyệt nhập học. Không xếp đang học, chuyển/gỡ lớp hoặc tự mở lớp nếu chưa có lớp phù hợp."
+    },
+    {
+      "nv": 19,
+      "role": "Giáo vụ",
+      "name": "Quản lý lịch học, lịch thi và buổi thay thế",
+      "conditions": "Lập lịch buổi học theo tuần hoặc từng buổi; thi cuối khóa riêng sau buổi buổi học cuối. Không trùng phòng, lớp, giáo viên hoặc lịch học viên. Lịch tuần lưu toàn bộ hoặc không buổi nào.",
+      "form": "Thời khóa biểu",
+      "notes": "Không thêm buổi học vượt số nghĩa vụ chương trình. Dời trước giờ bắt đầu khi chưa điểm danh/điểm liên quan. Buổi không tổ chức ghi không tổ chức, lý do và buổi thay thế tương lai cùng nghĩa vụ khi đủ điều kiện. Giáo vụ xác nhận đã tổ chức sau giờ kết thúc khi lớp đang học; không tự đã tổ chức từ đồng hồ/điểm danh."
+    },
+    {
+      "nv": 20,
+      "role": "Giáo vụ",
+      "name": "Kiểm tra, trả lại và chốt bảng điểm",
+      "conditions": "Chỉ xử lý lớp học đã hoàn tất với toàn bộ bảng điểm đã gửi. Trả lại bắt buộc lý do; trả/chốt cả lớp trong một thao tác thành công toàn bộ hoặc không ai.",
+      "form": "Bảng điểm cá nhân",
+      "notes": "Trả lại thành đã trả lại để giáo viên sửa/gửi lại. Chốt thành đã chốt, lưu tổng điểm và công bố cho học viên; không sửa điểm thay giáo viên, không mở lại bảng đã chốt hoặc thêm tầng phê duyệt."
+    },
+    {
+      "nv": 21,
+      "role": "Giáo viên",
+      "name": "Xem ca thi được phân công",
+      "conditions": "Chỉ xem ca thi và danh sách thí sinh thuộc ca mình đang được phân công chấm.",
+      "form": "Lịch và kết quả thi đầu vào",
+      "notes": "Không truy cập ca thi ngoài phạm vi phân công."
+    },
+    {
+      "nv": 22,
+      "role": "Giáo viên",
+      "name": "Nhập, sửa điểm thi đầu vào hoặc ghi vắng",
+      "conditions": "Giáo viên được phân công nhập điểm 0–100 hoặc vắng thi từ khi ca kết thúc. Sửa kết quả đã hoàn tất chỉ bởi người chấm ban đầu còn được phân công, khi hồ sơ đang thi đầu vào/đã xác định trình độ và có lý do.",
+      "form": "Lịch và kết quả thi đầu vào",
+      "notes": "Hồ sơ đã xác nhận nhập học/đã từ chối/đã hủy không được chấm/sửa; ca đã hủy không được chấm. Sửa hợp lệ tính lại best score/mức trình độ và ghi nhật ký cùng giao dịch. Không tự ghi vắng từ điểm trống."
+    },
+    {
+      "nv": 23,
+      "role": "Giáo viên",
+      "name": "Xem lịch dạy và danh sách lớp",
+      "conditions": "Chỉ lớp mình được phân công và danh sách học viên/lịch thuộc lớp đó.",
+      "form": "Danh sách lớp / Thời khóa biểu",
+      "notes": "Không xem hoặc xử lý lớp ngoài phạm vi phụ trách."
+    },
+    {
+      "nv": 24,
+      "role": "Giáo viên",
+      "name": "Ghi và cập nhật điểm danh",
+      "conditions": "Ghi Có mặt/Vắng từng học viên cho buổi buổi học từ giờ bắt đầu đến trước lớp học đã hoàn tất; đúng lớp phụ trách, buổi không không tổ chức.",
+      "form": "Bảng điểm danh",
+      "notes": "Một record mỗi học viên/buổi học; chưa ghi khác vắng. Lưu nhóm thao tác một buổi thành công toàn bộ hoặc hoàn tác toàn bộ; được ghi một phần danh sách, nhưng thiếu điểm danh chặn hoàn tất lớp. Điểm danh không tự xác nhận đã tổ chức."
+    },
+    {
+      "nv": 25,
+      "role": "Giáo viên",
+      "name": "Nhập điểm, lưu nháp và gửi bảng điểm",
+      "conditions": "Điểm thành phần 0–100, tối đa hai chữ số thập phân, theo cấu hình chương trình đào tạo. Lưu nháp từng học viên khi lớp đang học/đã hoàn tất và bảng nháp/đã trả lại; điểm gắn lịch chỉ nhập từ giờ bắt đầu của buổi hợp lệ. Chỉ gửi cả lớp khi đã hoàn tất, đủ điểm và không còn sửa chưa lưu.",
+      "form": "Bảng điểm cá nhân",
+      "notes": "Điểm/nhận xét một học viên lưu cùng nhau; thiếu điểm không là 0, ô trống không xóa điểm. Gửi toàn lớp thành đã gửi hoặc không ai; học viên chưa thấy điểm. điểm tổng kết chính thức chưa lưu trước đã chốt."
+    },
+    {
+      "nv": 26,
+      "role": "Giáo viên",
+      "name": "Sửa và gửi lại bảng điểm bị trả",
+      "conditions": "Giáo viên hiện phụ trách sửa nháp khi đã trả lại; gửi lại cả lớp sau khi đủ điểm, lớp học đã hoàn tất và không còn sửa chưa lưu.",
+      "form": "Bảng điểm cá nhân",
+      "notes": "Giữ điểm, nhận xét, lý do trả và lịch sử; chu kỳ trả/sửa/gửi lại có thể lặp. Không sửa đã gửi/đã chốt hoặc gửi riêng một học viên."
+    },
+    {
+      "nv": 27,
+      "role": "Kế toán",
+      "name": "Tra cứu hóa đơn và theo dõi công nợ",
+      "conditions": "Tra cứu hóa đơn chưa thanh toán/đã thanh toán/đã hủy theo phạm vi tài chính; quá hạn khi chưa thanh toán và hạn thanh toán trước ngày hiện tại tại Việt Nam.",
+      "form": "Hóa đơn học phí",
+      "notes": "Hạn thanh toán là ngày phát hành tại Việt Nam +7 ngày lịch. Quá hạn chỉ cảnh báo; không trạng thái OVERDUE riêng, phạt tiền hoặc tự đổi trạng thái học viên."
+    },
+    {
+      "nv": 28,
+      "role": "Kế toán",
+      "name": "Đối chiếu, xác nhận thanh toán và sửa thông tin phương thức",
+      "conditions": "Đối chiếu tiền nhận bên ngoài; tạo một thanh toán đúng toàn bộ tiền hóa đơn chưa thanh toán và chuyển đã thanh toán cùng giao dịch. Phương thức tiền mặt/chuyển khoản; chuyển khoản bắt buộc mã tham chiếu.",
+      "form": "Hóa đơn học phí / Thông tin xác nhận thanh toán",
+      "notes": "Không trả góp, nhiều lần thu, gateway hoặc biên lai riêng. Sau xác nhận chỉ sửa phương thức thanh toán/mã tham chiếu với lý do/nhật ký; tiền, liên kết hóa đơn và thời điểm xác nhận bất biến. Không hủy/xóa thanh toán hoặc hoàn tiền."
+    },
+    {
+      "nv": 29,
+      "role": "Kế toán",
+      "name": "Xem và xuất báo cáo tài chính",
+      "conditions": "Doanh thu theo thanh toán được xác nhận trong kỳ; tổng phải thu theo hóa đơn không đã hủy phát hành trong kỳ; công nợ hiện tại là tổng hóa đơn chưa thanh toán, quá hạn là tập con.",
+      "form": "Báo cáo tổng hợp học phí",
+      "notes": "Không lấy phải thu trong kỳ trừ doanh thu trong kỳ làm công nợ. Chỉ Kế toán xuất CSV theo toàn bộ kết quả/cột/bộ lọc được phép; tối đa 10.000 dòng hoặc 5 MB, vượt thì từ chối toàn file. Không XLSX, chi phí/lợi nhuận hoặc số dư lịch sử tại ngày quá khứ."
+    },
+    {
+      "nv": 30,
+      "role": "Ban Giám đốc",
+      "name": "Xem báo cáo tuyển sinh",
+      "conditions": "Chỉ xem tổng hợp theo bộ lọc đã chốt; đếm học viên phân biệt trong từng khóa và toàn báo cáo, không cộng nhóm để suy tổng.",
+      "form": "Báo cáo tuyển sinh",
+      "notes": "Không định danh học viên, xem hồ sơ cá nhân, duyệt hồ sơ hoặc xuất file. Trạng thái là hiện tại, không tái dựng trạng thái quá khứ."
+    },
+    {
+      "nv": 31,
+      "role": "Ban Giám đốc",
+      "name": "Xem báo cáo đào tạo",
+      "conditions": "Xem tổng hợp lớp, tiến độ nghĩa vụ buổi học đã đã tổ chức so với số buổi chương trình; thi cuối khóa theo dõi riêng. Tỷ lệ đạt theo kết quả đã chốt trong kỳ ngày chốt.",
+      "form": "Báo cáo đào tạo",
+      "notes": "Không lấy thời gian trôi qua/điểm danh thay đã tổ chức. Chưa chốt không tính đạt/rớt; mẫu số rỗng hiển thị Chưa có dữ liệu. Không dữ liệu cá nhân, chỉnh sửa hoặc xuất file."
+    },
+    {
+      "nv": 32,
+      "role": "Ban Giám đốc",
+      "name": "Xem báo cáo tài chính",
+      "conditions": "Chỉ xem tổng hợp doanh thu, phải thu trong kỳ, công nợ/quá hạn hiện tại theo định nghĩa chung với Kế toán.",
+      "form": "Báo cáo tổng hợp học phí",
+      "notes": "Không xem hóa đơn/thanh toán cá nhân, xác nhận thanh toán hoặc xuất file; không chức năng phê duyệt tài chính."
+    },
+    {
+      "nv": 33,
+      "role": "Quản trị viên",
+      "name": "Cấp tài khoản nhân sự và đặt lại mật khẩu",
+      "conditions": "Cấp một vai trò nhân sự có sẵn; email đăng nhập bất biến. Cấp/đặt lại tạo mật khẩu tạm ngẫu nhiên 32 ký tự, hạn 24 giờ, chỉ hiển thị một lần; bắt đổi trước truy cập nghiệp vụ.",
+      "form": "-",
+      "notes": "Quản trị viên có thể đặt lại mật khẩu tài khoản theo quyền; không tự mở khóa/kích hoạt lại. Reset thu hồi mọi phiên. Không gửi email recovery, lưu/xuất mật khẩu hoặc xem lại thông tin bí mật; phiên bắt đổi chỉ cho đổi mật khẩu/đăng xuất, tối đa 10 phút và không vượt hạn thông tin bí mật."
+    },
+    {
+      "nv": 34,
+      "role": "Quản trị viên",
+      "name": "Khóa, mở, ngừng và khôi phục tài khoản",
+      "conditions": "Quản lý đang hoạt động/bị khóa/ngừng sử dụng; không khóa/ngừng chính mình hoặc Quản trị viên đang hoạt động cuối cùng. Không đổi dữ liệu nghiệp vụ hay phân công khi đổi trạng thái tài khoản.",
+      "form": "-",
+      "notes": "Khóa/ngừng thu hồi mọi phiên; mở/khôi phục cùng tài khoản giữ vai trò/lịch sử nhưng cần đăng nhập mới. Throttle sai mật khẩu không là bị khóa. Không xóa vật lý tài khoản có lịch sử nghiệp vụ."
+    },
+    {
+      "nv": 35,
+      "role": "Quản trị viên",
+      "name": "Tra cứu nhật ký hoạt động",
+      "conditions": "Chỉ Quản trị viên xem/tìm/lọc nhật ký, chi tiết sự kiện và nhóm thao tác liên quan theo phạm vi được phép.",
+      "form": "Nhật ký hệ thống",
+      "notes": "Không sửa/xóa/undo/xuất file log, không từ log mở quyền xem nghiệp vụ khác. Không hiển thị mật khẩu, hash, mã bảo mật hoặc toàn bộ nội dung yêu cầu nhạy cảm."
+    },
+    {
+      "nv": 36,
+      "role": "Hệ thống",
+      "name": "Tự động xác định mức trình độ",
+      "conditions": "Chọn điểm cao nhất từ tối đa hai lượt đã hoàn tất của cùng hồ sơ; lấy mức trình độ có ngưỡng điểm tối thiểu lớn nhất nhưng không vượt quá điểm.",
+      "form": "Lịch và kết quả thi đầu vào",
+      "notes": "Ngưỡng đã chốt: 0, 25, 45, 65, 85; bằng điểm chọn lượt một. Tính lại khi sửa thông tin hợp lệ, không tự chấm bài thi hoặc sửa mức trình độ sau đã xác nhận nhập học. Toàn bộ ngưỡng khóa từ kết quả đã hoàn tất đầu tiên."
+    },
+    {
+      "nv": 37,
+      "role": "Hệ thống",
+      "name": "Tự động phát hành hóa đơn",
+      "conditions": "Khi Tuyển sinh duyệt hồ sơ thành đã được duyệt nhập học, tạo đúng một hóa đơn chưa thanh toán trong cùng giao dịch, lấy học phí khóa học tại thời điểm phát hành.",
+      "form": "Hóa đơn học phí",
+      "notes": "Tiền giá trị được giữ nguyên tại thời điểm phát hành dương, VND nguyên đồng; không đổi khi khóa học đổi giá. Hạn ngày phát hành VN +7 ngày lịch; duyệt lặp không tạo hóa đơn thứ hai."
+    },
+    {
+      "nv": 38,
+      "role": "Hệ thống",
+      "name": "Tự động tính điểm tổng kết và kết quả đạt",
+      "conditions": "Tổng = Σ(điểm thành phần × trọng số /100) theo chương trình đào tạo đã khóa cấu hình. Chỉ khi đã chốt mới lưu điểm tổng kết chính thức; làm tròn theo quy tắc từ 5 trở lên một lần đến hai chữ số thập phân.",
+      "form": "Bảng điểm cá nhân",
+      "notes": "Trước chốt chỉ tính tổng nháp từ điểm thành phần khi đọc, chưa ghi nhận điểm tổng kết chính thức. Tổng đã chốt ≥50 là đạt; không thêm điều kiện tỷ lệ chuyên cần/điểm tối thiểu từng thành phần. Thiếu điểm không được coi là 0."
+    },
+    {
+      "nv": 39,
+      "role": "Hệ thống",
+      "name": "Ghi nhật ký nghiệp vụ và sự kiện bảo mật",
+      "conditions": "Mutation nghiệp vụ/tài khoản thuộc danh mục bắt buộc ghi tác nhân, hành động, đối tượng, thời điểm, old/new/lý do theo loại sự kiện và mã thao tác. Audit bắt buộc cùng giao dịch; lỗi thì hoàn tác toàn bộ thao tác thay đổi.",
+      "form": "Nhật ký hệ thống",
+      "notes": "Security-only như đăng nhập/đăng xuất/tạm chặn đăng nhập/denied-access dùng best-effort. Giữ lịch sử nghiệp vụ/tài khoản; bảo mật log/IP giữ 90 ngày theo chính sách vận hành. Không log mọi lần đọc, bí mật hoặc toàn bộ request/phản hồi."
+    }
+  ]
+}

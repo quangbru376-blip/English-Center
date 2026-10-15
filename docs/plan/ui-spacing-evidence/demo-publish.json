@@ -1,0 +1,22 @@
+{
+  "uiFiles": 32,
+  "fingerprintsMatch": true,
+  "otherProcessesStopped": 0,
+  "sessionRevocations": 0,
+  "atUtc": "2026-10-15T05:46:18.1858886Z",
+  "originalUiRetained": true,
+  "staleRunningMetadata": true,
+  "processIdentityChecks": [
+    {
+      "pid": 7724,
+      "ownedDemo": false,
+      "recordedPidReused": false
+    },
+    {
+      "pid": 30168,
+      "ownedDemo": false,
+      "recordedPidReused": true
+    }
+  ],
+  "databaseWrites": 0
+}

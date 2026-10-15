@@ -39,7 +39,7 @@ export function AttendanceFields({
           {rows.map((row) => (
             <div
               key={row.classAssignmentId}
-              className="flex flex-col gap-1.5 rounded border p-3"
+              className="flex flex-col gap-2 rounded border p-3"
               style={{
                 borderColor: 'var(--ec-border)',
                 backgroundColor: 'var(--ec-surface)',

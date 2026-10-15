@@ -18,3 +18,9 @@ TestResults/
 node_modules/
 dist/
 npm-debug.log*
+.local-demo/
+frontend/.tmp/
+
+# Office lock/recovery files are local editing state, not report sources.
+~$*
+~WRL*.tmp

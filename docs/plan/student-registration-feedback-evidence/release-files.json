@@ -1,0 +1,130 @@
+[
+  {
+    "path": "assets/academicWire-NMkK5SNR.js",
+    "sha256": "8eca96819d94f34e78bfb5504a350c1db440f8f6ad1534d4465c98e3d104bf8c"
+  },
+  {
+    "path": "assets/AttendancePanel-CwV18Gz8.js",
+    "sha256": "b2b72939255af06d91e4b9608ff1fbbdac04ecd5e60cd1524fc79f265622d0eb"
+  },
+  {
+    "path": "assets/AuditPage-D8Bb8v2v.js",
+    "sha256": "0155e4d5d6af4a25088410df26a25b7031a5db0aab27567adf869e5d32452a55"
+  },
+  {
+    "path": "assets/be-vietnam-pro-latin-400-normal-bXgqVju9.woff",
+    "sha256": "c0190200223755a3c52bb47b9cf6c3604f19288599cfbbe5026904d5d439f7d7"
+  },
+  {
+    "path": "assets/be-vietnam-pro-latin-400-normal-PpnXBOrz.woff2",
+    "sha256": "03d1b589cff172e1a670b3573e731d3380bc326f80cf83b0d3504e3188e2e074"
+  },
+  {
+    "path": "assets/be-vietnam-pro-latin-500-normal-B6LVzGNe.woff2",
+    "sha256": "b621f77d35f777023aa11ca524462d511b4b28a813adbc0e9d15a10fc61dfe4e"
+  },
+  {
+    "path": "assets/be-vietnam-pro-latin-500-normal-BJkVuMHw.woff",
+    "sha256": "0a905f6bc6f1120d20ad3dde690989db3149a98227026f2de47dca6aef71edab"
+  },
+  {
+    "path": "assets/be-vietnam-pro-latin-600-normal-5IO4e7bK.woff",
+    "sha256": "f900efb46ec81e9ff6017c6868f3f47cebde34ac87da16cc587da0e0b1f4c1d4"
+  },
+  {
+    "path": "assets/be-vietnam-pro-latin-600-normal-BZDkUTrt.woff2",
+    "sha256": "9503dec2a7c532c8331e9600bcafea287a4fd208573b8668d85ab8d8de1863c7"
+  },
+  {
+    "path": "assets/be-vietnam-pro-latin-700-normal-C2EtzaOi.woff",
+    "sha256": "f44cc3417bd1fcbddaaec0c02d5383dfcf34a16ef1fc32f8cf179ea4a468861b"
+  },
+  {
+    "path": "assets/be-vietnam-pro-latin-700-normal-DlW1Zbsh.woff2",
+    "sha256": "a193dd87699bd2e18ddf72dc271493ea82a23dad9f5c334d9f2a257b1e05fc30"
+  },
+  {
+    "path": "assets/be-vietnam-pro-vietnamese-400-normal-BuGn0gnm.woff",
+    "sha256": "4d50c7991ca377aef28fb1fb24d4ce7ea64d69f6bd2661e7e74fb9d9fef11dc0"
+  },
+  {
+    "path": "assets/be-vietnam-pro-vietnamese-400-normal-CRcqvyg1.woff2",
+    "sha256": "dc085e2fba3414e5c5bf1e6172f921a9f81c5859946a4ed3d63c1e470d96a9e2"
+  },
+  {
+    "path": "assets/be-vietnam-pro-vietnamese-500-normal-CfdwVo8-.woff",
+    "sha256": "6b81283a46623b9a99bc7a1800f936549ead1f871d1dfcd803ddcd18c433a7d8"
+  },
+  {
+    "path": "assets/be-vietnam-pro-vietnamese-500-normal-DREgrEoJ.woff2",
+    "sha256": "86341610cbe907eecf461c9159c168d5efb52bb1a33963813a08f520555d8e66"
+  },
+  {
+    "path": "assets/be-vietnam-pro-vietnamese-600-normal-DkpCIyan.woff",
+    "sha256": "2d68010bd89add4c477e9c9c3ef29b78a68f76439309f4633c91a8674e9ba751"
+  },
+  {
+    "path": "assets/be-vietnam-pro-vietnamese-600-normal-nyU-ZL2p.woff2",
+    "sha256": "97658c6f9a384f29a3005c3d96e2a0d1c810192cf68979071c290f5a377a9f99"
+  },
+  {
+    "path": "assets/be-vietnam-pro-vietnamese-700-normal-By_5yT39.woff",
+    "sha256": "4fa311d11645e588ac98d0e665920fd55eb0eb624c600d9e5dd007f4b9d5159c"
+  },
+  {
+    "path": "assets/be-vietnam-pro-vietnamese-700-normal-Csr0PCuG.woff2",
+    "sha256": "4f58af2d1c3e28a9ba14c51c82db2751d78344b75bdcb34de24a1031ebe59da6"
+  },
+  {
+    "path": "assets/gradeApi-BS4sScOq.js",
+    "sha256": "5e830a26bff737c2b805c880fe8b1dfd172c687abd7738e6e700c3a31dad14bc"
+  },
+  {
+    "path": "assets/GradebookPanel-QzB2hg0V.js",
+    "sha256": "0e0e71e476939b9f7086a18c958ec2edf9686e3f9fb18b14ed7e58aca9c32644"
+  },
+  {
+    "path": "assets/GradeReviewPage-DEcEL97D.js",
+    "sha256": "9744fb7bc9a2572e74704ff227bd43e73c1beefcb923255965ca8944f7a1e804"
+  },
+  {
+    "path": "assets/index-CCEdINg-.js",
+    "sha256": "2a07c2897bf5f108307c949d59d9a1a6e95d7c2459e5f304ebf23e1118c0a926"
+  },
+  {
+    "path": "assets/index-Cjs-qovy.css",
+    "sha256": "e7ffc0f4899e36871c4a0367b1aa4ee2808a1c479a5005aabc6c0b015a46a03d"
+  },
+  {
+    "path": "assets/ReportsPage-DjokX_NN.js",
+    "sha256": "9640ae684306d836b8df9f7dcab8a06b712db4eb61c167183a7c1e221ad9a4fa"
+  },
+  {
+    "path": "assets/reportWire-BLkXD3vS.js",
+    "sha256": "f7c448fd16f35fdf9b47f56d3846654540b1de114ee564a6412700be54c0b7d4"
+  },
+  {
+    "path": "assets/StudentEnrollmentPage-B0I6eetl.js",
+    "sha256": "dc7f5255abf497a055a9aee97617bdb367d3acf42467d4fa5e8ca63998cd91ef"
+  },
+  {
+    "path": "assets/StudentGradesPage-DGRkpjqS.js",
+    "sha256": "f19e4d5001925db3bcbbcf4915e5ce5b01d8ed037ccf8cb37ac09577141e4970"
+  },
+  {
+    "path": "index.html",
+    "sha256": "b18c8f76fa22693c32792e70a9fa86398f96f7607b36cbe17b0d71936ccfe814"
+  },
+  {
+    "path": "licenses/BeVietnamPro-OFL.html",
+    "sha256": "ed8cb0fcd00988d9da5e43b4f2d16b0583559dc8ca837915c6be719bea79a0dd"
+  },
+  {
+    "path": "licenses/lucide-ISC.html",
+    "sha256": "80f9869d9b617c25ffa3165a3c291f7473a0a9fdc7d950216fb833df7729993e"
+  },
+  {
+    "path": "licenses/Original-illustrations-CC0.html",
+    "sha256": "dad82f37db1b81a82ff34505052cf60620448be83a372c320e12131aa0bef14b"
+  }
+]

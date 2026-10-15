@@ -1,0 +1,11 @@
+{
+  "tables": 24,
+  "shown_fk": 32,
+  "appendix_fk": 18,
+  "all_connector_segments_axis_aligned": true,
+  "connector_node_interior_collisions": 0,
+  "same_width_height": true,
+  "layout": "6 columns x 4 rows",
+  "pdf_pages": 1,
+  "shared_grid_segments": 0
+}

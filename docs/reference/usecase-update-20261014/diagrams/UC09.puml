@@ -1,0 +1,14 @@
+@startuml
+left to right direction
+skinparam monochrome true
+skinparam shadowing false
+actor "Quản trị viên" as A_admin
+rectangle "Hệ thống quản lý trung tâm Anh ngữ" {
+usecase "Tra cứu nhật ký có bộ lọc" as U_list
+usecase "Xem chi tiết sự kiện được phép" as U_detail
+usecase "Xem các sự kiện cùng thao tác" as U_group
+}
+A_admin -- U_list
+A_admin -- U_detail
+A_admin -- U_group
+@enduml

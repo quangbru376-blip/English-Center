@@ -1,0 +1,34 @@
+{
+  "passed": true,
+  "mockHttpOnly": true,
+  "realRegistration186Untouched": true,
+  "cases": [
+    {
+      "width": 375,
+      "reasonRows": 1,
+      "emptyAttemptGrid": false,
+      "bookAndCancelEnabled": true,
+      "confirmationDisabled": true,
+      "overflow": false,
+      "apiMutations": 0
+    },
+    {
+      "width": 768,
+      "reasonRows": 1,
+      "emptyAttemptGrid": false,
+      "bookAndCancelEnabled": true,
+      "confirmationDisabled": true,
+      "overflow": false,
+      "apiMutations": 0
+    },
+    {
+      "width": 1280,
+      "reasonRows": 1,
+      "emptyAttemptGrid": false,
+      "bookAndCancelEnabled": true,
+      "confirmationDisabled": true,
+      "overflow": false,
+      "apiMutations": 0
+    }
+  ]
+}

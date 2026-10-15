@@ -1,7 +1,8 @@
-.ec-work-page { display: grid; grid-template-columns: minmax(0, 1fr); min-width: 0; gap: var(--ec-space-5); }
+.ec-work-page { display: grid; grid-template-columns: minmax(0, 1fr); min-width: 0; gap: var(--ec-space-6); }
 .ec-work-page > * { min-width: 0; }
 .ec-work-page > .ec-button { justify-self: start; }
 .ec-work-page .ec-page-header { margin-bottom: 0; }
+.ec-work-page > :is(.ec-work-card, .ec-feedback) { margin-block: 0; }
 .ec-work-page h1 { font-size: var(--ec-text-xl); font-weight: 600; }
 .ec-work-page h2 { font-size: var(--ec-text-lg); font-weight: 600; }
 .ec-work-page h3, .ec-work-page h4 { font-size: var(--ec-text-base); font-weight: 600; }
@@ -9,7 +10,7 @@
 .ec-work-filter { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--ec-space-4); align-items: end; padding: var(--ec-space-4); border: 1px solid var(--ec-divider); border-radius: var(--ec-radius-card); background: var(--ec-background); }
 .ec-work-filter label, .ec-work-filter .ec-field { min-width: 0; }
 .ec-work-filter > .ec-button { justify-self: start; }
-.ec-work-card { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--ec-space-3); min-width: 0; padding: var(--ec-space-5); border: 1px solid var(--ec-divider); border-radius: var(--ec-radius-card); background: var(--ec-surface); }
+.ec-work-card { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--ec-space-4); min-width: 0; padding: var(--ec-space-5); border: 1px solid var(--ec-divider); border-radius: var(--ec-radius-card); background: var(--ec-surface); }
 .ec-work-card > * { min-width: 0; }
 .ec-work-card > .ec-button { justify-self: start; }
 .ec-work-page article + article { margin-top: var(--ec-space-4); }
@@ -27,6 +28,9 @@
 .ec-work-page .ec-work-table:focus-visible { outline: 3px solid var(--ec-focus); outline-offset: 3px; }
 .ec-work-form { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--ec-space-4); }
 .ec-work-form > :not(.ec-field):not(label) { grid-column: 1 / -1; }
+.ec-work-filter, .ec-work-form { row-gap: var(--ec-space-5); column-gap: var(--ec-space-6); }
+.ec-work-card > ul:not([class]) { display: grid; gap: var(--ec-space-2); }
+.ec-work-context { display: grid; gap: var(--ec-space-2); }
 .ec-work-page nav[aria-label="Loại báo cáo"] { border-bottom: 1px solid var(--ec-divider); padding-bottom: var(--ec-space-4); }
 .ec-metrics { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--ec-space-4); }
 .ec-metric { padding: var(--ec-space-5); border: 1px solid var(--ec-divider); border-radius: var(--ec-radius-card); background: var(--ec-primary-soft); min-width: 0; }

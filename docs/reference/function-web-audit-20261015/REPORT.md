@@ -1,0 +1,113 @@
+# Kiểm tra chức năng phần III có triển khai trên web
+
+Ngày kiểm tra: 15/10/2026. Checkout `689ee43b119da81d64427cb4022388df1a0f4469`. Nguồn: phần III của `docs/Nhom18_ThietKeXuLy.docx`, đọc trực tiếp OOXML, đủ 37 dòng NV01–NV09 và NV12–NV39 trong tám bảng. SHA-256: `250fe2e5cc57f904a93011041f39644550e32fcea378cf2cef928c60537c0520`. Không có tracked insertion/deletion trong phần này. Không sửa Word.
+
+## Kết luận
+
+Đối chiếu mã nguồn xác nhận **37/37 chức năng có đường thực hiện hoặc kết quả hiển thị trên web**, nhưng **NV04 còn thiếu hiển thị điểm tốt nhất/lượt được chọn** theo đúng điều kiện trong Word. Ma trận ghi 36 chức năng đã có trên web và một chức năng có một phần yêu cầu hiển thị chưa hoàn thiện. Không phát hiện chức năng hoàn toàn chỉ có code nền chưa nối vào web. Không kết luận toàn bộ phần III hoàn tất chỉ từ số lượng chức năng hoặc từ tests đang PASS.
+
+Một số thao tác nằm trong chi tiết lớp/hồ sơ/ca thi hoặc menu tài khoản, không có mục menu độc lập. Không dùng số lượng menu để đếm chức năng. Nút có thể bị vô hiệu hóa đúng điều kiện nghiệp vụ hoặc không xuất hiện với vai trò khác.
+
+## Bằng chứng nối ứng dụng
+
+- Entry web thật: [main.tsx](<C:/Study/SOEN/main_workplace/frontend/src/main.tsx:1>) → [App.tsx](<C:/Study/SOEN/main_workplace/frontend/src/app/App.tsx:1>) → [IdentityApp.tsx](<C:/Study/SOEN/main_workplace/frontend/src/app/IdentityApp.tsx:98>); menu, role branch và các lazy panel đều có trang thực thi.
+
+- Host LOCAL_DEV đăng ký các nhóm API qua [LocalRuntimeServices.cs](<C:/Study/SOEN/main_workplace/backend/src/EnglishCenter.Api/Infrastructure/Operator/LocalRuntimeServices.cs:31>); không chỉ khai báo trong tài liệu hoặc test.
+
+- Backend lớp học nối thêm grading qua [ClassEndpoints.cs](<C:/Study/SOEN/main_workplace/backend/src/EnglishCenter.Api/Api/Classes/ClassEndpoints.cs:7>) → [GradeEndpoints.cs](<C:/Study/SOEN/main_workplace/backend/src/EnglishCenter.Api/Api/Classes/GradeEndpoints.cs:8>); frontend có ClassesPage → GradebookPanel / AttendancePanel / SchedulesPanel.
+
+## Đối chiếu đủ 37 dòng
+
+“Có” nghĩa là có code xử lý, nối API và giao diện hoặc kết quả UI tương ứng. Cột nhóm thử chỉ các nhóm browser liên quan, không khẳng định mọi điều kiện con đều được click qua trong nhóm đó.
+
+| NV | Chức năng nguyên tên trong Word | Trạng thái | Nơi thực hiện hoặc xem trên web | Frontend | Backend | Nhóm browser liên quan |
+|---|---|---|---|---|---|---|
+| 01 | Đăng ký, đăng nhập và quản lý thông tin cá nhân | Có — thao tác/xem trên web | /register; /login; menu tài khoản → Thông tin cá nhân / Đổi mật khẩu / Đăng xuất | [StudentEnrollmentPage.tsx](<C:/Study/SOEN/main_workplace/frontend/src/features/enrollment/StudentEnrollmentPage.tsx:33>) | [EnrollmentEndpoints.cs](<C:/Study/SOEN/main_workplace/backend/src/EnglishCenter.Api/Api/Enrollment/EnrollmentEndpoints.cs:11>) | 1,2,4,5,6,85 |
+| 02 | Xem khóa học, đăng ký và hủy hồ sơ đăng ký | Có — thao tác/xem trên web | Học viên → Chọn khóa học → chọn khóa; Trang chủ → xem hồ sơ → hủy | [StudentEnrollmentPage.tsx](<C:/Study/SOEN/main_workplace/frontend/src/features/enrollment/StudentEnrollmentPage.tsx:33>) | [StudentEnrollmentService.cs](<C:/Study/SOEN/main_workplace/backend/src/EnglishCenter.Api/Services/Enrollment/StudentEnrollmentService.cs:15>) | 85 |
+| 03 | Đăng ký, đổi, hủy và xem lịch thi đầu vào | Có — thao tác/xem trên web | Học viên → hồ sơ → chọn ca / đổi lịch / hủy đặt chỗ; Lịch thi | [StudentEnrollmentPage.tsx](<C:/Study/SOEN/main_workplace/frontend/src/features/enrollment/StudentEnrollmentPage.tsx:33>) | [StudentEnrollmentService.cs](<C:/Study/SOEN/main_workplace/backend/src/EnglishCenter.Api/Services/Enrollment/StudentEnrollmentService.cs:15>) | 85,87 |
+| 04 | Xem kết quả thi đầu vào và mức trình độ | Một phần — thiếu hiển thị điểm tốt nhất | Học viên → chi tiết hồ sơ: đã có điểm từng lượt và Band; chưa hiện riêng điểm tốt nhất/lượt được chọn | [StudentEnrollmentPage.tsx](<C:/Study/SOEN/main_workplace/frontend/src/features/enrollment/StudentEnrollmentPage.tsx:33>) | [SqlStudentEnrollmentReader.cs](<C:/Study/SOEN/main_workplace/backend/src/EnglishCenter.Api/Infrastructure/Enrollment/SqlStudentEnrollmentReader.cs:14>) | 87 |
+| 05 | Xác nhận nhập học | Có — thao tác/xem trên web | Học viên → hồ sơ đã có Band → xem trước và xác nhận nhập học | [StudentEnrollmentPage.tsx](<C:/Study/SOEN/main_workplace/frontend/src/features/enrollment/StudentEnrollmentPage.tsx:33>) | [StudentEnrollmentService.cs](<C:/Study/SOEN/main_workplace/backend/src/EnglishCenter.Api/Services/Enrollment/StudentEnrollmentService.cs:15>) | 87 |
+| 06 | Xem, in hóa đơn và hướng dẫn thanh toán | Có — thao tác/xem trên web | Học viên → Hóa đơn của tôi → chi tiết → Đọc mới và in hóa đơn; có hướng dẫn thanh toán | [StudentInvoicesPage.tsx](<C:/Study/SOEN/main_workplace/frontend/src/features/invoices/StudentInvoicesPage.tsx:17>) | [SqlStudentInvoiceReader.cs](<C:/Study/SOEN/main_workplace/backend/src/EnglishCenter.Api/Infrastructure/StudentInvoices/SqlStudentInvoiceReader.cs:12>) | 89 |
+| 07 | Xem lớp và thời khóa biểu cá nhân | Có — thao tác/xem trên web | Học viên → Lớp của tôi → lớp/lịch hiện tại hoặc lịch sử | [ClassesPage.tsx](<C:/Study/SOEN/main_workplace/frontend/src/features/classes/ClassesPage.tsx:55>) | [ClassEndpoints.cs](<C:/Study/SOEN/main_workplace/backend/src/EnglishCenter.Api/Api/Classes/ClassEndpoints.cs:7>) | 90,91 |
+| 08 | Xem kết quả học tập | Có — thao tác/xem trên web | Học viên → Kết quả của tôi → chi tiết kết quả đã công bố | [StudentGradesPage.tsx](<C:/Study/SOEN/main_workplace/frontend/src/features/classes/StudentGradesPage.tsx:14>) | [SqlStudentGradeReads.cs](<C:/Study/SOEN/main_workplace/backend/src/EnglishCenter.Api/Infrastructure/Classes/SqlStudentGradeReads.cs:35>) | 94 |
+| 09 | Tra cứu và kiểm tra hồ sơ | Có — thao tác/xem trên web | Tuyển sinh → Hồ sơ tuyển sinh → tìm kiếm / xem hồ sơ | [AdmissionsPage.tsx](<C:/Study/SOEN/main_workplace/frontend/src/features/admissions/AdmissionsPage.tsx:19>) | [SqlAdmissionsSearch.cs](<C:/Study/SOEN/main_workplace/backend/src/EnglishCenter.Api/Infrastructure/Admissions/SqlAdmissionsSearch.cs:1>) | 88 |
+| 12 | Duyệt, từ chối hoặc hủy hồ sơ nhập học | Có — thao tác/xem trên web | Tuyển sinh → chi tiết hồ sơ → duyệt / từ chối / hủy → xác nhận | [AdmissionsPage.tsx](<C:/Study/SOEN/main_workplace/frontend/src/features/admissions/AdmissionsPage.tsx:19>) | [AdmissionsService.cs](<C:/Study/SOEN/main_workplace/backend/src/EnglishCenter.Api/Services/Admissions/AdmissionsService.cs:17>) | 88 |
+| 13 | Quản lý khóa học, chương trình đào tạo và cấu hình mức trình độ | Có — thao tác/xem trên web | Giáo vụ → Khóa học và Band; Chương trình đào tạo → cấu hình / vòng đời | [ProgramPage.tsx](<C:/Study/SOEN/main_workplace/frontend/src/features/programs/pages/ProgramPage.tsx:19>) | [ProgramEndpoints.cs](<C:/Study/SOEN/main_workplace/backend/src/EnglishCenter.Api/Api/Academics/ProgramEndpoints.cs:11>) | 82,83 |
+| 14 | Tổ chức và quản lý ca thi đầu vào | Có — thao tác/xem trên web | Giáo vụ → Ca thi đầu vào → tạo / mở / đóng / hủy / sửa lịch / đổi người chấm | [EntrySessionPage.tsx](<C:/Study/SOEN/main_workplace/frontend/src/features/entrySessions/pages/EntrySessionPage.tsx:16>) | [EntrySessionEndpoints.cs](<C:/Study/SOEN/main_workplace/backend/src/EnglishCenter.Api/Api/Academics/EntrySessionEndpoints.cs:10>) | 84 |
+| 15 | Theo dõi kết quả thi đầu vào và mức trình độ | Có — thao tác/xem trên web | Giáo vụ → Ca thi đầu vào → xem ca → danh sách thí sinh / kết quả / Band | [EntrySessionPage.tsx](<C:/Study/SOEN/main_workplace/frontend/src/features/entrySessions/pages/EntrySessionPage.tsx:16>) | [SqlEntrySessionExecutor.cs](<C:/Study/SOEN/main_workplace/backend/src/EnglishCenter.Api/Infrastructure/Academics/SqlEntrySessionExecutor.cs:13>) | 84,86,87 |
+| 16 | Tạo và quản lý lớp học | Có — thao tác/xem trên web | Giáo vụ → Lớp và lịch học → tạo / xem lớp → mở / bắt đầu / hoàn tất / hủy / sửa sĩ số | [ClassesPage.tsx](<C:/Study/SOEN/main_workplace/frontend/src/features/classes/ClassesPage.tsx:55>) | [ClassService.cs](<C:/Study/SOEN/main_workplace/backend/src/EnglishCenter.Api/Services/Classes/ClassService.cs:16>) | 90,92 |
+| 17 | Phân công hoặc đổi giáo viên phụ trách | Có — thao tác/xem trên web | Giáo vụ → chi tiết lớp → Đọc lựa chọn giáo viên → xem trước đổi giáo viên | [ClassesPage.tsx](<C:/Study/SOEN/main_workplace/frontend/src/features/classes/ClassesPage.tsx:55>) | [ClassService.cs](<C:/Study/SOEN/main_workplace/backend/src/EnglishCenter.Api/Services/Classes/ClassService.cs:16>) | 90 |
+| 18 | Xếp học viên vào lớp | Có — thao tác/xem trên web | Giáo vụ → Lớp và lịch học → Hồ sơ chờ xếp lớp → lớp phù hợp → xem trước xếp | [ClassesPage.tsx](<C:/Study/SOEN/main_workplace/frontend/src/features/classes/ClassesPage.tsx:55>) | [ClassService.cs](<C:/Study/SOEN/main_workplace/backend/src/EnglishCenter.Api/Services/Classes/ClassService.cs:16>) | 90 |
+| 19 | Quản lý lịch học, lịch thi và buổi thay thế | Có — thao tác/xem trên web | Giáo vụ → Lớp và lịch học → lịch: từng buổi / tuần / dời / thay / xác nhận đã tổ chức | [SchedulesPanel.tsx](<C:/Study/SOEN/main_workplace/frontend/src/features/classes/SchedulesPanel.tsx:20>) | [ClassEndpoints.cs](<C:/Study/SOEN/main_workplace/backend/src/EnglishCenter.Api/Api/Classes/ClassEndpoints.cs:7>) | 91,92 |
+| 20 | Kiểm tra, trả lại và chốt bảng điểm | Có — thao tác/xem trên web | Giáo vụ → Duyệt bảng điểm → lớp đã gửi → xem trước trả lại / chốt cả lớp | [GradeReviewPage.tsx](<C:/Study/SOEN/main_workplace/frontend/src/features/classes/GradeReviewPage.tsx:12>) | [GradeEndpoints.cs](<C:/Study/SOEN/main_workplace/backend/src/EnglishCenter.Api/Api/Classes/GradeEndpoints.cs:8>) | 93,94 |
+| 21 | Xem ca thi được phân công | Có — thao tác/xem trên web | Giáo viên → Kiểm tra đầu vào → Đọc ca được phân công → danh sách học viên | [TeacherEntryPage.tsx](<C:/Study/SOEN/main_workplace/frontend/src/features/entryTasks/TeacherEntryPage.tsx:18>) | [TeacherEntryEndpoints.cs](<C:/Study/SOEN/main_workplace/backend/src/EnglishCenter.Api/Api/Enrollment/TeacherEntryEndpoints.cs:9>) | 86 |
+| 22 | Nhập, sửa điểm thi đầu vào hoặc ghi vắng | Có — thao tác/xem trên web | Giáo viên → lượt đặt trong ca → Chấm điểm / Xác nhận vắng / Sửa điểm có lý do | [TeacherEntryPage.tsx](<C:/Study/SOEN/main_workplace/frontend/src/features/entryTasks/TeacherEntryPage.tsx:18>) | [TeacherEntryService.cs](<C:/Study/SOEN/main_workplace/backend/src/EnglishCenter.Api/Services/Enrollment/TeacherEntryService.cs:15>) | 86 |
+| 23 | Xem lịch dạy và danh sách lớp | Có — thao tác/xem trên web | Giáo viên → Lớp và lịch dạy → chi tiết lớp / danh sách học viên / lịch | [ClassesPage.tsx](<C:/Study/SOEN/main_workplace/frontend/src/features/classes/ClassesPage.tsx:55>) | [ClassEndpoints.cs](<C:/Study/SOEN/main_workplace/backend/src/EnglishCenter.Api/Api/Classes/ClassEndpoints.cs:7>) | 90,91,92 |
+| 24 | Ghi và cập nhật điểm danh | Có — thao tác/xem trên web | Giáo viên → lớp → Điểm danh buổi học → chọn LESSON → Có mặt/Vắng → lưu | [AttendancePanel.tsx](<C:/Study/SOEN/main_workplace/frontend/src/features/classes/AttendancePanel.tsx:10>) | [AttendanceService.cs](<C:/Study/SOEN/main_workplace/backend/src/EnglishCenter.Api/Services/Classes/AttendanceService.cs:15>) | 92 |
+| 25 | Nhập điểm, lưu nháp và gửi bảng điểm | Có — thao tác/xem trên web | Giáo viên → lớp → sổ điểm → học viên → lưu điểm/nhận xét; xem trước gửi cả lớp | [GradebookPanel.tsx](<C:/Study/SOEN/main_workplace/frontend/src/features/classes/GradebookPanel.tsx:13>) | [GradeService.cs](<C:/Study/SOEN/main_workplace/backend/src/EnglishCenter.Api/Services/Classes/GradeService.cs:16>) | 93,94 |
+| 26 | Sửa và gửi lại bảng điểm bị trả | Có — thao tác/xem trên web | Giáo viên → sổ điểm lớp đã trả lại → sửa từng học viên → gửi lại cả lớp | [GradebookPanel.tsx](<C:/Study/SOEN/main_workplace/frontend/src/features/classes/GradebookPanel.tsx:13>) | [GradeService.cs](<C:/Study/SOEN/main_workplace/backend/src/EnglishCenter.Api/Services/Classes/GradeService.cs:16>) | 93 |
+| 27 | Tra cứu hóa đơn và theo dõi công nợ | Có — thao tác/xem trên web | Kế toán → Hóa đơn và thanh toán → bộ lọc / chi tiết / cảnh báo quá hạn | [FinancePage.tsx](<C:/Study/SOEN/main_workplace/frontend/src/features/finance/FinancePage.tsx:19>) | [FinanceEndpoints.cs](<C:/Study/SOEN/main_workplace/backend/src/EnglishCenter.Api/Api/Finance/FinanceEndpoints.cs:9>) | 89 |
+| 28 | Đối chiếu, xác nhận thanh toán và sửa thông tin phương thức | Có — thao tác/xem trên web | Kế toán → chi tiết hóa đơn → xác nhận thu đủ; Payment → sửa phương thức/mã tham chiếu | [FinancePage.tsx](<C:/Study/SOEN/main_workplace/frontend/src/features/finance/FinancePage.tsx:19>) | [FinanceEndpoints.cs](<C:/Study/SOEN/main_workplace/backend/src/EnglishCenter.Api/Api/Finance/FinanceEndpoints.cs:9>) | 89 |
+| 29 | Xem và xuất báo cáo tài chính | Có — thao tác/xem trên web | Kế toán → Báo cáo tài chính → Áp dụng bộ lọc → Tải CSV tài chính | [ReportsPage.tsx](<C:/Study/SOEN/main_workplace/frontend/src/features/reports/ReportsPage.tsx:16>) | [ReportEndpoints.cs](<C:/Study/SOEN/main_workplace/backend/src/EnglishCenter.Api/Api/Reports/ReportEndpoints.cs:9>) | 95 |
+| 30 | Xem báo cáo tuyển sinh | Có — thao tác/xem trên web | Giám đốc → Báo cáo tổng hợp → Tuyển sinh → bộ lọc / tổng / bảng nhóm | [ReportsPage.tsx](<C:/Study/SOEN/main_workplace/frontend/src/features/reports/ReportsPage.tsx:16>) | [SqlReportsExecutor.cs](<C:/Study/SOEN/main_workplace/backend/src/EnglishCenter.Api/Infrastructure/Reports/SqlReportsExecutor.cs:13>) | 95 |
+| 31 | Xem báo cáo đào tạo | Có — thao tác/xem trên web | Giám đốc → Báo cáo tổng hợp → Đào tạo → hiện trạng / tiến độ / kết quả đã chốt | [ReportsPage.tsx](<C:/Study/SOEN/main_workplace/frontend/src/features/reports/ReportsPage.tsx:16>) | [SqlReportsExecutor.cs](<C:/Study/SOEN/main_workplace/backend/src/EnglishCenter.Api/Infrastructure/Reports/SqlReportsExecutor.cs:13>) | 95 |
+| 32 | Xem báo cáo tài chính | Có — thao tác/xem trên web | Giám đốc → Báo cáo tổng hợp → Tài chính; không có nút CSV hoặc thu tiền | [ReportsPage.tsx](<C:/Study/SOEN/main_workplace/frontend/src/features/reports/ReportsPage.tsx:16>) | [ReportEndpoints.cs](<C:/Study/SOEN/main_workplace/backend/src/EnglishCenter.Api/Api/Reports/ReportEndpoints.cs:9>) | 95 |
+| 33 | Cấp tài khoản nhân sự và đặt lại mật khẩu | Có — thao tác/xem trên web | Admin → Tài khoản → cấp nhân sự / chọn tài khoản → đặt lại mật khẩu; khối secret một lần | [StaffAdminPage.tsx](<C:/Study/SOEN/main_workplace/frontend/src/features/administration/pages/StaffAdminPage.tsx:17>) | [StaffAccountEndpoints.cs](<C:/Study/SOEN/main_workplace/backend/src/EnglishCenter.Api/Api/Administration/StaffAccountEndpoints.cs:8>) | 81 |
+| 34 | Khóa, mở, ngừng và khôi phục tài khoản | Có — thao tác/xem trên web | Admin → Tài khoản → chi tiết → khóa / mở / ngừng / khôi phục | [StaffAdminPage.tsx](<C:/Study/SOEN/main_workplace/frontend/src/features/administration/pages/StaffAdminPage.tsx:17>) | [AdminAccountEndpoints.cs](<C:/Study/SOEN/main_workplace/backend/src/EnglishCenter.Api/Api/Administration/AdminAccountEndpoints.cs:11>) | 9,81 |
+| 35 | Tra cứu nhật ký hoạt động | Có — thao tác/xem trên web | Admin → Nhật ký kiểm toán → lọc → xem sự kiện → xem nhóm thao tác | [AuditPage.tsx](<C:/Study/SOEN/main_workplace/frontend/src/features/audit/AuditPage.tsx:13>) | [AuditEndpoints.cs](<C:/Study/SOEN/main_workplace/backend/src/EnglishCenter.Api/Api/Administration/AuditEndpoints.cs:4>) | 95 |
+| 36 | Tự động xác định mức trình độ | Có — kết quả tự động hiển thị | Kết quả tự động trên hồ sơ Student, nhiệm vụ chấm Teacher và danh sách ca của Giáo vụ | [TeacherEntryPage.tsx](<C:/Study/SOEN/main_workplace/frontend/src/features/entryTasks/TeacherEntryPage.tsx:18>) | [TeacherEntryService.cs](<C:/Study/SOEN/main_workplace/backend/src/EnglishCenter.Api/Services/Enrollment/TeacherEntryService.cs:15>) | 86,87 |
+| 37 | Tự động phát hành hóa đơn | Có — kết quả tự động hiển thị | Sau Tuyển sinh duyệt, hóa đơn xuất hiện trong chi tiết hồ sơ, Hóa đơn của tôi và Kế toán | [AdmissionsPage.tsx](<C:/Study/SOEN/main_workplace/frontend/src/features/admissions/AdmissionsPage.tsx:19>) | [AdmissionsService.cs](<C:/Study/SOEN/main_workplace/backend/src/EnglishCenter.Api/Services/Admissions/AdmissionsService.cs:17>) | 88,89 |
+| 38 | Tự động tính điểm tổng kết và kết quả đạt | Có — kết quả tự động hiển thị | Tổng nháp trong sổ điểm; tổng chính thức/kết quả đạt trong màn hình đã công bố của Student | [StudentGradeResults.tsx](<C:/Study/SOEN/main_workplace/frontend/src/features/classes/components/StudentGradeResults.tsx:27>) | [GradeService.cs](<C:/Study/SOEN/main_workplace/backend/src/EnglishCenter.Api/Services/Classes/GradeService.cs:16>) | 93,94 |
+| 39 | Ghi nhật ký nghiệp vụ và sự kiện bảo mật | Có — kết quả tự động hiển thị | Kết quả ghi tự động được Admin xem ở Nhật ký kiểm toán, chi tiết và nhóm thao tác | [AuditPage.tsx](<C:/Study/SOEN/main_workplace/frontend/src/features/audit/AuditPage.tsx:13>) | [SqlAuditAppender.cs](<C:/Study/SOEN/main_workplace/backend/src/EnglishCenter.Api/Infrastructure/Auditing/SqlAuditAppender.cs:7>) | 81–95 |
+
+## Phát hiện cần sửa trước khi chốt đủ phần III
+
+**[P2] NV04 — thiếu hiển thị điểm tốt nhất được dùng xếp Band.** Word ghi rõ “hiển thị điểm từng lượt đã chấm, điểm tốt nhất và mức trình độ tương ứng”. Tại [StudentEnrollmentPage.tsx:165](<C:/Study/SOEN/main_workplace/frontend/src/features/enrollment/StudentEnrollmentPage.tsx:165>), UI lặp các lượt với điểm rồi chỉ hiện “Band hiện tại”; không dùng `registration.entry.bestAttemptId` để đánh dấu lượt được chọn hoặc hiện “Điểm tốt nhất”. Preview xác nhận tại dòng171 cũng chỉ lặp điểm và Band. `enrollmentApi.ts` đã nhận/kiểm `bestAttemptId` và `bandAssignment.bestAttemptId`, nên không thiếu backend calculation/data. Cần hiển thị điểm/lượt tốt nhất dựa trên ID server trả, giữ hòa chọn lượt một và vắng không thành0; không tự tính lại quyền hay đổi thuật toán Band. Các test hiện có đọc điểm/Band nhưng không yêu cầu nhãn này, nên browser PASS vẫn không đóng thiếu sót.
+
+Verdict đối với yêu cầu “đủ các chức năng và nội dung phải thể hiện trên web”: **PASS WITH FIXES — NV04 là mục bắt buộc sửa**. Đây là phát hiện ở source/UI; chưa sửa code trong lượt audit.
+
+## Các điểm cần hiểu đúng khi xem web
+
+1. **NV13 — Band chỉ đọc.** Giáo vụ có “Xem bộ Band” để xem ngưỡng 0/25/45/65/85 và trạng thái đóng băng. Không có form sửa ngưỡng Band. Chỉnh cấu hình trọng số/số buổi nằm ở Chương trình đào tạo. Nếu “cấu hình mức trình độ” trong Word được hiểu là tự chỉnh ngưỡng tùy ý thì phần đó không có trên web; baseline hiện hành quy định Band tham chiếu chỉ đọc, nên không tự coi đây là lỗi cần thêm editor.
+
+2. **NV16–19, NV23–26 được gom theo lớp.** Xếp lớp/lập lịch/điểm danh/sổ điểm có các khối và nút trong chi tiết lớp; Giáo viên truy cập lớp được phân công. Lưu nháp một học viên khác gửi/trả/chốt cả lớp.
+
+3. **NV36–39 không cần màn hình hay nút riêng.** Band tính sau chấm/sửa điểm; hóa đơn phát hành khi Tuyển sinh duyệt; tổng chính thức lưu lúc chốt; nhật ký được ghi theo hành động và Admin đọc tại trang Nhật ký kiểm toán.
+
+4. **Thông tin thanh toán NV06 là hướng dẫn chung.** Web hiển thị thông báo trả tiền bên ngoài và chờ Kế toán xác nhận; không có cổng thanh toán hay tài khoản ngân hàng/QR cấu hình riêng. Các nội dung đó không được yêu cầu trong bảng đang đọc.
+
+5. **Dữ liệu và trạng thái quyết định thao tác.** Chưa có hồ sơ/ca/lớp đúng điều kiện hoặc đăng nhập sai vai trò sẽ không thấy được tất cả thao tác. Lớp chưa COMPLETED không gửi/chốt bảng điểm; ca CLOSED chặn Student đổi/hủy booking riêng; Student không xem điểm chưa FINALIZED.
+
+## Kiểm chứng mới trong lượt này
+
+- Typecheck và lint frontend: PASS; log `typecheck.log`, `lint.log`.
+
+- Frontend tests: 183 PASS, 0 FAIL, 0 SKIP; `frontend-tests.log`.
+
+- Backend mặc định: 1438 PASS, 0 FAIL, 325 opt-in SKIP; `backend-default.xml`. Lượt sandbox trước có 12 lỗi quyền truy cập pipe/store tạm; đã chạy lại cùng test không đổi assertion ngoài sandbox, log ban đầu giữ riêng.
+
+- Edge/HTTPS/API/SQL: 21/21 PASS; FAIL=0, SKIP=0, errors=0; kết quả xUnit `browser/functions-web-edge.xml`, TRX cùng thư mục.
+
+- Bộ browser dùng các test hiện có `OwnedBrowserSqlHostingTests`, `verify-identity.cjs`, `verify-m1.cjs` và các module M2/M3/M4. Các nhóm 81–95 kiểm thao tác UI thực và xác nhận dữ liệu SQL sau COMMIT; chạy tại 375/768/1280 với bảy vai trò và anonymous.
+
+- Build fixture dùng cùng component IdentityApp và API thật; dữ liệu/khóa/clock là synthetic trong database thử riêng. Đây không phải test HTTP mock. HTTPS fixture dùng pin SPKI chứng chỉ riêng; kết nối SQL fixture cho phép chứng chỉ thử. Không gọi kết quả này là kiểm chứng mới của custody/trusted HTTPS/strict SQL trên môi trường vận hành LOCAL_DEV.
+
+- Lượt VSTest đầu không kết nối được testhost; runner trực tiếp xUnit trong sandbox bị Shared Memory SQL access denied trước khi tạo DB. Giữ log riêng; không dùng các lần bị chặn làm bằng chứng thiếu chức năng. Không giảm assertion hoặc sửa code sản phẩm để vượt lỗi môi trường.
+
+- Compile hỗ trợ frontend lần đầu dùng glob Windows không tìm được input; đã sửa riêng script bằng đường dẫn slash, giữ log ban đầu. Typecheck code sản phẩm vẫn PASS.
+
+## Giới hạn và việc còn lại
+
+Không sửa code sản phẩm, Word hoặc dữ liệu vận hành để hoàn thiện thêm chức năng. Đây là audit mức chức năng hiển thị/thao tác và các luồng browser đại diện; không là chứng nhận toàn bộ 154 endpoint/mọi nhánh validation, full WCAG, tải, backup/restore hoặc nghiệm thu cổng UI4. Recovery M4 vẫn phụ thuộc đầu vào riêng, không nằm trong 37 dòng chức năng cần xuất hiện trên web này.
+
+Nội dung Word có vài câu lặp như “đã đã”, “buổi buổi”, “không không tổ chức”; audit diễn giải theo điều kiện nghiệp vụ đã duyệt, không tự sửa báo cáo. Riêng NV36 “sửa thông tin hợp lệ” nên diễn đạt là “sửa điểm đầu vào hợp lệ” khi bạn chỉnh Word.
+
+## Tái hiện NV04 trên web
+
+Chạy bổ sung đúng group87 với adapter chỉ quan sát DOM/chụp ảnh và thêm GET đọc lại; giữ nguyên các assertion/thao tác của driver. Đây là một lượt lặp bổ sung, không phải ca độc lập thứ22. Dữ liệu trong ảnh là synthetic.
+
+| Width | Điểm tốt nhất backend trả | Band backend trả | Nhãn điểm/lượt tốt nhất trên UI | Ảnh chi tiết |
+|---|---|---|---|---|
+| 375 | 0.00 | Band1 | Không có | [Xem ảnh](<C:/Study/SOEN/main_workplace/docs/reference/function-web-audit-20261015/nv04-student-375.png>) |
+| 768 | 80.50 | Band4 | Không có | [Xem ảnh](<C:/Study/SOEN/main_workplace/docs/reference/function-web-audit-20261015/nv04-student-768.png>) |
+| 1280 | 100.00 | Band5 | Không có | [Xem ảnh](<C:/Study/SOEN/main_workplace/docs/reference/function-web-audit-20261015/nv04-student-1280.png>) |

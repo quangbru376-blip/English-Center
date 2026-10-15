@@ -43,6 +43,14 @@ svg.ec-icon { width: var(--ec-icon-size); height: var(--ec-icon-size); flex-shri
 .ec-field-hint, .ec-field-error { margin-top: var(--ec-space-2); font-size: var(--ec-text-sm); }
 .ec-field-hint { color: var(--ec-muted); }
 .ec-field-error { color: var(--ec-danger); }
+.ec-stack { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--ec-space-4); min-width: 0; }
+.ec-stack > * { min-width: 0; }
+.ec-stack > .ec-button { justify-self: start; }
+.ec-actions { display: flex; flex-wrap: wrap; align-items: center; gap: var(--ec-space-3); }
+.ec-actions > .ec-button { max-width: 100%; }
+:where(.ec-shell-main, .ec-modal) label:has(> :is(input:not([type='checkbox']):not([type='radio']), select, textarea)) { display: grid; gap: var(--ec-space-2); font-size: var(--ec-text-sm); font-weight: 500; }
+:where(.ec-shell-main, .ec-modal) fieldset { min-width: 0; }
+:where(.ec-shell-main, .ec-modal) legend { margin-bottom: var(--ec-space-3); }
 .ec-card { background: var(--ec-surface); border: 1px solid var(--ec-divider); border-radius: var(--ec-radius-card); padding: var(--ec-space-6); }
 .ec-badge { display: inline-flex; align-items: center; gap: var(--ec-space-2); padding: var(--ec-space-1) var(--ec-space-3); border-radius: var(--ec-radius-pill); font-size: var(--ec-text-sm); font-weight: 500; }
 .ec-badge--neutral { background: var(--ec-primary-soft); color: var(--ec-brand-dark); }
@@ -60,6 +68,18 @@ svg.ec-icon { width: var(--ec-icon-size); height: var(--ec-icon-size); flex-shri
 .ec-page-header h1 { min-width: 0; overflow-wrap: anywhere; font-size: var(--ec-text-xl); line-height: 1.4; font-weight: 700; }
 .ec-modal { width: calc(100% - var(--ec-space-8)); max-width: var(--ec-modal-width); max-height: calc(100dvh - var(--ec-space-8)); margin: auto; overflow-y: auto; border: 1px solid var(--ec-divider); border-radius: var(--ec-radius-card); background: var(--ec-surface); color: var(--ec-text); box-shadow: var(--ec-shadow-md); padding: var(--ec-space-6); }
 .ec-modal::backdrop { background: var(--ec-overlay); }
+.ec-modal-header { display: flex; align-items: flex-start; justify-content: space-between; gap: var(--ec-space-4); margin-bottom: var(--ec-space-6); }
+.ec-modal-header h2 { min-width: 0; overflow-wrap: anywhere; }
+.ec-modal-header > .ec-button { flex-shrink: 0; }
+.ec-modal-body { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--ec-space-4); }
+.ec-modal-body > * { min-width: 0; margin-block: 0; }
+.ec-modal-body > .ec-button { justify-self: start; }
+.ec-modal-body form { row-gap: var(--ec-space-5); }
+.ec-calendar-event { display: grid; gap: var(--ec-space-2); min-width: 0; padding: var(--ec-space-4); border: 1px solid var(--ec-divider); border-radius: var(--ec-radius-card); overflow-wrap: anywhere; }
+.ec-calendar-event > .ec-button { justify-self: start; margin-top: var(--ec-space-2); }
+.ec-calendar-day { min-width: 0; overflow-wrap: anywhere; }
+.ec-calendar-day .ec-calendar-event { padding: var(--ec-space-3); }
+.ec-calendar-day .ec-button { min-width: 0; max-width: 100%; padding-inline: var(--ec-space-2); }
 .ec-table-wrap { width: 100%; overflow-x: auto; border: 1px solid var(--ec-divider); border-radius: var(--ec-radius-card); }
 .ec-table { width: 100%; border-collapse: collapse; text-align: left; font-size: var(--ec-text-sm); }
 .ec-table th, .ec-table td { padding: var(--ec-space-3) var(--ec-space-4); border-bottom: 1px solid var(--ec-divider); }
@@ -114,6 +134,10 @@ svg.ec-icon { width: var(--ec-icon-size); height: var(--ec-icon-size); flex-shri
 .ec-styleguide-row { display: flex; flex-wrap: wrap; gap: var(--ec-space-3); align-items: center; }
 .ec-shell-main input:not([type='checkbox']):not([type='radio']):not(.ec-input), .ec-shell-main select:not(.ec-input), .ec-shell-main textarea:not(.ec-input) { min-width: 0; max-width: 100%; min-height: var(--ec-control-height); border: 1px solid var(--ec-border); border-radius: var(--ec-radius); padding: var(--ec-space-2) var(--ec-space-3); background: var(--ec-surface); color: var(--ec-text); }
 .ec-shell-main label { min-width: 0; max-width: 100%; }
+@media (max-width: 767px) {
+  .ec-shell-main > section { padding: var(--ec-space-4); }
+  .ec-modal { padding: var(--ec-space-5); }
+}
 @media (min-width: 768px) {
   .ec-shell-header .ec-brand { font-size: var(--ec-text-base); }
   .ec-shell-header .ec-brand > span { max-width: none; }

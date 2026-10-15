@@ -1,0 +1,162 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1540pt" height="900pt" viewBox="0 0 1540 900">
+<rect width="100%" height="100%" fill="white"/>
+<g font-family="Arial" fill="black">
+<text x="770.0" y="47" font-size="24" font-weight="bold" text-anchor="middle">SƠ ĐỒ LIÊN KẾT LOGIC</text>
+<text x="770.0" y="78" font-size="18" text-anchor="middle">Hệ thống quản lý trung tâm tiếng Anh</text>
+</g>
+<g id="FK_Schedule_Schedule_replaces_schedule_id"><title>Schedule → Schedule</title>
+<polyline points="740,680 765,680 765,700 740,700" fill="none" stroke="white" stroke-width="5" stroke-linejoin="miter"/>
+<polyline points="740,680 765,680 765,700 740,700" fill="none" stroke="black" stroke-width="1.2" stroke-linejoin="miter"/>
+<polygon points="740,700 749.0,703.5 749.0,696.5" fill="white" stroke="black" stroke-width="1.2"/></g>
+<g id="FK_Booking_Session_session_id"><title>EntryTestBooking → EntryTestSession</title>
+<polyline points="1370.0,540 1370.0,660" fill="none" stroke="white" stroke-width="5" stroke-linejoin="miter"/>
+<polyline points="1370.0,540 1370.0,660" fill="none" stroke="black" stroke-width="1.2" stroke-linejoin="miter"/>
+<polygon points="1370.0,660 1373.5,651.0 1366.5,651.0" fill="black" stroke="black" stroke-width="1.2"/></g>
+<g id="FK_BandAssignment_Attempt_BestAttemptRegistration"><title>BandAssignment → EntryTestAttempt</title>
+<polyline points="1120.0,360 1120.0,480" fill="none" stroke="white" stroke-width="5" stroke-linejoin="miter"/>
+<polyline points="1120.0,360 1120.0,480" fill="none" stroke="black" stroke-width="1.2" stroke-linejoin="miter" stroke-dasharray="6 4"/>
+<polygon points="1120.0,480 1123.5,471.0 1116.5,471.0" fill="black" stroke="black" stroke-width="1.2"/></g>
+<g id="FK_BandAssignment_Registration_registration_id"><title>BandAssignment → Registration</title>
+<polyline points="1120.0,300 1120.0,180" fill="none" stroke="white" stroke-width="5" stroke-linejoin="miter"/>
+<polyline points="1120.0,300 1120.0,180" fill="none" stroke="black" stroke-width="1.2" stroke-linejoin="miter"/>
+<polygon points="1120.0,180 1116.5,189.0 1123.5,189.0" fill="black" stroke="black" stroke-width="1.2"/></g>
+<g id="FK_Schedule_Class_class_id"><title>Schedule → Class</title>
+<polyline points="620.0,660 620.0,540" fill="none" stroke="white" stroke-width="5" stroke-linejoin="miter"/>
+<polyline points="620.0,660 620.0,540" fill="none" stroke="black" stroke-width="1.2" stroke-linejoin="miter"/>
+<polygon points="620.0,540 616.5,549.0 623.5,549.0" fill="black" stroke="black" stroke-width="1.2"/></g>
+<g id="FK_Attendance_StudentClassAssignment_class_assignment_id"><title>Attendance → StudentClassAssignment</title>
+<polyline points="870.0,660 870.0,540" fill="none" stroke="white" stroke-width="5" stroke-linejoin="miter"/>
+<polyline points="870.0,660 870.0,540" fill="none" stroke="black" stroke-width="1.2" stroke-linejoin="miter"/>
+<polygon points="870.0,540 866.5,549.0 873.5,549.0" fill="black" stroke="black" stroke-width="1.2"/></g>
+<g id="FK_Payment_Invoice_invoice_id"><title>Payment → Invoice</title>
+<polyline points="1370.0,300 1370.0,180" fill="none" stroke="white" stroke-width="5" stroke-linejoin="miter"/>
+<polyline points="1370.0,300 1370.0,180" fill="none" stroke="black" stroke-width="1.2" stroke-linejoin="miter"/>
+<polygon points="1370.0,180 1366.5,189.0 1373.5,189.0" fill="black" stroke="black" stroke-width="1.2"/></g>
+<g id="FK_Account_Role_role_id"><title>Account → Role</title>
+<polyline points="540,130.0 490,130.0" fill="none" stroke="white" stroke-width="5" stroke-linejoin="miter"/>
+<polyline points="540,130.0 490,130.0" fill="none" stroke="black" stroke-width="1.2" stroke-linejoin="miter"/>
+<polygon points="490,130.0 499.0,133.5 499.0,126.5" fill="black" stroke="black" stroke-width="1.2"/></g>
+<g id="FK_StudentProfile_Account_account_id"><title>StudentProfile → Account</title>
+<polyline points="790,130.0 740,130.0" fill="none" stroke="white" stroke-width="5" stroke-linejoin="miter"/>
+<polyline points="790,130.0 740,130.0" fill="none" stroke="black" stroke-width="1.2" stroke-linejoin="miter"/>
+<polygon points="740,130.0 749.0,133.5 749.0,126.5" fill="black" stroke="black" stroke-width="1.2"/></g>
+<g id="FK_TrainingProgram_Course_course_id"><title>TrainingProgram → Course</title>
+<polyline points="790,310.0 740,310.0" fill="none" stroke="white" stroke-width="5" stroke-linejoin="miter"/>
+<polyline points="790,310.0 740,310.0" fill="none" stroke="black" stroke-width="1.2" stroke-linejoin="miter"/>
+<polygon points="740,310.0 749.0,313.5 749.0,306.5" fill="black" stroke="black" stroke-width="1.2"/></g>
+<g id="FK_Registration_StudentProfile_student_id"><title>Registration → StudentProfile</title>
+<polyline points="1040,130.0 990,130.0" fill="none" stroke="white" stroke-width="5" stroke-linejoin="miter"/>
+<polyline points="1040,130.0 990,130.0" fill="none" stroke="black" stroke-width="1.2" stroke-linejoin="miter"/>
+<polygon points="990,130.0 999.0,133.5 999.0,126.5" fill="black" stroke="black" stroke-width="1.2"/></g>
+<g id="FK_Attempt_Booking_CompletedBookingAttempt"><title>EntryTestAttempt → EntryTestBooking</title>
+<polyline points="1240,490.0 1290,490.0" fill="none" stroke="white" stroke-width="5" stroke-linejoin="miter"/>
+<polyline points="1240,490.0 1290,490.0" fill="none" stroke="black" stroke-width="1.2" stroke-linejoin="miter" stroke-dasharray="6 4"/>
+<polygon points="1290,490.0 1281.0,486.5 1281.0,493.5" fill="white" stroke="black" stroke-width="1.2"/></g>
+<g id="FK_Booking_Attempt_attempt_id"><title>EntryTestBooking → EntryTestAttempt</title>
+<polyline points="1290,510.0 1240,510.0" fill="none" stroke="white" stroke-width="5" stroke-linejoin="miter"/>
+<polyline points="1290,510.0 1240,510.0" fill="none" stroke="black" stroke-width="1.2" stroke-linejoin="miter"/>
+<polygon points="1240,510.0 1249.0,513.5 1249.0,506.5" fill="black" stroke="black" stroke-width="1.2"/></g>
+<g id="FK_Assignment_Class_class_id"><title>StudentClassAssignment → Class</title>
+<polyline points="790,490.0 740,490.0" fill="none" stroke="white" stroke-width="5" stroke-linejoin="miter"/>
+<polyline points="790,490.0 740,490.0" fill="none" stroke="black" stroke-width="1.2" stroke-linejoin="miter"/>
+<polygon points="740,490.0 749.0,493.5 749.0,486.5" fill="black" stroke="black" stroke-width="1.2"/></g>
+<g id="FK_Attendance_Schedule_schedule_id"><title>Attendance → Schedule</title>
+<polyline points="790,670.0 740,670.0" fill="none" stroke="white" stroke-width="5" stroke-linejoin="miter"/>
+<polyline points="790,670.0 740,670.0" fill="none" stroke="black" stroke-width="1.2" stroke-linejoin="miter"/>
+<polygon points="740,670.0 749.0,673.5 749.0,666.5" fill="black" stroke="black" stroke-width="1.2"/></g>
+<g id="FK_Score_Schedule_schedule_id"><title>Score → Schedule</title>
+<polyline points="490,670.0 540,670.0" fill="none" stroke="white" stroke-width="5" stroke-linejoin="miter"/>
+<polyline points="490,670.0 540,670.0" fill="none" stroke="black" stroke-width="1.2" stroke-linejoin="miter"/>
+<polygon points="540,670.0 531.0,666.5 531.0,673.5" fill="white" stroke="black" stroke-width="1.2"/></g>
+<g id="FK_Invoice_Registration_registration_id"><title>Invoice → Registration</title>
+<polyline points="1290,130.0 1240,130.0" fill="none" stroke="white" stroke-width="5" stroke-linejoin="miter"/>
+<polyline points="1290,130.0 1240,130.0" fill="none" stroke="black" stroke-width="1.2" stroke-linejoin="miter"/>
+<polygon points="1240,130.0 1249.0,133.5 1249.0,126.5" fill="black" stroke="black" stroke-width="1.2"/></g>
+<g id="FK_Attempt_Registration_registration_id"><title>EntryTestAttempt → Registration</title>
+<polyline points="1040,490.0 1030,490 1030,170 1040,170.0" fill="none" stroke="white" stroke-width="5" stroke-linejoin="miter"/>
+<polyline points="1040,490.0 1030,490 1030,170 1040,170.0" fill="none" stroke="black" stroke-width="1.2" stroke-linejoin="miter"/>
+<polygon points="1040,170.0 1031.0,166.5 1031.0,173.5" fill="black" stroke="black" stroke-width="1.2"/></g>
+<g id="FK_Class_Account_teacher_id"><title>Class → Account</title>
+<polyline points="540,490.0 530,490 530,170 540,170.0" fill="none" stroke="white" stroke-width="5" stroke-linejoin="miter"/>
+<polyline points="540,490.0 530,490 530,170 540,170.0" fill="none" stroke="black" stroke-width="1.2" stroke-linejoin="miter"/>
+<polygon points="540,170.0 531.0,166.5 531.0,173.5" fill="black" stroke="black" stroke-width="1.2"/></g>
+<g id="FK_Class_TrainingProgram_program_id"><title>Class → TrainingProgram</title>
+<polyline points="740,510.0 750,510 750,350 790,350.0" fill="none" stroke="white" stroke-width="5" stroke-linejoin="miter"/>
+<polyline points="740,510.0 750,510 750,350 790,350.0" fill="none" stroke="black" stroke-width="1.2" stroke-linejoin="miter"/>
+<polygon points="790,350.0 781.0,346.5 781.0,353.5" fill="black" stroke="black" stroke-width="1.2"/></g>
+<g id="FK_Score_ScoreComponentConfig_component_id"><title>Score → ScoreComponentConfig</title>
+<polyline points="290,670.0 260,670 260,530 240,530.0" fill="none" stroke="white" stroke-width="5" stroke-linejoin="miter"/>
+<polyline points="290,670.0 260,670 260,530 240,530.0" fill="none" stroke="black" stroke-width="1.2" stroke-linejoin="miter"/>
+<polygon points="240,530.0 249.0,533.5 249.0,526.5" fill="black" stroke="black" stroke-width="1.2"/></g>
+<g id="FK_GradeReport_StudentClassAssignment_class_assignment_id"><title>GradeReport → StudentClassAssignment</title>
+<polyline points="1040,670.0 1010,670 1010,530 990,530.0" fill="none" stroke="white" stroke-width="5" stroke-linejoin="miter"/>
+<polyline points="1040,670.0 1010,670 1010,530 990,530.0" fill="none" stroke="black" stroke-width="1.2" stroke-linejoin="miter"/>
+<polygon points="990,530.0 999.0,533.5 999.0,526.5" fill="black" stroke="black" stroke-width="1.2"/></g>
+<g id="FK_ReplayOperation_Account_actor_account_id"><title>ReplayOperation → Account</title>
+<polyline points="490,310.0 520,310 520,150 540,150.0" fill="none" stroke="white" stroke-width="5" stroke-linejoin="miter"/>
+<polyline points="490,310.0 520,310 520,150 540,150.0" fill="none" stroke="black" stroke-width="1.2" stroke-linejoin="miter"/>
+<polygon points="540,150.0 531.0,146.5 531.0,153.5" fill="black" stroke="black" stroke-width="1.2"/></g>
+<g id="FK_AuthSession_Account_account_id"><title>AuthSession → Account</title>
+<polyline points="240,130.0 280,130 280,110 620,110 620.0,120" fill="none" stroke="white" stroke-width="5" stroke-linejoin="miter"/>
+<polyline points="240,130.0 280,130 280,110 620,110 620.0,120" fill="none" stroke="black" stroke-width="1.2" stroke-linejoin="miter"/>
+<polygon points="620.0,120 623.5,111.0 616.5,111.0" fill="black" stroke="black" stroke-width="1.2"/></g>
+<g id="FK_Assignment_Registration_registration_id"><title>StudentClassAssignment → Registration</title>
+<polyline points="990,490.0 1020,490 1020,150 1040,150.0" fill="none" stroke="white" stroke-width="5" stroke-linejoin="miter"/>
+<polyline points="990,490.0 1020,490 1020,150 1040,150.0" fill="none" stroke="black" stroke-width="1.2" stroke-linejoin="miter"/>
+<polygon points="1040,150.0 1031.0,146.5 1031.0,153.5" fill="black" stroke="black" stroke-width="1.2"/></g>
+<g id="FK_TrainingProgram_Band_band_id"><title>TrainingProgram → Band</title>
+<polyline points="790,330.0 780,330 780,470 510,470 510,490 490,490.0" fill="none" stroke="white" stroke-width="5" stroke-linejoin="miter"/>
+<polyline points="790,330.0 780,330 780,470 510,470 510,490 490,490.0" fill="none" stroke="black" stroke-width="1.2" stroke-linejoin="miter"/>
+<polygon points="490,490.0 499.0,493.5 499.0,486.5" fill="black" stroke="black" stroke-width="1.2"/></g>
+<g id="FK_Registration_Course_course_id"><title>Registration → Course</title>
+<polyline points="1120.0,120 1120,110 780,110 780,330 740,330.0" fill="none" stroke="white" stroke-width="5" stroke-linejoin="miter"/>
+<polyline points="1120.0,120 1120,110 780,110 780,330 740,330.0" fill="none" stroke="black" stroke-width="1.2" stroke-linejoin="miter"/>
+<polygon points="740,330.0 749.0,333.5 749.0,326.5" fill="black" stroke="black" stroke-width="1.2"/></g>
+<g id="FK_Score_StudentClassAssignment_class_assignment_id"><title>Score → StudentClassAssignment</title>
+<polyline points="490,690.0 530,690 530,550 770,550 770,530 790,530.0" fill="none" stroke="white" stroke-width="5" stroke-linejoin="miter"/>
+<polyline points="490,690.0 530,690 530,550 770,550 770,530 790,530.0" fill="none" stroke="black" stroke-width="1.2" stroke-linejoin="miter"/>
+<polygon points="790,530.0 781.0,526.5 781.0,533.5" fill="black" stroke="black" stroke-width="1.2"/></g>
+<g id="FK_AuditLog_Account_actor_account_id"><title>AuditLog → Account</title>
+<polyline points="240,310.0 280,310 280,200 620,200 620.0,180" fill="none" stroke="white" stroke-width="5" stroke-linejoin="miter"/>
+<polyline points="240,310.0 280,310 280,200 620,200 620.0,180" fill="none" stroke="black" stroke-width="1.2" stroke-linejoin="miter"/>
+<polygon points="620.0,180 616.5,189.0 623.5,189.0" fill="white" stroke="black" stroke-width="1.2"/></g>
+<g id="FK_ScoreComponentConfig_TrainingProgram_program_id"><title>ScoreComponentConfig → TrainingProgram</title>
+<polyline points="240,490.0 280,490 280,380 870,380 870.0,360" fill="none" stroke="white" stroke-width="5" stroke-linejoin="miter"/>
+<polyline points="240,490.0 280,490 280,380 870,380 870.0,360" fill="none" stroke="black" stroke-width="1.2" stroke-linejoin="miter"/>
+<polygon points="870.0,360 866.5,369.0 873.5,369.0" fill="black" stroke="black" stroke-width="1.2"/></g>
+<g id="FK_BandAssignment_Band_band_id"><title>BandAssignment → Band</title>
+<polyline points="1040,350.0 1000,350 1000,460 410,460 410.0,480" fill="none" stroke="white" stroke-width="5" stroke-linejoin="miter"/>
+<polyline points="1040,350.0 1000,350 1000,460 410,460 410.0,480" fill="none" stroke="black" stroke-width="1.2" stroke-linejoin="miter"/>
+<polygon points="410.0,480 413.5,471.0 406.5,471.0" fill="black" stroke="black" stroke-width="1.2"/></g>
+<g id="FK_EntryTestSession_Account_grader_id"><title>EntryTestSession → Account</title>
+<polyline points="1290,670.0 1250,670 1250,190 760,190 760,170 740,170.0" fill="none" stroke="white" stroke-width="5" stroke-linejoin="miter"/>
+<polyline points="1290,670.0 1250,670 1250,190 760,190 760,170 740,170.0" fill="none" stroke="black" stroke-width="1.2" stroke-linejoin="miter"/>
+<polygon points="740,170.0 749.0,173.5 749.0,166.5" fill="black" stroke="black" stroke-width="1.2"/></g>
+<g id="table-AuthSession"><rect x="40" y="120" width="200" height="60" fill="white" stroke="black" stroke-width="1.4"/><text x="140.0" y="155.3" font-family="Arial" font-size="15.5" font-weight="bold" text-anchor="middle">AuthSession</text></g>
+<g id="table-Role"><rect x="290" y="120" width="200" height="60" fill="white" stroke="black" stroke-width="1.4"/><text x="390.0" y="155.3" font-family="Arial" font-size="15.5" font-weight="bold" text-anchor="middle">Role</text></g>
+<g id="table-Account"><rect x="540" y="120" width="200" height="60" fill="white" stroke="black" stroke-width="1.4"/><text x="640.0" y="155.3" font-family="Arial" font-size="15.5" font-weight="bold" text-anchor="middle">Account</text></g>
+<g id="table-StudentProfile"><rect x="790" y="120" width="200" height="60" fill="white" stroke="black" stroke-width="1.4"/><text x="890.0" y="155.3" font-family="Arial" font-size="15.5" font-weight="bold" text-anchor="middle">StudentProfile</text></g>
+<g id="table-Registration"><rect x="1040" y="120" width="200" height="60" fill="white" stroke="black" stroke-width="1.4"/><text x="1140.0" y="155.3" font-family="Arial" font-size="15.5" font-weight="bold" text-anchor="middle">Registration</text></g>
+<g id="table-Invoice"><rect x="1290" y="120" width="200" height="60" fill="white" stroke="black" stroke-width="1.4"/><text x="1390.0" y="155.3" font-family="Arial" font-size="15.5" font-weight="bold" text-anchor="middle">Invoice</text></g>
+<g id="table-AuditLog"><rect x="40" y="300" width="200" height="60" fill="white" stroke="black" stroke-width="1.4"/><text x="140.0" y="335.3" font-family="Arial" font-size="15.5" font-weight="bold" text-anchor="middle">AuditLog</text></g>
+<g id="table-ReplayOperation"><rect x="290" y="300" width="200" height="60" fill="white" stroke="black" stroke-width="1.4"/><text x="390.0" y="335.3" font-family="Arial" font-size="15.5" font-weight="bold" text-anchor="middle">ReplayOperation</text></g>
+<g id="table-Course"><rect x="540" y="300" width="200" height="60" fill="white" stroke="black" stroke-width="1.4"/><text x="640.0" y="335.3" font-family="Arial" font-size="15.5" font-weight="bold" text-anchor="middle">Course</text></g>
+<g id="table-TrainingProgram"><rect x="790" y="300" width="200" height="60" fill="white" stroke="black" stroke-width="1.4"/><text x="890.0" y="335.3" font-family="Arial" font-size="15.5" font-weight="bold" text-anchor="middle">TrainingProgram</text></g>
+<g id="table-BandAssignment"><rect x="1040" y="300" width="200" height="60" fill="white" stroke="black" stroke-width="1.4"/><text x="1140.0" y="335.3" font-family="Arial" font-size="15.5" font-weight="bold" text-anchor="middle">BandAssignment</text></g>
+<g id="table-Payment"><rect x="1290" y="300" width="200" height="60" fill="white" stroke="black" stroke-width="1.4"/><text x="1390.0" y="335.3" font-family="Arial" font-size="15.5" font-weight="bold" text-anchor="middle">Payment</text></g>
+<g id="table-ScoreComponentConfig"><rect x="40" y="480" width="200" height="60" fill="white" stroke="black" stroke-width="1.4"/><text x="140.0" y="515.3" font-family="Arial" font-size="15.5" font-weight="bold" text-anchor="middle">ScoreComponentConfig</text></g>
+<g id="table-Band"><rect x="290" y="480" width="200" height="60" fill="white" stroke="black" stroke-width="1.4"/><text x="390.0" y="515.3" font-family="Arial" font-size="15.5" font-weight="bold" text-anchor="middle">Band</text></g>
+<g id="table-Class"><rect x="540" y="480" width="200" height="60" fill="white" stroke="black" stroke-width="1.4"/><text x="640.0" y="515.3" font-family="Arial" font-size="15.5" font-weight="bold" text-anchor="middle">Class</text></g>
+<g id="table-StudentClassAssignment"><rect x="790" y="480" width="200" height="60" fill="white" stroke="black" stroke-width="1.4"/><text x="890.0" y="515.3" font-family="Arial" font-size="15.5" font-weight="bold" text-anchor="middle">StudentClassAssignment</text></g>
+<g id="table-EntryTestAttempt"><rect x="1040" y="480" width="200" height="60" fill="white" stroke="black" stroke-width="1.4"/><text x="1140.0" y="515.3" font-family="Arial" font-size="15.5" font-weight="bold" text-anchor="middle">EntryTestAttempt</text></g>
+<g id="table-EntryTestBooking"><rect x="1290" y="480" width="200" height="60" fill="white" stroke="black" stroke-width="1.4"/><text x="1390.0" y="515.3" font-family="Arial" font-size="15.5" font-weight="bold" text-anchor="middle">EntryTestBooking</text></g>
+<g id="table-InvoiceNumberCounter"><rect x="40" y="660" width="200" height="60" fill="white" stroke="black" stroke-width="1.4"/><text x="140.0" y="695.3" font-family="Arial" font-size="15.5" font-weight="bold" text-anchor="middle">InvoiceNumberCounter</text></g>
+<g id="table-Score"><rect x="290" y="660" width="200" height="60" fill="white" stroke="black" stroke-width="1.4"/><text x="390.0" y="695.3" font-family="Arial" font-size="15.5" font-weight="bold" text-anchor="middle">Score</text></g>
+<g id="table-Schedule"><rect x="540" y="660" width="200" height="60" fill="white" stroke="black" stroke-width="1.4"/><text x="640.0" y="695.3" font-family="Arial" font-size="15.5" font-weight="bold" text-anchor="middle">Schedule</text></g>
+<g id="table-Attendance"><rect x="790" y="660" width="200" height="60" fill="white" stroke="black" stroke-width="1.4"/><text x="890.0" y="695.3" font-family="Arial" font-size="15.5" font-weight="bold" text-anchor="middle">Attendance</text></g>
+<g id="table-GradeReport"><rect x="1040" y="660" width="200" height="60" fill="white" stroke="black" stroke-width="1.4"/><text x="1140.0" y="695.3" font-family="Arial" font-size="15.5" font-weight="bold" text-anchor="middle">GradeReport</text></g>
+<g id="table-EntryTestSession"><rect x="1290" y="660" width="200" height="60" fill="white" stroke="black" stroke-width="1.4"/><text x="1390.0" y="695.3" font-family="Arial" font-size="15.5" font-weight="bold" text-anchor="middle">EntryTestSession</text></g>
+<text x="40" y="817" font-family="Arial" font-size="15" fill="black">Mũi tên: bảng con → bảng cha. Đầu rỗng: FK nullable. Nét đứt: FK ghép. Giao cắt đường nối không tạo quan hệ.</text>
+<text x="40" y="841" font-family="Arial" font-size="15" fill="black">Đủ 24 bảng; 32 FK chính trên hình. 18 FK người xử lý về Account được liệt kê trong phụ lục nguồn.</text>
+<text x="40" y="865" font-family="Arial" font-size="15" fill="black">InvoiceNumberCounter không có FK. Sơ đồ logic không trình bày toàn bộ cột hoặc cardinality của mô hình vật lý.</text>
+</svg>

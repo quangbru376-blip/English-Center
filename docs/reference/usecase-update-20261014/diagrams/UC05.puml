@@ -1,0 +1,20 @@
+@startuml
+left to right direction
+skinparam monochrome true
+skinparam shadowing false
+actor "Giáo vụ" as A_aa
+rectangle "Hệ thống quản lý trung tâm Anh ngữ" {
+usecase "Tạo sửa ngừng hoặc khôi phục khóa" as U_course
+usecase "Cấu hình các ngưỡng Band" as U_band
+usecase "Tạo chương trình theo khóa và Band" as U_program
+usecase "Cấu hình số buổi thành phần trọng số" as U_config
+usecase "Kiểm tra và kích hoạt chương trình" as U_activate
+usecase "Chuyển nháp ngừng hoặc khôi phục" as U_state
+}
+A_aa -- U_course
+A_aa -- U_band
+A_aa -- U_program
+A_aa -- U_config
+A_aa -- U_activate
+A_aa -- U_state
+@enduml

@@ -1,0 +1,2860 @@
+{
+  "section_range": [
+    266,
+    1013
+  ],
+  "tables": {
+    "Role": [
+      {
+        "name": "role_id",
+        "type": "int",
+        "null": "N",
+        "key": "PK, ID",
+        "meaning": "Khóa nội bộ."
+      },
+      {
+        "name": "role_code",
+        "type": "varchar(32)",
+        "null": "N",
+        "key": "UQ_Role_Code",
+        "meaning": "Student/Admissions/AcademicAffairs/Teacher/Accountant/Director/Admin."
+      },
+      {
+        "name": "role_name",
+        "type": "nvarchar(200)",
+        "null": "N",
+        "key": "-",
+        "meaning": "Nhãn Việt ngữ, giới hạn kỹ thuật đề xuất 100 code point."
+      }
+    ],
+    "Account": [
+      {
+        "name": "account_id",
+        "type": "int",
+        "null": "N",
+        "key": "PK, ID",
+        "meaning": "Khóa Account."
+      },
+      {
+        "name": "role_id",
+        "type": "int",
+        "null": "N",
+        "key": "FK Role",
+        "meaning": "Role cố định của tài khoản."
+      },
+      {
+        "name": "email",
+        "type": "varchar(254)",
+        "null": "N",
+        "key": "UQ_Account_Email",
+        "meaning": "ASCII chuẩn hóa, bất biến; unique toàn Account kể cả blocked."
+      },
+      {
+        "name": "phone",
+        "type": "varchar(10)",
+        "null": "Y",
+        "key": "UQ_Account_Phone khi khác NULL",
+        "meaning": "Chuẩn 0xxxxxxxxx; service bắt buộc đối với Student."
+      },
+      {
+        "name": "password_hash",
+        "type": "varchar(512)",
+        "null": "N",
+        "key": "-",
+        "meaning": "Chỉ PasswordHasher output; dung lượng kỹ thuật đề xuất, xác minh khi khóa runtime."
+      },
+      {
+        "name": "full_name",
+        "type": "nvarchar(200)",
+        "null": "N",
+        "key": "-",
+        "meaning": "1–100 code point."
+      },
+      {
+        "name": "status",
+        "type": "varchar(16)",
+        "null": "N",
+        "key": "default ACTIVE",
+        "meaning": "ACTIVE/LOCKED/DISABLED."
+      },
+      {
+        "name": "created_at",
+        "type": "datetime2(3)",
+        "null": "N",
+        "key": "server UTC",
+        "meaning": "Thời điểm tạo."
+      },
+      {
+        "name": "security_version",
+        "type": "bigint",
+        "null": "N",
+        "key": "default 1",
+        "meaning": "Tăng khi phải revoke mọi session; không giảm."
+      },
+      {
+        "name": "failed_login_count",
+        "type": "int",
+        "null": "N",
+        "key": "default 0",
+        "meaning": "Bộ đếm độc lập manual lock."
+      },
+      {
+        "name": "failure_window_started_at",
+        "type": "datetime2(3)",
+        "null": "Y",
+        "key": "-",
+        "meaning": "Cửa sổ sai credential."
+      },
+      {
+        "name": "login_throttled_until",
+        "type": "datetime2(3)",
+        "null": "Y",
+        "key": "-",
+        "meaning": "Hạn throttle login mới; không tự unlock Account."
+      },
+      {
+        "name": "must_change_password",
+        "type": "bit",
+        "null": "N",
+        "key": "server",
+        "meaning": "Student password thường false; cấp/reset tạm true."
+      },
+      {
+        "name": "temp_issued_at",
+        "type": "datetime2(3)",
+        "null": "Y",
+        "key": "-",
+        "meaning": "Bắt buộc khi must_change_password=true."
+      },
+      {
+        "name": "temp_expires_at",
+        "type": "datetime2(3)",
+        "null": "Y",
+        "key": "-",
+        "meaning": "issued+24h; cả hai NULL khi credential thường."
+      },
+      {
+        "name": "row_version",
+        "type": "rowversion",
+        "null": "N",
+        "key": "RV",
+        "meaning": "Admin/profile/security update recheck ở service."
+      }
+    ],
+    "StudentProfile": [
+      {
+        "name": "student_id",
+        "type": "int",
+        "null": "N",
+        "key": "PK, ID",
+        "meaning": "Mã học viên hiển thị là ID này."
+      },
+      {
+        "name": "account_id",
+        "type": "int",
+        "null": "N",
+        "key": "FK Account, UQ_StudentProfile_Account",
+        "meaning": "Chỉ Account Student."
+      },
+      {
+        "name": "date_of_birth",
+        "type": "date",
+        "null": "N",
+        "key": "-",
+        "meaning": "Không sau ngày VN hiện tại, không giới hạn tuổi."
+      },
+      {
+        "name": "address",
+        "type": "nvarchar(510)",
+        "null": "Y",
+        "key": "-",
+        "meaning": "≤255 code point, optional-empty→NULL."
+      },
+      {
+        "name": "row_version",
+        "type": "rowversion",
+        "null": "N",
+        "key": "RV",
+        "meaning": "Sửa DOB/address cùng Account name/phone theo W04."
+      }
+    ],
+    "AuthSession": [
+      {
+        "name": "sid",
+        "type": "binary(32)",
+        "null": "N",
+        "key": "PK",
+        "meaning": "Random 256 bit, đề xuất vật lý của khóa phiên ADR-092."
+      },
+      {
+        "name": "account_id",
+        "type": "int",
+        "null": "N",
+        "key": "FK Account",
+        "meaning": "Chủ session."
+      },
+      {
+        "name": "issued_at",
+        "type": "datetime2(3)",
+        "null": "N",
+        "key": "server UTC",
+        "meaning": "Login time."
+      },
+      {
+        "name": "expires_at",
+        "type": "datetime2(3)",
+        "null": "N",
+        "key": "server",
+        "meaning": "Normal issued+2h; restricted min(issued+10min,temp expiry)."
+      },
+      {
+        "name": "last_activity_at",
+        "type": "datetime2(3)",
+        "null": "N",
+        "key": "initial issued_at",
+        "meaning": "Chỉ request nghiệp vụ do user thao tác, cập nhật đơn điệu."
+      },
+      {
+        "name": "revoked_at",
+        "type": "datetime2(3)",
+        "null": "Y",
+        "key": "-",
+        "meaning": "Logout hoặc revocation."
+      },
+      {
+        "name": "security_version",
+        "type": "bigint",
+        "null": "N",
+        "key": "snapshot Account",
+        "meaning": "Phải bằng version hiện tại khi xác thực."
+      },
+      {
+        "name": "session_scope",
+        "type": "varchar(24)",
+        "null": "N",
+        "key": "server",
+        "meaning": "NORMAL/PASSWORD_CHANGE; là phạm vi kỹ thuật, không role mới."
+      },
+      {
+        "name": "row_version",
+        "type": "rowversion",
+        "null": "N",
+        "key": "RV",
+        "meaning": "Không đưa vào form nghiệp vụ; activity update không overwrite revoke."
+      }
+    ],
+    "Course": [
+      {
+        "name": "course_id",
+        "type": "int",
+        "null": "N",
+        "key": "PK, ID",
+        "meaning": "Khóa nội bộ."
+      },
+      {
+        "name": "course_code",
+        "type": "varchar(30)",
+        "null": "N",
+        "key": "UQ_Course_Code",
+        "meaning": "Mã uppercase 1–30; bất biến/không tái dùng."
+      },
+      {
+        "name": "course_name",
+        "type": "nvarchar(300)",
+        "null": "N",
+        "key": "-",
+        "meaning": "1–150 code point; không global unique."
+      },
+      {
+        "name": "base_price",
+        "type": "decimal(18,0)",
+        "null": "N",
+        "key": "-",
+        "meaning": "Dương, VND; không default 0."
+      },
+      {
+        "name": "status",
+        "type": "varchar(16)",
+        "null": "N",
+        "key": "server",
+        "meaning": "ACTIVE/INACTIVE; explicit khi tạo."
+      },
+      {
+        "name": "row_version",
+        "type": "rowversion",
+        "null": "N",
+        "key": "RV",
+        "meaning": "Sửa giá/name/status theo W13."
+      }
+    ],
+    "Band": [
+      {
+        "name": "band_id",
+        "type": "int",
+        "null": "N",
+        "key": "PK, ID",
+        "meaning": "Khóa nội bộ."
+      },
+      {
+        "name": "band_code",
+        "type": "varchar(30)",
+        "null": "N",
+        "key": "UQ_Band_Code",
+        "meaning": "Mã kỹ thuật đề xuất ≤30 ASCII; UI dùng nhãn Band tương ứng."
+      },
+      {
+        "name": "min_score",
+        "type": "decimal(5,2)",
+        "null": "N",
+        "key": "UQ_Band_MinScore",
+        "meaning": "Ngưỡng tối thiểu 0–100; không max_score."
+      },
+      {
+        "name": "row_version",
+        "type": "rowversion",
+        "null": "N",
+        "key": "RV",
+        "meaning": "Freeze toàn bộ set sau completed entry result đầu tiên."
+      }
+    ],
+    "TrainingProgram": [
+      {
+        "name": "program_id",
+        "type": "int",
+        "null": "N",
+        "key": "PK, ID",
+        "meaning": "Khóa nội bộ."
+      },
+      {
+        "name": "course_id",
+        "type": "int",
+        "null": "N",
+        "key": "FK Course",
+        "meaning": "Khóa liên kết; frozen sau first Class."
+      },
+      {
+        "name": "band_id",
+        "type": "int",
+        "null": "N",
+        "key": "FK Band",
+        "meaning": "Band liên kết; frozen sau first Class."
+      },
+      {
+        "name": "program_name",
+        "type": "nvarchar(300)",
+        "null": "N",
+        "key": "-",
+        "meaning": "1–150 code point."
+      },
+      {
+        "name": "status",
+        "type": "varchar(16)",
+        "null": "N",
+        "key": "default DRAFT",
+        "meaning": "DRAFT/ACTIVE/INACTIVE."
+      },
+      {
+        "name": "expected_lesson_count",
+        "type": "int",
+        "null": "N",
+        "key": "-",
+        "meaning": ">0, chỉ LESSON, frozen."
+      },
+      {
+        "name": "row_version",
+        "type": "rowversion",
+        "null": "N",
+        "key": "RV",
+        "meaning": "Config/status transaction."
+      }
+    ],
+    "ScoreComponentConfig": [
+      {
+        "name": "component_id",
+        "type": "int",
+        "null": "N",
+        "key": "PK, ID",
+        "meaning": "Khóa component."
+      },
+      {
+        "name": "program_id",
+        "type": "int",
+        "null": "N",
+        "key": "FK TrainingProgram",
+        "meaning": "Parent configuration."
+      },
+      {
+        "name": "component_name",
+        "type": "nvarchar(200)",
+        "null": "N",
+        "key": "UQ trong program, CI_AS_SC",
+        "meaning": "1–100 code point; không phân biệt case, có phân biệt dấu."
+      },
+      {
+        "name": "weight",
+        "type": "decimal(5,2)",
+        "null": "N",
+        "key": "-",
+        "meaning": ">0 và ≤100."
+      },
+      {
+        "name": "kind",
+        "type": "varchar(16)",
+        "null": "N",
+        "key": "-",
+        "meaning": "GENERAL/LESSON/FINAL_EXAM."
+      },
+      {
+        "name": "row_version",
+        "type": "rowversion",
+        "null": "N",
+        "key": "RV",
+        "meaning": "Config edit trước freeze."
+      }
+    ],
+    "Registration": [
+      {
+        "name": "registration_id",
+        "type": "int",
+        "null": "N",
+        "key": "PK, ID",
+        "meaning": "Một lượt đăng ký/học, giữ lịch sử."
+      },
+      {
+        "name": "student_id",
+        "type": "int",
+        "null": "N",
+        "key": "FK StudentProfile",
+        "meaning": "Chủ hồ sơ."
+      },
+      {
+        "name": "course_id",
+        "type": "int",
+        "null": "N",
+        "key": "FK Course",
+        "meaning": "Bất biến từ lúc tạo."
+      },
+      {
+        "name": "status",
+        "type": "varchar(16)",
+        "null": "N",
+        "key": "default PENDING, đường chuyển duyệt ADR-133",
+        "meaning": "Enum đã chốt, không COMPLETED."
+      },
+      {
+        "name": "is_unfinished",
+        "type": "bit",
+        "null": "N",
+        "key": "initial 1, server-owned",
+        "meaning": "Predicate ADR-022/090; filtered UQ."
+      },
+      {
+        "name": "created_at",
+        "type": "datetime2(3)",
+        "null": "N",
+        "key": "server UTC",
+        "meaning": "Khởi tạo."
+      },
+      {
+        "name": "admission_confirmed_at",
+        "type": "datetime2(3)",
+        "null": "Y",
+        "key": "-",
+        "meaning": "Khi Student-own CONFIRMED; actor trong audit/chủ sở hữu bất biến."
+      },
+      {
+        "name": "admission_approved_by",
+        "type": "int",
+        "null": "Y",
+        "key": "FK Account",
+        "meaning": "Admissions duyệt."
+      },
+      {
+        "name": "admission_approved_at",
+        "type": "datetime2(3)",
+        "null": "Y",
+        "key": "-",
+        "meaning": "Khi ADMITTED, giữ sau hủy."
+      },
+      {
+        "name": "rejected_by",
+        "type": "int",
+        "null": "Y",
+        "key": "FK Account",
+        "meaning": "Admissions; bundle bắt buộc khi REJECTED."
+      },
+      {
+        "name": "rejected_at",
+        "type": "datetime2(3)",
+        "null": "Y",
+        "key": "-",
+        "meaning": "UTC."
+      },
+      {
+        "name": "rejection_reason",
+        "type": "nvarchar(2000)",
+        "null": "Y",
+        "key": "-",
+        "meaning": "1–1000 code point khi REJECTED."
+      },
+      {
+        "name": "rejected_from_status",
+        "type": "varchar(16)",
+        "null": "Y",
+        "key": "-",
+        "meaning": "CONFIRMED."
+      },
+      {
+        "name": "rejection_operation_id",
+        "type": "uniqueidentifier",
+        "null": "Y",
+        "key": "-",
+        "meaning": "Cùng audit rejection."
+      },
+      {
+        "name": "cancelled_by",
+        "type": "int",
+        "null": "Y",
+        "key": "FK Account",
+        "meaning": "Student-own hoặc Admissions theo guard."
+      },
+      {
+        "name": "cancelled_at",
+        "type": "datetime2(3)",
+        "null": "Y",
+        "key": "-",
+        "meaning": "UTC."
+      },
+      {
+        "name": "cancellation_reason",
+        "type": "nvarchar(2000)",
+        "null": "Y",
+        "key": "-",
+        "meaning": "Bắt buộc Admissions cancellation; không bắt Student nhập lý do mới."
+      },
+      {
+        "name": "cancelled_from_status",
+        "type": "varchar(16)",
+        "null": "Y",
+        "key": "-",
+        "meaning": "State trước khi hủy."
+      },
+      {
+        "name": "cancellation_operation_id",
+        "type": "uniqueidentifier",
+        "null": "Y",
+        "key": "-",
+        "meaning": "Cùng dependent Invoice/booking/audit."
+      },
+      {
+        "name": "row_version",
+        "type": "rowversion",
+        "null": "N",
+        "key": "RV",
+        "meaning": "Aggregate state/config result races."
+      }
+    ],
+    "EntryTestSession": [
+      {
+        "name": "session_id",
+        "type": "int",
+        "null": "N",
+        "key": "PK, ID",
+        "meaning": "Khóa ca."
+      },
+      {
+        "name": "start_at",
+        "type": "datetime2(3)",
+        "null": "N",
+        "key": "-",
+        "meaning": "UTC từ ngày/giờ VN theo phút."
+      },
+      {
+        "name": "end_at",
+        "type": "datetime2(3)",
+        "null": "N",
+        "key": "-",
+        "meaning": "Cùng ngày VN/start<end."
+      },
+      {
+        "name": "room",
+        "type": "varchar(30)",
+        "null": "N",
+        "key": "-",
+        "meaning": "Mã phòng chuẩn hóa."
+      },
+      {
+        "name": "capacity",
+        "type": "int",
+        "null": "N",
+        "key": "-",
+        "meaning": "1–20."
+      },
+      {
+        "name": "grader_id",
+        "type": "int",
+        "null": "N",
+        "key": "FK Account",
+        "meaning": "Teacher hiện phân công; Account blocked không tự mất assignment."
+      },
+      {
+        "name": "status",
+        "type": "varchar(16)",
+        "null": "N",
+        "key": "default CLOSED",
+        "meaning": "OPEN/CLOSED/CANCELLED."
+      },
+      {
+        "name": "cancelled_by",
+        "type": "int",
+        "null": "Y",
+        "key": "FK Account",
+        "meaning": "AcademicAffairs khi hủy."
+      },
+      {
+        "name": "cancelled_at",
+        "type": "datetime2(3)",
+        "null": "Y",
+        "key": "-",
+        "meaning": "UTC."
+      },
+      {
+        "name": "cancellation_reason",
+        "type": "nvarchar(2000)",
+        "null": "Y",
+        "key": "-",
+        "meaning": "Mandatory 1–1000."
+      },
+      {
+        "name": "cancellation_operation_id",
+        "type": "uniqueidentifier",
+        "null": "Y",
+        "key": "-",
+        "meaning": "Parent cancellation/audit."
+      },
+      {
+        "name": "row_version",
+        "type": "rowversion",
+        "null": "N",
+        "key": "RV",
+        "meaning": "Open/close/cancel/edit."
+      }
+    ],
+    "EntryTestAttempt": [
+      {
+        "name": "attempt_id",
+        "type": "int",
+        "null": "N",
+        "key": "PK, ID",
+        "meaning": "Logical attempt."
+      },
+      {
+        "name": "registration_id",
+        "type": "int",
+        "null": "N",
+        "key": "FK Registration",
+        "meaning": "Parent hồ sơ."
+      },
+      {
+        "name": "attempt_number",
+        "type": "int",
+        "null": "N",
+        "key": "UQ với registration_id",
+        "meaning": "1 hoặc 2."
+      },
+      {
+        "name": "score",
+        "type": "decimal(5,2)",
+        "null": "Y",
+        "key": "-",
+        "meaning": "Thi chưa chấm/vắng: NULL; 0 khi thi được nhập 0."
+      },
+      {
+        "name": "graded_by",
+        "type": "int",
+        "null": "Y",
+        "key": "FK Account",
+        "meaning": "Original score Teacher; không đổi khi correction."
+      },
+      {
+        "name": "graded_at",
+        "type": "datetime2(3)",
+        "null": "Y",
+        "key": "-",
+        "meaning": "Initial grading time; correction giữ trong audit."
+      },
+      {
+        "name": "completed_booking_id",
+        "type": "int",
+        "null": "Y",
+        "key": "FK composite EntryTestBooking",
+        "meaning": "Booking COMPLETED của đúng attempt."
+      },
+      {
+        "name": "row_version",
+        "type": "rowversion",
+        "null": "N",
+        "key": "RV",
+        "meaning": "Initial grade/correction."
+      }
+    ],
+    "EntryTestBooking": [
+      {
+        "name": "booking_id",
+        "type": "int",
+        "null": "N",
+        "key": "PK, ID",
+        "meaning": "Mỗi appointment riêng."
+      },
+      {
+        "name": "attempt_id",
+        "type": "int",
+        "null": "N",
+        "key": "FK EntryTestAttempt",
+        "meaning": "Logical attempt, immutable."
+      },
+      {
+        "name": "session_id",
+        "type": "int",
+        "null": "N",
+        "key": "FK EntryTestSession",
+        "meaning": "Ca cụ thể, immutable; đổi ca tạo row mới."
+      },
+      {
+        "name": "status",
+        "type": "varchar(16)",
+        "null": "N",
+        "key": "default SCHEDULED",
+        "meaning": "SCHEDULED/COMPLETED/ABSENT/CANCELLED."
+      },
+      {
+        "name": "booked_at",
+        "type": "datetime2(3)",
+        "null": "N",
+        "key": "server UTC",
+        "meaning": "Lúc đặt."
+      },
+      {
+        "name": "absent_by",
+        "type": "int",
+        "null": "Y",
+        "key": "FK Account",
+        "meaning": "Assigned Teacher xác nhận."
+      },
+      {
+        "name": "absent_at",
+        "type": "datetime2(3)",
+        "null": "Y",
+        "key": "-",
+        "meaning": "Sau end, không suy từ thiếu điểm."
+      },
+      {
+        "name": "absent_operation_id",
+        "type": "uniqueidentifier",
+        "null": "Y",
+        "key": "-",
+        "meaning": "Nhóm audit."
+      },
+      {
+        "name": "cancelled_by",
+        "type": "int",
+        "null": "Y",
+        "key": "FK Account",
+        "meaning": "Actor hủy/đổi hoặc parent cancellation."
+      },
+      {
+        "name": "cancelled_at",
+        "type": "datetime2(3)",
+        "null": "Y",
+        "key": "-",
+        "meaning": "UTC."
+      },
+      {
+        "name": "cancellation_reason",
+        "type": "nvarchar(2000)",
+        "null": "Y",
+        "key": "-",
+        "meaning": "Parent reason khi có; Student booking cancel không bắt thêm lý do."
+      },
+      {
+        "name": "cancelled_from_status",
+        "type": "varchar(16)",
+        "null": "Y",
+        "key": "-",
+        "meaning": "SCHEDULED cho đường hợp lệ hiện tại."
+      },
+      {
+        "name": "cancellation_operation_id",
+        "type": "uniqueidentifier",
+        "null": "Y",
+        "key": "-",
+        "meaning": "Parent Registration/session hoặc booking-change operation."
+      },
+      {
+        "name": "row_version",
+        "type": "rowversion",
+        "null": "N",
+        "key": "RV",
+        "meaning": "State mutation."
+      }
+    ],
+    "BandAssignment": [
+      {
+        "name": "band_assignment_id",
+        "type": "int",
+        "null": "N",
+        "key": "PK, ID",
+        "meaning": "Current best/Band projection được lưu."
+      },
+      {
+        "name": "registration_id",
+        "type": "int",
+        "null": "N",
+        "key": "FK Registration, UQ",
+        "meaning": "Một assignment Band/hồ sơ."
+      },
+      {
+        "name": "best_attempt_id",
+        "type": "int",
+        "null": "N",
+        "key": "FK composite EntryTestAttempt",
+        "meaning": "(best_attempt_id,registration_id) cùng hồ sơ."
+      },
+      {
+        "name": "band_id",
+        "type": "int",
+        "null": "N",
+        "key": "FK Band",
+        "meaning": "Kết quả ngưỡng lớn nhất≤best score."
+      },
+      {
+        "name": "assigned_at",
+        "type": "datetime2(3)",
+        "null": "N",
+        "key": "server UTC",
+        "meaning": "Lần recalculation gần nhất; history trong AuditLog."
+      },
+      {
+        "name": "row_version",
+        "type": "rowversion",
+        "null": "N",
+        "key": "RV",
+        "meaning": "Recalculate/confirmation race."
+      }
+    ],
+    "Class": [
+      {
+        "name": "class_id",
+        "type": "int",
+        "null": "N",
+        "key": "PK, ID",
+        "meaning": "Khóa lớp."
+      },
+      {
+        "name": "program_id",
+        "type": "int",
+        "null": "N",
+        "key": "FK TrainingProgram",
+        "meaning": "Bất biến; first Class khóa cấu hình program."
+      },
+      {
+        "name": "teacher_id",
+        "type": "int",
+        "null": "N",
+        "key": "FK Account",
+        "meaning": "Teacher hiện tại; giữ assignment khi Account blocked."
+      },
+      {
+        "name": "class_code",
+        "type": "varchar(30)",
+        "null": "N",
+        "key": "UQ_Class_Code",
+        "meaning": "ASCII uppercase, bất biến kể cả CANCELLED."
+      },
+      {
+        "name": "status",
+        "type": "varchar(16)",
+        "null": "N",
+        "key": "default PLANNED",
+        "meaning": "PLANNED/OPEN/ONGOING/COMPLETED/CANCELLED."
+      },
+      {
+        "name": "max_size",
+        "type": "int",
+        "null": "N",
+        "key": "-",
+        "meaning": "1–15; không thấp hơn placed count."
+      },
+      {
+        "name": "created_at",
+        "type": "datetime2(3)",
+        "null": "N",
+        "key": "server UTC",
+        "meaning": "Danh sách/trace tạo lớp."
+      },
+      {
+        "name": "cancelled_by",
+        "type": "int",
+        "null": "Y",
+        "key": "FK Account",
+        "meaning": "AcademicAffairs."
+      },
+      {
+        "name": "cancelled_at",
+        "type": "datetime2(3)",
+        "null": "Y",
+        "key": "-",
+        "meaning": "UTC."
+      },
+      {
+        "name": "cancellation_reason",
+        "type": "nvarchar(2000)",
+        "null": "Y",
+        "key": "-",
+        "meaning": "Mandatory 1–1000."
+      },
+      {
+        "name": "cancellation_operation_id",
+        "type": "uniqueidentifier",
+        "null": "Y",
+        "key": "-",
+        "meaning": "Audit class cancellation."
+      },
+      {
+        "name": "row_version",
+        "type": "rowversion",
+        "null": "N",
+        "key": "RV",
+        "meaning": "State/capacity/Teacher mutation."
+      }
+    ],
+    "StudentClassAssignment": [
+      {
+        "name": "class_assignment_id",
+        "type": "int",
+        "null": "N",
+        "key": "PK, ID",
+        "meaning": "Một lượt học trong lớp."
+      },
+      {
+        "name": "class_id",
+        "type": "int",
+        "null": "N",
+        "key": "FK Class",
+        "meaning": "Lớp được xếp, bất biến."
+      },
+      {
+        "name": "registration_id",
+        "type": "int",
+        "null": "N",
+        "key": "FK Registration, UQ",
+        "meaning": "Tối đa một lớp/hồ sơ."
+      },
+      {
+        "name": "assigned_by",
+        "type": "int",
+        "null": "N",
+        "key": "FK Account",
+        "meaning": "AcademicAffairs, đề xuất trường provenance."
+      },
+      {
+        "name": "assigned_at",
+        "type": "datetime2(3)",
+        "null": "N",
+        "key": "server UTC",
+        "meaning": "Khi xếp."
+      }
+    ],
+    "Schedule": [
+      {
+        "name": "schedule_id",
+        "type": "int",
+        "null": "N",
+        "key": "PK, ID",
+        "meaning": "Một occurrence cụ thể, kể cả history."
+      },
+      {
+        "name": "class_id",
+        "type": "int",
+        "null": "N",
+        "key": "FK Class",
+        "meaning": "Parent lớp."
+      },
+      {
+        "name": "session_type",
+        "type": "varchar(16)",
+        "null": "N",
+        "key": "-",
+        "meaning": "LESSON/FINAL_EXAM."
+      },
+      {
+        "name": "obligation_key",
+        "type": "uniqueidentifier",
+        "null": "N",
+        "key": "server",
+        "meaning": "Root và mọi replacement cùng nghĩa vụ/cùng Class/type."
+      },
+      {
+        "name": "replaces_schedule_id",
+        "type": "int",
+        "null": "Y",
+        "key": "FK Schedule, filtered UQ khi có",
+        "meaning": "NULL ở root; một predecessor có tối đa một successor."
+      },
+      {
+        "name": "is_current",
+        "type": "bit",
+        "null": "N",
+        "key": "initial 1, server-owned",
+        "meaning": "Projection đã duyệt ADR-131/134; filtered unique/current query."
+      },
+      {
+        "name": "session_date",
+        "type": "date",
+        "null": "N",
+        "key": "-",
+        "meaning": "Ngày VN."
+      },
+      {
+        "name": "start_time",
+        "type": "time(0)",
+        "null": "N",
+        "key": "-",
+        "meaning": "Giây=0, start<end."
+      },
+      {
+        "name": "end_time",
+        "type": "time(0)",
+        "null": "N",
+        "key": "-",
+        "meaning": "Cùng session_date."
+      },
+      {
+        "name": "room",
+        "type": "varchar(30)",
+        "null": "N",
+        "key": "-",
+        "meaning": "Mã phòng chuẩn hóa."
+      },
+      {
+        "name": "occurrence_state",
+        "type": "varchar(16)",
+        "null": "N",
+        "key": "default PLANNED",
+        "meaning": "PLANNED/HELD/NOT_HELD."
+      },
+      {
+        "name": "held_by",
+        "type": "int",
+        "null": "Y",
+        "key": "FK Account",
+        "meaning": "AcademicAffairs, khi HELD."
+      },
+      {
+        "name": "held_at",
+        "type": "datetime2(3)",
+        "null": "Y",
+        "key": "-",
+        "meaning": "Sau scheduled end, Class ONGOING."
+      },
+      {
+        "name": "not_held_by",
+        "type": "int",
+        "null": "Y",
+        "key": "FK Account",
+        "meaning": "AcademicAffairs khi NOT_HELD."
+      },
+      {
+        "name": "not_held_at",
+        "type": "datetime2(3)",
+        "null": "Y",
+        "key": "-",
+        "meaning": "Tại/sau scheduled start."
+      },
+      {
+        "name": "not_held_reason",
+        "type": "nvarchar(2000)",
+        "null": "Y",
+        "key": "-",
+        "meaning": "Mandatory 1–1000."
+      },
+      {
+        "name": "replacement_operation_id",
+        "type": "uniqueidentifier",
+        "null": "Y",
+        "key": "-",
+        "meaning": "Cùng old/new replacement/audit."
+      },
+      {
+        "name": "row_version",
+        "type": "rowversion",
+        "null": "N",
+        "key": "RV",
+        "meaning": "Move/replacement/HELD."
+      }
+    ],
+    "Attendance": [
+      {
+        "name": "attendance_id",
+        "type": "int",
+        "null": "N",
+        "key": "PK, ID",
+        "meaning": "Record đã chủ động ghi."
+      },
+      {
+        "name": "schedule_id",
+        "type": "int",
+        "null": "N",
+        "key": "FK Schedule",
+        "meaning": "Current LESSON của cùng Class."
+      },
+      {
+        "name": "class_assignment_id",
+        "type": "int",
+        "null": "N",
+        "key": "FK StudentClassAssignment",
+        "meaning": "Student của lớp."
+      },
+      {
+        "name": "present",
+        "type": "bit",
+        "null": "N",
+        "key": "Không default",
+        "meaning": "1=Có mặt, 0=Vắng; chưa nhập=không row."
+      },
+      {
+        "name": "entered_by",
+        "type": "int",
+        "null": "N",
+        "key": "FK Account",
+        "meaning": "Teacher hiện assigned, provenance duyệt ADR-135."
+      },
+      {
+        "name": "entered_at",
+        "type": "datetime2(3)",
+        "null": "N",
+        "key": "server UTC",
+        "meaning": "Lần ghi gần nhất, provenance duyệt ADR-135."
+      },
+      {
+        "name": "row_version",
+        "type": "rowversion",
+        "null": "N",
+        "key": "RV",
+        "meaning": "Batch delta theo một LESSON."
+      }
+    ],
+    "Score": [
+      {
+        "name": "score_id",
+        "type": "int",
+        "null": "N",
+        "key": "PK, ID",
+        "meaning": "Một Score/học viên/component."
+      },
+      {
+        "name": "class_assignment_id",
+        "type": "int",
+        "null": "N",
+        "key": "FK StudentClassAssignment",
+        "meaning": "Lượt học."
+      },
+      {
+        "name": "component_id",
+        "type": "int",
+        "null": "N",
+        "key": "FK ScoreComponentConfig",
+        "meaning": "Component thuộc Class.program."
+      },
+      {
+        "name": "schedule_id",
+        "type": "int",
+        "null": "Y",
+        "key": "FK Schedule",
+        "meaning": "NULL chỉ GENERAL; LESSON/FINAL_EXAM bắt buộc."
+      },
+      {
+        "name": "score_value",
+        "type": "decimal(5,2)",
+        "null": "N",
+        "key": "Không default",
+        "meaning": "0–100 đã validate≤2 decimals."
+      },
+      {
+        "name": "entered_by",
+        "type": "int",
+        "null": "N",
+        "key": "FK Account",
+        "meaning": "Current Teacher."
+      },
+      {
+        "name": "entered_at",
+        "type": "datetime2(3)",
+        "null": "N",
+        "key": "server UTC",
+        "meaning": "Lần lưu gần nhất; history đã bắt buộc trong audit."
+      },
+      {
+        "name": "row_version",
+        "type": "rowversion",
+        "null": "N",
+        "key": "RV",
+        "meaning": "Per-Student draft all-or-none."
+      }
+    ],
+    "GradeReport": [
+      {
+        "name": "report_id",
+        "type": "int",
+        "null": "N",
+        "key": "PK, ID",
+        "meaning": "Bảng điểm/lượt học."
+      },
+      {
+        "name": "class_assignment_id",
+        "type": "int",
+        "null": "N",
+        "key": "FK StudentClassAssignment, UQ",
+        "meaning": "Một report/assignment."
+      },
+      {
+        "name": "final_score",
+        "type": "decimal(5,2)",
+        "null": "Y",
+        "key": "-",
+        "meaning": "Chỉ có khi FINALIZED; draft/submitted total là tính toán."
+      },
+      {
+        "name": "status",
+        "type": "varchar(16)",
+        "null": "N",
+        "key": "default DRAFT",
+        "meaning": "DRAFT/SUBMITTED/RETURNED/FINALIZED."
+      },
+      {
+        "name": "teacher_comment",
+        "type": "nvarchar(2000)",
+        "null": "Y",
+        "key": "-",
+        "meaning": "≤1000 code point, optional-empty→NULL."
+      },
+      {
+        "name": "submitted_by",
+        "type": "int",
+        "null": "Y",
+        "key": "FK Account",
+        "meaning": "Teacher gửi/gửi lại gần nhất."
+      },
+      {
+        "name": "submitted_at",
+        "type": "datetime2(3)",
+        "null": "Y",
+        "key": "-",
+        "meaning": "Lần gửi gần nhất."
+      },
+      {
+        "name": "submitted_operation_id",
+        "type": "uniqueidentifier",
+        "null": "Y",
+        "key": "-",
+        "meaning": "Cùng mọi report của Class trong lần gửi."
+      },
+      {
+        "name": "reviewed_by",
+        "type": "int",
+        "null": "Y",
+        "key": "FK Account",
+        "meaning": "AcademicAffairs trả/chốt gần nhất."
+      },
+      {
+        "name": "reviewed_at",
+        "type": "datetime2(3)",
+        "null": "Y",
+        "key": "-",
+        "meaning": "Lần review gần nhất."
+      },
+      {
+        "name": "review_operation_id",
+        "type": "uniqueidentifier",
+        "null": "Y",
+        "key": "-",
+        "meaning": "Cùng mọi report khi return/finalize."
+      },
+      {
+        "name": "returned_reason",
+        "type": "nvarchar(2000)",
+        "null": "Y",
+        "key": "-",
+        "meaning": "Mandatory khi RETURNED; latest reason có thể giữ sau resubmit."
+      },
+      {
+        "name": "finalized_at",
+        "type": "datetime2(3)",
+        "null": "Y",
+        "key": "-",
+        "meaning": "Khi FINALIZED, bằng thời điểm review chốt."
+      },
+      {
+        "name": "row_version",
+        "type": "rowversion",
+        "null": "N",
+        "key": "RV",
+        "meaning": "Draft/comment/whole-Class workflow."
+      }
+    ],
+    "Invoice": [
+      {
+        "name": "invoice_id",
+        "type": "int",
+        "null": "N",
+        "key": "PK, ID",
+        "meaning": "Khóa Invoice."
+      },
+      {
+        "name": "invoice_number",
+        "type": "varchar(16)",
+        "null": "N",
+        "key": "UQ_Invoice_Number",
+        "meaning": "HD-YYYY-NNNNNNNN, server cấp, không tái dùng."
+      },
+      {
+        "name": "registration_id",
+        "type": "int",
+        "null": "N",
+        "key": "FK Registration, UQ",
+        "meaning": "Chỉ tạo cùng admission approval."
+      },
+      {
+        "name": "amount",
+        "type": "decimal(18,0)",
+        "null": "N",
+        "key": "-",
+        "meaning": "Course price snapshot dương bất biến."
+      },
+      {
+        "name": "issued_at",
+        "type": "datetime2(3)",
+        "null": "N",
+        "key": "server UTC",
+        "meaning": "Issue time, không backdate."
+      },
+      {
+        "name": "due_date",
+        "type": "date",
+        "null": "N",
+        "key": "server",
+        "meaning": "Ngày VN issued+7 calendar days."
+      },
+      {
+        "name": "status",
+        "type": "varchar(16)",
+        "null": "N",
+        "key": "default UNPAID",
+        "meaning": "UNPAID/PAID/CANCELLED, không OVERDUE."
+      },
+      {
+        "name": "cancelled_by",
+        "type": "int",
+        "null": "Y",
+        "key": "FK Account",
+        "meaning": "Actor cancellation parent Registration."
+      },
+      {
+        "name": "cancelled_at",
+        "type": "datetime2(3)",
+        "null": "Y",
+        "key": "-",
+        "meaning": "UTC."
+      },
+      {
+        "name": "cancellation_reason",
+        "type": "nvarchar(2000)",
+        "null": "Y",
+        "key": "-",
+        "meaning": "Parent reason được yêu cầu tại workflow."
+      },
+      {
+        "name": "cancelled_from_status",
+        "type": "varchar(16)",
+        "null": "Y",
+        "key": "-",
+        "meaning": "UNPAID."
+      },
+      {
+        "name": "cancellation_operation_id",
+        "type": "uniqueidentifier",
+        "null": "Y",
+        "key": "-",
+        "meaning": "Chung Registration/booking/audit."
+      },
+      {
+        "name": "row_version",
+        "type": "rowversion",
+        "null": "N",
+        "key": "RV",
+        "meaning": "Payment vs cancellation."
+      }
+    ],
+    "Payment": [
+      {
+        "name": "payment_id",
+        "type": "int",
+        "null": "N",
+        "key": "PK, ID",
+        "meaning": "Payment đã xác nhận."
+      },
+      {
+        "name": "invoice_id",
+        "type": "int",
+        "null": "N",
+        "key": "FK Invoice, UQ",
+        "meaning": "Tối đa một Payment/Invoice."
+      },
+      {
+        "name": "amount_paid",
+        "type": "decimal(18,0)",
+        "null": "N",
+        "key": "-",
+        "meaning": "Bằng Invoice.amount; bất biến."
+      },
+      {
+        "name": "method",
+        "type": "varchar(16)",
+        "null": "N",
+        "key": "-",
+        "meaning": "CASH/TRANSFER."
+      },
+      {
+        "name": "transaction_reference",
+        "type": "nvarchar(200)",
+        "null": "Y",
+        "key": "-",
+        "meaning": "≤100 code point; bắt buộc TRANSFER, không unique."
+      },
+      {
+        "name": "confirmed_by",
+        "type": "int",
+        "null": "N",
+        "key": "FK Account",
+        "meaning": "Accountant xác nhận."
+      },
+      {
+        "name": "paid_at",
+        "type": "datetime2(3)",
+        "null": "N",
+        "key": "server UTC",
+        "meaning": "Confirmation time bất biến, không ngày nhận tiền riêng."
+      },
+      {
+        "name": "last_corrected_by",
+        "type": "int",
+        "null": "Y",
+        "key": "FK Account",
+        "meaning": "Accountant sửa method/reference gần nhất."
+      },
+      {
+        "name": "last_corrected_at",
+        "type": "datetime2(3)",
+        "null": "Y",
+        "key": "-",
+        "meaning": "UTC correction."
+      },
+      {
+        "name": "last_correction_reason",
+        "type": "nvarchar(2000)",
+        "null": "Y",
+        "key": "-",
+        "meaning": "Mandatory 1–1000 khi correction."
+      },
+      {
+        "name": "row_version",
+        "type": "rowversion",
+        "null": "N",
+        "key": "RV",
+        "meaning": "Metadata correction conflict."
+      }
+    ],
+    "AuditLog": [
+      {
+        "name": "audit_id",
+        "type": "int",
+        "null": "N",
+        "key": "PK, ID",
+        "meaning": "Event; không aggregate whole-Class thành một event mất chi tiết."
+      },
+      {
+        "name": "actor_account_id",
+        "type": "int",
+        "null": "Y",
+        "key": "FK Account",
+        "meaning": "NULL chỉ khi chưa xác thực."
+      },
+      {
+        "name": "action",
+        "type": "varchar(80)",
+        "null": "N",
+        "key": "-",
+        "meaning": "Mã action allowlist, giới hạn kỹ thuật đề xuất."
+      },
+      {
+        "name": "entity_type",
+        "type": "varchar(64)",
+        "null": "N",
+        "key": "-",
+        "meaning": "Loại đối tượng allowlist."
+      },
+      {
+        "name": "entity_id",
+        "type": "varchar(100)",
+        "null": "Y",
+        "key": "-",
+        "meaning": "int/UUID/session reference khi hợp lệ; NULL nếu chưa có đối tượng xác minh."
+      },
+      {
+        "name": "result",
+        "type": "varchar(16)",
+        "null": "N",
+        "key": "-",
+        "meaning": "SUCCESS/FAILURE đề xuất; denial/throttle phân biệt bằng action/details."
+      },
+      {
+        "name": "details",
+        "type": "nvarchar(max)",
+        "null": "Y",
+        "key": "CK ISJSON khi có",
+        "meaning": "Structured allowlist old/new/reason/prior-state; không raw payload."
+      },
+      {
+        "name": "occurred_at",
+        "type": "datetime2(3)",
+        "null": "N",
+        "key": "server UTC",
+        "meaning": "Event time."
+      },
+      {
+        "name": "ip_address",
+        "type": "varchar(45)",
+        "null": "Y",
+        "key": "-",
+        "meaning": "IP thực sự cần cho security event, proxy tin cậy theo E04."
+      },
+      {
+        "name": "operation_id",
+        "type": "uniqueidentifier",
+        "null": "N",
+        "key": "server",
+        "meaning": "Nhóm parent/dependent hoặc một security request."
+      },
+      {
+        "name": "audit_category",
+        "type": "varchar(16)",
+        "null": "N",
+        "key": "-",
+        "meaning": "MANDATORY/SECURITY, kỹ thuật retention."
+      },
+      {
+        "name": "security_expires_at",
+        "type": "datetime2(3)",
+        "null": "Y",
+        "key": "-",
+        "meaning": "SECURITY→occurred+90d; MANDATORY→NULL."
+      },
+      {
+        "name": "ip_expires_at",
+        "type": "datetime2(3)",
+        "null": "Y",
+        "key": "-",
+        "meaning": "Có IP→occurred+90d; không IP→NULL."
+      }
+    ]
+  },
+  "foreign_keys": [
+    {
+      "number": 1,
+      "child": "Account",
+      "columns": [
+        "role_id"
+      ],
+      "parent": "Role",
+      "parent_columns": [
+        "role_id"
+      ],
+      "body_index": 429
+    },
+    {
+      "number": 2,
+      "child": "StudentProfile",
+      "columns": [
+        "account_id"
+      ],
+      "parent": "Account",
+      "parent_columns": [
+        "account_id"
+      ],
+      "body_index": 439
+    },
+    {
+      "number": 3,
+      "child": "AuthSession",
+      "columns": [
+        "account_id"
+      ],
+      "parent": "Account",
+      "parent_columns": [
+        "account_id"
+      ],
+      "body_index": 450
+    },
+    {
+      "number": 4,
+      "child": "TrainingProgram",
+      "columns": [
+        "course_id"
+      ],
+      "parent": "Course",
+      "parent_columns": [
+        "course_id"
+      ],
+      "body_index": 461
+    },
+    {
+      "number": 5,
+      "child": "TrainingProgram",
+      "columns": [
+        "band_id"
+      ],
+      "parent": "Band",
+      "parent_columns": [
+        "band_id"
+      ],
+      "body_index": 472
+    },
+    {
+      "number": 6,
+      "child": "ScoreComponentConfig",
+      "columns": [
+        "program_id"
+      ],
+      "parent": "TrainingProgram",
+      "parent_columns": [
+        "program_id"
+      ],
+      "body_index": 483
+    },
+    {
+      "number": 7,
+      "child": "Registration",
+      "columns": [
+        "student_id"
+      ],
+      "parent": "StudentProfile",
+      "parent_columns": [
+        "student_id"
+      ],
+      "body_index": 494
+    },
+    {
+      "number": 8,
+      "child": "Registration",
+      "columns": [
+        "course_id"
+      ],
+      "parent": "Course",
+      "parent_columns": [
+        "course_id"
+      ],
+      "body_index": 505
+    },
+    {
+      "number": 9,
+      "child": "Registration",
+      "columns": [
+        "admission_approved_by"
+      ],
+      "parent": "Account",
+      "parent_columns": [
+        "account_id"
+      ],
+      "body_index": 516
+    },
+    {
+      "number": 10,
+      "child": "Registration",
+      "columns": [
+        "rejected_by"
+      ],
+      "parent": "Account",
+      "parent_columns": [
+        "account_id"
+      ],
+      "body_index": 527
+    },
+    {
+      "number": 11,
+      "child": "Registration",
+      "columns": [
+        "cancelled_by"
+      ],
+      "parent": "Account",
+      "parent_columns": [
+        "account_id"
+      ],
+      "body_index": 538
+    },
+    {
+      "number": 12,
+      "child": "EntryTestSession",
+      "columns": [
+        "grader_id"
+      ],
+      "parent": "Account",
+      "parent_columns": [
+        "account_id"
+      ],
+      "body_index": 549
+    },
+    {
+      "number": 13,
+      "child": "EntryTestSession",
+      "columns": [
+        "cancelled_by"
+      ],
+      "parent": "Account",
+      "parent_columns": [
+        "account_id"
+      ],
+      "body_index": 560
+    },
+    {
+      "number": 14,
+      "child": "EntryTestAttempt",
+      "columns": [
+        "registration_id"
+      ],
+      "parent": "Registration",
+      "parent_columns": [
+        "registration_id"
+      ],
+      "body_index": 571
+    },
+    {
+      "number": 15,
+      "child": "EntryTestAttempt",
+      "columns": [
+        "graded_by"
+      ],
+      "parent": "Account",
+      "parent_columns": [
+        "account_id"
+      ],
+      "body_index": 582
+    },
+    {
+      "number": 16,
+      "child": "EntryTestAttempt",
+      "columns": [
+        "completed_booking_id",
+        "attempt_id"
+      ],
+      "parent": "EntryTestBooking",
+      "parent_columns": [
+        "booking_id",
+        "attempt_id"
+      ],
+      "body_index": 593
+    },
+    {
+      "number": 17,
+      "child": "EntryTestBooking",
+      "columns": [
+        "attempt_id"
+      ],
+      "parent": "EntryTestAttempt",
+      "parent_columns": [
+        "attempt_id"
+      ],
+      "body_index": 605
+    },
+    {
+      "number": 18,
+      "child": "EntryTestBooking",
+      "columns": [
+        "session_id"
+      ],
+      "parent": "EntryTestSession",
+      "parent_columns": [
+        "session_id"
+      ],
+      "body_index": 616
+    },
+    {
+      "number": 19,
+      "child": "EntryTestBooking",
+      "columns": [
+        "absent_by"
+      ],
+      "parent": "Account",
+      "parent_columns": [
+        "account_id"
+      ],
+      "body_index": 628
+    },
+    {
+      "number": 20,
+      "child": "EntryTestBooking",
+      "columns": [
+        "cancelled_by"
+      ],
+      "parent": "Account",
+      "parent_columns": [
+        "account_id"
+      ],
+      "body_index": 639
+    },
+    {
+      "number": 21,
+      "child": "BandAssignment",
+      "columns": [
+        "registration_id"
+      ],
+      "parent": "Registration",
+      "parent_columns": [
+        "registration_id"
+      ],
+      "body_index": 650
+    },
+    {
+      "number": 22,
+      "child": "BandAssignment",
+      "columns": [
+        "best_attempt_id",
+        "registration_id"
+      ],
+      "parent": "EntryTestAttempt",
+      "parent_columns": [
+        "attempt_id",
+        "registration_id"
+      ],
+      "body_index": 661
+    },
+    {
+      "number": 23,
+      "child": "BandAssignment",
+      "columns": [
+        "band_id"
+      ],
+      "parent": "Band",
+      "parent_columns": [
+        "band_id"
+      ],
+      "body_index": 673
+    },
+    {
+      "number": 24,
+      "child": "Class",
+      "columns": [
+        "program_id"
+      ],
+      "parent": "TrainingProgram",
+      "parent_columns": [
+        "program_id"
+      ],
+      "body_index": 684
+    },
+    {
+      "number": 25,
+      "child": "Class",
+      "columns": [
+        "teacher_id"
+      ],
+      "parent": "Account",
+      "parent_columns": [
+        "account_id"
+      ],
+      "body_index": 695
+    },
+    {
+      "number": 26,
+      "child": "Class",
+      "columns": [
+        "cancelled_by"
+      ],
+      "parent": "Account",
+      "parent_columns": [
+        "account_id"
+      ],
+      "body_index": 706
+    },
+    {
+      "number": 27,
+      "child": "StudentClassAssignment",
+      "columns": [
+        "class_id"
+      ],
+      "parent": "Class",
+      "parent_columns": [
+        "class_id"
+      ],
+      "body_index": 717
+    },
+    {
+      "number": 28,
+      "child": "StudentClassAssignment",
+      "columns": [
+        "registration_id"
+      ],
+      "parent": "Registration",
+      "parent_columns": [
+        "registration_id"
+      ],
+      "body_index": 728
+    },
+    {
+      "number": 29,
+      "child": "StudentClassAssignment",
+      "columns": [
+        "assigned_by"
+      ],
+      "parent": "Account",
+      "parent_columns": [
+        "account_id"
+      ],
+      "body_index": 739
+    },
+    {
+      "number": 30,
+      "child": "Schedule",
+      "columns": [
+        "class_id"
+      ],
+      "parent": "Class",
+      "parent_columns": [
+        "class_id"
+      ],
+      "body_index": 750
+    },
+    {
+      "number": 31,
+      "child": "Schedule",
+      "columns": [
+        "replaces_schedule_id"
+      ],
+      "parent": "Schedule",
+      "parent_columns": [
+        "schedule_id"
+      ],
+      "body_index": 761
+    },
+    {
+      "number": 32,
+      "child": "Schedule",
+      "columns": [
+        "held_by"
+      ],
+      "parent": "Account",
+      "parent_columns": [
+        "account_id"
+      ],
+      "body_index": 773
+    },
+    {
+      "number": 33,
+      "child": "Schedule",
+      "columns": [
+        "not_held_by"
+      ],
+      "parent": "Account",
+      "parent_columns": [
+        "account_id"
+      ],
+      "body_index": 784
+    },
+    {
+      "number": 34,
+      "child": "Attendance",
+      "columns": [
+        "schedule_id"
+      ],
+      "parent": "Schedule",
+      "parent_columns": [
+        "schedule_id"
+      ],
+      "body_index": 795
+    },
+    {
+      "number": 35,
+      "child": "Attendance",
+      "columns": [
+        "class_assignment_id"
+      ],
+      "parent": "StudentClassAssignment",
+      "parent_columns": [
+        "class_assignment_id"
+      ],
+      "body_index": 806
+    },
+    {
+      "number": 36,
+      "child": "Attendance",
+      "columns": [
+        "entered_by"
+      ],
+      "parent": "Account",
+      "parent_columns": [
+        "account_id"
+      ],
+      "body_index": 817
+    },
+    {
+      "number": 37,
+      "child": "Score",
+      "columns": [
+        "class_assignment_id"
+      ],
+      "parent": "StudentClassAssignment",
+      "parent_columns": [
+        "class_assignment_id"
+      ],
+      "body_index": 828
+    },
+    {
+      "number": 38,
+      "child": "Score",
+      "columns": [
+        "component_id"
+      ],
+      "parent": "ScoreComponentConfig",
+      "parent_columns": [
+        "component_id"
+      ],
+      "body_index": 839
+    },
+    {
+      "number": 39,
+      "child": "Score",
+      "columns": [
+        "entered_by"
+      ],
+      "parent": "Account",
+      "parent_columns": [
+        "account_id"
+      ],
+      "body_index": 850
+    },
+    {
+      "number": 40,
+      "child": "Score",
+      "columns": [
+        "schedule_id"
+      ],
+      "parent": "Schedule",
+      "parent_columns": [
+        "schedule_id"
+      ],
+      "body_index": 861
+    },
+    {
+      "number": 41,
+      "child": "GradeReport",
+      "columns": [
+        "class_assignment_id"
+      ],
+      "parent": "StudentClassAssignment",
+      "parent_columns": [
+        "class_assignment_id"
+      ],
+      "body_index": 872
+    },
+    {
+      "number": 42,
+      "child": "GradeReport",
+      "columns": [
+        "submitted_by"
+      ],
+      "parent": "Account",
+      "parent_columns": [
+        "account_id"
+      ],
+      "body_index": 883
+    },
+    {
+      "number": 43,
+      "child": "GradeReport",
+      "columns": [
+        "reviewed_by"
+      ],
+      "parent": "Account",
+      "parent_columns": [
+        "account_id"
+      ],
+      "body_index": 895
+    },
+    {
+      "number": 44,
+      "child": "Invoice",
+      "columns": [
+        "registration_id"
+      ],
+      "parent": "Registration",
+      "parent_columns": [
+        "registration_id"
+      ],
+      "body_index": 907
+    },
+    {
+      "number": 45,
+      "child": "Invoice",
+      "columns": [
+        "cancelled_by"
+      ],
+      "parent": "Account",
+      "parent_columns": [
+        "account_id"
+      ],
+      "body_index": 918
+    },
+    {
+      "number": 46,
+      "child": "Payment",
+      "columns": [
+        "invoice_id"
+      ],
+      "parent": "Invoice",
+      "parent_columns": [
+        "invoice_id"
+      ],
+      "body_index": 929
+    },
+    {
+      "number": 47,
+      "child": "Payment",
+      "columns": [
+        "confirmed_by"
+      ],
+      "parent": "Account",
+      "parent_columns": [
+        "account_id"
+      ],
+      "body_index": 940
+    },
+    {
+      "number": 48,
+      "child": "Payment",
+      "columns": [
+        "last_corrected_by"
+      ],
+      "parent": "Account",
+      "parent_columns": [
+        "account_id"
+      ],
+      "body_index": 951
+    },
+    {
+      "number": 49,
+      "child": "AuditLog",
+      "columns": [
+        "actor_account_id"
+      ],
+      "parent": "Account",
+      "parent_columns": [
+        "account_id"
+      ],
+      "body_index": 962
+    }
+  ],
+  "constraints": {
+    "315": "6.3. Các ràng buộc toàn vẹn",
+    "316": "1. Ràng buộc miền giá trị",
+    "317": "Role",
+    "318": "role_code ∈ {STUDENT, ADMISSIONS, ACADEMIC_AFFAIRS, TEACHER, ACCOUNTANT, DIRECTOR, ADMIN}.",
+    "319": "Mỗi tài khoản chỉ mang một vai trò trong phạm vi hiện tại.",
+    "320": "“Hệ thống” là tác nhân tự động, không phải một vai trò tài khoản.",
+    "321": "Account",
+    "322": "email phải đúng định dạng email.",
+    "323": "status ∈ {ACTIVE, LOCKED, DISABLED}.",
+    "324": "failed_login_count ≥ 0.",
+    "325": "Email hợp lệ và duy nhất giúp xác định chính xác tài khoản đăng nhập. Số lần đăng nhập sai không được âm vì đây là bộ đếm phục vụ cơ chế khóa tài khoản.",
+    "326": "Course",
+    "327": "base_price ≥ 0.",
+    "328": "status ∈ {ACTIVE, INACTIVE}.",
+    "329": "Học phí gốc không thể âm. Trạng thái INACTIVE cho phép ngừng nhận đăng ký mới mà không xóa dữ liệu lịch sử.",
+    "330": "Band",
+    "331": "min_score ∈ [0, 100].",
+    "332": "Mỗi Band chỉ lưu ngưỡng điểm tối thiểu. Không sử dụng max_score.",
+    "333": "Với một điểm thi, hệ thống chọn Band có min_score lớn nhất nhưng không vượt quá điểm đó. Cách này loại bỏ khả năng các khoảng Band chồng lấn tại biên.",
+    "334": "TrainingProgram",
+    "335": "status ∈ {DRAFT, ACTIVE, INACTIVE}.",
+    "336": "DRAFT là chương trình đang cấu hình.",
+    "337": "ACTIVE là chương trình đủ điều kiện đưa vào sử dụng.",
+    "338": "INACTIVE là chương trình ngừng sử dụng nhưng vẫn được giữ để bảo toàn dữ liệu lịch sử.",
+    "339": "Không tồn tại trạng thái phê duyệt của Ban Giám đốc trong phạm vi hiện tại.",
+    "340": "ScoreComponentConfig",
+    "341": "weight ∈ (0, 100].",
+    "342": "Trọng số bằng 0 khiến thành phần điểm không đóng góp vào kết quả; trọng số lớn hơn 100 làm sai công thức tổng hợp điểm.",
+    "343": "Registration",
+    "344": "status ∈ {PENDING, TESTING, BAND_ASSIGNED, CONFIRMED, ADMITTED, REJECTED, CANCELLED}.",
+    "345": "Các trạng thái thể hiện lần lượt: mới đăng ký, đang thực hiện thi đầu vào, đã có Band, học viên đã xác nhận nhập học, tuyển sinh đã duyệt, bị từ chối hoặc bị hủy.",
+    "346": "EntryTestSession",
+    "347": "capacity ∈ [1, 20].",
+    "348": "status ∈ {OPEN, CLOSED, CANCELLED}.",
+    "349": "Chỉ ca thi OPEN mới được nhận thêm học viên.",
+    "350": "Ca thi CLOSED không nhận đăng ký mới nhưng vẫn giữ kết quả đã phát sinh.",
+    "351": "Ca thi CANCELLED không được sử dụng để tổ chức thi hoặc nhập điểm.",
+    "352": "EntryTestAttempt",
+    "353": "attempt_number ∈ {1, 2}.",
+    "354": "status ∈ {SCHEDULED, COMPLETED, ABSENT, CANCELLED}.",
+    "355": "score ∈ [0, 100] khi có giá trị.",
+    "356": "Mỗi hồ sơ được thi tối đa hai lượt. Chỉ lượt thi COMPLETED mới được có điểm và tham gia xác định Band.",
+    "357": "Class",
+    "358": "max_size ∈ [1, 15].",
+    "359": "status ∈ {PLANNED, OPEN, ONGOING, COMPLETED, CANCELLED}.",
+    "360": "PLANNED là lớp đang chuẩn bị.",
+    "361": "OPEN là lớp đang nhận học viên.",
+    "362": "ONGOING là lớp đang học.",
+    "363": "COMPLETED là lớp đã kết thúc.",
+    "364": "CANCELLED là lớp bị hủy.",
+    "365": "Không có trạng thái phê duyệt mở hoặc hủy lớp.",
+    "366": "Schedule",
+    "367": "session_type ∈ {LESSON, FINAL_EXAM}.",
+    "368": "Lịch học thông thường dùng LESSON; lịch thi cuối khóa dùng FINAL_EXAM.",
+    "369": "Attendance",
+    "370": "present ∈ {0, 1}.",
+    "371": "1 biểu thị có mặt, 0 biểu thị vắng mặt.",
+    "372": "Không có các trạng thái đi trễ, có phép hoặc không phép trong phạm vi hiện tại.",
+    "373": "Score",
+    "374": "score_value ∈ [0, 100].",
+    "375": "Điểm thành phần ngoài thang 0–100 sẽ làm sai kết quả tổng hợp.",
+    "376": "GradeReport",
+    "377": "status ∈ {DRAFT, SUBMITTED, RETURNED, FINALIZED}.",
+    "378": "final_score ∈ [0, 100] khi có giá trị.",
+    "379": "RETURNED biểu thị giáo vụ trả lại bảng điểm cho giáo viên sửa.",
+    "380": "FINALIZED biểu thị bảng điểm đã được chốt và được phép công bố cho học viên.",
+    "381": "Không sử dụng APPROVED hoặc REJECTED.",
+    "382": "Invoice",
+    "383": "amount ≥ 0.",
+    "384": "status ∈ {UNPAID, PAID, CANCELLED}.",
+    "385": "Không lưu OVERDUE thành trạng thái riêng. Hóa đơn quá hạn được xác định khi status = UNPAID và due_date nhỏ hơn ngày hiện tại.",
+    "386": "Payment",
+    "387": "amount_paid ≥ 0.",
+    "388": "method ∈ {CASH, BANK_TRANSFER}.",
+    "389": "Chỉ hỗ trợ thanh toán đầy đủ một lần. Không hỗ trợ trả góp, cà thẻ hoặc nhiều lần thanh toán.",
+    "390": "AuditLog",
+    "391": "action, entity_type và occurred_at bắt buộc có giá trị.",
+    "392": "actor_account_id có thể để trống đối với hành động hoàn toàn tự động của hệ thống.",
+    "393": "ip_address phải là địa chỉ IPv4 hoặc IPv6 hợp lệ khi có giá trị.",
+    "394": "Nhật ký đã ghi không được sửa hoặc xóa bằng các chức năng nghiệp vụ thông thường.",
+    "395": "2. Ràng buộc liên thuộc tính trong cùng một bộ",
+    "396": "Account: locked_until chỉ được có giá trị khi status = LOCKED. Đối với khóa tạm thời, locked_until phải lớn hơn thời điểm khóa; khóa thủ công có thể không có thời điểm tự động mở.",
+    "397": "EntryTestSession: end_at > start_at. Một ca thi phải có thời lượng dương.",
+    "398": "Registration:admission_confirmed_at bắt buộc khi status ∈ {CONFIRMED, ADMITTED} và phải để trống ở các trạng thái trước CONFIRMED.admission_approved_by và admission_approved_at phải cùng có giá trị khi status = ADMITTED. Hai thuộc tính này phải để trống nếu hồ sơ chưa được duyệt.",
+    "399": "EntryTestAttempt:Khi status = COMPLETED, score, graded_by và graded_at bắt buộc có giá trị.Khi status ∈ {SCHEDULED, ABSENT, CANCELLED}, score không được có giá trị.graded_by và graded_at phải cùng trống hoặc cùng có giá trị.",
+    "400": "Schedule: end_time > start_time. Một buổi học hoặc thi cuối khóa phải có thời lượng dương.",
+    "401": "GradeReport:Khi status = DRAFT, bảng điểm chưa bắt buộc có thông tin gửi hoặc xử lý.Khi status ∈ {SUBMITTED, RETURNED, FINALIZED}, submitted_by và submitted_at bắt buộc có giá trị.Khi status = RETURNED, reviewed_by, reviewed_at và returned_reason bắt buộc có giá trị; finalized_at phải để trống.Khi status = FINALIZED, reviewed_by, reviewed_at, final_score và finalized_at bắt buộc có giá trị. Lý do trả lại hiện hành phải để trống; lịch sử trả lại được lưu trong AuditLog.",
+    "402": "Invoice: due_date không được trước ngày của issued_at.",
+    "403": "Payment:Khi method = BANK_TRANSFER, transaction_reference bắt buộc có giá trị.Khi method = CASH, transaction_reference có thể để trống.",
+    "404": "3. Ràng buộc liên bộ trong cùng một quan hệ",
+    "405": "Các thuộc tính sau phải duy nhất:",
+    "406": "Role.role_code.",
+    "407": "Account.email.",
+    "408": "Account.phone khi có giá trị.",
+    "409": "StudentProfile.account_id.",
+    "410": "Course.course_code.",
+    "411": "Band.band_code.",
+    "412": "Band.min_score.",
+    "413": "Class.class_code.",
+    "414": "Invoice.invoice_number.",
+    "415": "TrainingProgram: cặp (course_id, band_id) phải duy nhất. Một khóa học chỉ có một chương trình hiện hành cho mỗi Band.",
+    "416": "ScoreComponentConfig: cặp (program_id, component_name) phải duy nhất. Tổng weight của các thành phần thuộc cùng một chương trình phải bằng 100 trước khi chương trình chuyển sang ACTIVE.",
+    "417": "EntryTestAttempt: cặp (registration_id, attempt_number) phải duy nhất. Nếu tồn tại lượt số 2 thì phải tồn tại lượt số 1 của cùng hồ sơ.",
+    "418": "BandAssignment.registration_id phải duy nhất. Mỗi hồ sơ chỉ có một kết quả Band hiện hành.",
+    "419": "BandAssignment.best_attempt_id phải duy nhất. Một lượt thi không được dùng làm lượt tốt nhất của nhiều hồ sơ khác nhau.",
+    "420": "StudentClassAssignment.registration_id phải duy nhất vì phạm vi hiện tại không hỗ trợ chuyển lớp hoặc xếp một hồ sơ vào nhiều lớp.",
+    "421": "Attendance: cặp (schedule_id, class_assignment_id) phải duy nhất. Một học viên chỉ được điểm danh một lần trong một buổi học.",
+    "422": "Score: cặp (class_assignment_id, component_id) phải duy nhất. Một học viên chỉ có một điểm hiện hành cho mỗi thành phần.",
+    "423": "GradeReport.class_assignment_id phải duy nhất. Mỗi học viên trong một lớp chỉ có một bảng điểm tổng hợp.",
+    "424": "Invoice.registration_id phải duy nhất. Mỗi hồ sơ được duyệt chỉ có một hóa đơn.",
+    "425": "Payment.invoice_id phải duy nhất. Mỗi hóa đơn chỉ được thanh toán một lần.",
+    "426": "Các lịch thuộc Schedule không được chồng lấn khi có cùng phòng, cùng lớp hoặc cùng giáo viên.",
+    "427": "Các ca thi thuộc EntryTestSession không được chồng lấn khi có cùng phòng hoặc cùng giáo viên chấm.",
+    "428": "4. Ràng buộc tham chiếu",
+    "429": "1. Ràng buộc: Account(role_id) → Role(role_id)",
+    "430": "Mô tả: Mỗi tài khoản phải thuộc một vai trò đang tồn tại.",
+    "431": "Bảng liên quan: Account (role_id, bảng con), Role (role_id, bảng cha).",
+    "432": "Bảng tầm ảnh hưởng:",
+    "433": "BảngThêmXóaSửaRole−+ (role_id)+ (role_id)Account+ (role_id)−+ (role_id)",
+    "434": "Ghi chú:",
+    "435": "role_id không được NULL; giá trị tham chiếu phải tồn tại trong Role.",
+    "436": "Không xóa Role khi còn Account tham chiếu theo ràng buộc này; không cập nhật khóa dây chuyền, theo chính sách NO ACTION.",
+    "437": "Mỗi Account có đúng một vai trò cố định trong bảy vai trò của hệ thống; tồn tại Role là điều kiện FK, còn mã vai trò hợp lệ được kiểm tra riêng.",
+    "438": "Không có nghiệp vụ đổi vai trò của tài khoản đã tạo.",
+    "439": "2. Ràng buộc: StudentProfile(account_id) → Account(account_id)",
+    "440": "Mô tả: Mỗi hồ sơ học viên phải thuộc một tài khoản đang tồn tại.",
+    "441": "Bảng liên quan: StudentProfile (account_id, bảng con), Account (account_id, bảng cha).",
+    "442": "Bảng tầm ảnh hưởng:",
+    "443": "BảngThêmXóaSửaAccount−+ (account_id)+ (account_id)StudentProfile+ (account_id)−+ (account_id)",
+    "444": "Ghi chú:",
+    "445": "account_id không được NULL; giá trị tham chiếu phải tồn tại trong Account.",
+    "446": "Không xóa Account khi còn StudentProfile tham chiếu theo ràng buộc này; không cập nhật khóa dây chuyền, theo chính sách NO ACTION.",
+    "447": "Account được liên kết phải có vai trò Student; FK không tự kiểm tra vai trò.",
+    "448": "Một Account có tối đa một StudentProfile; đăng ký học viên tạo Account và StudentProfile trong cùng transaction.",
+    "449": "Không chuyển hồ sơ học viên sang tài khoản khác.",
+    "450": "3. Ràng buộc: AuthSession(account_id) → Account(account_id)",
+    "451": "Mô tả: Mỗi phiên đăng nhập phải thuộc một tài khoản đang tồn tại.",
+    "452": "Bảng liên quan: AuthSession (account_id, bảng con), Account (account_id, bảng cha).",
+    "453": "Bảng tầm ảnh hưởng:",
+    "454": "BảngThêmXóaSửaAccount−+ (account_id)+ (account_id)AuthSession+ (account_id)−+ (account_id)",
+    "455": "Ghi chú:",
+    "456": "account_id không được NULL; giá trị phải tồn tại trong Account.",
+    "457": "Không xóa Account khi còn AuthSession tham chiếu theo ràng buộc này; không cập nhật khóa dây chuyền, theo chính sách NO ACTION.",
+    "458": "Chủ sở hữu phiên được xác định khi cấp phiên và không được chuyển sang tài khoản khác.",
+    "459": "Đăng xuất, đổi mật khẩu hoặc khóa tài khoản thu hồi phiên theo quy trình; thu hồi không phải xóa tài khoản hoặc xóa dây chuyền phiên.",
+    "460": "Xác thực phải kiểm tra tài khoản, phiên, thời hạn và phiên bản bảo mật hiện hành; FK không chứng minh phiên còn hiệu lực.",
+    "461": "4. Ràng buộc: TrainingProgram(course_id) → Course(course_id)",
+    "462": "Mô tả: Mỗi chương trình đào tạo phải thuộc một khóa học đang tồn tại.",
+    "463": "Bảng liên quan: TrainingProgram (course_id, bảng con), Course (course_id, bảng cha).",
+    "464": "Bảng tầm ảnh hưởng:",
+    "465": "BảngThêmXóaSửaCourse−+ (course_id)+ (course_id)TrainingProgram+ (course_id)−+ (course_id)",
+    "466": "Ghi chú:",
+    "467": "course_id không được NULL; giá trị tham chiếu phải tồn tại trong Course.",
+    "468": "Không xóa Course khi còn TrainingProgram tham chiếu theo ràng buộc này; không cập nhật khóa dây chuyền, theo chính sách NO ACTION.",
+    "469": "Cặp Course/Band của chương trình là duy nhất.",
+    "470": "Chỉ thay cấu hình trước lần sử dụng Class đầu tiên và theo trạng thái cấu hình được phép; đã dùng thì course_id bị khóa, kể cả Class đã CANCELLED.",
+    "471": "Course INACTIVE vẫn tồn tại và được giữ cho lịch sử; FK không kiểm tra ACTIVE.",
+    "472": "5. Ràng buộc: TrainingProgram(band_id) → Band(band_id)",
+    "473": "Mô tả: Mỗi chương trình đào tạo phải gắn với một Band đang tồn tại.",
+    "474": "Bảng liên quan: TrainingProgram (band_id, bảng con), Band (band_id, bảng cha).",
+    "475": "Bảng tầm ảnh hưởng:",
+    "476": "BảngThêmXóaSửaBand−+ (band_id)+ (band_id)TrainingProgram+ (band_id)−+ (band_id)",
+    "477": "Ghi chú:",
+    "478": "band_id không được NULL; giá trị tham chiếu phải tồn tại trong Band.",
+    "479": "Không xóa Band khi còn TrainingProgram tham chiếu theo ràng buộc này; không cập nhật khóa dây chuyền, theo chính sách NO ACTION.",
+    "480": "Cặp Course/Band là duy nhất; không tạo chương trình trùng để né khóa cấu hình.",
+    "481": "band_id bị khóa sau khi bất kỳ Class nào sử dụng chương trình; trước đó chỉ sửa trong cấu hình hợp lệ.",
+    "482": "Sửa min_score của Band không phải sửa khóa band_id; vẫn chịu quy tắc đóng băng ngưỡng riêng.",
+    "483": "6. Ràng buộc: ScoreComponentConfig(program_id) → TrainingProgram(program_id)",
+    "484": "Mô tả: Mỗi thành phần điểm phải thuộc một chương trình đào tạo đang tồn tại.",
+    "485": "Bảng liên quan: ScoreComponentConfig (program_id, bảng con), TrainingProgram (program_id, bảng cha).",
+    "486": "Bảng tầm ảnh hưởng:",
+    "487": "BảngThêmXóaSửaTrainingProgram−+ (program_id)+ (program_id)ScoreComponentConfig+ (program_id)−+ (program_id)",
+    "488": "Ghi chú:",
+    "489": "program_id không được NULL; giá trị tham chiếu phải tồn tại trong TrainingProgram.",
+    "490": "Không xóa TrainingProgram khi còn ScoreComponentConfig tham chiếu theo ràng buộc này; không cập nhật khóa dây chuyền, theo chính sách NO ACTION.",
+    "491": "Danh sách thành phần, loại và trọng số bị khóa sau lần sử dụng Class đầu tiên.",
+    "492": "Chỉ chỉnh cấu hình nháp chưa dùng theo transaction cấu hình toàn chương trình; không chuyển thành phần đã dùng sang chương trình khác.",
+    "493": "Tổng trọng số 100 và đúng một thành phần FINAL_EXAM khi kích hoạt là các ràng buộc nghiệp vụ riêng.",
+    "494": "7. Ràng buộc: Registration(student_id) → StudentProfile(student_id)",
+    "495": "Mô tả: Mỗi hồ sơ đăng ký khóa học phải thuộc một học viên đang tồn tại.",
+    "496": "Bảng liên quan: Registration (student_id, bảng con), StudentProfile (student_id, bảng cha).",
+    "497": "Bảng tầm ảnh hưởng:",
+    "498": "BảngThêmXóaSửaStudentProfile−+ (student_id)+ (student_id)Registration+ (student_id)−+ (student_id)",
+    "499": "Ghi chú:",
+    "500": "student_id không được NULL; giá trị tham chiếu phải tồn tại trong StudentProfile.",
+    "501": "Không xóa StudentProfile khi còn Registration tham chiếu theo ràng buộc này; không cập nhật khóa dây chuyền, theo chính sách NO ACTION.",
+    "502": "Chủ sở hữu lấy từ tài khoản Student đã xác thực; không cho nhân sự đăng ký thay hoặc client chọn học viên khác.",
+    "503": "Không chuyển Registration sang học viên khác; mỗi học viên chỉ có một hồ sơ chưa kết thúc cho cùng Course.",
+    "504": "Hủy hồ sơ là đổi trạng thái, không xóa StudentProfile hoặc Registration.",
+    "505": "8. Ràng buộc: Registration(course_id) → Course(course_id)",
+    "506": "Mô tả: Mỗi hồ sơ đăng ký phải chọn một khóa học đang tồn tại.",
+    "507": "Bảng liên quan: Registration (course_id, bảng con), Course (course_id, bảng cha).",
+    "508": "Bảng tầm ảnh hưởng:",
+    "509": "BảngThêmXóaSửaCourse−+ (course_id)+ (course_id)Registration+ (course_id)−+ (course_id)",
+    "510": "Ghi chú:",
+    "511": "course_id không được NULL; giá trị tham chiếu phải tồn tại trong Course.",
+    "512": "Không xóa Course khi còn Registration tham chiếu theo ràng buộc này; không cập nhật khóa dây chuyền, theo chính sách NO ACTION.",
+    "513": "Đăng ký mới chỉ chọn Course ACTIVE; FK chỉ kiểm tra tồn tại.",
+    "514": "course_id bất biến từ lúc tạo; đổi lựa chọn phải hủy hợp lệ và tạo hồ sơ mới, thi đầu vào lại.",
+    "515": "Course INACTIVE không tự hủy hồ sơ đã tồn tại.",
+    "516": "9. Ràng buộc: Registration(admission_approved_by) → Account(account_id)",
+    "517": "Mô tả: Người duyệt nhập học được ghi nhận phải là tài khoản đang tồn tại.",
+    "518": "Bảng liên quan: Registration (admission_approved_by, bảng con), Account (account_id, bảng cha).",
+    "519": "Bảng tầm ảnh hưởng:",
+    "520": "BảngThêmXóaSửaAccount−+ (account_id)+ (account_id)Registration+ (admission_approved_by)−+ (admission_approved_by)",
+    "521": "Ghi chú:",
+    "522": "FK cho phép NULL theo điều kiện nêu dưới đây; khi có giá trị tham chiếu, bản ghi tương ứng phải tồn tại.",
+    "523": "Không xóa Account khi còn Registration tham chiếu theo ràng buộc này; không cập nhật khóa dây chuyền, theo chính sách NO ACTION.",
+    "524": "Cho phép NULL khi chưa duyệt; admission_approved_by và admission_approved_at phải cùng NULL hoặc cùng có giá trị.",
+    "525": "Khi duyệt, người thao tác phải có quyền Admissions; chuyển ADMITTED, tạo Invoice và ghi audit trong cùng transaction.",
+    "526": "Giữ người/thời điểm duyệt đã có khi hồ sơ bị hủy hợp lệ; không đổi người duyệt bằng sửa hồ sơ thông thường.",
+    "527": "10. Ràng buộc: Registration(rejected_by) → Account(account_id)",
+    "528": "Mô tả: Người từ chối hồ sơ đăng ký phải là tài khoản đang tồn tại.",
+    "529": "Bảng liên quan: Registration (rejected_by, bảng con), Account (account_id, bảng cha).",
+    "530": "Bảng tầm ảnh hưởng:",
+    "531": "BảngThêmXóaSửaAccount−+ (account_id)+ (account_id)Registration+ (rejected_by)−+ (rejected_by)",
+    "532": "Ghi chú:",
+    "533": "rejected_by cho phép NULL theo điều kiện nghiệp vụ; khi khác NULL phải tồn tại trong Account. Nhóm trường sự kiện/trạng thái đi kèm vẫn phải được kiểm tra.",
+    "534": "Không xóa Account khi còn Registration tham chiếu theo ràng buộc này; không cập nhật khóa dây chuyền, theo chính sách NO ACTION.",
+    "535": "Nhân viên tuyển sinh (Admissions) từ chối hồ sơ CONFIRMED theo điều kiện nghiệp vụ.",
+    "536": "Người, thời điểm và lý do từ chối đi cùng trạng thái REJECTED và nhật ký trong cùng giao dịch.",
+    "537": "Giữ thông tin người từ chối; không sửa tùy ý hoặc đặt NULL để bỏ lịch sử xử lý.",
+    "538": "11. Ràng buộc: Registration(cancelled_by) → Account(account_id)",
+    "539": "Mô tả: Người hủy hồ sơ đăng ký phải là tài khoản đang tồn tại.",
+    "540": "Bảng liên quan: Registration (cancelled_by, bảng con), Account (account_id, bảng cha).",
+    "541": "Bảng tầm ảnh hưởng:",
+    "542": "BảngThêmXóaSửaAccount−+ (account_id)+ (account_id)Registration+ (cancelled_by)−+ (cancelled_by)",
+    "543": "Ghi chú:",
+    "544": "cancelled_by cho phép NULL theo điều kiện nghiệp vụ; khi khác NULL phải tồn tại trong Account. Nhóm trường sự kiện/trạng thái đi kèm vẫn phải được kiểm tra.",
+    "545": "Không xóa Account khi còn Registration tham chiếu theo ràng buộc này; không cập nhật khóa dây chuyền, theo chính sách NO ACTION.",
+    "546": "Học viên chỉ hủy hồ sơ của mình trước xác nhận nhập học; nhân viên tuyển sinh hủy hồ sơ CONFIRMED hoặc ADMITTED theo điều kiện đã chốt. Hóa đơn đã có phải UNPAID.",
+    "547": "Nhân viên tuyển sinh phải cung cấp lý do; không áp thêm yêu cầu này cho đường học viên tự hủy.",
+    "548": "Hủy hồ sơ, xử lý lịch đặt thi liên quan, hủy hóa đơn chưa thanh toán và ghi nhật ký trong cùng giao dịch; giữ người xử lý và lịch sử.",
+    "549": "12. Ràng buộc: EntryTestSession(grader_id) → Account(account_id)",
+    "550": "Mô tả: Mỗi ca thi đầu vào phải phân công một tài khoản giáo viên đang tồn tại.",
+    "551": "Bảng liên quan: EntryTestSession (grader_id, bảng con), Account (account_id, bảng cha).",
+    "552": "Bảng tầm ảnh hưởng:",
+    "553": "BảngThêmXóaSửaAccount−+ (account_id)+ (account_id)EntryTestSession+ (grader_id)−+ (grader_id)",
+    "554": "Ghi chú:",
+    "555": "grader_id không được NULL; giá trị tham chiếu phải tồn tại trong Account.",
+    "556": "Không xóa Account khi còn EntryTestSession tham chiếu theo ràng buộc này; không cập nhật khóa dây chuyền, theo chính sách NO ACTION.",
+    "557": "Tạo/phân công cần Teacher ACTIVE và kiểm tra xung đột lịch; FK không bảo đảm các điều kiện này.",
+    "558": "Chỉ AcademicAffairs đổi giáo viên chấm trước ca bắt đầu và trước mọi điểm hoặc ABSENT, có lý do và audit.",
+    "559": "Account LOCKED/DISABLED không làm mất liên kết hoặc tự đổi giáo viên chấm.",
+    "560": "13. Ràng buộc: EntryTestSession(cancelled_by) → Account(account_id)",
+    "561": "Mô tả: Người hủy ca thi đầu vào phải là tài khoản đang tồn tại.",
+    "562": "Bảng liên quan: EntryTestSession (cancelled_by, bảng con), Account (account_id, bảng cha).",
+    "563": "Bảng tầm ảnh hưởng:",
+    "564": "BảngThêmXóaSửaAccount−+ (account_id)+ (account_id)EntryTestSession+ (cancelled_by)−+ (cancelled_by)",
+    "565": "Ghi chú:",
+    "566": "cancelled_by cho phép NULL theo điều kiện nghiệp vụ; khi khác NULL phải tồn tại trong Account. Nhóm trường sự kiện/trạng thái đi kèm vẫn phải được kiểm tra.",
+    "567": "Không xóa Account khi còn EntryTestSession tham chiếu theo ràng buộc này; không cập nhật khóa dây chuyền, theo chính sách NO ACTION.",
+    "568": "Nhân viên giáo vụ (AcademicAffairs) hủy ca trước khi ca bắt đầu theo điều kiện nghiệp vụ, có lý do.",
+    "569": "Ghi người hủy, thời điểm, lý do và xử lý các lịch đặt bị ảnh hưởng trong cùng giao dịch với nhật ký.",
+    "570": "Giữ ca thi và lịch đặt; không xóa hoặc đổi người hủy để bỏ lịch sử.",
+    "571": "14. Ràng buộc: EntryTestAttempt(registration_id) → Registration(registration_id)",
+    "572": "Mô tả: Mỗi lượt thi đầu vào phải thuộc một hồ sơ đăng ký đang tồn tại.",
+    "573": "Bảng liên quan: EntryTestAttempt (registration_id, bảng con), Registration (registration_id, bảng cha).",
+    "574": "Bảng tầm ảnh hưởng:",
+    "575": "BảngThêmXóaSửaRegistration−+ (registration_id)+ (registration_id)EntryTestAttempt+ (registration_id)−+ (registration_id)",
+    "576": "Ghi chú:",
+    "577": "registration_id không được NULL; giá trị tham chiếu phải tồn tại trong Registration.",
+    "578": "Không xóa Registration khi còn EntryTestAttempt tham chiếu theo ràng buộc này; không cập nhật khóa dây chuyền, theo chính sách NO ACTION.",
+    "579": "Tối đa hai lượt logic cho mỗi Registration; lượt hai cần kết quả lượt một và phải trước xác nhận nhập học.",
+    "580": "registration_id của lượt thi được giữ cố định; hủy/đổi lịch hoặc vắng không chuyển lượt sang hồ sơ khác.",
+    "581": "Hồ sơ CANCELLED vẫn tồn tại để giữ lịch sử, nhưng chặn chấm/sửa điểm và ghi vắng theo nghiệp vụ.",
+    "582": "15. Ràng buộc: EntryTestAttempt(graded_by) → Account(account_id)",
+    "583": "Mô tả: Người nhập điểm đầu vào ban đầu phải là tài khoản đang tồn tại.",
+    "584": "Bảng liên quan: EntryTestAttempt (graded_by, bảng con), Account (account_id, bảng cha).",
+    "585": "Bảng tầm ảnh hưởng:",
+    "586": "BảngThêmXóaSửaAccount−+ (account_id)+ (account_id)EntryTestAttempt+ (graded_by)−+ (graded_by)",
+    "587": "Ghi chú:",
+    "588": "FK cho phép NULL theo điều kiện nêu dưới đây; khi có giá trị tham chiếu, bản ghi tương ứng phải tồn tại.",
+    "589": "Không xóa Account khi còn EntryTestAttempt tham chiếu theo ràng buộc này; không cập nhật khóa dây chuyền, theo chính sách NO ACTION.",
+    "590": "NULL khi chưa có kết quả; score, graded_by, graded_at và completed_booking_id phải cùng NULL hoặc cùng có.",
+    "591": "Khi nhập điểm, actor phải là Teacher đang được phân công ca và chỉ nhập từ khi ca kết thúc.",
+    "592": "graded_by lưu người chấm ban đầu, không đổi khi sửa điểm; chỉ người này còn được phân công mới được sửa trong cửa sổ đã chốt, có lý do/audit.",
+    "593": "16. Ràng buộc: EntryTestAttempt(completed_booking_id, attempt_id) → EntryTestBooking(booking_id, attempt_id)",
+    "594": "Mô tả: Kết quả lượt thi phải tham chiếu Booking đã hoàn thành của chính lượt đó.",
+    "595": "Bảng liên quan: EntryTestAttempt (completed_booking_id, attempt_id, bảng con), EntryTestBooking (booking_id, attempt_id, bảng cha).",
+    "596": "Bảng tầm ảnh hưởng:",
+    "597": "BảngThêmXóaSửaEntryTestBooking−+ (booking_id, attempt_id)+ (booking_id, attempt_id)EntryTestAttempt+ (completed_booking_id, attempt_id)−+ (completed_booking_id, attempt_id)",
+    "598": "Ghi chú:",
+    "599": "FK cho phép NULL theo điều kiện nêu dưới đây; khi có giá trị tham chiếu, bản ghi tương ứng phải tồn tại.",
+    "600": "Không xóa EntryTestBooking khi còn EntryTestAttempt tham chiếu theo ràng buộc này; không cập nhật khóa dây chuyền, theo chính sách NO ACTION.",
+    "601": "Bổ sung quan hệ ghép trong thiết kế hiện hành; không trỏ Booking của lượt khác.",
+    "602": "completed_booking_id NULL khi chưa có kết quả; attempt_id luôn bắt buộc. Khi có kết quả, cặp tham chiếu phải tồn tại; CHECK result bundle buộc các trường kết quả cùng có.",
+    "603": "Booking được tham chiếu phải COMPLETED theo nghiệp vụ; FK ghép chỉ bảo đảm tồn tại/cùng lượt.",
+    "604": "Khởi tạo Attempt chưa kết quả, tạo Booking rồi ghi kết quả để xử lý vòng tham chiếu; chấm điểm và cập nhật Booking/Band/audit cùng transaction.",
+    "605": "17. Ràng buộc: EntryTestBooking(attempt_id) → EntryTestAttempt(attempt_id)",
+    "606": "Mô tả: Mỗi lần đặt lịch phải thuộc một lượt thi logic đang tồn tại.",
+    "607": "Bảng liên quan: EntryTestBooking (attempt_id, bảng con), EntryTestAttempt (attempt_id, bảng cha).",
+    "608": "Bảng tầm ảnh hưởng:",
+    "609": "BảngThêmXóaSửaEntryTestAttempt−+ (attempt_id)+ (attempt_id)EntryTestBooking+ (attempt_id)−+ (attempt_id)",
+    "610": "Ghi chú:",
+    "611": "attempt_id không được NULL; giá trị tham chiếu phải tồn tại trong EntryTestAttempt.",
+    "612": "Không xóa EntryTestAttempt khi còn EntryTestBooking tham chiếu theo ràng buộc này; không cập nhật khóa dây chuyền, theo chính sách NO ACTION.",
+    "613": "Bổ sung để mô tả đầy đủ đường nối Registration → Attempt → Booking → Session sau khi sửa quan hệ ca thi.",
+    "614": "attempt_id của Booking bất biến; đặt lại sau ABSENT/CANCELLED vẫn cùng lượt chưa hoàn thành, không tăng số lượt.",
+    "615": "Tối đa một Booking SCHEDULED và một Booking COMPLETED cho một Attempt; kiểm tra trạng thái/result trong transaction.",
+    "616": "18. Ràng buộc: EntryTestBooking(session_id) → EntryTestSession(session_id)",
+    "617": "Mô tả: Mỗi lần đặt lịch thi phải tham chiếu một ca thi đầu vào đang tồn tại.",
+    "618": "Bảng liên quan: EntryTestBooking (session_id, bảng con), EntryTestSession (session_id, bảng cha).",
+    "619": "Bảng tầm ảnh hưởng:",
+    "620": "BảngThêmXóaSửaEntryTestSession−+ (session_id)+ (session_id)EntryTestBooking+ (session_id)−+ (session_id)",
+    "621": "Ghi chú:",
+    "622": "session_id không được NULL; giá trị tham chiếu phải tồn tại trong EntryTestSession.",
+    "623": "Không xóa EntryTestSession khi còn EntryTestBooking tham chiếu theo ràng buộc này; không cập nhật khóa dây chuyền, theo chính sách NO ACTION.",
+    "624": "Đây là quan hệ hiện hành thay cho EntryTestAttempt.session_id trong danh sách ban đầu; EntryTestAttempt không có cột session_id.",
+    "625": "Đặt mới cần ca OPEN, chưa bắt đầu, còn chỗ và không trùng lịch học viên; FK chỉ bảo đảm ca tồn tại.",
+    "626": "session_id của Booking bất biến; đổi ca hủy Booking cũ và tạo Booking mới trong cùng transaction, giữ lịch sử.",
+    "627": "Hủy/đóng ca không xóa ca hoặc Booking; CLOSED không đồng nghĩa CANCELLED.",
+    "628": "19. Ràng buộc: EntryTestBooking(absent_by) → Account(account_id)",
+    "629": "Mô tả: Người xác nhận học viên vắng thi phải là tài khoản đang tồn tại.",
+    "630": "Bảng liên quan: EntryTestBooking (absent_by, bảng con), Account (account_id, bảng cha).",
+    "631": "Bảng tầm ảnh hưởng:",
+    "632": "BảngThêmXóaSửaAccount−+ (account_id)+ (account_id)EntryTestBooking+ (absent_by)−+ (absent_by)",
+    "633": "Ghi chú:",
+    "634": "absent_by cho phép NULL theo điều kiện nghiệp vụ; khi khác NULL phải tồn tại trong Account. Nhóm trường sự kiện/trạng thái đi kèm vẫn phải được kiểm tra.",
+    "635": "Không xóa Account khi còn EntryTestBooking tham chiếu theo ràng buộc này; không cập nhật khóa dây chuyền, theo chính sách NO ACTION.",
+    "636": "Giáo viên được phân công ca xác nhận vắng sau khi ca kết thúc, có kiểm tra quyền và trạng thái hồ sơ/lịch đặt.",
+    "637": "Ghi ABSENT cùng người, thời điểm và mã thao tác theo nhóm trường ghi vắng; không suy ra vắng từ việc chưa có điểm.",
+    "638": "Vắng không tăng số lượt thi logic; có thể đặt lại cùng lượt chưa hoàn thành theo điều kiện nghiệp vụ và giữ lịch đặt cũ.",
+    "639": "20. Ràng buộc: EntryTestBooking(cancelled_by) → Account(account_id)",
+    "640": "Mô tả: Người hủy hoặc đổi lịch thi phải là tài khoản đang tồn tại.",
+    "641": "Bảng liên quan: EntryTestBooking (cancelled_by, bảng con), Account (account_id, bảng cha).",
+    "642": "Bảng tầm ảnh hưởng:",
+    "643": "BảngThêmXóaSửaAccount−+ (account_id)+ (account_id)EntryTestBooking+ (cancelled_by)−+ (cancelled_by)",
+    "644": "Ghi chú:",
+    "645": "cancelled_by cho phép NULL theo điều kiện nghiệp vụ; khi khác NULL phải tồn tại trong Account. Nhóm trường sự kiện/trạng thái đi kèm vẫn phải được kiểm tra.",
+    "646": "Không xóa Account khi còn EntryTestBooking tham chiếu theo ràng buộc này; không cập nhật khóa dây chuyền, theo chính sách NO ACTION.",
+    "647": "Người hủy có thể là học viên tự hủy/đổi lịch hợp lệ, nhân viên giáo vụ hủy ca, hoặc người hủy hồ sơ đăng ký theo đúng quyền và điều kiện thao tác gốc.",
+    "648": "Đường học viên hủy/đổi lịch cần ca OPEN và chưa bắt đầu; đường hủy từ hồ sơ hoặc ca tuân theo điều kiện riêng.",
+    "649": "Ghi đồng bộ nhóm thông tin hủy và giữ lý do từ thao tác cha khi có. Đổi lịch tạo bản ghi mới, không ghi đè lịch cũ.",
+    "650": "21. Ràng buộc: BandAssignment(registration_id) → Registration(registration_id)",
+    "651": "Mô tả: Mỗi kết quả xếp Band phải thuộc một hồ sơ đăng ký đang tồn tại.",
+    "652": "Bảng liên quan: BandAssignment (registration_id, bảng con), Registration (registration_id, bảng cha).",
+    "653": "Bảng tầm ảnh hưởng:",
+    "654": "BảngThêmXóaSửaRegistration−+ (registration_id)+ (registration_id)BandAssignment+ (registration_id)−+ (registration_id)",
+    "655": "Ghi chú:",
+    "656": "registration_id không được NULL; giá trị tham chiếu phải tồn tại trong Registration.",
+    "657": "Không xóa Registration khi còn BandAssignment tham chiếu theo ràng buộc này; không cập nhật khóa dây chuyền, theo chính sách NO ACTION.",
+    "658": "Mỗi Registration có tối đa một BandAssignment; chưa có điểm hoàn thành thì chưa tạo bản ghi.",
+    "659": "Không chuyển kết quả Band sang Registration khác; chấm/sửa điểm và cập nhật Band phải nguyên tử.",
+    "660": "best_attempt_id còn phải thuộc chính Registration này, được bảo vệ bởi FK ghép ở mục kế tiếp.",
+    "661": "22. Ràng buộc: BandAssignment(best_attempt_id, registration_id) → EntryTestAttempt(attempt_id, registration_id)",
+    "662": "Mô tả: Lượt thi tốt nhất phải tồn tại và thuộc đúng hồ sơ đăng ký được xếp Band.",
+    "663": "Bảng liên quan: BandAssignment (best_attempt_id, registration_id, bảng con), EntryTestAttempt (attempt_id, registration_id, bảng cha).",
+    "664": "Bảng tầm ảnh hưởng:",
+    "665": "BảngThêmXóaSửaEntryTestAttempt−+ (attempt_id, registration_id)+ (attempt_id, registration_id)BandAssignment+ (best_attempt_id, registration_id)−+ (best_attempt_id, registration_id)",
+    "666": "Ghi chú:",
+    "667": "best_attempt_id, registration_id không được NULL; giá trị tham chiếu phải tồn tại trong EntryTestAttempt.",
+    "668": "Không xóa EntryTestAttempt khi còn BandAssignment tham chiếu theo ràng buộc này; không cập nhật khóa dây chuyền, theo chính sách NO ACTION.",
+    "669": "Quan hệ đơn best_attempt_id → attempt_id trong danh sách được triển khai bằng FK ghép (best_attempt_id, registration_id) → (attempt_id, registration_id).",
+    "670": "Lượt được chọn phải có kết quả hoàn thành và điểm cao nhất; nếu bằng điểm thì chọn lượt một. FK ghép chỉ bảo đảm tồn tại/cùng hồ sơ.",
+    "671": "Khi sửa điểm hợp lệ, chọn lại lượt tốt nhất và Band cùng transaction; từ CONFIRMED hoặc hồ sơ đã kết thúc thì không sửa kết quả.",
+    "672": "Cặp ở EntryTestAttempt là khóa duy nhất thay thế (alternate key); sửa bất kỳ thành phần nào cũng có thể ảnh hưởng FK.",
+    "673": "23. Ràng buộc: BandAssignment(band_id) → Band(band_id)",
+    "674": "Mô tả: Kết quả xếp Band phải tham chiếu một Band đang tồn tại.",
+    "675": "Bảng liên quan: BandAssignment (band_id, bảng con), Band (band_id, bảng cha).",
+    "676": "Bảng tầm ảnh hưởng:",
+    "677": "BảngThêmXóaSửaBand−+ (band_id)+ (band_id)BandAssignment+ (band_id)−+ (band_id)",
+    "678": "Ghi chú:",
+    "679": "band_id không được NULL; giá trị tham chiếu phải tồn tại trong Band.",
+    "680": "Không xóa Band khi còn BandAssignment tham chiếu theo ràng buộc này; không cập nhật khóa dây chuyền, theo chính sách NO ACTION.",
+    "681": "Band được chọn bằng ngưỡng min_score lớn nhất không vượt điểm tốt nhất; không cho chọn tùy ý chỉ vì Band tồn tại.",
+    "682": "Ngưỡng seed 0/25/45/65/85 và khóa ngưỡng sau kết quả đầu tiên là nghiệp vụ riêng.",
+    "683": "Cập nhật band_id chỉ qua chấm/sửa điểm hợp lệ và tính lại kết quả trước xác nhận; không sửa tay kết quả đã khóa.",
+    "684": "24. Ràng buộc: Class(program_id) → TrainingProgram(program_id)",
+    "685": "Mô tả: Mỗi lớp phải sử dụng một chương trình đào tạo đang tồn tại.",
+    "686": "Bảng liên quan: Class (program_id, bảng con), TrainingProgram (program_id, bảng cha).",
+    "687": "Bảng tầm ảnh hưởng:",
+    "688": "BảngThêmXóaSửaTrainingProgram−+ (program_id)+ (program_id)Class+ (program_id)−+ (program_id)",
+    "689": "Ghi chú:",
+    "690": "program_id không được NULL; giá trị tham chiếu phải tồn tại trong TrainingProgram.",
+    "691": "Không xóa TrainingProgram khi còn Class tham chiếu theo ràng buộc này; không cập nhật khóa dây chuyền, theo chính sách NO ACTION.",
+    "692": "program_id bất biến sau khi tạo Class; chọn sai thì xử lý hủy lớp hợp lệ và tạo lớp mới.",
+    "693": "Tạo/mở lớp phải kiểm tra trạng thái chương trình theo nghiệp vụ; FK không tự bảo đảm ACTIVE.",
+    "694": "Bất kỳ Class nào từng tham chiếu chương trình, kể cả CANCELLED, đều làm khóa cấu hình đã dùng.",
+    "695": "25. Ràng buộc: Class(teacher_id) → Account(account_id)",
+    "696": "Mô tả: Mỗi lớp phải có một tài khoản giáo viên phụ trách đang tồn tại.",
+    "697": "Bảng liên quan: Class (teacher_id, bảng con), Account (account_id, bảng cha).",
+    "698": "Bảng tầm ảnh hưởng:",
+    "699": "BảngThêmXóaSửaAccount−+ (account_id)+ (account_id)Class+ (teacher_id)−+ (teacher_id)",
+    "700": "Ghi chú:",
+    "701": "teacher_id không được NULL; giá trị tham chiếu phải tồn tại trong Account.",
+    "702": "Không xóa Account khi còn Class tham chiếu theo ràng buộc này; không cập nhật khóa dây chuyền, theo chính sách NO ACTION.",
+    "703": "Phân công cần Teacher ACTIVE và kiểm tra toàn bộ xung đột lịch lớp/ca thi.",
+    "704": "Chỉ AcademicAffairs đổi giáo viên trước ONGOING và trước khi có Attendance/Score; không đổi khi đã bắt đầu dạy.",
+    "705": "Tài khoản bị khóa/ngừng dùng vẫn giữ liên kết; không tự chuyển giáo viên hoặc hủy lớp.",
+    "706": "26. Ràng buộc: Class(cancelled_by) → Account(account_id)",
+    "707": "Mô tả: Người hủy lớp phải là tài khoản đang tồn tại.",
+    "708": "Bảng liên quan: Class (cancelled_by, bảng con), Account (account_id, bảng cha).",
+    "709": "Bảng tầm ảnh hưởng:",
+    "710": "BảngThêmXóaSửaAccount−+ (account_id)+ (account_id)Class+ (cancelled_by)−+ (cancelled_by)",
+    "711": "Ghi chú:",
+    "712": "cancelled_by cho phép NULL theo điều kiện nghiệp vụ; khi khác NULL phải tồn tại trong Account. Nhóm trường sự kiện/trạng thái đi kèm vẫn phải được kiểm tra.",
+    "713": "Không xóa Account khi còn Class tham chiếu theo ràng buộc này; không cập nhật khóa dây chuyền, theo chính sách NO ACTION.",
+    "714": "Nhân viên giáo vụ hủy lớp PLANNED/OPEN khi lớp chưa có học viên và đáp ứng điều kiện chưa tổ chức giảng dạy.",
+    "715": "Người hủy, thời điểm, lý do, trạng thái CANCELLED và nhật ký được ghi đồng bộ.",
+    "716": "Giữ lớp và lịch sử; hủy lớp không mở lại cấu hình chương trình đã khóa bởi lần sử dụng lớp đầu tiên.",
+    "717": "27. Ràng buộc: StudentClassAssignment(class_id) → Class(class_id)",
+    "718": "Mô tả: Mỗi lần xếp lớp phải tham chiếu một lớp đang tồn tại.",
+    "719": "Bảng liên quan: StudentClassAssignment (class_id, bảng con), Class (class_id, bảng cha).",
+    "720": "Bảng tầm ảnh hưởng:",
+    "721": "BảngThêmXóaSửaClass−+ (class_id)+ (class_id)StudentClassAssignment+ (class_id)−+ (class_id)",
+    "722": "Ghi chú:",
+    "723": "class_id không được NULL; giá trị tham chiếu phải tồn tại trong Class.",
+    "724": "Không xóa Class khi còn StudentClassAssignment tham chiếu theo ràng buộc này; không cập nhật khóa dây chuyền, theo chính sách NO ACTION.",
+    "725": "Xếp vào Class OPEN, đúng Course/Band, còn sức chứa và không trùng lịch học viên.",
+    "726": "Liên kết class_id bất biến; không gỡ/chuyển học viên sang lớp khác kể cả trước khi dạy.",
+    "727": "Tạo Assignment, GradeReport DRAFT và audit cùng transaction; FK không thay kiểm tra điều kiện xếp lớp.",
+    "728": "28. Ràng buộc: StudentClassAssignment(registration_id) → Registration(registration_id)",
+    "729": "Mô tả: Mỗi lần xếp lớp phải gắn với một hồ sơ đăng ký đang tồn tại.",
+    "730": "Bảng liên quan: StudentClassAssignment (registration_id, bảng con), Registration (registration_id, bảng cha).",
+    "731": "Bảng tầm ảnh hưởng:",
+    "732": "BảngThêmXóaSửaRegistration−+ (registration_id)+ (registration_id)StudentClassAssignment+ (registration_id)−+ (registration_id)",
+    "733": "Ghi chú:",
+    "734": "registration_id không được NULL; giá trị tham chiếu phải tồn tại trong Registration.",
+    "735": "Không xóa Registration khi còn StudentClassAssignment tham chiếu theo ràng buộc này; không cập nhật khóa dây chuyền, theo chính sách NO ACTION.",
+    "736": "Một Registration có tối đa một Assignment; hồ sơ phải ADMITTED và Invoice PAID.",
+    "737": "Không đổi registration_id để chuyển lượt học hoặc chủ sở hữu; giữ lịch sử xếp lớp.",
+    "738": "Class COMPLETED và GradeReport FINALIZED mới kết thúc lượt học cho quyền đăng ký lại, không chỉ dựa vào Assignment tồn tại.",
+    "739": "29. Ràng buộc: StudentClassAssignment(assigned_by) → Account(account_id)",
+    "740": "Mô tả: Người thực hiện xếp học viên vào lớp phải là tài khoản đang tồn tại.",
+    "741": "Bảng liên quan: StudentClassAssignment (assigned_by, bảng con), Account (account_id, bảng cha).",
+    "742": "Bảng tầm ảnh hưởng:",
+    "743": "BảngThêmXóaSửaAccount−+ (account_id)+ (account_id)StudentClassAssignment+ (assigned_by)−+ (assigned_by)",
+    "744": "Ghi chú:",
+    "745": "assigned_by không được NULL; giá trị phải tồn tại trong Account.",
+    "746": "Không xóa Account khi còn StudentClassAssignment tham chiếu theo ràng buộc này; không cập nhật khóa dây chuyền, theo chính sách NO ACTION.",
+    "747": "Nhân viên giáo vụ thực hiện xếp lớp; FK không tự chứng minh đúng vai trò.",
+    "748": "Xếp lớp, tạo bảng điểm DRAFT và nhật ký trong cùng giao dịch; kiểm tra hồ sơ ADMITTED, hóa đơn PAID, lớp OPEN, khóa học/trình độ phù hợp, sức chứa và xung đột lịch.",
+    "749": "Người xếp lớp là thông tin nguồn gốc bất biến; không chuyển lớp, đổi hồ sơ hoặc xóa liên kết đã tạo theo quy trình hiện hành.",
+    "750": "30. Ràng buộc: Schedule(class_id) → Class(class_id)",
+    "751": "Mô tả: Mỗi buổi học hoặc thi cuối khóa phải thuộc một lớp đang tồn tại.",
+    "752": "Bảng liên quan: Schedule (class_id, bảng con), Class (class_id, bảng cha).",
+    "753": "Bảng tầm ảnh hưởng:",
+    "754": "BảngThêmXóaSửaClass−+ (class_id)+ (class_id)Schedule+ (class_id)−+ (class_id)",
+    "755": "Ghi chú:",
+    "756": "class_id không được NULL; giá trị tham chiếu phải tồn tại trong Class.",
+    "757": "Không xóa Class khi còn Schedule tham chiếu theo ràng buộc này; không cập nhật khóa dây chuyền, theo chính sách NO ACTION.",
+    "758": "Không chuyển buổi lịch sang lớp khác; chuỗi thay thế giữ cùng Class, loại buổi và nghĩa vụ.",
+    "759": "Tạo/dời/thay buổi phải kiểm tra lifecycle, thời gian, số nghĩa vụ và xung đột phòng/giáo viên/học viên.",
+    "760": "Class CANCELLED vẫn giữ Schedule làm lịch sử nhưng không giữ chỗ tài nguyên; không xóa dây chuyền lịch.",
+    "761": "31. Ràng buộc: Schedule(replaces_schedule_id) → Schedule(schedule_id)",
+    "762": "Mô tả: Một buổi thay thế phải tham chiếu buổi lịch tiền nhiệm đang tồn tại.",
+    "763": "Bảng liên quan: Schedule (replaces_schedule_id, bảng con), Schedule (schedule_id, bảng cha).",
+    "764": "Bảng tầm ảnh hưởng:",
+    "765": "BảngThêmXóaSửaSchedule — buổi được tham chiếu (vai trò cha)−+ (schedule_id)+ (schedule_id)Schedule — buổi tham chiếu tiền nhiệm (vai trò con)+ (replaces_schedule_id)−+ (replaces_schedule_id)",
+    "766": "Ghi chú:",
+    "767": "replaces_schedule_id cho phép NULL theo điều kiện nghiệp vụ; khi khác NULL phải tồn tại trong Schedule. Nhóm trường sự kiện/trạng thái đi kèm vẫn phải được kiểm tra.",
+    "768": "Không xóa Schedule khi còn Schedule tham chiếu theo ràng buộc này; không cập nhật khóa dây chuyền, theo chính sách NO ACTION.",
+    "769": "Buổi gốc có liên kết NULL; buổi thay thế trỏ đến tiền nhiệm. Mỗi tiền nhiệm có tối đa một buổi kế tiếp; không tự trỏ, tạo nhánh hoặc vòng.",
+    "770": "Chuỗi giữ cùng lớp, loại buổi và nghĩa vụ tổ chức. Buổi cũ NOT_HELD và không còn hiện hành; buổi mới ở tương lai, PLANNED và hiện hành, được cập nhật cùng giao dịch.",
+    "771": "Dời buổi trước giờ bắt đầu sửa thời gian/phòng trên cùng bản ghi; thay buổi không tổ chức tạo bản ghi mới và giữ lịch sử.",
+    "772": "Hai dòng dưới là hai vai trò của cùng bảng. Xóa một Schedule có ảnh hưởng nếu buổi khác đang tham chiếu nó; dấu − ở vai trò con chỉ xét việc bỏ liên kết đi ra.",
+    "773": "32. Ràng buộc: Schedule(held_by) → Account(account_id)",
+    "774": "Mô tả: Người xác nhận buổi học hoặc thi đã tổ chức phải là tài khoản đang tồn tại.",
+    "775": "Bảng liên quan: Schedule (held_by, bảng con), Account (account_id, bảng cha).",
+    "776": "Bảng tầm ảnh hưởng:",
+    "777": "BảngThêmXóaSửaAccount−+ (account_id)+ (account_id)Schedule+ (held_by)−+ (held_by)",
+    "778": "Ghi chú:",
+    "779": "held_by cho phép NULL theo điều kiện nghiệp vụ; khi khác NULL phải tồn tại trong Account. Nhóm trường sự kiện/trạng thái đi kèm vẫn phải được kiểm tra.",
+    "780": "Không xóa Account khi còn Schedule tham chiếu theo ràng buộc này; không cập nhật khóa dây chuyền, theo chính sách NO ACTION.",
+    "781": "Nhân viên giáo vụ xác nhận HELD sau giờ kết thúc dự kiến, khi lớp ONGOING; người và thời điểm xác nhận đi cùng trạng thái buổi.",
+    "782": "Không suy ra đã tổ chức từ đồng hồ, điểm danh hoặc điểm; FK chỉ bảo đảm người xác nhận tồn tại.",
+    "783": "Giữ thông tin xác nhận; không thay người xác nhận bằng thao tác sửa lịch thông thường.",
+    "784": "33. Ràng buộc: Schedule(not_held_by) → Account(account_id)",
+    "785": "Mô tả: Người xác nhận buổi không tổ chức phải là tài khoản đang tồn tại.",
+    "786": "Bảng liên quan: Schedule (not_held_by, bảng con), Account (account_id, bảng cha).",
+    "787": "Bảng tầm ảnh hưởng:",
+    "788": "BảngThêmXóaSửaAccount−+ (account_id)+ (account_id)Schedule+ (not_held_by)−+ (not_held_by)",
+    "789": "Ghi chú:",
+    "790": "not_held_by cho phép NULL theo điều kiện nghiệp vụ; khi khác NULL phải tồn tại trong Account. Nhóm trường sự kiện/trạng thái đi kèm vẫn phải được kiểm tra.",
+    "791": "Không xóa Account khi còn Schedule tham chiếu theo ràng buộc này; không cập nhật khóa dây chuyền, theo chính sách NO ACTION.",
+    "792": "Nhân viên giáo vụ ghi NOT_HELD tại hoặc sau giờ bắt đầu, có lý do, theo trạng thái lớp cho phép; buổi không được có điểm danh hoặc điểm liên kết.",
+    "793": "Ghi đồng bộ người, thời điểm, lý do và buổi không còn hiện hành; tạo buổi thay thế và nhật ký cùng giao dịch theo quy trình thay buổi.",
+    "794": "Giữ buổi cũ và người xử lý; không xóa bản ghi để tránh lịch sử chuỗi thay thế.",
+    "795": "34. Ràng buộc: Attendance(schedule_id) → Schedule(schedule_id)",
+    "796": "Mô tả: Mỗi bản ghi điểm danh phải tham chiếu một buổi lịch đang tồn tại.",
+    "797": "Bảng liên quan: Attendance (schedule_id, bảng con), Schedule (schedule_id, bảng cha).",
+    "798": "Bảng tầm ảnh hưởng:",
+    "799": "BảngThêmXóaSửaSchedule−+ (schedule_id)+ (schedule_id)Attendance+ (schedule_id)−+ (schedule_id)",
+    "800": "Ghi chú:",
+    "801": "schedule_id không được NULL; giá trị tham chiếu phải tồn tại trong Schedule.",
+    "802": "Không xóa Schedule khi còn Attendance tham chiếu theo ràng buộc này; không cập nhật khóa dây chuyền, theo chính sách NO ACTION.",
+    "803": "Schedule phải là LESSON hiện hành, thuộc cùng Class với Assignment; FK không tự bảo đảm các điều kiện này.",
+    "804": "Teacher phụ trách nhập/sửa từ lúc LESSON bắt đầu đến trước Class COMPLETED; chưa nhập là không có row.",
+    "805": "Không chuyển Attendance sang buổi khác để né cutoff hoặc tạo điểm danh giả cho buổi NOT_HELD.",
+    "806": "35. Ràng buộc: Attendance(class_assignment_id) → StudentClassAssignment(class_assignment_id)",
+    "807": "Mô tả: Mỗi bản ghi điểm danh phải thuộc một học viên đã được xếp lớp và có Assignment đang tồn tại.",
+    "808": "Bảng liên quan: Attendance (class_assignment_id, bảng con), StudentClassAssignment (class_assignment_id, bảng cha).",
+    "809": "Bảng tầm ảnh hưởng:",
+    "810": "BảngThêmXóaSửaStudentClassAssignment−+ (class_assignment_id)+ (class_assignment_id)Attendance+ (class_assignment_id)−+ (class_assignment_id)",
+    "811": "Ghi chú:",
+    "812": "class_assignment_id không được NULL; giá trị tham chiếu phải tồn tại trong StudentClassAssignment.",
+    "813": "Không xóa StudentClassAssignment khi còn Attendance tham chiếu theo ràng buộc này; không cập nhật khóa dây chuyền, theo chính sách NO ACTION.",
+    "814": "Assignment phải thuộc cùng lớp với Schedule; một cặp Schedule/Assignment có tối đa một Attendance.",
+    "815": "Lưu các giá trị chủ động chọn/thay đổi của một LESSON theo batch toàn bộ hoặc không phần nào.",
+    "816": "Không chuyển điểm danh sang Assignment của người khác; Class COMPLETED thì chỉ đọc.",
+    "817": "36. Ràng buộc: Attendance(entered_by) → Account(account_id)",
+    "818": "Mô tả: Người lưu điểm danh phải là tài khoản đang tồn tại.",
+    "819": "Bảng liên quan: Attendance (entered_by, bảng con), Account (account_id, bảng cha).",
+    "820": "Bảng tầm ảnh hưởng:",
+    "821": "BảngThêmXóaSửaAccount−+ (account_id)+ (account_id)Attendance+ (entered_by)−+ (entered_by)",
+    "822": "Ghi chú:",
+    "823": "entered_by không được NULL; giá trị phải tồn tại trong Account.",
+    "824": "Không xóa Account khi còn Attendance tham chiếu theo ràng buộc này; không cập nhật khóa dây chuyền, theo chính sách NO ACTION.",
+    "825": "Giáo viên hiện phụ trách nhập/sửa điểm danh cho LESSON hiện hành của đúng lớp, từ giờ bắt đầu đến trước khi lớp COMPLETED.",
+    "826": "entered_by và entered_at ghi người/thời điểm lần lưu thay đổi thực tế gần nhất; nhật ký giữ lịch sử cũ/mới.",
+    "827": "Lưu các giá trị chủ động chọn hoặc thay đổi của một buổi theo lô trong cùng giao dịch; chưa nhập không tạo bản ghi giả hoặc tự coi là vắng.",
+    "828": "37. Ràng buộc: Score(class_assignment_id) → StudentClassAssignment(class_assignment_id)",
+    "829": "Mô tả: Mỗi điểm thành phần phải thuộc một lượt học đã được xếp lớp và đang tồn tại.",
+    "830": "Bảng liên quan: Score (class_assignment_id, bảng con), StudentClassAssignment (class_assignment_id, bảng cha).",
+    "831": "Bảng tầm ảnh hưởng:",
+    "832": "BảngThêmXóaSửaStudentClassAssignment−+ (class_assignment_id)+ (class_assignment_id)Score+ (class_assignment_id)−+ (class_assignment_id)",
+    "833": "Ghi chú:",
+    "834": "class_assignment_id không được NULL; giá trị tham chiếu phải tồn tại trong StudentClassAssignment.",
+    "835": "Không xóa StudentClassAssignment khi còn Score tham chiếu theo ràng buộc này; không cập nhật khóa dây chuyền, theo chính sách NO ACTION.",
+    "836": "Teacher hiện phụ trách lớp mới được lưu điểm; report phải DRAFT/RETURNED và đáp ứng cửa sổ nhập điểm.",
+    "837": "Một Assignment/component có tối đa một Score; không chuyển điểm sang Assignment khác.",
+    "838": "Lưu điểm/nhận xét theo một học viên, chạm version GradeReport khi có thay đổi thực tế và ghi audit bắt buộc cùng transaction.",
+    "839": "38. Ràng buộc: Score(component_id) → ScoreComponentConfig(component_id)",
+    "840": "Mô tả: Mỗi điểm phải thuộc một thành phần điểm đang tồn tại.",
+    "841": "Bảng liên quan: Score (component_id, bảng con), ScoreComponentConfig (component_id, bảng cha).",
+    "842": "Bảng tầm ảnh hưởng:",
+    "843": "BảngThêmXóaSửaScoreComponentConfig−+ (component_id)+ (component_id)Score+ (component_id)−+ (component_id)",
+    "844": "Ghi chú:",
+    "845": "component_id không được NULL; giá trị tham chiếu phải tồn tại trong ScoreComponentConfig.",
+    "846": "Không xóa ScoreComponentConfig khi còn Score tham chiếu theo ràng buộc này; không cập nhật khóa dây chuyền, theo chính sách NO ACTION.",
+    "847": "Component phải thuộc TrainingProgram của Class chứa Assignment; FK chỉ kiểm tra component tồn tại.",
+    "848": "GENERAL không liên kết Schedule; LESSON/FINAL_EXAM phải gắn đúng loại lịch hiện hành và đã đến giờ nhập.",
+    "849": "Không đổi component_id để chuyển điểm; danh sách thành phần đã dùng bị khóa, SUBMITTED/FINALIZED khóa sửa điểm.",
+    "850": "39. Ràng buộc: Score(entered_by) → Account(account_id)",
+    "851": "Mô tả: Người lưu điểm thành phần phải là tài khoản đang tồn tại.",
+    "852": "Bảng liên quan: Score (entered_by, bảng con), Account (account_id, bảng cha).",
+    "853": "Bảng tầm ảnh hưởng:",
+    "854": "BảngThêmXóaSửaAccount−+ (account_id)+ (account_id)Score+ (entered_by)−+ (entered_by)",
+    "855": "Ghi chú:",
+    "856": "entered_by không được NULL; giá trị tham chiếu phải tồn tại trong Account.",
+    "857": "Không xóa Account khi còn Score tham chiếu theo ràng buộc này; không cập nhật khóa dây chuyền, theo chính sách NO ACTION.",
+    "858": "Actor phải là Teacher hiện phụ trách Class và có quyền lưu điểm tại thời điểm thao tác.",
+    "859": "entered_by/entered_at ghi lần lưu thay đổi thực tế gần nhất; không sửa tùy ý để đổi người chịu trách nhiệm.",
+    "860": "Row không đổi giá trị giữ provenance; lịch sử cũ/mới được giữ trong audit theo nghiệp vụ.",
+    "861": "40. Ràng buộc: Score(schedule_id) → Schedule(schedule_id)",
+    "862": "Mô tả: Điểm gắn với buổi học hoặc thi cuối khóa phải tham chiếu buổi lịch đang tồn tại.",
+    "863": "Bảng liên quan: Score (schedule_id, bảng con), Schedule (schedule_id, bảng cha).",
+    "864": "Bảng tầm ảnh hưởng:",
+    "865": "BảngThêmXóaSửaSchedule−+ (schedule_id)+ (schedule_id)Score+ (schedule_id)−+ (schedule_id)",
+    "866": "Ghi chú:",
+    "867": "schedule_id cho phép NULL theo điều kiện nghiệp vụ; khi khác NULL phải tồn tại trong Schedule. Nhóm trường sự kiện/trạng thái đi kèm vẫn phải được kiểm tra.",
+    "868": "Không xóa Schedule khi còn Score tham chiếu theo ràng buộc này; không cập nhật khóa dây chuyền, theo chính sách NO ACTION.",
+    "869": "GENERAL bắt buộc schedule_id NULL; LESSON/FINAL_EXAM bắt buộc liên kết buổi phù hợp. FK nullable không tự kiểm tra điều kiện theo loại thành phần.",
+    "870": "Buổi phải hiện hành, cùng lớp của lượt học, đúng loại và không NOT_HELD; cửa sổ lưu điểm mở từ giờ bắt đầu.",
+    "871": "Kiểm tra chương trình/thành phần, quyền giáo viên và bảng điểm DRAFT/RETURNED; không xóa liên kết hoặc đổi buổi để né điều kiện nghiệp vụ.",
+    "872": "41. Ràng buộc: GradeReport(class_assignment_id) → StudentClassAssignment(class_assignment_id)",
+    "873": "Mô tả: Mỗi bảng điểm phải thuộc một lượt học đã được xếp lớp đang tồn tại.",
+    "874": "Bảng liên quan: GradeReport (class_assignment_id, bảng con), StudentClassAssignment (class_assignment_id, bảng cha).",
+    "875": "Bảng tầm ảnh hưởng:",
+    "876": "BảngThêmXóaSửaStudentClassAssignment−+ (class_assignment_id)+ (class_assignment_id)GradeReport+ (class_assignment_id)−+ (class_assignment_id)",
+    "877": "Ghi chú:",
+    "878": "class_assignment_id không được NULL; giá trị tham chiếu phải tồn tại trong StudentClassAssignment.",
+    "879": "Không xóa StudentClassAssignment khi còn GradeReport tham chiếu theo ràng buộc này; không cập nhật khóa dây chuyền, theo chính sách NO ACTION.",
+    "880": "Một Assignment có tối đa một GradeReport; report DRAFT tạo cùng transaction xếp lớp.",
+    "881": "Không chuyển GradeReport sang lượt học hoặc học viên khác.",
+    "882": "Gửi/gửi lại/trả/chốt toàn lớp; chỉ FINALIZED công bố cho Student và lưu final_score, kết quả đã chốt bất biến.",
+    "883": "42. Ràng buộc: GradeReport(submitted_by) → Account(account_id)",
+    "884": "Mô tả: Người gửi hoặc gửi lại bảng điểm phải là tài khoản đang tồn tại.",
+    "885": "Bảng liên quan: GradeReport (submitted_by, bảng con), Account (account_id, bảng cha).",
+    "886": "Bảng tầm ảnh hưởng:",
+    "887": "BảngThêmXóaSửaAccount−+ (account_id)+ (account_id)GradeReport+ (submitted_by)−+ (submitted_by)",
+    "888": "Ghi chú:",
+    "889": "FK cho phép NULL theo điều kiện nêu dưới đây; khi có giá trị tham chiếu, bản ghi tương ứng phải tồn tại.",
+    "890": "Không xóa Account khi còn GradeReport tham chiếu theo ràng buộc này; không cập nhật khóa dây chuyền, theo chính sách NO ACTION.",
+    "891": "Đây là tên cụ thể của trường người gửi trong danh sách ban đầu.",
+    "892": "NULL khi DRAFT chưa từng gửi; SUBMITTED/RETURNED/FINALIZED phải có thông tin lần gửi theo bundle trạng thái.",
+    "893": "Người gửi là Teacher hiện phụ trách, Class COMPLETED và toàn bộ học viên đủ điểm; thao tác toàn lớp all-or-none.",
+    "894": "submitted_by lưu lần gửi gần nhất; từng lần gửi/gửi lại vẫn có audit, không sửa tay provenance.",
+    "895": "43. Ràng buộc: GradeReport(reviewed_by) → Account(account_id)",
+    "896": "Mô tả: Người trả lại hoặc chốt bảng điểm phải là tài khoản đang tồn tại.",
+    "897": "Bảng liên quan: GradeReport (reviewed_by, bảng con), Account (account_id, bảng cha).",
+    "898": "Bảng tầm ảnh hưởng:",
+    "899": "BảngThêmXóaSửaAccount−+ (account_id)+ (account_id)GradeReport+ (reviewed_by)−+ (reviewed_by)",
+    "900": "Ghi chú:",
+    "901": "FK cho phép NULL theo điều kiện nêu dưới đây; khi có giá trị tham chiếu, bản ghi tương ứng phải tồn tại.",
+    "902": "Không xóa Account khi còn GradeReport tham chiếu theo ràng buộc này; không cập nhật khóa dây chuyền, theo chính sách NO ACTION.",
+    "903": "Đây là tên cụ thể của trường người xử lý trong danh sách ban đầu.",
+    "904": "Cho phép NULL khi chưa review; RETURNED/FINALIZED bắt buộc bundle review tương ứng. Thông tin review gần nhất có thể được giữ sau gửi lại.",
+    "905": "Actor phải có quyền AcademicAffairs; trả/chốt toàn lớp SUBMITTED của Class COMPLETED, RETURNED cần lý do.",
+    "906": "reviewed_by giữ lần xử lý gần nhất; lịch sử các lần xử lý được lưu trong audit, FINALIZED không chỉnh lại.",
+    "907": "44. Ràng buộc: Invoice(registration_id) → Registration(registration_id)",
+    "908": "Mô tả: Mỗi hóa đơn phải thuộc một hồ sơ đăng ký đang tồn tại.",
+    "909": "Bảng liên quan: Invoice (registration_id, bảng con), Registration (registration_id, bảng cha).",
+    "910": "Bảng tầm ảnh hưởng:",
+    "911": "BảngThêmXóaSửaRegistration−+ (registration_id)+ (registration_id)Invoice+ (registration_id)−+ (registration_id)",
+    "912": "Ghi chú:",
+    "913": "registration_id không được NULL; giá trị tham chiếu phải tồn tại trong Registration.",
+    "914": "Không xóa Registration khi còn Invoice tham chiếu theo ràng buộc này; không cập nhật khóa dây chuyền, theo chính sách NO ACTION.",
+    "915": "Một Registration có tối đa một Invoice; duyệt ADMITTED và tạo Invoice UNPAID cùng transaction.",
+    "916": "registration_id và số tiền snapshot của Invoice bất biến; không chuyển hóa đơn sang hồ sơ khác.",
+    "917": "Hủy hồ sơ hợp lệ đồng thời hủy Invoice UNPAID, giữ bản ghi; không hủy hồ sơ đã thanh toán hoặc xóa lịch sử.",
+    "918": "45. Ràng buộc: Invoice(cancelled_by) → Account(account_id)",
+    "919": "Mô tả: Người hủy hóa đơn theo việc hủy hồ sơ đăng ký phải là tài khoản đang tồn tại.",
+    "920": "Bảng liên quan: Invoice (cancelled_by, bảng con), Account (account_id, bảng cha).",
+    "921": "Bảng tầm ảnh hưởng:",
+    "922": "BảngThêmXóaSửaAccount−+ (account_id)+ (account_id)Invoice+ (cancelled_by)−+ (cancelled_by)",
+    "923": "Ghi chú:",
+    "924": "cancelled_by cho phép NULL theo điều kiện nghiệp vụ; khi khác NULL phải tồn tại trong Account. Nhóm trường sự kiện/trạng thái đi kèm vẫn phải được kiểm tra.",
+    "925": "Không xóa Account khi còn Invoice tham chiếu theo ràng buộc này; không cập nhật khóa dây chuyền, theo chính sách NO ACTION.",
+    "926": "Người hủy phản ánh người thực hiện hủy hồ sơ theo quy trình hợp lệ; hóa đơn đã tạo chỉ hủy khi UNPAID.",
+    "927": "Hủy hóa đơn đồng bộ với hủy hồ sơ, ghi người, thời điểm, lý do và nhật ký; không hủy độc lập hóa đơn PAID hoặc hoàn tiền.",
+    "928": "Giữ liên kết hồ sơ, số tiền đã ghi nhận và người xử lý; không xóa hóa đơn để bỏ lịch sử.",
+    "929": "46. Ràng buộc: Payment(invoice_id) → Invoice(invoice_id)",
+    "930": "Mô tả: Mỗi thanh toán đã xác nhận phải tham chiếu một hóa đơn đang tồn tại.",
+    "931": "Bảng liên quan: Payment (invoice_id, bảng con), Invoice (invoice_id, bảng cha).",
+    "932": "Bảng tầm ảnh hưởng:",
+    "933": "BảngThêmXóaSửaInvoice−+ (invoice_id)+ (invoice_id)Payment+ (invoice_id)−+ (invoice_id)",
+    "934": "Ghi chú:",
+    "935": "invoice_id không được NULL; giá trị tham chiếu phải tồn tại trong Invoice.",
+    "936": "Không xóa Invoice khi còn Payment tham chiếu theo ràng buộc này; không cập nhật khóa dây chuyền, theo chính sách NO ACTION.",
+    "937": "Một Invoice có tối đa một Payment; số tiền phải bằng Invoice.amount và Invoice phải UNPAID trước thu.",
+    "938": "Tạo Payment, đổi Invoice sang PAID và audit cùng transaction.",
+    "939": "invoice_id bất biến; không xóa/hủy/hoàn tiền, chỉ được sửa phương thức/mã giao dịch có lý do/audit.",
+    "940": "47. Ràng buộc: Payment(confirmed_by) → Account(account_id)",
+    "941": "Mô tả: Người xác nhận thanh toán phải là tài khoản đang tồn tại.",
+    "942": "Bảng liên quan: Payment (confirmed_by, bảng con), Account (account_id, bảng cha).",
+    "943": "Bảng tầm ảnh hưởng:",
+    "944": "BảngThêmXóaSửaAccount−+ (account_id)+ (account_id)Payment+ (confirmed_by)−+ (confirmed_by)",
+    "945": "Ghi chú:",
+    "946": "confirmed_by không được NULL; giá trị tham chiếu phải tồn tại trong Account.",
+    "947": "Không xóa Account khi còn Payment tham chiếu theo ràng buộc này; không cập nhật khóa dây chuyền, theo chính sách NO ACTION.",
+    "948": "Actor phải có quyền Accountant tại thời điểm xác nhận; FK không tự kiểm tra vai trò.",
+    "949": "confirmed_by và paid_at bất biến sau xác nhận; sửa metadata không đổi người hoặc thời điểm xác nhận ban đầu.",
+    "950": "Không xóa Account để làm mất liên kết người xác nhận; dùng trạng thái khóa/ngừng dùng theo nghiệp vụ.",
+    "951": "48. Ràng buộc: Payment(last_corrected_by) → Account(account_id)",
+    "952": "Mô tả: Người sửa thông tin thanh toán gần nhất phải là tài khoản đang tồn tại.",
+    "953": "Bảng liên quan: Payment (last_corrected_by, bảng con), Account (account_id, bảng cha).",
+    "954": "Bảng tầm ảnh hưởng:",
+    "955": "BảngThêmXóaSửaAccount−+ (account_id)+ (account_id)Payment+ (last_corrected_by)−+ (last_corrected_by)",
+    "956": "Ghi chú:",
+    "957": "last_corrected_by cho phép NULL theo điều kiện nghiệp vụ; khi khác NULL phải tồn tại trong Account. Nhóm trường sự kiện/trạng thái đi kèm vẫn phải được kiểm tra.",
+    "958": "Không xóa Account khi còn Payment tham chiếu theo ràng buộc này; không cập nhật khóa dây chuyền, theo chính sách NO ACTION.",
+    "959": "Chưa sửa thì nhóm thông tin sửa để NULL; khi sửa phải ghi đồng bộ người, thời điểm và lý do.",
+    "960": "Kế toán (Accountant) chỉ sửa phương thức hoặc mã giao dịch; không đổi hóa đơn, số tiền, người hoặc thời điểm xác nhận ban đầu.",
+    "961": "Các trường này ghi lần sửa gần nhất; nhật ký lưu từng lần sửa với giá trị cũ/mới. Không xóa, hủy hay hoàn tiền qua thao tác sửa thông tin.",
+    "962": "49. Ràng buộc: AuditLog(actor_account_id) → Account(account_id)",
+    "963": "Mô tả: Người thao tác đã xác thực trong nhật ký phải là tài khoản đang tồn tại.",
+    "964": "Bảng liên quan: AuditLog (actor_account_id, bảng con), Account (account_id, bảng cha).",
+    "965": "Bảng tầm ảnh hưởng:",
+    "966": "BảngThêmXóaSửaAccount−+ (account_id)+ (account_id)AuditLog+ (actor_account_id)−+ (actor_account_id)",
+    "967": "Ghi chú:",
+    "968": "FK cho phép NULL theo điều kiện nêu dưới đây; khi có giá trị tham chiếu, bản ghi tương ứng phải tồn tại.",
+    "969": "Không xóa Account khi còn AuditLog tham chiếu theo ràng buộc này; không cập nhật khóa dây chuyền, theo chính sách NO ACTION.",
+    "970": "Cho phép NULL chỉ khi người thao tác chưa được xác thực; không gán email người dùng nhập thành actor đã xác minh.",
+    "971": "Audit append-only; không có nghiệp vụ sửa actor_account_id để chuyển người chịu trách nhiệm, không xóa audit bắt buộc.",
+    "972": "Khóa/ngừng dùng Account không làm mất lịch sử actor. Vận hành dọn log SECURITY/IP hết hạn theo chính sách riêng, không cấp quyền xóa audit trong ứng dụng.",
+    "973": "5. Ràng buộc liên quan hệ",
+    "974": "BandAssignment.best_attempt_id phải trỏ đến một EntryTestAttempt có status = COMPLETED, thuộc cùng registration_id và có điểm cao nhất trong tối đa hai lượt thi của hồ sơ đó.",
+    "975": "BandAssignment.band_id phải là Band có min_score lớn nhất nhưng không vượt quá điểm của best_attempt_id.",
+    "976": "Registration chỉ được chuyển sang BAND_ASSIGNED khi đã có BandAssignment.",
+    "977": "Registration chỉ được chuyển sang CONFIRMED khi đang ở trạng thái BAND_ASSIGNED và học viên thực hiện xác nhận nhập học.",
+    "978": "Registration chỉ được chuyển sang ADMITTED khi đang ở trạng thái CONFIRMED, đã có Band hợp lệ và được tài khoản có vai trò tuyển sinh duyệt.",
+    "979": "Khi Registration chuyển sang ADMITTED, hệ thống phải tạo đúng một Invoice trong cùng transaction. Invoice.amount bằng Course.base_price của hồ sơ tại thời điểm phát hành.",
+    "980": "EntryTestSession.grader_id và EntryTestAttempt.graded_by phải trỏ đến tài khoản có vai trò TEACHER. Người nhập điểm phải là giáo viên được phân công cho ca thi.",
+    "981": "Số EntryTestAttempt đang chiếm chỗ trong một ca thi không được vượt EntryTestSession.capacity. Các lượt CANCELLED không chiếm chỗ.",
+    "982": "Class.teacher_id phải trỏ đến tài khoản có vai trò TEACHER.",
+    "983": "StudentClassAssignment chỉ được tạo khi:",
+    "984": "Registration.status = ADMITTED.",
+    "985": "Hồ sơ có Invoice.status = PAID.",
+    "986": "Band của hồ sơ khớp TrainingProgram.band_id của lớp.",
+    "987": "Registration.course_id khớp TrainingProgram.course_id của lớp.",
+    "988": "Class.status ∈ {OPEN, ONGOING} theo quy tắc vận hành.",
+    "989": "Sĩ số hiện tại nhỏ hơn Class.max_size.",
+    "990": "Việc xếp ca thi và xếp lớp phải được thực hiện trong transaction có khóa hoặc cơ chế kiểm soát đồng thời để hai nhân viên thao tác cùng lúc không làm vượt sức chứa.",
+    "991": "Schedule không được chồng lấn với một lịch khác nếu dùng cùng phòng, cùng lớp hoặc các lớp có cùng giáo viên phụ trách.",
+    "992": "EntryTestSession không được chồng lấn với lịch lớp hoặc ca thi khác nếu dùng cùng phòng hoặc cùng giáo viên.",
+    "993": "Attendance.schedule_id phải trỏ đến Schedule có session_type = LESSON.",
+    "994": "Lớp của Attendance.class_assignment_id phải trùng với lớp của Attendance.schedule_id.",
+    "995": "Score.component_id phải thuộc TrainingProgram của lớp mà class_assignment_id đang theo học.",
+    "996": "Score.entered_by phải là giáo viên phụ trách lớp tương ứng, trừ trường hợp sửa dữ liệu được phân quyền đặc biệt và ghi đầy đủ vào AuditLog.",
+    "997": "GradeReport.final_score phải bằng:",
+    "998": "Σ(Score.score_value × ScoreComponentConfig.weight / 100)",
+    "999": "trên toàn bộ thành phần điểm của chương trình tương ứng.",
+    "1000": "GradeReport chỉ được chuyển sang SUBMITTED khi đã có đủ các thành phần điểm bắt buộc.",
+    "1001": "Chỉ tài khoản có vai trò giáo vụ mới được chuyển bảng điểm từ SUBMITTED sang RETURNED hoặc FINALIZED.",
+    "1002": "Học viên chỉ được xem bảng điểm khi GradeReport.status = FINALIZED.",
+    "1003": "Invoice.status = PAID chỉ hợp lệ khi tồn tại đúng một Payment tương ứng.",
+    "1004": "Payment.amount_paid phải bằng đúng Invoice.amount.",
+    "1005": "Payment.confirmed_by phải là tài khoản có vai trò ACCOUNTANT.",
+    "1006": "Việc tạo Payment và chuyển Invoice sang PAID phải diễn ra trong cùng một transaction.",
+    "1007": "Các thao tác duyệt hồ sơ, nhập điểm thi, xác định Band, xác nhận thanh toán, xếp lớp, trả lại/chốt bảng điểm và khóa/mở tài khoản phải tạo bản ghi AuditLog."
+  }
+}

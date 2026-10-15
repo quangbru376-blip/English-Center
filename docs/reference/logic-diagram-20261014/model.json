@@ -1,0 +1,1578 @@
+{
+  "groups": [
+    [
+      "identity",
+      "TÀI KHOẢN VÀ PHIÊN",
+      [
+        "Role",
+        "Account",
+        "StudentProfile",
+        "AuthSession"
+      ]
+    ],
+    [
+      "config",
+      "CẤU HÌNH ĐÀO TẠO",
+      [
+        "Course",
+        "Band",
+        "TrainingProgram",
+        "ScoreComponentConfig"
+      ]
+    ],
+    [
+      "entry",
+      "ĐĂNG KÝ VÀ THI ĐẦU VÀO",
+      [
+        "Registration",
+        "EntryTestSession",
+        "EntryTestAttempt",
+        "EntryTestBooking",
+        "BandAssignment"
+      ]
+    ],
+    [
+      "class",
+      "LỚP LỊCH VÀ KẾT QUẢ",
+      [
+        "Class",
+        "StudentClassAssignment",
+        "Schedule",
+        "Attendance",
+        "Score",
+        "GradeReport"
+      ]
+    ],
+    [
+      "finance",
+      "HÓA ĐƠN VÀ THANH TOÁN",
+      [
+        "Invoice",
+        "Payment",
+        "InvoiceNumberCounter"
+      ]
+    ],
+    [
+      "support",
+      "NHẬT KÝ VÀ REPLAY",
+      [
+        "AuditLog",
+        "ReplayOperation"
+      ]
+    ]
+  ],
+  "edges": [
+    {
+      "name": "FK_Account_Role_role_id",
+      "child": "Account",
+      "parent": "Role",
+      "columns": [
+        "role_id"
+      ],
+      "parent_columns": [
+        "role_id"
+      ],
+      "on_delete": "0",
+      "on_update": "0",
+      "disabled": "0",
+      "untrusted": "0"
+    },
+    {
+      "name": "FK_StudentProfile_Account_account_id",
+      "child": "StudentProfile",
+      "parent": "Account",
+      "columns": [
+        "account_id"
+      ],
+      "parent_columns": [
+        "account_id"
+      ],
+      "on_delete": "0",
+      "on_update": "0",
+      "disabled": "0",
+      "untrusted": "0"
+    },
+    {
+      "name": "FK_AuthSession_Account_account_id",
+      "child": "AuthSession",
+      "parent": "Account",
+      "columns": [
+        "account_id"
+      ],
+      "parent_columns": [
+        "account_id"
+      ],
+      "on_delete": "0",
+      "on_update": "0",
+      "disabled": "0",
+      "untrusted": "0"
+    },
+    {
+      "name": "FK_TrainingProgram_Band_band_id",
+      "child": "TrainingProgram",
+      "parent": "Band",
+      "columns": [
+        "band_id"
+      ],
+      "parent_columns": [
+        "band_id"
+      ],
+      "on_delete": "0",
+      "on_update": "0",
+      "disabled": "0",
+      "untrusted": "0"
+    },
+    {
+      "name": "FK_TrainingProgram_Course_course_id",
+      "child": "TrainingProgram",
+      "parent": "Course",
+      "columns": [
+        "course_id"
+      ],
+      "parent_columns": [
+        "course_id"
+      ],
+      "on_delete": "0",
+      "on_update": "0",
+      "disabled": "0",
+      "untrusted": "0"
+    },
+    {
+      "name": "FK_ScoreComponentConfig_TrainingProgram_program_id",
+      "child": "ScoreComponentConfig",
+      "parent": "TrainingProgram",
+      "columns": [
+        "program_id"
+      ],
+      "parent_columns": [
+        "program_id"
+      ],
+      "on_delete": "0",
+      "on_update": "0",
+      "disabled": "0",
+      "untrusted": "0"
+    },
+    {
+      "name": "FK_Registration_Course_course_id",
+      "child": "Registration",
+      "parent": "Course",
+      "columns": [
+        "course_id"
+      ],
+      "parent_columns": [
+        "course_id"
+      ],
+      "on_delete": "0",
+      "on_update": "0",
+      "disabled": "0",
+      "untrusted": "0"
+    },
+    {
+      "name": "FK_Registration_StudentProfile_student_id",
+      "child": "Registration",
+      "parent": "StudentProfile",
+      "columns": [
+        "student_id"
+      ],
+      "parent_columns": [
+        "student_id"
+      ],
+      "on_delete": "0",
+      "on_update": "0",
+      "disabled": "0",
+      "untrusted": "0"
+    },
+    {
+      "name": "FK_EntryTestSession_Account_grader_id",
+      "child": "EntryTestSession",
+      "parent": "Account",
+      "columns": [
+        "grader_id"
+      ],
+      "parent_columns": [
+        "account_id"
+      ],
+      "on_delete": "0",
+      "on_update": "0",
+      "disabled": "0",
+      "untrusted": "0"
+    },
+    {
+      "name": "FK_Attempt_Booking_CompletedBookingAttempt",
+      "child": "EntryTestAttempt",
+      "parent": "EntryTestBooking",
+      "columns": [
+        "completed_booking_id",
+        "attempt_id"
+      ],
+      "parent_columns": [
+        "booking_id",
+        "attempt_id"
+      ],
+      "on_delete": "0",
+      "on_update": "0",
+      "disabled": "0",
+      "untrusted": "0"
+    },
+    {
+      "name": "FK_Attempt_Registration_registration_id",
+      "child": "EntryTestAttempt",
+      "parent": "Registration",
+      "columns": [
+        "registration_id"
+      ],
+      "parent_columns": [
+        "registration_id"
+      ],
+      "on_delete": "0",
+      "on_update": "0",
+      "disabled": "0",
+      "untrusted": "0"
+    },
+    {
+      "name": "FK_Booking_Attempt_attempt_id",
+      "child": "EntryTestBooking",
+      "parent": "EntryTestAttempt",
+      "columns": [
+        "attempt_id"
+      ],
+      "parent_columns": [
+        "attempt_id"
+      ],
+      "on_delete": "0",
+      "on_update": "0",
+      "disabled": "0",
+      "untrusted": "0"
+    },
+    {
+      "name": "FK_Booking_Session_session_id",
+      "child": "EntryTestBooking",
+      "parent": "EntryTestSession",
+      "columns": [
+        "session_id"
+      ],
+      "parent_columns": [
+        "session_id"
+      ],
+      "on_delete": "0",
+      "on_update": "0",
+      "disabled": "0",
+      "untrusted": "0"
+    },
+    {
+      "name": "FK_BandAssignment_Attempt_BestAttemptRegistration",
+      "child": "BandAssignment",
+      "parent": "EntryTestAttempt",
+      "columns": [
+        "best_attempt_id",
+        "registration_id"
+      ],
+      "parent_columns": [
+        "attempt_id",
+        "registration_id"
+      ],
+      "on_delete": "0",
+      "on_update": "0",
+      "disabled": "0",
+      "untrusted": "0"
+    },
+    {
+      "name": "FK_BandAssignment_Band_band_id",
+      "child": "BandAssignment",
+      "parent": "Band",
+      "columns": [
+        "band_id"
+      ],
+      "parent_columns": [
+        "band_id"
+      ],
+      "on_delete": "0",
+      "on_update": "0",
+      "disabled": "0",
+      "untrusted": "0"
+    },
+    {
+      "name": "FK_BandAssignment_Registration_registration_id",
+      "child": "BandAssignment",
+      "parent": "Registration",
+      "columns": [
+        "registration_id"
+      ],
+      "parent_columns": [
+        "registration_id"
+      ],
+      "on_delete": "0",
+      "on_update": "0",
+      "disabled": "0",
+      "untrusted": "0"
+    },
+    {
+      "name": "FK_Class_Account_teacher_id",
+      "child": "Class",
+      "parent": "Account",
+      "columns": [
+        "teacher_id"
+      ],
+      "parent_columns": [
+        "account_id"
+      ],
+      "on_delete": "0",
+      "on_update": "0",
+      "disabled": "0",
+      "untrusted": "0"
+    },
+    {
+      "name": "FK_Class_TrainingProgram_program_id",
+      "child": "Class",
+      "parent": "TrainingProgram",
+      "columns": [
+        "program_id"
+      ],
+      "parent_columns": [
+        "program_id"
+      ],
+      "on_delete": "0",
+      "on_update": "0",
+      "disabled": "0",
+      "untrusted": "0"
+    },
+    {
+      "name": "FK_Assignment_Class_class_id",
+      "child": "StudentClassAssignment",
+      "parent": "Class",
+      "columns": [
+        "class_id"
+      ],
+      "parent_columns": [
+        "class_id"
+      ],
+      "on_delete": "0",
+      "on_update": "0",
+      "disabled": "0",
+      "untrusted": "0"
+    },
+    {
+      "name": "FK_Assignment_Registration_registration_id",
+      "child": "StudentClassAssignment",
+      "parent": "Registration",
+      "columns": [
+        "registration_id"
+      ],
+      "parent_columns": [
+        "registration_id"
+      ],
+      "on_delete": "0",
+      "on_update": "0",
+      "disabled": "0",
+      "untrusted": "0"
+    },
+    {
+      "name": "FK_Schedule_Class_class_id",
+      "child": "Schedule",
+      "parent": "Class",
+      "columns": [
+        "class_id"
+      ],
+      "parent_columns": [
+        "class_id"
+      ],
+      "on_delete": "0",
+      "on_update": "0",
+      "disabled": "0",
+      "untrusted": "0"
+    },
+    {
+      "name": "FK_Schedule_Schedule_replaces_schedule_id",
+      "child": "Schedule",
+      "parent": "Schedule",
+      "columns": [
+        "replaces_schedule_id"
+      ],
+      "parent_columns": [
+        "schedule_id"
+      ],
+      "on_delete": "0",
+      "on_update": "0",
+      "disabled": "0",
+      "untrusted": "0"
+    },
+    {
+      "name": "FK_Attendance_Schedule_schedule_id",
+      "child": "Attendance",
+      "parent": "Schedule",
+      "columns": [
+        "schedule_id"
+      ],
+      "parent_columns": [
+        "schedule_id"
+      ],
+      "on_delete": "0",
+      "on_update": "0",
+      "disabled": "0",
+      "untrusted": "0"
+    },
+    {
+      "name": "FK_Attendance_StudentClassAssignment_class_assignment_id",
+      "child": "Attendance",
+      "parent": "StudentClassAssignment",
+      "columns": [
+        "class_assignment_id"
+      ],
+      "parent_columns": [
+        "class_assignment_id"
+      ],
+      "on_delete": "0",
+      "on_update": "0",
+      "disabled": "0",
+      "untrusted": "0"
+    },
+    {
+      "name": "FK_Score_Schedule_schedule_id",
+      "child": "Score",
+      "parent": "Schedule",
+      "columns": [
+        "schedule_id"
+      ],
+      "parent_columns": [
+        "schedule_id"
+      ],
+      "on_delete": "0",
+      "on_update": "0",
+      "disabled": "0",
+      "untrusted": "0"
+    },
+    {
+      "name": "FK_Score_ScoreComponentConfig_component_id",
+      "child": "Score",
+      "parent": "ScoreComponentConfig",
+      "columns": [
+        "component_id"
+      ],
+      "parent_columns": [
+        "component_id"
+      ],
+      "on_delete": "0",
+      "on_update": "0",
+      "disabled": "0",
+      "untrusted": "0"
+    },
+    {
+      "name": "FK_Score_StudentClassAssignment_class_assignment_id",
+      "child": "Score",
+      "parent": "StudentClassAssignment",
+      "columns": [
+        "class_assignment_id"
+      ],
+      "parent_columns": [
+        "class_assignment_id"
+      ],
+      "on_delete": "0",
+      "on_update": "0",
+      "disabled": "0",
+      "untrusted": "0"
+    },
+    {
+      "name": "FK_GradeReport_StudentClassAssignment_class_assignment_id",
+      "child": "GradeReport",
+      "parent": "StudentClassAssignment",
+      "columns": [
+        "class_assignment_id"
+      ],
+      "parent_columns": [
+        "class_assignment_id"
+      ],
+      "on_delete": "0",
+      "on_update": "0",
+      "disabled": "0",
+      "untrusted": "0"
+    },
+    {
+      "name": "FK_Invoice_Registration_registration_id",
+      "child": "Invoice",
+      "parent": "Registration",
+      "columns": [
+        "registration_id"
+      ],
+      "parent_columns": [
+        "registration_id"
+      ],
+      "on_delete": "0",
+      "on_update": "0",
+      "disabled": "0",
+      "untrusted": "0"
+    },
+    {
+      "name": "FK_Payment_Invoice_invoice_id",
+      "child": "Payment",
+      "parent": "Invoice",
+      "columns": [
+        "invoice_id"
+      ],
+      "parent_columns": [
+        "invoice_id"
+      ],
+      "on_delete": "0",
+      "on_update": "0",
+      "disabled": "0",
+      "untrusted": "0"
+    },
+    {
+      "name": "FK_AuditLog_Account_actor_account_id",
+      "child": "AuditLog",
+      "parent": "Account",
+      "columns": [
+        "actor_account_id"
+      ],
+      "parent_columns": [
+        "account_id"
+      ],
+      "on_delete": "0",
+      "on_update": "0",
+      "disabled": "0",
+      "untrusted": "0"
+    },
+    {
+      "name": "FK_ReplayOperation_Account_actor_account_id",
+      "child": "ReplayOperation",
+      "parent": "Account",
+      "columns": [
+        "actor_account_id"
+      ],
+      "parent_columns": [
+        "account_id"
+      ],
+      "on_delete": "0",
+      "on_update": "0",
+      "disabled": "0",
+      "untrusted": "0"
+    }
+  ],
+  "omitted": [
+    {
+      "name": "FK_Registration_Account_admission_approved_by",
+      "child": "Registration",
+      "parent": "Account",
+      "columns": [
+        "admission_approved_by"
+      ],
+      "parent_columns": [
+        "account_id"
+      ],
+      "on_delete": "0",
+      "on_update": "0",
+      "disabled": "0",
+      "untrusted": "0"
+    },
+    {
+      "name": "FK_Registration_Account_cancelled_by",
+      "child": "Registration",
+      "parent": "Account",
+      "columns": [
+        "cancelled_by"
+      ],
+      "parent_columns": [
+        "account_id"
+      ],
+      "on_delete": "0",
+      "on_update": "0",
+      "disabled": "0",
+      "untrusted": "0"
+    },
+    {
+      "name": "FK_Registration_Account_rejected_by",
+      "child": "Registration",
+      "parent": "Account",
+      "columns": [
+        "rejected_by"
+      ],
+      "parent_columns": [
+        "account_id"
+      ],
+      "on_delete": "0",
+      "on_update": "0",
+      "disabled": "0",
+      "untrusted": "0"
+    },
+    {
+      "name": "FK_EntryTestSession_Account_cancelled_by",
+      "child": "EntryTestSession",
+      "parent": "Account",
+      "columns": [
+        "cancelled_by"
+      ],
+      "parent_columns": [
+        "account_id"
+      ],
+      "on_delete": "0",
+      "on_update": "0",
+      "disabled": "0",
+      "untrusted": "0"
+    },
+    {
+      "name": "FK_Attempt_Account_graded_by",
+      "child": "EntryTestAttempt",
+      "parent": "Account",
+      "columns": [
+        "graded_by"
+      ],
+      "parent_columns": [
+        "account_id"
+      ],
+      "on_delete": "0",
+      "on_update": "0",
+      "disabled": "0",
+      "untrusted": "0"
+    },
+    {
+      "name": "FK_Booking_Account_absent_by",
+      "child": "EntryTestBooking",
+      "parent": "Account",
+      "columns": [
+        "absent_by"
+      ],
+      "parent_columns": [
+        "account_id"
+      ],
+      "on_delete": "0",
+      "on_update": "0",
+      "disabled": "0",
+      "untrusted": "0"
+    },
+    {
+      "name": "FK_Booking_Account_cancelled_by",
+      "child": "EntryTestBooking",
+      "parent": "Account",
+      "columns": [
+        "cancelled_by"
+      ],
+      "parent_columns": [
+        "account_id"
+      ],
+      "on_delete": "0",
+      "on_update": "0",
+      "disabled": "0",
+      "untrusted": "0"
+    },
+    {
+      "name": "FK_Class_Account_cancelled_by",
+      "child": "Class",
+      "parent": "Account",
+      "columns": [
+        "cancelled_by"
+      ],
+      "parent_columns": [
+        "account_id"
+      ],
+      "on_delete": "0",
+      "on_update": "0",
+      "disabled": "0",
+      "untrusted": "0"
+    },
+    {
+      "name": "FK_Assignment_Account_assigned_by",
+      "child": "StudentClassAssignment",
+      "parent": "Account",
+      "columns": [
+        "assigned_by"
+      ],
+      "parent_columns": [
+        "account_id"
+      ],
+      "on_delete": "0",
+      "on_update": "0",
+      "disabled": "0",
+      "untrusted": "0"
+    },
+    {
+      "name": "FK_Schedule_Account_held_by",
+      "child": "Schedule",
+      "parent": "Account",
+      "columns": [
+        "held_by"
+      ],
+      "parent_columns": [
+        "account_id"
+      ],
+      "on_delete": "0",
+      "on_update": "0",
+      "disabled": "0",
+      "untrusted": "0"
+    },
+    {
+      "name": "FK_Schedule_Account_not_held_by",
+      "child": "Schedule",
+      "parent": "Account",
+      "columns": [
+        "not_held_by"
+      ],
+      "parent_columns": [
+        "account_id"
+      ],
+      "on_delete": "0",
+      "on_update": "0",
+      "disabled": "0",
+      "untrusted": "0"
+    },
+    {
+      "name": "FK_Attendance_Account_entered_by",
+      "child": "Attendance",
+      "parent": "Account",
+      "columns": [
+        "entered_by"
+      ],
+      "parent_columns": [
+        "account_id"
+      ],
+      "on_delete": "0",
+      "on_update": "0",
+      "disabled": "0",
+      "untrusted": "0"
+    },
+    {
+      "name": "FK_Score_Account_entered_by",
+      "child": "Score",
+      "parent": "Account",
+      "columns": [
+        "entered_by"
+      ],
+      "parent_columns": [
+        "account_id"
+      ],
+      "on_delete": "0",
+      "on_update": "0",
+      "disabled": "0",
+      "untrusted": "0"
+    },
+    {
+      "name": "FK_GradeReport_Account_reviewed_by",
+      "child": "GradeReport",
+      "parent": "Account",
+      "columns": [
+        "reviewed_by"
+      ],
+      "parent_columns": [
+        "account_id"
+      ],
+      "on_delete": "0",
+      "on_update": "0",
+      "disabled": "0",
+      "untrusted": "0"
+    },
+    {
+      "name": "FK_GradeReport_Account_submitted_by",
+      "child": "GradeReport",
+      "parent": "Account",
+      "columns": [
+        "submitted_by"
+      ],
+      "parent_columns": [
+        "account_id"
+      ],
+      "on_delete": "0",
+      "on_update": "0",
+      "disabled": "0",
+      "untrusted": "0"
+    },
+    {
+      "name": "FK_Invoice_Account_cancelled_by",
+      "child": "Invoice",
+      "parent": "Account",
+      "columns": [
+        "cancelled_by"
+      ],
+      "parent_columns": [
+        "account_id"
+      ],
+      "on_delete": "0",
+      "on_update": "0",
+      "disabled": "0",
+      "untrusted": "0"
+    },
+    {
+      "name": "FK_Payment_Account_confirmed_by",
+      "child": "Payment",
+      "parent": "Account",
+      "columns": [
+        "confirmed_by"
+      ],
+      "parent_columns": [
+        "account_id"
+      ],
+      "on_delete": "0",
+      "on_update": "0",
+      "disabled": "0",
+      "untrusted": "0"
+    },
+    {
+      "name": "FK_Payment_Account_last_corrected_by",
+      "child": "Payment",
+      "parent": "Account",
+      "columns": [
+        "last_corrected_by"
+      ],
+      "parent_columns": [
+        "account_id"
+      ],
+      "on_delete": "0",
+      "on_update": "0",
+      "disabled": "0",
+      "untrusted": "0"
+    }
+  ],
+  "all": [
+    {
+      "name": "FK_Account_Role_role_id",
+      "child": "Account",
+      "parent": "Role",
+      "columns": [
+        "role_id"
+      ],
+      "parent_columns": [
+        "role_id"
+      ],
+      "on_delete": "0",
+      "on_update": "0",
+      "disabled": "0",
+      "untrusted": "0"
+    },
+    {
+      "name": "FK_StudentProfile_Account_account_id",
+      "child": "StudentProfile",
+      "parent": "Account",
+      "columns": [
+        "account_id"
+      ],
+      "parent_columns": [
+        "account_id"
+      ],
+      "on_delete": "0",
+      "on_update": "0",
+      "disabled": "0",
+      "untrusted": "0"
+    },
+    {
+      "name": "FK_AuthSession_Account_account_id",
+      "child": "AuthSession",
+      "parent": "Account",
+      "columns": [
+        "account_id"
+      ],
+      "parent_columns": [
+        "account_id"
+      ],
+      "on_delete": "0",
+      "on_update": "0",
+      "disabled": "0",
+      "untrusted": "0"
+    },
+    {
+      "name": "FK_TrainingProgram_Band_band_id",
+      "child": "TrainingProgram",
+      "parent": "Band",
+      "columns": [
+        "band_id"
+      ],
+      "parent_columns": [
+        "band_id"
+      ],
+      "on_delete": "0",
+      "on_update": "0",
+      "disabled": "0",
+      "untrusted": "0"
+    },
+    {
+      "name": "FK_TrainingProgram_Course_course_id",
+      "child": "TrainingProgram",
+      "parent": "Course",
+      "columns": [
+        "course_id"
+      ],
+      "parent_columns": [
+        "course_id"
+      ],
+      "on_delete": "0",
+      "on_update": "0",
+      "disabled": "0",
+      "untrusted": "0"
+    },
+    {
+      "name": "FK_ScoreComponentConfig_TrainingProgram_program_id",
+      "child": "ScoreComponentConfig",
+      "parent": "TrainingProgram",
+      "columns": [
+        "program_id"
+      ],
+      "parent_columns": [
+        "program_id"
+      ],
+      "on_delete": "0",
+      "on_update": "0",
+      "disabled": "0",
+      "untrusted": "0"
+    },
+    {
+      "name": "FK_Registration_Account_admission_approved_by",
+      "child": "Registration",
+      "parent": "Account",
+      "columns": [
+        "admission_approved_by"
+      ],
+      "parent_columns": [
+        "account_id"
+      ],
+      "on_delete": "0",
+      "on_update": "0",
+      "disabled": "0",
+      "untrusted": "0"
+    },
+    {
+      "name": "FK_Registration_Account_cancelled_by",
+      "child": "Registration",
+      "parent": "Account",
+      "columns": [
+        "cancelled_by"
+      ],
+      "parent_columns": [
+        "account_id"
+      ],
+      "on_delete": "0",
+      "on_update": "0",
+      "disabled": "0",
+      "untrusted": "0"
+    },
+    {
+      "name": "FK_Registration_Account_rejected_by",
+      "child": "Registration",
+      "parent": "Account",
+      "columns": [
+        "rejected_by"
+      ],
+      "parent_columns": [
+        "account_id"
+      ],
+      "on_delete": "0",
+      "on_update": "0",
+      "disabled": "0",
+      "untrusted": "0"
+    },
+    {
+      "name": "FK_Registration_Course_course_id",
+      "child": "Registration",
+      "parent": "Course",
+      "columns": [
+        "course_id"
+      ],
+      "parent_columns": [
+        "course_id"
+      ],
+      "on_delete": "0",
+      "on_update": "0",
+      "disabled": "0",
+      "untrusted": "0"
+    },
+    {
+      "name": "FK_Registration_StudentProfile_student_id",
+      "child": "Registration",
+      "parent": "StudentProfile",
+      "columns": [
+        "student_id"
+      ],
+      "parent_columns": [
+        "student_id"
+      ],
+      "on_delete": "0",
+      "on_update": "0",
+      "disabled": "0",
+      "untrusted": "0"
+    },
+    {
+      "name": "FK_EntryTestSession_Account_cancelled_by",
+      "child": "EntryTestSession",
+      "parent": "Account",
+      "columns": [
+        "cancelled_by"
+      ],
+      "parent_columns": [
+        "account_id"
+      ],
+      "on_delete": "0",
+      "on_update": "0",
+      "disabled": "0",
+      "untrusted": "0"
+    },
+    {
+      "name": "FK_EntryTestSession_Account_grader_id",
+      "child": "EntryTestSession",
+      "parent": "Account",
+      "columns": [
+        "grader_id"
+      ],
+      "parent_columns": [
+        "account_id"
+      ],
+      "on_delete": "0",
+      "on_update": "0",
+      "disabled": "0",
+      "untrusted": "0"
+    },
+    {
+      "name": "FK_Attempt_Account_graded_by",
+      "child": "EntryTestAttempt",
+      "parent": "Account",
+      "columns": [
+        "graded_by"
+      ],
+      "parent_columns": [
+        "account_id"
+      ],
+      "on_delete": "0",
+      "on_update": "0",
+      "disabled": "0",
+      "untrusted": "0"
+    },
+    {
+      "name": "FK_Attempt_Booking_CompletedBookingAttempt",
+      "child": "EntryTestAttempt",
+      "parent": "EntryTestBooking",
+      "columns": [
+        "completed_booking_id",
+        "attempt_id"
+      ],
+      "parent_columns": [
+        "booking_id",
+        "attempt_id"
+      ],
+      "on_delete": "0",
+      "on_update": "0",
+      "disabled": "0",
+      "untrusted": "0"
+    },
+    {
+      "name": "FK_Attempt_Registration_registration_id",
+      "child": "EntryTestAttempt",
+      "parent": "Registration",
+      "columns": [
+        "registration_id"
+      ],
+      "parent_columns": [
+        "registration_id"
+      ],
+      "on_delete": "0",
+      "on_update": "0",
+      "disabled": "0",
+      "untrusted": "0"
+    },
+    {
+      "name": "FK_Booking_Account_absent_by",
+      "child": "EntryTestBooking",
+      "parent": "Account",
+      "columns": [
+        "absent_by"
+      ],
+      "parent_columns": [
+        "account_id"
+      ],
+      "on_delete": "0",
+      "on_update": "0",
+      "disabled": "0",
+      "untrusted": "0"
+    },
+    {
+      "name": "FK_Booking_Account_cancelled_by",
+      "child": "EntryTestBooking",
+      "parent": "Account",
+      "columns": [
+        "cancelled_by"
+      ],
+      "parent_columns": [
+        "account_id"
+      ],
+      "on_delete": "0",
+      "on_update": "0",
+      "disabled": "0",
+      "untrusted": "0"
+    },
+    {
+      "name": "FK_Booking_Attempt_attempt_id",
+      "child": "EntryTestBooking",
+      "parent": "EntryTestAttempt",
+      "columns": [
+        "attempt_id"
+      ],
+      "parent_columns": [
+        "attempt_id"
+      ],
+      "on_delete": "0",
+      "on_update": "0",
+      "disabled": "0",
+      "untrusted": "0"
+    },
+    {
+      "name": "FK_Booking_Session_session_id",
+      "child": "EntryTestBooking",
+      "parent": "EntryTestSession",
+      "columns": [
+        "session_id"
+      ],
+      "parent_columns": [
+        "session_id"
+      ],
+      "on_delete": "0",
+      "on_update": "0",
+      "disabled": "0",
+      "untrusted": "0"
+    },
+    {
+      "name": "FK_BandAssignment_Attempt_BestAttemptRegistration",
+      "child": "BandAssignment",
+      "parent": "EntryTestAttempt",
+      "columns": [
+        "best_attempt_id",
+        "registration_id"
+      ],
+      "parent_columns": [
+        "attempt_id",
+        "registration_id"
+      ],
+      "on_delete": "0",
+      "on_update": "0",
+      "disabled": "0",
+      "untrusted": "0"
+    },
+    {
+      "name": "FK_BandAssignment_Band_band_id",
+      "child": "BandAssignment",
+      "parent": "Band",
+      "columns": [
+        "band_id"
+      ],
+      "parent_columns": [
+        "band_id"
+      ],
+      "on_delete": "0",
+      "on_update": "0",
+      "disabled": "0",
+      "untrusted": "0"
+    },
+    {
+      "name": "FK_BandAssignment_Registration_registration_id",
+      "child": "BandAssignment",
+      "parent": "Registration",
+      "columns": [
+        "registration_id"
+      ],
+      "parent_columns": [
+        "registration_id"
+      ],
+      "on_delete": "0",
+      "on_update": "0",
+      "disabled": "0",
+      "untrusted": "0"
+    },
+    {
+      "name": "FK_Class_Account_cancelled_by",
+      "child": "Class",
+      "parent": "Account",
+      "columns": [
+        "cancelled_by"
+      ],
+      "parent_columns": [
+        "account_id"
+      ],
+      "on_delete": "0",
+      "on_update": "0",
+      "disabled": "0",
+      "untrusted": "0"
+    },
+    {
+      "name": "FK_Class_Account_teacher_id",
+      "child": "Class",
+      "parent": "Account",
+      "columns": [
+        "teacher_id"
+      ],
+      "parent_columns": [
+        "account_id"
+      ],
+      "on_delete": "0",
+      "on_update": "0",
+      "disabled": "0",
+      "untrusted": "0"
+    },
+    {
+      "name": "FK_Class_TrainingProgram_program_id",
+      "child": "Class",
+      "parent": "TrainingProgram",
+      "columns": [
+        "program_id"
+      ],
+      "parent_columns": [
+        "program_id"
+      ],
+      "on_delete": "0",
+      "on_update": "0",
+      "disabled": "0",
+      "untrusted": "0"
+    },
+    {
+      "name": "FK_Assignment_Account_assigned_by",
+      "child": "StudentClassAssignment",
+      "parent": "Account",
+      "columns": [
+        "assigned_by"
+      ],
+      "parent_columns": [
+        "account_id"
+      ],
+      "on_delete": "0",
+      "on_update": "0",
+      "disabled": "0",
+      "untrusted": "0"
+    },
+    {
+      "name": "FK_Assignment_Class_class_id",
+      "child": "StudentClassAssignment",
+      "parent": "Class",
+      "columns": [
+        "class_id"
+      ],
+      "parent_columns": [
+        "class_id"
+      ],
+      "on_delete": "0",
+      "on_update": "0",
+      "disabled": "0",
+      "untrusted": "0"
+    },
+    {
+      "name": "FK_Assignment_Registration_registration_id",
+      "child": "StudentClassAssignment",
+      "parent": "Registration",
+      "columns": [
+        "registration_id"
+      ],
+      "parent_columns": [
+        "registration_id"
+      ],
+      "on_delete": "0",
+      "on_update": "0",
+      "disabled": "0",
+      "untrusted": "0"
+    },
+    {
+      "name": "FK_Schedule_Account_held_by",
+      "child": "Schedule",
+      "parent": "Account",
+      "columns": [
+        "held_by"
+      ],
+      "parent_columns": [
+        "account_id"
+      ],
+      "on_delete": "0",
+      "on_update": "0",
+      "disabled": "0",
+      "untrusted": "0"
+    },
+    {
+      "name": "FK_Schedule_Account_not_held_by",
+      "child": "Schedule",
+      "parent": "Account",
+      "columns": [
+        "not_held_by"
+      ],
+      "parent_columns": [
+        "account_id"
+      ],
+      "on_delete": "0",
+      "on_update": "0",
+      "disabled": "0",
+      "untrusted": "0"
+    },
+    {
+      "name": "FK_Schedule_Class_class_id",
+      "child": "Schedule",
+      "parent": "Class",
+      "columns": [
+        "class_id"
+      ],
+      "parent_columns": [
+        "class_id"
+      ],
+      "on_delete": "0",
+      "on_update": "0",
+      "disabled": "0",
+      "untrusted": "0"
+    },
+    {
+      "name": "FK_Schedule_Schedule_replaces_schedule_id",
+      "child": "Schedule",
+      "parent": "Schedule",
+      "columns": [
+        "replaces_schedule_id"
+      ],
+      "parent_columns": [
+        "schedule_id"
+      ],
+      "on_delete": "0",
+      "on_update": "0",
+      "disabled": "0",
+      "untrusted": "0"
+    },
+    {
+      "name": "FK_Attendance_Account_entered_by",
+      "child": "Attendance",
+      "parent": "Account",
+      "columns": [
+        "entered_by"
+      ],
+      "parent_columns": [
+        "account_id"
+      ],
+      "on_delete": "0",
+      "on_update": "0",
+      "disabled": "0",
+      "untrusted": "0"
+    },
+    {
+      "name": "FK_Attendance_Schedule_schedule_id",
+      "child": "Attendance",
+      "parent": "Schedule",
+      "columns": [
+        "schedule_id"
+      ],
+      "parent_columns": [
+        "schedule_id"
+      ],
+      "on_delete": "0",
+      "on_update": "0",
+      "disabled": "0",
+      "untrusted": "0"
+    },
+    {
+      "name": "FK_Attendance_StudentClassAssignment_class_assignment_id",
+      "child": "Attendance",
+      "parent": "StudentClassAssignment",
+      "columns": [
+        "class_assignment_id"
+      ],
+      "parent_columns": [
+        "class_assignment_id"
+      ],
+      "on_delete": "0",
+      "on_update": "0",
+      "disabled": "0",
+      "untrusted": "0"
+    },
+    {
+      "name": "FK_Score_Account_entered_by",
+      "child": "Score",
+      "parent": "Account",
+      "columns": [
+        "entered_by"
+      ],
+      "parent_columns": [
+        "account_id"
+      ],
+      "on_delete": "0",
+      "on_update": "0",
+      "disabled": "0",
+      "untrusted": "0"
+    },
+    {
+      "name": "FK_Score_Schedule_schedule_id",
+      "child": "Score",
+      "parent": "Schedule",
+      "columns": [
+        "schedule_id"
+      ],
+      "parent_columns": [
+        "schedule_id"
+      ],
+      "on_delete": "0",
+      "on_update": "0",
+      "disabled": "0",
+      "untrusted": "0"
+    },
+    {
+      "name": "FK_Score_ScoreComponentConfig_component_id",
+      "child": "Score",
+      "parent": "ScoreComponentConfig",
+      "columns": [
+        "component_id"
+      ],
+      "parent_columns": [
+        "component_id"
+      ],
+      "on_delete": "0",
+      "on_update": "0",
+      "disabled": "0",
+      "untrusted": "0"
+    },
+    {
+      "name": "FK_Score_StudentClassAssignment_class_assignment_id",
+      "child": "Score",
+      "parent": "StudentClassAssignment",
+      "columns": [
+        "class_assignment_id"
+      ],
+      "parent_columns": [
+        "class_assignment_id"
+      ],
+      "on_delete": "0",
+      "on_update": "0",
+      "disabled": "0",
+      "untrusted": "0"
+    },
+    {
+      "name": "FK_GradeReport_Account_reviewed_by",
+      "child": "GradeReport",
+      "parent": "Account",
+      "columns": [
+        "reviewed_by"
+      ],
+      "parent_columns": [
+        "account_id"
+      ],
+      "on_delete": "0",
+      "on_update": "0",
+      "disabled": "0",
+      "untrusted": "0"
+    },
+    {
+      "name": "FK_GradeReport_Account_submitted_by",
+      "child": "GradeReport",
+      "parent": "Account",
+      "columns": [
+        "submitted_by"
+      ],
+      "parent_columns": [
+        "account_id"
+      ],
+      "on_delete": "0",
+      "on_update": "0",
+      "disabled": "0",
+      "untrusted": "0"
+    },
+    {
+      "name": "FK_GradeReport_StudentClassAssignment_class_assignment_id",
+      "child": "GradeReport",
+      "parent": "StudentClassAssignment",
+      "columns": [
+        "class_assignment_id"
+      ],
+      "parent_columns": [
+        "class_assignment_id"
+      ],
+      "on_delete": "0",
+      "on_update": "0",
+      "disabled": "0",
+      "untrusted": "0"
+    },
+    {
+      "name": "FK_Invoice_Account_cancelled_by",
+      "child": "Invoice",
+      "parent": "Account",
+      "columns": [
+        "cancelled_by"
+      ],
+      "parent_columns": [
+        "account_id"
+      ],
+      "on_delete": "0",
+      "on_update": "0",
+      "disabled": "0",
+      "untrusted": "0"
+    },
+    {
+      "name": "FK_Invoice_Registration_registration_id",
+      "child": "Invoice",
+      "parent": "Registration",
+      "columns": [
+        "registration_id"
+      ],
+      "parent_columns": [
+        "registration_id"
+      ],
+      "on_delete": "0",
+      "on_update": "0",
+      "disabled": "0",
+      "untrusted": "0"
+    },
+    {
+      "name": "FK_Payment_Account_confirmed_by",
+      "child": "Payment",
+      "parent": "Account",
+      "columns": [
+        "confirmed_by"
+      ],
+      "parent_columns": [
+        "account_id"
+      ],
+      "on_delete": "0",
+      "on_update": "0",
+      "disabled": "0",
+      "untrusted": "0"
+    },
+    {
+      "name": "FK_Payment_Account_last_corrected_by",
+      "child": "Payment",
+      "parent": "Account",
+      "columns": [
+        "last_corrected_by"
+      ],
+      "parent_columns": [
+        "account_id"
+      ],
+      "on_delete": "0",
+      "on_update": "0",
+      "disabled": "0",
+      "untrusted": "0"
+    },
+    {
+      "name": "FK_Payment_Invoice_invoice_id",
+      "child": "Payment",
+      "parent": "Invoice",
+      "columns": [
+        "invoice_id"
+      ],
+      "parent_columns": [
+        "invoice_id"
+      ],
+      "on_delete": "0",
+      "on_update": "0",
+      "disabled": "0",
+      "untrusted": "0"
+    },
+    {
+      "name": "FK_AuditLog_Account_actor_account_id",
+      "child": "AuditLog",
+      "parent": "Account",
+      "columns": [
+        "actor_account_id"
+      ],
+      "parent_columns": [
+        "account_id"
+      ],
+      "on_delete": "0",
+      "on_update": "0",
+      "disabled": "0",
+      "untrusted": "0"
+    },
+    {
+      "name": "FK_ReplayOperation_Account_actor_account_id",
+      "child": "ReplayOperation",
+      "parent": "Account",
+      "columns": [
+        "actor_account_id"
+      ],
+      "parent_columns": [
+        "account_id"
+      ],
+      "on_delete": "0",
+      "on_update": "0",
+      "disabled": "0",
+      "untrusted": "0"
+    }
+  ]
+}
