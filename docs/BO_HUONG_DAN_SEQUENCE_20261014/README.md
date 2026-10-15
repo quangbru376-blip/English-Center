@@ -1,5 +1,13 @@
 # Bộ hướng dẫn vẽ sequence theo dự án — 14/10/2026
 
+Ghi chú đóng gói15/10/2026: hình SVG/PNG, viewer và script `SQ03_A_Dang_Nhap`
+là bản minh họa đang biên soạn, chưa nghiệm thu nội dung nghiệp vụ. Đoạn cuối
+hình/script hiện ghi cấp phiên thường sau đổi mật khẩu tạm; cần sửa trước khi
+dùng làm hình chính thức: API004/ADR049/098 thu hồi các phiên và yêu cầu đăng
+nhập lại, không nâng phiên hạn chế thành phiên thường. Đối chiếu
+[SQ04](SQ04_PASSWORD_CHANGE_GUIDE.md) và mã thực tế. Lượt đồng bộ này giữ nguyên
+nội dung các hình/script để nhóm tiếp tục chỉnh, không thay hợp đồng sản phẩm.
+
 Mỗi mã SQ01–SQ25 có **một file Markdown độc lập**. Các thao tác khác actor/điểm bắt đầu/đơn vị giao dịch tách thành hình A/B/C trong cùng file. Không cần vẽ chung tất cả nhánh vào một hình lớn.
 
 Bộ này lấy SQ01_REGISTRATION_GUIDE.md làm mẫu: mục tiêu và ranh giới → lifeline EA → dữ liệu/guard → bảng thông điệp và đường gạch → note → cách dựng → checklist. Chín hướng dẫn đã có được giữ phần thông điệp chi tiết, cập nhật nguồn/ngoại lệ hiện hành trong bản sao mới; mười sáu hướng dẫn còn lại được viết riêng theo các workflow và code đã triển khai. File hướng dẫn cũ và báo cáo Word không thay đổi.
@@ -84,6 +92,6 @@ UI hiện tại có scoped initial reads. Khi hình bắt đầu bằng mở mà
 
 ## Nguồn và phạm vi kiểm tra
 
-[Danh mục cập nhật](../../reference/SEQUENCE_DANH_MUC_CAP_NHAT_20261014.md), [FUNCTION_SPEC](../FUNCTION_SPEC.md), [WORKFLOW_SPEC](../WORKFLOW_SPEC.md), [requirements](../../requirements.md), các hợp đồng E04 và code từng module được dẫn trong file.
+[Danh mục cập nhật](../reference/SEQUENCE_DANH_MUC_CAP_NHAT_20261014.md), [FUNCTION_SPEC](../design/FUNCTION_SPEC.md), [WORKFLOW_SPEC](../design/WORKFLOW_SPEC.md), [requirements](../requirements.md), các hợp đồng E04 và code từng module được dẫn trong file.
 
 M0–M3 và phần reports/CSV/audit viewer M4 đã triển khai trên main/host LOCAL_DEV tường minh. UI refresh đã áp dụng, owner gate4 còn pending; backup/restore M4 cần đầu vào vận hành, không là sequence đã hoàn thành trong bộ này. Hướng dẫn là tài liệu vẽ, không tuyên bố chạy lại bộ kiểm thử sản phẩm.

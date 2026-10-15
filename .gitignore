@@ -20,6 +20,7 @@ dist/
 npm-debug.log*
 .local-demo/
 frontend/.tmp/
+/tmp/
 
 # Office lock/recovery files are local editing state, not report sources.
 ~$*

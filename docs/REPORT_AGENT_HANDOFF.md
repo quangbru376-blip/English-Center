@@ -31,6 +31,18 @@ cũ trong Memory là lịch sử, không phải yêu cầu quay lại trạng th
 
 ## Tài liệu phục vụ báo cáo
 
+Bổ sung [Kết quả đạt được và hướng phát triển](report-texts-20261015/KET_QUA_VA_HUONG_PHAT_TRIEN.md) theo yêu cầu owner15/10: kết quả phân tích/thiết kế/chức năng/kỹ thuật/kiểm thử có giới hạn; ưu tiên NV04, phản hồi UI, vận hành/sao lưu-khôi phục và đánh giá tải trước mở rộng. Thông báo, báo cáo nâng cao, nhiều cơ sở/thanh toán trực tuyến chỉ là đề xuất tương lai, không coi đã triển khai hoặc thay phạm vi hiện hành. Không fresh test/production/recovery claim, không sửa Word gốc.
+
+Bản thảo [PHẦN MỞ ĐẦU](report-texts-20261015/PHAN_MO_DAU.md) theo mẫu mục lục owner15/10 gồm6mục: lý do chọn đề tài/mục tiêu/đối tượng/phạm vi/phương pháp/kết quả dự kiến. Bám PROJECT_CONTEXT và requirements:7vai trò, kiểm tra trực tiếp, thu tiền ngoài ứng dụng, demo cục bộ; không thêm khảo sát/phỏng vấn thực tế chưa có bằng chứng hoặc tuyên bố hiệu quả định lượng. Chưa chèn/sửa Word gốc; phần kết quả dự kiến là mục tiêu của đề tài, không phải fresh nghiệm thu sản phẩm.
+
+Theo yêu cầu rút gọn giao diện15/10: [bộ27giao diện quan trọng](report-ui-guide-20261015/README.md), [ảnh và bảng](report-ui-guide-20261015/index.html), [nguồn mô tả](report-ui-guide-20261015/MO_TA_27_GIAO_DIEN.md), [ZIP](report-ui-guide-20261015.zip). Mỗi GD có ảnh chính và bảng STT/Loại/Ý nghĩa/Biến cố/Xử lý;27bảng riêng+1bảng chung/303dòng;27ảnh chính và32ảnh phụ/dùng chung nguyên byte từ bộ117. GD là mục báo cáo, không đổi32F/37NV. Đối chiếu handler thực tế: chi tiết tại chỗ, áp dụng lọc, xem trước/xác nhận được phân biệt; chưa chèn Word/không thực thi lệnh ghi. Task card [REPORT_UI_GUIDE_20261015](plan/REPORT_UI_GUIDE_20261015.md), `selection.json` giữ nguồn/hash và số liệu kiểm tra. Bản thảo nội dung cho owner biên tập; không có fresh product acceptance claim.
+
+Bộ ảnh giao diện15/10/2026: [thư viện](report-screenshots-20261015/index.html), [mục lục và đối chiếu32mãF](report-screenshots-20261015/README.md), [ZIP](report-screenshots-20261015.zip). Có117PNG gốc:90máy tính1440px và27điện thoại390px, đủ7vai trò cùng khách; trang chính/chi tiết/biểu mẫu/xem trước tiêu biểu, ảnh toàn chiều dài. Chụp Edge thật trên demo HTTPS hiện có, không gửi lệnh ghi nghiệp vụ/reset dữ liệu/thu hồi phiên owner. Có nhật ký đăng nhập/đăng xuất phiên chụp riêng. Không chụp mật khẩu tạm hoặc bản in trình duyệt; chương trình nháp hiện0 nên không dựng dữ liệu để mở form sửa. NV04 nhãn điểm tốt nhất vẫn thiếu; không tuyên bố mọi trạng thái hoặc fresh nghiệm thu sản phẩm. `manifest.json` có kích thước/hash ảnh và lịch sử hai lỗi chọn control đã kiểm tra lại. Bộ ảnh mới, không lấy ảnh lịch sử làm trạng thái demo hiện tại.
+
+Ngày 15/10/2026 chủ dự án chọn 37 bảng đặc tả chính theo 37 NV còn hiệu lực, thay đề xuất chia 83 thao tác. Chỉ mục: [37 đặc tả](usecase/usecase_specification/DANH_SACH_37_DAC_TA_USECASE.md); [quy ước](usecase/usecase_specification/QUY_UOC_DAC_TA_USECASE.md). NV36–NV39 là xử lý tự động hỗ trợ; Đăng xuất/Đổi mật khẩu/Sửa hồ sơ riêng ở phụ mục E01 mục8, không bỏ chức năng hoặc thêm NV. Đây là cách tổ chức báo cáo, không thay đổi quyền/nghiệp vụ hoặc tự sửa sơ đồ/Word.
+
+Cập nhật mới nhất 15/10/2026: đã hoàn tất 37/37 bảng chính bản thảo trong [bộ đặc tả](usecase/usecase_specification/README.md), gồm bốn đợt UC-001–010, UC-011–020, UC-021–030 và UC-031–037. Đủ chín mục/bảng, mỗi NV còn hiệu lực xuất hiện đúng một lần; đã rà mapping/liên kết và đối chiếu hợp đồng/mã liên quan. [Phụ mục thao tác chung](usecase/usecase_specification/THAO_TAC_CHUNG.md) có Đăng xuất/hết phiên, Tự đổi mật khẩu và Sửa hồ sơ; không thêm NV/bảng chính thứ38. Bốn bảng tự động không là menu/tác nhân Hệ thống mới. Attendance không thêm AuditLog; CSV sáu cột/toàn tập mới/footer tính vào 10000/5000000byte; mật khẩu tạm không truy xuất lại. Chủ dự án chưa duyệt nội dung từng bảng, chưa dàn trang/chèn Word hoặc đồng bộ mã sơ đồ. NV04 nhãn điểm/lượt tốt nhất vẫn là khoảng thiếu UI, không được coi đã sửa. Không sửa source Word/code/runtime/demo hoặc fresh test/SQL/Excel/load claim. Tiếp theo: review nội dung theo phản hồi chủ dự án, rồi dàn trang/ánh xạ sơ đồ khi được giao.
+
 | Công việc | Điểm bắt đầu |
 |---|---|
 | Sửa theo cấu trúc báo cáo Word | [REPORT_REVISION_GUIDE](reference/REPORT_REVISION_GUIDE.md), [PROCESSING_REPORT_MEMORY_COMPARISON](reference/PROCESSING_REPORT_MEMORY_COMPARISON.md) |
@@ -45,10 +57,18 @@ cũ trong Memory là lịch sử, không phải yêu cầu quay lại trạng th
 
 Bản Word của owner tại [Nhom18_ThietKeXuLy.docx](Nhom18_ThietKeXuLy.docx)
 được chia sẻ nguyên trạng theo yêu cầu đồng bộ báo cáo lần này, không sửa nội dung.
-SHA256 của snapshot đã kiểm: `36c9468a717e79e21e4b2367725385bc7d3415f4dcee7e2bee463486b11eea78`.
+SHA256 của snapshot đồng bộ lần này: `bfcee90ab805071c6e4e4b300d69fc5032a2a36d291ddee5138a2520348addc2`.
+Snapshot trước có hash `36c9468a...`; owner tiếp tục biên tập giữa các lần đồng bộ.
 Các hash/đối chiếu ngày06/10,14/10 hoặc audit15/10 trước đó có thể là snapshot
 khác. Không tuyên bố bản Word hiện tại đã được audit lại toàn bộ; kiểm lại phần
 được giao trước khi sửa. Source Word và tài liệu xuất không tự ghi đè baseline.
+
+Các Word use case minh họa cũ đã chuyển vào [usecase/usecase](usecase/usecase/);
+bộ37đặc tả bản thảo mới nằm ở thư mục riêng được dẫn phía trên. Hình
+[SQ03-A đang biên soạn](BO_HUONG_DAN_SEQUENCE_20261014/README.md) có ghi chú
+phải sửa nhánh sau đổi mật khẩu tạm trước khi dùng chính thức; không lấy hình
+này để suy ra sản phẩm tự cấp phiên thường. Các nguồn hình và Word được chia
+sẻ nguyên trạng để nhóm tiếp tục biên tập, không có fresh nghiệm thu nội dung.
 
 ## Trạng thái cần mô tả đúng
 

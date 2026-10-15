@@ -1,0 +1,668 @@
+{
+  "date": "2026-10-15",
+  "mainScreens": 27,
+  "tables": 28,
+  "controlRows": 303,
+  "tablesByScreen": [
+    {
+      "section": "shared",
+      "rows": 8
+    },
+    {
+      "section": "GD01",
+      "rows": 7
+    },
+    {
+      "section": "GD02",
+      "rows": 9
+    },
+    {
+      "section": "GD03",
+      "rows": 8
+    },
+    {
+      "section": "GD04",
+      "rows": 7
+    },
+    {
+      "section": "GD05",
+      "rows": 12
+    },
+    {
+      "section": "GD06",
+      "rows": 10
+    },
+    {
+      "section": "GD07",
+      "rows": 7
+    },
+    {
+      "section": "GD08",
+      "rows": 8
+    },
+    {
+      "section": "GD09",
+      "rows": 14
+    },
+    {
+      "section": "GD10",
+      "rows": 8
+    },
+    {
+      "section": "GD11",
+      "rows": 9
+    },
+    {
+      "section": "GD12",
+      "rows": 12
+    },
+    {
+      "section": "GD13",
+      "rows": 14
+    },
+    {
+      "section": "GD14",
+      "rows": 13
+    },
+    {
+      "section": "GD15",
+      "rows": 15
+    },
+    {
+      "section": "GD16",
+      "rows": 16
+    },
+    {
+      "section": "GD17",
+      "rows": 12
+    },
+    {
+      "section": "GD18",
+      "rows": 11
+    },
+    {
+      "section": "GD19",
+      "rows": 10
+    },
+    {
+      "section": "GD20",
+      "rows": 13
+    },
+    {
+      "section": "GD21",
+      "rows": 9
+    },
+    {
+      "section": "GD22",
+      "rows": 12
+    },
+    {
+      "section": "GD23",
+      "rows": 15
+    },
+    {
+      "section": "GD24",
+      "rows": 9
+    },
+    {
+      "section": "GD25",
+      "rows": 11
+    },
+    {
+      "section": "GD26",
+      "rows": 13
+    },
+    {
+      "section": "GD27",
+      "rows": 11
+    }
+  ],
+  "imagesCopied": 59,
+  "mainImageIds": [
+    "001",
+    "003",
+    "005",
+    "012",
+    "098",
+    "104",
+    "112",
+    "008",
+    "114",
+    "011",
+    "021",
+    "105",
+    "027",
+    "031",
+    "034",
+    "116",
+    "090",
+    "086",
+    "045",
+    "078",
+    "084",
+    "081",
+    "053",
+    "092",
+    "096",
+    "061",
+    "065"
+  ],
+  "selectedImages": [
+    {
+      "id": "001",
+      "file": "images/001.png",
+      "sourceFile": "desktop/Anonymous/001.png",
+      "label": "Đăng nhập",
+      "sha256": "5e35680196a64b6220044c12ed4cda8c57a4422dd656510d3ba275abc605317d"
+    },
+    {
+      "id": "003",
+      "file": "images/003.png",
+      "sourceFile": "desktop/Anonymous/003.png",
+      "label": "Đăng ký học viên",
+      "sha256": "bdee47b6354979af1400231e338d1c5f7f939b0d6edec49fcbf4e9c75590a09b"
+    },
+    {
+      "id": "005",
+      "file": "images/005.png",
+      "sourceFile": "desktop/Student/005.png",
+      "label": "Trang chính · /student/home",
+      "sha256": "3054939a56341e50fe0983056fbdd08547e07ab48f94a309a232f798e0b302f6"
+    },
+    {
+      "id": "008",
+      "file": "images/008.png",
+      "sourceFile": "desktop/Student/008.png",
+      "label": "Xem hóa đơn 97",
+      "sha256": "1dfbf6854e5919ce16d77835aa8c8d45e5628ca9ac35d75b41fa7f2f94f9f676"
+    },
+    {
+      "id": "011",
+      "file": "images/011.png",
+      "sourceFile": "desktop/Student/011.png",
+      "label": "Xem kết quả 45",
+      "sha256": "5420bcb49b4a751779812d9e434a161221c1525ce19785bfab4b16507760407d"
+    },
+    {
+      "id": "012",
+      "file": "images/012.png",
+      "sourceFile": "desktop/Student/012.png",
+      "label": "Chọn khóa học",
+      "sha256": "d30a440df2152dacf3f8aba467b91b573dc5e3e51828d37c4658839b298d1fd1"
+    },
+    {
+      "id": "016",
+      "file": "images/016.png",
+      "sourceFile": "desktop/Student/016.png",
+      "label": "Đổi mật khẩu · biểu mẫu trống",
+      "sha256": "32c7e6a37c27a8524534cf30ace789927f17a3f05b68b22edb60594d43b026d5"
+    },
+    {
+      "id": "021",
+      "file": "images/021.png",
+      "sourceFile": "desktop/Admissions/021.png",
+      "label": "Trang chính · /admissions/registrations",
+      "sha256": "5dd12217c6f1b24f5148a4215343640f2e2e4884993546f2ee5a6882033add5e"
+    },
+    {
+      "id": "026",
+      "file": "images/026.png",
+      "sourceFile": "desktop/AcademicAffairs/026.png",
+      "label": "Tạo ca thi",
+      "sha256": "73ea515f9d4a76b532cfbd95abecd19a0a658111be9cfb1f8fdbd15be4e4b50a"
+    },
+    {
+      "id": "027",
+      "file": "images/027.png",
+      "sourceFile": "desktop/AcademicAffairs/027.png",
+      "label": "Xem ca 25",
+      "sha256": "61aec079e99e4dcd171d06935907dfefd1663fdf6c1efa36a457fcaaae28cfec"
+    },
+    {
+      "id": "029",
+      "file": "images/029.png",
+      "sourceFile": "desktop/AcademicAffairs/029.png",
+      "label": "Thêm khóa học",
+      "sha256": "c27fc2f99cc1b8da7f14e61bfbb127a95e7169d820d5249e3888fb2bb9addb6e"
+    },
+    {
+      "id": "030",
+      "file": "images/030.png",
+      "sourceFile": "desktop/AcademicAffairs/030.png",
+      "label": "Xem bộ Band",
+      "sha256": "3d1c7c417078f05576ffafd5fd9b073c4e76f4732daeeff3ece736ad740277e2"
+    },
+    {
+      "id": "031",
+      "file": "images/031.png",
+      "sourceFile": "desktop/AcademicAffairs/031.png",
+      "label": "Xem DEMO01",
+      "sha256": "e58bdcfcffcb0bd0da2714b669861f632a092d7ecb0b3c05ca00d78718906b83"
+    },
+    {
+      "id": "033",
+      "file": "images/033.png",
+      "sourceFile": "desktop/AcademicAffairs/033.png",
+      "label": "Tạo chương trình",
+      "sha256": "47f122c2781ce7bc047019856f735d2c3912df15de8ce757bd96134727642424"
+    },
+    {
+      "id": "034",
+      "file": "images/034.png",
+      "sourceFile": "desktop/AcademicAffairs/034.png",
+      "label": "Xem DEMO IELTS chuyên sâu - B1",
+      "sha256": "8c92a75e23b54653680b89e018df05659fa8b2fd41a74cbf7b5d1dcf0a46508f"
+    },
+    {
+      "id": "035",
+      "file": "images/035.png",
+      "sourceFile": "desktop/AcademicAffairs/035.png",
+      "label": "Xem DEMO IELTS chuyên sâu - B1 · Đổi tên",
+      "sha256": "cbad18ca2b78eab2fff75f206abaa99381e6c65023ab1ea2f30f066453e24675"
+    },
+    {
+      "id": "037",
+      "file": "images/037.png",
+      "sourceFile": "desktop/AcademicAffairs/037.png",
+      "label": "Tạo lớp mới",
+      "sha256": "b3e053747d3d875e940389f5c82e2ac7aa642dbdceea7651c5883d325e34c611"
+    },
+    {
+      "id": "038",
+      "file": "images/038.png",
+      "sourceFile": "desktop/AcademicAffairs/038.png",
+      "label": "Xem lớp 25",
+      "sha256": "b5b6a7618fe4042f0ce742e77964d83d04e1e284a13a6216d9f7b12353d68dce"
+    },
+    {
+      "id": "045",
+      "file": "images/045.png",
+      "sourceFile": "desktop/Teacher/045.png",
+      "label": "Xem lớp 32",
+      "sha256": "745a465b48358903170fbc26d20f5d63ac6b0ef97f47587233b76823e70fa7fc"
+    },
+    {
+      "id": "046",
+      "file": "images/046.png",
+      "sourceFile": "desktop/Teacher/046.png",
+      "label": "Xem lớp 32 · Đọc danh sách học viên",
+      "sha256": "eb73302cf1b75e94cf7cae126f3e24845ed7ffe2eb69ab83959b4bc86635825f"
+    },
+    {
+      "id": "053",
+      "file": "images/053.png",
+      "sourceFile": "desktop/Accountant/053.png",
+      "label": "Xem hóa đơn 112",
+      "sha256": "37a8a91fe2bf37f7ab2c7bb318433033e736c2dc57b4dbfbfaf7a27af2a3cc32"
+    },
+    {
+      "id": "054",
+      "file": "images/054.png",
+      "sourceFile": "desktop/Accountant/054.png",
+      "label": "Xem hóa đơn 112 · Sửa thông tin thanh toán",
+      "sha256": "11e5e359858a4786316ed0f13968df50f634772d1b3770ca9304c4d5c73834ae"
+    },
+    {
+      "id": "061",
+      "file": "images/061.png",
+      "sourceFile": "desktop/Admin/061.png",
+      "label": "Trang chính · /admin/accounts",
+      "sha256": "f802aec78ab014cb1f8f64e3002f0bdcfd0d0d67540841efc13ebc5d5f0eba02"
+    },
+    {
+      "id": "062",
+      "file": "images/062.png",
+      "sourceFile": "desktop/Admin/062.png",
+      "label": "Thêm nhân sự",
+      "sha256": "97b9971c53d58bdd5c2e91a539c6c335f1c6b884cff9c7a95aac0b818daf362a"
+    },
+    {
+      "id": "063",
+      "file": "images/063.png",
+      "sourceFile": "desktop/Admin/063.png",
+      "label": "Xem #135",
+      "sha256": "438ec81ac228984e57c2b8f8e10e1521eb41713e40e283dcdf99c9c00fe1d3f1"
+    },
+    {
+      "id": "064",
+      "file": "images/064.png",
+      "sourceFile": "desktop/Admin/064.png",
+      "label": "Trang chính · /admin/audit-events",
+      "sha256": "cf6eba56a0eac31c36560fed1c00ae3bb00bbeaec7d436f8bb67bf8919e2ce4e"
+    },
+    {
+      "id": "065",
+      "file": "images/065.png",
+      "sourceFile": "desktop/Admin/065.png",
+      "label": "Xem sự kiện 374",
+      "sha256": "11111512694373a14a3444cff6ad624d68df9a0adf8b0b10b6cc705179b9783e"
+    },
+    {
+      "id": "066",
+      "file": "images/066.png",
+      "sourceFile": "desktop/Admin/066.png",
+      "label": "Xem nhóm thao tác",
+      "sha256": "066fa9466081ef6c574a7d71d4eabf539a03a2e35104257ed7769bbe838ddd13"
+    },
+    {
+      "id": "070",
+      "file": "images/070.png",
+      "sourceFile": "desktop/Student/070.png",
+      "label": "Biểu mẫu sửa thông tin cá nhân",
+      "sha256": "8c31bc7fd29225afa2c82ae782457bc8507c9bf15ed197936cc131935da86910"
+    },
+    {
+      "id": "073",
+      "file": "images/073.png",
+      "sourceFile": "desktop/Student/073.png",
+      "label": "Trang chủ chưa có hồ sơ",
+      "sha256": "6839e3a81d66dd55f4383cbbc8bacd0c609526eaaf62b7657ede25decd96001f"
+    },
+    {
+      "id": "074",
+      "file": "images/074.png",
+      "sourceFile": "desktop/Student/074.png",
+      "label": "Hộp thoại đăng ký khóa học",
+      "sha256": "bce572d449d6aef46b2f0c3db05b79d347c4aa3d9a542f32bbff395bade1c407"
+    },
+    {
+      "id": "075",
+      "file": "images/075.png",
+      "sourceFile": "desktop/Student/075.png",
+      "label": "Chi tiết lớp đang học và lịch học",
+      "sha256": "799480ead2502710c6bce081699d37f55edac167125fc4df3865fd75ccf3b63b"
+    },
+    {
+      "id": "077",
+      "file": "images/077.png",
+      "sourceFile": "desktop/Teacher/077.png",
+      "label": "Chi tiết nhiệm vụ kiểm tra đầu vào",
+      "sha256": "71fe7d0ad94869c4e5d4db1a44b41dc7ea241513f3e0441a6e90a0db6f9bfce4"
+    },
+    {
+      "id": "078",
+      "file": "images/078.png",
+      "sourceFile": "desktop/Teacher/078.png",
+      "label": "Biểu mẫu chấm điểm đầu vào",
+      "sha256": "a61cce6993541f281acedab03bf17490785bd65eb3451c5bb90f93bdf7bb018f"
+    },
+    {
+      "id": "080",
+      "file": "images/080.png",
+      "sourceFile": "desktop/Teacher/080.png",
+      "label": "Bảng điểm lớp có dữ liệu",
+      "sha256": "e19c261e7a6607d2a073f1b6181529ab6386ff473a03d4a27105dd3b3e6344d1"
+    },
+    {
+      "id": "081",
+      "file": "images/081.png",
+      "sourceFile": "desktop/Teacher/081.png",
+      "label": "Biểu mẫu nhập điểm thành phần và nhận xét",
+      "sha256": "9f02c0f5fd41abe8b54c0bc94bd136d71a560d42df1a0ae7eea625cbfaa069b0"
+    },
+    {
+      "id": "084",
+      "file": "images/084.png",
+      "sourceFile": "desktop/Teacher/084.png",
+      "label": "Phiếu điểm danh theo buổi",
+      "sha256": "507a45b9b196dadd050bd9b8c5a6e2e3f998a9727f0fe7812eee3a724a695181"
+    },
+    {
+      "id": "086",
+      "file": "images/086.png",
+      "sourceFile": "desktop/AcademicAffairs/086.png",
+      "label": "Chi tiết bảng điểm cần duyệt",
+      "sha256": "7212c3f39caa082999232bed728de6ca706cf26c2b6c1ec35d52557815b4d8ac"
+    },
+    {
+      "id": "087",
+      "file": "images/087.png",
+      "sourceFile": "desktop/AcademicAffairs/087.png",
+      "label": "Hộp thoại trả lại bảng điểm",
+      "sha256": "84952312914ed1bb64dc94208293977cd1304ba60bfc5802de89550bae186cd3"
+    },
+    {
+      "id": "088",
+      "file": "images/088.png",
+      "sourceFile": "desktop/AcademicAffairs/088.png",
+      "label": "Hộp thoại chốt và công bố điểm",
+      "sha256": "64dbfcf1c78dc3994d1038ff36fa54d0dcfed2dc1c85c19727944a1fcd970c9d"
+    },
+    {
+      "id": "089",
+      "file": "images/089.png",
+      "sourceFile": "desktop/AcademicAffairs/089.png",
+      "label": "Danh sách học viên chờ xếp lớp",
+      "sha256": "46da340e5daa06e55fdfd6ae04995ed433964fa7c3dddffc511657bc08e7df8d"
+    },
+    {
+      "id": "090",
+      "file": "images/090.png",
+      "sourceFile": "desktop/AcademicAffairs/090.png",
+      "label": "Các lớp phù hợp để xếp học viên",
+      "sha256": "910c6ab3bb2444bf54773f65e1c1b8a0ad5b062cc7451ccb3346fc8e00f632ed"
+    },
+    {
+      "id": "091",
+      "file": "images/091.png",
+      "sourceFile": "desktop/AcademicAffairs/091.png",
+      "label": "Danh sách đặt ca thi",
+      "sha256": "cb352e2aa8c7478b125899c634c52b0495d1c2cf0bfc10dbac273f06ff2a6dbd"
+    },
+    {
+      "id": "092",
+      "file": "images/092.png",
+      "sourceFile": "desktop/Accountant/092.png",
+      "label": "Báo cáo tài chính có dữ liệu",
+      "sha256": "4bcfde86e3c07079843c8209c0533c00e537032607e22f533a1819834ea21511"
+    },
+    {
+      "id": "094",
+      "file": "images/094.png",
+      "sourceFile": "desktop/Director/094.png",
+      "label": "Báo cáo Tài chính có dữ liệu",
+      "sha256": "677d180bdd2b06386849df7e62bdec872af4bb4c280f933c0558cc35acc1691a"
+    },
+    {
+      "id": "095",
+      "file": "images/095.png",
+      "sourceFile": "desktop/Director/095.png",
+      "label": "Báo cáo Tuyển sinh có dữ liệu",
+      "sha256": "08b93dfcfab07705eba812c8ebee26927f853e4e25f33b881c096f2c186e1935"
+    },
+    {
+      "id": "096",
+      "file": "images/096.png",
+      "sourceFile": "desktop/Director/096.png",
+      "label": "Báo cáo Đào tạo có dữ liệu",
+      "sha256": "1b5d2c9bb2f5ebb93a90602c3c776b4af83a2296ee208e0b15e9bc291969b3b8"
+    },
+    {
+      "id": "098",
+      "file": "images/098.png",
+      "sourceFile": "desktop/Student/098.png",
+      "label": "Kết quả hai lượt thi đầu vào · hồ sơ gốc",
+      "sha256": "77eb3da2e4cdda1211bc0c3060b52e39975ba5d9eecfa4fd1cfc091a5ce2144d"
+    },
+    {
+      "id": "100",
+      "file": "images/100.png",
+      "sourceFile": "desktop/Student/100.png",
+      "label": "Hồ sơ chờ xác nhận nhập học",
+      "sha256": "c7a9b2497badef27496f9061f741235f423d2fc48391f60ceaa659daea1efef1"
+    },
+    {
+      "id": "101",
+      "file": "images/101.png",
+      "sourceFile": "desktop/Student/101.png",
+      "label": "Hộp thoại xác nhận nhập học",
+      "sha256": "87aa9a96468a33ce0a2514cf820f14b73489365b942de953542f355e80e1823f"
+    },
+    {
+      "id": "104",
+      "file": "images/104.png",
+      "sourceFile": "desktop/Student/104.png",
+      "label": "Danh sách ca thi phù hợp và tình trạng chỗ",
+      "sha256": "52f481036d43e35dc436c0b8e300248216658f7dca923020205c5efbfd4aea17"
+    },
+    {
+      "id": "105",
+      "file": "images/105.png",
+      "sourceFile": "desktop/Admissions/105.png",
+      "label": "Chi tiết hồ sơ chờ duyệt tuyển sinh",
+      "sha256": "747c7edb9fc13aa44f0dd75cd57d1d07093303366ce4946f5d3b95db73d1e702"
+    },
+    {
+      "id": "106",
+      "file": "images/106.png",
+      "sourceFile": "desktop/Admissions/106.png",
+      "label": "Xem trước duyệt hồ sơ tuyển sinh",
+      "sha256": "90506b25cf472082a655f285ff8eed962a72c409083254641ee549d16175565d"
+    },
+    {
+      "id": "108",
+      "file": "images/108.png",
+      "sourceFile": "desktop/AcademicAffairs/108.png",
+      "label": "Biểu mẫu sửa tên và học phí khóa học",
+      "sha256": "19ff149eff44e7d15b7e31feb549267c1732e8e582fa188218baeb3b9615f97b"
+    },
+    {
+      "id": "109",
+      "file": "images/109.png",
+      "sourceFile": "desktop/Accountant/109.png",
+      "label": "Biểu mẫu đối chiếu thu đủ học phí",
+      "sha256": "0a79cebca4c363a18aa10a2f5a4b7cb8376df5cb4bc5cba387859e505639dffd"
+    },
+    {
+      "id": "111",
+      "file": "images/111.png",
+      "sourceFile": "mobile/Student/111.png",
+      "label": "Menu điều hướng điện thoại",
+      "sha256": "db77fa1d264bb5b20f1ef8dae74c9fd02d223814b922ffb2502b9f18e7a39712"
+    },
+    {
+      "id": "112",
+      "file": "images/112.png",
+      "sourceFile": "desktop/Student/112.png",
+      "label": "Lịch thi đầu vào của học viên có lượt đặt",
+      "sha256": "968af55b21c22eee6f12f5304f701531dd5c391a40d2e0f67e38fa420ea0d83d"
+    },
+    {
+      "id": "114",
+      "file": "images/114.png",
+      "sourceFile": "desktop/Student/114.png",
+      "label": "Thời khóa biểu tuần hiện tại",
+      "sha256": "79011ceb3ce180c670fa08d7392191c5a2d3ae0e96e10e89447af3eca3769e03"
+    },
+    {
+      "id": "116",
+      "file": "images/116.png",
+      "sourceFile": "desktop/AcademicAffairs/116.png",
+      "label": "Biểu mẫu lập lịch và điều chỉnh lớp",
+      "sha256": "b5b6a7618fe4042f0ce742e77964d83d04e1e284a13a6216d9f7b12353d68dce"
+    }
+  ],
+  "sources": [
+    {
+      "path": "frontend/src/app/IdentityApp.tsx",
+      "sha256": "884369bb788e707019fb7a56ba5e0ad4532a93c39433fc8c173e306f8f397a6b"
+    },
+    {
+      "path": "frontend/src/app/identityNavigation.ts",
+      "sha256": "e8cbccc66ecaad3ca503398241cf4e78f7a4e8a1939444316d99f1a21f478d38"
+    },
+    {
+      "path": "frontend/src/features/administration/pages/StaffAdminPage.tsx",
+      "sha256": "c3541ba70b0ac61d25e1c8f74ace1b26f7c039272f524d6d545660f6ec33534d"
+    },
+    {
+      "path": "frontend/src/features/admissions/AdmissionsPage.tsx",
+      "sha256": "155a3187b49e0454e223b69572b9634d4fc6353d025f1c7bd636b2fd5873b080"
+    },
+    {
+      "path": "frontend/src/features/audit/AuditPage.tsx",
+      "sha256": "1e6285ffff4d29425924a1666e879921c1771b3d038be7268846eb2cf24d72fa"
+    },
+    {
+      "path": "frontend/src/features/catalogue/pages/CataloguePage.tsx",
+      "sha256": "63dbb276bb65dd7deb16433739a8a86e1799b7f2818cc9bacdf28d7e51a9394b"
+    },
+    {
+      "path": "frontend/src/features/classes/AttendancePanel.tsx",
+      "sha256": "81a72acd542b946115732dbccbefa79ff064305c8bfb05be670a533685c6107a"
+    },
+    {
+      "path": "frontend/src/features/classes/ClassesPage.tsx",
+      "sha256": "660bf153220d007c9fe82ecb94514a1355e2daa8a86a0fa76e7ccbc140e74fb5"
+    },
+    {
+      "path": "frontend/src/features/classes/GradeReviewPage.tsx",
+      "sha256": "10d07812452af05dbef93734932ea83082d164437a5969c2a966decf6073460d"
+    },
+    {
+      "path": "frontend/src/features/classes/GradebookPanel.tsx",
+      "sha256": "9760476a3944e195a83f665c4b093fefcfcfad8f8cbee4ba1c95f6fff2249cd8"
+    },
+    {
+      "path": "frontend/src/features/classes/SchedulesPanel.tsx",
+      "sha256": "c37755ec2b393af4f73fa311763bbaed2f1f84d8b47a223489e72ef8b7e1f2f3"
+    },
+    {
+      "path": "frontend/src/features/classes/StudentGradesPage.tsx",
+      "sha256": "4f2d70de3542c81a45dea91671a7c7fd2270d3249c5f1c57aa3afe29da26e3fc"
+    },
+    {
+      "path": "frontend/src/features/enrollment/StudentEnrollmentPage.tsx",
+      "sha256": "233c93c0006ef37c9c0746f70382868cc4cff9ab06cfa4170ae703626567cbe4"
+    },
+    {
+      "path": "frontend/src/features/enrollment/components/StudentOverview.tsx",
+      "sha256": "5ea0adb2941b93357a5e0d251921645bdc6293605d0a4577aaf85240f0c35cb1"
+    },
+    {
+      "path": "frontend/src/features/entrySessions/pages/EntrySessionPage.tsx",
+      "sha256": "f6065433b495ff2f2fe96ff4cf79da758d2d21451cb255f5f1e2c52627dbee76"
+    },
+    {
+      "path": "frontend/src/features/entryTasks/TeacherEntryPage.tsx",
+      "sha256": "6b33df6b1248d1e69dacf8b33e858088d893333fa84592a7f6b6bc711554dec2"
+    },
+    {
+      "path": "frontend/src/features/finance/FinancePage.tsx",
+      "sha256": "51d489da750bc33949399615722d1fb31861ff515cd73025cb4907c35522a1cd"
+    },
+    {
+      "path": "frontend/src/features/identity/pages/LoginPage.tsx",
+      "sha256": "71bd5ec7638bf81fc1bbb83072d6b46ed990c8f169300da7b594700432210de5"
+    },
+    {
+      "path": "frontend/src/features/identity/pages/SignupPage.tsx",
+      "sha256": "d633dae1bbecbbc84385d7765f21b28e58d89cab52f83b6035e6754deddb992c"
+    },
+    {
+      "path": "frontend/src/features/invoices/StudentInvoicesPage.tsx",
+      "sha256": "13a636f7f4943de6c0090b31cb761407030c78297c27c73c765d7538b48d4d72"
+    },
+    {
+      "path": "frontend/src/features/programs/pages/ProgramPage.tsx",
+      "sha256": "03699b0cc1c5be73c670b795a9c0fefd0d405327f5142be5f394c5737aff8d46"
+    },
+    {
+      "path": "frontend/src/features/reports/ReportsPage.tsx",
+      "sha256": "aa29d2d0aa0169c45a07d2407a653bb0a87e41ab4356e3c93d31e14f8a9b8626"
+    },
+    {
+      "path": "docs/design/FUNCTION_SPEC.md",
+      "sha256": "22f5ae4c85862c75428722935581d8c09e4327858b099e01a1c2bd91701b7db3"
+    },
+    {
+      "path": "docs/report-screenshots-20261015/manifest.json",
+      "sha256": "c8998776be262c54e00fe8c6e4d936c8eb58f415f14b5cff6d5af826decc8979"
+    },
+    {
+      "path": "docs/requirements.md",
+      "sha256": "da98973213c0d019bb104a9df66769468361d0abeaf18292c10cf8b493e0917f"
+    }
+  ],
+  "scope": "Documentation only; no demo commands, credential reads, Word edits or product changes."
+}

@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SQ03-A — Sơ đồ Sequence Đăng nhập</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #0284c7;
+      --primary-dark: #0369a1;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #64748b;
+      --border: #e2e8f0;
+      --success: #16a34a;
+      --warning: #d97706;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Be Vietnam Pro', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    header {
+      background: #ffffff;
+      border-bottom: 1px solid var(--border);
+      padding: 1rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    }
+    .header-left {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .badge {
+      background: #e0f2fe;
+      color: #0369a1;
+      font-weight: 700;
+      font-size: 0.85rem;
+      padding: 0.25rem 0.65rem;
+      border-radius: 9999px;
+    }
+    h1 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #0f172a;
+    }
+    .header-actions {
+      display: flex;
+      gap: 0.75rem;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 1rem;
+      border-radius: 0.5rem;
+      font-size: 0.875rem;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.15s ease;
+      border: 1px solid var(--border);
+      background: #ffffff;
+      color: var(--text);
+    }
+    .btn:hover {
+      background: #f1f5f9;
+      border-color: #cbd5e1;
+    }
+    .btn-primary {
+      background: var(--primary);
+      border-color: var(--primary);
+      color: #ffffff;
+    }
+    .btn-primary:hover {
+      background: var(--primary-dark);
+    }
+    main {
+      flex: 1;
+      padding: 2rem;
+      max-width: 1440px;
+      margin: 0 auto;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+    .toolbar-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #ffffff;
+      padding: 0.75rem 1.25rem;
+      border-radius: 0.75rem;
+      border: 1px solid var(--border);
+      box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+    }
+    .zoom-controls {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .zoom-btn {
+      width: 2rem;
+      height: 2rem;
+      border-radius: 0.375rem;
+      border: 1px solid var(--border);
+      background: #f8fafc;
+      font-size: 1.1rem;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+    .zoom-btn:hover { background: #e2e8f0; }
+    .viewer-container {
+      background: #ffffff;
+      border-radius: 0.75rem;
+      border: 1px solid var(--border);
+      box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+      overflow: auto;
+      padding: 1.5rem;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      min-height: 700px;
+      max-height: 85vh;
+    }
+    .diagram-img {
+      max-width: 100%;
+      height: auto;
+      transition: transform 0.2s ease-out;
+      transform-origin: top center;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      border-radius: 4px;
+    }
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 1.25rem;
+    }
+    .info-card {
+      background: #ffffff;
+      border-radius: 0.75rem;
+      border: 1px solid var(--border);
+      padding: 1.25rem;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+    }
+    .info-card h3 {
+      font-size: 1rem;
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: #1e293b;
+    }
+    .rule-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      font-size: 0.85rem;
+      color: #334155;
+    }
+    .rule-list li {
+      position: relative;
+      padding-left: 1.25rem;
+    }
+    .rule-list li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      color: var(--success);
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-left">
+      <span class="badge">SQ03-A</span>
+      <h1>Sơ đồ Sequence Đăng nhập (Mức tương tác nghiệp vụ)</h1>
+    </div>
+    <div class="header-actions">
+      <a href="SQ03_A_Dang_Nhap.svg" download class="btn">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Tải SVG Vector
+      </a>
+      <a href="SQ03_A_Dang_Nhap.png" download class="btn btn-primary">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Tải PNG nét cao
+      </a>
+    </div>
+  </header>
+
+  <main>
+    <div class="toolbar-bar">
+      <div style="font-size: 0.875rem; color: var(--text-muted);">
+        Kiến trúc chuẩn: <strong>Người dùng (Actor) &rarr; Giao diện tài khoản (Boundary) &rarr; Hệ thống quản lý trung tâm (Control)</strong>
+      </div>
+      <div class="zoom-controls">
+        <span style="font-size: 0.85rem; color: var(--text-muted); margin-right: 0.5rem;">Thu phóng:</span>
+        <button class="zoom-btn" onclick="zoom(-0.15)">-</button>
+        <span id="zoomLevel" style="font-size: 0.85rem; font-weight: 600; min-width: 3rem; text-align: center;">100%</span>
+        <button class="zoom-btn" onclick="zoom(0.15)">+</button>
+        <button class="zoom-btn" onclick="resetZoom()" style="width: auto; padding: 0 0.5rem; font-size: 0.75rem;">Reset</button>
+      </div>
+    </div>
+
+    <div class="viewer-container" id="viewer">
+      <img src="SQ03_A_Dang_Nhap.svg" alt="SQ03-A Sơ đồ Sequence Đăng nhập" class="diagram-img" id="diagramImg">
+    </div>
+
+    <div class="info-grid">
+      <div class="info-card">
+        <h3>Các nguyên tắc đã chuẩn hóa từ README.md</h3>
+        <ul class="rule-list">
+          <li>Đúng chuẩn 3 tầng: <strong>Actor &rarr; Boundary &rarr; Control</strong>.</li>
+          <li>Không vẽ Database, JWT, Cookie, Controller/Service làm lifeline riêng.</li>
+          <li>Chỉ dùng 1 Actor đại diện cho 7 vai trò, hệ thống tự xác định role.</li>
+          <li>Lỗi trước xác thực không làm lộ sự tồn tại của Email hoặc trạng thái Account.</li>
+          <li>Cập nhật khóa tạm khi sai 5 lần/15 phút (không chuyển Account sang LOCKED).</li>
+        </ul>
+      </div>
+
+      <div class="info-card">
+        <h3>Quy tắc phiên và luồng rẽ nhánh</h3>
+        <ul class="rule-list">
+          <li><strong>alt ngoài</strong>: [Không đáp ứng] vs [Đáp ứng điều kiện đăng nhập].</li>
+          <li><strong>alt trong</strong>: [Không bắt buộc đổi mật khẩu] vs [Bắt buộc đổi mật khẩu tạm].</li>
+          <li><strong>Phiên thường (NORMAL)</strong>: Tối đa 2 giờ hoặc idle 30 phút; không refresh token.</li>
+          <li><strong>Phiên hạn chế (RESTRICTED)</strong>: Tối đa 10 phút, không vượt hạn mật khẩu tạm 24h.</li>
+          <li>Gắn <strong>ref SQ04</strong> tại nhánh mật khẩu tạm, không tự nâng thành phiên thường.</li>
+        </ul>
+      </div>
+
+      <div class="info-card">
+        <h3>Nhật ký bảo mật (Audit Log)</h3>
+        <ul class="rule-list">
+          <li>Ghi sự kiện bảo mật đăng nhập theo cơ chế <strong>best-effort</strong>.</li>
+          <li>Không ghi mật khẩu dạng thô (plaintext) hay token vào nhật ký.</li>
+          <li>Lỗi hệ thống khi ghi log bảo mật không làm bỏ qua kiểm tra xác thực.</li>
+          <li>Đăng nhập trên thiết bị mới không tự động thu hồi phiên của thiết bị khác.</li>
+        </ul>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    let scale = 1.0;
+    const img = document.getElementById('diagramImg');
+    const zoomText = document.getElementById('zoomLevel');
+
+    function updateTransform() {
+      img.style.transform = `scale(${scale})`;
+      zoomText.textContent = `${Math.round(scale * 100)}%`;
+    }
+
+    function zoom(delta) {
+      scale = Math.max(0.5, Math.min(2.5, scale + delta));
+      updateTransform();
+    }
+
+    function resetZoom() {
+      scale = 1.0;
+      updateTransform();
+    }
+
+    // Support mouse wheel zoom inside viewer container
+    document.getElementById('viewer').addEventListener('wheel', (e) => {
+      if (e.ctrlKey) {
+        e.preventDefault();
+        zoom(e.deltaY < 0 ? 0.1 : -0.1);
+      }
+    });
+  </script>
+</body>
+</html>
