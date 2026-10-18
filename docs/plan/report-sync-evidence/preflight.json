@@ -1,9 +1,0 @@
-{
-  "scan": "Finite high-confidence credential/private-key signatures; archive CRC and embedded text checked for pending files",
-  "historyBlobs": 4019,
-  "historyUncompressedBytes": 201060322,
-  "candidateFiles": 687,
-  "excluded": [],
-  "findings": [],
-  "reportSourceSha256": "36c9468a717e79e21e4b2367725385bc7d3415f4dcee7e2bee463486b11eea78"
-}

@@ -25,3 +25,24 @@ frontend/.tmp/
 # Office lock/recovery files are local editing state, not report sources.
 ~$*
 ~WRL*.tmp
+
+# Local reports, agent context and submission artifacts
+/.agents/
+/.codex/
+/.worktrees/
+/instructions/
+/AGENTS.md
+/Agent.md
+/submission/
+/docs/*
+!/docs/HUONG_DAN_CHAY_SAN_PHAM.md
+!/docs/plan/
+/docs/plan/*
+!/docs/plan/M0_LOCAL_DEV_RUNBOOK.md
+!/docs/plan/M0_LOCAL_DEV_PROFILE_TEMPLATE.json
+!/docs/plan/M0_PATCH_REVIEW.md
+*.pfx
+*.p12
+*.mdf
+*.ldf
+*.bak

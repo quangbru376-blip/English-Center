@@ -1,7 +1,0 @@
-xUnit.net v3 In-Process Runner v4.0.1+8ed8aa354c (64-bit .NET 10.0.4)
-  Discovering: EnglishCenter.Tests
-  Discovered:  EnglishCenter.Tests
-  Starting:    EnglishCenter.Tests
-  Finished:    EnglishCenter.Tests (ID = 'cb4360231e9a92433e299e124d24776dd42ec676afd7171830ebad8a4c53128f')
-=== TEST EXECUTION SUMMARY ===
-   EnglishCenter.Tests  Total: 21, Errors: 0, Failed: 0, Skipped: 0, Not Run: 0, Time: 605.429s

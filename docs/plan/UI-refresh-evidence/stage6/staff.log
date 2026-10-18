@@ -1,5 +1,0 @@
-page.goto: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:5178/admin/accounts
-Call log:
-  - navigating to "http://127.0.0.1:5178/admin/accounts", waiting until "load"
-
-    at C:\Study\SOEN\main_workplace\frontend\tests\browser\ui-refresh-stage6-strict-staff.cjs:43:16

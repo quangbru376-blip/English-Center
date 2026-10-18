@@ -1,5 +1,0 @@
-page.goto: net::ERR_CONNECTION_REFUSED at https://localhost:8443/login
-Call log:
-  - navigating to "https://localhost:8443/login", waiting until "load"
-
-    at C:\Study\SOEN\main_workplace\frontend\tests\browser\session-focus-live.cjs:8:14

@@ -1,8 +1,0 @@
-  EnglishCenter.Api -> C:\Study\SOEN\main_workplace\backend\src\EnglishCenter.Api\bin\Debug\net10.0\EnglishCenter.Api.dll
-  EnglishCenter.Tests -> C:\Study\SOEN\main_workplace\backend\tests\EnglishCenter.Tests\bin\Debug\net10.0\EnglishCenter.Tests.dll
-Test run for C:\Study\SOEN\main_workplace\backend\tests\EnglishCenter.Tests\bin\Debug\net10.0\EnglishCenter.Tests.dll (.NETCoreApp,Version=v10.0)
-A total of 1 test files matched the specified pattern.
-vstest.console process failed to connect to testhost process after 90 seconds. This may occur due to machine slowness, please set environment variable VSTEST_CONNECTION_TIMEOUT to increase timeout.
-Results File: C:\Study\SOEN\main_workplace\docs\reference\function-web-audit-20261015\browser\functions-web-edge.trx
-
-Test Run Aborted.
